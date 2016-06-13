@@ -1,3 +1,5 @@
+使用YII2框架后台bckend/
+
 Yii 2 Advanced Project Template
 ===============================
 
