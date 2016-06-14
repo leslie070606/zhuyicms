@@ -10,7 +10,7 @@ class DesignerController extends controller {
 
     public function actionIndex() {
 
-        $designerlistModel = new \backend\models\DesignerList();
+        $designerlistModel = new \backend\models\DesignerBasic();
         //$designerList = $designerlistModel->getAllDesigner();
         $designer = $designerlistModel::find();
         $pagination = new \yii\data\Pagination(['totalCount' => $designer->count(), 'pageSize' => 10]);
@@ -39,7 +39,7 @@ class DesignerController extends controller {
 
     public function actionAdd() {
 
-        $designerlistModel = new \backend\models\DesignerList();
+        $designerlistModel = new \backend\models\DesignerBasic();
 
         if (Yii::$app->request->isPost && $designerlistModel->load(Yii::$app->request->post()) && $designerlistModel->save()) {
 
