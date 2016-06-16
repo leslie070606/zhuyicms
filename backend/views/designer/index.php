@@ -17,36 +17,64 @@ use yii\helpers\Url;
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">姓名</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">介绍</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Platform(s)</th>
-                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Engine version</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">性别</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">签约状态</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">从业年限</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">所属机构</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">毕业院校</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">标签</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">接洽状态</th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">洽谈人员</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">操作</th></tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($data as $designer) { ?>
                                         <tr role="row" class="odd">
                                             <td class="sorting_1"><?= $designer->name ?></td>
-                                            <td><?= $designer->description ?></td>
-                                            <td>Win 98+ / OSX.2+</td>
-                                            <td>1.7</td>
-                                            <td><a href="<?=Url::to(['edit' , 'id'=>$designer->id])?>">编辑</a> | <a href="<?=Url::to(['delete' , 'id'=>$designer->id])?>">删除</a></td>
+                                            <td><?php
+                                                if ($designer->sex == 1) {
+                                                    echo '男';
+                                                } else {
+                                                    echo '女';
+                                                }
+                                                ?></td>
+                                            <td><?php
+                                                if ($designer->sign == 1) {
+                                                    echo '已签约';
+                                                } else {
+                                                    echo '未签约';
+                                                }
+                                                ?></td>
+
+                                            <td><?= $designer->job_year ?></td>
+                                            <td><?= $designer->company ?></td>
+                                            <td><?= $designer->alma_mater ?></td>
+                                            <td><?= $designer->tag ?></td>
+                                            <td><?= $designer->status ?></td>
+                                            <td><?= $designer->service_pre ?></td>
+                                            <td><a href="<?= Url::to(['edit', 'id' => $designer->id]) ?>">编辑</a> | <a href="<?= Url::to(['delete', 'id' => $designer->id]) ?>">删除</a></td>
                                         </tr>
 
-                                    <?php } ?>
+<?php } ?>
 
                                 </tbody>
                                 <tfoot>
                                     <tr><th rowspan="1" colspan="1">姓名</th>
-                                        <th rowspan="1" colspan="1">介绍</th>
-                                        <th rowspan="1" colspan="1">Platform(s)</th>
-                                        <th rowspan="1" colspan="1">Engine version</th>
+                                        <th rowspan="1" colspan="1">性别</th>
+                                        <th rowspan="1" colspan="1">签约状态</th>
+                                        <th rowspan="1" colspan="1">从业年限</th>
+                                        <th rowspan="1" colspan="1">所属机构</th>
+                                        <th rowspan="1" colspan="1">毕业院校</th>
+                                        <th rowspan="1" colspan="1">标签</th>
+                                        <th rowspan="1" colspan="1">接洽状态</th>
+                                        <th rowspan="1" colspan="1">洽谈人员</th>
                                         <th rowspan="1" colspan="1">操作</th></tr>
                                 </tfoot>
                             </table></div></div>
-                    <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of <?=$pagination->totalCount;?> entries</div></div>
+                    <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of <?= $pagination->totalCount; ?> entries</div></div>
                         <div class="col-sm-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                                             
+
                                 <?=
                                 \yii\widgets\LinkPager::widget([
                                     'pagination' => $pagination,
@@ -56,8 +84,6 @@ use yii\helpers\Url;
                                 ]);
                                 ?>
                             </div></div></div>
-
-
                 </div>
             </div>
             <!-- /.box-body -->

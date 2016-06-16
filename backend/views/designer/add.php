@@ -1,196 +1,107 @@
 <?php
-
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 ?>
-
-<div class="col-md-6">
-    <!-- general form elements -->
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">Quick Example</h3>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form role="form">
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">设计师基本信息</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <?= Html::beginForm('', 'post', ['id' => 'form-basic']); ?>
             <div class="box-body">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" placeholder="Enter email" id="exampleInputEmail1" class="form-control">
+                    <label for="name">姓名</label>
+                    <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'name']) ?>
+                    <?= Html::error($model, 'name', ['class' => 'error']); ?>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" placeholder="Password" id="exampleInputPassword1" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" id="exampleInputFile">
 
-                    <p class="help-block">Example block-level help text here.</p>
+                <div class="form-group">
+                    <label for="sex">性别</label>
+                    <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Check me out
-                    </label>
+
+                <div class="form-group">
+                    <label for="name">出生日期</label>
+                    <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'birth']) ?>
+                    <?= Html::error($model, 'birth', ['class' => 'error']); ?>
                 </div>
+
+                <div class="form-group">
+                    <label for="job_year">从业年限</label>
+                    <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'job_year']) ?>
+                    <?= Html::error($model, 'job_year', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="tag">标签</label>
+                    <?= Html::activeInput('text', $model, 'tag', ['class' => 'form-control', 'placeholder' => '多标签以逗号隔开', 'id' => 'tag']) ?>
+                    <?= Html::error($model, 'tag', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="sign">签约状态</label>
+                    <?= Html::activeRadioList($model,'sign',[1 => '已签约', 0 => '未签约'], ['class' => 'fav-list', 'id' => "sign"]) ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">接洽状态</label>
+                    <?= Html::activeInput('text', $model, 'status', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'status']) ?>
+                    <?= Html::error($model, 'status', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="service_pre">洽谈人员</label>
+                    <?= Html::activeInput('text', $model, 'service_pre', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'service_pre']) ?>
+                    <?= Html::error($model, 'service_pre', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">所属机构</label>
+                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'company']) ?>
+                    <?= Html::error($model, 'company', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="ever_office">服务的大事务所</label>
+                    <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'ever_office']) ?>
+                    <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="alma_mater">毕业院校</label>
+                    <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'alma_mater']) ?>
+                    <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="winning">获奖经历</label>
+                    <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'placeholder' => 'Enter...', 'id' => 'winning']) ?>
+                    <?= Html::error($model, 'winning', ['class' => 'error']); ?>
+                </div>
+
             </div>
             <!-- /.box-body -->
-
             <div class="box-footer">
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="reset"  onclick="ajaxBasic()">提交</button>
+                <button class="btn btn-default pull-right" type="reset">重置</button>
             </div>
-        </form>
-    </div>
-    <!-- /.box -->
-
-    <!-- Form Element sizes -->
-    <div class="box box-success">
-        <div class="box-header with-border">
-            <h3 class="box-title">Different Height</h3>
+            <?= Html::endForm(); ?>
         </div>
-        <div class="box-body">
-            <input type="text" placeholder=".input-lg" class="form-control input-lg">
-            <br>
-            <input type="text" placeholder="Default input" class="form-control">
-            <br>
-            <input type="text" placeholder=".input-sm" class="form-control input-sm">
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-
-    <div class="box box-danger">
-        <div class="box-header with-border">
-            <h3 class="box-title">Different Width</h3>
-        </div>
-        <div class="box-body">
-            <div class="row">
-                <div class="col-xs-3">
-                    <input type="text" placeholder=".col-xs-3" class="form-control">
-                </div>
-                <div class="col-xs-4">
-                    <input type="text" placeholder=".col-xs-4" class="form-control">
-                </div>
-                <div class="col-xs-5">
-                    <input type="text" placeholder=".col-xs-5" class="form-control">
-                </div>
-            </div>
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-
-    <!-- Input addon -->
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">Input Addon</h3>
-        </div>
-        <div class="box-body">
-            <div class="input-group">
-                <span class="input-group-addon">@</span>
-                <input type="text" placeholder="Username" class="form-control">
-            </div>
-            <br>
-
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-addon">.00</span>
-            </div>
-            <br>
-
-            <div class="input-group">
-                <span class="input-group-addon">$</span>
-                <input type="text" class="form-control">
-                <span class="input-group-addon">.00</span>
-            </div>
-
-            <h4>With icons</h4>
-
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" placeholder="Email" class="form-control">
-            </div>
-            <br>
-
-            <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-addon"><i class="fa fa-check"></i></span>
-            </div>
-            <br>
-
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="text" class="form-control">
-                <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
-            </div>
-
-            <h4>With checkbox and radio inputs</h4>
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="checkbox">
-                        </span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <!-- /input-group -->
-                </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <input type="radio">
-                        </span>
-                        <input type="text" class="form-control">
-                    </div>
-                    <!-- /input-group -->
-                </div>
-                <!-- /.col-lg-6 -->
-            </div>
-            <!-- /.row -->
-
-            <h4>With buttons</h4>
-
-            <p class="margin">Large: <code>.input-group.input-group-lg</code></p>
-
-            <div class="input-group input-group-lg">
-                <div class="input-group-btn">
-                    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" type="button">Action
-                        <span class="fa fa-caret-down"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </div>
-                <!-- /btn-group -->
-                <input type="text" class="form-control">
-            </div>
-            <!-- /input-group -->
-            <p class="margin">Normal</p>
-
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <button class="btn btn-danger" type="button">Action</button>
-                </div>
-                <!-- /btn-group -->
-                <input type="text" class="form-control">
-            </div>
-            <!-- /input-group -->
-            <p class="margin">Small <code>.input-group.input-group-sm</code></p>
-
-            <div class="input-group input-group-sm">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-info btn-flat" type="button">Go!</button>
-                </span>
-            </div>
-            <!-- /input-group -->
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-
-</div>
+        <script>
+            function ajaxBasic() {
+                var $form = $('#form-basic');
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: 'post',
+                    //dataType: 'json',
+                    data: $form.serialize(),
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            }
+        </script>
