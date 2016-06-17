@@ -24,7 +24,7 @@ class DesignerController extends controller {
     public function actionEdit($id) {
 
         $id = (int) $id;
-        
+
         // 判断是否有可编辑数据
         $designerbasicModel = new \backend\models\DesignerBasic();
         if ($id > 0 && ($designerbasicModel = $designerbasicModel::findOne($id))) {
@@ -64,22 +64,45 @@ class DesignerController extends controller {
 
             // 获取表单类型
             $formx = array_keys(Yii::$app->request->post());
-
+            // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            // return json_encode(Yii::$app->request->post());
             // 判断是那张表的信息
             if ("DesignerBasic" == $formx[1]) {
                 //判断model
                 $designerbasicModel = new \backend\models\DesignerBasic();
                 $designerbasicModel->load(Yii::$app->request->post());
                 if ($designerbasicModel->save()) {
+                    //return '添加成功!';
+                    $res = array('designerID'=>$designerbasicModel->id,'msg'=>'添加成功!');
+                    $resjson = json_encode($res);
+                    return $resjson;
+                } else {
+                    return '失败!';
+                }
+            } else if ("DesignerWork" == $formx[1]) { //添加work表
+                $designerWorkModel = new \backend\models\DesignerWork();
+                $designerWorkModel->load(Yii::$app->request->post());
+                if ($designerWorkModel->save()) {
                     return '添加成功!';
                 } else {
                     return '失败!';
                 }
-            }
+            } else if('DesignerAdditional' == $formx[1]){
+                $designerAdditionalModel = new \backend\models\DesignerAdditional();
+                $designerAdditionalModel->load(Yii::$app->request->post());
+                 if ($designerAdditionalModel->save()) {
+                    return '添加成功!';
+                } else {
+                    return '失败!';
+                }
+            }else{}
         } else {
             // 非添加动作 跳转页面
-            $designerlistModel = new \backend\models\DesignerBasic();
-            return $this->render('add', ['model' => $designerlistModel]);
+            $designerBasicModel = new \backend\models\DesignerBasic();
+            $designerWorkModel = new \backend\models\DesignerWork();
+            $designerAdditionalModel = new \backend\models\DesignerAdditional();
+
+            return $this->render('add', ['model' => $designerBasicModel, 'modelwork' => $designerWorkModel, 'modeladditional' => $designerAdditionalModel]);
         }
     }
 
