@@ -33,8 +33,12 @@ class LoginController extends Controller {
     }
 
     public function actionLogout() {
-        Yii::$app->user->logout();
-
+        //Yii::$app->user->logout();
+        $session = \Yii::$app->session;
+        $session->remove('mrs_username');
+        $cookie = Yii::$app->request->cookies->get('mrs_remeber'); //移除一个 Cookie 对象 
+        if($cookie){\Yii::$app->response->getCookies()->remove($cookie);}
+        
         return $this->goHome();
     }
 
