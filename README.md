@@ -7,16 +7,15 @@ composer install
 composer update
 三，修改代码
 path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
+
  public function load($data, $formName = null)
     {
         $scope = $formName === null ? $this->formName() : $formName;
         if ($scope === '' && !empty($data)) {
             $this->setAttributes($data, FALSE);
-
             return true;
         } elseif (isset($data[$scope])) {
             $this->setAttributes($data[$scope],FALSE);
-
             return true;
         } else {
             return false;
