@@ -5,7 +5,7 @@ $params = array_merge(
 );
 
 return [
-    'defaultRoute' => 'login',
+    'defaultRoute' => 'index',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

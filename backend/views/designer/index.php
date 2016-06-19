@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header">
+            <div class="box-header with-border">
                 <h3 class="box-title">设计师列表</h3>
 <!--                <p style="text-align:right;">
                     <a href="<?= Url::to(['add']) ?>" class="btn btn-primary">添加</a>
