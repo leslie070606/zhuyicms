@@ -96,7 +96,7 @@ use yii\helpers\Html;
             <?= Html::endForm(); ?>
         </div>
 
-        <div class="box box-warning">
+        <div class="box  box-danger">
             <div class="box-header with-border">
                 <h3 class="box-title">设计师附加信息表</h3>
             </div>
@@ -239,7 +239,7 @@ use yii\helpers\Html;
             <div class="box-body">
                 <div class="form-group">
                     <label for="category">设计师类别</label>
-                    <?= Html::activeInput('text', $modelwork, 'category', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'category']) ?>
+                    <?= Html::activeDropDownList($modelwork, 'category', [ 1 => '建筑师出身设计师', 2 => '家装背景设计师', 3 => '软装设计师', 4 => '达人-灯光', 5=> '达人-花艺', 6 => '达人-收纳', 7 => '达人-艺术品', 8 => '达人其他'], ['class' => 'form-control', 'multiple' => '',  'id' => 'category']) ?>
                     <?= Html::error($modelwork, 'category', ['class' => 'error']); ?>
                 </div>
 
@@ -278,12 +278,6 @@ use yii\helpers\Html;
                     <?= Html::activeDropDownList($modelwork, 'docking_area', [0 => '本地', 1 => '全国', 2 => '加价全国'], ['class' => 'btn-group-lg', 'id' => 'docking_area']) ?>
                     <?= Html::error($modelwork, 'docking_area', ['class' => 'error']); ?>
                 </div>
-
-                <style type="text/css">
-                    .checkbox{
-
-                    }
-                </style>
                 <div class="form-group">
                     <label for="include_project">设计费包含项目</label>
                     <?= Html::activeCheckboxList($modelwork, 'include_project', [1 => '咨询', 2 => '硬装平面设计图', 3 => '硬装效果图', 4 => '硬装施工图', 5 => '建材（主材）清单', 6 => '陪买建材（地板 瓷砖）', 7 => '施工对接', 8 => '施工巡查（监理）', 9 => '软装设计图（带家具清单）', 10 => '陪买家具', 11 => '代买家具'], ['class' => 'checkbox', 'id' => 'include_project']) ?>

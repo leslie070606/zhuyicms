@@ -14,25 +14,25 @@ use yii\helpers\Html;
             <!-- form start -->
             <?= Html::beginForm('', 'post', ['id' => 'form-basic']); ?>
             <div class="box-body">
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="name">姓名</label>
                     <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'name']) ?>
                     <?= Html::error($model, 'name', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="sex">性别</label>
                     <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>
                     <?= Html::error($model, 'sex', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="name">出生日期</label>
                     <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'birth']) ?>
                     <?= Html::error($model, 'birth', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="job_year">从业年限</label>
                     <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'job_year']) ?>
                     <?= Html::error($model, 'job_year', ['class' => 'error']); ?>
@@ -55,19 +55,19 @@ use yii\helpers\Html;
                     <?= Html::error($model, 'status', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="service_pre">洽谈人员</label>
                     <?= Html::activeInput('text', $model, 'service_pre', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'service_pre']) ?>
                     <?= Html::error($model, 'service_pre', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="company">所属机构</label>
                     <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'company']) ?>
                     <?= Html::error($model, 'company', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group has-warning">
                     <label for="ever_office">服务的大事务所</label>
                     <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'ever_office']) ?>
                     <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>

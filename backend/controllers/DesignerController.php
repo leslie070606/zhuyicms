@@ -7,8 +7,8 @@ use bacend\models;
 use yii;
 
 class DesignerController extends controller {
-    
-    public function  actions(){
+
+    public function actions() {
         //添加登录判断
         if (!($username = Yii::$app->session->get('mrs_username')) && !($username = \backend\models\Login::loginByCookie())) {
             return $this->redirect(['login/index']);
@@ -18,14 +18,34 @@ class DesignerController extends controller {
     public function actionIndex() {
 
         $designerlistModel = new \backend\models\DesignerBasic();
-
-        $designer = $designerlistModel::find();
-
+        $search_word = '';
+        if (Yii::$app->request->post('table_search')) {
+            $search_word = Yii::$app->request->post('table_search');
+            //$designer = $designerlistModel::find()->where(`name like %:search_word%`, [`:search_word` => $search_word])->all();
+            // $designer = $designerlistModel::findAll(`name like %:search_word%`, [`:search_word` => $search_word]);
+            $designer = $designerlistModel::findBySql("select * from zyj_designer_basic where name like '%" . $search_word . "%'");
+        } else {
+            $designer = $designerlistModel::find();
+        }
         $pagination = new \yii\data\Pagination(['totalCount' => $designer->count(), 'pageSize' => 10]);
 
         $data = $designer->offset($pagination->offset)->limit($pagination->limit)->all();
 
-        return $this->render("index", ['data' => $data, 'pagination' => $pagination]);
+        return $this->render("index", ['data' => $data, 'pagination' => $pagination, 'search_word' => $search_word]);
+    }
+
+    public function actionDetail($id) {
+        $id = (int) $id;
+        $designerbasicModel = new \backend\models\DesignerBasic();
+        $designerbasicModel = $designerbasicModel::findOne($id);
+
+        $designerWorkModel = new \backend\models\DesignerWork();
+        $designerWorkModel = $designerWorkModel::findOne(['designer_id' => $id]) ? $designerWorkModel::findOne(['designer_id' => $id]) : $designerWorkModel;
+
+        $designerAdditionalModel = new \backend\models\DesignerAdditional();
+        $designerAdditionalModel = $designerAdditionalModel::findOne(['designer_id' => $id]) ? $designerAdditionalModel::findOne(['designer_id' => $id]) : $designerAdditionalModel;
+
+        return $this->render('detail', ['model' => $designerbasicModel, 'modeladditional' => $designerAdditionalModel, 'modelwork' => $designerWorkModel, 'did' => $id]);
     }
 
     public function actionEdit($id) {
@@ -168,9 +188,9 @@ class DesignerController extends controller {
             if ($dm) {
                 $designerWorkModel::findOne(['designer_id' => $id])->delete();
             }
-            
+
             $de = $designerAdditionalModel::findOne(['designer_id' => $id]);
-            if($de){
+            if ($de) {
                 $designerAdditionalModel::findOne(['designer_id' => $id])->delete();
             }
         }

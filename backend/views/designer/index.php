@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Html;
 use yii\helpers\Url;
 ?>    
 <div class="row">
@@ -8,12 +8,34 @@ use yii\helpers\Url;
             <div class="box-header with-border">
                 <h3 class="box-title">设计师列表</h3>
 <!--                <p style="text-align:right;">
-                    <a href="<?= Url::to(['add']) ?>" class="btn btn-primary">添加</a>
+                    <a href="<?php // Url::to(['add'])  ?>" class="btn btn-primary">添加</a>
                 </p>-->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                        </div>
+                        <!-- 搜索-->
+                        <div class="col-sm-6">
+                            <div class="box-tools pull-right">
+                                <?= Html::beginForm('', 'post', ['id' => 'form-search']); ?>
+                                <div style="width: 200px;" class="input-group input-group-sm">
+                                    <!--<input type="text" placeholder="Search" class="form-control pull-right" name="table_search">-->
+                                    <?= Html::input('text', 'table_search',$search_word?$search_word:'', ['class' => 'form-control pull-right', 'placeholder' => 'Search', 'id' => 'table_search']) ?>
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                                 <?= Html::endForm(); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row" style="background-color: #00c0ef;color: #ffffff;">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">姓名</th>
@@ -52,10 +74,10 @@ use yii\helpers\Url;
                                             <td><?= $designer->tag ?></td>
                                             <td><?= $designer->status ?></td>
                                             <td><?= $designer->service_pre ?></td>
-                                            <td><a href="<?= Url::to(['edit', 'id' => $designer->id]) ?>">编辑</a> | <a href="<?= Url::to(['delete', 'id' => $designer->id]) ?>">删除</a></td>
+                                            <td><a href="<?= Url::to(['detail', 'id' => $designer->id]) ?>">查看</a>|<a href="<?= Url::to(['edit', 'id' => $designer->id]) ?>">编辑</a> | <a href="<?= Url::to(['delete', 'id' => $designer->id]) ?>">删除</a></td>
                                         </tr>
 
-<?php } ?>
+                                    <?php } ?>
 
                                 </tbody>
                                 <tfoot>
