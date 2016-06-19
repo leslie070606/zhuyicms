@@ -8,6 +8,7 @@ composer update
 三，修改代码
 path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
 
+
  public function load($data, $formName = null)
     {
         $scope = $formName === null ? $this->formName() : $formName;
