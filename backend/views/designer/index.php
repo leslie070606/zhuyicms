@@ -1,7 +1,18 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
-?>    
+use kartik\file\FileInput;
+?>
+
+<?php
+// 非ActiveForm的表单
+//echo '<label class="control-label">图片</label>';
+//echo FileInput::widget([
+//    'model' => $model,
+//    'attribute' => 'name[]',
+//    'options' => ['multiple' => true]
+//]);
+?>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">

@@ -12,15 +12,20 @@ use yii\helpers\Html;
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <?= Html::beginForm('', 'post', ['id' => 'form-basic']); ?>
+            <?= Html::beginForm('', 'post', ['id' => 'form-basic','enctype' =>'multipart/form-data']); ?>
             <div class="box-body">
                 <div class="form-group has-warning">
                     <label for="name">姓名</label> <!--<span class="label label-danger">UI Design</span>-->
                     <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'name']) ?>
-
                     <?= Html::error($model, 'name', ['class' => 'error']); ?>
                 </div>
-
+                
+                <div class="form-group has-warning">
+                    <label for="picture">设计师头像</label> <!--<span class="label label-danger">UI Design</span>-->
+                    <?= Html::activeFileInput($model, 'picture', ['class' => '', 'placeholder' => 'Enter...', 'id' => 'picture']) ?>
+                    <?= Html::error($model, 'picture', ['class' => 'error']); ?>
+                </div>
+                
                 <div class="form-group has-warning">
                     <label for="sex">性别</label>
                     <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>

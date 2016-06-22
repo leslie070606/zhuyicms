@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use yii\web\Controller;
 use bacend\models;
+use yii\web\UploadedFile;
 use yii;
 
 class DesignerController extends controller {
@@ -31,7 +32,7 @@ class DesignerController extends controller {
 
         $data = $designer->offset($pagination->offset)->limit($pagination->limit)->all();
 
-        return $this->render("index", ['data' => $data, 'pagination' => $pagination, 'search_word' => $search_word]);
+        return $this->render("index", ['data' => $data, 'pagination' => $pagination, 'model' => $designerlistModel, 'search_word' => $search_word]);
     }
 
     public function actionDetail($id) {
@@ -137,8 +138,13 @@ class DesignerController extends controller {
             if ("DesignerBasic" == $formx[1]) {
                 //判断model
                 $designerbasicModel = new \backend\models\DesignerBasic();
+                
+
                 $designerbasicModel->load(Yii::$app->request->post());
+                //echo var_dump(Yii::$app->request->post());exit;
+                //$this->uploadfile($designerbasicModel);
                 if ($designerbasicModel->save()) {
+                    
                     //return '添加成功!';
                     $res = array('designerID' => $designerbasicModel->id, 'msg' => '添加成功!');
                     $resjson = json_encode($res);
@@ -180,7 +186,6 @@ class DesignerController extends controller {
         $designerWorkModel = new \backend\models\DesignerWork();
         $designerAdditionalModel = new \backend\models\DesignerAdditional();
 
-
         $id = (int) $id;
         if ($id > 0) {
             $designerlistModel::findOne($id)->delete();
@@ -195,6 +200,33 @@ class DesignerController extends controller {
             }
         }
         return $this->redirect(['index']);
+    }
+
+    public function uploadfile($model) {
+        //$model = new Upload();
+        $uploadSuccessPath = "";
+        if (Yii::$app->request->isPost) {
+            $model->picture = UploadedFile::getInstance($model, "picture");
+            //文件上传存放的目录
+            $dir = Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
+            if (!is_dir($dir))
+                mkdir($dir);
+            if ($model->validate()) {
+                echo var_dump($model);exit;
+                 echo $model['picture']->baseName;exit;
+                //文件名
+                $fileName = date("HiiHsHis") . $model->picture->baseName . "." . $model->picture->extension;
+                $dir = $dir . "/" . $fileName;
+                
+               
+                $model->picture->saveAs($dir);
+                $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+            }
+        }
+//        return $this->render("upload", [
+//            "model" => $model,
+//            "uploadSuccessPath" => $uploadSuccessPath,
+//        ]);
     }
 
 }
