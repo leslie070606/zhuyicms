@@ -27,20 +27,20 @@ $this->title = "";
 
         <?=
         Breadcrumbs::widget(
-                [
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ]
+            [
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]
         )
         ?>
         <h1>
             设计师管理
             <small>Preview</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="<?=Url::to(['index/index'])?>"><i class="fa fa-dashboard"></i>首页</a></li>
-            <li><a href="<?=Url::to(['designer/index'])?>">设计师列表</a></li>
+<!--        <ol class="breadcrumb">
+            <li><a href="<?php //Url::to(['index/index'])?>"><i class="fa fa-dashboard"></i>首页</a></li>
+            <li><a href="<?php //Url::to(['designer/index'])?>">设计师列表</a></li>
             <li class="active">设计师</li>
-        </ol>
+        </ol>-->
     </section>
 
     <section class="content">
