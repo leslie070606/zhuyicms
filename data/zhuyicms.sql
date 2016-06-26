@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2016-06-26 15:14:22
+-- 生成日期: 2016-06-26 19:07:35
 -- 服务器版本: 5.5.47-0ubuntu0.14.04.1-log
 -- PHP 版本: 5.5.9-1ubuntu4.14
 
@@ -32,6 +32,14 @@ CREATE TABLE IF NOT EXISTS `auth_assignment` (
   `created_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`item_name`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('用户管理', '1', 1466936932),
+('超级管理员', '1', 1466936901);
 
 -- --------------------------------------------------------
 
@@ -119,6 +127,11 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/debug/default/toolbar', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/debug/default/view', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/designer/*', 2, NULL, NULL, NULL, 1466654499, 1466654499),
+('/designer/add', 2, NULL, NULL, NULL, 1466937901, 1466937901),
+('/designer/delete', 2, NULL, NULL, NULL, 1466937901, 1466937901),
+('/designer/detail', 2, NULL, NULL, NULL, 1466937900, 1466937900),
+('/designer/edit', 2, NULL, NULL, NULL, 1466937901, 1466937901),
+('/designer/index', 2, NULL, NULL, NULL, 1466937900, 1466937900),
 ('/gii/*', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/gii/default/*', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/gii/default/action', 2, NULL, NULL, NULL, 1466654499, 1466654499),
@@ -132,6 +145,12 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/login/captcha', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/login/index', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/login/logout', 2, NULL, NULL, NULL, 1466654499, 1466654499),
+('/project/*', 2, NULL, NULL, NULL, 1466937015, 1466937015),
+('/project/create', 2, NULL, NULL, NULL, 1466937014, 1466937014),
+('/project/delete', 2, NULL, NULL, NULL, 1466937015, 1466937015),
+('/project/index', 2, NULL, NULL, NULL, 1466937014, 1466937014),
+('/project/update', 2, NULL, NULL, NULL, 1466937015, 1466937015),
+('/project/view', 2, NULL, NULL, NULL, 1466937014, 1466937014),
 ('/site/*', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/site/error', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/site/index', 2, NULL, NULL, NULL, 1466654499, 1466654499),
@@ -139,8 +158,9 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/site/logout', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/upload/*', 2, NULL, NULL, NULL, 1466654499, 1466654499),
 ('/upload/upload', 2, NULL, NULL, NULL, 1466654499, 1466654499),
-('用户管理', 2, '用户管理', NULL, NULL, 1466654691, 1466654691),
-('超级管理员', 1, '超级管理员', NULL, NULL, 1466654830, 1466654830);
+('用户管理', 2, '用户管理', NULL, NULL, 1466654691, 1466937936),
+('访问项目', 2, '访问项目', NULL, NULL, 1466937172, 1466937172),
+('超级管理员', 1, '超级管理员', NULL, NULL, 1466654830, 1466937962);
 
 -- --------------------------------------------------------
 
@@ -160,18 +180,119 @@ CREATE TABLE IF NOT EXISTS `auth_item_child` (
 --
 
 INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
+('超级管理员', '/*'),
+('超级管理员', '/admin/*'),
+('超级管理员', '/admin/assignment/*'),
+('超级管理员', '/admin/assignment/assign'),
+('超级管理员', '/admin/assignment/index'),
+('超级管理员', '/admin/assignment/revoke'),
+('超级管理员', '/admin/assignment/view'),
+('超级管理员', '/admin/default/*'),
+('超级管理员', '/admin/default/index'),
+('超级管理员', '/admin/menu/*'),
+('超级管理员', '/admin/menu/create'),
+('超级管理员', '/admin/menu/delete'),
+('超级管理员', '/admin/menu/index'),
+('超级管理员', '/admin/menu/update'),
+('超级管理员', '/admin/menu/view'),
+('超级管理员', '/admin/permission/*'),
+('超级管理员', '/admin/permission/assign'),
+('超级管理员', '/admin/permission/create'),
+('超级管理员', '/admin/permission/delete'),
+('超级管理员', '/admin/permission/index'),
+('超级管理员', '/admin/permission/remove'),
+('超级管理员', '/admin/permission/update'),
+('超级管理员', '/admin/permission/view'),
+('超级管理员', '/admin/role/*'),
+('超级管理员', '/admin/role/assign'),
+('超级管理员', '/admin/role/create'),
+('超级管理员', '/admin/role/delete'),
+('超级管理员', '/admin/role/index'),
+('超级管理员', '/admin/role/remove'),
+('超级管理员', '/admin/role/update'),
+('超级管理员', '/admin/role/view'),
+('超级管理员', '/admin/route/*'),
+('超级管理员', '/admin/route/assign'),
+('超级管理员', '/admin/route/create'),
+('超级管理员', '/admin/route/index'),
+('超级管理员', '/admin/route/refresh'),
+('超级管理员', '/admin/route/remove'),
+('超级管理员', '/admin/rule/*'),
+('超级管理员', '/admin/rule/create'),
+('超级管理员', '/admin/rule/delete'),
+('超级管理员', '/admin/rule/index'),
+('超级管理员', '/admin/rule/update'),
+('超级管理员', '/admin/rule/view'),
 ('用户管理', '/admin/user/*'),
+('超级管理员', '/admin/user/*'),
 ('用户管理', '/admin/user/activate'),
+('超级管理员', '/admin/user/activate'),
 ('用户管理', '/admin/user/change-password'),
+('超级管理员', '/admin/user/change-password'),
 ('用户管理', '/admin/user/delete'),
+('超级管理员', '/admin/user/delete'),
 ('用户管理', '/admin/user/index'),
+('超级管理员', '/admin/user/index'),
 ('用户管理', '/admin/user/login'),
+('超级管理员', '/admin/user/login'),
 ('用户管理', '/admin/user/logout'),
+('超级管理员', '/admin/user/logout'),
 ('用户管理', '/admin/user/request-password-reset'),
+('超级管理员', '/admin/user/request-password-reset'),
 ('用户管理', '/admin/user/reset-password'),
+('超级管理员', '/admin/user/reset-password'),
 ('用户管理', '/admin/user/signup'),
+('超级管理员', '/admin/user/signup'),
 ('用户管理', '/admin/user/view'),
-('超级管理员', '用户管理');
+('超级管理员', '/admin/user/view'),
+('超级管理员', '/debug/*'),
+('超级管理员', '/debug/default/*'),
+('超级管理员', '/debug/default/db-explain'),
+('超级管理员', '/debug/default/download-mail'),
+('超级管理员', '/debug/default/index'),
+('超级管理员', '/debug/default/toolbar'),
+('超级管理员', '/debug/default/view'),
+('用户管理', '/designer/*'),
+('超级管理员', '/designer/*'),
+('用户管理', '/designer/add'),
+('用户管理', '/designer/delete'),
+('用户管理', '/designer/detail'),
+('用户管理', '/designer/edit'),
+('用户管理', '/designer/index'),
+('超级管理员', '/gii/*'),
+('超级管理员', '/gii/default/*'),
+('超级管理员', '/gii/default/action'),
+('超级管理员', '/gii/default/diff'),
+('超级管理员', '/gii/default/index'),
+('超级管理员', '/gii/default/preview'),
+('超级管理员', '/gii/default/view'),
+('超级管理员', '/index/*'),
+('超级管理员', '/index/index'),
+('超级管理员', '/login/*'),
+('超级管理员', '/login/captcha'),
+('超级管理员', '/login/index'),
+('超级管理员', '/login/logout'),
+('访问项目', '/project/*'),
+('超级管理员', '/project/*'),
+('访问项目', '/project/create'),
+('超级管理员', '/project/create'),
+('访问项目', '/project/delete'),
+('超级管理员', '/project/delete'),
+('访问项目', '/project/index'),
+('超级管理员', '/project/index'),
+('访问项目', '/project/update'),
+('超级管理员', '/project/update'),
+('访问项目', '/project/view'),
+('超级管理员', '/project/view'),
+('超级管理员', '/site/*'),
+('超级管理员', '/site/error'),
+('超级管理员', '/site/index'),
+('超级管理员', '/site/login'),
+('超级管理员', '/site/logout'),
+('超级管理员', '/upload/*'),
+('超级管理员', '/upload/upload'),
+('超级管理员', '用户管理'),
+('超级管理员', '访问项目');
 
 -- --------------------------------------------------------
 
@@ -202,7 +323,47 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `data` blob,
   PRIMARY KEY (`id`),
   KEY `parent` (`parent`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- 转存表中的数据 `menu`
+--
+
+INSERT INTO `menu` (`id`, `name`, `parent`, `route`, `order`, `data`) VALUES
+(1, '项目列表', 5, '/project/index', NULL, NULL),
+(2, '设计师管理', NULL, NULL, NULL, 0x7b2269636f6e223a202266612066612d65646974222c202276697369626c65223a20747275657d),
+(3, '设计师列表', 2, '/designer/index', NULL, NULL),
+(4, '添加设计师', 2, '/designer/add', NULL, NULL),
+(5, '项目管理', NULL, NULL, NULL, 0x7b2269636f6e223a202266612066612d65646974222c202276697369626c65223a20747275657d);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `tbl_user`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `username` varchar(32) NOT NULL COMMENT '用户名(邮箱)',
+  `password` varchar(65) NOT NULL COMMENT '密码',
+  `nickname` varchar(32) NOT NULL COMMENT '昵称',
+  `mobile` varchar(32) NOT NULL COMMENT '电话',
+  `email` varchar(65) NOT NULL COMMENT '邮箱',
+  `avatar` varchar(255) NOT NULL COMMENT '头像',
+  `status` tinyint(1) NOT NULL COMMENT '状态',
+  `createtime` int(11) NOT NULL COMMENT '注册时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='用户表' AUTO_INCREMENT=6 ;
+
+--
+-- 转存表中的数据 `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`id`, `username`, `password`, `nickname`, `mobile`, `email`, `avatar`, `status`, `createtime`) VALUES
+(1, 'yhl27ml@163.com', 'e10adc3949ba59abbe56e057f20f883e', '远古神龙', '18210189803', 'yhl27ml@163.com', '/uploads/2016/06/24/146675886773266.jpg', 1, 1462699058),
+(2, 'yhl27ml@126.com', 'e10adc3949ba59abbe56e057f20f883e', '小神龙', '192101892', 'yhl27ml@126.com', '', 1, 1462845591),
+(4, 'yhl27ml@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '小白白', '', 'yhl27ml@gmail.com', '', 1, 1464086505),
+(5, '627704769@qq.com', 'e10adc3949ba59abbe56e057f20f883e', '远古的呼唤', '', '627704769@qq.com', '', 1, 1464087110);
 
 -- --------------------------------------------------------
 
@@ -221,7 +382,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'hehe', '1lQl4TG6sYlyWRqXZEWL0ZhQkPATVnMs', '$2y$13$lYlhIcBcs6jBr7yTd6YrWueckcs.Cvx70juIHs6wEfjtUwnA318VW', NULL, 'hehe@qq.com', 10, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -275,7 +443,7 @@ CREATE TABLE IF NOT EXISTS `zyj_designer_basic` (
   `alma_mater` varchar(11) DEFAULT NULL COMMENT '设计师毕业院校',
   `winning` text COMMENT '获奖经历',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='设计师基本信息表' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='设计师基本信息表' AUTO_INCREMENT=14 ;
 
 --
 -- 转存表中的数据 `zyj_designer_basic`
@@ -291,7 +459,10 @@ INSERT INTO `zyj_designer_basic` (`id`, `sign`, `status`, `picture`, `service_pr
 (7, NULL, '', '', 'qqq', 'qqq', '', 0, 'qqq', 'qqqq', 'ww', 'ww', '', ''),
 (8, NULL, '', '', '222', '2', '', 0, '222', '222', '222', '2222', '', ''),
 (9, NULL, '', '', '444', '123', '', 1, '3333', '444', '545', '5', '', ''),
-(10, NULL, '', '', '3', '3333', '', 1, '3', '33', '3', '333333', '', '');
+(10, NULL, '', '', '3', '3333', '', 1, '3', '33', '3', '333333', '', ''),
+(11, NULL, NULL, NULL, '', '', NULL, 0, '', '', '', '', NULL, NULL),
+(12, NULL, NULL, NULL, '', '', NULL, 0, '', '', '', '', NULL, NULL),
+(13, NULL, NULL, NULL, '', '', NULL, 0, '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
