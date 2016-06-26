@@ -9,12 +9,12 @@ use yii;
 
 class DesignerController extends controller {
 
-    public function actions() {
-        //添加登录判断
-        if (!($username = Yii::$app->session->get('mrs_username')) && !($username = \backend\models\Login::loginByCookie())) {
-            return $this->redirect(['login/index']);
-        }
-    }
+//    public function actions() {
+//        //添加登录判断
+//        if (!($username = Yii::$app->session->get('mrs_username')) && !($username = \backend\models\Login::loginByCookie())) {
+//            //return $this->redirect(['login/index']);
+//        }
+//    }
 
     public function actionIndex() {
 
