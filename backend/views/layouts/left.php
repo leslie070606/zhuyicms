@@ -49,6 +49,16 @@ use mdm\admin\components\MenuHelper;
                             ],
                         ],
                         [
+                            'label' => "项目管理",
+                            'icon' => "fa fa-edit",
+                            'options' => ['class' => 'active'],
+                            'url' => "#",
+                            'items' => [
+                                ['label' => '项目列表', 'icon' => 'fa fa-circle-o', 'url' => ['project/index'],],
+                                //['label' => '项目详情', 'icon' => 'fa fa-circle-o', 'url' => ['project/view'],],
+                            ],
+                        ],
+                        [
                             'label' => 'Same tools',
                             'icon' => 'fa fa-share',
                             'url' => '#',
