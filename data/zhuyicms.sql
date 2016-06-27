@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2016-06-26 19:07:35
+-- 生成日期: 2016-06-27 22:58:42
 -- 服务器版本: 5.5.47-0ubuntu0.14.04.1-log
 -- PHP 版本: 5.5.9-1ubuntu4.14
 
@@ -525,8 +525,8 @@ CREATE TABLE IF NOT EXISTS `zyj_project` (
   `completion_time` tinyint(1) NOT NULL COMMENT '完工时间',
   `room_area` varchar(20) COLLATE utf8_estonian_ci NOT NULL COMMENT '房间使用面积',
   `budget_ceiling` varchar(20) COLLATE utf8_estonian_ci NOT NULL COMMENT '预算上限',
-  `service_item` tinyint(4) NOT NULL COMMENT '服务的项目',
-  `generic_require` tinyint(1) NOT NULL COMMENT '共性要求',
+  `service_item` varchar(30) COLLATE utf8_estonian_ci NOT NULL COMMENT '服务的项目',
+  `generic_require` varchar(30) COLLATE utf8_estonian_ci NOT NULL COMMENT '共性要求',
   `description` text COLLATE utf8_estonian_ci NOT NULL COMMENT '详细描述',
   `residential_district` varchar(20) COLLATE utf8_estonian_ci NOT NULL COMMENT '居住小区',
   `photo` varchar(255) COLLATE utf8_estonian_ci NOT NULL COMMENT '照片',
@@ -534,7 +534,17 @@ CREATE TABLE IF NOT EXISTS `zyj_project` (
   `createtime` int(11) NOT NULL COMMENT '创建时间',
   `updatetime` int(11) NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci COMMENT='项目表' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_estonian_ci COMMENT='项目表' AUTO_INCREMENT=5 ;
+
+--
+-- 转存表中的数据 `zyj_project`
+--
+
+INSERT INTO `zyj_project` (`id`, `uid`, `province`, `city`, `house_type`, `completion_time`, `room_area`, `budget_ceiling`, `service_item`, `generic_require`, `description`, `residential_district`, `photo`, `status`, `createtime`, `updatetime`) VALUES
+(1, 23, 1, 1, 1, 1, 'qw', 'we', '1dsds', '2dsds', 'dsds', 'sd', '23', 1, 2121, 2323),
+(2, 0, 0, 0, 1, 1, 'dsdsds', 'dsds', ',1,2,', '', '', '', '', 0, 0, 0),
+(3, 0, 0, 0, 1, 1, 'ddssd', 'dssd', ',1,3,', ',1,2,', 'dsds', 'dssd', '', 0, 0, 0),
+(4, 0, 0, 0, 2, 1, 'dsds', 'dsds', ',2,4,', '', '', '', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
