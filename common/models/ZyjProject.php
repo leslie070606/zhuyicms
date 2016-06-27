@@ -15,8 +15,8 @@ use Yii;
  * @property integer $completion_time
  * @property string $room_area
  * @property string $budget_ceiling
- * @property integer $service_item
- * @property integer $generic_require
+ * @property string $service_item
+ * @property string $generic_require
  * @property string $description
  * @property string $residential_district
  * @property string $photo
@@ -41,9 +41,10 @@ class ZyjProject extends \yii\db\ActiveRecord
     {
         return [
             [['uid', 'province', 'city', 'house_type', 'completion_time', 'room_area', 'budget_ceiling', 'service_item', 'generic_require', 'description', 'residential_district', 'photo', 'status', 'createtime', 'updatetime'], 'required'],
-            [['uid', 'province', 'city', 'house_type', 'completion_time', 'service_item', 'generic_require', 'status', 'createtime', 'updatetime'], 'integer'],
+            [['uid', 'province', 'city', 'house_type', 'completion_time', 'status', 'createtime', 'updatetime'], 'integer'],
             [['description'], 'string'],
             [['room_area', 'budget_ceiling', 'residential_district'], 'string', 'max' => 20],
+            [['service_item', 'generic_require'], 'string', 'max' => 30],
             [['photo'], 'string', 'max' => 255],
         ];
     }

@@ -8,27 +8,20 @@ use backend\models\Project;
 class ProjectController extends \common\util\BaseController {
 
     public function actionRequirement() {
-        $model = new Project();
 
-        return $this->render('requirement', [
-                    'model' => $model,
-        ]);
-    }
-
-    public function actionCreate() {
-        if(!Yii::$app->request->isAjax) {
-            return;
-        }
-        
         $model = new Project();
-        
-        $model->load(Yii::$app->request->post());
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->sendRes(true, 'ok');
+            return $this->redirect(['select-designer', 'project_id' => $model->id]);
         } else {
-            var_dump($model->getErrors());
+            return $this->render('requirement', [
+                        'model' => $model,
+            ]);
         }
+    }
+
+    public function actionSelectDesigner($project_id) {
+        echo "OK";
     }
 
 }
