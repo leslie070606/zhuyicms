@@ -264,7 +264,7 @@ use yii\helpers\Url;
                             <div class="pull-right">
                                 <?= Html::a(
                                     'Sign out',
-                                    ['/login/logout'],
+                                    ['/site/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
                             </div>
