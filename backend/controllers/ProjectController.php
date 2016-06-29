@@ -42,7 +42,7 @@ class ProjectController extends Controller {
         $model = new Project();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'project_id' => $model->project_id]);
         } else {
             return $this->render('create', [
                         'model' => $model,
@@ -54,10 +54,10 @@ class ProjectController extends Controller {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'project_id' => $model->project_id]);
         } else {
             return $this->render('update', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }

@@ -18,7 +18,7 @@ class ProjectSearch extends Project
     public function rules()
     {
         return [
-            [['id', 'uid', 'province', 'city', 'house_type', 'completion_time', 'service_item', 'generic_require', 'status', 'createtime', 'updatetime'], 'integer'],
+            [['project_id', 'user_id', 'province', 'city', 'house_type', 'completion_time', 'service_item', 'generic_require', 'status', 'createtime', 'updatetime'], 'integer'],
             [['room_area', 'budget_ceiling', 'description', 'residential_district', 'photo'], 'safe'],
         ];
     }
@@ -59,8 +59,8 @@ class ProjectSearch extends Project
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'uid' => $this->uid,
+            'project_id' => $this->project_id,
+            'user_id' => $this->user_id,
             'province' => $this->province,
             'city' => $this->city,
             'house_type' => $this->house_type,

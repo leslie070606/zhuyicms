@@ -40,8 +40,8 @@ class ZyjProject extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'province', 'city', 'house_type', 'completion_time', 'room_area', 'budget_ceiling', 'service_item', 'generic_require', 'description', 'residential_district', 'photo', 'status', 'createtime', 'updatetime'], 'required'],
-            [['uid', 'province', 'city', 'house_type', 'completion_time', 'status', 'createtime', 'updatetime'], 'integer'],
+            [['user_id', 'province', 'city', 'house_type', 'completion_time', 'room_area', 'budget_ceiling', 'service_item', 'generic_require', 'description', 'residential_district', 'photo', 'status', 'createtime', 'updatetime'], 'required'],
+            [['user_id', 'province', 'city', 'house_type', 'completion_time', 'status', 'createtime', 'updatetime'], 'integer'],
             [['description'], 'string'],
             [['room_area', 'budget_ceiling', 'residential_district'], 'string', 'max' => 20],
             [['service_item', 'generic_require'], 'string', 'max' => 30],
@@ -55,8 +55,8 @@ class ZyjProject extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'uid' => '用户id',
+            'project_id' => 'ID',
+            'user_id' => '用户id',
             'province' => '省份',
             'city' => '城市',
             'house_type' => '房子类型',

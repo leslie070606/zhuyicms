@@ -22,9 +22,9 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id')->label("编号") ?>
+    <?= $form->field($model, 'project_id')->label("编号") ?>
 
-    <?= $form->field($model, 'uid') ?>
+    <?= $form->field($model, 'user_id') ?>
 
     <?php // echo $form->field($model, 'province') ?>
 
