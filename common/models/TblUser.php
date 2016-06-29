@@ -33,11 +33,11 @@ class TblUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'password', 'nickname', 'mobile', 'email', 'avatar', 'status', 'createtime'], 'required'],
+            [['user_name', 'pwd', 'nick_name', 'mobile', 'email', 'status', 'create_time'], 'required'],
             [['status', 'createtime'], 'integer'],
-            [['username', 'nickname', 'mobile'], 'string', 'max' => 32],
-            [['password', 'email'], 'string', 'max' => 65],
-            [['avatar'], 'string', 'max' => 255],
+            [['user_name', 'nick_name', 'mobile'], 'string', 'max' => 32],
+            [['pwd', 'email'], 'string', 'max' => 65],
+           
         ];
     }
 
@@ -48,14 +48,13 @@ class TblUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
-            'nickname' => 'Nickname',
+            'user_name' => 'User_name',
+            'pwd' => 'Pwd',
+            'nick_name' => 'Nick_name',
             'mobile' => 'Mobile',
             'email' => 'Email',
-            'avatar' => 'Avatar',
             'status' => 'Status',
-            'createtime' => 'Createtime',
+            'create_time' => 'Create_time',
         ];
     }
 }

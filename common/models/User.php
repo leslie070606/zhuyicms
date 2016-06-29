@@ -15,7 +15,7 @@ class User extends TblUser implements \yii\web\IdentityInterface {
      * @inheritdoc
      */
     public static function findIdentityByAccessToken($token, $type = null) {
-        return static::findOne(['password' => $token]);
+        return static::findOne(['pwd' => $token]);
     }
 
     /**
@@ -25,28 +25,28 @@ class User extends TblUser implements \yii\web\IdentityInterface {
      * @return static|null
      */
     public static function findByUsername($username) {
-        return static::findOne(['username' => $username]);
+        return static::findOne(['user_name' => $username]);
     }
 
     /**
      * @inheritdoc
      */
     public function getId() {
-        return $this->id;
+        return $this->user_id;
     }
 
     /**
      * @inheritdoc
      */
     public function getAuthKey() {
-        return $this->password;
+        return $this->pwd;
     }
 
     /**
      * @inheritdoc
      */
     public function validateAuthKey($authKey) {
-        return $this->password === $authKey;
+        return $this->pwd === $authKey;
     }
 
     /**
@@ -56,7 +56,7 @@ class User extends TblUser implements \yii\web\IdentityInterface {
      * @return boolean if password provided is valid for current user
      */
     public function validatePassword($password) {
-        return $this->password === md5($password);
+        return $this->pwd === md5($password);
     }
 
 }
