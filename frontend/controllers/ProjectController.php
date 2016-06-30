@@ -23,5 +23,9 @@ class ProjectController extends \common\util\BaseController {
     public function actionSelectDesigner($project_id) {
         echo "OK";
     }
+    
+    public function actionIndex(){
+        echo "!";
+    }
 
 }
