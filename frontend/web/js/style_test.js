@@ -23,7 +23,7 @@ $(function () {
                     get(data);
                 }
                 ;
-            }, 800);
+            }, 100);
 
         } else {
             return false;
@@ -65,21 +65,27 @@ function get(str) {
     }
     var newdata = showbox.slice(0, 3);
     var style_data = ["极简", "工业", "北欧", "折中", "日式", "美式", "Art Deco", "欧式古典", "地中海/乡村", "中式"];
-    var style_aaa = [];
+   
     for (var i = 0; i < newdata.length; i++) {
         var bhu = newdata[i][1] - 1;
         var gerr = style_data[bhu];
         newdata[i][1] = gerr;
 //	style_aaa.push(gerr);
     }
-    alert(newdata[0][1]);
+    //alert(newdata[0][1]);
+    window.location.href="index.php?r=style/report/&&newdata="+newdata;
+    //window.location.href = "<?php echo Yii::app()->createUrl( '/style/report', array('id'=>'2'));?>";
 
-
-//	$.ajax({
-//		data:newdata,
-//		type:"post",
-//		url:"",
-//		async:true
-//	});
+//    $.ajax({
+//        data: newdata,
+//        type: "post",
+//        url: "index.php?r=style/report",
+//        dataType: 'json',
+//        async: true,
+//        success: function (data) {
+//            //$("#secussadditional").show();
+//            //$("#id-additional").val('0');
+//        }
+//    });
 
 }

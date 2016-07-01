@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * StyleController implements the CRUD actions for Style model.
  */
@@ -50,6 +51,34 @@ class StyleController extends Controller
         
         return $this->render('style_test');
     }
+    
+    //风格测试报告
+    public function actionReport(){
+        
+        //Yii::$app->request->post();
+        $newdata = Yii::$app->request->get('newdata');
+        $style = explode(',', $newdata);
+        
+        $jsonstyle = json_encode($style);
+        
+        $model = new Style();
+        
+        $model->user_id = 1;
+        $model->type = $jsonstyle;
+        $v = $model->save();
+        
+        $num = $style[0] + $style[2] + $style[4];
+        
+        $styleArr = array(
+            $style[1] => $style[0]/$num*100,
+            $style[3] => $style[2]/$num*100,
+            $style[5] => $style[4]/$num*100,
+        );
+        //echo "<pre>";
+        //print_r($model);
+        return $this->render('report',['v'=>$v]);
+    }
+
     /**
      * Displays a single Style model.
      * @param integer $id

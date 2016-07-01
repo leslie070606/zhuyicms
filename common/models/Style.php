@@ -26,7 +26,7 @@ class Style extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type'], 'string', 'max' => 30],
+            [['type'], 'string', 'max' => 500],
         ];
     }
 
