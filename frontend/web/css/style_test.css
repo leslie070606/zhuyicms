@@ -1,0 +1,38 @@
+body { overflow: hidden;}
+.style_box { padding-top: .88rem;}
+.style_box .style_here { display: none;}
+.style_box>.active { display: block;}
+.style_here>div { overflow: hidden; margin-bottom: .2rem;}
+.style_here img { width: 100%;}
+.style_title { font-size: .48rem; text-align: center; margin: .2rem 0; display: block; width: 100%;}
+.style_title .nuber { font-size: .28rem;}
+.style_here .foin { border: 2px solid #ff0; box-sizing: border-box;}
+
+#imgaa { -moz-animation:rotate 2.5s infinite linear;
+            -webkit-animation:rotate 2.5s infinite linear;
+            animation:rotate 2.5s infinite linear;}
+#imgab { -moz-animation:rotate 2.5s infinite linear .5s;
+            -webkit-animation:rotate 2.5s infinite linear .5s;
+            animation:rotate 2.5s infinite linear .5s;}  
+#imgac { -moz-animation:rotate 2.5s infinite linear 1s;
+            -webkit-animation:rotate 2.5s infinite linear 1s;
+            animation:rotate 2.5s infinite linear 1s;} 
+#imgad { -moz-animation:rotate 2.5s infinite linear 1.5s;
+            -webkit-animation:rotate 2.5s infinite linear 1.5s;
+            animation:rotate 2.5s infinite linear 1.5s;}   
+#imgae { -moz-animation:rotate 2.5s infinite linear 2s;
+	            -webkit-animation:rotate 2.5s infinite linear 2s;
+	            animation:rotate 2.5s infinite linear 2s;}  	                                      
+          
+          @keyframes rotate{
+           	0%   {transform:rotate(0deg); right: 0px; opacity: 1;}
+			100% {transform:rotate(-360deg); right: 2.3rem; opacity: 0;}
+          }
+           @-webkit-keyframes rotate{
+           	0%   {transform:rotate(0deg); right: 0px; opacity: 1;}
+			100% {transform:rotate(-360deg); right: 2.3rem; opacity: 0;}
+          }
+          @-moz-keyframes rotate{
+           	0%   {transform:rotate(0deg); right: 0px; opacity: 1;}
+			100% {transform:rotate(-360deg); right: 2.3rem; opacity: 0;}
+          }

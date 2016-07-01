@@ -13,7 +13,8 @@ use yii\filters\VerbFilter;
  * StyleController implements the CRUD actions for Style model.
  */
 class StyleController extends Controller
-{
+{   
+    public $layout=false;
     /**
      * @inheritdoc
      */
@@ -43,7 +44,12 @@ class StyleController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-
+    
+    //风格测试
+    public function actionTest(){
+        
+        return $this->render('style_test');
+    }
     /**
      * Displays a single Style model.
      * @param integer $id

@@ -19,7 +19,7 @@ class Match {
                 $mianjiscore = $p->mianji / $d->mianji > 1 ? 1 : (49 + $p->mianji / $d->mianji) / 50;
 
                 //预算计算
-                $yusuanscore = $p->yusuan / $d->yusuan > 1 ? ($p->yusuan - $d->yusuan) / $d->yusuan * 0.99 : $p->yusuan / $d->yusuan;
+                $yusuanscore = $p->yusuan / $d->yusuan > 1 ? 1-($p->yusuan - $d->yusuan) / $d->yusuan * 0.01 : 1-(1-$p->yusuan / $d->yusuan) * 0.02;
 
                 //风格计算
                 $num = count(array_intersect($p, $d));
