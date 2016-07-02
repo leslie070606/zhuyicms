@@ -78,6 +78,18 @@ class StyleController extends Controller
         //print_r($model);
         return $this->render('report',['v'=>$v]);
     }
+    
+    //风格报告分享
+    public function actionShare(){
+        
+        $tokenModel = new \app\components\Token();
+        
+        $jsptoken = $tokenModel->getJspticket();
+        
+        var_dump($jsptoken);
+        
+        return $this->render('share');
+    }
 
     /**
      * Displays a single Style model.

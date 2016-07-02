@@ -1,4 +1,4 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/gloab.css" />
     <link rel="stylesheet" href="css/style_test.css" />
     <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
+    <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
     <script type="text/javascript"  src="js/style_test.js"></script>
 </head>
 <body>

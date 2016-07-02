@@ -40,6 +40,25 @@ class Token {
             return false;
         }
     }
+    
+    // 获取jsapi_ticket
+    public function getJspticket(){
+        $accessToken = $this->getToken();
+        $jsurl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket";
+        $para = array(
+            'access_token' => $accessToken,
+            'type' => 'jsapi'
+        );
+        $res = $this->doCurlGetRequest($jsurl, $para);
+        
+        return $res;
+        
+    }
+    
+    // 生成JS signature
+    public function getSignature(){
+        
+    }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
         if ($url == "" || $timeout <= 0) {
