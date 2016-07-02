@@ -48,7 +48,7 @@ class StyleController extends Controller
     
     //风格测试
     public function actionTest(){
-        
+        echo "ok";
         return $this->render('style_test');
     }
     
