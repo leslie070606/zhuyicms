@@ -92,7 +92,7 @@ class WechatController extends Controller {
                 array(
                     'type' => 'view',
                     'name' => '看视频',
-                    'url' => 'http://itlm.kim/index.php?r=videocol/index'
+                    'url' => 'http://puti.kim/index.php?r=style/share'
                 ),
                 array(
                     'name' => "住艺",

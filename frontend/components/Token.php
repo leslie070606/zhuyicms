@@ -50,15 +50,25 @@ class Token {
             'type' => 'jsapi'
         );
         $res = $this->doCurlGetRequest($jsurl, $para);
-        
-        return $res;
+        $res = json_decode($res,TRUE);
+        return $res['ticket'];
         
     }
     
     // 生成JS signature
     public function getSignature(){
         
+        //签名字符串
+        $noncestr = "zhuyi";
+        $jsapi_ticket = $this->getJspticket();
+        $timestamp = time();
+        //$url = "http://localhost/zhuyicms/frontend/web/index.php?r=style/share";
+        $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $str = "jsapi_ticket=".$jsapi_ticket."&noncestr=".$noncestr."&timestamp=".$timestamp."&url=".$url;
+        $signature = sha1($str);
+        return array('signature' => $signature, 'timestamp' => $timestamp);
     }
+    
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
         if ($url == "" || $timeout <= 0) {

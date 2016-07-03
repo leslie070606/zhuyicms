@@ -84,11 +84,10 @@ class StyleController extends Controller
         
         $tokenModel = new \app\components\Token();
         
-        $jsptoken = $tokenModel->getJspticket();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
         
-        var_dump($jsptoken);
-        
-        return $this->render('share');
+        return $this->render('share',['jsarr'=>$jsarr]);
     }
 
     /**
