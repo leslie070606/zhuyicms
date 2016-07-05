@@ -1,0 +1,44 @@
+.user_box { font-size: .24rem;}
+#nav_box>li>div { width: 100%; font-size: .24rem;  overflow: hidden; text-align: center;}
+.nav_box { width: 100%;overflow: hidden;}
+.bg_nav { width: 100%; clear: both; height: .88rem; line-height: .88rem; background-color: #e6e6e6;}
+.bg_nav li { width: 33.33%; float: left; font-weight: bold;}
+.bg_nav li.active { color: green;}
+.type_box { background-color: #FFFFFF; width: 300%; position: relative; left: 0px;}
+.type_here { width: 33.33%; float: left; min-height: 35rem; background: gold;}
+
+#user_tab { width: 100% !important; right: 0; top: 0rem; height: .88rem;  background: #999999;}
+#user_tab .bx-pager { width: 100%; background: #FFFFFF; left: 0; top: 0; margin-left: 0;}
+#user_tab .bx-pager .bx-pager-item { width: 25%; float: left; text-align: center;}
+#user_tab .bx-pager .bx-pager-item a { display: block; width: 100%; text-align: center; height: .88rem; line-height: .88rem; top: 0px; margin: 0; border-radius: 0; background: none; color: #C9C9CA; text-indent: 0; z-index: 99;}
+#nav_box { padding-top: .88rem;}
+#nav_box li { overflow: hidden; min-height: 3rem;}
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: #999999;
+    color: #221814 !important;
+}
+.bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto { bottom: 0 !important;}
+.user_top>span { display: block; text-align: center;}
+.head_img img {width: 2rem; height: 2rem; border-radius: 1rem; margin: .4rem auto .2rem auto;}
+.head_name {font-size: .38rem; font-weight: bold;}
+.head_more { color: #FF4E38; margin:  .3rem auto .6rem;}
+.here_head img {  margin-left: .3rem;}
+.right_type { position: absolute; height: .88rem; line-height: .88rem; font-size: .24rem; right: .3rem; color: #FF4E38;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

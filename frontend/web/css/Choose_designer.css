@@ -1,0 +1,20 @@
+.here_bottom  { z-index: 9999;}
+.designer_box { overflow: hidden; padding-bottom: .4rem;}
+.choose_top { margin-bottom: .4rem;}
+.choose_top>span { display: block; font-size: .24rem; text-align: center;}
+.choose_top .choose_top_a { font-weight: bold; margin: .38rem 0 .2rem 0;}
+.bot_navv { position: fixed; border-top: 1px solid #eeefef; height: .88rem; max-width: 640px; left: 0; right: 0; margin:0 auto; line-height: .88rem; width: 100%; bottom: 0; left: 0; background: #FFFFFF; z-index: 9999999;}
+.box_sjs li { float: left; position: relative; margin-right: .4rem; top: .15rem;}
+.box_sjs li:last-child { margin-right: 0;}
+.box_sjs { float: left; position: relative; margin-left: .3rem;}
+.box_sjs .shanchu{ position: absolute; font-size: .18rem; color: #FF4E38;   top: -0.3rem; right: -0.1rem; }
+.box_sjs li img { float: left; width: .58rem; height: .58rem; border-radius: .29rem;}
+.navv_tj { font-size: .26rem; float: right; text-align: center; width: 1.88rem; height: 100%; background: #FF4E38; color: #FFFFFF;}
+.rg_pp { font-size: .24rem !important; float: right; margin-right: .3rem;}
+.rg_pp  .icon-weixuanzhong { color: #9F9FA0 !important;}
+.rg_ppi { color: #FF4E38; margin-right:.2rem; position: relative;}
+.rg_pp .iconfont { font-size: .24rem !important; }
+.designer_box .pro_here { overflow: hidden; display: none;}
+.designer_box .look_see { display: block;}
+.pro_here>a { float: left; width: 100%; overflow: hidden; position: relative; z-index:19;}
+.click_more { font-size: .24rem; padding-bottom: 1.68rem; color: #9f9fa0; display: block; text-align: center;}

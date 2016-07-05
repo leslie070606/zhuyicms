@@ -95,7 +95,22 @@ class WechatController extends Controller {
                     'url' => 'http://puti.kim/index.php?r=style/share'
                 ),
                 array(
-                    'name' => "住艺",
+                    'name' => '匹配设计师',
+                    'sub_button' => array(
+                        array(
+                            'type' => 'view',
+                            'name' => '风格测试',
+                            'url' => 'http://puti.kim/index.php?r=index/index'
+                        ),
+                        array(
+                            'type' => 'view',
+                            'name' => '立即匹配',
+                            'url' => 'http://puti.kim/index.php?r=index/index'
+                        )
+                    )
+                ),
+                array(
+                    'name' => "我的住艺",
                     'sub_button' => array(
                         array(
                             'type' => 'click',
