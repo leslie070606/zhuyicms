@@ -19,13 +19,16 @@ class ProjectController extends \common\util\BaseController {
             ]);
         }
     }
-
-    public function actionSelectDesigner($project_id) {
+    
+    
+    // 匹配设计师
+    public function actionMatch_designer(){
+        
+    }
+    public function actionSelect_designer() {
         echo "OK";
     }
     
-    public function actionIndex(){
-        echo "!";
-    }
+
 
 }
