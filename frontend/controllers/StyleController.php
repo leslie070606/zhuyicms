@@ -99,7 +99,7 @@ class StyleController extends Controller
     public function actionShou(){
        $code = $_GET['code'];
        
-       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx1344a7a9fac82094&secret=9243c0f51650717abdca06178461c137&code=".$code."&grant_type=authorization_code";
+       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=".$code."&grant_type=authorization_code";
        
        $res = $this->doCurlGetRequest($url);
        
