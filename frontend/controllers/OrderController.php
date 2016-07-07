@@ -4,9 +4,9 @@ namespace frontend\controllers;
 use yii;
 use yii\web\Controller;
 use frontend\models;
+use frontend\services;
 
 class OrderController extends Controller{
-	//默认情况下一个用户只包含一个订单
 	public function actionIndex(){
 		$request = Yii::$app->request;
 		
@@ -25,5 +25,11 @@ class OrderController extends Controller{
 	public function actionSetStatus($orderId,$status){
 		$orderModel = new \frontend\models\Order();
 		$orderModel->setStatus($orderId,$status);
+	}
+	
+	public function actionTest(){
+		echo ("test action!!!");
+		$orderModule = new \frontend\services\Order(1);
+		$orderModule->test();
 	}
 }
