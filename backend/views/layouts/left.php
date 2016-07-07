@@ -109,32 +109,6 @@ echo dmstr\widgets\Menu::widget( [
     'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback), 
 ] ); ?>
 
-
-        <ul class="sidebar-menu">            
-            <li class="treeview">               
-                <a href="#">                    
-                    <i class="fa fa-gears"></i> <span>权限控制</span>                    
-                    <i class="fa fa-angle-left pull-right"></i>               
-                </a>               
-                <ul class="treeview-menu">                   
-                    <li class="treeview">                        
-
-                    <li class="treeview">                                
-
-                    <li><a href="<?php echo Yii::getAlias("@web"); ?>/admin/route"><i class="fa fa-circle-o"></i> 路由</a></li>                                    
-                    <li><a href="<?php echo Yii::getAlias("@web"); ?>/admin/permission"><i class="fa fa-circle-o"></i> 权限</a></li>                                    
-                    <li><a href="<?php echo Yii::getAlias("@web"); ?>/admin/role"><i class="fa fa-circle-o"></i> 角色</a></li>                                    
-                    <li><a href="<?php echo Yii::getAlias("@web"); ?>/admin/assignment"><i class="fa fa-circle-o"></i> 分配</a></li>                                    
-                    <li><a href="<?php echo Yii::getAlias("@web"); ?>/admin/menu"><i class="fa fa-circle-o"></i> 菜单</a></li>                                
-
-            </li>                        
-            <a href="/admin">管理员</a>                
-            </li>                
-        </ul>            
-        </li>        
-        </ul>
-
-
     </section>
 
 </aside>
