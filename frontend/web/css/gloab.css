@@ -10,6 +10,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
+input { border-radius: 0; }
 
 fieldset,img {
 	border: 0
@@ -70,10 +71,17 @@ body {
 	height: 100%;
 }
 .max_img { width: 100%;}
-.header_top { height: 0.88rem; font-size: .85rem !important; text-align: center; line-height: .88rem; color: #FFFFFF; background-color: #ff4f38; position: fixed; top: 0px; left: 0px; right: 0px; max-width: 640px; margin: 0 auto; width: 100%; z-index: 100000;}
+.header_top { height: 0.88rem; font-size: .85rem !important; text-align: center; line-height: .88rem; color: #FFFFFF; background-color: #ff4f38; position: fixed; top: 0px; left: 0px; right: 0px; max-width: 640px; margin: 0 auto; width: 100%; z-index: 99997;}
 .header_top .top_right {position: absolute; right: 0; top: 0; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: 0.32rem; width: .92rem; height: 100%;}
 .down_right { position: fixed; top: 0rem; right: -3rem; height: 120%; width: 3rem; background: #008000; z-index: 555;}
-
+.icon-lingxing:before {
+    position: absolute;
+    font-size: 2.5rem;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    color: #FF4E38;
+ }
 
 
 /*轮播CSS*/
@@ -326,14 +334,15 @@ body {
     }
 }
 /*视频样式 */
-.here_img { float: left; width: 100%; position: relative; z-index: 19;}
+.here_img { float: left; width: 100%; height: 100%; position: relative; z-index: 19;}
 .production { margin-top: 2.3rem; position: relative; clear: both;}
-.pro_title { text-align: center; position: relative; font-weight: bold; font-size: .32rem;}
- .pro_title .titl_span { width: 2rem; height:.66rem; background: #ff4f38; position: absolute; text-align: center; line-height: .66rem; color: #FFFFFF; left: 50%; margin-left: -1rem;}
-.titl_span>a { position: absolute; width: .68rem;height: .68rem; z-index: 10; left: 50%; margin-left: -.34rem; bottom: -.66rem; background: #ff4f38;}
+.pro_title { text-align: center; position: relative;  font-weight: bold; font-size: .32rem;}
+ .pro_title .titl_span { width: 2rem; height:.66rem; z-index: 999; top: -.03rem; background: #ff4f38; position: absolute; text-align: center; line-height: .66rem; color: #FFFFFF; left: 50%; margin-left: -1rem;}
+.titl_span>a { position: absolute; width: .68rem;height: .68rem; z-index: 10; left: 50%; margin-left: -.34rem; bottom: -.65rem; background: #ff4f38;}
 .pro_box { position: relative; width: 100%; top: .66rem; z-index: 9;}
-.here_bottom { position: absolute;font-family:fzlth,tahoma,arial,sans-serif !important ; bottom: -1px; width: 100%; height: .88rem;z-index: 101;}
-.here_botaa {position: absolute;bottom: -1px; width: 100%; height: .88rem; background-color: #FFFFFF; opacity: 0.8;-moz-opacity:0.8;  -khtml-opacity: 0.8;  z-index: 100;}
+.here_bottom { position: absolute;font-family:fzlth,tahoma,arial,sans-serif !important ; bottom: -2px; width: 100%; height: .88rem;z-index: 101;}
+.here_bottom>a { display: block;}
+.here_botaa {position: absolute;bottom: 0px; width: 100%; height: .88rem; background-color: #FFFFFF; opacity: 0.8;-moz-opacity:0.8;  -khtml-opacity: 0.8;  z-index: 100;}
 .here_head  { float: left; width: 1.2rem; text-align: center; height: .6rem; position: relative; top: .14rem;}
 .here_head img { width: .6rem;  height: .6rem; border-radius: .3rem;}
 .bottom_name,.bottom_referral { left: .9rem;}
@@ -362,11 +371,18 @@ position: absolute;
     z-index: 1660;
    /* box-shadow:1px 1px 12px #c9c9ca;*/
 }
-.pro_here { float: left;width: 100%; overflow: hidden; position: relative;}
-.pro_here>img { width: 100%; float: left;}
+/*.vjs-poster{  background-size: 100% !important;}*/
+.pro_here {width: 100%; float: left; margin-top: -4px; height: 3.8rem; overflow: hidden; position: relative;}
+.pro_here video { width: 100%; height: 100%; float: left;}
+.video-js .vjs-big-play-button {
+	    font-size: 2em !important;
+    line-height: 2em !important;
+    height: 2em !important;
+    width: 2em !important;}
 .pro_img .img_icon { position: absolute;z-index:9999;color: #FF4E38;  top: 2rem; width:100%; text-align: center;}
 .pro_img .img_icon span { font-size: .2rem;}
 .icon-tupian:before {margin:0.1rem 0.1rem 0 0; font-size: .24rem;}
 .here_zhe { position: absolute; width: 100%; height: 100%; left: 0; top:0; background: #000000;opacity: 0.1;-moz-opacity:0.1;  -khtml-opacity: 0.1;  z-index: 9;}
-.down_right ul { margin-top: .88rem;}
+.down_right ul { margin-top: .88rem; font-size: .24rem;}
 .down_right ul li { display: block; height: .66rem; line-height: .66rem;}
+.hunt_title { position: absolute; width: 100%; height: .88rem; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: .36rem; left: 0; top: 0;}

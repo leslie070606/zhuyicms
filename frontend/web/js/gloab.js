@@ -1,6 +1,4 @@
 $(function(){
-//	alert($(window).width());
-		
 	touch.on(".top_right","tap",function(ev){
 		var right=parseInt($(".down_right").css("right"));
 		if(right<0){
@@ -9,4 +7,8 @@ $(function(){
 			$(".down_right").animate({right:'-3rem'},300);
 		}
 		});
+		
+		var width=parseInt($(window).width())*90/165;
+		$(".pro_here").css("height",width);
+	
 });

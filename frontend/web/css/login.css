@@ -4,21 +4,24 @@
 .login_ipt {  width: 84%; height: .88rem; line-height: .88rem; position: relative; margin:0 auto .6rem auto;}
 .login_ipt input { border: none; font-size: .28rem; position: absolute; width: 100%; height: .88rem; text-indent: .3rem; line-height: .88rem; left: 0; top: 0; right: 0;}
 .btnn { background: #c9c9ca; position: relative; color: #FFFFFF; margin-top: 1rem;}
-.login_talk { position: absolute; width: 100%; left: 0; bottom: .8rem; font-size: .24rem;}
+.login_talk { float: left; width: 100%; font-size: .24rem;}
 .login_talk span:before {
     margin-right: 0.2rem;
     font-size: .24rem;
-    color: #FF4E38;
+    color: #9F9FA0;
 }
+.icon-xuanzhong:before { color: #FF4E38 !important;}
 .red { color: #FF4E38;}
 .login_talk span,.djser a { font-size: .24rem; color: #9f9fa0;}
 .huoqu { position: absolute; height: .88rem; right: 0; top: 0; padding: 0 .3rem; z-index: 99; font-size: .24rem; color: #9f9fa0;}
 #worry { position: absolute; display: none; width: 100%; height: 1rem; left: 0; color: #FF4E38; font-size: .24rem; top: -1rem; line-height: 1rem;}
-
-
-
-
-
-
-
-
+.weixin_login { position: absolute; width: 84%; bottom: .8rem; left: 0; right: 0; margin: 0 auto; height: .88rem; background: #61c930; color: #FFFFFF;  font-size: .28rem; line-height: .88rem;}
+.weixin_login .iconfont { margin-right: .2rem;}
+input[type="text"] { border-right: .04rem solid #FF4E38; font-size: .28rem;}
+.btn_true { background: #FF4E38 !important;}
+.login_a { position: fixed; width: 100%; height: 100%; top: .88rem; left: 0; right: 0; background: #FFFFFF;}
+.head_aa>img { width: 2rem; height: 2rem; border-radius: 1rem; margin: .8rem auto .2rem;}
+.login_a>span { display: block; text-align: center; font-size: .28rem; color: #9f9fa0;}
+.login_a .login_a_name { font-weight: bold; color: #221814;}
+.login_a .nameaaa { margin: .4rem auto .8rem;}
+.longin_btn { width:84%; height: .88rem; background: #FF4E38; line-height: .88rem; color: #FFFFFF !important; margin-bottom: .8rem; text-align: center; margin-left: 8%;}
