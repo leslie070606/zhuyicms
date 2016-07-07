@@ -8,7 +8,7 @@
         <script type="text/javascript">
 
             wx.config({
-                debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                 appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
                 timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
                 nonceStr: 'zhuyi', // 必填，生成签名的随机串
@@ -106,7 +106,7 @@
 
         </script>
         <button id="upload" style="display: block;margin: 2em auto; width: 200px; height: 50px;">上传接口测试</button>
-        <span style="font-size: 45px; font-weight: 15px;" id="a">逗你玩!</span>
+        <span style="font-size: 45px; font-weight: 15px;" id="a">登录成功!</span>
     </body>
 </html>
 

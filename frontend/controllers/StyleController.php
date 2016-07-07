@@ -46,7 +46,12 @@ class StyleController extends Controller
         ]);
     }
     
-    //风格测试
+    public function actionWechat(){
+        
+        return $this->renderPartial('wechat');
+    }
+
+        //风格测试
     public function actionTest(){
         echo "ok";
         return $this->render('style_test');
@@ -88,6 +93,24 @@ class StyleController extends Controller
         $jsarr = $tokenModel->getSignature();
         
         return $this->render('share',['jsarr'=>$jsarr]);
+    }
+    
+    //微信授权
+    public function actionShou(){
+       $code = $_GET['code'];
+       
+       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx1344a7a9fac82094&secret=9243c0f51650717abdca06178461c137&code=".$code."&grant_type=authorization_code";
+       
+       $res = $this->doCurlGetRequest($url);
+       
+       $res = json_decode($res,TRUE);
+       
+       $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=".$res['access_token']."&openid=".$res['openid']."";
+       $userinfo = $this->doCurlGetRequest($urlUser);
+       echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+       print_r(json_decode($userinfo,TRUE));
+       
+       
     }
 
     /**
@@ -166,5 +189,25 @@ class StyleController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
+        if ($url == "" || $timeout <= 0) {
+            return false;
+        }
+        if ($data != array()) {
+            $url = $url . '?' . http_build_query($data);
+        }
+
+        $con = curl_init((string) $url);
+        curl_setopt($con, CURLOPT_HEADER, false);
+        curl_setopt($con, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($con, CURLOPT_TIMEOUT, (int) $timeout);
+
+        // 访问https 需要设置
+        curl_setopt($con, CURLOPT_SSL_VERIFYPEER, false); // 信任任何证书 
+        curl_setopt($con, CURLOPT_SSL_VERIFYHOST, 0); // 检查证书中是否设置域名（为0也可以，就是连域名存在与否都不验证了）
+
+        return curl_exec($con);
     }
 }

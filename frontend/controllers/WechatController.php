@@ -106,6 +106,11 @@ class WechatController extends Controller {
                             'type' => 'view',
                             'name' => '立即匹配',
                             'url' => 'http://puti.kim/index.php?r=index/index'
+                        ),
+                        array(
+                            'type' => 'view',
+                            'name' => '微信授权登录',
+                            'url' => 'http://puti.kim/index.php?r=style/wechat'
                         )
                     )
                 ),
