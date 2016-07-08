@@ -40,7 +40,7 @@
             <div class="login_talk">
                 <span class="iconfont icon-xuanzhong">注册即表示本人同意<a class="red	">《用户协议》</a></span>
             </div>
-            <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx1344a7a9fac82094&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
+            <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
 
                     <i class="iconfont icon-sousuo" style="font-size: .44rem;"></i>微信登录
 

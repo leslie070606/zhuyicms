@@ -20,15 +20,15 @@ class UserController extends ZyuserController {
     }
 
     //微信授权
-    public function actionWechatAllow() {
+    public function actionWechat_allow() {
         
-        $code = $_GET['code'];
+        $code = isset($_GET['code'])? $_GET['code'] : '';
         
         if(!$code){
-            return $this->redirect('login');
+            return $this->redirect(array('user/login'));
         }
 
-        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx1344a7a9fac82094&secret=9243c0f51650717abdca06178461c137&code=" . $code . "&grant_type=authorization_code";
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
 
         $res = $this->doCurlGetRequest($url);
 
@@ -39,7 +39,7 @@ class UserController extends ZyuserController {
         $userArr = json_decode($userinfo, TRUE);
         
         if(empty($userArr)){
-            return $this->redirect('login');
+            return $this->redirect(array('user/login'));
         }
         
         $userModel = new common\models\User();
