@@ -42,7 +42,7 @@ class UserController extends ZyuserController {
             return $this->redirect(array('user/login'));
         }
         
-        $userModel = new common\models\User();
+        $userModel = new common\models\ZyUser();
         
         $userModel->openid = $userArr['openid'];
         $userModel->nickname = $userArr['nickname'];
