@@ -1,3 +1,8 @@
+<?php
+
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,10 +39,35 @@
             <div class="login_title">
                 请输入要绑定的手机号码
             </div>
-            <div class="login_ipt"><input id="phone" type="text" placeholder="手机号" /><</div>
-            <div class="auth_code login_ipt"><input id="code" type="text" /><span class="huoqu djser">获取验证码</span></div>
-            <div class="login_ipt btnn">完成<span id="worry">您输入的手机号有误，请重新输入</span></div>
+            <?= Html::beginForm('', 'post', ['id' => 'form-addphone']); ?>
+            <div class="login_ipt">
+                <?= \yii\helpers\Html::input('text', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>
+
+            </div>
+            <div class="auth_code login_ipt">
+                <?= \yii\helpers\Html::input('text', 'code', '', ['id' => 'code']); ?>
+
+                <span class="huoqu djser" onclick="sendmsg()">获取验证码</span>
+            </div>
+            <div for=""><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
+            <?= Html::endForm(); ?>
         </section>
 
     </body>
 </html>
+<script type="text/javascript">
+    function sendmsg() {
+        var $form = $('#form-addphone');
+        var phone = $("#phone").val().toString();
+        //alert(phone);
+        $.ajax({
+            url: "<?php echo Yii::getAlias('@web').'/index.php?r=user/sendmsg'?>",
+            type: 'post',
+            //dataType: 'json',
+            data: $form.serialize(),
+            success: function (data) {
+                alert(data);
+            }
+        });
+    }
+</script>

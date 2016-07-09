@@ -2,12 +2,17 @@
 
 namespace frontend\controllers;
 
+use common\util\emaysms\Sms;
 use backend\controllers\ZyuserController;
 use frontend\models\User;
+use yii;
 
 class UserController extends ZyuserController {
 
     public $layout = false;
+    
+    //验证码
+    public static $phonecode = '';
 
     public function actionIndex() {
 
@@ -40,7 +45,7 @@ class UserController extends ZyuserController {
         if (empty($userArr)) {
             return $this->redirect(array('user/login'));
         }
-//         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//       echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 //       print_r($userArr);exit;
         // 获取用户openID 判断是不是首次登陆
         $userModel = new User();
@@ -53,28 +58,65 @@ class UserController extends ZyuserController {
             exit;
         } else {
             //第一次登陆绑定手机
-            return $this->rsedirect(array('user/addphone', 'userinfo' => $userinfo));
+            return $this->redirect(array('user/addphone', 'userinfo' => $userinfo));
         }
     }
-
+    
+    // 绑定手机
     public function actionAddphone() {
 
         $userinfo = Yii::$app->request->get('userinfo');
+        $phone = Yii::$app->request->post('phone');
+        $code = Yii::$app->request->post('code');
         $userArr = json_decode($userinfo, TRUE);
-        print_r($userArr);exit;
-        // 存入用户信息
-        $userModel->openid = $userArr['openid'];
-        $userModel->nickname = $userArr['nickname'];
-        $userModel->sex = $userArr['sex'];
-        $userModel->language = $userArr['language'];
-        $userModel->city = $userArr['city'];
-        //$userModel->province = $userArr['province']; //数据库没有
-        $userModel->country = $userArr['country'];
-        $userModel->headimgurl = $userArr['headimgurl'];
-        $userModel->unionid = $userArr['unionid'];
-        $userModel->save();
+
+        if ($phone && $code) {//无提交读取页面
+            if (!empty($userArr)) {
+                echo self::phonecode."yyyy";exit;
+                if (self::phonecode == $code) {
+                    // 存入用户信息
+                    $userModel->openid = $userArr['openid'];
+                    $userModel->nickname = $userArr['nickname'];
+                    $userModel->sex = $userArr['sex'];
+                    $userModel->language = $userArr['language'];
+                    $userModel->city = $userArr['city'];
+                    $userModel->phone = $phone;
+                    //$userModel->province = $userArr['province']; //数据库没有
+                    $userModel->country = $userArr['country'];
+                    $userModel->headimgurl = $userArr['headimgurl'];
+                    $userModel->unionid = $userArr['unionid'];
+                    $res = $userModel->save();
+                    if($res){
+                        echo "登录成功!";
+                    }
+                }else{
+                    echo "验证码错误!";
+                }
+            } else {
+                echo "找不到用户!";
+            }
+        }
 
         return $this->render('addphone');
+    }
+
+    public function actionSendmsg() {
+
+        $phone = Yii::$app->request->post('phone');
+        //验证码
+        $phonestr = $this->createNum();
+        
+        
+       // self::phonecode = '1234';
+        //实例化短信接口
+        $sms = Yii::$app->Sms;
+
+        $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
+        //$ret 返回0 代表成功！,其他则有错误
+        if ($ret == 0) {
+            self::phonecode = $phonestr;
+        };
+        return $ret;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
@@ -95,6 +137,18 @@ class UserController extends ZyuserController {
         curl_setopt($con, CURLOPT_SSL_VERIFYHOST, 0); // 检查证书中是否设置域名（为0也可以，就是连域名存在与否都不验证了）
 
         return curl_exec($con);
+    }
+
+    public function createNum() {
+        $arr = range(1, 10);
+
+        shuffle($arr);
+        $phonestr = '';
+        foreach ($arr as $values) {
+            $phonestr = $phonestr . $values;
+        }
+        $phonestr = substr($phonestr, 3, 4);
+        return $phonestr;
     }
 
 }
