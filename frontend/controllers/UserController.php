@@ -13,7 +13,6 @@ class UserController extends ZyuserController {
 
     public function actionIndex() {
 
-
         return $this->render('index');
     }
 
@@ -34,7 +33,12 @@ class UserController extends ZyuserController {
             if ($phonestr == $code) {
                 $userModel = new User();
                 $user = $userModel->find()->where(['phone' => $phone])->all();
-
+                
+                //初始化session
+                $session = Yii::$app->session;
+                if (!$session->isActive) {
+                    $session->open();
+                }
                 //如果不是第一次登录
                 if (count($user)) {
                     //加ssion
@@ -46,7 +50,12 @@ class UserController extends ZyuserController {
                     $userModel->phone = $phone;
                     $res = $userModel->save();
                     if ($res) {
-                        //加ssion
+                        //加session
+
+                       // $session->set('uid', $userModel->user_id);
+                        
+                        // 设置session时间
+                        //Yii::$app->session->setCookieParams(['lifetime'=>3600]);
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo $res;
                         echo "添加成功!";
@@ -112,8 +121,8 @@ class UserController extends ZyuserController {
                     $user = $userModel->find()->where(['phone' => $phone])->all();
                     //var_dump($user);exit;
                     //如果所填写的手机号码重复update
-                    if(count($user)){
-                       $userModel->user_id = $user[0]['user_id'];
+                    if (count($user)) {
+                        $userModel->user_id = $user[0]['user_id'];
                     }
                     // 存入用户信息
                     $userModel->openid = $userArr['openid'];
@@ -159,6 +168,7 @@ class UserController extends ZyuserController {
         $sms = Yii::$app->Sms;
 
         $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
+        //return $ret;
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
             return $phonestr;
