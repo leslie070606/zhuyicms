@@ -18,7 +18,6 @@ class UploadController extends \yii\web\Controller {
         if (Yii::$app->request->isPost) {
             $model->name = UploadedFile::getInstance($model, "name");
 
-             echo var_dump(Yii::$app->request->isPost);exit;
             //文件上传存放的目录
             $dir = Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
 
@@ -27,9 +26,6 @@ class UploadController extends \yii\web\Controller {
             if ($model->validate()) {
                 //文件名
                 $fileName = date("HiiHsHis") . $model->name->baseName . "." . $model->name->extension;
-                // echo $model->name->baseName."***".$model->name->extension;exit;
-                //echo $fileName;
-                //exit;
 
                 $dir = $dir . "/" . $fileName;
                 $model->name->saveAs($dir);
@@ -37,8 +33,8 @@ class UploadController extends \yii\web\Controller {
             }
         }
         return $this->render("upload", [
-                    "model" => $model,
-                    "uploadSuccessPath" => $uploadSuccessPath,
+            "model" => $model,
+            "uploadSuccessPath" => $uploadSuccessPath,
         ]);
     }
 
