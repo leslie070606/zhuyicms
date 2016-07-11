@@ -10,17 +10,51 @@ use yii;
 class UserController extends ZyuserController {
 
     public $layout = false;
-    
-    //验证码
-    public static $phonecode = '';
 
     public function actionIndex() {
+
 
         return $this->render('index');
     }
 
     public function actionLogin() {
+
+        //判断ssion
         return $this->render('login');
+    }
+
+    public function actionPhone() {
+        //手机登录
+        $phone = Yii::$app->request->post('phone');
+        $phonestr = Yii::$app->request->post('phonestr');
+        $code = Yii::$app->request->post('code');
+
+        if ($phone && $phonestr && $code) {
+            //判断验证码是否正确
+            if ($phonestr == $code) {
+                $userModel = new User();
+                $user = $userModel->find()->where(['phone' => $phone])->all();
+
+                //如果不是第一次登录
+                if (count($user)) {
+                    //加ssion
+                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+                    echo "登陆成功!";
+                    exit;
+                } else {
+                    //第一次登录添加
+                    $userModel->phone = $phone;
+                    $res = $userModel->save();
+                    if ($res) {
+                        //加ssion
+                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+                        echo $res;
+                        echo "添加成功!";
+                        exit;
+                    }
+                }
+            }
+        }
     }
 
     //微信授权
@@ -45,8 +79,6 @@ class UserController extends ZyuserController {
         if (empty($userArr)) {
             return $this->redirect(array('user/login'));
         }
-//       echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//       print_r($userArr);exit;
         // 获取用户openID 判断是不是首次登陆
         $userModel = new User();
         $user = $userModel->find()->where(['openid' => $userArr['openid']])->all();
@@ -61,19 +93,28 @@ class UserController extends ZyuserController {
             return $this->redirect(array('user/addphone', 'userinfo' => $userinfo));
         }
     }
-    
+
     // 绑定手机
     public function actionAddphone() {
 
         $userinfo = Yii::$app->request->get('userinfo');
         $phone = Yii::$app->request->post('phone');
         $code = Yii::$app->request->post('code');
+        $phonestr = Yii::$app->request->post('phonestr');
         $userArr = json_decode($userinfo, TRUE);
 
         if ($phone && $code) {//无提交读取页面
             if (!empty($userArr)) {
-                echo self::phonecode."yyyy";exit;
-                if (self::phonecode == $code) {
+                //echo $phonestr;exit;
+                if ($phonestr == $code) {
+                    $userModel = new User();
+                    //查询手机号码
+                    $user = $userModel->find()->where(['phone' => $phone])->all();
+                    //var_dump($user);exit;
+                    //如果所填写的手机号码重复update
+                    if(count($user)){
+                       $userModel->user_id = $user[0]['user_id'];
+                    }
                     // 存入用户信息
                     $userModel->openid = $userArr['openid'];
                     $userModel->nickname = $userArr['nickname'];
@@ -86,14 +127,22 @@ class UserController extends ZyuserController {
                     $userModel->headimgurl = $userArr['headimgurl'];
                     $userModel->unionid = $userArr['unionid'];
                     $res = $userModel->save();
-                    if($res){
-                        echo "登录成功!";
+                    if ($res) {
+                        echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
+                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+                        echo "登录成功!<br>";
+                        echo "您的昵称是:" . $userArr['nickname'] . "<br>";
+                        echo "您绑定的手机号是:" . $phone . "<br>";
                     }
-                }else{
+                } else {
+                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                     echo "验证码错误!";
+                    exit;
                 }
             } else {
+                echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                 echo "找不到用户!";
+                exit;
             }
         }
 
@@ -105,18 +154,15 @@ class UserController extends ZyuserController {
         $phone = Yii::$app->request->post('phone');
         //验证码
         $phonestr = $this->createNum();
-        
-        
-       // self::phonecode = '1234';
+
         //实例化短信接口
         $sms = Yii::$app->Sms;
 
         $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
-            self::phonecode = $phonestr;
+            return $phonestr;
         };
-        return $ret;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {

@@ -1,3 +1,8 @@
+<?php
+
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -34,18 +39,43 @@
             <div class="login_title">
                 输入手机号码用于登录
             </div>
-            <div class="login_ipt"><input id="phone" type="text" placeholder="手机号" /><</div>
-            <div class="auth_code login_ipt"><input id="code" type="text" /><span class="huoqu djser">获取验证码</span></div>
-            <div class="login_ipt btnn">完成<span id="worry">您输入的手机号有误，请重新输入</span></div>
+            <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
+            <div class="login_ipt">
+                <?= \yii\helpers\Html::input('text', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>
+            </div>
+            <div class="auth_code login_ipt">
+                <?= \yii\helpers\Html::input('text', 'code', '', ['id' => 'code']); ?>
+
+                <span class="huoqu djser" onclick="sendmsg()">获取验证码</span>
+            </div>
+            <div><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <div class="login_talk">
                 <span class="iconfont icon-xuanzhong">注册即表示本人同意<a class="red	">《用户协议》</a></span>
             </div>
+            <input type="hidden" value="" id="phonestr" name="phonestr" />
+
+            <?= Html::endForm(); ?>
             <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
-
                     <i class="iconfont icon-sousuo" style="font-size: .44rem;"></i>微信登录
-
                 </div></a>
         </section>
 
     </body>
 </html>
+<script type="text/javascript">
+    function sendmsg() {
+        var $form = $('#form-phone');
+    
+        $.ajax({
+            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/sendmsg' ?>",
+            type: 'post',
+            //dataType: 'json',
+            data: $form.serialize(),
+            success: function (data) {
+
+                $('#phonestr').val(data);
+
+            }
+        });
+    }
+</script>
