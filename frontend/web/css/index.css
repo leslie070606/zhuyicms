@@ -5,19 +5,13 @@
 .banner .banner_mesg>span { display: block; position: relative; font-weight: bold;}
 .mesg_spa { font-size: .66rem; color: #FFFFFF;}
 .mesg_spb { height: .66rem; margin-top: .3rem;}
-.mesg_spb a { width: 1.8rem; height: .56rem; line-height: .56rem; position: absolute; top: 0px; left: 50%; margin-left: -.9rem; color: #FF4E38; background: #FFFFff;}
-
+.mesg_spb a,.btn_bot a { width: 1.8rem; height: .56rem; line-height: .56rem; position: absolute; top: 0px; left: 50%; margin-left: -.9rem; color: #FF4E38; background: #FFFFff;}
+.btn_bot { float: left; width: 100%; position: relative; margin-bottom: .6rem;}
+.btn_bot a { background: #FF4E38; color: #FFFFFF;}
 .fingerpost { position: relative; clear: both;}
-.icon-lingxing:before {
-    position: absolute;
-    font-size: 2.5rem;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    color: #FF4E38;
- }
+
 .post_title { display: block; margin-top: .8rem; position: relative; height: .66rem; overflow: hidden; text-align: center;}
-.post_title span { width: 2.5rem; top: 0rem; z-index: 99999; position: absolute; height: .66rem; font-size: .32rem; line-height: .66rem; left: 50%; margin-left: -1.25rem;}
+.post_title span { width: 2.5rem; top: 0.02rem; z-index: 9999; position: absolute; height: .66rem; font-size: .32rem; line-height: .66rem; left: 50%; margin-left: -1.25rem;}
 .post_title span a { color: #FFFFFF; font-weight: bold; display: block; position: absolute; width: 100%; z-index: 99;}
 .bg_banner { float: left; width: 100%;}
 
@@ -46,7 +40,7 @@
 }
 .bxs_title { font-size: .66rem; color: #FFFFFF; position: absolute; width: 100%; text-align: center; left: 0px; z-index: 9999; top: 1.76rem;}
 .bxslider { -moz-margin-left:-40px;}
-.production { margin-top: .8rem; overflow: hidden; padding-bottom: 2.34rem;}
+.production { margin-top: .8rem; overflow: hidden; padding-bottom: .8rem;}
 .bottom_name .here_name::after { content: "丨"; padding-left: .2rem; color: #221814;}
 .use_zy { float: left; width: 100%; margin-top:.4rem ; position: relative; text-align: center; clear: both; padding-bottom: .8rem;}
 .use_zy .use_zy_title { width: 2rem; height: 2rem; position: absolute; left: 50%; margin-left: -1rem;}
@@ -68,8 +62,17 @@
 .foot { text-align: center; margin-top: .8rem; color: #9F9FA0;}
 .foot>span { display: block; padding-bottom: .4rem;}
 
-
-
+.see_more {
+    display: block;
+    width: 100%;
+    font-size: .24rem;
+    margin-top: 1.1rem;
+    text-align: center;
+    float: left;
+}
+.see_more a {
+    color: #9f9fa0;
+}
 
 
 

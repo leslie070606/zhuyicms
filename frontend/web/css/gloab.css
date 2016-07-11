@@ -10,7 +10,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
-input { border-radius: 0; }
+input { border-radius: 0; line-height:normal !important ;}
 
 fieldset,img {
 	border: 0
@@ -48,6 +48,7 @@ html {
 	 font-size: 50px;
 	height: 100%;
 	background-color: #FFFFFF;
+	max-width: 640px;
 }
 
 @font-face {
@@ -69,11 +70,21 @@ body {
 	max-width: 640px;
 	margin: 0 auto;
 	height: 100%;
+	
 }
+body>div:nth-child(1),body>section:nth-child(1) {
+	 max-width: 640px; position: absolute; left: 0; width: 100%; right: 0; margin: 0 auto;
+}
+.red_border { border-color: #FF4E38 !important;}
 .max_img { width: 100%;}
 .header_top { height: 0.88rem; font-size: .85rem !important; text-align: center; line-height: .88rem; color: #FFFFFF; background-color: #ff4f38; position: fixed; top: 0px; left: 0px; right: 0px; max-width: 640px; margin: 0 auto; width: 100%; z-index: 99997;}
 .header_top .top_right {position: absolute; right: 0; top: 0; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: 0.32rem; width: .92rem; height: 100%;}
-.down_right { position: fixed; top: 0rem; right: -3rem; height: 120%; width: 3rem; background: #008000; z-index: 555;}
+.down_right { position: fixed; top: 0rem; right: -2.3rem; height: 100%; width: 2.2rem; background: #221814; z-index: 99996;}
+.down_right ul { margin-top: .88rem; font-size: .24rem;}
+.down_right ul li { display: block; height: .88rem; border-bottom: 1px solid #372e2a; line-height: .88rem; text-align: left; text-indent: .5rem;}
+ .down_right ul li a {color: #FFFFFF; font-size: .26rem;}
+ .down_right ul li:last-child { position: absolute; background: #FF4E38; border-bottom: none; bottom: 0; width: 100%; height: .88rem; left: 0;}
+.down_right_zd { display: none; position: fixed; width: 100%; height: 100%; background: #000000; opacity: 0; z-index: 99995;}
 .icon-lingxing:before {
     position: absolute;
     font-size: 2.5rem;
@@ -372,7 +383,7 @@ position: absolute;
    /* box-shadow:1px 1px 12px #c9c9ca;*/
 }
 /*.vjs-poster{  background-size: 100% !important;}*/
-.pro_here {width: 100%; float: left; margin-top: -4px; height: 3.8rem; overflow: hidden; position: relative;}
+.pro_here {width: 100%; float: left; margin-top: -4px; height:100%; overflow: hidden; position: relative;}
 .pro_here video { width: 100%; height: 100%; float: left;}
 .video-js .vjs-big-play-button {
 	    font-size: 2em !important;
@@ -383,6 +394,4 @@ position: absolute;
 .pro_img .img_icon span { font-size: .2rem;}
 .icon-tupian:before {margin:0.1rem 0.1rem 0 0; font-size: .24rem;}
 .here_zhe { position: absolute; width: 100%; height: 100%; left: 0; top:0; background: #000000;opacity: 0.1;-moz-opacity:0.1;  -khtml-opacity: 0.1;  z-index: 9;}
-.down_right ul { margin-top: .88rem; font-size: .24rem;}
-.down_right ul li { display: block; height: .66rem; line-height: .66rem;}
 .hunt_title { position: absolute; width: 100%; height: .88rem; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: .36rem; left: 0; top: 0;}
