@@ -12,7 +12,10 @@ class UserController extends ZyuserController {
     public $layout = false;
     
     //验证码
-    public static $phonecode = '';
+    public static $phonecode;
+	public function __construct($id){
+		self::$phonecode = $id;
+	}
 
     public function actionIndex() {
 
@@ -72,8 +75,8 @@ class UserController extends ZyuserController {
 
         if ($phone && $code) {//无提交读取页面
             if (!empty($userArr)) {
-                echo self::phonecode."yyyy";exit;
-                if (self::phonecode == $code) {
+                echo self::$phonecode."yyyy";exit;
+                if (self::$phonecode == $code) {
                     // 存入用户信息
                     $userModel->openid = $userArr['openid'];
                     $userModel->nickname = $userArr['nickname'];
@@ -107,16 +110,16 @@ class UserController extends ZyuserController {
         $phonestr = $this->createNum();
         
         
-       // self::phonecode = '1234';
+       // self::$phonecode = '1234';
         //实例化短信接口
         $sms = Yii::$app->Sms;
 
         $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
-            self::phonecode = $phonestr;
-        };
-        return $ret;
+            self::$phonecode = $phonestr;
+        }
+        return self::$phonecode;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
@@ -151,4 +154,69 @@ class UserController extends ZyuserController {
         return $phonestr;
     }
 
+	//收藏设计师
+    public function actionCollectDesigner(){
+        $request = Yii::$app->request();
+        if(empty($request)){
+            return false;
+        }
+        $params         = $request->post();
+        $userId         = isset($params['user_id'])? $params['user_id'] : 0;
+        $designerId     = isset($params['designer_id'])? $params['designer_id'] : 0;
+        $collectModel   = new \frontend\models\CollectDesigner();
+
+        //取得设计师的服务用户次数。
+        $orderM = new \frontend\models\Order();
+
+        $data = array(
+            'user_id'           => $userId,
+            'designer_id'       => $designerId,
+            'status'            => \frontend\models\CollectDesigner::STATUS_OK,
+            'service_times'     => $serviceTimes,
+            'create_time'       => time(),
+
+        //取得设计师的服务用户次数。
+        $orderM = new \frontend\models\Order();
+        $serviceTimes = $orderM ->find()->where(['user_id' => $userId,'designer_id' => $designerId,'status'
+ => \frontend\models\Order::SERVICE_END])->all()->count();
+    
+        $ret = $collectModel->find()->where(['user_id' => $userId,'designer_id' => $designerId,'status' => 
+\frontend\models\CollectDesigner::STATUS_OK])->all()->count();
+        $data = array(
+            'user_id'           => $userId,
+            'designer_id'       => $designerId,
+            'status'            => \frontend\models\CollectDesigner::STATUS_OK,
+            'service_times'     => $serviceTimes,
+            'create_time'       => time(),
+            'update_time'       => time(),
+        );
+        $collectModel->opCollectDesigner();
+	}
+    public function actionCollectDesignerCancel(){
+            $collectModel->
+        $request = Yii::$app->request();
+        if(empty($request)){
+            return false;
+        }
+        $params         = $request->post();
+        $userId         = isset($params['user_id'])? $params['user_id'] : 0;
+        $designerId     = isset($params['designer_id'])? $params['designer_id'] : 0;
+        $collectModel   = new \frontend\models\CollectDesigner();
+    
+        $cnt = $collectModel->find()->where(['user_id'=> $userId,'designer_id' => $designerId,'status' => \
+frontend\models\CollectDesigner::STATUS_OK])->all->count();
+        //未收藏过
+        if($cnt == 0){
+            return false;
+        }else{
+            $now = time();
+            $data = array(
+                'user_id'           => $userId,
+                'designer_id'       => $designerId,
+                'status'            => \frontend\models\CollectDesigner::STATUS_DELETE,
+                'update_time'       => $now,
+            );
+            $collectModel->opCollectDesigner($data);
+       }
+	}
 }

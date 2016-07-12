@@ -25,13 +25,13 @@ class Order extends ActiveRecord{
 		self::STATUS_MET_NOT_DEEP_COOPERATION		=> '已见面未深度合作',
 		self::STATUS_WAITING_CONTRACT				=> '已深度合作未上传合同',
 		self::STATUS_SERVICE_END					=> '已深度合作已上传合同',
-		self::STATUS_SERVICE_CANCELD				=> '取消合作'
+		self::STATUS_SERVICE_CANCELLED				=> '取消合作'
 	);
 
 	public function __construct(){
 		parent::__construct();
 		$this->_field = array(
-			'order_id','user_id','project_id',
+			'order_id','user_id','designer_id','project_id',
 			'status','appointment_time','appointment_location',
 			'remark','service_type','create_time','update_time',
 		);
@@ -49,9 +49,8 @@ class Order extends ActiveRecord{
 		}
 		$updateField = array_intersect($this->_field,array_keys($data));
 		foreach($updateField as $k => $v){
-			$this->v = $data[$v];
+			$this->$v = $data[$v];
 		}
-		
 		$this->save();
 	}
 
@@ -65,7 +64,7 @@ class Order extends ActiveRecord{
 		}
 		$updateField = array_intersect($this->_field,array_keys($data));
 		foreach($updateField as $k => $v){
-			$ret->v = $data[$v];
+			$ret->$v = $data[$v];
 		}
 		
 		$ret->save();
@@ -90,6 +89,10 @@ class Order extends ActiveRecord{
 
 	public function getOrderById($orderId){
 		return $this->findOne($orderId);
+	}
+
+	public function getOrdersByUserId($userId){
+		return $this->find()->where(['user_id' => $userId])->all();
 	}
 
 	public function getOrders($sql){
