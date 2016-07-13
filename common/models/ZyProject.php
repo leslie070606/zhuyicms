@@ -47,12 +47,12 @@ class ZyProject extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'city', 'address', 'budget_design', 'description', 'project_tags'], 'required'],
-            [['user_id'], 'integer'],
-            [['description'], 'string'],
-            [['city', 'compound', 'decoration_type', 'covered_area', 'use_area', 'budget_design_work', 'budget_design', 'budget_ruan', 'budget_ying', 'budget_yuanlin', 'home_img', 'favorite_img', 'designer_level'], 'string', 'max' => 50],
-            [['address', 'work_time', 'home_type', 'project_status', 'service_type', 'project_tags'], 'string', 'max' => 100],
-            [['match_json'], 'string', 'max' => 200],
+//            [['user_id', 'city', 'address', 'budget_design', 'description', 'project_tags'], 'required'],
+//            [['user_id'], 'integer'],
+//            [['description'], 'string'],
+//            [['city', 'compound', 'decoration_type', 'covered_area', 'use_area', 'budget_design_work', 'budget_design', 'budget_ruan', 'budget_ying', 'budget_yuanlin', 'home_img', 'favorite_img', 'designer_level'], 'string', 'max' => 50],
+//            [['address', 'work_time', 'home_type', 'project_status', 'service_type', 'project_tags'], 'string', 'max' => 100],
+//            [['match_json'], 'string', 'max' => 200],
         ];
     }
 
