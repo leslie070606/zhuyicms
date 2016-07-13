@@ -10,10 +10,6 @@ Class CollectDesigner extends ActiveRecord{
 
 	const STATUS_OK = 1;
 	const STATUS_DELETE = 2;
-	static COLLECT_STATUS_DICT = array(
-		self::STATUS_OK 	=> '收藏成功',
-		self::STATUS_DELETE	=> '取消收藏',
-	);
 
 	protected $_name = '';
 	
@@ -21,12 +17,12 @@ Class CollectDesigner extends ActiveRecord{
 		parent::__construct();
 		$this->_name = 'zy_collect_designer';
 		$this->_field = array(
-			'collect_id','user_id','designer_id','status','create_time','update_time',
+			'collect_id','user_id','designer_id','status','service_times','create_time','update_time',
 		);
 	}
 	
 	public static function tableName(){
-		return $this->_name;
+		return 'zy_collect_designer';
 	}
 
 	/*根据user_id取得designer_id(检查是否收藏)*/

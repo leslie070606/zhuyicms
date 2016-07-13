@@ -6,20 +6,21 @@ use yii\web\Controller;
 use frontend\models;
 
 class DesignerController extends Controller{
+
 	public function actionIndex(){
+		//从上一个页面传过来，必须保证要有designer_id
 		$request = Yii::$app->request;
-		//FixME
 		if(empty($request)){
-			//throw new Exception("empty request!");
-			;
+			return false;
 		}
-		$cellphone = $request->post('cellphone');
-		$cellphone = '13800138001';
+		$params = $request->get('params');
+		var_dump($params);
+
+		$designerId = $params;
 
 		$designerBasicModel = new \frontend\models\DesignerBasic();
-		$ret = $designerBasicModel->getDesignerByPhone($cellphone);
+		$ret = $designerBasicModel->getDesignerById($designerId);
 
-		$designerId = $ret->designer_id;
 		$imageModel = new \frontend\models\Images();
 
 		//头像及背景
@@ -46,6 +47,31 @@ class DesignerController extends Controller{
 	}
 	
 	public function actionList(){
+		/*
+		 * 筛选
+		 */
+		$request = Yii::$app->request;
+		if($request->isAjax){
+			$params = $request->get('params');
+			if(!isset($params)){
+				return false;
+			}
+
+			$pArray 	= explode(',',$params);
+			$category 	= $pArray['0'];
+			$serveCity 	= $pArray['1'];
+			$condition = array(
+				'category' => $category,
+				'serve_city' => $serveCity,
+			);
+			$designerBasicM = new \frontend\models\DesignerBasic();
+			
+			$ret = "response to ajax";
+			//$ret = $designerBasicM->getFilteredDesigners($condition);
+			return $ret;
+		}
+
+
 		$designerBasicModel = new \frontend\models\DesignerBasic();
 		$allDesigners = $designerBasicModel->getAlldesigners();
 
@@ -72,6 +98,7 @@ class DesignerController extends Controller{
 			}
 			//组装数据结构
 			$designerRet = array(
+				'designer_id'	=> $designerId,
 				'name' 			=> $name,
 				'tag' 			=> $tag,
 				'head_portrait' => $headPortrait,
@@ -82,5 +109,12 @@ class DesignerController extends Controller{
 		}
 		//var_dump($data);
 		return $this->renderPartial("list",["data" => $data,'pagination' => $pagination]);
+	}
+
+	//搜索设计师
+	public function actionHunt(){
+		$request = Yii::$app->request;
+		$data = array(1,2,3,4,5);
+		return $this->render('hunt',['data' => $data]);
 	}
 }

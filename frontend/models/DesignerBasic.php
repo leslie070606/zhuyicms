@@ -22,4 +22,8 @@ class DesignerBasic extends ActiveRecord{
 	public function getDesignerByPhone($cellphone){
 		return $this->find()->where(['cellphone' => $cellphone])->one();
 	}
+
+	public function getFilteredDesigners($condition){
+		return $this->find()->where($condition)->all();
+	}
 }
