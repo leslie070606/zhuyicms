@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\ZyProject;
+use backend\models\DesignerWork;
 
 class ProjectController extends \common\util\BaseController {
     
@@ -26,8 +27,8 @@ class ProjectController extends \common\util\BaseController {
     public function actionMatch_designer(){
         
         if($prostr = Yii::$app->request->get('g')){
-             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-             $proarr = explode("@",$prostr);
+            // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            $proarr = explode("@",$prostr);
             
             $aera = explode('$', $proarr[2]);
             $model = new ZyProject();
@@ -58,12 +59,34 @@ class ProjectController extends \common\util\BaseController {
         return $this->render('match_designer');
     }
     public function actionAdditional() {
-        
-        return $this->render('additional');
-        
+        if($project_id = Yii::$app->request->get('project_id')){
+            
+            //echo $project_id;
+            return $this->render('additional');
+        }
     }
     
+    //匹配设计师
     public function actionChoose_designer(){
+        
+        //引入算法类
+        $matchModel = new \app\components\Match();
+        
+        $project_id = Yii::$app->request->get('project_id');
+        //全部设计师
+        $designerModel = new DesignerWork();
+        $designerArr = $designerModel->find()->all();
+        
+        //根据ID查找需求
+        $projectModel = new ZyProject();
+        $project = $projectModel->findOne('14');
+        $scoreArr = array();
+        for($i=0;$i<count($designerArr);$i++){
+            $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
+            $scoreArr[$i]['score'] = $matchModel->assigns($project, $designerArr[$i]);
+        }
+        echo "<pre>";
+        print_r($scoreArr);exit;
         return $this->render('choose_designer');
     }
 }

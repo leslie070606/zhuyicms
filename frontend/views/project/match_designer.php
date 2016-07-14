@@ -221,7 +221,7 @@
                     async: true,
                     success: function (data) {
                         if (data){
-                            window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/additional'; ?>" + "&&project_id=" + data,
+                            window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/additional'; ?>" + "&&project_id=" + data;
                         }
                         //console.log(data);
                         //alert(data);

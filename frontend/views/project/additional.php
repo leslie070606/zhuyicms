@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Url;
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -85,10 +89,8 @@
                 <a href="Choose_designer.html"><div class="chose_btn">
                         提交并查看设计师
                     </div></a>
-                <span class="center_nameaa"><a href="Choose_designer.html">跳过</a></span>
-
+                <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
-
         </div>	
     </body>
 </html>
