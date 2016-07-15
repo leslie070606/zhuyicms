@@ -384,6 +384,12 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'nowork_time', ['class' => 'form-control', 'placeholder' => '时段', 'id' => 'nowork_time']) ?>
                     <?= Html::error($modelwork, 'nowork_time', ['class' => 'error']); ?>
                 </div>
+                
+                <div class="form-group has-warning">
+                    <label for="nowork_time2">不能接活时段2</label>
+                    <?= Html::activeInput('text', $modelwork, 'nowork_time2', ['class' => 'form-control', 'placeholder' => '时段', 'id' => 'nowork_time2']) ?>
+                    <?= Html::error($modelwork, 'nowork_time2', ['class' => 'error']); ?>
+                </div>
 
                 <div class="form-group">
                     <label for="now_customer">正在接洽的客户</label>

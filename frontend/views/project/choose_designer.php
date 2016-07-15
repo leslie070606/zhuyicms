@@ -38,7 +38,9 @@
             </div>
 
             <div class="designer_box">
-                <div class="pro_here iconfont look_see">
+                <?php foreach ($model as $value){ ?>
+                <div class="pro_here iconfont" id="" value_id="<?= $value['did']?>">
+                    
                     <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
                     <div class="here_zhe"></div>
                     <div class="here_botaa"></div>
@@ -48,7 +50,7 @@
                         </div>
 
                         <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
+                            <span class="here_name"><?= $value['customer'] ?></span>
                         </div>
                         <div class="bottom_label bottom_referral">
                             <span>台湾暖男</span><span>设计大咖</span>
@@ -57,164 +59,7 @@
                         <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
                     </div>
                 </div><!--pro_here end-->
-                <div class="pro_here iconfont look_see">
-                    <a href="#"><img class="here_img" src="img/home_page/proc.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/banner_head.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-
-                <div class="pro_here iconfont look_see">
-                    <a href="#"><img class="here_img" src="img/home_page/1.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/1.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-
-                <div class="pro_here iconfont" id="topa">
-                    <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/proa.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-                <div class="pro_here iconfont">
-                    <a href="#"><img class="here_img" src="img/home_page/proc.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/banner_head.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-
-                <div class="pro_here iconfont">
-                    <a href="#"><img class="here_img" src="img/home_page/1.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/1.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-
-
-                <div class="pro_here iconfont"  id="topb">
-                    <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/proa.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-                <div class="pro_here iconfont">
-                    <a href="#"><img class="here_img" src="img/home_page/proc.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/banner_head.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
-
-                <div class="pro_here iconfont">
-                    <a href="#"><img class="here_img" src="img/home_page/1.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/1.jpg" />
-                        </div>
-
-                        <div class="bottom_name">
-                            <span class="here_name">Keiji Ashizawa</span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
-                        </div>
-
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
+                <?php } ?> 
             </div>
             <span class="click_more">查看更多立即匹配出的设计师 </span>
             <div class="bot_navv">
@@ -223,12 +68,10 @@
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>-->
                 </ul>
-                <span class="navv_tj"><a href="select_time.html">提交</a></span>
+                <span class="navv_tj"><a href="javascript:">提交</a></span>
                 <span class="rg_pp"><i class="iconfont icon-xuanzhong rg_ppi"></i><i id="htmll">你可以不选择设计师，我们将为你人工匹配</i></span>
 
             </div>		
-
-
         </div>
 
     </body>

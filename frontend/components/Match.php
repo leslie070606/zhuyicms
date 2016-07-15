@@ -7,7 +7,9 @@ class Match {
     //$pro 用户需求
     //$des 设计师需求
     public function assigns($ProArr, $DesArr) {
-
+        
+        
+        //完全不符合标准的设计师
         //if ($ProModel->didian == $DesModel->didian && $ProModel->fuwu == $DesModel->fuwu) {
         if (true) {
 
@@ -20,7 +22,6 @@ class Match {
             $peihescore = ''; //配合度
             if ($ProArr['budget_design']) {
                 $pro_budget = $ProArr['budget_design'];
-
                 $des_budget = $DesArr['charge'];
             } else {
                 $pro_budget = $ProArr['budget_design_work'];
@@ -102,7 +103,7 @@ class Match {
             //$cscore = $mianjiscore + $yusuanscore + $fenggescore + $peihescore - $huangse;
             $cscore = $mianjiscore + $yusuanscore + $peihescore - $huangse;
 
-            return $cscore;
+            return round($cscore,4);
         }
     }
 
