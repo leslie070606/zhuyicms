@@ -1,5 +1,7 @@
 <?php
+
 use common\models\ZyVideo;
+
 $videoModel = new ZyVideo();
 ?>
 <!DOCTYPE html>
@@ -10,12 +12,12 @@ $videoModel = new ZyVideo();
         <title>住艺</title>
         <link rel="stylesheet" href="css/gloab.css" />
         <link rel="stylesheet" href="css/index.css" />
-        <link rel="stylesheet" href="css/video-js.min.css" />
+        <!--<link rel="stylesheet" href="css/video-js.min.css" />-->
         <link rel="stylesheet"  href="css/iconfont.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
-        <script type="text/javascript" src="js/video.min.js" ></script>
+        <!--<script type="text/javascript" src="js/video.min.js" ></script>-->
         <script type="text/javascript" src="js/gloab.js" ></script>
         <script type="text/javascript" src="js/index.js" ></script>
     </head>
@@ -77,26 +79,31 @@ $videoModel = new ZyVideo();
                     </span>
                 </div>
                 <div class="pro_box">
-                <?php foreach ($data  as $value){ ?>
-                    <div class="pro_here">
-                        <video id="example_video1" class="video-js vjs-default-skin" controls preload="none" height="4.2rem" poster="<?php $video = $videoModel::findOne($value['video_id']);echo Yii::getAlias('@web').$video['video_image']; ?>">
-                            <source src="<?php echo $video['video_url'];?>" type='video/mp4' />
-                        </video>
-                        <div class="here_botaa"></div>
-                        <div class="here_bottom line_center">
-                            <div class="here_head">
-                                <img src="img/home_page/banner_head.jpg" />
+<?php foreach ($data as $value) { ?>
+                        <div class="pro_here">
+                            <div class="pro_here_bcimg iconfont icon-bofang1">
+                                <img class="" src="<?php $video = $videoModel::findOne($value['video_id']);
+    echo Yii::getAlias('@web') . $video['video_image']; ?>" />
                             </div>
+                            <video id="example_video1" class="video-js vjs-default-skin"  preload="none" height="4.2rem" poster="<?php $video = $videoModel::findOne($value['video_id']);
+    echo Yii::getAlias('@web') . $video['video_image']; ?>">
+                                <source src="<?php echo $video['video_url']; ?>" type='video/mp4' />
+                            </video>
+                            <div class="here_botaa"></div>
+                            <div class="here_bottom line_center">
+                                <div class="here_head">
+                                    <img src="img/home_page/banner_head.jpg" />
+                                </div>
 
-                            <div class="bottom_name">
-                                <span class="here_name"><?= $value['designer_name']?></span><span class="here_namea"><?= $value['designer_city']?></span>
+                                <div class="bottom_name">
+                                    <span class="here_name"><?= $value['designer_name'] ?></span><span class="here_namea"><?= $value['designer_city'] ?></span>
+                                </div>
+                                <div class="bottom_referral">
+                        <?= $value['description'] ?>
+                                </div>
                             </div>
-                            <div class="bottom_referral">
-                                <?= $value['description'] ?>
-                            </div>
-                        </div>
-                    </div><!--pro_here end-->
-                <?php }?>
+                        </div><!--pro_here end-->
+<?php } ?>
                 </div><!--pro_box end-->
                 <div class="see_more"><a href="designer_list.html">查看更多住艺设计师</a></div>
 
@@ -145,10 +152,6 @@ $videoModel = new ZyVideo();
                     © zhuyi, Inc.
                 </span>
             </footer>
-
-
-
-
         </div>
 
     </body>

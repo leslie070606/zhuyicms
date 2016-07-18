@@ -1,6 +1,6 @@
 <?php
-use yii\helpers\Url;
 
+use yii\helpers\Url;
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,12 +12,14 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/submit.css" />
         <link rel="stylesheet"  href="css/iconfont.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
         <script type="text/javascript" src="js/gloab.js" ></script>
         <script type="text/javascript" src="js/submit.js" ></script>
 
     </head>
     <body>
+
         <div class="submit_box">
             <header class="header_top iconfont icon-logo">
                 <!--<input id="ipt" type="text" value="0" />-->
@@ -94,4 +96,62 @@ use yii\helpers\Url;
         </div>	
     </body>
 </html>
+<script type="text/javascript">
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
+        timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
+        nonceStr: 'zhuyi', // 必填，生成签名的随机串
+        signature: "<?= $jsarr['signature'] ?>", // 必填，签名，见附录1
+        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+    var images = {
+        localId: [],
+        serverId: []
+    };
+    wx.ready(function () {
 
+        wx.checkJsApi({
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function (res) {
+                //alert(res);
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            }
+        });
+
+
+
+        touch.on(".add_img", "tap", function (ev) {
+            var length = $(ev.currentTarget).siblings().length;
+            if (length < 10) {
+
+
+
+                // 拍照选择图片
+                wx.chooseImage({
+                    count: 9, // 默认9
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success: function (res) {
+
+                        //$("#w").attr("src", res.localIds);
+                        alert(res.localIds);
+                        //images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+
+                    }
+                });
+
+                //var html = '<li><img src="img/home_page/proc.jpg"> <i class="iconfont icon-shanchu"></i></li>';
+               // $(ev.currentTarget).before(html);
+               // img_height_auto();
+            } else {
+                return false;
+            }
+            ;
+        });
+
+
+    });
+</script>

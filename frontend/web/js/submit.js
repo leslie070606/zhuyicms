@@ -8,16 +8,7 @@ $(function(){
 	 		get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
 	 	};
 	 });
-	 touch.on(".add_img","tap",function(ev){
-	 	var length=$(ev.currentTarget).siblings().length;
-	 	if(length<10){
-	 		var html='<li><img src="img/home_page/proc.jpg"> <i class="iconfont icon-shanchu"></i></li>';
-	 		$(ev.currentTarget).before(html);
-	 		img_height_auto();
-	 	}else{
-	 		return false;
-	 	};
-	 });
+	
 	 
 	 $("body").on("click",".here_img_box li i",function(ev){
 	 		$(this).parents("li").remove();

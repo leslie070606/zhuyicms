@@ -60,11 +60,20 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionAdditional() {
-        if ($project_id = Yii::$app->request->get('project_id')) {
+        
+        $tokenModel = new \app\components\Token();
+
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+
+        return $this->render('additional', ['jsarr' => $jsarr]);
+        
+        
+       // if ($project_id = Yii::$app->request->get('project_id')) {
 
             //echo $project_id;
-            return $this->render('additional');
-        }
+            
+       // }
     }
 
     //匹配设计师
@@ -149,7 +158,7 @@ class ProjectController extends \common\util\BaseController {
             $project->match_json = json_encode($scoreArr);
             //$project->save();
             //$scoreArr = $scoreArr+$scoreArr+$scoreArr+$scoreArr;
-           $scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
+           //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
         return $this->render('choose_designer',['model'=>$scoreArr]);
     }
