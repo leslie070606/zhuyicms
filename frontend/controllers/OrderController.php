@@ -7,6 +7,7 @@ use frontend\models;
 use frontend\services;
 
 class OrderController extends Controller{
+	public $layout = false;
 	public function actionIndex(){
 		//if(($request = Yii::$app->request->post('data'))){
 		if(1){
@@ -59,5 +60,12 @@ class OrderController extends Controller{
 		echo ("test action!!!");
 		$orderModule = new \frontend\services\Order(1);
 		$orderModule->test();
+	}
+	
+	public function actionList(){
+		$userId = 1;
+		$orderM = new \frontend\models\Order();
+		$ret = $orderM->getOrdersByUserId($userId);
+		return $this->render("list",['data' => $ret]);
 	}
 }

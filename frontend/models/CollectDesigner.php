@@ -4,6 +4,7 @@
  */
 namespace frontend\models;
 use yii\db\ActiveRecord;
+use Yii;
 
 Class CollectDesigner extends ActiveRecord{
 	private $_field = null;
@@ -31,11 +32,16 @@ Class CollectDesigner extends ActiveRecord{
 		if(empty($userId)){
 			return false;
 		}
-		$ret = $this->findBySql("SELECT DISTINCT designer_id FROM {$this->_name} WHERE user_id=:id AND status=1 GROUP BY designer_id",array(':id' => $userId));	
+		$sql = "SELECT DISTINCT designer_id FROM $this->_name WHERE user_id=$userId AND 
+status=1 GROUP BY designer_id";
+		$ret = Yii::$app->db->createCommand($sql)->queryAll();
+
+		//$ret = $this->findBySql("SELECT DISTINCT designer_id FROM {$this->_name} WHERE user_id=$userId AND status=1 GROUP BY designer_id");
+		//$ret = $this->findAll(['user_id' =>$userId,'status' => 1]);
 		return $ret;
 	}
 
-	public function opCollectDesigner($data){
+	public function collectDesigner($data){
 		if(empty($data) || !is_array($data)){
 			return false;
 		}
@@ -45,5 +51,13 @@ Class CollectDesigner extends ActiveRecord{
 		}
 
 		$this->save();
+	}
+
+	public function unCollectDesigner($set,$where){
+		if(empty($set) || !is_array($set)){
+			return false;
+		}
+
+		return $this->updateAll($set,$where);
 	}
 }

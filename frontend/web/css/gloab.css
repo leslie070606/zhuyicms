@@ -10,7 +10,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0
 }
-input { border-radius: 0; }
+input { border-radius: 0; line-height:normal !important ;}
 
 fieldset,img {
 	border: 0
@@ -48,6 +48,7 @@ html {
 	 font-size: 50px;
 	height: 100%;
 	background-color: #FFFFFF;
+	max-width: 500px;
 }
 
 @font-face {
@@ -60,20 +61,31 @@ html {
 }
 
 body {
-	
 	padding-top: .87rem;
 	font-family:fzlth,tahoma,arial,sans-serif;
 	background: #ffffff;
 	overflow-x: hidden;
 	-webkit-text-size-adjust: none;
-	max-width: 640px;
+	max-width: 500px;
 	margin: 0 auto;
 	height: 100%;
 }
+body>div:nth-child(1),body>section:nth-child(1) {
+	 max-width: 500px; position: absolute; left: 0; width: 100%; right: 0; margin: 0 auto;
+}
+.loading_box { width: 100%; float: left;}
+.loading_box>img { width: 100%; float: left;}
+.red_border { border-color: #FF4E38 !important;}
 .max_img { width: 100%;}
-.header_top { height: 0.88rem; font-size: .85rem !important; text-align: center; line-height: .88rem; color: #FFFFFF; background-color: #ff4f38; position: fixed; top: 0px; left: 0px; right: 0px; max-width: 640px; margin: 0 auto; width: 100%; z-index: 99997;}
+.header_top { height: 0.88rem; font-size: .85rem !important; text-align: center; line-height: .88rem; color: #FFFFFF; background-color: #ff4f38; position: fixed; top: 0px; left: 0px; right: 0px; max-width: 500px; margin: 0 auto; width: 100%; z-index: 99997;}
 .header_top .top_right {position: absolute; right: 0; top: 0; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: 0.32rem; width: .92rem; height: 100%;}
-.down_right { position: fixed; top: 0rem; right: -3rem; height: 120%; width: 3rem; background: #008000; z-index: 555;}
+.down_right { position: fixed; top: 0rem; right: -2.3rem; height: 100%; width: 2.2rem; background: #221814; z-index: 99996;}
+.down_right ul { margin-top: .88rem; font-size: .24rem;}
+.down_right ul li { display: block; height: .88rem; border-bottom: 1px solid #372e2a; line-height: .88rem; text-align: left; text-indent: .5rem;}
+ .down_right ul li a {color: #FFFFFF; font-size: .26rem;}
+ .down_right ul li:last-child { position: absolute; border-bottom: none; bottom: 0; width: 100%; height: .88rem; left: 0;}
+  .down_right ul li:last-child a {  color: #9F9FA0;}
+.down_right_zd { display: none; position: fixed; width: 100%; height: 100%; background: #000000; opacity: 0; z-index: 99995;}
 .icon-lingxing:before {
     position: absolute;
     font-size: 2.5rem;
@@ -82,8 +94,9 @@ body {
     z-index: 1;
     color: #FF4E38;
  }
-
-
+.out_Capacity { width: 1.9rem; height: 1rem; line-height: 1rem; color: #FFFFFF; position: fixed; left: 0; top: 0; bottom: 0; right: 0; margin: auto; display: none; opacity: 0;}
+.out_Capacity>.zdang { position: absolute; width: 100%; height: 100%; left: 0; top: 0; background: #000000; opacity: .5;}
+.out_Capacity .mengs { font-size:.24rem; z-index: 99995; position: absolute; width: 100%; height: 100%; left: 0; top: 0; text-align: center;}
 /*轮播CSS*/
 .banner_bot { position: absolute; height: 3rem; width: 100%; bottom: 0rem; left: 0; background: #000000;-moz-opacity:0.5;  -khtml-opacity: 0.5;  opacity: 0.5; z-index: 5;}
 .bx-has-pager{   
@@ -300,44 +313,44 @@ body {
  
 @media screen and (min-width: 450px) {
     html {
-        font-size: 62px;
+        font-size: 56px;
     }
 }
  
 @media screen and (min-width: 490px) {
     html {
-        font-size: 68px;
+        font-size: 56px;
     }
 }
 
 @media screen and (min-width: 530px) {
     html {
-        font-size: 74px;
+        font-size: 56px;
     }
 }
 
 @media screen and (min-width: 570px) {
     html {
-        font-size: 80px;
+        font-size: 56px;
     }
 }
 
 @media screen and (min-width: 610px) {
     html {
-        font-size: 86px;
+        font-size: 56px;
     }
 }
 
 @media screen and (min-width: 650px) {
     html {
-        font-size: 94px;
+        font-size: 56px;
     }
 }
 /*视频样式 */
 .here_img { float: left; width: 100%; height: 100%; position: relative; z-index: 19;}
 .production { margin-top: 2.3rem; position: relative; clear: both;}
 .pro_title { text-align: center; position: relative;  font-weight: bold; font-size: .32rem;}
- .pro_title .titl_span { width: 2rem; height:.66rem; z-index: 999; top: -.03rem; background: #ff4f38; position: absolute; text-align: center; line-height: .66rem; color: #FFFFFF; left: 50%; margin-left: -1rem;}
+ .pro_title .titl_span { width: 2rem; height:.66rem; z-index: 999; top: 0rem; background: #ff4f38; position: absolute; text-align: center; line-height: .66rem; color: #FFFFFF; left: 50%; margin-left: -1rem;}
 .titl_span>a { position: absolute; width: .68rem;height: .68rem; z-index: 10; left: 50%; margin-left: -.34rem; bottom: -.65rem; background: #ff4f38;}
 .pro_box { position: relative; width: 100%; top: .66rem; z-index: 9;}
 .here_bottom { position: absolute;font-family:fzlth,tahoma,arial,sans-serif !important ; bottom: -2px; width: 100%; height: .88rem;z-index: 101;}
@@ -372,7 +385,7 @@ position: absolute;
    /* box-shadow:1px 1px 12px #c9c9ca;*/
 }
 /*.vjs-poster{  background-size: 100% !important;}*/
-.pro_here {width: 100%; float: left; margin-top: -4px; height: 3.8rem; overflow: hidden; position: relative;}
+.pro_here {width: 100%; float: left; height: 100%; overflow: hidden; position: relative;}
 .pro_here video { width: 100%; height: 100%; float: left;}
 .video-js .vjs-big-play-button {
 	    font-size: 2em !important;
@@ -383,6 +396,6 @@ position: absolute;
 .pro_img .img_icon span { font-size: .2rem;}
 .icon-tupian:before {margin:0.1rem 0.1rem 0 0; font-size: .24rem;}
 .here_zhe { position: absolute; width: 100%; height: 100%; left: 0; top:0; background: #000000;opacity: 0.1;-moz-opacity:0.1;  -khtml-opacity: 0.1;  z-index: 9;}
-.down_right ul { margin-top: .88rem; font-size: .24rem;}
-.down_right ul li { display: block; height: .66rem; line-height: .66rem;}
 .hunt_title { position: absolute; width: 100%; height: .88rem; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: .36rem; left: 0; top: 0;}
+.icon-shanchu1 { width: .32rem; height: .32rem; font-size: .20rem !important; position: absolute; color:#FFFFFF !important; background: #000000; opacity: .5;}
+.icon-shanchu1::before { position: absolute; left: .06rem; top: .06rem;}

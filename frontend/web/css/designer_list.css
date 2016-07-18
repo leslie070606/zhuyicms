@@ -24,6 +24,7 @@
     background: #ffffff;
     bottom: 0;
    }
+.bottom_name .here_name::after { content: "丨"; padding-left: .2rem; color: #221814;}
 .sifting { width: 84%; left: 8%; position: absolute; bottom: .4rem; height: .88rem; background: #FF4E38; line-height: .88rem; color: #FFFFFF; margin-top: 2.6rem;}
 .xiala_box ul { overflow: auto;
     float: left;

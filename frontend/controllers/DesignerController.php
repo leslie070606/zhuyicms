@@ -114,7 +114,11 @@ class DesignerController extends Controller{
 	//搜索设计师
 	public function actionHunt(){
 		$request = Yii::$app->request;
-		$data = array(1,2,3,4,5);
+		if($request->isAjax){
+			$searchKey = Yii::$app->request->get('search_key'); 
+		}
+		$designerM = new \frontend\models\DesignerBasic();
+		$data = $designerM->findBySql("SELECT * FROM zy_designer_basic WHERE name LIKE '%". $searchKey . "%'");
 		return $this->render('hunt',['data' => $data]);
 	}
 }

@@ -7,8 +7,9 @@ use frontend\models;
 
 class MyController extends Controller{
 	//收藏设计师
+	public $layout = false;
+
     public function actionCollect(){
-		echo ("1111111111111");
         $request = Yii::$app->request;
 		if(!$request->isAjax){
 			return false;
@@ -37,6 +38,27 @@ class MyController extends Controller{
         $ret = $collectModel->find()->where(['user_id' => $userId,'designer_id' => $designerId,'status' => 
 \frontend\models\CollectDesigner::STATUS_OK])->all()->count();
 		*/
+		//如果针对此设计师，已经收藏过,不重复收藏。
+        $ret = $collectModel->find()->where(['user_id' => $userId,'designer_id' => $designerId,'status' => 
+\frontend\models\CollectDesigner::STATUS_OK])->all();
+		if(!empty($ret)){
+			return false;
+		}
+		
+		//在数据库中，针对此用户和设计师，已经有撤销收藏的记录，那么只更新，不重新插入数据
+		$ret = $collectModel->find()->where(['user_id' => $userId,'designer_id' => $designerId,'status' => \frontend\models\CollectDesigner::STATUS_DELETE])->all();
+		if(!empty($ret)){
+			$set = array(
+				'status'  		=> \frontend\models\CollectDesigner::STATUS_OK,
+				'update_time'	=> time(),
+			);
+			$where = array(
+				'user_id'		=> $userId,
+            	'designer_id'   => $designerId,
+			);
+			return $collectModel->updateAll($set,$where);
+		}
+
 		$serviceTimes = 100;
         $data = array(
             'user_id'           => $userId,
@@ -46,7 +68,7 @@ class MyController extends Controller{
             'create_time'       => time(),
             'update_time'       => time(),
         );
-        $collectModel->opCollectDesigner($data);
+        $collectModel->collectDesigner($data);
 	}
 
     public function actionUncollect(){
@@ -58,6 +80,7 @@ class MyController extends Controller{
 		$params			= explode(',',$params);
 		$userId			= $params[0];
 		$designerId		= $params[1];
+
 		/*
         $userId         = isset($params['user_id'])? $params['user_id'] : 0;
         $designerId     = isset($params['designer_id'])? $params['designer_id'] : 0;
@@ -71,6 +94,7 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
             return false;
         }else{
             $now = time();
+			/*
             $data = array(
                 'user_id'           => $userId,
                 'designer_id'       => $designerId,
@@ -82,21 +106,69 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
 				'service_times'		=> 100,
 				'create_time'		=> $now,
                 'update_time'       => $now,
-            );
-            $collectModel->opCollectDesigner($data);
+            );*/
+			$where = array(
+                'user_id'           => $userId,
+                'designer_id'       => $designerId,
+			);
+			$set = array(
+                'status'            => \frontend\models\CollectDesigner::STATUS_DELETE,
+                'update_time'       => $now,
+			);
+			
+            $collectModel->unCollectDesigner($set,$where);
        }
 	}
 
-	public function actionGetCollectDesigners(){
-        $request = Yii::$app->request();
-        if(empty($request)){
-            return false;
-        }
-        $params         = $request->post();
-        $userId         = isset($params['user_id'])? $params['user_id'] : 0;
+	public function actionAll(){
+		$data = array();
+		
+		return $this->render('collect',['data' => $data]);
+	}
+
+	public function actionShow(){
+        $request = Yii::$app->request;
+		if(!$request->isAjax){
+			return -1;
+		}
+
+        //$userId         = isset($params['user_id'])? $params['user_id'] : 0;
+		$userId 		= 1;
 		$collectM       = new \frontend\models\CollectDesigner();
 		$data			= $collectM->getCollectDesignerById($userId);
 
-		return $this->render('collect',['data' => $data]);
+		if(empty($data)){
+			return -1;
+		}else{
+			foreach($data as $d){
+				$designerId 		= $d['designer_id'];
+				//设计师个人主页的跳转路径返回给前端
+				$redirectUrl 		= Yii::getAlias('@web') . '/index.php?r=designer/index&&params=' . $designerId;
+				$designerBasicModel = new \frontend\models\DesignerBasic();
+        		$imageModel 		= new \frontend\models\Images();
+        		$artsetsModel 		= new \frontend\models\Artsets();
+
+				$ret 				= $designerBasicModel->findOne($designerId);
+				//设计师名字，标签
+				$name 				= $ret->name;
+				$tag  				= $ret->tag;
+			    $ret 				= $imageModel->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT,$designerId);
+            	$headPortrait   	= !empty($ret)? $ret->url : "";
+		        $ret   				= $imageModel->getImage(\frontend\models\Images::IMAGE_DESIGNER_BACKGROUND,$designerId);
+				$background			= !empty($ret)? $ret->url : "";
+
+
+				$designerRet = array(
+                	'designer_id'   => $designerId,
+                	'name'          => $name,
+                	'tag'           => $tag,
+                	'head_portrait' => $headPortrait,
+					'background'	=> $background,
+					'redirect_url'	=> $redirectUrl,
+            	);
+            	$finalData[] 		= $designerRet;
+			}
+			return json_encode($finalData);
+		}
 	}
 }

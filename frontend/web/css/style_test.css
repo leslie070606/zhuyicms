@@ -1,13 +1,31 @@
-body { overflow: hidden;}
-.style_box { padding-top: .88rem;}
-.style_box .style_here { display: none;}
-.style_box>.active { display: block;}
-.style_here>div { overflow: hidden; margin-bottom: .2rem;}
-.style_here img { width: 100%;}
-.style_title { font-size: .48rem; text-align: center; margin: .2rem 0; display: block; width: 100%;}
-.style_title .nuber { font-size: .28rem;}
-.style_here .foin { border: 2px solid #ff0; box-sizing: border-box;}
+.style_text_boxs { max-width: 500px; margin:0 auto; font-size: .24rem; position: absolute; left: 0; right: 0;}
+.style_box { padding-top: .4rem; }
+.style_box .style_here { display: none; float: left; width: 100%;}
+.style_here>div,#chose_style>div { float: left; width: 100%; overflow: hidden; position: relative;}
+.style_here>div img,#chose_style>div img { float: left; width: 100%; }
+.style_box>.active { display: block; }
+.style_here img,#chose_style img{ width: 100%;}
+.style_title { font-size: .48rem; text-align: center; display: block; width: 100%;}
+.here_div_bota,.here_div_botb { position: absolute; left: 0; z-index: 9; bottom: 0; height: .88rem;  width: 100%;}
+.here_div_botb { line-height: .88rem; z-index: 10; text-indent: .3rem;}
+.here_div_bota { background: #FFFFFF; opacity: .8;}
+.nuber { font-size: .28rem; display: block; text-align: center; margin: .2rem auto; color: #9f9fa0;}
+#new_nuber { color: #FF4E38;}
+.style_here .foin,#chose_style .active { border: 2px solid #FF4E38; box-sizing: border-box;}
+.bot_nac { display: block; text-align: center; margin: .8rem auto;}
+.nac_a { position: relative; padding-right: .8rem;}
+.nac_a::before {
+	content: "|";
+	position: absolute;
+	right: .4rem;
+	
+}
+.box_title { padding: .4rem 0; font-size: .32rem; text-align: center; font-weight: bold;}
 
+.chose_btn { width: 84%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #C9C9CA; line-height: .88rem; margin: .8rem 8% .8rem 8%; clear: both; float: left;}
+.chose_btn.checkbox { background: #FF4E38;}
+.center_nameaa a { display: block; margin-bottom: .8rem; color: #9F9FA0; text-align: center;}
+/*loading*/
 #imgaa { -moz-animation:rotate 2.5s infinite linear;
             -webkit-animation:rotate 2.5s infinite linear;
             animation:rotate 2.5s infinite linear;}
@@ -19,7 +37,7 @@ body { overflow: hidden;}
             animation:rotate 2.5s infinite linear 1s;} 
 #imgad { -moz-animation:rotate 2.5s infinite linear 1.5s;
             -webkit-animation:rotate 2.5s infinite linear 1.5s;
-            animation:rotate 2.5s infinite linear 1.5s;}   
+            animation:rotate 2.5s infinite linear 1.5s;} 
 #imgae { -moz-animation:rotate 2.5s infinite linear 2s;
 	            -webkit-animation:rotate 2.5s infinite linear 2s;
 	            animation:rotate 2.5s infinite linear 2s;}  	                                      

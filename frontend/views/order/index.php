@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		 <meta charset="utf-8">
+	 	<meta charset="utf-8">
 	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <title>个人中心</title>
 	    <link rel="stylesheet" href="css/gloab.css" />
@@ -17,8 +17,6 @@
 	<body>
 		<section class="user_box">
 			<header class="header_top iconfont icon-logo">
-				
-				<!--<input id="ipt" type="text" value="0" />-->
 				<span class="top_right iconfont icon-gongneng"></span>
 			</header>
 			<section class="down_right">
