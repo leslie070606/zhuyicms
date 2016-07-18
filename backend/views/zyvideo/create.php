@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Project */
+/* @var $model common\models\ZyVideo */
 
-$this->title = 'Create Project';
-$this->params['breadcrumbs'][] = ['label' => 'Projects', 'url' => ['index']];
+$this->title = 'Create Zy Video';
+$this->params['breadcrumbs'][] = ['label' => 'Zy Videos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="project-create">
+<div class="zy-video-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

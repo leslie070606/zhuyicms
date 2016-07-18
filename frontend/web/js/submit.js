@@ -8,6 +8,7 @@ $(function(){
 	 		get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
 	 	};
 	 });
+<<<<<<< HEAD
 	 touch.on(".add_img","tap",function(ev){
 	 	var length=$(ev.currentTarget).siblings().length;
 	 	if(length<10){
@@ -19,6 +20,10 @@ $(function(){
 	 	};
 	 });
 	
+=======
+	
+	 
+>>>>>>> master
 	 $("body").on("click",".here_img_box li i",function(ev){
 	 		$(this).parents("li").remove();
 	 });

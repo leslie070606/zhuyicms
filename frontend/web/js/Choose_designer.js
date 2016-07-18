@@ -61,11 +61,28 @@ $(function(){
 				var top=$("#topa").offset().top; 
 				$(window).scrollTop(top)
 			}else{
-				$(".designer_box>.pro_here").addClass("look_see");
+				$(".designer_box>.pro_here").show();
 				
 				$(".click_more").html("最多从中选择三位优先匹配<br>  更多设计师,住艺会帮你人工匹配")
 				var top=$("#topb").offset().top	;
 					$(window).scrollTop(top);
 			}
 		})
+                
+                touch.on(".navv_tj","tap",function(ev){
+                    var html="";
+                    var length=$(".pro_here .icon-xuanzhong").length;
+                    $(".pro_here .icon-xuanzhong").each(function(index){
+                         var val= $(this).parents(".pro_here").attr("value_id");
+                        if(index==length-1){
+                             html+=val;
+                        }else{
+                             html+=val+"$";
+                        }
+                     
+                      
+                    })
+                    alert(html);
+                })
+                
 });

@@ -73,10 +73,15 @@
 .see_more a {
     color: #9f9fa0;
 }
+<<<<<<< HEAD
 
 
 
 
+=======
+.bot_btn_aa { text-align: center; position: relative; margin: .8rem 0 1.2rem 0; float: left; width: 100%;}
+.bot_btn_aa span { width: 1.8rem; height: .56rem; line-height: .56rem; background:#ff4e38; color:#ffffff; position: absolute; left: 50%; margin-left: -.9rem;}
+>>>>>>> master
 
 
 

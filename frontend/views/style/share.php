@@ -2,7 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+
         <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
     </head>
     <body>
         <script type="text/javascript">
@@ -21,7 +24,7 @@
                 serverId: []
             };
             wx.ready(function () {
-               
+
                 wx.checkJsApi({
                     jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
                     success: function (res) {
@@ -74,39 +77,54 @@
                     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                     success: function (res) {
-                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+
+                        $("#w").attr("src", res.localIds);
+                        alert(res.localIds);
+                        //images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
 
                     }
                 });
                 document.getElementById('upload').onclick = function () {
-                    alert(88888);
+                    //alert(88888);
                     // 上传图片
                     wx.uploadImage({
-                        localId: images.localId, // 需要上传的图片的本地ID，由chooseImage接口获得
+                        localId: $("#w").attr("src"), // 需要上传的图片的本地ID，由chooseImage接口获得
                         isShowProgressTips: 1, // 默认为1，显示进度提示
                         success: function (res) {
-//                        var serverId = res.serverId; // 返回图片的服务器端ID
+                            serverId = res.serverId; // 返回图片的服务器端ID
 //                        var html = document.getElementById("a");
 //                        html.innerHTML = serverId;
-                            alert(123);
+                            alert(serverId);
 
                         }
                     });
-                }
+                };
 
-//                wx.downloadImage({
-//                    serverId: '1237378768e7q8e7r8qwesafdasdfasdfaxss111', // 需要下载的图片的服务器端ID，由uploadImage接口获得
-//                    isShowProgressTips: 1, // 默认为1，显示进度提示
-//                    success: function (res) {
-//                        var localId = res.localId; // 返回图片下载后的本地ID
-//                        alert(localId);
-//                    }
-//                });
-            })
+
+                document.getElementById('download').onclick = function () {
+
+                    wx.downloadImage({
+                        serverId: serverId, // 需要下载的图片的服务器端ID，由uploadImage接口获得
+                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                        success: function (res) {
+                            var localId = res.localId; // 返回图片下载后的本地ID
+                           $("#d").attr("src",localId);
+                        }
+                    });
+                };
+            });
 
         </script>
         <button id="upload" style="display: block;margin: 2em auto; width: 200px; height: 50px;">上传接口测试</button>
         <span style="font-size: 45px; font-weight: 15px;" id="a">登录成功!</span>
+
+
+        <button id="download" style="display: block;margin: 2em auto; width: 200px; height: 50px;">下载接口测试</button>
+
+        <img src="" id="w"/>**************************************************************
+
+        <img src="" id="d"/>
+
     </body>
 </html>
 

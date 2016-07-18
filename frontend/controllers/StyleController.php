@@ -9,18 +9,17 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
  * StyleController implements the CRUD actions for Style model.
  */
-class StyleController extends Controller
-{   
-    public $layout=false;
+class StyleController extends Controller {
+
+    public $layout = false;
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -35,82 +34,94 @@ class StyleController extends Controller
      * Lists all Style models.
      * @return mixed
      */
-    public function actionIndex()
-    {   
+    public function actionIndex() {
         $searchModel = new StyleSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
-    
-    public function actionWechat(){
+
+    public function actionChoicestyle() {
         
+        if(Yii::$app->request->get('g')){
+            
+            $styleModel = new Style();
+            $styleModel->user_id = 1;
+            $styleModel->choice_style = Yii::$app->request->get('g');
+            $res = $styleModel->save();
+            
+            return $res;
+        }
+        
+        return $this->render('choicestyle');
+    }
+
+    public function actionWechat() {
+
         return $this->renderPartial('wechat');
     }
 
-        //风格测试
-    public function actionTest(){
+    //风格测试
+    public function actionTest() {
         echo "ok";
         return $this->render('style_test');
     }
-    
+
     //风格测试报告
-    public function actionReport(){
-        
+    public function actionReport() {
+
         //Yii::$app->request->post();
         $newdata = Yii::$app->request->get('newdata');
         $style = explode(',', $newdata);
-        
+
         $jsonstyle = json_encode($style);
-        
+
         $model = new Style();
-        
+
         $model->user_id = 1;
         $model->type = $jsonstyle;
         $v = $model->save();
-        
+
         $num = $style[0] + $style[2] + $style[4];
-        
+
         $styleArr = array(
-            $style[1] => $style[0]/$num*100,
-            $style[3] => $style[2]/$num*100,
-            $style[5] => $style[4]/$num*100,
+            $style[1] => $style[0] / $num * 100,
+            $style[3] => $style[2] / $num * 100,
+            $style[5] => $style[4] / $num * 100,
         );
         //echo "<pre>";
         //print_r($model);
-        return $this->render('report',['v'=>$v]);
+        return $this->render('report', ['v' => $v]);
     }
-    
+
     //风格报告分享
-    public function actionShare(){
-        
+    public function actionShare() {
+
         $tokenModel = new \app\components\Token();
-        
+
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
-        
-        return $this->render('share',['jsarr'=>$jsarr]);
+
+        return $this->render('share', ['jsarr' => $jsarr]);
     }
-    
+
     //微信授权
-    public function actionShou(){
-       $code = $_GET['code'];
-       
-       $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=".$code."&grant_type=authorization_code";
-       
-       $res = $this->doCurlGetRequest($url);
-       
-       $res = json_decode($res,TRUE);
-       
-       $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=".$res['access_token']."&openid=".$res['openid']."";
-       $userinfo = $this->doCurlGetRequest($urlUser);
-       echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-       print_r(json_decode($userinfo,TRUE));
-       
-       
+    public function actionShou() {
+        $code = $_GET['code'];
+
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
+
+        $res = $this->doCurlGetRequest($url);
+
+        $res = json_decode($res, TRUE);
+
+        $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
+        $userinfo = $this->doCurlGetRequest($urlUser);
+        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+        print_r(json_decode($userinfo, TRUE));
     }
 
     /**
@@ -118,10 +129,9 @@ class StyleController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -130,15 +140,14 @@ class StyleController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Style();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->style_id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -149,15 +158,14 @@ class StyleController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->style_id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -168,8 +176,7 @@ class StyleController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -182,15 +189,14 @@ class StyleController extends Controller
      * @return Style the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Style::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
         if ($url == "" || $timeout <= 0) {
             return false;
@@ -210,4 +216,5 @@ class StyleController extends Controller
 
         return curl_exec($con);
     }
+
 }

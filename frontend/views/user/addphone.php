@@ -49,10 +49,10 @@ use yii\helpers\Html;
 
                 <span class="huoqu djser" onclick="sendmsg()">获取验证码</span>
             </div>
-            <div for=""><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
+            <input type="hidden" value="" id="phonestr" name="phonestr" />
+               <div for=""><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <?= Html::endForm(); ?>
         </section>
-
     </body>
 </html>
 <script type="text/javascript">
@@ -66,7 +66,9 @@ use yii\helpers\Html;
             //dataType: 'json',
             data: $form.serialize(),
             success: function (data) {
-                alert(data);
+                
+                $('#phonestr').val(data);
+           
             }
         });
     }

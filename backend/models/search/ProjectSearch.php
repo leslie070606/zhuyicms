@@ -5,12 +5,12 @@ namespace backend\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Project;
+use common\models\ZyProject;
 
 /**
- * ProjectSearch represents the model behind the search form about `backend\models\Project`.
+ * ProjectSearch represents the model behind the search form about `common\models\ZyProject`.
  */
-class ProjectSearch extends Project
+class ProjectSearch extends ZyProject
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ProjectSearch extends Project
     public function rules()
     {
         return [
-            [['project_id', 'user_id', 'province', 'city', 'house_type', 'completion_time', 'service_item', 'generic_require', 'status', 'createtime', 'updatetime'], 'integer'],
-            [['room_area', 'budget_ceiling', 'description', 'residential_district', 'photo'], 'safe'],
+            [['project_id', 'user_id'], 'integer'],
+            [['city', 'address', 'compound', 'decoration_type', 'covered_area', 'use_area', 'budget_design_work', 'budget_design', 'budget_ruan', 'budget_ying', 'budget_yuanlin', 'work_time', 'home_type', 'project_status', 'service_type', 'home_img', 'favorite_img', 'designer_level', 'match_json', 'description', 'project_tags'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ProjectSearch extends Project
      */
     public function search($params)
     {
-        $query = Project::find();
+        $query = ZyProject::find();
 
         // add conditions that should always apply here
 
@@ -61,22 +61,29 @@ class ProjectSearch extends Project
         $query->andFilterWhere([
             'project_id' => $this->project_id,
             'user_id' => $this->user_id,
-            'province' => $this->province,
-            'city' => $this->city,
-            'house_type' => $this->house_type,
-            'completion_time' => $this->completion_time,
-            'service_item' => $this->service_item,
-            'generic_require' => $this->generic_require,
-            'status' => $this->status,
-            'createtime' => $this->createtime,
-            'updatetime' => $this->updatetime,
         ]);
 
-        $query->andFilterWhere(['like', 'room_area', $this->room_area])
-            ->andFilterWhere(['like', 'budget_ceiling', $this->budget_ceiling])
+        $query->andFilterWhere(['like', 'city', $this->city])
+            ->andFilterWhere(['like', 'address', $this->address])
+            ->andFilterWhere(['like', 'compound', $this->compound])
+            ->andFilterWhere(['like', 'decoration_type', $this->decoration_type])
+            ->andFilterWhere(['like', 'covered_area', $this->covered_area])
+            ->andFilterWhere(['like', 'use_area', $this->use_area])
+            ->andFilterWhere(['like', 'budget_design_work', $this->budget_design_work])
+            ->andFilterWhere(['like', 'budget_design', $this->budget_design])
+            ->andFilterWhere(['like', 'budget_ruan', $this->budget_ruan])
+            ->andFilterWhere(['like', 'budget_ying', $this->budget_ying])
+            ->andFilterWhere(['like', 'budget_yuanlin', $this->budget_yuanlin])
+            ->andFilterWhere(['like', 'work_time', $this->work_time])
+            ->andFilterWhere(['like', 'home_type', $this->home_type])
+            ->andFilterWhere(['like', 'project_status', $this->project_status])
+            ->andFilterWhere(['like', 'service_type', $this->service_type])
+            ->andFilterWhere(['like', 'home_img', $this->home_img])
+            ->andFilterWhere(['like', 'favorite_img', $this->favorite_img])
+            ->andFilterWhere(['like', 'designer_level', $this->designer_level])
+            ->andFilterWhere(['like', 'match_json', $this->match_json])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'residential_district', $this->residential_district])
-            ->andFilterWhere(['like', 'photo', $this->photo]);
+            ->andFilterWhere(['like', 'project_tags', $this->project_tags]);
 
         return $dataProvider;
     }

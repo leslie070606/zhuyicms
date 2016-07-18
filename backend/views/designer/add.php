@@ -253,6 +253,18 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'city', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'city']) ?>
                     <?= Html::error($modelwork, 'city', ['class' => 'error']); ?>
                 </div>
+                
+                <div class="form-group">
+                    <label for="matching">设计师配合度</label>
+                    <?= Html::activeInput('text', $modelwork, 'matching', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'matching']) ?>
+                    <?= Html::error($modelwork, 'matching', ['class' => 'error']); ?>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service_city">所服务的城市</label>
+                    <?= Html::activeInput('text', $modelwork, 'service_city', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'service_city']) ?>
+                    <?= Html::error($modelwork, 'service_city', ['class' => 'error']); ?>
+                </div>
 
                 <div class="form-group has-warning">
                     <label for="customer">设计师客户对象</label>
@@ -318,7 +330,13 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control', 'placeholder' => '范围', 'id' => 'charge']) ?>
                     <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="charge_work">设计费+施工收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeholder' => '范围', 'id' => 'charge_work']) ?>
+                    <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
+                </div>
+                
                 <div class="form-group">
                     <label for="charge_ls100">设计费收费标准1</label>
                     <?= Html::activeInput('text', $modelwork, 'charge_ls100', ['class' => 'form-control', 'placeholder' => '100平米以下', 'id' => 'charge_ls100']) ?>

@@ -247,7 +247,19 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'city', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'city']) ?>
                     <?= Html::error($modelwork, 'city', ['class' => 'error']); ?>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="matching">设计师配合度</label>
+                    <?= Html::activeInput('text', $modelwork, 'matching', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'matching']) ?>
+                    <?= Html::error($modelwork, 'matching', ['class' => 'error']); ?>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service_city">所服务的城市</label>
+                    <?= Html::activeInput('text', $modelwork, 'service_city', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'service_city']) ?>
+                    <?= Html::error($modelwork, 'service_city', ['class' => 'error']); ?>
+                </div>
+                
                 <div class="form-group has-warning">
                     <label for="customer">设计师客户对象</label>
                     <?= Html::activeInput('text', $modelwork, 'customer', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'customer']) ?>
@@ -318,6 +330,12 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control', 'placeholder' => '范围', 'id' => 'charge']) ?>
                     <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
                 </div>
+                
+                <div class="form-group">
+                    <label for="charge_work">设计费+施工收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeholder' => '范围', 'id' => 'charge_work']) ?>
+                    <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
+                </div>
 
                 <div class="form-group">
                     <label for="charge_ls100">设计费收费标准1</label>
@@ -365,6 +383,12 @@ use yii\helpers\Html;
                     <label for="nowork_time">不能接活时段</label>
                     <?= Html::activeInput('text', $modelwork, 'nowork_time', ['class' => 'form-control', 'placeholder' => '时段', 'id' => 'nowork_time']) ?>
                     <?= Html::error($modelwork, 'nowork_time', ['class' => 'error']); ?>
+                </div>
+                
+                <div class="form-group has-warning">
+                    <label for="nowork_time2">不能接活时段2</label>
+                    <?= Html::activeInput('text', $modelwork, 'nowork_time2', ['class' => 'form-control', 'placeholder' => '时段', 'id' => 'nowork_time2']) ?>
+                    <?= Html::error($modelwork, 'nowork_time2', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
@@ -435,7 +459,7 @@ use yii\helpers\Html;
         var $form = $('#form-work');
 
         $.ajax({
-            url: $form.attr('action')+'&id='+<?= $did?>,
+            url: $form.attr('action')+'?id='+<?= $did?>,
             type: 'post',
             //dataType: 'json',
             data: $form.serialize(),
