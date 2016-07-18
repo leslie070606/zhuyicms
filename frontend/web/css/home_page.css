@@ -1,5 +1,4 @@
 body {  padding-bottom: 1.88rem;}
-
 .page_banner { width: 100%; position: relative; overflow: hidden; color: #FFFFFF;}
 .page_banner .banner_img { width: 100%;  float: left;}
 .page_banner>div { position: absolute; width: 100%; text-align: center;}
@@ -18,12 +17,14 @@ body {  padding-bottom: 1.88rem;}
 .Basic_Info { clear: both; margin-top: .8rem; padding-bottom: 2.4rem;   float: left; width: 100%;}
 
 
-.page_bottom { position: fixed; max-width: 640px; margin: 0 auto; left: 0; right: 0; background: #FFFFFF; border-top: 1px solid #eeefef; z-index: 99999999; font-size: .26rem; width: 100%; bottom: 0px; left: 0; height: .88rem; line-height: .88rem;}
+.page_bottom { position: fixed; max-width: 500px; margin: 0 auto; left: 0; right: 0; background: #FFFFFF; border-top: 1px solid #eeefef; z-index: 99999999; font-size: .26rem; width: 100%; bottom: 0px; left: 0; height: .88rem; line-height: .88rem;}
 .page_bottom .botb a { color:#FFFFFF ;}
 .page_bottom .botb {width: 50%; background: #ff4e38;}
 .page_bottom .botb>span { font-size: .24rem;}
-
-.topb { width: 100%; float: left; overflow: hidden; margin-top: .2rem;}
+.post_title { display: block; position: relative; height: .66rem; overflow: hidden; text-align: center;}
+.post_title span { width: 2.5rem; top: 0rem; z-index: 9999; position: absolute; height: .66rem; font-size: .32rem; line-height: .66rem; left: 50%; margin-left: -1.25rem;}
+.post_title span a { color: #FFFFFF; font-weight: bold; display: block; position: absolute; width: 100%; z-index: 99;}
+.topb { width: 100%; float: left; overflow: hidden;}
 .topb>span { float: left; width: 100%; font-size: .24rem;}
 .topb>div>Span { margin-right: .4rem; float: left; line-height: .36rem;}
 .page_bottom .bota {width: 25%;}
@@ -34,7 +35,7 @@ body {  padding-bottom: 1.88rem;}
 .info_here { overflow: hidden; margin-bottom: .4rem;}
 .info_here .cccc { color:#9F9FA0; font-size: .24rem;}
 .info_here .zuop { margin-right: .4rem;}
-.Basic_Info_box { clear: both;float: left;width: 100%; position: relative; top: 1.06rem;}
+.Basic_Info_box { clear: both;float: left;width: 100%; position: relative; top: .4rem;}
 .info_here_left { font-size: .24rem;  float: left; width: 26%; text-indent: .3rem;}
 .info_here_right { font-size: .2rem; float: right; width: 74%;}
 .Basic_Info_box .red { color: #ff4f38;}
@@ -44,22 +45,26 @@ body {  padding-bottom: 1.88rem;}
 .standard::before { background: #ff4f38;}
 
 .addition::before {.addition::before; background: #9f9fa0;}
+
 .bottom_name, .bottom_referral {
     left: 0 !important;
 }
 .sc_bot .active { color: #FF4E38;}
 
-
-
-
-
-
-
-
-
-
-
-
+.check_charges { font-size: .24rem; color: #9f9fa0; position: fixed; max-width: 92%; left: 0; right: 0; bottom: -8rem; background: #FFFFFF; line-height: 150%; margin: auto; z-index: 99999; padding: .8rem 4% 1.68rem 4%;}
+.check_charges>div { float: left; width: 100%;}
+.check_charges .charges_title {color: #221814;}
+.check_charges .charges_left { float: left;}
+.check_charges .charges_right{ float: right;}
+.charges_hui { margin: .4rem auto .2rem; color: #C9C9Ca;}
+.charges_huia { color: #c9c9ca}
+.check_charges .red { color: #FF4E38;}
+.chargesaas { margin: .2rem auto .4rem;}
+.charges_zd { position: fixed; display: none; width: 100%; max-width: 500px; height: 100%; left: 0; right: 0; margin: auto; top: 0; z-index: 99998; background: #000000; opacity: .0;}
+.here_bottom { line-height: .88rem;    font-size: .24rem; text-indent: .3rem;}
+ .pro_title .titl_span { top: .01rem;}
+.pro_here { margin-top: 0;}
+.charges_huibbb { color: #9F9FA0 !important;}
 
 
 

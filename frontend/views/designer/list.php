@@ -14,12 +14,10 @@
 	<script type="text/javascript" src="js/designer_list.js" ></script>
 </head>
 <body>
-<!--	<input id="ipt" value="0"  style="position: fixed; top: 140px; left: 40px; z-index: 99999;"/>
--->	<div class="des_box">
+	<div class="des_box">
 		<header class="header_top iconfont icon-logo">
-			<a href="hunt.html" style="color: #ffffff;"><span class="top_left iconfont icon-sousuo"></span></a>
+			<a href="<?= 'index.php?r=designer/hunt' ?>" style="color: #ffffff;"><span class="top_left iconfont icon-sousuo"></span></a>
 			<span class="top_lefta iconfont icon-shaixuan"></span>
-			<!--<input id="ipt" type="text" value="0" />-->
 			<span class="top_right iconfont icon-gongneng"></span>
 		</header>
 		<section class="down_right">
@@ -51,18 +49,18 @@
 		</div>
 		<div class="designer_box">
 			<?php
-				foreach($data as $k => $v){
-					//var_dump($v);
+				foreach($data as $v){
 					//获取单个设计师的名字，头像，作品等信息
+					var_dump($v);
+					$designerId		= $v['designer_id'];
 					$name 			= $v['name'];
 					$tag			= $v['tag'];
 					$headPortrait 	= $v['head_portrait'];
 					$artPath 		= $v['art']->art_path;
-					//var_dump($artPath);
+
 					$html = <<<HTML
 						<div class="pro_here iconfont">
-							<a href="www.sina.com.cn"><img class="here_img" src="$artPath" />
-							</a>
+							<img class="here_img" src="$artPath" designer_id="$designerId"/>
 							<div class="here_zhe"></div>
 							<div class="here_botaa"></div>
 							<div class="here_bottom line_center">
@@ -81,26 +79,41 @@ HTML;
 					echo $html;	
 				}
 			?>
-					<div class="pro_here iconfont">
-						<a href="#"><img class="here_img" src="img/home_page/1.jpg" /></a>
-						<div class="here_zhe"></div>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							<div class="here_head">
-								<img src="img/home_page/1.jpg" />
-							</div>
-			
-							<div class="bottom_name">
-								<span class="here_name">Keiji Ashizawa</span>
-							</div>
-							<div class="bottom_label bottom_referral">
-								<span>台湾暖男</span><span>设计大咖</span>
-							</div>
-							
-							
-						</div>
-					</div><!--pro_here end-->
 		</div>
 	</div>
 </body>
 </html>
+
+<script type='text/javascript'>
+touch.on(".sifting","tap",function(ev){
+	var height=$(window).height();
+    var get="室内设计师,beijing";
+    $.ajax({
+   		type: "GET",
+        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list';?>"+"&&params="+get,
+        data: "",
+        success: function(data){
+        	console.log("js output...........");
+            console.log(data);
+			$(".sousuo_box").animate({marginTop:-height},400);
+        }
+    })
+
+})
+touch.on(".pro_here>img","tap",function(ev){
+	var designer_id = $(ev.currentTarget).attr("designer_id");
+    $.ajax({
+   		type: "GET",
+        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/index';?>"+"&&params="+designer_id,
+        data: "",
+        success: function(data){
+        	console.log("js output...........");
+            console.log(data);
+			window.location.href="<?php echo Yii::getAlias('@web').'/index.php?r=designer/index';?>"+"&&params="+designer_id;
+        }
+    })
+});
+</script>
+
+
+

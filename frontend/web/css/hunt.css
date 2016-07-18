@@ -1,5 +1,4 @@
 .hunt_box { font-size: .24rem;}
-.hunt_title { position: absolute; width: 100%; height: .88rem; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: .36rem; left: 0; top: 0;}
 .hunt_here { width: 100%;}
 .hunt_input { position: relative; width: 92%; margin-left: 4%; height: .88rem; background: #eeefef; box-sizing: border-box; border-right: .04rem solid #c9c9ca; margin: .4rem auto .8rem auto;}
 .hunt_input input { position: absolute; height: 100%; width: 100%; background: #EEEFEF; border: none; font-size: .24rem; outline: none; text-indent: .3rem;}

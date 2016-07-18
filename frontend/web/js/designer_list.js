@@ -15,9 +15,6 @@ $(function(){
 		}
 	})
 	
-	touch.on(".sifting","tap",function(ev){
-		$(".sousuo_box").animate({marginTop:-height},400);
-	})
 	touch.on(".xiala_sp","tap",function(ev){
 		if(get==0){
 			$(".xiala_ul").animate({height:"2.64rem"},400);
