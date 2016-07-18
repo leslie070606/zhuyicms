@@ -6,6 +6,37 @@ use yii\web\Controller;
 use frontend\models;
 
 class DesignerController extends Controller{
+	public function actionGet_designer_basic_info($designerId){
+		if(!isset($designerId)){
+			return false;
+		}
+
+		$designerM = new \frontend\models\DesignerBasic();	
+		$ret = $designerBasicModel->getDesignerById($designerId);
+		if(empty($ret)){
+			return false;
+		}
+	
+		//姓名,标签
+		$name 	= $ret->name;
+		$tag 	= $ret->tag;
+
+		$imageM	= new \frontend\models\Images();
+		$ret 	= $imageM->getImage(
+			\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT,$designerId);
+		if(empty($ret)){
+			return false;
+		}
+		$headPortrait = $ret->url;
+		
+		$data = array(
+			'name' 			=> $name,
+			'tag'			=> $tag,
+			'head_portrait' => $headPortrait,
+		);
+		
+		return json_encode($data);
+	}
 
 	public function actionIndex(){
 		//从上一个页面传过来，必须保证要有designer_id
