@@ -10,16 +10,6 @@ use yii;
 class UserController extends ZyuserController {
 
     public $layout = false;
-<<<<<<< HEAD
-    
-    //验证码
-    public static $phonecode;
-
-	public function __construct($id){
-		self::$phonecode = $id;
-	}
-=======
->>>>>>> master
 
     public function actionIndex() {
 
@@ -124,10 +114,7 @@ class UserController extends ZyuserController {
 
         if ($phone && $code) {//无提交读取页面
             if (!empty($userArr)) {
-<<<<<<< HEAD
-                echo self::$phonecode."yyyy";exit;
-                if (self::$phonecode == $code) {
-=======
+
                 //echo $phonestr;exit;
                 if ($phonestr == $code) {
                     $userModel = new User();
@@ -138,7 +125,7 @@ class UserController extends ZyuserController {
                     if (count($user)) {
                         $userModel->user_id = $user[0]['user_id'];
                     }
->>>>>>> master
+
                     // 存入用户信息
                     $userModel->openid = $userArr['openid'];
                     $userModel->nickname = $userArr['nickname'];
@@ -178,13 +165,7 @@ class UserController extends ZyuserController {
         $phone = Yii::$app->request->post('phone');
         //验证码
         $phonestr = $this->createNum();
-<<<<<<< HEAD
-        
-        
-       // self::$phonecode = '1234';
-=======
 
->>>>>>> master
         //实例化短信接口
         $sms = Yii::$app->Sms;
 
@@ -192,14 +173,10 @@ class UserController extends ZyuserController {
         //return $ret;
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
-<<<<<<< HEAD
-            self::$phonecode = $phonestr;
-        }
-        return self::$phonecode;
-=======
+
             return $phonestr;
         };
->>>>>>> master
+
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
