@@ -463,7 +463,6 @@
         that.tap = function (el, handler) {
             var startX,
                 startY;
-            
             if (s.tap) {
                 el.bind('touchstart', function (e) {
                     e.preventDefault();
@@ -472,11 +471,37 @@
                 }).bind('touchend', function (e) {
                     // If movement is less than 20px, fire the click event handler
                     if (Math.abs(getCoord(e, 'X') - startX) < 20 && Math.abs(getCoord(e, 'Y') - startY) < 20) {
-                         var html=$("#get_id .dw-sel .dw-i").html();
-		                    handler.call(this, e);
-		                      var val= $("#appTime").val();
-		                    $("#appTime").val(html+val);
+						var url=$(".foin_zy .true_btn").attr("confirm_time");
+
+  						var reg = /\d+/g;
+		                  var date=new Date;
+								 var year=date.getFullYear(); 
+		                        var html=$("#get_id .dw-sel .dw-i").html().match(reg);
+		                  handler.call(this, e);
+		                    	
+		                        var val= $("#appTime").val();
+		                       	var gettt=year+"/"+html[0]+"/"+html[1]+" "+val
+		                       	var datea = new Date(gettt);
+		                       	var time = datea.getTime();
+								var order=time+","+$(".foin_zy").attr("order_id");
+		                     // alert('123');
+
+							 $.ajax({
+		                      	type:"get",
+		                      	url:url+"&&params="+order,
+		                      	async:true,
+		                      	success:function(data){
+									alert(data);
+									console.log(data);
+		                      		var htmlll='<span class="jm_time">见面时间：'+html+val+'</span><span class="jm_money">见面地点：北京市光华路2号9层1003室</span>'
+		//		                    $("#appTime").val(html+val);
+									$(".foin_zy .true_time ,.foin_zy .leave_word").remove();
+									$(".foin_zy .right_type").html("待见面");
+									$(".foin_zy .jm_time").before(htmlll);
+		                      	}
+		                      });
                     }
+                    //确定时间按钮点击
                     tap = true;
                     setTimeout(function () {
                         tap = false;

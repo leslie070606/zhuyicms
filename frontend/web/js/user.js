@@ -1,7 +1,7 @@
 $(function(){
 //	$('.bxslidera').bxSlider({controls:false,auto:false,pause:5000,speed:800,gett:"user_tab",gettt:["订单","需求","收藏"]});
 	widtha=$("body").width();
-	var top=$(".nac_boxa").offset().top;
+	//var top=$(".nac_boxa").offset().top;
 	var topa=$(".header_top").height();
 	touch.on("body","touchmove",function(){
 		auto();
@@ -74,6 +74,10 @@ $(function(){
 //      event.preventDefault();
 //   }, false);
 
+ touch.on(".true_btn","tap",function(ev){
+ 	$(ev.currentTarget).parents(".zy_pp").addClass("foin_zy").siblings().removeClass("foin_zy");
+ });
+
 
 var currYear = (new Date()).getFullYear();	
 			var opt={};
@@ -96,9 +100,6 @@ var currYear = (new Date()).getFullYear();
 
 	
 		  
-		  	var optTime = $.extend(opt['time'], opt['default']);
-	
-		    //$("#appTime").mobiscroll(optTime).time(optTime);
-		    //$("#appTimea").mobiscroll(optTime).time(optTime);
-		   
+			var optTime = $.extend(opt['time'], opt['default'],{get:["7月6号","7月2号","7月3号"]});
+		    $(".true_btn").mobiscroll(optTime).time(optTime);
 });

@@ -68,4 +68,38 @@ class OrderController extends Controller{
 		$ret = $orderM->getOrdersByUserId($userId);
 		return $this->render("list",['data' => $ret]);
 	}
+
+	
+	public  function actionChange(){
+		$request = Yii::$app->request;
+		if(!$request->isAjax){
+			return false;
+		}
+		$params = $request->get('params');
+		$params = explode(',',$params);
+
+		$orderModel = new \frontend\models\Order();
+		$ret = $orderModel->getOrderById($orderId);
+		if(empty($ret)){
+			return false;
+		}
+		$orderStatus = $ret->status;
+		switch($orderStatus){
+			case \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME:
+				//从前台传过来的时间。
+				$appointmentTime = $params[0];
+				$newSts = \frontend\models\Order::STATUS_WAITING_MEETING;
+				$condition = ['order_id' => 3];
+				$data = [ 
+					'appointment_time' 	=> $appointmentTime,
+					'status' 			=> $newSts,
+					'update_time' 		=> time()
+				];
+
+			    $sql = "UPDATE zy_order SET status=$newSts WHERE order_id=$orderId";
+        		$ret = Yii::$app->db->createCommand($sql)->queryAll();
+				//$orderModel->updateOrder($data,$condition);
+				break;
+		}
+	}
 }
