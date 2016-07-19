@@ -39,24 +39,34 @@ class UserController extends ZyuserController {
                 if (!$session->isActive) {
                     $session->open();
                 }
+               // echo $user[0]['user_id'];exit;
                 //如果不是第一次登录
                 if (count($user)) {
+
+                    $session->set('user_id', $user[0]['user_id']);
                     //加ssion
                     echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                     echo "登陆成功!";
+                    echo $session->get('user_id');
                     exit;
                 } else {
                     //第一次登录添加
                     $userModel->phone = $phone;
                     $res = $userModel->save();
+
                     if ($res) {
                         //加session
                         // $session->set('uid', $userModel->user_id);
                         // 设置session时间
                         //Yii::$app->session->setCookieParams(['lifetime'=>3600]);
+
+                        $userId = $userModel->attributes['user_id'];
+                        $session->set('user_id', $userId);
+
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo $res;
                         echo "添加成功!";
+                        echo $session->get('user_id');
                         exit;
                     }
                 }

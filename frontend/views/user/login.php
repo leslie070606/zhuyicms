@@ -46,7 +46,7 @@ use yii\helpers\Html;
             <div class="auth_code login_ipt">
                 <?= \yii\helpers\Html::input('text', 'code', '', ['id' => 'code']); ?>
 
-                <span class="huoqu djser" onclick="sendmsg()">获取验证码</span>
+                <span class="huoqu djser truee" onclick="sendmsg()">获取验证码</span>
             </div>
             <div><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <div class="login_talk">
@@ -64,18 +64,23 @@ use yii\helpers\Html;
 </html>
 <script type="text/javascript">
     function sendmsg() {
-        var $form = $('#form-phone');
-    
-        $.ajax({
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/sendmsg' ?>",
-            type: 'post',
-            //dataType: 'json',
-            data: $form.serialize(),
-            success: function (data) {
-                //alert(data);
-                $('#phonestr').val(data);
+        if ($(".djser").hasClass("truee")) {
+            var $form = $('#form-phone');
 
-            }
-        });
+            $.ajax({
+                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/sendmsg' ?>",
+                type: 'post',
+                //dataType: 'json',
+                data: $form.serialize(),
+                success: function (data) {
+                    //alert(data);
+                    $('#phonestr').val(data);
+
+                }
+            });
+
+        } else {
+            return false;
+        }
     }
 </script>
