@@ -1,7 +1,7 @@
 <?php
 
 use common\models\ZyVideo;
-
+use yii\helpers\Url;
 $videoModel = new ZyVideo();
 ?>
 <!DOCTYPE html>
@@ -43,7 +43,7 @@ $videoModel = new ZyVideo();
                 <img src="img/index/indexa.jpg" />
                 <div class="banner_mesg">
                     <span class="mesg_spa">好设计在住艺</span>
-                    <span class="mesg_spb"><a href="demand_problem.html">匹配设计师</a></span>
+                    <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">匹配设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
@@ -131,7 +131,7 @@ $videoModel = new ZyVideo();
                     <span class="use_text use_two">风格测试  提交需求</span>
                     <span class=" iconfont icon-jiantou use_three"></span>
                 </div>
-                <span class="btn_bot"><a href="demand_problem.html">匹配设计师</a></span>
+                <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">匹配设计师</a></span>
             </section><!--use_zy end-->
             <section class="nav_bot">
 
