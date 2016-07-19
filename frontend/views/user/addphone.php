@@ -60,7 +60,8 @@ use yii\helpers\Html;
         if ($(".djser").hasClass("truee")) {
             var $form = $('#form-addphone');
             var phone = $("#phone").val().toString();
-            //alert(phone);
+            
+            alert(11111);
             $.ajax({
                 url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/sendmsg' ?>",
                 type: 'post',
