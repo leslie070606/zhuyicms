@@ -63,28 +63,17 @@ class Order extends ActiveRecord {
         $this->save();
     }
 
-    public function updateOrderById($id, $data) {
-        $ret = $this->findOne($id);
-        if (empty($ret)) {
-            return false;
-        }
-        if (empty($data) || !is_array($data)) {
-            return false;
-        }
-        $updateField = array_intersect($this->_field, array_keys($data));
-        foreach ($updateField as $k => $v) {
-            $ret->$v = $data[$v];
-        }
-
-        $ret->save();
-    }
-
-    public function updateOrder($condition, $data) {
+    public function updateOrder($data, $condition) {
         /*
           \app\models\Article::updateAll(['title' => 'change title'],['id' => 1]);
          */
+        //return $this->updateAll(['status' => 2],['order_id' => 3]);
         return $this->updateAll($data, $condition);
     }
+
+	public function updateOrderById($data,$orderId){
+		return $this->updateAll($data,['order_id' => $orderId]);
+	}
 
     public function setStatus($orderId, $status) {
         $order = $this->findOne($orderId);

@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	 	<meta charset="utf-8">
+		 <meta charset="utf-8">
 	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	    <title>个人中心</title>
 	    <link rel="stylesheet" href="css/gloab.css" />
 	    <link rel="stylesheet" href="css/user.css" />
-	    <link rel="stylesheet"  href="//at.alicdn.com/t/font_1467361951_3606887.css" />
+	    <link rel="stylesheet"  href="css/iconfont.css" />
+	    <link rel="stylesheet"  href="css/time/mobiscroll.css" />
 	    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-	    <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
+	       <script src="js/time/mobiscroll_002.js" type="text/javascript"></script>
+		<script src="js/time/mobiscroll_004.js" type="text/javascript"></script>
+		<link href="css/time/mobiscroll_002.css" rel="stylesheet" type="text/css">
+		<link href="css/time/mobiscroll.css" rel="stylesheet" type="text/css">
+		<script src="js/time/mobiscroll.js" type="text/javascript"></script>
+		<script src="js/time/mobiscroll_003.js" type="text/javascript"></script>
+		<script src="js/time/mobiscroll_005.js" type="text/javascript"></script>
+		<link href="css/time/mobiscroll_003.css" rel="stylesheet" type="text/css">
+	   <!-- <script type="text/javascript" src="js/jquery.bxslider.js" ></script>-->	
 		<script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
-		<script type="text/javascript" src="js/jquery.easy-pie-chart.js" ></script>
+		<!--<script type="text/javascript" src="js/jquery.easy-pie-chart.js" ></script>-->
 		<script type="text/javascript" src="js/gloab.js" ></script>
 		<script type="text/javascript" src="js/user.js" ></script>
+		
 	</head>
+
 	<body>
 		<section class="user_box">
 			<header class="header_top iconfont icon-logo">
@@ -48,10 +59,17 @@
 								echo("暂无订单\n");
 							}else{
 								foreach($data as $d){
+									$orderId	= $d['order_id'];
+									var_dump($orderId);
+
 									//获取设计师的头像，标签等信息。
 									$designerId = $d['designer_id'];
 									$designerM	= new \frontend\models\DesignerBasic();
 									$ret		= $designerM->getDesignerById($designerId);
+									//根据此订单查到的设计师ID，如果是找不到数据，接着下一次循环
+									if(empty($ret)){
+										continue;
+									}
 									$name		= $ret->name;
 									$tagStr		= $ret->tag;
 									$tagStr		= "hongkong,台湾小屌丝,设计小生";
@@ -76,10 +94,10 @@
 
 									//订单状态
 									$status 	= $d['status'];
-									$status		= 8;
+									//$status		= 1;
 									$statusMsg 	= \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
 									//订单类型，用户自动创建还是客服创建。
-									$orderType	= 1;
+									$orderType	= 0;
 									//$orderType	= $d['service_type'];
 									//用户创建并且待设计师确认
 									if($orderType == 0 && 
@@ -112,8 +130,9 @@
 HTML;
 									}elseif($orderType == 0 && 
 									$status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME){
+										$confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
 										$html = <<<HTML
-											<div class="zy_pp dd_here">
+											<div class="zy_pp dd_here" order_id = "$orderId">
 				  								<div class="here_bottom line_center">
 													<div class="here_head">
 														<img src="$headPortrait">
@@ -139,7 +158,7 @@ HTML;
 				  								<div class="true_time">
 													24小时内确认（住艺君提示：时间限量<br>
 													如未尽快确认则此时间段可能被其他客户抢走）
-				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text">
+				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text" confirm_time="$confirmTime">
 												</div>
 				  							</div>
 HTML;

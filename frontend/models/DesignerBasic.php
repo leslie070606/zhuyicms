@@ -4,7 +4,7 @@ use yii\db\ActiveRecord;
 
 class DesignerBasic extends ActiveRecord{
 	public static function tableName(){
-		return 'zy_designer_basic';
+		return 'zyj_designer_basic';
 	}
 
 	public function getDesignersCount(){

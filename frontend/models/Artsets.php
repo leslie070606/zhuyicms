@@ -16,6 +16,52 @@ class Artsets extends ActiveRecord{
 	}
 
 	public function getOneArtByDesignerId($designerId){
-		return $this->find()->where(['designer_id' => $designerId])->one();
+		$ret = $this->find()->where(['designer_id' => $designerId])->one();
+		if(empty($ret)){
+			return false;
+		}
+		
+		$topic 		= (isset($ret->topic) && !empty($ret->topic))? $ret->topic: '';
+		$brief 		= (isset($ret->brief) && !empty($ret->brief))? $ret->brief: '';
+		$location 	= (isset($ret->location) && !empty($ret->location))?
+						$ret->location: '';
+		$imageIds 	= (isset($ret->image_ids) && !empty($ret->image_ids))?
+						$ret->image_ids: '';
+		$imageUrl = array();
+		if(!empty($imageIds)){
+			$imageIdsArray = explode(',',$imageIds);
+			$imageModel = new \frontend\models\Images();
+			foreach($imageIdsArray as $id){
+				$ret = $imageModel->findOne($id);	
+				if(empty($ret)){
+					continue();
+				}
+				$imageUrl[] = $ret->url;
+			}
+		}
+		$videoIds 	= (isset($ret->viedo_ids) && !empty($ret->viedo_ids))?
+						$ret->viedo_ids: '';
+		$viedoUrl = array();
+		if(!empty($viedoIds)){
+	 		$viedoIdsArray = explode(',',$viedoIds);
+			$viedoModel = new \frontend\models\Viedos();
+			foreach($viedoIdsArray as $id){
+				$ret = $viedoModel->findOne($id);
+				if(empty($ret)){
+					continue();
+				}
+				$viedoUrl[] = $ret->url;
+			}
+		}
+
+		$data = array(
+			'topic' 	=> $topic,
+			'brief' 	=> $brief,
+			'location' 	=> $location,
+			'image_url'	=> $imageUrl,
+			'viedo_url' => $viedoUrl,
+		);
+		
+		return json_encode($data);
 	}
 }
