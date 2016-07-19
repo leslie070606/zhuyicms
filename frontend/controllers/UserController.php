@@ -33,7 +33,7 @@ class UserController extends ZyuserController {
             if ($phonestr == $code) {
                 $userModel = new User();
                 $user = $userModel->find()->where(['phone' => $phone])->all();
-                
+
                 //初始化session
                 $session = Yii::$app->session;
                 if (!$session->isActive) {
@@ -51,9 +51,7 @@ class UserController extends ZyuserController {
                     $res = $userModel->save();
                     if ($res) {
                         //加session
-
-                       // $session->set('uid', $userModel->user_id);
-                        
+                        // $session->set('uid', $userModel->user_id);
                         // 设置session时间
                         //Yii::$app->session->setCookieParams(['lifetime'=>3600]);
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
@@ -167,7 +165,8 @@ class UserController extends ZyuserController {
         $phonestr = $this->createNum();
 
         //实例化短信接口
-        $sms = Yii::$app->Sms;
+        //$sms = Yii::$app->Sms;
+        $sms = new Sms();
 
         $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
         //return $ret;
@@ -176,7 +175,6 @@ class UserController extends ZyuserController {
 
             return $phonestr;
         };
-
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {

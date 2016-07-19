@@ -72,8 +72,8 @@ use yii\helpers\Html;
             //dataType: 'json',
             data: $form.serialize(),
             success: function (data) {
-                //alert(data);
-                $('#phonestr').val(data);
+                alert(data);
+                //$('#phonestr').val(data);
 
             }
         });
