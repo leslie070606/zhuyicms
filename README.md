@@ -1,10 +1,13 @@
 一，使用YII2框架后台bckend/
+
 二，安装方法
+
 cd zhuyicms
 php init
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 composer install
 composer update
+
 三，修改代码
 path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
 
@@ -23,7 +26,8 @@ path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
         }
     }
     
-    
+ 四，修改 /zhuyicms/vendor/mdmsoft/yii2-admin/controllers/AssignmentController.php
+ public $usernameField = 'user_name';
 Yii 2 Advanced Project Template
 ===============================
 
