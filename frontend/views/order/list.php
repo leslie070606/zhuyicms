@@ -1,108 +1,108 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		 <meta charset="utf-8">
-	    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	    <title>个人中心</title>
-	    <link rel="stylesheet" href="css/gloab.css" />
-	    <link rel="stylesheet" href="css/user.css" />
-	    <link rel="stylesheet"  href="css/iconfont.css" />
-	    <link rel="stylesheet"  href="css/time/mobiscroll.css" />
-	    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-	       <script src="js/time/mobiscroll_002.js" type="text/javascript"></script>
-		<script src="js/time/mobiscroll_004.js" type="text/javascript"></script>
-		<link href="css/time/mobiscroll_002.css" rel="stylesheet" type="text/css">
-		<link href="css/time/mobiscroll.css" rel="stylesheet" type="text/css">
-		<script src="js/time/mobiscroll.js" type="text/javascript"></script>
-		<script src="js/time/mobiscroll_003.js" type="text/javascript"></script>
-		<script src="js/time/mobiscroll_005.js" type="text/javascript"></script>
-		<link href="css/time/mobiscroll_003.css" rel="stylesheet" type="text/css">
-	   <!-- <script type="text/javascript" src="js/jquery.bxslider.js" ></script>-->	
-		<script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
-		<!--<script type="text/javascript" src="js/jquery.easy-pie-chart.js" ></script>-->
-		<script type="text/javascript" src="js/gloab.js" ></script>
-		<script type="text/javascript" src="js/user.js" ></script>
-		
-	</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>个人中心</title>
+        <link rel="stylesheet" href="css/gloab.css" />
+        <link rel="stylesheet" href="css/user.css" />
+        <link rel="stylesheet"  href="css/iconfont.css" />
+        <link rel="stylesheet"  href="css/time/mobiscroll.css" />
+        <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script src="js/time/mobiscroll_002.js" type="text/javascript"></script>
+        <script src="js/time/mobiscroll_004.js" type="text/javascript"></script>
+        <link href="css/time/mobiscroll_002.css" rel="stylesheet" type="text/css">
+        <link href="css/time/mobiscroll.css" rel="stylesheet" type="text/css">
+        <script src="js/time/mobiscroll.js" type="text/javascript"></script>
+        <script src="js/time/mobiscroll_003.js" type="text/javascript"></script>
+        <script src="js/time/mobiscroll_005.js" type="text/javascript"></script>
+        <link href="css/time/mobiscroll_003.css" rel="stylesheet" type="text/css">
+   <!-- <script type="text/javascript" src="js/jquery.bxslider.js" ></script>-->	
+        <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
+        <!--<script type="text/javascript" src="js/jquery.easy-pie-chart.js" ></script>-->
+        <script type="text/javascript" src="js/gloab.js" ></script>
+        <script type="text/javascript" src="js/user.js" ></script>
 
-	<body>
-		<section class="user_box">
-			<header class="header_top iconfont icon-logo">
-				<span class="top_right iconfont icon-gongneng"></span>
-			</header>
-			<section class="down_right">
-				<ul>
-					<li><a href="index.html">首页</a></li>
-					<li><a href="designer_list.html">住艺设计师</a></li>
-					<li><a href="style_test.html">风格测试</a></li>
-					<li><a href="designer_list.html">使用指南</a></li>
-					<li><a href="user.html">我的住艺</a></li>
-					<li><a href="designer_list.html">意见反馈</a></li>
-					<li><a href="designer_list.html">退出登录</a></li>
-				</ul>
-			</section> 
-			<div class="down_right_zd"></div>
-			
-			<section id="user_box" class="custom">
-				<div class="user_top">
-					<span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
-					<span class="head_name">张三</span>
-					<span class="head_more">免费预约一次</span>
-				</div>
-				
-				
-				<ul class="bxslidera" id="nav_box">
-				<li>
-					<div class="dingdan">
-						<?php
-							if(empty($data) || !is_array($data)){
-								echo("暂无订单\n");
-							}else{
-								foreach($data as $d){
-									$orderId	= $d['order_id'];
-									var_dump($orderId);
+    </head>
 
-									//获取设计师的头像，标签等信息。
-									$designerId = $d['designer_id'];
-									$designerM	= new \frontend\models\DesignerBasic();
-									$ret		= $designerM->getDesignerById($designerId);
-									//根据此订单查到的设计师ID，如果是找不到数据，接着下一次循环
-									if(empty($ret)){
-										continue;
-									}
-									$name		= $ret->name;
-									$tagStr		= $ret->tag;
-									$tagStr		= "hongkong,台湾小屌丝,设计小生";
-									$tagArr		= explode(',',$tagStr);
-									$labelSpan  = '';
-									if(count($tagArr) == 1){
-										$labelSpan =  "<span>$tagArr[0]</span>";
-									}else{
-										foreach($tagArr as $t){
-											$lt = "<span>$t</span>";
-											$labelSpan .= $lt;
-										}
-									}
+    <body>
+        <section class="user_box">
+            <header class="header_top iconfont icon-logo">
+                <span class="top_right iconfont icon-gongneng"></span>
+            </header>
+            <section class="down_right">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="designer_list.html">住艺设计师</a></li>
+                    <li><a href="style_test.html">风格测试</a></li>
+                    <li><a href="designer_list.html">使用指南</a></li>
+                    <li><a href="user.html">我的住艺</a></li>
+                    <li><a href="designer_list.html">意见反馈</a></li>
+                    <li><a href="designer_list.html">退出登录</a></li>
+                </ul>
+            </section> 
+            <div class="down_right_zd"></div>
 
-									$zyImage	= new \frontend\models\Images();
-									$img 		= $zyImage->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT,$designerId);
-									if(!empty($img)){
-										$headPortrait = $img->url;
-									}else{
-										$headPortrait = "/img/home_page/banner_head.jpg";
-									}
+            <section id="user_box" class="custom">
+                <div class="user_top">
+                    <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
+                    <span class="head_name">张三</span>
+                    <span class="head_more">免费预约一次</span>
+                </div>
 
-									//订单状态
-									$status 	= $d['status'];
-									//$status		= 1;
-									$statusMsg 	= \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
-									//订单类型，用户自动创建还是客服创建。
-									$orderType	= 0;
-									//$orderType	= $d['service_type'];
-									//用户创建并且待设计师确认
-									if($orderType == 0 && 
-										$status == \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM){
-										$html = <<<HTML
+
+                <ul class="bxslidera" id="nav_box">
+                    <li>
+                        <div class="dingdan">
+                            <?php
+                            if (empty($data) || !is_array($data)) {
+                                echo("暂无订单\n");
+                            } else {
+                                foreach ($data as $d) {
+                                    $orderId = $d['order_id'];
+                                    var_dump($orderId);
+
+                                    //获取设计师的头像，标签等信息。
+                                    $designerId = $d['designer_id'];
+                                    $designerM = new \frontend\models\DesignerBasic();
+                                    $ret = $designerM->getDesignerById($designerId);
+                                    //根据此订单查到的设计师ID，如果是找不到数据，接着下一次循环
+                                    if (empty($ret)) {
+                                        continue;
+                                    }
+                                    $name = $ret->name;
+                                    $tagStr = $ret->tag;
+                                    $tagStr = "hongkong,台湾小屌丝,设计小生";
+                                    $tagArr = explode(',', $tagStr);
+                                    $labelSpan = '';
+                                    if (count($tagArr) == 1) {
+                                        $labelSpan = "<span>$tagArr[0]</span>";
+                                    } else {
+                                        foreach ($tagArr as $t) {
+                                            $lt = "<span>$t</span>";
+                                            $labelSpan .= $lt;
+                                        }
+                                    }
+
+                                    $zyImage = new \frontend\models\Images();
+                                    $img = $zyImage->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT, $designerId);
+                                    if (!empty($img)) {
+                                        $headPortrait = $img->url;
+                                    } else {
+                                        $headPortrait = "/img/home_page/banner_head.jpg";
+                                    }
+
+                                    //订单状态
+                                    $status = $d['status'];
+                                    //$status		= 1;
+                                    $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
+                                    //订单类型，用户自动创建还是客服创建。
+                                    $orderType = 0;
+                                    //$orderType	= $d['service_type'];
+                                    //用户创建并且待设计师确认
+                                    if ($orderType == 0 &&
+                                            $status == \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
+                                        $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
 
@@ -128,10 +128,10 @@
 								  					24小时内确认
 								  				</div>
 HTML;
-									}elseif($orderType == 0 && 
-									$status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME){
-										$confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
-										$html = <<<HTML
+                                    } elseif ($orderType == 0 &&
+                                            $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
+                                        $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
+                                        $html = <<<HTML
 											<div class="zy_pp dd_here" order_id = "$orderId">
 				  								<div class="here_bottom line_center">
 													<div class="here_head">
@@ -162,10 +162,9 @@ HTML;
 												</div>
 				  							</div>
 HTML;
-
-									}elseif($orderType == 1 &&
-									$status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME){
-										$html =<<<HTML
+                                    } elseif ($orderType == 1 &&
+                                            $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
+                                        $html = <<<HTML
 									<div class="zy_pp">
 				  						<div class="pro_here iconfont">
 											<a href="home_page.html">
@@ -207,10 +206,8 @@ HTML;
 				  					</div>
 				  				</div>
 HTML;
-
-									}elseif($orderType == 0
-									&& $status == \frontend\models\Order::STATUS_WAITING_MEETING){
-										$html =<<<HTML
+                                    } elseif ($orderType == 0 && $status == \frontend\models\Order::STATUS_WAITING_MEETING) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -235,9 +232,8 @@ HTML;
 				  				
 				  			</div>
 HTML;
-									}elseif($orderType == 1
-									&& $status == \frontend\models\Order::STATUS_WAITING_MEETING){
-										$html =<<<HTML
+                                    } elseif ($orderType == 1 && $status == \frontend\models\Order::STATUS_WAITING_MEETING) {
+                                        $html = <<<HTML
 <div class="zy_pp">
 					  				<div class="pro_here iconfont">
 										<a href="home_page.html"><img class="here_img" src="img/home_page/prob.jpg"></a>
@@ -269,9 +265,8 @@ HTML;
 									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 					  			</div>
 HTML;
-
-									}elseif($status == \frontend\models\Order::STATUS_CANCEL_MEETING){
-$html = <<<HTML
+                                    } elseif ($status == \frontend\models\Order::STATUS_CANCEL_MEETING) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -290,9 +285,9 @@ $html = <<<HTML
 				  				
 				  			</div>
 HTML;
-									}elseif($orderType == 0 &&
-									$status == \frontend\models\Order::STATUS_WAITING_MET_DONE){
-									$html = <<<HTML
+                                    } elseif ($orderType == 0 &&
+                                            $status == \frontend\models\Order::STATUS_WAITING_MET_DONE) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -316,9 +311,8 @@ HTML;
 				  				
 				  			</div>
 HTML;
-									}elseif($orderType == 1
-									&& $status == \frontend\models\Order::STATUS_WAITING_MET_DONE){
-										$html = <<<HTML
+                                    } elseif ($orderType == 1 && $status == \frontend\models\Order::STATUS_WAITING_MET_DONE) {
+                                        $html = <<<HTML
 <div class="zy_pp">
 					  				<div class="pro_here iconfont">
 										<a href="home_page.html"><img class="here_img" src="img/home_page/prob.jpg"></a>
@@ -350,9 +344,8 @@ HTML;
 									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 					  			</div>
 HTML;
-
-									}elseif($orderType == 0 && $status == \frontend\models\Order::STATUS_MET_DONE){
-										$html = <<<HTML
+                                    } elseif ($orderType == 0 && $status == \frontend\models\Order::STATUS_MET_DONE) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -380,8 +373,8 @@ HTML;
 				  				
 				  			</div>
 HTML;
-									}elseif($orderType == 1 && $status == \frontend\models\Order::STATUS_MET_DONE){
-										$html = <<<HTML
+                                    } elseif ($orderType == 1 && $status == \frontend\models\Order::STATUS_MET_DONE) {
+                                        $html = <<<HTML
 <div class="zy_pp">
 					  				<div class="pro_here iconfont">
 										<a href="home_page.html"><img class="here_img" src="img/home_page/prob.jpg"></a>
@@ -417,8 +410,8 @@ HTML;
 				  					</div>
 					  			</div>
 HTML;
-									}elseif($status == \frontend\models\Order::STATUS_MET_NOT_DEEP_COOPERATION){
-										$html = <<<HTML
+                                    } elseif ($status == \frontend\models\Order::STATUS_MET_NOT_DEEP_COOPERATION) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -435,8 +428,8 @@ HTML;
 								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
 				  		</div>
 HTML;
-									}elseif($status == \frontend\models\Order::STATUS_MET_DEEP_COOPERATION){
-										$html = <<<HTML
+                                    } elseif ($status == \frontend\models\Order::STATUS_MET_DEEP_COOPERATION) {
+                                        $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
@@ -462,17 +455,17 @@ HTML;
 				  				
 				  			</div>
 HTML;
-								}
-									echo $html;
-								}
-							}
-						?>
-					</div>
-					
-				</li>
-				</ul>
-				
-			</section>
-		</section>
-	</body>
+                                    }
+                                    echo $html;
+                                }
+                            }
+                            ?>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </section>
+        </section>
+    </body>
 </html>
