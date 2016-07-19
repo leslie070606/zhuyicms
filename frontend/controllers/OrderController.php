@@ -73,17 +73,23 @@ class OrderController extends Controller {
     }
 
     public function actionChange() {
-        
-        return 123;
+
         $request = Yii::$app->request;
         if (!$request->isAjax) {
             return false;
         }
         $params = $request->get('params');
         $params = explode(',', $params);
-
+        $orderId = $params[1];
         $orderModel = new \frontend\models\Order();
-        $ret = $orderModel->getOrderById($orderId);
+        $ret = $orderModel->getOrderById(3);
+        
+        $ret->status = 2;
+        $a = $ret->save();
+        if($a){
+            return "ok";
+        }
+        
         if (empty($ret)) {
             return false;
         }
