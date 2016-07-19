@@ -39,7 +39,7 @@ class UserController extends ZyuserController {
                 if (!$session->isActive) {
                     $session->open();
                 }
-               // echo $user[0]['user_id'];exit;
+                // echo $user[0]['user_id'];exit;
                 //如果不是第一次登录
                 if (count($user)) {
 
@@ -131,20 +131,32 @@ class UserController extends ZyuserController {
                     //var_dump($user);exit;
                     //如果所填写的手机号码重复update
                     if (count($user)) {
-                        $userModel->user_id = $user[0]['user_id'];
+                        //$userModel->user_id = $user[0]['user_id'];
+                        // 存入用户信息
+                        $user->openid = $userArr['openid'];
+                        $user->nickname = $userArr['nickname'];
+                        $user->sex = $userArr['sex'];
+                        $user->language = $userArr['language'];
+                        $user->city = $userArr['city'];
+                        $user->phone = $phone;
+                        //$userModel->province = $userArr['province']; //数据库没有
+                        $user->country = $userArr['country'];
+                        $user->headimgurl = $userArr['headimgurl'];
+                        $user->unionid = $userArr['unionid'];
+                    } else {
+                        // 存入用户信息
+                        $userModel->openid = $userArr['openid'];
+                        $userModel->nickname = $userArr['nickname'];
+                        $userModel->sex = $userArr['sex'];
+                        $userModel->language = $userArr['language'];
+                        $userModel->city = $userArr['city'];
+                        $userModel->phone = $phone;
+                        //$userModel->province = $userArr['province']; //数据库没有
+                        $userModel->country = $userArr['country'];
+                        $userModel->headimgurl = $userArr['headimgurl'];
+                        $userModel->unionid = $userArr['unionid'];
                     }
 
-                    // 存入用户信息
-                    $userModel->openid = $userArr['openid'];
-                    $userModel->nickname = $userArr['nickname'];
-                    $userModel->sex = $userArr['sex'];
-                    $userModel->language = $userArr['language'];
-                    $userModel->city = $userArr['city'];
-                    $userModel->phone = $phone;
-                    //$userModel->province = $userArr['province']; //数据库没有
-                    $userModel->country = $userArr['country'];
-                    $userModel->headimgurl = $userArr['headimgurl'];
-                    $userModel->unionid = $userArr['unionid'];
                     $res = $userModel->save();
                     if ($res) {
                         echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
