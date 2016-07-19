@@ -82,33 +82,19 @@ class OrderController extends Controller {
         $params = explode(',', $params);
         $orderId = $params[1];
         $orderModel = new \frontend\models\Order();
-        $ret = $orderModel->getOrderById(3);
+        $orderRet = $orderModel->getOrderById($orderId);
         
-        $ret->status = 2;
-        $a = $ret->save();
-        if($a){
-            return "ok";
-        }
-        
-        if (empty($ret)) {
-            return false;
-        }
-        $orderStatus = $ret->status;
+        $orderStatus = $orderRet->status;
         switch ($orderStatus) {
             case \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME:
                 //从前台传过来的时间。
                 $appointmentTime = $params[0];
                 $newSts = \frontend\models\Order::STATUS_WAITING_MEETING;
-                $condition = ['order_id' => 3];
-                $data = [
-                    'appointment_time' => $appointmentTime,
-                    'status' => $newSts,
-                    'update_time' => time()
-                ];
 
-                $sql = "UPDATE zy_order SET status=$newSts WHERE order_id=$orderId";
-                $ret = Yii::$app->db->createCommand($sql)->queryAll();
-                //$orderModel->updateOrder($data,$condition);
+				//$orderRet->appointment_time = $appointmentTime;
+				$orderRet->status = $newSts;
+				$orderRet->update_time = time();
+				$orderRet->save();
                 break;
         }
     }
