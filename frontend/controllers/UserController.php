@@ -177,13 +177,14 @@ class UserController extends ZyuserController {
 
 
                     if ($res) {
-
+                        // 登录成功!
                         $session->set('user_id', $userId);
                         echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "登录成功!<br>";
                         echo "您的昵称是:" . $userArr['nickname'] . "<br>";
                         echo "您绑定的手机号是:" . $phone . "<br>";
+                        echo $session->get('user_id');
                         exit;
                     }
                 } else {
