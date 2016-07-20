@@ -61,7 +61,6 @@ use yii\helpers\Html;
             var $form = $('#form-addphone');
             var phone = $("#phone").val().toString();
             
-            alert(11111);
             $.ajax({
                 url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/sendmsg' ?>",
                 type: 'post',

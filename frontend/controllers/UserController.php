@@ -127,7 +127,7 @@ class UserController extends ZyuserController {
                 if ($phonestr == $code) {
                     $userModel = new User();
                     //查询手机号码
-                    $user = $userModel->find()->where(['phone' => $phone])->all();
+                    $user = $userModel->find()->where(['phone' => $phone])->one();
                     //var_dump($user);exit;
                     //如果所填写的手机号码重复update
                     if (count($user)) {
