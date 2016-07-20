@@ -78,7 +78,7 @@ class ProjectController extends \common\util\BaseController {
 
     //匹配设计师
     public function actionChoose_designer() {
-
+        //判断是否有已匹配的设计师
         //引入算法类
         $matchModel = new \app\components\Match();
 
@@ -89,7 +89,7 @@ class ProjectController extends \common\util\BaseController {
 
         //根据ID查找需求
         $projectModel = new ZyProject();
-        $project = $projectModel->findOne('14');
+        $project = $projectModel->findOne('15');
         $scoreArr = array();
 
         //循环判断设计师
@@ -140,6 +140,8 @@ class ProjectController extends \common\util\BaseController {
 
         //判断是否为空
         if (count($scoreArr) > 0) {
+            
+            //排序
             foreach ($scoreArr as $key => $value) {
 
                 $rating[$key] = $value['score'];
@@ -156,7 +158,7 @@ class ProjectController extends \common\util\BaseController {
 //            exit;
             //$projectModel->project_id = 14;
             $project->match_json = json_encode($scoreArr);
-            //$project->save();
+            $project->save();
             //$scoreArr = $scoreArr+$scoreArr+$scoreArr+$scoreArr;
            //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }

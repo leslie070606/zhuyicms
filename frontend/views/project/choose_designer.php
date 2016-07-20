@@ -38,7 +38,12 @@
             </div>
 
             <div class="designer_box">
-                <?php foreach ($model as $value){ ?>
+                <?php foreach ($model as $value){ 
+                    $designerModel = new frontend\models\DesignerBasic();
+                    $designers = $designerModel->getDesignerById($value['did']);
+                    
+                    //获取头像
+                    ?>
                 <div class="pro_here iconfont" id="" value_id="<?= $value['did']?>">
                     
                     <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
