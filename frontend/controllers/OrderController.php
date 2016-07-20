@@ -96,7 +96,39 @@ class OrderController extends Controller {
 				$orderRet->update_time = time();
 				$orderRet->save();
                 break;
+			default:
+				break;
         }
     }
 
+	public function actionCooperation(){
+        $request = Yii::$app->request;
+        if (!$request->isAjax) {
+            return false;
+        }
+		$params = $request->get('params');
+		$params = explode(',',$params);
+
+		$orderId = $params[0];
+        $orderModel = new \frontend\models\Order();
+        $orderRet = $orderModel->getOrderById($orderId);
+
+        $orderStatus = $orderRet->status;
+        switch ($orderStatus) {
+            case \frontend\models\Order::STATUS_MET_DONE:
+				$yesNo = $params[1];
+				if($yesNo == 'yes'){
+					$newSts = \frontend\models\Order::STATUS_MET_NOT_DEEP_COOPERATION;
+				}elseif($yesNo == 'no'){
+					$newSts = \frontend\models\Order::STATUS_MET_DEEP_COOPERATION;
+				}
+
+				$orderRet->status = $newSts;
+				$orderRet->update_time = time();
+				$orderRet->save();
+                break;
+			default:
+				break;
+        }
+	}
 }
