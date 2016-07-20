@@ -77,6 +77,12 @@ class UserController extends ZyuserController {
     //微信授权
     public function actionWechat_allow() {
 
+        //初始化session
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+
         $code = isset($_GET['code']) ? $_GET['code'] : '';
 
         if (!$code) {
@@ -98,12 +104,15 @@ class UserController extends ZyuserController {
         }
         // 获取用户openID 判断是不是首次登陆
         $userModel = new User();
-        $user = $userModel->find()->where(['openid' => $userArr['openid']])->all();
+        $user = $userModel->find()->where(['openid' => $userArr['openid']])->one();
 
         if (count($user)) {
             //登陆成功 加ssion
+            $userId = $user['user_id'];
+            $session->set('user_id', $userId);
             echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
             echo "登陆成功!";
+            echo $session->get('user_id');
             exit;
         } else {
             //第一次登陆绑定手机
@@ -120,6 +129,11 @@ class UserController extends ZyuserController {
         $phonestr = Yii::$app->request->post('phonestr');
         $userArr = json_decode($userinfo, TRUE);
 
+        //初始化session
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
         if ($phone && $code) {//无提交读取页面
             if (!empty($userArr)) {
 
@@ -144,6 +158,7 @@ class UserController extends ZyuserController {
                         $user->headimgurl = $userArr['headimgurl'];
                         $user->unionid = $userArr['unionid'];
                         $res = $user->save();
+                        $userId = $user->attributes['user_id'];
                     } else {
                         // 存入用户信息
                         $userModel->openid = $userArr['openid'];
@@ -156,16 +171,20 @@ class UserController extends ZyuserController {
                         $userModel->country = $userArr['country'];
                         $userModel->headimgurl = $userArr['headimgurl'];
                         $userModel->unionid = $userArr['unionid'];
-                         $res = $userModel->save();
+                        $res = $userModel->save();
+                        $userId = $userModel->attributes['user_id'];
                     }
 
-                   
+
                     if ($res) {
+
+                        $session->set('user_id', $userId);
                         echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "登录成功!<br>";
                         echo "您的昵称是:" . $userArr['nickname'] . "<br>";
                         echo "您绑定的手机号是:" . $phone . "<br>";
+                        exit;
                     }
                 } else {
                     echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
