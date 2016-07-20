@@ -143,6 +143,7 @@ class UserController extends ZyuserController {
                         $user->country = $userArr['country'];
                         $user->headimgurl = $userArr['headimgurl'];
                         $user->unionid = $userArr['unionid'];
+                        $res = $user->save();
                     } else {
                         // 存入用户信息
                         $userModel->openid = $userArr['openid'];
@@ -155,9 +156,10 @@ class UserController extends ZyuserController {
                         $userModel->country = $userArr['country'];
                         $userModel->headimgurl = $userArr['headimgurl'];
                         $userModel->unionid = $userArr['unionid'];
+                         $res = $userModel->save();
                     }
 
-                    $res = $userModel->save();
+                   
                     if ($res) {
                         echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
