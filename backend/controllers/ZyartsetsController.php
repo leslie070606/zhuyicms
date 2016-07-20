@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\ZyProject;
-use backend\models\search\ProjectSearch;
+use common\models\ZyArtsets;
+use backend\models\search\ArtsetsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ZyprojectController implements the CRUD actions for ZyProject model.
+ * ZyartsetsController implements the CRUD actions for ZyArtsets model.
  */
-class ZyprojectController extends Controller
+class ZyartsetsController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Lists all ZyProject models.
+     * Lists all ZyArtsets models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProjectSearch();
+        $searchModel = new ArtsetsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Displays a single ZyProject model.
+     * Displays a single ZyArtsets model.
      * @param integer $id
      * @return mixed
      */
@@ -57,16 +57,16 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Creates a new ZyProject model.
+     * Creates a new ZyArtsets model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new ZyProject();
+        $model = new ZyArtsets();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->project_id]);
+            return $this->redirect(['view', 'id' => $model->art_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -75,7 +75,7 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Updates an existing ZyProject model.
+     * Updates an existing ZyArtsets model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -85,7 +85,7 @@ class ZyprojectController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->project_id]);
+            return $this->redirect(['view', 'id' => $model->art_id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -94,7 +94,7 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Deletes an existing ZyProject model.
+     * Deletes an existing ZyArtsets model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class ZyprojectController extends Controller
     }
 
     /**
-     * Finds the ZyProject model based on its primary key value.
+     * Finds the ZyArtsets model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return ZyProject the loaded model
+     * @return ZyArtsets the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = ZyProject::findOne($id)) !== null) {
+        if (($model = ZyArtsets::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
