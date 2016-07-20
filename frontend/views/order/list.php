@@ -94,7 +94,6 @@
 
                                     //订单状态
                                     $status = $d['status'];
-                                    //$status		= 1;
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
                                     //订单类型，用户自动创建还是客服创建。
                                     $orderType = 0;
@@ -345,8 +344,10 @@ HTML;
 					  			</div>
 HTML;
                                     } elseif ($orderType == 0 && $status == \frontend\models\Order::STATUS_MET_DONE) {
+										 $yesUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
+										 $noUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
                                         $html = <<<HTML
-<div class="zy_pp dd_here">
+								<div class="zy_pp dd_here" order_id="$orderId">
 				  					<div class="here_bottom line_center">
 										<div class="here_head"><img src="$headPortrait"></div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
@@ -357,18 +358,14 @@ HTML;
 											$statusMsg
 										</div>
 									</div>
-				  				<div class="tj_box">
-				  					<span class="tj_spa">住艺君推荐设计师</span>
-				  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
-				  				</div>
 				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
 								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
 				  				
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								<div class="true_time queren_btn">
-					  					<span class="true_btnb">确认深度合作</span>
-					  					<span class="true_btna">不要深度合作</span>
+					  					<span class="true_btnb true_btnaa" yes_url="$yesUrl">确认深度合作</span>
+					  					<span class="true_btna" no_url="$noUrl">不要深度合作</span>
 				  					</div>
 				  				
 				  			</div>

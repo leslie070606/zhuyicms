@@ -77,6 +77,42 @@ $(function(){
  touch.on(".true_btn","tap",function(ev){
  	$(ev.currentTarget).parents(".zy_pp").addClass("foin_zy").siblings().removeClass("foin_zy");
  });
+var yes_no="";
+touch.on(".queren_btn .true_btnaa","tap",function(ev){
+		var _this=$(this).parents(".zy_pp");
+		var order_id=_this.attr("order_id");
+		var url=$(ev.currentTarget).attr("yes_url");
+		yes_no="yes";
+		$.ajax({
+			type: "get",
+			url: url+"&&params="+order_id+","+yes_no,
+			async: true,
+			success: function(data) {
+				_this.find(".right_type").html("已深度合作");
+				_this.find(".jm_money,.time").remove();
+				_this.find(".queren_btn").html('<span class="true_btnb hetong">上传合同</span>').addClass(".hetong_btn")
+			}
+		});
+	});
+	
+	touch.on(".queren_btn .true_btna","tap",function(ev){
+		var _this=$(this).parents(".zy_pp");
+		var order_id=_this.attr("order_id");
+		var url=$(ev.currentTarget).attr("no_url");
+		yes_no="no";
+		$.ajax({
+			type: "get",
+			url: url+"&&params="+order_id+","+yes_no,
+			async: true,
+			success: function(data) {
+				var html='<span class="ooo_spa ">已见面</span><span class="ooo_spb">未深度合作</span>'
+				_this.find(".right_type").html(html).addClass("color_ccca");
+				_this.find(".tj_box").remove();
+				_this.find(".queren_btn").remove();
+			}
+		});
+	});
+
 
 
 var currYear = (new Date()).getFullYear();	
