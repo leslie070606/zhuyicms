@@ -19,3 +19,4 @@
 .designer_box .pro_here:nth-child(1),.designer_box .pro_here:nth-child(2),.designer_box .pro_here:nth-child(3) { display: block;}
 .pro_here>a { float: left; width: 100%; overflow: hidden; position: relative; z-index:19;}
 .click_more { font-size: .24rem; padding-bottom: 1.68rem; color: #9f9fa0; display: block; text-align: center;}
+.zhihui { background:  #ccc;}

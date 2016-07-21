@@ -55,10 +55,10 @@
                         </div>
 
                         <div class="bottom_name">
-                            <span class="here_name"><?= $value['customer'] ?></span>
+                            <span class="here_name"><?= $designers['name']?></span>
                         </div>
                         <div class="bottom_label bottom_referral">
-                            <span>台湾暖男</span><span>设计大咖</span>
+                            <span><?= $designers['name']?></span><span>设计大咖</span>
                         </div>
 
                         <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
@@ -73,8 +73,8 @@
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>-->
                 </ul>
-                <span class="navv_tj"><a href="javascript:">提交</a></span>
-                <span class="rg_pp"><i class="iconfont icon-xuanzhong rg_ppi"></i><i id="htmll">你可以不选择设计师，我们将为你人工匹配</i></span>
+                <span class="navv_tj zhihui">提交</span>
+                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">你可以不选择设计师，我们将为你人工匹配</i></span>
 
             </div>		
         </div>
