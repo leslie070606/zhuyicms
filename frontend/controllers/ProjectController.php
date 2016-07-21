@@ -89,7 +89,7 @@ class ProjectController extends \common\util\BaseController {
 
         //根据ID查找需求
         $projectModel = new ZyProject();
-        $project = $projectModel->findOne('15');
+        $project = $projectModel->findOne('14');
         $scoreArr = array();
 
         //循环判断设计师
@@ -158,8 +158,8 @@ class ProjectController extends \common\util\BaseController {
 //            exit;
             //$projectModel->project_id = 14;
             $project->match_json = json_encode($scoreArr);
-            $project->save();
-            //$scoreArr = $scoreArr+$scoreArr+$scoreArr+$scoreArr;
+            //$project->save();
+            $scoreArr = $scoreArr+$scoreArr+$scoreArr+$scoreArr;
            //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
         return $this->render('choose_designer',['model'=>$scoreArr]);

@@ -38,32 +38,33 @@
             </div>
 
             <div class="designer_box">
-                <?php foreach ($model as $value){ 
+                <?php
+                foreach ($model as $value) {
                     $designerModel = new frontend\models\DesignerBasic();
                     $designers = $designerModel->getDesignerById($value['did']);
-                    
+
                     //获取头像
                     ?>
-                <div class="pro_here iconfont" id="" value_id="<?= $value['did']?>">
-                    
-                    <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
-                    <div class="here_zhe"></div>
-                    <div class="here_botaa"></div>
-                    <div class="here_bottom line_center">
-                        <div class="here_head">
-                            <img src="img/home_page/proa.jpg" />
-                        </div>
+                    <div class="pro_here iconfont" id="" value_id="<?= $value['did'] ?>">
 
-                        <div class="bottom_name">
-                            <span class="here_name"><?= $designers['name']?></span>
-                        </div>
-                        <div class="bottom_label bottom_referral">
-                            <span><?= $designers['name']?></span><span>设计大咖</span>
-                        </div>
+                        <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
+                        <div class="here_zhe"></div>
+                        <div class="here_botaa"></div>
+                        <div class="here_bottom line_center">
+                            <div class="here_head">
+                                <img src="img/home_page/proa.jpg" />
+                            </div>
 
-                        <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
-                    </div>
-                </div><!--pro_here end-->
+                            <div class="bottom_name">
+                                <span class="here_name"><?= $designers['name'] ?></span>
+                            </div>
+                            <div class="bottom_label bottom_referral">
+                                <span><?= $designers['name'] ?></span><span>设计大咖</span>
+                            </div>
+
+                            <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
+                        </div>
+                    </div><!--pro_here end-->
                 <?php } ?> 
             </div>
             <span class="click_more">查看更多立即匹配出的设计师 </span>
@@ -81,3 +82,45 @@
 
     </body>
 </html>
+<script>
+    touch.on(".navv_tj", "tap", function (ev) {
+        var user_id = 1;
+        var project_id = 2;
+        var html = "";
+        var is_pipei = "";
+        var length = $(".pro_here .icon-xuanzhong").length;
+        $(".pro_here .icon-xuanzhong").each(function (index) {
+            var val = $(this).parents(".pro_here").attr("value_id");
+            if (index == length - 1) {
+                html += val;
+            } else {
+                html += val + ",";
+            }
+
+        })
+        if ($(".navv_tj").hasClass("zhihui")) {
+            return false;
+        } else {
+            //alert("111")
+        }
+        if ($(".rg_pp .iconfont").hasClass("icon-xuanzhong")) {
+            is_pipei = 1;
+        } else {
+            is_pipei = 0;
+        }
+        ;
+        var str = user_id + "$" + project_id + "$" + html + "$" + is_pipei;
+
+        $.ajax({
+            type: "GET",
+            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
+            data: "",
+            success: function (data) {
+                
+               alert(data);
+            }
+        })
+    })
+
+
+</script>

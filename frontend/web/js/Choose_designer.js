@@ -81,24 +81,5 @@ $(function(){
 			}
 		})
                 
-                touch.on(".navv_tj","tap",function(ev){
-                    var html="";
-                    var length=$(".pro_here .icon-xuanzhong").length;
-                    $(".pro_here .icon-xuanzhong").each(function(index){
-                         var val= $(this).parents(".pro_here").attr("value_id");
-                        if(index==length-1){
-                             html+=val;
-                        }else{
-                             html+=val+"$";
-                        }
-                     
-                    })
-                    if($(".navv_tj").hasClass("zhihui")){
-                        return false;
-                    }else{
-                        //alert("111")
-                    }
-                    alert(html)
-                })
                 
 });

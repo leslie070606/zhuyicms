@@ -60,7 +60,7 @@
                             } else {
                                 foreach ($data as $d) {
                                     $orderId = $d['order_id'];
-                                    var_dump($orderId);
+                                    //var_dump($orderId);
 
                                     //获取设计师的头像，标签等信息。
                                     $designerId = $d['designer_id'];
@@ -344,8 +344,8 @@ HTML;
 					  			</div>
 HTML;
                                     } elseif ($orderType == 0 && $status == \frontend\models\Order::STATUS_MET_DONE) {
-										 $yesUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
-										 $noUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
+                                        $yesUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
+                                        $noUrl = Yii::getAlias('@web') . '/index.php?r=order/cooperation';
                                         $html = <<<HTML
 								<div class="zy_pp dd_here" order_id="$orderId">
 				  					<div class="here_bottom line_center">
