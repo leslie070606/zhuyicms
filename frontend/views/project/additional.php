@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <!DOCTYPE html>
@@ -41,15 +42,17 @@ use yii\helpers\Url;
             <div class="submit_box">
                 <span class="submit_true">提交成功</span>
                 <span class="submit_truea">需求可以在我的住艺里修改</span>
+                <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+
                 <input class="dema_ipt" type="text" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
                         <ul>
+<!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
+                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -59,11 +62,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <ul>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
+                        <ul id="ulb">
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -91,6 +90,7 @@ use yii\helpers\Url;
                 <a href="Choose_designer.html"><div class="chose_btn">
                         提交并查看设计师
                     </div></a>
+                <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
         </div>	
@@ -122,11 +122,11 @@ use yii\helpers\Url;
         });
 
 
-
         touch.on(".add_img", "tap", function (ev) {
+            var _this=$(ev.currentTarget);
+            
             var length = $(ev.currentTarget).siblings().length;
             if (length < 10) {
-
 
 
                 // 拍照选择图片
@@ -137,15 +137,23 @@ use yii\helpers\Url;
                     success: function (res) {
 
                         //$("#w").attr("src", res.localIds);
-                        alert(res.localIds);
-                        //images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-
+                        //alert(res.localIds);
+                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        //alert(images.localId[0]);
+                        var html = "";
+                        for (var i = 0; i < images.localId.length; i++) {
+                            html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
+                        }
+                        alert(html)
+                        
+                       $("#ulb").prepend(html);
+                        var width=$(".here_img_box li img").width();
+                        $(".here_img_box li img").css("height",width);
+                        $(".add_img").css({"width":width,"height":width})
+                        
                     }
                 });
 
-                //var html = '<li><img src="img/home_page/proc.jpg"> <i class="iconfont icon-shanchu"></i></li>';
-               // $(ev.currentTarget).before(html);
-               // img_height_auto();
             } else {
                 return false;
             }

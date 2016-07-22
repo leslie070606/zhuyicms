@@ -34,7 +34,7 @@ class Artsets extends ActiveRecord{
 			foreach($imageIdsArray as $id){
 				$ret = $imageModel->findOne($id);	
 				if(empty($ret)){
-					continue();
+					continue;
 				}
 				$imageUrl[] = $ret->url;
 			}
@@ -48,7 +48,7 @@ class Artsets extends ActiveRecord{
 			foreach($viedoIdsArray as $id){
 				$ret = $viedoModel->findOne($id);
 				if(empty($ret)){
-					continue();
+					continue;
 				}
 				$viedoUrl[] = $ret->url;
 			}

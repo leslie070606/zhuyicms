@@ -18,20 +18,37 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Zy Video', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'video_id',
-            'video_url:url',
-            'video_image',
+            [
+                'label' => '视频地址',
+                'filter' => Html::activeTextInput($searchModel, 'video_url', ['class' => 'form-control']),
+                'format' => 'raw',
+                'value' => function ($data) {
+            return Html::a("视频地址", $data->video_url);
+        },
+            ],
+            [
+                'label' => '视频封面图',
+                'filter' => Html::activeTextInput($searchModel, 'video_image', ['class' => 'form-control']),
+                'format' => 'raw',
+                'value' => function ($data) {
+            return Html::img(Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$data->video_image, ['height'=>'150px','width'=>'200px']);
+                      //  return Html::a("图片地址", Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$data->video_image);
+
+        },
+            ],
+           
             'designer_id',
             'create_time:datetime',
             // 'update_time:datetime',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>

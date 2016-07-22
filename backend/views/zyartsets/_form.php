@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+<<<<<<< HEAD
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
@@ -17,11 +18,34 @@ use yii\helpers\Url;
 <script type="text/javascript" src="js/diyUpload.js"></script>
 <script type="text/javascript" src="js/webuploader.html5only.min.js"></script>
 
+=======
+
+/*
+<link href=<?php echo Yii::getAlias('@web')."css/diyUpload.css"?> />
+*/?>
+<script type="text/javascript" src="js/diyUpload.js"></script>
+<script type="text/javascript" src="js/webuploader.html5only.min.js"></script>
+
+
+<script>
+$('#test').diyUpload({
+	url:'server/fileupload.php',
+	success:function( data ) {
+		console.info( data );
+	},
+	error:function( err ) {
+		console.info( err );	
+	}
+});
+
+</script>
+>>>>>>> zhuyimaster
 <div class="zy-artsets-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'designer_id')->textInput() ?>
+<<<<<<< HEAD
 	<label class="control-label" for="test">作品图片</label>
 	<div id="test"> </div>
 	<script>
@@ -40,6 +64,12 @@ use yii\helpers\Url;
 	<?php
 	/*
     <?= $form->field($model, 'image_ids')->widget(FileInput::classname(),['options' => ['multiple' => true]]) ?>
+=======
+	<div id="test"></div>
+    <?= $form->field($model, 'image_ids')->widget(FileInput::classname(),['options' => ['multiple' => true]]) ?>
+	<?php
+	/*
+>>>>>>> zhuyimaster
 
     <?= $form->field($model, 'video_ids')->widget(FileInput::classname(),['options' => ['multiple' => true]]) ?>
 

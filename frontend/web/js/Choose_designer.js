@@ -9,8 +9,9 @@ $(function(){
 			if($(this).hasClass('icon-weixuanzhong')){
 				if(lengtha<3){
 				$(this).addClass("icon-xuanzhong").removeClass('icon-weixuanzhong');
-				var lii="<li id='li_"+index+"'><img src="+src+"/><i class='iconfont icon-shanchu shanchu'></i></li>";
+				var lii="<li id='li_"+index+"'><img src="+src+" /><i class='iconfont icon-shanchu shanchu'></i></li>";
 				$(".box_sjs").append(lii);
+                                $(".navv_tj").removeClass("zhihui");
 				}
 				else{
 					alert("最多选择3个")
@@ -18,12 +19,16 @@ $(function(){
 			}else {
 				$(this).addClass("icon-weixuanzhong").removeClass('icon-xuanzhong');
 				$("#li_"+index).remove();
+                                 if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
+                            $(".navv_tj").addClass("zhihui");
+                            }
 			};
 		
 		
 		var length=$(".designer_box .icon-xuanzhong").length;
 		if(length>0){
 			$("#htmll").text("人工匹配");
+                         $(".navv_tj").removeClass("zhihui");
 		}else {
 			$("#htmll").text("你可以不选择设计师，我们将为你人工匹配");
 		};
@@ -39,17 +44,24 @@ $(function(){
 		if(lenfth==0){
 			$("#htmll").text("你可以不选择设计师，我们将为你人工匹配");
 		}
+                if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
+                            $(".navv_tj").addClass("zhihui");
+			}
 	})
 		$(document).on("click",".rg_pp",function(ev){
 			if($(this).find(".iconfont").hasClass("icon-xuanzhong")){
-				$(this).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong")
+				$(this).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
+                                if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
+                            $(".navv_tj").addClass("zhihui");
+                            }
 			}else{
-				$(this).find(".iconfont").addClass("icon-xuanzhong").removeClass("icon-weixuanzhong")
+				$(this).find(".iconfont").addClass("icon-xuanzhong").removeClass("icon-weixuanzhong");
+                                $(".navv_tj").removeClass("zhihui");
 			}
 		});
 		touch.on(".navv_tj","tap",function(ev){
 			if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
-				alert("请选择设计师或者勾选人工匹配");
+                            $(".navv_tj").addClass("zhihui");
 			}
 		})
 		
@@ -69,20 +81,5 @@ $(function(){
 			}
 		})
                 
-                touch.on(".navv_tj","tap",function(ev){
-                    var html="";
-                    var length=$(".pro_here .icon-xuanzhong").length;
-                    $(".pro_here .icon-xuanzhong").each(function(index){
-                         var val= $(this).parents(".pro_here").attr("value_id");
-                        if(index==length-1){
-                             html+=val;
-                        }else{
-                             html+=val+"$";
-                        }
-                     
-                      
-                    })
-                    alert(html);
-                })
                 
 });

@@ -60,7 +60,7 @@ class Order extends ActiveRecord {
         foreach ($updateField as $k => $v) {
             $this->$v = $data[$v];
         }
-        $this->save();
+        return $this->save();
     }
 
     public function updateOrder($data, $condition) {

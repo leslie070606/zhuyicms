@@ -15,9 +15,13 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+       // 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+    ];
+    public $jquery = [
+        
     ];
 }

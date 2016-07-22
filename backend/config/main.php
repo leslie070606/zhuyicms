@@ -32,6 +32,15 @@ return [
                 ],
             ],
         ],
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => [
+                        'position' => \yii\web\View::POS_HEAD,
+                    ]
+                ],
+            ],
+        ],
 //        "view" => [
 //            "theme" => [
 //                "pathMap" => [
