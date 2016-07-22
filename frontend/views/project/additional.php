@@ -42,7 +42,7 @@ use yii\helpers\Url;
             <div class="submit_box">
                 <span class="submit_true">提交成功</span>
                 <span class="submit_truea">需求可以在我的住艺里修改</span>
-<?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+                <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
 
                 <input class="dema_ipt" type="text" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
@@ -94,7 +94,7 @@ use yii\helpers\Url;
                 <a href="Choose_designer.html"><div class="chose_btn">
                         提交并查看设计师
                     </div></a>
-<?= Html::endForm(); ?>
+                <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
         </div>	
@@ -144,11 +144,11 @@ use yii\helpers\Url;
                         //alert(images.localId[0]);
                     }
                 });
-                var html="";
-                   for(var i=0;i<images.localId.length;i++){
-                    html += '<li><img src="+res.localIds[i]+"> <i class="iconfont icon-shanchu"></i></li>';    
-    }
-               alert(html)
+                var html = "";
+                for (var i = 0; i < images.localId.length; i++) {
+                    html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
+                }
+                // alert(html)
                 $(ev.currentTarget).before(html);
                 img_height_auto();
             } else {
