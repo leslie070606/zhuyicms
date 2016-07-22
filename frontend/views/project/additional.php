@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
@@ -41,7 +42,7 @@ use yii\helpers\Url;
             <div class="submit_box">
                 <span class="submit_true">提交成功</span>
                 <span class="submit_truea">需求可以在我的住艺里修改</span>
-                            <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+<?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
 
                 <input class="dema_ipt" type="text" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
@@ -93,7 +94,7 @@ use yii\helpers\Url;
                 <a href="Choose_designer.html"><div class="chose_btn">
                         提交并查看设计师
                     </div></a>
-                 <?= Html::endForm(); ?>
+<?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
         </div>	
@@ -125,11 +126,9 @@ use yii\helpers\Url;
         });
 
 
-
         touch.on(".add_img", "tap", function (ev) {
             var length = $(ev.currentTarget).siblings().length;
             if (length < 10) {
-
 
 
                 // 拍照选择图片
@@ -140,15 +139,15 @@ use yii\helpers\Url;
                     success: function (res) {
 
                         //$("#w").attr("src", res.localIds);
-                        alert(res.localIds);
-                        //images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-
+                        //alert(res.localIds);
+                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                        alert(images.localId[0]);
                     }
                 });
 
-                //var html = '<li><img src="img/home_page/proc.jpg"> <i class="iconfont icon-shanchu"></i></li>';
-               // $(ev.currentTarget).before(html);
-               // img_height_auto();
+                var html = '<li><img src="+res.localIds+"> <i class="iconfont icon-shanchu"></i></li>';
+                $(ev.currentTarget).before(html);
+                img_height_auto();
             } else {
                 return false;
             }

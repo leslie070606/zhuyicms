@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeTextInput($searchModel, 'video_image', ['class' => 'form-control']),
                 'format' => 'raw',
                 'value' => function ($data) {
-            return Html::img(Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$data->video_image, ['height'=>'200px','width'=>'200px']);
+            return Html::img(Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$data->video_image, ['height'=>'150px','width'=>'200px']);
                       //  return Html::a("图片地址", Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$data->video_image);
 
         },

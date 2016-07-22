@@ -60,20 +60,18 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionAdditional() {
-        
+
         $tokenModel = new \app\components\Token();
 
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
 
         return $this->render('additional', ['jsarr' => $jsarr]);
-        
-        
-       // if ($project_id = Yii::$app->request->get('project_id')) {
 
-            //echo $project_id;
-            
-       // }
+
+        // if ($project_id = Yii::$app->request->get('project_id')) {
+        //echo $project_id;
+        // }
     }
 
     //匹配设计师
@@ -140,7 +138,7 @@ class ProjectController extends \common\util\BaseController {
 
         //判断是否为空
         if (count($scoreArr) > 0) {
-            
+
             //排序
             foreach ($scoreArr as $key => $value) {
 
@@ -148,21 +146,21 @@ class ProjectController extends \common\util\BaseController {
             }
             // 按照score降序排列
             array_multisort($rating, SORT_DESC, $scoreArr);
-            
-            if(count($scoreArr) >= 9){
+
+            if (count($scoreArr) >= 9) {
                 $scoreArr = array_slice($scoreArr, 0, 9);
             }
-            
+
 //            echo "<pre>";
 //            print_r($scoreArr);
 //            exit;
             //$projectModel->project_id = 14;
             $project->match_json = json_encode($scoreArr);
             //$project->save();
-            $scoreArr = $scoreArr+$scoreArr+$scoreArr+$scoreArr;
-           //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
+            $scoreArr = $scoreArr + $scoreArr + $scoreArr + $scoreArr;
+            //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
-        return $this->render('choose_designer',['model'=>$scoreArr]);
+        return $this->render('choose_designer', ['model' => $scoreArr]);
     }
 
 }
