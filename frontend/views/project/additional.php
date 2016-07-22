@@ -62,11 +62,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <ul>
-<!--                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
+                        <ul id="ulb">
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -149,10 +145,10 @@ use yii\helpers\Url;
                             html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
                         }
                         alert(html)
-                        alert(_this.html())
-                       _this.parents("ul").html(html+$(ev.currentTarget).html());
+                        
+                       $("#ulb").prepend(html);
                         img_height_auto();
-                        alert(_this.parents("ul").html())
+                        alert($("#ulb").html())
                     }
                 });
 
