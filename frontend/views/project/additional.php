@@ -147,7 +147,9 @@ use yii\helpers\Url;
                         alert(html)
                         
                        $("#ulb").prepend(html);
-                        img_height_auto();
+                        var width=$(".here_img_box li img").width();
+                        $(".here_img_box li img").css("height",width);
+                        $(".add_img").css({"width":width,"height":width})
                         
                     }
                 });

@@ -14,8 +14,8 @@ $(function(){
 	 });
 })
 function img_height_auto(){
-	var width=$(".here_img_box li img").width();
-	 $(".here_img_box li img").css("height",width);
-	 $(".add_img").css({"width":width,"height":width})
-         alert("1111")
+    var width=$(".here_img_box li img").width();
+     $(".here_img_box li img").css("height",width);
+     $(".add_img").css({"width":width,"height":width})
+        
 }
