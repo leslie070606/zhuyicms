@@ -28,7 +28,7 @@
 .head_more { color: #FF4E38; margin:  .3rem auto .6rem;}
 .here_head img {  margin-left: .3rem;}
 .right_type { position: absolute; height: .88rem; line-height: .88rem; font-size: .24rem; right: .3rem; color: #FF4E38;}
-.fixed_top { position: fixed; max-width: 500px; margin: 0 auto; top: .88rem !important; left: 0; right: 0; background: #FFFFFF; z-index: 9999;}
+.fixed_top { position: fixed; max-width: 500px; margin: 0 auto; top: .88rem !important; left: 0; right: 0; background: #FFFFFF; z-index: 999;}
 .tishi {padding:.4rem  0; background: #eeefef; line-height: 150%; font-size: .20rem; color: #9F9FA0;}
 .bottom_name .here_name::after {
     content: "丨";
@@ -69,12 +69,13 @@
  .ooo_spa{top: .15rem;}
  .here_bottom { bottom: 0;}
 .ooo_spb { bottom: .2rem;}
-.hetong {width: 3.5rem !important;}
+.hetong {width: 2rem !important;}
 /*.dd_here .jm_time, .dd_here .jm_money {
-    text-indent: .3rem;
+    text-indent: .3rem;              
 }*/
 .icon-shanchu1 { right:.3rem; top: .3rem; z-index: 99;}
 .icon-shanchu1::before { font-size: .20rem;}
+.dingdan .icon-shanchu1 { right:.2rem; top: .2rem; }
 .shanchu_box { position: absolute; width: 1.5rem; height: 1.5rem; z-index: 999; top: 0; right:0;}
 /*需求*/
 .xuqiu { position: relative; float: left; background: #eeefef;}
@@ -108,11 +109,6 @@
     opacity: 0;
     z-index: 99998;
 }
-
-
-
-
-
 
 
 

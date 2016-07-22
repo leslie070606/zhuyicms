@@ -12,8 +12,8 @@
 .submit_herea { margin-top: 0;}
 .submit_here>span { display: block;}
 .submit_here .here_b{ color: #9F9FA0; margin: .2rem 0;}
-.here_img_box ul li { float: left; position: relative; width: 31%; margin-right: 3.5%; margin-bottom: 3.5%;}
-.here_img_box li:nth-child(3),.here_img_box li:nth-child(6),.here_img_box li:nth-child(9) { margin-right: 0;}
+.here_img_box ul li { float: left; position: relative; width: 31% !important; margin-right: 3.5%; margin-bottom: 3.5%;}
+.here_img_box li:nth-child(3),.here_img_box li:nth-child(6),.here_img_box li:nth-child(9) { margin-right: 0 !important;}
 .type_list>div { margin-bottom: .4rem; float: left; width: 100%;}
 .here_img_box li i {position: absolute; color: #FF4E38; right: 0; top: 0; font-size: .2rem;}
 .type_list { margin-top: .4rem; display: block; float: left; width: 100%;}

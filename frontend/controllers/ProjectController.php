@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\ZyProject;
 use backend\models\DesignerWork;
+use yii\web\UploadedFile;
 
 class ProjectController extends \common\util\BaseController {
 
@@ -60,6 +61,16 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionAdditional() {
+        
+        if(Yii::$app->request->post()){
+            echo "<pre>";
+            var_dump($_FILES);exit;
+                   
+        }
+//        $upfile = UploadedFile::getInstanceByName('aa');
+//            echo "<pre>";
+//            var_dump($upfile);
+//            exit;
 
         $tokenModel = new \app\components\Token();
 

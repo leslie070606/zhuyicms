@@ -20,7 +20,7 @@
     width: 100%;
     max-width: 640px;
     top:.88rem;
-    z-index: 99999;
+    z-index: 99995;
     background: #ffffff;
     bottom: 0;
    }
@@ -32,4 +32,5 @@
     height: 0rem;
     overflow: hidden;
     width: 100%;}
+.xiala_box .iconfont { position: absolute;  font-size: .24rem; color: #FF4E38; right: .3rem; top: .3rem;}
 .down { position: fixed; top: 0.88rem; bottom: 0; height: auto;  width: 100%;} 

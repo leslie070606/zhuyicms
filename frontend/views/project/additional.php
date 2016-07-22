@@ -153,14 +153,14 @@ use yii\helpers\Url;
                             html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="file" /> </li>';
                         }
                         // alert(indexx)
-                        if(index==1){
-                            $("#ulb").prepend(html); 
-                        }else{
-                              $("#ula").prepend(html); 
+                        if (index == 1) {
+                            $("#ulb").prepend(html);
+                        } else {
+                            $("#ula").prepend(html);
                         }
-                       
+
                         img_height_auto();
-                       
+
                     }
                 });
 

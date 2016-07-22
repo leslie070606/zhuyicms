@@ -3,7 +3,7 @@
 .choose_top { margin-bottom: .4rem;}
 .choose_top>span { display: block; font-size: .24rem; text-align: center;}
 .choose_top .choose_top_a { font-weight: bold; margin: .38rem 0 .2rem 0;}
-.bot_navv { position: fixed; border-top: 1px solid #eeefef; height: .88rem; max-width: 640px; left: 0; right: 0; margin:0 auto; line-height: .88rem; width: 100%; bottom: 0; left: 0; background: #FFFFFF; z-index: 99992;}
+.bot_navv { position: fixed; border-top: 1px solid #eeefef; height: .88rem; max-width: 500px; left: 0; right: 0; margin:0 auto; line-height: .88rem; width: 100%; bottom: 0; left: 0; background: #FFFFFF; z-index: 99992;}
 .box_sjs li { float: left; position: relative; margin-right: .4rem; top: .15rem;}
 .box_sjs li:last-child { margin-right: 0;}
 .box_sjs { float: left; position: relative; margin-left: .3rem;}
@@ -16,7 +16,6 @@
 .rg_ppi { color: #FF4E38; margin-right:.2rem; position: relative;}
 .rg_pp .iconfont { font-size: .24rem !important; }
 .designer_box .pro_here { overflow: hidden; display: none;}
-.designer_box .pro_here:nth-child(1),.designer_box .pro_here:nth-child(2),.designer_box .pro_here:nth-child(3) { display: block;}
+.designer_box .look_see { display: block;}
 .pro_here>a { float: left; width: 100%; overflow: hidden; position: relative; z-index:19;}
 .click_more { font-size: .24rem; padding-bottom: 1.68rem; color: #9f9fa0; display: block; text-align: center;}
-.zhihui { background:  #ccc;}
