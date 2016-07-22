@@ -142,15 +142,16 @@ use yii\helpers\Url;
                         //alert(res.localIds);
                         images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                         //alert(images.localId[0]);
+                        var html = "";
+                        for (var i = 0; i < images.localId.length; i++) {
+                            html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
+                        }
+                        alert(html)
+                        $(ev.currentTarget).before(html);
+                        img_height_auto();
                     }
                 });
-                var html = "";
-                for (var i = 0; i < images.localId.length; i++) {
-                    html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
-                }
-                 alert(html)
-                $(ev.currentTarget).before(html);
-                img_height_auto();
+
             } else {
                 return false;
             }
