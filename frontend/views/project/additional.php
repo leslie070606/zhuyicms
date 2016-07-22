@@ -63,10 +63,10 @@ use yii\helpers\Url;
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
                         <ul>
+<!--                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
+                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -144,8 +144,11 @@ use yii\helpers\Url;
                         alert(images.localId[0]);
                     }
                 });
-
-                var html = '<li><img src="+res.localIds+"> <i class="iconfont icon-shanchu"></i></li>';
+                var html="";
+                   for(var i=0;i<images.localId.length;i++){
+                    html += '<li><img src="+res.localIds[i]+"> <i class="iconfont icon-shanchu"></i></li>';    
+    }
+               
                 $(ev.currentTarget).before(html);
                 img_height_auto();
             } else {
