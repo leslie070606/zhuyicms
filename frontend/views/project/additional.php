@@ -127,12 +127,8 @@ use yii\helpers\Url;
 
 
         touch.on(".add_img", "tap", function (ev) {
-            var _this;
-            if(_this.hasClass("add_img")){
-                 _this=$(this);
-            }else{
-                _this=$(this).parents("add_img")
-            }
+            
+            
             var length = $(ev.currentTarget).siblings().length;
             if (length < 10) {
 
@@ -153,9 +149,10 @@ use yii\helpers\Url;
                             html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
                         }
                         alert(html)
-                       _this.before(html);
-                        alert(_this.parent().html());
+                       $(ev.currentTarget).before(html);
+                       
                         img_height_auto();
+                        alert($(".submit_herea").html());
                     }
                 });
 
