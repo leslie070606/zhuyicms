@@ -148,7 +148,7 @@ use yii\helpers\Url;
                    for(var i=0;i<images.localId.length;i++){
                     html += '<li><img src="+res.localIds[i]+"> <i class="iconfont icon-shanchu"></i></li>';    
     }
-               
+               alert(html)
                 $(ev.currentTarget).before(html);
                 img_height_auto();
             } else {
