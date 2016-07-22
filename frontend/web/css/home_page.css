@@ -54,7 +54,7 @@ body {  padding-bottom: 1.88rem;}
 .standard::before,.addition::before { content: ""; width: .1rem; height: .1rem; margin-top: .07rem; position: absolute; left: 0px; }
 .standard::before { background: #ff4f38;}
 
-.addition::before {.addition::before; background: #9f9fa0;}
+.addition::before { background: #9f9fa0;}
 
 .bottom_name, .bottom_referral {
     left: 0 !important;

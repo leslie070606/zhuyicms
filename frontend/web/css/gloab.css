@@ -119,7 +119,7 @@ body>div:nth-child(1),body>section:nth-child(1) {
 	 z-index: 95;
 	 
 }
-.bg_banner { position: relative; left: 0; padding-bottom:/* 4.2rem; top: 4.2rem;*/}
+.bg_banner { position: relative; left: 0;}
 .bx-wrapper {
 	position: relative;
 	margin: 0 auto;
