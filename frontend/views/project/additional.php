@@ -49,7 +49,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <ul>
+                        <ul id="ula">
 <!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
@@ -87,9 +87,10 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
-                <a href="Choose_designer.html"><div class="chose_btn">
-                        提交并查看设计师
-                    </div></a>
+                <button>
+                    <a href="Choose_designer.html"><div class="chose_btn">
+                            提交并查看设计师
+                        </div></a></button>
                 <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
@@ -151,12 +152,15 @@ use yii\helpers\Url;
                         for (var i = 0; i < images.localId.length; i++) {
                             html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="file" /> </li>';
                         }
-                       // alert(indexx)
-                        $("#ulb").prepend(html);
-                        alert($("#ulb").html())
+                        // alert(indexx)
+                        if(index==1){
+                            $("#ulb").prepend(html); 
+                        }else{
+                              $("#ula").prepend(html); 
+                        }
+                       
                         img_height_auto();
-                        alert("index=" + index)
-                        //wewe
+                       
                     }
                 });
 
