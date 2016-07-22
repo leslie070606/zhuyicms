@@ -149,11 +149,11 @@ use yii\helpers\Url;
                             html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
                         }
                         alert(html)
-                       $(ev.currentTarget).before(html);
-                       var width=$(".here_img_box li img").width();
-                            $(".here_img_box li img").css("height",width);
-                            $(".add_img").css({"width":width,"height":width})
-                        alert($(".submit_herea").html());
+                        alert($(ev.currentTarget).html())
+                       $(this).parents("ul").html(html+$(ev.currentTarget).html());
+                       
+                        img_height_auto();
+                        alert($(this).parents("ul").html())
                     }
                 });
 
