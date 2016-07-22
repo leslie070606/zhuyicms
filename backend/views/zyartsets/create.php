@@ -5,8 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\ZyArtsets */
-
-$this->title = 'Create Zy Artsets';
+$this->title = '作品页';
 $this->params['breadcrumbs'][] = ['label' => 'Zy Artsets', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

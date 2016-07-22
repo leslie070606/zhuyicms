@@ -121,4 +121,8 @@ class ZyartsetsController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+	public function actionUpimg(){
+		return "1111111111";
+	}
 }
