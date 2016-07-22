@@ -151,7 +151,7 @@ use yii\helpers\Url;
                         for (var i = 0; i < images.localId.length; i++) {
                             html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="file" /> </li>';
                         }
-                        alert(indexx)
+                       // alert(indexx)
                         $("#ulb").prepend(html);
                         alert($("#ulb").html())
                         img_height_auto();
