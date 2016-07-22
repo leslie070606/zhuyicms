@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <!DOCTYPE html>
@@ -41,15 +41,17 @@ use yii\helpers\Url;
             <div class="submit_box">
                 <span class="submit_true">提交成功</span>
                 <span class="submit_truea">需求可以在我的住艺里修改</span>
+                            <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+
                 <input class="dema_ipt" type="text" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
                         <ul>
+<!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
+                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -91,6 +93,7 @@ use yii\helpers\Url;
                 <a href="Choose_designer.html"><div class="chose_btn">
                         提交并查看设计师
                     </div></a>
+                 <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
         </div>	

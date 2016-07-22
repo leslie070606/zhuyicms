@@ -60,16 +60,19 @@ class ZyvideoController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
+
         $model = new ZyVideo();
 
         if ($model->load(Yii::$app->request->post())) {
 
             $upfile = UploadedFile::getInstance($model, "video_image");
-
+//            $upfile = UploadedFile::getInstanceByName('aa');
+//            echo "<pre>";
+//            var_dump($upfile);
+//            exit;
             //文件上传存放的目录
             //$dir1= Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-
 
             if (!is_dir($dir))
                 mkdir($dir, 0777, true);
