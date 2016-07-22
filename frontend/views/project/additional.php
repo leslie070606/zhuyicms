@@ -127,7 +127,7 @@ use yii\helpers\Url;
 
 
         touch.on(".add_img", "tap", function (ev) {
-            var _this=$(this);
+            var _this=$(ev.currentTarget);
             
             var length = $(ev.currentTarget).siblings().length;
             if (length < 10) {
@@ -149,9 +149,8 @@ use yii\helpers\Url;
                             html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
                         }
                         alert(html)
-                        
+                        alert(_this.html())
                        _this.parents("ul").html(html+$(ev.currentTarget).html());
-                       
                         img_height_auto();
                         alert(_this.parents("ul").html())
                     }
