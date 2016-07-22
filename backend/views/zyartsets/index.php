@@ -6,8 +6,8 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\ArtsetsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Zy Artsets';
+echo Yii::getAlias('@web');
+$this->title = '作品页';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-artsets-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zy Artsets', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加设计师作品', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,16 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'art_id',
+            //'art_id',
             'designer_id',
-            'image_ids',
-            'video_ids',
+            //'image_ids',
+            //'video_ids',
             'topic',
             // 'brief',
             // 'art_path',
             // 'location',
-            // 'city',
-            // 'address',
+             'city',
+             'address',
             // 'design_cost',
             // 'total_cost',
             // 'remark:ntext',

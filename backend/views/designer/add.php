@@ -14,39 +14,39 @@ use yii\helpers\Html;
             <!-- form start -->
             <?= Html::beginForm('', 'post', ['id' => 'form-basic','enctype' =>'multipart/form-data']); ?>
             <div class="box-body">
-                <div class="form-group has-warning">
-                    <label for="name">姓名</label> <!--<span class="label label-danger">UI Design</span>-->
-                    <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'name']) ?>
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'id' => 'name']) ?>
                     <?= Html::error($model, 'name', ['class' => 'error']); ?>
                 </div>
                 
-                <div class="form-group has-warning">
-                    <label for="picture">设计师头像</label> <!--<span class="label label-danger">UI Design</span>-->
-                    <?= Html::activeFileInput($model, 'picture', ['class' => '', 'placeholder' => 'Enter...', 'id' => 'picture']) ?>
+                <div class="form-group">
+                    <label for="picture">头像</label>
+                    <?= Html::activeFileInput($model, 'picture', ['class' => '', 'id' => 'picture']) ?>
                     <?= Html::error($model, 'picture', ['class' => 'error']); ?>
                 </div>
                 
-                <div class="form-group has-warning">
+                <div class="form-group">
                     <label for="sex">性别</label>
                     <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>
                     <?= Html::error($model, 'sex', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group has-warning">
+                <div class="form-group">
                     <label for="name">出生日期</label>
-                    <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'birth']) ?>
+                    <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control', 'id' => 'birth']) ?>
                     <?= Html::error($model, 'birth', ['class' => 'error']); ?>
                 </div>
 
-                <div class="form-group has-warning">
+                <div class="form-group">
                     <label for="job_year">从业年限</label>
-                    <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'job_year']) ?>
+                    <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control', 'id' => 'job_year']) ?>
                     <?= Html::error($model, 'job_year', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
-                    <label for="tag">标签</label>
-                    <?= Html::activeInput('text', $model, 'tag', ['class' => 'form-control', 'placeholder' => '多标签以逗号隔开', 'id' => 'tag']) ?>
+                    <label for="tag">个性标签</label>
+                    <?= Html::activeInput('text', $model, 'tag', ['class' => 'form-control', 'placeholder' => '多标签以英文逗号分隔', 'id' => 'tag']) ?>
                     <?= Html::error($model, 'tag', ['class' => 'error']); ?>
                 </div>
 
@@ -56,34 +56,17 @@ use yii\helpers\Html;
                 </div>
 
                 <div class="form-group">
-                    <label for="status">接洽状态</label>
-                    <?= Html::activeInput('text', $model, 'status', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'status']) ?>
-                    <?= Html::error($model, 'status', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group has-warning">
-                    <label for="service_pre">洽谈人员</label>
-                    <?= Html::activeInput('text', $model, 'service_pre', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'service_pre']) ?>
-                    <?= Html::error($model, 'service_pre', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group has-warning">
-                    <label for="company">所属机构</label>
-                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'company']) ?>
-                    <?= Html::error($model, 'company', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group has-warning">
-                    <label for="ever_office">服务的大事务所</label>
-                    <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'ever_office']) ?>
-                    <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
                     <label for="alma_mater">毕业院校</label>
                     <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'alma_mater']) ?>
                     <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
                 </div>
+
+                <div class="form-group">
+                    <label for="company">工作单位</label>
+                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'company']) ?>
+                    <?= Html::error($model, 'company', ['class' => 'error']); ?>
+                </div>
+
 
                 <div class="form-group">
                     <label for="winning">获奖经历</label>
@@ -151,71 +134,28 @@ use yii\helpers\Html;
                 </div>
 
                 <div class="form-group has-warning">
-                    <label for="works">代表作品</label>
-                    <?= Html::activeTextarea($modeladditional, 'works', ['class' => 'form-control', 'rows' => '3', 'placeholder' => '三句话', 'id' => 'works']) ?>
-                    <?= Html::error($modeladditional, 'works', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="share_video">设计师可以分享的视频内容</label>
-                    <?= Html::activeTextarea($modeladditional, 'share_video', ['class' => 'form-control', 'rows' => '3', 'placeholder' => '三条', 'id' => 'share_video']) ?>
-                    <?= Html::error($modeladditional, 'share_video', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="shared_video">设计师已经分享的视频内容</label>
-                    <?= Html::activeTextarea($modeladditional, 'shared_video', ['class' => 'form-control', 'rows' => '3', 'placeholder' => '三条', 'id' => 'shared_video']) ?>
-                    <?= Html::error($modeladditional, 'shared_video', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="share_text">设计师可以分享的文字内容</label>
-                    <?= Html::activeTextarea($modeladditional, 'share_text', ['class' => 'form-control', 'rows' => '3', 'placeholder' => '三条', 'id' => 'share_text']) ?>
-                    <?= Html::error($modeladditional, 'share_text', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="shared_text">设计师已经分享的文字内容</label>
-                    <?= Html::activeTextarea($modeladditional, 'shared_text', ['class' => 'form-control', 'rows' => '3', 'placeholder' => '三条', 'id' => 'shared_text']) ?>
-                    <?= Html::error($modeladditional, 'shared_text', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group has-warning">
-                    <label for="phone">设计师电话</label>
+                    <label for="phone">手机</label>
                     <?= Html::activeInput('text', $modeladditional, 'phone', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'phone']) ?>
                     <?= Html::error($modeladditional, 'phone', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group has-warning">
-                    <label for="wechat">设计师微信</label>
+                    <label for="wechat">微信</label>
                     <?= Html::activeInput('text', $modeladditional, 'wechat', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'wechat']) ?>
                     <?= Html::error($modeladditional, 'wechat', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group has-warning">
-                    <label for="email">设计师邮箱</label>
+                    <label for="email">邮箱</label>
                     <?= Html::activeInput('email', $modeladditional, 'email', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'email']) ?>
                     <?= Html::error($modeladditional, 'email', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group has-warning">
-                    <label for="address">设计师住址</label>
+                    <label for="address">住址</label>
                     <?= Html::activeInput('text', $modeladditional, 'address', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'address']) ?>
                     <?= Html::error($modeladditional, 'address', ['class' => 'error']); ?>
                 </div>
-
-                <div class="form-group has-warning">
-                    <label for="card_no">设计师银行账号</label>
-                    <?= Html::activeInput('text', $modeladditional, 'card_no', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'card_no']) ?>
-                    <?= Html::error($modeladditional, 'card_no', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group has-warning">
-                    <label for="bank">设计师开户银行</label>
-                    <?= Html::activeInput('text', $modeladditional, 'bank', ['class' => 'form-control', 'placeholder' => 'Enter...', 'id' => 'bank']) ?>
-                    <?= Html::error($modeladditional, 'bank', ['class' => 'error']); ?>
-                </div>
-
             </div>
             <!-- /.box-body -->
             <div class="box-footer"style='text-align: center;'>

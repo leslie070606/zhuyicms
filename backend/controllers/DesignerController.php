@@ -9,21 +9,12 @@ use yii;
 
 class DesignerController extends controller {
 
-//    public function actions() {
-//        //添加登录判断
-//        if (!($username = Yii::$app->session->get('mrs_username')) && !($username = \backend\models\Login::loginByCookie())) {
-//            //return $this->redirect(['login/index']);
-//        }
-//    }
-
     public function actionIndex() {
 
         $designerlistModel = new \backend\models\DesignerBasic();
         $search_word = '';
         if (Yii::$app->request->post('table_search')) {
             $search_word = Yii::$app->request->post('table_search');
-            //$designer = $designerlistModel::find()->where(`name like %:search_word%`, [`:search_word` => $search_word])->all();
-            // $designer = $designerlistModel::findAll(`name like %:search_word%`, [`:search_word` => $search_word]);
             $designer = $designerlistModel::findBySql("select * from zyj_designer_basic where name like '%" . $search_word . "%'");
         } else {
             $designer = $designerlistModel::find();
@@ -229,6 +220,4 @@ class DesignerController extends controller {
 //        ]);
     }
     
- 
-
 }
