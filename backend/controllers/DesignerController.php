@@ -220,6 +220,4 @@ class DesignerController extends controller {
 //        ]);
     }
     
- 
-
 }
