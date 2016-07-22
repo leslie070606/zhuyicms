@@ -148,6 +148,7 @@ use yii\helpers\Url;
                         }
                         alert(html)
                         $(ev.currentTarget).before(html);
+                        alert($(ev.currentTarget).parent().html());
                         img_height_auto();
                     }
                 });
