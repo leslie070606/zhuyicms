@@ -128,7 +128,7 @@ use yii\helpers\Url;
             var length = $(ev.currentTarget).siblings().length;
             if (length < 10) {
 
-
+            alert(123123123);
                 // 拍照选择图片
                 wx.chooseImage({
                     count: 9, // 默认9
