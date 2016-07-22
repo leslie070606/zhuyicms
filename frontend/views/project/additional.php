@@ -148,7 +148,7 @@ use yii\helpers\Url;
                         
                        $("#ulb").prepend(html);
                         img_height_auto();
-                        alert($("#ulb").html())
+                        
                     }
                 });
 
