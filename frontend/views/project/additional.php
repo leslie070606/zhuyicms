@@ -122,13 +122,20 @@ use yii\helpers\Url;
         });
 
 
-        touch.on(".add_img", "tap", function (ev) {
-            var _this=$(ev.currentTarget);
-            
-            var length = $(ev.currentTarget).siblings().length;
-            if (length < 10) {
 
-            alert(123123123);
+        touch.on(".add_img", "tap", function (ev) {
+            var _this = $(ev.currentTarget);
+//        
+            var index;
+            if (_this.parents("ul").attr("id") == "ulb") {
+                index = 1;
+            } else {
+                index = 0;
+            }
+
+            var length = $(ev.currentTarget).siblings().length;
+
+            if (length < 10) {
                 // 拍照选择图片
                 wx.chooseImage({
                     count: 9, // 默认9
@@ -142,15 +149,14 @@ use yii\helpers\Url;
                         //alert(images.localId[0]);
                         var html = "";
                         for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + res.localIds[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
+                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="file" /> </li>';
                         }
-                        alert(html)
-                        
-                       $("#ulb").prepend(html);
-                        var width=$(".here_img_box li img").width();
-                        $(".here_img_box li img").css("height",width);
-                        $(".add_img").css({"width":width,"height":width})
-                        
+                        alert(indexx)
+                        $("#ulb").prepend(html);
+                        alert($("#ulb").html())
+                        img_height_auto();
+                        alert("index=" + index)
+                        //wewe
                     }
                 });
 
