@@ -141,7 +141,7 @@ use yii\helpers\Url;
                         //$("#w").attr("src", res.localIds);
                         //alert(res.localIds);
                         images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                        alert(images.localId[0]);
+                        //alert(images.localId[0]);
                     }
                 });
                 var html="";
