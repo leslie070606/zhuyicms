@@ -62,9 +62,9 @@ class ProjectController extends \common\util\BaseController {
 
     public function actionAdditional() {
         
-        if(Yii::$app->request->post()){
+        if(Yii::$app->request->post('bb_0')){
             echo "<pre>";
-            var_dump($_FILES);exit;
+            var_dump(Yii::$app->request->post('bb_0'));exit;
                    
         }
 //        $upfile = UploadedFile::getInstanceByName('aa');
