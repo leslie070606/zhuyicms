@@ -122,7 +122,11 @@ use yii\helpers\Url;
                 // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
             }
         });
-
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        alert('是否是Android：'+isAndroid);
+        alert('是否是iOS：'+isiOS);
 
         touch.on(".add_img", "tap", function (ev) {
             var _this = $(ev.currentTarget);
@@ -143,17 +147,12 @@ use yii\helpers\Url;
                     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                     success: function (res) {
-
-                        //$("#w").attr("src", res.localIds);
-                        //alert(res.localIds);
-                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                        //alert(images.localId[0]);
-
+                      images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+                      
                         var html = "";
 
                         // alert(indexx)
                         if (index == 1) {
-
                             for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
@@ -168,15 +167,24 @@ use yii\helpers\Url;
                                         likestr += serverId + "$";
 
                                         nuber++;
-                                        if (nuber >= ge) {
-                                            var like_val = $(".like").val();
-                                            $(".like").val(like_val + likestr);
-                                            alert($(".like").val())
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ulb li").length - 1; i++) {
-                                                $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                       if(isAndroid){//安卓
+                                            if (nuber >= ge) {
+                                                var like_val = $(".home").val();
+                                                $(".home").val(like_val + likestr);
+                                                alert($(".home").val())
+                                                likestr = likestr.toString().split("$");
+                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                }
                                             }
-                                        }
+                                        }else{//IOS
+                                             var like_val = $(".home").val();
+                                                $(".home").val(like_val + likestr);
+                                                alert($(".home").val())
+                                                likestr = likestr.toString().split("$");
+                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                        }    
 
 
 
@@ -191,7 +199,8 @@ use yii\helpers\Url;
                             auto_click();
 
 
-                        } else {
+                        } 
+                        }else {
                            for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
@@ -205,19 +214,28 @@ use yii\helpers\Url;
                                         serverId = res.serverId; // 返回图片的服务器端ID
                                         likestr += serverId + "$";
                                         nuber++;
-                                        if (nuber >= ge) {
-                                            var like_val = $(".home").val();
-                                            $(".home").val(like_val + likestr);
-                                            alert($(".home").val())
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                        if(isAndroid){//安卓
+                                            if (nuber >= ge) {
+                                                var like_val = $(".home").val();
+                                                $(".home").val(like_val + likestr);
+                                                alert($(".home").val())
+                                                likestr = likestr.toString().split("$");
+                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                }
                                             }
-                                        }
-
+                                        }else{//IOS
+                                             var like_val = $(".home").val();
+                                                $(".home").val(like_val + likestr);
+                                                alert($(".home").val())
+                                                likestr = likestr.toString().split("$");
+                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                        }    
 
 
                                     }
+                                }
                                 });
 
 
@@ -228,6 +246,7 @@ use yii\helpers\Url;
                             auto_click();
 
                     }
+                   
                 }
                 });
 
