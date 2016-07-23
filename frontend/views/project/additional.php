@@ -234,7 +234,7 @@ use yii\helpers\Url;
 
                             }
 
-                            }
+                            })
                             });
                             
                 });
