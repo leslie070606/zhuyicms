@@ -11,9 +11,14 @@ $(function(){
 	 });
 
 	 $("body").on("click",".here_img_box li",function(ev){
-	 		$(ev.currentTarget).remove();
+             if($(ev.currentTarget).hasClass("add_img")){
+                 
+             }else{
+                 $(ev.currentTarget).remove();
                         auto_click();
-	 });
+             }
+	 		
+             });
          
          $(".dema_ipt,.text_box").blur(function(){
 		auto_click();

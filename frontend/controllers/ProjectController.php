@@ -62,20 +62,22 @@ class ProjectController extends \common\util\BaseController {
 
     public function actionAdditional() {
         if (Yii::$app->request->post('aa_0')) {
-            echo "<pre>";
-            var_dump(Yii::$app->request->post('aa_0'));
-            exit;
+            //echo "<pre>";
+            //var_dump(Yii::$app->request->post('aa_0'));
+            //exit;
 
 
 
 
-            $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
+            $img = file_get_contents(Yii::$app->request->post('aa_0'));
 
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
             if (!is_dir($dir))
                 mkdir($dir, 0777, true);
 
-            $ext = strrchr('http://www.baidu.com/img/baidu_logo.gif', ".");
+            //$ext = strrchr('http://www.baidu.com/img/baidu_logo.gif', ".");
+            $ext = '.jpg';
+
             $fileName = $dir . '/' . date("HiiHsHis") . $ext;
             //echo $fileName;
             $res = file_put_contents($fileName, $img);
