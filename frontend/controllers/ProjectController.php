@@ -62,15 +62,15 @@ class ProjectController extends \common\util\BaseController {
 
     public function actionAdditional() {
         
-        if(Yii::$app->request->post('bb_0')){
+        if(Yii::$app->request->post()){
             echo "<pre>";
-            var_dump(Yii::$app->request->post('bb_0'));exit;
+            var_dump(Yii::$app->request->post());exit;
                    
         }
 //        $upfile = UploadedFile::getInstanceByName('aa');
 //            echo "<pre>";
 //            var_dump($upfile);
-//            exit;
+//            exit;dd
 
         $tokenModel = new \app\components\Token();
 
