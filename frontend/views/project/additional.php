@@ -180,7 +180,7 @@ use yii\helpers\Url;
                                             likestr = likestr.toString().split("$");
                                             for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                                 $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                                alert($("#ulb li:eq(" + i + ")").prop("img_id")
+                                                alert($("#ulb li:eq(" + i + ")").prop("img_id"));
                                             }
                                         }
 
