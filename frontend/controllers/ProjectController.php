@@ -68,11 +68,12 @@ class ProjectController extends \common\util\BaseController {
 
 
         if (Yii::$app->request->post()) {
-
-            $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
+            $ee = Yii::$app->request->post('like');
+            //
+           // $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
 
             echo "<pre>";
-            echo($res);
+            echo $ee;
             exit;
 
             /* $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');

@@ -49,7 +49,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" class="home" />
+                        <input type="hidden" value="" name='home' class="home" />
                         <ul id="ula">
 <!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
@@ -63,7 +63,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" class="like" />
+                        <input type="hidden" value="" name="like" class="like" />
                         <ul id="ulb">
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>

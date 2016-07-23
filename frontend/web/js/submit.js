@@ -24,7 +24,7 @@ $(function () {
 	 				gettt+=img_id+"$";
 	 			}
 	 			ull.prev("input").val(gettt);
-                                alert(ull.prev("input").val());
+                                //alert(ull.prev("input").val());
 	 			auto_click();
 	 	}
 	 });
