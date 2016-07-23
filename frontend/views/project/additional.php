@@ -83,11 +83,11 @@ use yii\helpers\Url;
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重收藏品等爱好满足</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-xuanzhong"></i>注重独特创新的亮点</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重独特创新的亮点</span>
                     </div>
                 </div>
                 <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
-                <button class="chose_btn" style="border: none;">
+                <button class="chose_btn zhihui" style="border: none;">
                             提交并查看设计师
                         </button>
                 <?= Html::endForm(); ?>
@@ -162,6 +162,7 @@ use yii\helpers\Url;
                         }
 
                         img_height_auto();
+                        auto_click();
 
                     }
                 });
