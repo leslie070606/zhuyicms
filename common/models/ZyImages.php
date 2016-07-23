@@ -14,8 +14,7 @@ class ZyImages extends \yii\db\ActiveRecord{
      */
     public function rules(){
         return [
-            [['related_id'], 'integer'],
-            [['category', 'url'], 'string', 'max' => 50],
+            [['url'], 'string', 'max' => 50],
         ];
     }
 
@@ -25,9 +24,7 @@ class ZyImages extends \yii\db\ActiveRecord{
     public function attributeLabels(){
         return [
             'image_id'  => 'ID主键',
-            'category'  => '类别',
             'url'       => '图片地址',
-            'relate_id' => '相关ID',
         ];
     }
 }

@@ -115,6 +115,56 @@ class DesignerController extends controller {
         }
     }
 
+	public function actionImage(){
+        if (Yii::$app->request->isPost) {
+        	$designerbasicModel = new \backend\models\DesignerBasic();
+            $designerbasicModel->load(Yii::$app->request->post());
+            $designerId = $designerbasicModel->id;
+
+			$upFile = UploadedFile::getInstance($designerbasicModel,"picture");
+			Yii::info($upFile,'pushNotifications');
+			//图片存放位置
+			$dir = Yii::getAlias('@webroot') . "/uploads/";
+			if(!is_dir($dir)){
+				@mkdir($dir,'0777',true);
+			}
+		
+			$fileName = $upFile->baseName . "." . $upFile->extension;
+			$dir = $dir . "/" .$fileName;
+			$upFile->saveAs($dir);
+
+			//操作zy_images表
+			$uploadSuccessPath = "/uploads/" . $fileName;
+			$imageModel = new \common\models\ZyImages();
+			$imageModel->url = $uploadSuccessPath;
+			$imageId = '';
+			if($imageModel->save()){
+				$imageId = $imageModel->image_id;
+				var_dump($imageId);
+				$ret = $designerbasicModel->findOne($designerId);
+				if(empty($ret)){
+					return false;
+				}
+				$ret->picture = $imageId;
+				$ret->save();
+			}else{
+				return false;
+			};
+
+
+			$ret = array('designer_id' => $designerId,'upfile' => $upFile);
+			$json = json_encode($ret);
+
+			//return $json;
+            return $this->render('image', ['model' => $designerbasicModel]);
+
+		}else{
+            // 非添加动作 跳转页面
+            $designerbasicModel = new \backend\models\DesignerBasic();
+
+            return $this->render('image', ['model' => $designerbasicModel]);
+        }
+	}
     public function actionAdd() {
         // 返回json格式响应
         // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -129,11 +179,36 @@ class DesignerController extends controller {
             if ("DesignerBasic" == $formx[1]) {
                 //判断model
                 $designerbasicModel = new \backend\models\DesignerBasic();
-                
+
 
                 $designerbasicModel->load(Yii::$app->request->post());
-                //echo var_dump(Yii::$app->request->post());exit;
-                //$this->uploadfile($designerbasicModel);
+
+				/*
+				$upFile = UploadedFile::getInstanceByName("picture");
+				Yii::info($upFile,'pushNotifications');
+				//图片存放位置
+				$dir = Yii::getAlias('@webroot') . "/uploads/";
+				if(!is_dir($dir)){
+					@mkdir($dir,'0777',true);
+				}
+				
+				$fileName = $upFile->baseName . "." . $upFile->extension;
+				$dir = $dir . "/" .$fileName;
+				$upFile->saveAs($dir);
+				//操作zy_images表
+				$uploadSuccessPath = "/uploads/" . $fileName;
+				$imageModel = new \common\models\ZyImages();
+				$imageModel->url = $uploadSuccessPath;
+				$imageId = '';
+				if($imageModel->save()){
+					$imageId = $imageModel->image_id;
+				}else{
+					return false;
+				};
+				$designerbasicModel->picture = $imageId;
+				*/
+				/*--------------------------------------------*/
+
                 if ($designerbasicModel->save()) {
                     
                     //return '添加成功!';
