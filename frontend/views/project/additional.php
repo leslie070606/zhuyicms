@@ -164,9 +164,9 @@ use yii\helpers\Url;
                                     isShowProgressTips: 1, // 默认为1，显示进度提示
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
-                                         html += '<li><img src="' + images.localId[i] + '" value="'+serverId+'"> <i class="iconfont icon-shanchu"></i></li>';
+                                         html = '<li><img src="' + images.localId[i] + '" value="'+serverId+'"> <i class="iconfont icon-shanchu"></i></li>';
                                             
-       $("#ulb").prepend(html);
+                                         $("#ulb").prepend(html);
 //    alert(html);
                                     }
                                 });
