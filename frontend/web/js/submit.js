@@ -39,9 +39,9 @@ function auto_click() {
     var textea = $(".text_box").val();
     if (ipta == "" && textea == "" && imga == 1 && imgb == 1 && checked == 0) {
         $(".chose_btn").addClass("zhihui");
-        $(".chose_btn").addAttr("disabled");
+        $(".chose_btn").attr("disabled",true);
     } else {
         $(".chose_btn").removeClass("zhihui");
-        $(".chose_btn").removeAttr("disabled");
+        $(".chose_btn").attr("disabled",false);
     }
 }

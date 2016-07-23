@@ -62,11 +62,9 @@ class ProjectController extends \common\util\BaseController {
 
     public function actionAdditional() {
         if (Yii::$app->request->post('aa_0')) {
-            //echo "<pre>";
-            //var_dump(Yii::$app->request->post('aa_0'));
-            //exit;
-
-
+            echo "<pre>";
+            var_dump(Yii::$app->request->post('aa_0'));
+            exit;
 
 
             $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');

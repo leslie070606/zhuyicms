@@ -87,7 +87,7 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
-                <button class="chose_btn zhihui" type="submit" disabled  style="border: none;">
+                <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
                             提交并查看设计师
                         </button>
                 <?= Html::endForm(); ?>
