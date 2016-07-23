@@ -153,6 +153,7 @@ use yii\helpers\Url;
 
                         // alert(indexx)
                         if (index == 1) {
+
                             for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
@@ -167,7 +168,7 @@ use yii\helpers\Url;
                                         likestr += serverId + "$";
 
                                         nuber++;
-                                       if(isAndroid){//安卓
+                                        if(isAndroid){
                                             if (nuber >= ge) {
                                                 var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
@@ -177,7 +178,7 @@ use yii\helpers\Url;
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                 }
                                             }
-                                        }else{//IOS
+                                        }else{
                                              var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
                                                 alert($(".home").val())
@@ -185,6 +186,7 @@ use yii\helpers\Url;
                                                 for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }    
+                                    }
 
 
 
@@ -199,8 +201,7 @@ use yii\helpers\Url;
                             auto_click();
 
 
-                        } 
-                        }else {
+                        } else {
                            for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
@@ -214,7 +215,7 @@ use yii\helpers\Url;
                                         serverId = res.serverId; // 返回图片的服务器端ID
                                         likestr += serverId + "$";
                                         nuber++;
-                                        if(isAndroid){//安卓
+                                        if(isAndroid){
                                             if (nuber >= ge) {
                                                 var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
@@ -224,7 +225,7 @@ use yii\helpers\Url;
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                 }
                                             }
-                                        }else{//IOS
+                                        }else{
                                              var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
                                                 alert($(".home").val())
@@ -232,10 +233,7 @@ use yii\helpers\Url;
                                                 for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }    
-
-
                                     }
-                                }
                                 });
 
 
@@ -247,6 +245,8 @@ use yii\helpers\Url;
 
                     }
                    
+                }
+                
                 }
                 });
 
