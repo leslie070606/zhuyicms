@@ -135,7 +135,7 @@ use yii\helpers\Url;
             }
 
             var length = $(ev.currentTarget).siblings().length;
-            var likestr = '';
+			var likestr = '';
             if (length < 10) {
                 // 拍照选择图片
                 wx.chooseImage({
@@ -165,10 +165,7 @@ use yii\helpers\Url;
                                     isShowProgressTips: 1, // 默认为1，显示进度提示
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
-                                       //likestr+=serverId+"$";
-                                       $(".text_box").val(serverId)
-                                      
-                                      
+                                       likestr+=serverId+"$";
                                     }
                                 });
 
@@ -176,9 +173,16 @@ use yii\helpers\Url;
                             }
 
                             $("#ulb").prepend(html);
+                            var like_val=$(".like").val();
+                            $(".like").val(like_val+likestr);
+                            alert($(".like").val())
+                            likestr=likestr.split("$");
+                            for(var i=0;i< $("#ulb li").length-1;i++){
+                            	$("#ulb li:eq("+i+") img").attr("img_id",likestr[i]);
+                            }
                                  img_height_auto();
                                         auto_click();
-                                  
+
 
                         } else {
                             for (var i = 0; i < images.localId.length; i++) {
@@ -186,7 +190,7 @@ use yii\helpers\Url;
                             }
                             $("#ula").prepend(html);
                         }
-
+						
 
 
                     }

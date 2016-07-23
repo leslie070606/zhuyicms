@@ -11,15 +11,22 @@ $(function () {
         auto_click();
     });
 
-    $("body").on("click", ".here_img_box li", function (ev) {
-        if ($(ev.currentTarget).hasClass("add_img")) {
-
-        } else {
-            $(ev.currentTarget).remove();
-            auto_click();
-        }
-
-    });
+     $("body").on("click",".here_img_box li",function(ev){
+	 	if($(this).hasClass("add_img")){
+	 		
+	 	}else{
+	 		var ull=$(this).parent("ul");
+	 			$(this).remove();
+	 			var gettt="";
+	 			ull.find("li").each(function(){
+	 				var img_id=$("this").attr("img_id");
+	 				gettt+=img_id+"$";
+	 			})
+	 			ull.prev("input").val(gettt);
+	 			auto_click();
+                                alert(ull.prev("input").val())
+	 	}
+	 });
 
     $(".dema_ipt,.text_box").blur(function () {
         auto_click();

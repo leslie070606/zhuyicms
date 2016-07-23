@@ -12,7 +12,7 @@ class Token {
 
     public function getToken($force = false) {
         try {
- 
+
             $para = array(
                 "grant_type" => "client_credential",
                 "appid" => "wx1344a7a9fac82094",
@@ -21,14 +21,14 @@ class Token {
 
             //$url = Yii::app()->params['WX_API_URL'] . "token";
             $url = "https://api.weixin.qq.com/cgi-bin/" . "token";
-          
+
             $ret = $this->doCurlGetRequest($url, $para);
-            
+
             $retData = json_decode($ret, true);
-            
+
             //如果成功不在返回errcode信息 直接返回access_token
             if (!$retData || isset($retData['errcode'])) {
-                
+
                 return false;
             }
             $token = $retData['access_token'];
@@ -36,13 +36,13 @@ class Token {
 
             return $token;
         } catch (DB_Exception $e) {
-         
+
             return false;
         }
     }
-    
+
     // 获取jsapi_ticket
-    public function getJspticket(){
+    public function getJspticket() {
         $accessToken = $this->getToken();
         $jsurl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket";
         $para = array(
@@ -50,33 +50,39 @@ class Token {
             'type' => 'jsapi'
         );
         $res = $this->doCurlGetRequest($jsurl, $para);
-        $res = json_decode($res,TRUE);
+        $res = json_decode($res, TRUE);
         return $res['ticket'];
-        
     }
-    
+
     // 生成JS signature
-    public function getSignature(){
-        
+    public function getSignature() {
+
         //签名字符串
         $noncestr = "zhuyi";
         $jsapi_ticket = $this->getJspticket();
         $timestamp = time();
         //$url = "http://localhost/zhuyicms/frontend/web/index.php?r=style/share";
         $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $str = "jsapi_ticket=".$jsapi_ticket."&noncestr=".$noncestr."&timestamp=".$timestamp."&url=".$url;
+        $str = "jsapi_ticket=" . $jsapi_ticket . "&noncestr=" . $noncestr . "&timestamp=" . $timestamp . "&url=" . $url;
         $signature = sha1($str);
         return array('signature' => $signature, 'timestamp' => $timestamp);
     }
-    
+
     // 下载多媒体接口
-    public function getImg($media_id){
-        if(!$media_id){
+    public function getImg($media_id) {
+        if (!$media_id) {
             return false;
         }
+
+        $url = 'http://file.api.weixin.qq.com/cgi-bin/media/get';
+
         $accessToken = $this->getToken();
-        $url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token='.$accessToken.'&media_id='.$media_id;
-        $res = $this->doCurlGetRequest($url);
+        $para = array(
+            'access_token' => $accessToken,
+            'media_id' => $media_id
+        );
+        $res = $this->doCurlGetRequest($url,$para);
+        return $res;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
