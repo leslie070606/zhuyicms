@@ -171,6 +171,8 @@ use yii\helpers\Url;
 
 
                                         nuber++;
+                                        alert(nuber);
+                                        alert(i);
                                         if (nuber >= i) {
                                             var like_val = $(".like").val();
                                             $(".like").val(like_val + likestr);
