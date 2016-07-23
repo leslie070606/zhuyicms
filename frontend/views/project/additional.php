@@ -165,10 +165,9 @@ use yii\helpers\Url;
                                     isShowProgressTips: 1, // 默认为1，显示进度提示
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
-                                       likestr+=serverId;
-                                       alert(likestr);
-                                       alert(i)
-                                        
+                                       //likestr+=serverId+"$";
+                                       alert(serverId);
+                                      
                                       
                                     }
                                 });
@@ -179,7 +178,7 @@ use yii\helpers\Url;
                             $("#ulb").prepend(html);
                                  img_height_auto();
                                         auto_click();
-
+                                  
 
                         } else {
                             for (var i = 0; i < images.localId.length; i++) {

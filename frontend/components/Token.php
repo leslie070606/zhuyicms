@@ -69,6 +69,15 @@ class Token {
         return array('signature' => $signature, 'timestamp' => $timestamp);
     }
     
+    // 下载多媒体接口
+    public function getImg($media_id){
+        if(!$media_id){
+            return false;
+        }
+        $accessToken = $this->getToken();
+        $url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token='.$accessToken.'&media_id='.$media_id;
+        $res = $this->doCurlGetRequest($url);
+    }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
         if ($url == "" || $timeout <= 0) {
