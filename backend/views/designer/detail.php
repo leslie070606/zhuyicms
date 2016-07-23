@@ -1,4 +1,17 @@
-<?php ?>
+<?php 
+$imageId = $model->picture;
+echo $imageId;
+$imageModel = new \common\models\ZyImages();
+
+$ret = $imageModel->findOne($imageId);
+$url = '';
+if(empty($ret)){
+	$url = '';
+}else{
+	$url = $ret->url;
+}
+
+?>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
@@ -14,6 +27,8 @@
                             <td>姓名</td>
 <!--                             <td><span class='label label-success'></span></td>-->
                             <td><?= $model->name ? $model->name : "<span class='label label-warning'>NULL</span>" ?></td>
+							<td>头像</td>
+							<td><img src=<?= $url?> /></td>
                             <td>性別</td>
                             <td><?= $model->sex ? "男" : "女" ?></td>
                         </tr>
