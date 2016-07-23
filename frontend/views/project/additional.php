@@ -188,24 +188,33 @@ use yii\helpers\Url;
                                 });
                         }
 
-                        $("#ulb").prepend(html);
-                                img_height_auto();
-                                auto_click();
+                            $("#ulb").prepend(html);
+                            img_height_auto();
+                            auto_click();
                         } else {
-                        for (var i = 0; i < images.localId.length; i++) {
-                        var htmllll = images.localId[i];
-                                html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                                var ge = images.localId.length;
-                                // 上传图片
-                                wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                        isShowProgressTips: 1, // 默认为1，显示进度提示
-                                        success: function (res) {
-                                            serverId = res.serverId; // 返回图片的服务器端ID
-                                            likestr += serverId + "$";
-                                            nuber++;
-                                            if (isAndroid) {
-                                                if (nuber >= ge) {
+                                for (var i = 0; i < images.localId.length; i++) {
+                                    var htmllll = images.localId[i];
+                                    html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                                    var ge = images.localId.length;
+                                    // 上传图片
+                                    wx.uploadImage({
+                                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                                            success: function (res) {
+                                                serverId = res.serverId; // 返回图片的服务器端ID
+                                                likestr += serverId + "$";
+                                                nuber++;
+                                                if (isAndroid) {
+                                                    if (nuber >= ge) {
+                                                        var like_val = $(".home").val();
+                                                        $(".home").val(like_val + likestr);
+                                                        alert($(".home").val())
+                                                        likestr = likestr.toString().split("$");
+                                                        for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                            $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                        }
+                                                    }
+                                                } else {
                                                     var like_val = $(".home").val();
                                                     $(".home").val(like_val + likestr);
                                                     alert($(".home").val())
@@ -213,30 +222,21 @@ use yii\helpers\Url;
                                                     for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                         $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                     }
+                                                    }
                                                 }
-                                            } else {
-                                                var like_val = $(".home").val();
-                                                $(".home").val(like_val + likestr);
-                                                alert($(".home").val())
-                                                likestr = likestr.toString().split("$");
-                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                                }
-                                                }
-                                            }
-                                        });
+                                            });
                                 }
 
                                 $("#ula").prepend(html);
-                                        img_height_auto();
+                                img_height_auto();
                                 auto_click();
-                            }
+                        }
 
-                            }
+                    }
 
-                            })
-                            });
+            })
+        });
                             
-                });
-            });
+    });
+
 </script>
