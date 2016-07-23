@@ -171,13 +171,13 @@ use yii\helpers\Url;
 
 
                                         nuber++;
-                                        alert(nuber);
-                                        alert(ge);
+                                        //alert(nuber);
+                                        //alert(ge);
                                         if (nuber >= ge) {
                                             var like_val = $(".like").val();
                                             $(".like").val(like_val + likestr);
                                             alert($(".like").val())
-                                            likestr = likestr.split("$");
+                                            likestr = likestr.toString().split("$");
                                             for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                                 $("#ulb li:eq(" + i + ") img").attr("img_id", likestr[i]);
                                             }
