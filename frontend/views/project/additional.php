@@ -165,7 +165,9 @@ use yii\helpers\Url;
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
                                          html += '<li><img src="' + images.localId[i] + '" value="'+serverId+'"> <i class="iconfont icon-shanchu"></i></li>';
-                                            alert(html);
+                                            
+       $("#ulb").prepend(html);
+//    alert(html);
                                     }
                                 });
 
@@ -173,7 +175,7 @@ use yii\helpers\Url;
                             }
                             
                             
-                            $("#ulb").prepend(html);
+                         
                         
                         } else {
                             for (var i = 0; i < images.localId.length; i++) {
