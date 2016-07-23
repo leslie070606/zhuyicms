@@ -167,6 +167,8 @@ use yii\helpers\Url;
 
                                         html = '<li><img src="' + htmllll + '" value="' + serverId + '"> <i class="iconfont icon-shanchu"></i></li>';
                                         $("#ulb").prepend(html);
+                                        img_height_auto();
+                                        auto_click();
                                         //alert(htmllll);
                                     }
                                 });
@@ -184,8 +186,7 @@ use yii\helpers\Url;
                             $("#ula").prepend(html);
                         }
 
-                        img_height_auto();
-                        auto_click();
+
 
                     }
                 });
