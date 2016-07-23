@@ -166,21 +166,21 @@ use yii\helpers\Url;
                                             nuber++;
                                             if (isAndroid) {
                                                 if (nuber >= ge) {
-                                                    var like_val = $(".home").val();
-                                                    $(".home").val(like_val + likestr);
-                                                    alert($(".home").val())
+                                                    var like_val = $(".like").val();
+                                                    $(".like").val(like_val + likestr);
+                                                    alert($(".like").val())
                                                     likestr = likestr.toString().split("$");
-                                                    for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                        $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                    for (var i = 0; i < $("#ulb li").length - 1; i++) {
+                                                        $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                     }
                                                 }
                                             } else {
-                                                var like_val = $(".home").val();
-                                                $(".home").val(like_val + likestr);
-                                                alert($(".home").val())
+                                                var like_val = $(".like").val();
+                                                $(".like").val(like_val + likestr);
+                                                alert($(".like").val())
                                                 likestr = likestr.toString().split("$");
-                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                for (var i = 0; i < $("#ulb li").length - 1; i++) {
+                                                    $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                 }
                                             }
 
