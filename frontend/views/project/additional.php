@@ -159,7 +159,7 @@ use yii\helpers\Url;
                                 var htmllll = images.localId[i];
 
                                 html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-
+                                var ge=images.localId.length;
                                 // 上传图片
                                 wx.uploadImage({
                                     localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
@@ -172,8 +172,8 @@ use yii\helpers\Url;
 
                                         nuber++;
                                         alert(nuber);
-                                        alert(i);
-                                        if (nuber >= i) {
+                                        alert(ge);
+                                        if (nuber >= ge) {
                                             var like_val = $(".like").val();
                                             $(".like").val(like_val + likestr);
                                             alert($(".like").val())
