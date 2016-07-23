@@ -65,7 +65,7 @@ class ProjectController extends \common\util\BaseController {
             echo "<pre>";
             var_dump(Yii::$app->request->post('aa_0'));
             exit;
-
+            
 
             $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
 
