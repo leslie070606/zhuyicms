@@ -135,7 +135,7 @@ use yii\helpers\Url;
             }
 
             var length = $(ev.currentTarget).siblings().length;
-
+            var likestr = '';
             if (length < 10) {
                 // 拍照选择图片
                 wx.chooseImage({
@@ -153,7 +153,7 @@ use yii\helpers\Url;
 
                         // alert(indexx)
                         if (index == 1) {
-                            var likestr = '';
+                            
                             for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
@@ -166,7 +166,7 @@ use yii\helpers\Url;
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
                                        //likestr+=serverId+"$";
-                                       alert(serverId);
+                                       $(".text_box").val(serverId)
                                       
                                       
                                     }
