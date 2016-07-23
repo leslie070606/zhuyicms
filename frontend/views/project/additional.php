@@ -125,9 +125,8 @@ use yii\helpers\Url;
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert('是否是Android：'+isAndroid);
-        alert('是否是iOS：'+isiOS);
-
+        alert('是否是Android：' + isAndroid);
+        alert('是否是iOS：' + isiOS);
         touch.on(".add_img", "tap", function (ev) {
             var _this = $(ev.currentTarget);
             var index;
@@ -140,36 +139,42 @@ use yii\helpers\Url;
             var length = $(ev.currentTarget).siblings().length;
             var likestr = '';
             var nuber = 0;
-            if (length < 10) {
-                // 拍照选择图片
-                wx.chooseImage({
-                    count: 9, // 默认9
+
+            // 拍照选择图片
+            wx.chooseImage({
+            count: 9, // 默认9
                     sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
                     sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                     success: function (res) {
-                      images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                      
-                        var html = "";
+                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
 
+                        var html = "";
                         // alert(indexx)
                         if (index == 1) {
 
-                            for (var i = 0; i < images.localId.length; i++) {
-                                var htmllll = images.localId[i];
-
+                        for (var i = 0; i < images.localId.length; i++) {
+                        var htmllll = images.localId[i];
                                 html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
                                 var ge = images.localId.length;
                                 // 上传图片
                                 wx.uploadImage({
-                                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                                    success: function (res) {
-                                        serverId = res.serverId; // 返回图片的服务器端ID
-                                        likestr += serverId + "$";
-
-                                        nuber++;
-                                        if(isAndroid){
-                                            if (nuber >= ge) {
+                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                                        success: function (res) {
+                                            serverId = res.serverId; // 返回图片的服务器端ID
+                                            likestr += serverId + "$";
+                                            nuber++;
+                                            if (isAndroid) {
+                                                if (nuber >= ge) {
+                                                    var like_val = $(".home").val();
+                                                    $(".home").val(like_val + likestr);
+                                                    alert($(".home").val())
+                                                    likestr = likestr.toString().split("$");
+                                                    for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                        $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                    }
+                                                }
+                                            } else {
                                                 var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
                                                 alert($(".home").val())
@@ -178,45 +183,38 @@ use yii\helpers\Url;
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                 }
                                             }
-                                        }else{
-                                             var like_val = $(".home").val();
-                                                $(".home").val(like_val + likestr);
-                                                alert($(".home").val())
-                                                likestr = likestr.toString().split("$");
-                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                        }    
-                                    }
 
-
-
-                                    }
+                                        }
                                 });
+                        }
 
-
-                            }
-
-                            $("#ulb").prepend(html);
-                            img_height_auto();
-                            auto_click();
-
-
+                        $("#ulb").prepend(html);
+                                img_height_auto();
+                                auto_click();
                         } else {
-                           for (var i = 0; i < images.localId.length; i++) {
-                                var htmllll = images.localId[i];
-
+                        for (var i = 0; i < images.localId.length; i++) {
+                        var htmllll = images.localId[i];
                                 html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
                                 var ge = images.localId.length;
                                 // 上传图片
                                 wx.uploadImage({
-                                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                                    success: function (res) {
-                                        serverId = res.serverId; // 返回图片的服务器端ID
-                                        likestr += serverId + "$";
-                                        nuber++;
-                                        if(isAndroid){
-                                            if (nuber >= ge) {
+                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                        isShowProgressTips: 1, // 默认为1，显示进度提示
+                                        success: function (res) {
+                                            serverId = res.serverId; // 返回图片的服务器端ID
+                                            likestr += serverId + "$";
+                                            nuber++;
+                                            if (isAndroid) {
+                                                if (nuber >= ge) {
+                                                    var like_val = $(".home").val();
+                                                    $(".home").val(like_val + likestr);
+                                                    alert($(".home").val())
+                                                    likestr = likestr.toString().split("$");
+                                                    for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                        $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                    }
+                                                }
+                                            } else {
                                                 var like_val = $(".home").val();
                                                 $(".home").val(like_val + likestr);
                                                 alert($(".home").val())
@@ -224,38 +222,21 @@ use yii\helpers\Url;
                                                 for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                     $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                                 }
+                                                }
                                             }
-                                        }else{
-                                             var like_val = $(".home").val();
-                                                $(".home").val(like_val + likestr);
-                                                alert($(".home").val())
-                                                likestr = likestr.toString().split("$");
-                                                for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                    $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                        }    
-                                    }
-                                });
+                                        });
+                                }
 
+                                $("#ula").prepend(html);
+                                        img_height_auto();
+                                auto_click();
+                            }
 
                             }
 
-                            $("#ula").prepend(html);
-                            img_height_auto();
-                            auto_click();
-
-                    }
-                   
-                }
-                
-                }
+                            }
+                            });
+                            
                 });
-
-            } else {
-                return false;
-            }
-            ;
-        });
-
-
-    });
+            });
 </script>
