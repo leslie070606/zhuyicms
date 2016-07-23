@@ -150,7 +150,7 @@ use yii\helpers\Url;
                         //alert(images.localId[0]);
                         var html = "";
                         for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="file" /> </li>';
+                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="text" /> </li>';
                         }
                         // alert(indexx)
                         if (index == 1) {
