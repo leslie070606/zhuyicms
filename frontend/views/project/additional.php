@@ -155,7 +155,8 @@ use yii\helpers\Url;
                         if (index == 1) {
                             var likestr = '';
                             for (var i = 0; i < images.localId.length; i++) {
-                               
+                                var htmllll=images.localId[i];
+                                html = '<li><img src="' + images.localId[i] + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
 
 
                                 // 上传图片
@@ -164,19 +165,18 @@ use yii\helpers\Url;
                                     isShowProgressTips: 1, // 默认为1，显示进度提示
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
-                                         html = '<li><img src="' + images.localId[i] + '" value="'+serverId+'"> <i class="iconfont icon-shanchu"></i></li>';
-                                            
-                                         $("#ulb").prepend(html);
-                                         alert(images.localId[i]);
+
+
+                                        alert(htmllll);
                                     }
                                 });
 
 
                             }
-                            
-                            
-                         
-                        
+
+                            $("#ulb").prepend(html);
+
+
                         } else {
                             for (var i = 0; i < images.localId.length; i++) {
                                 html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
