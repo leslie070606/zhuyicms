@@ -49,6 +49,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
+                        <input type="hidden" value="" class="home" />
                         <ul id="ula">
 <!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
                             <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
@@ -62,6 +63,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
+                        <input type="hidden" value="" class="like" />
                         <ul id="ulb">
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
@@ -88,8 +90,8 @@ use yii\helpers\Url;
                 </div>
                 <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
                 <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
-                            提交并查看设计师
-                        </button>
+                    提交并查看设计师
+                </button>
                 <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
@@ -146,40 +148,44 @@ use yii\helpers\Url;
                         //alert(res.localIds);
                         images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                         //alert(images.localId[0]);
-                        
-                        
-                        
-                        // 上传图片
-                    wx.uploadImage({
-                        localId: images.localId[0], // 需要上传的图片的本地ID，由chooseImage接口获得
-                        isShowProgressTips: 1, // 默认为1，显示进度提示
-                        success: function (res) {
-                            serverId = res.serverId; // 返回图片的服务器端ID
-//                        var html = document.getElementById("a");
-//                        html.innerHTML = serverId;
 
-                            alert(serverId);
 
-                        }
-                    });
-                        
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
+
+
                         var html = "";
-                       
+
                         // alert(indexx)
                         if (index == 1) {
-                             for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="text" /> </li>';
-                        }
+                            var likestr = '';
+                            for (var i = 0; i < images.localId.length; i++) {
+                                html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
+
+                                
+                                // 上传图片
+                                wx.uploadImage({
+                                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                    isShowProgressTips: 1, // 默认为1，显示进度提示
+                                    success: function (res) {
+                                        serverId = res.serverId; // 返回图片的服务器端ID
+
+                                        
+
+                                    }
+                                });
+
+
+                            }
+                            $(".like").val();
                             $("#ulb").prepend(html);
                         } else {
-                         for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
-                        }
+                            for (var i = 0; i < images.localId.length; i++) {
+                                html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
+                            }
                             $("#ula").prepend(html);
                         }
 
