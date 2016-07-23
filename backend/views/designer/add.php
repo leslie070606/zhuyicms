@@ -21,12 +21,6 @@ use yii\helpers\Html;
                 </div>
                 
                 <div class="form-group">
-                    <label for="picture">头像</label>
-                    <?= Html::activeFileInput($model, 'picture', ['class' => '', 'id' => 'picture']) ?>
-                    <?= Html::error($model, 'picture', ['class' => 'error']); ?>
-                </div>
-                
-                <div class="form-group">
                     <label for="sex">性别</label>
                     <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>
                     <?= Html::error($model, 'sex', ['class' => 'error']); ?>

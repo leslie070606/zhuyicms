@@ -121,7 +121,7 @@ class DesignerController extends controller {
             $designerbasicModel->load(Yii::$app->request->post());
             $designerId = $designerbasicModel->id;
 
-			$upFile = UploadedFile::getInstance($designerbasicModel,"picture");
+			$upFile = UploadedFile::getInstance($designerbasicModel,"image_id");
 			Yii::info($upFile,'pushNotifications');
 			//图片存放位置
 			$dir = Yii::getAlias('@webroot') . "/uploads/";
@@ -145,7 +145,7 @@ class DesignerController extends controller {
 				if(empty($ret)){
 					return false;
 				}
-				$ret->picture = $imageId;
+				$ret->image_id = $imageId;
 				$ret->save();
 			}else{
 				return false;
@@ -184,7 +184,7 @@ class DesignerController extends controller {
                 $designerbasicModel->load(Yii::$app->request->post());
 
 				/*
-				$upFile = UploadedFile::getInstanceByName("picture");
+				$upFile = UploadedFile::getInstanceByName("image_id");
 				Yii::info($upFile,'pushNotifications');
 				//图片存放位置
 				$dir = Yii::getAlias('@webroot') . "/uploads/";
@@ -205,7 +205,7 @@ class DesignerController extends controller {
 				}else{
 					return false;
 				};
-				$designerbasicModel->picture = $imageId;
+				$designerbasicModel->image_id = $imageId;
 				*/
 				/*--------------------------------------------*/
 
@@ -272,20 +272,20 @@ class DesignerController extends controller {
         //$model = new Upload();
         $uploadSuccessPath = "";
         if (Yii::$app->request->isPost) {
-            $model->picture = UploadedFile::getInstance($model, "picture");
+            $model->image_id = UploadedFile::getInstance($model, "image_id");
             //文件上传存放的目录
             $dir = Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
             if (!is_dir($dir))
                 mkdir($dir);
             if ($model->validate()) {
                 echo var_dump($model);exit;
-                 echo $model['picture']->baseName;exit;
+                 echo $model['image_id']->baseName;exit;
                 //文件名
-                $fileName = date("HiiHsHis") . $model->picture->baseName . "." . $model->picture->extension;
+                $fileName = date("HiiHsHis") . $model->image_id->baseName . "." . $model->image_id->extension;
                 $dir = $dir . "/" . $fileName;
                 
                
-                $model->picture->saveAs($dir);
+                $model->image_id->saveAs($dir);
                 $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
             }
         }
