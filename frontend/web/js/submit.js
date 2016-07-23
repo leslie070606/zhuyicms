@@ -12,7 +12,7 @@ $(function () {
     });
 
      $("body").on("click",".here_img_box li",function(ev){
-	 	if(	$(this).hasClass("add_img")){
+	 	if($(this).hasClass("add_img")){
 	 		
 	 	}else{
 	 		var ull=$(this).parent("ul");
@@ -24,6 +24,7 @@ $(function () {
 	 				gettt+=img_id+"$";
 	 			}
 	 			ull.prev("input").val(gettt);
+                                alert(ull.prev("input").val());
 	 			auto_click();
 	 	}
 	 });
