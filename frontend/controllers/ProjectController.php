@@ -69,7 +69,7 @@ class ProjectController extends \common\util\BaseController {
 
         if (Yii::$app->request->post()) {
 
-            $res = $tokenModel->getImg('');
+            $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
 
             echo "<pre>";
             var_dump($res);
