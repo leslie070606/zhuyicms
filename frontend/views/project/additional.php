@@ -167,7 +167,7 @@ use yii\helpers\Url;
                                          html = '<li><img src="' + images.localId[i] + '" value="'+serverId+'"> <i class="iconfont icon-shanchu"></i></li>';
                                             
                                          $("#ulb").prepend(html);
-//    alert(html);
+                                         alert(images.localId[i]);
                                     }
                                 });
 
