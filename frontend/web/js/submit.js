@@ -12,19 +12,19 @@ $(function () {
     });
 
      $("body").on("click",".here_img_box li",function(ev){
-	 	if($(this).hasClass("add_img")){
+	 	if(	$(this).hasClass("add_img")){
 	 		
 	 	}else{
-	 		var ull=$(ev.currentTarget).parent("ul");
+	 		var ull=$(this).parent("ul");
 	 			$(this).remove();
 	 			var gettt="";
-	 			ull.find("li").each(function(){
-	 				var img_id=$(this).prop("img_id");
+	 			var length=ull.find("li").length-1;
+	 			for(var i=0; i<length;i++){
+	 				var img_id=ull.find("li:eq("+i+")").prop("img_id");
 	 				gettt+=img_id+"$";
-	 			})
-	 			$(".like").val(gettt);
+	 			}
+	 			ull.prev("input").val(gettt);
 	 			auto_click();
-                                alert(ull.prev("input").val())
 	 	}
 	 });
 
