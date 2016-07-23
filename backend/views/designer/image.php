@@ -19,9 +19,9 @@ use yii\helpers\Html;
                 </div>
                 
                 <div class="form-group">
-                    <label for="picture">头像</label>
-                    <?= Html::activeFileInput($model, 'picture', ['class' => '', 'id' => 'picture']) ?>
-                    <?= Html::error($model, 'picture', ['class' => 'error']); ?>
+                    <label for="image_id">头像</label>
+                    <?= Html::activeFileInput($model, 'image_id', ['class' => '', 'id' => 'image_id']) ?>
+                    <?= Html::error($model, 'image_id', ['class' => 'error']); ?>
                 </div>
                 
             </div>

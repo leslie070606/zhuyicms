@@ -1,5 +1,5 @@
 <?php 
-$imageId = $model->picture;
+$imageId = $model->image_id;
 echo $imageId;
 $imageModel = new \common\models\ZyImages();
 
