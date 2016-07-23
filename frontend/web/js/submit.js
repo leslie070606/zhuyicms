@@ -19,12 +19,12 @@ $(function () {
 	 			$(this).remove();
 	 			var gettt="";
 	 			ull.find("li").each(function(){
-	 				var img_id=$("this").attr("img_id");
+	 				var img_id=$("this").prop("img_id");
 	 				gettt+=img_id+"$";
 	 			})
 	 			$(".like").val(gettt);
 	 			auto_click();
-                                alert(ull.prev("input").val)
+                                alert(ull.prev("input").val())
 	 	}
 	 });
 
