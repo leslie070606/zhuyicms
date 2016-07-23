@@ -1,7 +1,8 @@
 $(function () {
-    var project_tags="";
+    
     img_height_auto();
     touch.on(".list_spa", "tap", function (ev) {
+        var project_tags="";
         var get = $(ev.currentTarget).find("i");
         if (get.hasClass("icon-weixuanzhong")) {
             get.removeClass("icon-weixuanzhong").addClass("icon-xuanzhong");
@@ -9,8 +10,14 @@ $(function () {
             get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
         };
         $(".type_list .icon-xuanzhong").each(function(){
+            var length=$(".type_list .icon-xuanzhong").length;
             var text=$(this).parent().text();
-            project_tags+=text;
+            if(i>=length-1){
+                project_tags+=text;
+            }else{
+                project_tags+=text+"$";
+            }
+            
         })
         $("#project_tags").val(project_tags);
         auto_click();
