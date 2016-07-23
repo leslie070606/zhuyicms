@@ -73,7 +73,7 @@ class ProjectController extends \common\util\BaseController {
            // $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
 
             echo "<pre>";
-            echo $ee;
+            print_r($ee);
             exit;
 
             /* $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
