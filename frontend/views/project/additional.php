@@ -87,10 +87,9 @@ use yii\helpers\Url;
                     </div>
                 </div>
                 <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
-                <button>
-                    <a href="Choose_designer.html"><div class="chose_btn">
+                <button class="chose_btn" style="border: none;">
                             提交并查看设计师
-                        </div></a></button>
+                        </button>
                 <?= Html::endForm(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
             </div>
@@ -126,7 +125,6 @@ use yii\helpers\Url;
 
         touch.on(".add_img", "tap", function (ev) {
             var _this = $(ev.currentTarget);
-//        
             var index;
             if (_this.parents("ul").attr("id") == "ulb") {
                 index = 1;
@@ -153,12 +151,12 @@ use yii\helpers\Url;
                         // alert(indexx)
                         if (index == 1) {
                              for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
+                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="text" /> </li>';
                         }
                             $("#ulb").prepend(html);
                         } else {
                          for (var i = 0; i < images.localId.length; i++) {
-                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="bb_' + i + '" type="text" /> </li>';
+                            html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
                         }
                             $("#ula").prepend(html);
                         }

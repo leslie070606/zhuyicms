@@ -61,11 +61,31 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionAdditional() {
+
+        $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
         
-        if(Yii::$app->request->post()){
+         $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+          if (!is_dir($dir))
+                mkdir($dir, 0777, true);
+          
+           $ext = strrchr('http://www.baidu.com/img/baidu_logo.gif', ".");
+            $fileName = $dir.'/' . date("HiiHsHis") . $ext;
+       //echo $fileName;
+       $res = file_put_contents($fileName, $img);
+       echo $res;
+        echo '<img src="'.$fileName.'">';
+exit;
+
+
+        $res = $this->GrabImage("http://www.baidu.com/img/baidu_logo.gif");
+        echo "<pre>";
+        var_dump($res);
+        exit;
+
+        if (Yii::$app->request->post()) {
             echo "<pre>";
-            var_dump(Yii::$app->request->post());exit;
-                   
+            var_dump(Yii::$app->request->post());
+            exit;
         }
 //        $upfile = UploadedFile::getInstanceByName('aa');
 //            echo "<pre>";
@@ -79,10 +99,50 @@ class ProjectController extends \common\util\BaseController {
 
         return $this->render('additional', ['jsarr' => $jsarr]);
 
-
         // if ($project_id = Yii::$app->request->get('project_id')) {
         //echo $project_id;
         // }
+    }
+
+    public function GrabImage($url, $filename = "") {
+        if ($url == ""):return false;
+        endif;
+        //如果$url地址为空，直接退出
+        if ($filename == "") {
+
+
+            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+
+            if (!is_dir($dir))
+                mkdir($dir, 0777, true);
+            //if ($model->validate()) {//未验证
+            //文件名
+            //$fileName = date("HiiHsHis") . $upfile->baseName . "." . $upfile->extension;
+            $ext = strrchr($url, ".");
+            $fileName = date("HiiHsHis") . $ext;
+
+            // $fileName = $dir . "/" . $fileName;
+            // echo $fileName;exit;
+//            //如果没有指定新的文件名
+//            $ext = strrchr($url, ".");
+//            //得到$url的图片格式
+//            if ($ext != ".gif" && $ext != ".jpg"):return false;
+//            endif;
+//            //如果图片格式不为.gif或者.jpg，直接退出
+//            $filename = date("dMYHis") . $ext;
+//            //用天月面时分秒来命名新的文件名
+        }
+        ob_start(); //打开输出
+        readfile($url); //输出图片文件
+        $img = ob_get_contents(); //得到浏览器输出
+        ob_end_clean(); //清除输出并关闭
+        $size = strlen($img); //得到图片大小
+        $fp2 = @fopen($filename, "a");
+        var_dump($fp2);
+        exit;
+        fwrite($fp2, $img); //向当前目录写入图片文件，并重新命名
+        fclose($fp2);
+        return $filename; //返回新的文件名
     }
 
     //匹配设计师
@@ -113,7 +173,7 @@ class ProjectController extends \common\util\BaseController {
                 $tcity = TRUE;
             }
 
-            //判断时间
+//判断时间
             $usertime = time();
             switch ($project['work_time']) {
 
@@ -127,7 +187,7 @@ class ProjectController extends \common\util\BaseController {
                     $usertime = time() + 60 * 60 * 24 * 365;
                     break;
             }
-            // 判断时间是否允许
+// 判断时间是否允许
             $projecttime = TRUE;
             if ($designerArr[$i]['nowork_time'] < $usertime && $usertime < $designerArr[$i]['nowork_time2']) {
                 $projecttime = false;
@@ -143,11 +203,11 @@ class ProjectController extends \common\util\BaseController {
 
             $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
             $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
-            //匹配设计师计算分数
+//匹配设计师计算分数
             $scoreArr[$i]['score'] = $matchModel->assigns($project, $designerArr[$i]);
         }
 
-        //判断是否为空
+//判断是否为空
         if (count($scoreArr) > 0) {
 
             //排序
