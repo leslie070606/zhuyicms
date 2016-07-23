@@ -22,7 +22,7 @@ $(function () {
 	 				var img_id=$("this").attr("img_id");
 	 				gettt+=img_id+"$";
 	 			})
-	 			ull.prev("input").val(gettt);
+	 			$(".like").val(gettt);
 	 			auto_click();
                                 alert(ull.prev("input").val)
 	 	}
