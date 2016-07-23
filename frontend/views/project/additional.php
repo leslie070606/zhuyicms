@@ -166,6 +166,7 @@ use yii\helpers\Url;
                                         serverId = res.serverId; // 返回图片的服务器端ID
 
                                         likestr += serverId+",";
+                                        alert(likestr);
 
                                     }
                                 });
@@ -173,7 +174,7 @@ use yii\helpers\Url;
 
                             }
                             
-                            alert(likestr);
+                            
                             $(".like").val();
                             $("#ulb").prepend(html);
                         } else {
