@@ -68,7 +68,7 @@ class ProjectController extends \common\util\BaseController {
 
 
         if (Yii::$app->request->post()) {
-            $ee = Yii::$app->request->post();
+            $ee = Yii::$app->request->post('project_tags');
             //
            // $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
 

@@ -71,6 +71,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="type_list">
+                    <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重灯光设计</span>
                         <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重儿童房设计</span>
@@ -125,8 +126,7 @@ use yii\helpers\Url;
         var u = navigator.userAgent;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        alert('是否是Android：' + isAndroid);
-        alert('是否是iOS：' + isiOS);
+       
         touch.on(".add_img", "tap", function (ev) {
             var _this = $(ev.currentTarget);
             var index;
@@ -168,7 +168,7 @@ use yii\helpers\Url;
                                                 if (nuber >= ge) {
                                                     var like_val = $(".like").val();
                                                     $(".like").val(like_val + likestr);
-                                                    alert($(".like").val())
+                                                    
                                                     likestr = likestr.toString().split("$");
                                                     for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                                         $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
@@ -177,7 +177,7 @@ use yii\helpers\Url;
                                             } else {
                                                 var like_val = $(".like").val();
                                                 $(".like").val(like_val + likestr);
-                                                alert($(".like").val())
+                                                
                                                 likestr = likestr.toString().split("$");
                                                 for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                                     $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
@@ -208,7 +208,7 @@ use yii\helpers\Url;
                                                     if (nuber >= ge) {
                                                         var like_val = $(".home").val();
                                                         $(".home").val(like_val + likestr);
-                                                        alert($(".home").val())
+                                                        
                                                         likestr = likestr.toString().split("$");
                                                         for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                             $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
@@ -217,7 +217,7 @@ use yii\helpers\Url;
                                                 } else {
                                                     var like_val = $(".home").val();
                                                     $(".home").val(like_val + likestr);
-                                                    alert($(".home").val())
+//                                                    alert($(".home").val())
                                                     likestr = likestr.toString().split("$");
                                                     for (var i = 0; i < $("#ula li").length - 1; i++) {
                                                         $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);

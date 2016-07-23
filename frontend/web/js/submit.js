@@ -1,4 +1,5 @@
 $(function () {
+    var project_tags="";
     img_height_auto();
     touch.on(".list_spa", "tap", function (ev) {
         var get = $(ev.currentTarget).find("i");
@@ -6,8 +7,12 @@ $(function () {
             get.removeClass("icon-weixuanzhong").addClass("icon-xuanzhong");
         } else {
             get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
-        }
-        ;
+        };
+        $(".type_list .icon-xuanzhong").each(function(){
+            var text=$(this).parent().text();
+            project_tags+=text;
+        })
+        $("#project_tags").val(project_tags);
         auto_click();
     });
 
