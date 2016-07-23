@@ -179,8 +179,8 @@ use yii\helpers\Url;
                                             alert($(".like").val())
                                             likestr = likestr.toString().split("$");
                                             for (var i = 0; i < $("#ulb li").length - 1; i++) {
-                                                $("#ulb li:eq(" + i + ") img").attr("img_id", likestr[i]);
-                                                alert($("#ulb li:eq(" + i + ") img").attr("img_id");
+                                                $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                                alert($("#ulb li:eq(" + i + ")").prop("img_id")
                                             }
                                         }
 
