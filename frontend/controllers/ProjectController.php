@@ -69,7 +69,7 @@ class ProjectController extends \common\util\BaseController {
 
 
 
-            $img = file_get_contents(Yii::$app->request->post('aa_0'));
+            $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
 
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
             if (!is_dir($dir))
