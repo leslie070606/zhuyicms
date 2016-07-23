@@ -228,7 +228,7 @@ use yii\helpers\Url;
                             auto_click();
 
                     }
-                });
+                }});
 
             } else {
                 return false;
