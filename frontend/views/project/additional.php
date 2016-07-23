@@ -149,14 +149,6 @@ use yii\helpers\Url;
                         images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                         //alert(images.localId[0]);
 
-
-
-
-
-
-
-
-
                         var html = "";
 
                         // alert(indexx)
@@ -165,7 +157,7 @@ use yii\helpers\Url;
                             for (var i = 0; i < images.localId.length; i++) {
                                 html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i></li>';
 
-                                
+
                                 // 上传图片
                                 wx.uploadImage({
                                     localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
@@ -173,13 +165,15 @@ use yii\helpers\Url;
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
 
-                                        
+                                        likestr += serverId+",";
 
                                     }
                                 });
 
 
                             }
+                            
+                            alert(likestr);
                             $(".like").val();
                             $("#ulb").prepend(html);
                         } else {
