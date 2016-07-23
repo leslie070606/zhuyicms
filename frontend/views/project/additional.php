@@ -157,6 +157,7 @@ use yii\helpers\Url;
                             for (var i = 0; i < images.localId.length; i++) {
                                 var htmllll = images.localId[i];
 
+                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
 
                                 // 上传图片
                                 wx.uploadImage({
@@ -164,19 +165,20 @@ use yii\helpers\Url;
                                     isShowProgressTips: 1, // 默认为1，显示进度提示
                                     success: function (res) {
                                         serverId = res.serverId; // 返回图片的服务器端ID
-
-                                        html = '<li><img src="' + htmllll + '" value="' + serverId + '"> <i class="iconfont icon-shanchu"></i></li>';
-                                        $("#ulb").prepend(html);
-                                        img_height_auto();
-                                        auto_click();
-                                        //alert(htmllll);
+                                       likestr+=serverId;
+                                       alert(likestr);
+                                       alert(i)
+                                        
+                                      
                                     }
                                 });
 
 
                             }
 
-
+                            $("#ulb").prepend(html);
+                                 img_height_auto();
+                                        auto_click();
 
 
                         } else {
