@@ -223,12 +223,13 @@ use yii\helpers\Url;
 
                             }
 
-                            $("#ulb").prepend(html);
+                            $("#ula").prepend(html);
                             img_height_auto();
                             auto_click();
 
                     }
-                }});
+                }
+                });
 
             } else {
                 return false;
