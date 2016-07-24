@@ -94,7 +94,7 @@ class ProjectController extends \common\util\BaseController {
                         $imgModel->url = $uploadImgUrl;
                        // print_r($imgModel->save());
                         if ($imgModel->save()) {
-                            $imgId .= ','.$imgModel->attributes['image_id'];
+                            $imgId .= ','.(string)$imgModel->attributes['image_id'];
                              echo $imgId . '****';
                         } else {
                             return '';
