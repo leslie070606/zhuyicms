@@ -77,11 +77,11 @@ class ProjectController extends \common\util\BaseController {
             
             $midname = substr(md5($mid), 3, 8);
             $path = $dir . $midname;
-                    //$info = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
+                    $info = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
                     $wd = new \app\components\WeixinDownloadImg();
-                    $res = $wd->wxDownImg($mid, $accessToken, $path);
+                    //$res = $wd->wxDownImg($mid, $accessToken, $path);
             echo "<pre>";
-            print_r($res);
+            print_r($info);
             exit;
 
             // 获取JS签名
