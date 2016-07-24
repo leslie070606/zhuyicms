@@ -83,6 +83,7 @@ class ProjectController extends \common\util\BaseController {
                 
                 // 除去空数组
                 $postArr = array_filter($postArr);
+                print_r($postArr);
                 $imgId = '';
                 foreach ($postArr as $mid) {
                     $wd = new \app\components\WeixinDownloadImg();
