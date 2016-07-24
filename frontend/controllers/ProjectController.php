@@ -75,15 +75,15 @@ class ProjectController extends \common\util\BaseController {
             $project->description = $post['description'] ? $post['description'] : '';
 
             if ($post['home']) {
-                
+
                 $accessToken = $tokenModel->getToken();
 
                 //分割
                 $postArr = explode('$', $post['home']);
-                
+
                 // 除去空数组
                 $postArr = array_filter($postArr);
-                
+
                 $imgId = '';
                 foreach ($postArr as $mid) {
                     $wd = new \app\components\WeixinDownloadImg();
@@ -92,19 +92,17 @@ class ProjectController extends \common\util\BaseController {
                     $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
                     if ($uploadImgUrl) {
                         $imgModel->url = $uploadImgUrl;
-                       // print_r($imgModel->save());
+                        // print_r($imgModel->save());
                         if ($imgModel->save()) {
-                            $imgId .= ','.(string)$imgModel->attributes['image_id'];
-                            
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
                         } else {
                             return '';
                         }
                     }
-                   
                 }
-                 
+
                 if ($imgId) {
-                   
+
                     $project->home_img = $imgId;
                 }
 
@@ -112,24 +110,34 @@ class ProjectController extends \common\util\BaseController {
             }
 
             if ($post['like']) {
-                $imgModel = new \common\models\ZyImages();
-                $accessToken = $tokenModel->getToken();
-                $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
-                $wd = new \app\components\WeixinDownloadImg();
 
-                //上传图片
-                $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+                $accessToken = $tokenModel->getToken();
+
+                //分割
+                $postArr = explode('$', $post['like']);
+
+                // 除去空数组
+                $postArr = array_filter($postArr);
+
                 $imgId = '';
-                if ($uploadImgUrl) {
-                    $imgModel->url = $uploadImgUrl;
-                    if ($imgModel->save()) {
-                        $imgId = $imgModel->attributes['image_id'];
-                    } else {
-                        return '';
+                foreach ($postArr as $mid) {
+                    $wd = new \app\components\WeixinDownloadImg();
+                    $imgModel = new \common\models\ZyImages();
+                    //上传图片
+                    $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+                    if ($uploadImgUrl) {
+                        $imgModel->url = $uploadImgUrl;
+                        // print_r($imgModel->save());
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
                     }
                 }
 
                 if ($imgId) {
+
                     $project->favorite_img = $imgId;
                 }
             }
