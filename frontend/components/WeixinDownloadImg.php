@@ -10,6 +10,9 @@ class WeixinDownloadImg {
         $url = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=".$accessToken."&media_id=".$media_id;
         //用curl请求，返回文件资源和curl句柄的信息
         $info = $this->curl_request($url);
+        
+        echo "<pre>";
+        print_r($info);exit;
         //文件类型
         $types = array('image/bmp' => '.bmp', 'image/gif' => '.gif', 'image/jpeg' => '.jpg', 'image/png' => '.png');
         //判断响应首部里的的content-type的值是否是这四种图片类型
