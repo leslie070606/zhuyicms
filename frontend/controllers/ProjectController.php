@@ -90,13 +90,12 @@ class ProjectController extends \common\util\BaseController {
                     $imgModel = new \common\models\ZyImages();
                     //上传图片
                     $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
-                    print_r($uploadImgUrl);
                     if ($uploadImgUrl) {
                         $imgModel->url = $uploadImgUrl;
                        // print_r($imgModel->save());
                         if ($imgModel->save()) {
                             $imgId .= ','.(string)$imgModel->attributes['image_id'];
-                             echo $imgId . '****';
+                            
                         } else {
                             return '';
                         }
