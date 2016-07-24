@@ -214,7 +214,7 @@ use yii\helpers\Url;
                                     } else {
                                         var like_val = $(".home").val();
                                         $(".home").val(like_val + likestr);
-//                                                    alert($(".home").val())
+                                                 alert($(".home").val())
                                         likestr = likestr.toString().split("$");
                                         for (var i = 0; i < $("#ula li").length - 1; i++) {
                                             $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
