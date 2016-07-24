@@ -14,7 +14,7 @@ class ZyImages extends \yii\db\ActiveRecord{
      */
     public function rules(){
         return [
-            [['url'], 'string', 'max' => 50],
+            [['url'], 'string', 'max' => 100],
         ];
     }
 
