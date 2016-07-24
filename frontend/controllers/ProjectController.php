@@ -99,6 +99,7 @@ class ProjectController extends \common\util\BaseController {
                     }
                 }
                 if ($imgId) {
+                    echo $imgId;
                     $project->home_img = $imgId;
                 }
 
