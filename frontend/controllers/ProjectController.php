@@ -62,51 +62,34 @@ class ProjectController extends \common\util\BaseController {
 
     public function actionAdditional() {
 
-        $tokenModel = new \app\components\Token();
-
-
 
 
         if (Yii::$app->request->post()) {
-            $ee = Yii::$app->request->post('project_tags');
-            //
-           // $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
+            //$ee = Yii::$app->request->post('project_tags');
 
+            $tokenModel = new \app\components\Token();
+            $accessToken = $tokenModel->getToken();
+            $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
+
+            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+            if (!is_dir($dir))
+                mkdir($dir, 0777, true);
+            
+            $midname = substr(md5($mid), 3, 8);
+            $path = $dir . $midname;
+                    //$info = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
+                    $wd = new \app\components\WeixinDownloadImg($mid, $accessToken, $path);
             echo "<pre>";
             print_r($ee);
             exit;
 
-            /* $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
+            // 获取JS签名
+            $jsarr = $tokenModel->getSignature();
 
-              $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-              if (!is_dir($dir))
-              mkdir($dir, 0777, true);
-
-              //$ext = strrchr('http://www.baidu.com/img/baidu_logo.gif', ".");
-              $ext = '.jpg';
-
-              $fileName = $dir . '/' . date("HiiHsHis") . $ext;
-              //echo $fileName;
-              $res = file_put_contents($fileName, $img);
-              echo $res;
-              echo '<img src="' . $fileName . '">';
-              exit; */
+            // return $this->render('additional', ['jsarr' => $jsarr]);
         }
 
-
-//        $upfile = UploadedFile::getInstanceByName('aa');
-
-
-        $tokenModel = new \app\components\Token();
-
-        // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-
-        return $this->render('additional', ['jsarr' => $jsarr]);
-
-        // if ($project_id = Yii::$app->request->get('project_id')) {
-        //echo $project_id;
-        // }
+        return $this->render('additional', ['jsarr' => 11]);
     }
 
     public function GrabImage($url, $filename = "") {

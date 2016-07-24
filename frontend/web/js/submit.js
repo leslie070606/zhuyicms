@@ -9,10 +9,11 @@ $(function () {
         } else {
             get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
         };
-        $(".type_list .icon-xuanzhong").each(function(){
+        auto_click();
+        $(".type_list .icon-xuanzhong").each(function(index){
             var length=$(".type_list .icon-xuanzhong").length;
             var text=$(this).parent().text();
-            if(i>=length-1){
+            if(index>length-2){
                 project_tags+=text;
             }else{
                 project_tags+=text+"$";
@@ -20,7 +21,7 @@ $(function () {
             
         })
         $("#project_tags").val(project_tags);
-        auto_click();
+        
     });
 
      $("body").on("click",".here_img_box li",function(ev){

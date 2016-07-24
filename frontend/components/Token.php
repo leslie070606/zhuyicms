@@ -69,21 +69,21 @@ class Token {
     }
 
     // 下载多媒体接口
-    public function getImg($media_id) {
-        if (!$media_id) {
-            return false;
-        }
-
-        $url = 'http://file.api.weixin.qq.com/cgi-bin/media/get';
-
-        $accessToken = $this->getToken();
-        $para = array(
-            'access_token' => $accessToken,
-            'media_id' => $media_id
-        );
-        $res = $this->doCurlGetRequest($url,$para);
-        return $res;
-    }
+//    public function getImg($media_id) {
+//        if (!$media_id) {
+//            return false;
+//        }
+//
+//        $url = 'http://file.api.weixin.qq.com/cgi-bin/media/get';
+//
+//        $accessToken = $this->getToken();
+//        $para = array(
+//            'access_token' => $accessToken,
+//            'media_id' => $media_id
+//        );
+//        $res = $this->doCurlGetRequest($url,$para);
+//        return $res;
+//    }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
         if ($url == "" || $timeout <= 0) {
