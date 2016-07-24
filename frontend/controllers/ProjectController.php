@@ -77,27 +77,35 @@ class ProjectController extends \common\util\BaseController {
             if ($post['home']) {
                 $imgModel = new \common\models\ZyImages();
                 $accessToken = $tokenModel->getToken();
-                $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
-                $wd = new \app\components\WeixinDownloadImg();
 
-                //上传图片
-                $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+                //分割
+                $postArr = explode('$', $post['home']);
+                
+                // 除去空数组
+                $postArr = array_filter($postArr);
                 $imgId = '';
-                if ($uploadImgUrl) {
-                    $imgModel->url = $uploadImgUrl;
-                    if ($imgModel->save()) {
-                        $imgId = $imgModel->attributes['image_id'];
-                    } else {
-                        return '';
+                foreach ($postArr as $mid) {
+                    $wd = new \app\components\WeixinDownloadImg();
+                    //上传图片
+                    $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+
+                    if ($uploadImgUrl) {
+                        $imgModel->url = $uploadImgUrl;
+                        if ($imgModel->save()) {
+                            $imgId += ','.$imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
                     }
                 }
-
                 if ($imgId) {
                     $project->home_img = $imgId;
                 }
+
+                // $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
             }
-            
-            if ($post['like']){
+
+            if ($post['like']) {
                 $imgModel = new \common\models\ZyImages();
                 $accessToken = $tokenModel->getToken();
                 $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
