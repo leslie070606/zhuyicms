@@ -75,7 +75,7 @@ class ProjectController extends \common\util\BaseController {
             $project->description = $post['description'] ? $post['description'] : '';
 
             if ($post['home']) {
-                $imgModel = new \common\models\ZyImages();
+                
                 $accessToken = $tokenModel->getToken();
 
                 //分割
@@ -87,6 +87,7 @@ class ProjectController extends \common\util\BaseController {
                 $imgId = '';
                 foreach ($postArr as $mid) {
                     $wd = new \app\components\WeixinDownloadImg();
+                    $imgModel = new \common\models\ZyImages();
                     //上传图片
                     $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
                     print_r($uploadImgUrl);
