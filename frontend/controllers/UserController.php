@@ -78,7 +78,7 @@ class UserController extends ZyuserController {
     public function actionWechat_allow() {
 
         //初始化session
-        session_set_cookie_params(20);//设置session时间
+        //session_set_cookie_params(20);//设置session时间
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
