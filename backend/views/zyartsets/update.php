@@ -17,6 +17,7 @@ $this->params['breadcrumbs'][] = 'Update';
     <?= $this->render('_form', [
         'model' => $model,
         'imgurl' =>$imgurl,
+        'initialPreview'=>$initialPreview,
     ]) ?>
 
 </div>

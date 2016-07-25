@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\helpers\Url;
 
 /**
  * ZyartsetsController implements the CRUD actions for ZyArtsets model.
@@ -80,7 +81,6 @@ class ZyartsetsController extends Controller {
 
                     $dirimg = $dir . "/" . $fileName;
 
-                    //echo $dir."####";
                     //保存图片
                     if ($imgobjct->saveAs($dirimg)) {
                         $imgModel = new \common\models\ZyImages();
@@ -116,11 +116,18 @@ class ZyartsetsController extends Controller {
     public function actionUpdate($id) {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->art_id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $upfile = UploadedFile::getInstances($model, 'image_ids');
+
+            echo "<pre>";
+            print_r($upfile);
+            exit;
+
+            //return $this->redirect(['view', 'id' => $model->art_id]);
         } else {
             //读取显示图片
             $imgurl = '';
+            $initialPreview = '';
             if ($model->image_ids) {
                 $imgstr = $model->image_ids;
                 $imgarr = explode(',', $imgstr);
@@ -131,13 +138,13 @@ class ZyartsetsController extends Controller {
                     $img = $imgModel->findOne($imgid);
                     if ($img) {
                         $imgurl[] = Yii::$app->request->hostInfo . "/zhuyicms/frontend/web" . $img->url;
-                       // $initialPreview = ;
+                        $initialPreview[] = array('url' => Url::toRoute('/zyartsets/imgdelete'), 'key' => $imgid."$".$id);
                     }
                 }
             }
 
             return $this->render('update', [
-                        'model' => $model, 'imgurl' => $imgurl,
+                        'model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview,
             ]);
         }
     }
@@ -170,7 +177,21 @@ class ZyartsetsController extends Controller {
     }
 
     public function actionUploadimage() {
-        return "1111111111";
+        return true;
+    }
+
+    public function actionImgdelete() {
+        if ($imgid = Yii::$app->request->post('key')) {
+            $imgModel = new \common\models\ZyImages();
+            
+            $idarr = explode('$', $imgid);
+            //echo $artid;exit;
+            $model = $imgModel->findOne($idarr[0]);
+            $model->delete();
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['success' => true];
+        }
+        
     }
 
 }
