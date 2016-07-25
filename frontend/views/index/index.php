@@ -31,11 +31,10 @@ $videoModel = new ZyVideo();
                 <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="style_test.html">风格测试</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
                     <li><a href="user.html">我的住艺</a></li>
-                    <li><a href="designer_list.html">意见反馈</a></li>
-                    <li><a href="designer_list.html">退出登录</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
             <div class="down_right_zd"></div> 
@@ -43,12 +42,12 @@ $videoModel = new ZyVideo();
                 <img src="img/index/indexa.jpg" />
                 <div class="banner_mesg">
                     <span class="mesg_spa">好设计在住艺</span>
-                    <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">匹配设计师</a></span>
+                    <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
                 <div class="post_title">
-                    <span class=" iconfont icon-lingxing"><a>住艺指南</a></span>
+                    <span class=" iconfont icon-lingxing"><a>设计指南</a></span>
                 </div>
                 <ul class="bxslider">
                     <li>
@@ -74,7 +73,7 @@ $videoModel = new ZyVideo();
 
             <section class="production">
                 <div class="pro_title">
-                    <span class="titl_span">作品集
+                    <span class="titl_span">住艺设计师
                         <a></a>
                     </span>
                 </div>
@@ -105,40 +104,40 @@ $videoModel = new ZyVideo();
                         </div><!--pro_here end-->
 <?php } ?>
                 </div><!--pro_box end-->
-                <div class="see_more"><a href="designer_list.html">查看更多住艺设计师</a></div>
+                <div class="see_more"><a href="designer_list.html">认识更多设计师</a></div>
 
             </section><!--production end-->
 
             <section class="use_zy">
                 <div class="use_zy_title">
-                    <span class="use_zy_a">使用住艺</span>
+                    <span class="use_zy_a">如何开始</span>
                     <span class="use_zy_b"></span>
                 </div>
                 <div class="use_zy_box">
                     <span class=" iconfont icon-ceshi use_one"></span>
-                    <span class="use_text use_two">风格测试  提交需求</span>
+                    <span class="use_text use_two">提交需求</span>
                     <span class=" iconfont icon-jiantou use_three"></span>
 
                     <span class=" iconfont icon-shejishi use_one"></span>
-                    <span class="use_text use_two">风格测试  提交需求</span>
+                    <span class="use_text use_two">智能匹配设计师</span>
                     <span class=" iconfont icon-jiantou use_three"></span>
 
                     <span class=" iconfont icon-hezuo use_one"></span>
-                    <span class="use_text use_two">风格测试  提交需求</span>
+                    <span class="use_text use_two">约见设计师</span>
                     <span class=" iconfont icon-jiantou use_three"></span>
 
                     <span class=" iconfont icon-sheji use_one"></span>
-                    <span class="use_text use_two">风格测试  提交需求</span>
+                    <span class="use_text use_two">签约 获得方案</span>
                     <span class=" iconfont icon-jiantou use_three"></span>
                 </div>
-                <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">匹配设计师</a></span>
+                <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">开始设计</a></span>
             </section><!--use_zy end-->
             <section class="nav_bot">
 
                 <span><a href="#">关于住艺</a></span>
                 <span><a href="#">设计师入驻</a></span>
                 <span><a href="#">住艺招聘</a></span>
-                <span><a href="#">工装项目</a></span>
+                <span><a href="#">公装项目</a></span>
 
 
             </section><!--nav_bot end-->

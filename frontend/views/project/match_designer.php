@@ -19,14 +19,13 @@
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">
-                <ul>
+              <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="style_test.html">风格测试</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
                     <li><a href="user.html">我的住艺</a></li>
-                    <li><a href="designer_list.html">意见反馈</a></li>
-                    <li><a href="designer_list.html">退出登录</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
             <div class="down_right_zd"></div>  
@@ -38,22 +37,22 @@
                     <span class="box_sob">新房，二手房重新装修</span>
                 </div>
                 <a href="http://www.baidu.com"><div class="boxa_box">
-                        <span class="box_soa">园林设计</span>
-                        <span class="box_sob">花园规划设计</span>
+                        <span class="box_soa">庭院景观</span>
+                        <span class="box_sob">庭院、花园、景观规划</span>
                     </div></a>
                 <a href="http://www.baidu.com"><div class="boxa_box">
                         <span class="box_soa">软装咨询</span>
                         <span class="box_sob">效果提升  统一风格</span>
                     </div></a>
                 <a href="http://www.baidu.com"><div class="boxa_box">
-                        <span class="box_soa">工装设计</span>
+                        <span class="box_soa">公装设计</span>
                         <span class="box_sob">办公室 商铺 会所 艺术馆</span>
                     </div></a>
             </div>
 
             <div class="demand_big">
                 <div class="demand_here active here_1">
-                    <span class="dem_title">你要装修的家在哪里？</span>
+                    <span class="dem_title">你的家位于？</span>
                     <span class="dem_list">第<a class="red">1</a>题/7题</span>
                     <span class="list_title">主要服务城市</span>
                     <div class="dem_where">
@@ -66,7 +65,7 @@
                 </div>
 
                 <div class="demand_here here_2">
-                    <span class="dem_title">你的房型是什么？</span>
+                    <span class="dem_title">你的住宅类型是？</span>
                     <span>第<a class="red">2</a>题/7题</span>
                     <div class="fx_box">
                         <div class="fx_here">
@@ -75,38 +74,38 @@
                         </div>
                         <div class="fx_here">
                             <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>复式</span>
+                            <span>复式/Loft</span>
                         </div>
                         <div class="fx_here">
                             <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>别墅</span>
+                            <span>独栋/联排别墅</span>
                         </div>
                         <div class="fx_here">
                             <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>平房</span>
+                            <span>胡同/乡居/弄堂</span>
                         </div>
                     </div>
-                    <input class="dema_ipt" type="text" placeholder="其他房型" />
+                    <input class="dema_ipt" type="text" placeholder="其他住宅（例如：旧仓库/厂房/房车/集装箱）" />
                 </div>
 
                 <div class="demand_here  here_3">
-                    <span class="dem_title">你的房型多少平米？</span>
+                    <span class="dem_title">你的家多大？</span>
                     <span>第<a class="red">3</a>题/7题</span>
 
-                    <input class="dema_ipt three_ipt" type="text" placeholder="建筑面积" />
-                    <input class="dema_ipt three_ipta" type="text" placeholder="使用面积" />
+                    <input class="dema_ipt three_ipt" type="text" placeholder="建筑面积（㎡）" />
+                    <input class="dema_ipt three_ipta" type="text" placeholder="使用面积 （㎡）" />
                 </div>
 
                 <div class="demand_here here_4">
-                    <span class="dem_title">你想什么时候开始装修？</span>
+                    <span class="dem_title">打算什么时候开工？</span>
                     <span>第<a class="red">4</a>题/7题</span>
                     <div class="four_box">
-                        <div>我想尽快开始</div>
+                        <div>我想尽快开工</div>
                         <div>3个月以后</div>
-                        <div>我不是很着急</div>
+                        <div>暂时还不急</div>
                     </div>
                     <span class="other_box">
-                        <span>+</span> 添加具体时间
+                        <span>+</span> 或告诉住艺你想开工的具体日期
                     </span>
                     <section class="other_box2">
                         <input class="dema_ipt" type="text" placeholder="具体时间" />
@@ -114,7 +113,7 @@
                 </div>
 
                 <div class="demand_here here_5">
-                    <span class="dem_title">你需要的服务类型？</span>
+                    <span class="dem_title">你需要哪种服务？</span>
                     <span>第<a class="red">5</a>题/7题</span>
                     <div class="five_box">
                         <div class="last_five">
@@ -130,14 +129,14 @@
                 </div>
 
                 <div class="demand_here here_6">
-                    <span class="dem_title">请填写你的项目预算？</span>
+                    <span class="dem_title">你的大致预算是？</span>
                     <span>第<a class="red">6</a>题/7题</span>
                     <div class="six_box">
-                        <input class="dema_ipt" type="text" placeholder="硬装预算" />
+                        <input class="dema_ipt" type="text" placeholder="预算（万）" />
                         <div class="dema_explain">
                             <span class="explain_title">硬装设计<i id="sgdj">+施工对接</i>：</span>
                             <div class="explain_mesg">
-                                住艺改造家的项目装修费用平均在每平米3000元以上（包括 主材+施工）。这个价格能保证设计师有足够的空间发挥以及 最终作品的质量。
+                              	住艺参考：如果你需要设计+施工服务，综合考虑市场价及结合设计师报价后（依据设计师个人差异，设计费用报价多在￥400/㎡~￥1200/㎡区间内浮动），住艺建议你为每平米预留约￥3000预算（包含设计费，材料，施工等），以确保设计及施工质量。
                             </div>
                         </div>
                     </div>

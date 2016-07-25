@@ -32,15 +32,14 @@
 				<span class="top_right iconfont icon-gongneng"></span>
 			</header>
 			<section class="down_right">
-				<ul>
-					<li><a href="index.html">首页</a></li>
-					<li><a href="designer_list.html">住艺设计师</a></li>
-					<li><a href="style_test.html">风格测试</a></li>
-					<li><a href="designer_list.html">使用指南</a></li>
-					<li><a href="user.html">我的住艺</a></li>
-					<li><a href="designer_list.html">意见反馈</a></li>
-					<li><a href="login.html">退出登录</a></li>	
-				</ul>
+				 <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="designer_list.html">住艺设计师</a></li>
+                    <li><a href="designer_list.html">使用指南</a></li>
+                    <li><a href="user.html">我的住艺</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
+                </ul>
 			</section> 
 			<div class="down_right_zd"></div>
 			<div class="help_bot_zd"></div>
@@ -65,7 +64,7 @@
 				<div class="user_top">
 					<span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
 					<span class="head_name">蔡英烈</span>
-					<span class="head_more">免费预约一次</span>
+					<span class="head_more">已获得一次免费约见！</span>
 				</div>
 				
 				
@@ -76,10 +75,29 @@
 				</div>	
 				<ul class="bxslidera" id="nav_box">
 				  <li class="active">
-					<div class="tishi">
-				  		住艺君正在帮你协调设计师的意向和时间<br/>6月19日 20：00前更新订单状态
-				  	</div>
 				  	<div class="dingdan">
+				  		
+				  		<div class="Blank_Page">
+				  			<span>
+				  			你还没有产生订单<br/>
+				  			 可以先浏览  <a href="designer_list.html" class="red">住艺的设计师</a>
+				  			</span>
+				  			
+				  		</div>
+				  		<div class="Blank_Page">
+				  			<span>
+				  			非常抱歉，由于住艺设计师有限<br/>
+				  			 暂未能帮您匹配到设计师
+				  			 </span>
+				  		</div>
+				  		<div class="Blank_Page">
+				  			<span>
+				  			你还没有订单哦<br/>
+				  			预约设计师后会出现在这里<br />
+				  			<a href="" class="red">立即约见</a>
+				  			</span>
+				  		</div>
+				  		
 				  		<!--正常待设计师确认-->
 				  			<div class="dd_here">
 				  				<div class="here_bottom line_center">
@@ -95,7 +113,7 @@
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 				  				<div class="true_time">
-				  					24小时内确认
+				  						住艺管家正在协调设计师的意向和时间 <br/> 订单状态 将在6月19日 20：00 前更新
 				  				</div>
 				  			</div>
 				  			<!--正常待确认见面时间-->

@@ -29,7 +29,7 @@
 			<div class="sousuo_tab">
 				<span>室内设计师</span>
 				<span>建筑设计师</span>
-				<span>园林设计师</span>
+				<span>景观设计师</span>
 			</div>
 			
 			<div class="sousuo_title">
@@ -45,7 +45,7 @@
 				</ul>
 			</div>
 			
-			<div class="sifting">筛选</div>
+			<div class="sifting">甄选</div>
 		</div>
 		<div class="designer_box">
 			<?php

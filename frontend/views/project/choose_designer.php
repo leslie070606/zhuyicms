@@ -20,21 +20,20 @@
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">
-                <ul>
+               <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="style_test.html">风格测试</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
                     <li><a href="user.html">我的住艺</a></li>
-                    <li><a href="designer_list.html">意见反馈</a></li>
-                    <li><a href="designer_list.html">退出登录</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
             <div class="down_right_zd"></div> 
 
             <div class="choose_top">
                 <span class="choose_top_a">Hi  Kevin</span>
-                <span class="choose_top_b">请选择三位你喜欢的设计师，我们将为您优先匹配</span>
+                <span class="choose_top_b">找到了6位适合你的设计师，请从中选择3位优先约见</span>
             </div>
 
             <div class="designer_box">
@@ -75,7 +74,7 @@
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>-->
                 </ul>
                 <span class="navv_tj zhihui">提交</span>
-                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">你可以不选择设计师，我们将为你人工匹配</i></span>
+                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">没有发现喜欢的设计师，请住艺管家为我再次甄选 </i></span>
 
             </div>		
         </div>

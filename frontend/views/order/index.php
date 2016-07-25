@@ -86,7 +86,7 @@
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								  				<div class="true_time">
-								  					24小时内确认
+								  					住艺管家正在协调设计师的意向和时间 <br/> 订单状态 将在6月19日 20：00 前更新
 								  				</div>
 								  			</div>
 HTML;
@@ -123,11 +123,11 @@ HTML;
 															<span>艺术大咖</span><span>设计大师</span>
 														</div>
 														<div class="right_type color_ccc">
-															 预约已取消
+															 约见已取消
 														</div>
 													</div>
 								  				<div class="tj_box">
-								  					<span class="tj_spa">住艺君推荐设计师</span>
+								  					<span class="tj_spa">住艺推荐设计师</span>
 								  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 								  				</div>
 								  				<div class="tj_box leave_word">
@@ -168,7 +168,7 @@ HTML;
 												</div>
 							  				</div>
 							  				<div class="tj_box">
-							  					<span class="tj_spa">住艺君推荐设计师</span>
+							  					<span class="tj_spa">住艺推荐设计师</span>
 							  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 							  				</div>
 							  				<div class="tj_box leave_word">
@@ -210,7 +210,7 @@ HTML;
 											</div>
 											</div>
 											<div class="tj_box">
-												<span class="tj_spa">住艺君推荐设计师</span>
+												<span class="tj_spa">住艺推荐设计师</span>
 												<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 											</div>
 										</div>
@@ -240,14 +240,14 @@ HTML;
 												</div>
 												</div>
 												<div class="tj_box">
-													<span class="tj_spa">住艺君推荐设计师</span>
+													<span class="tj_spa">住艺推荐设计师</span>
 													<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 												</div>
 												
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 												<div class="true_time queren_btn">
-													<span class="true_btnb hetong">上传合同，住艺法务免费服务</span>
+													<span class="true_btnb hetong">上传合同，让住艺管家帮你把关</span>
 												</div>
 											</div>	
 HTML;

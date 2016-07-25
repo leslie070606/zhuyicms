@@ -124,7 +124,7 @@
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								  				<div class="true_time">
-								  					24小时内确认
+								  					住艺管家正在协调设计师的意向和时间 <br/> 订单状态 将在6月19日 20：00 前更新
 								  				</div>
 HTML;
                                     } elseif ($orderType == 0 &&
@@ -189,7 +189,7 @@ HTML;
 										</div>
 				  					</div>
 				  					<div class="tj_box">
-				  						<span class="tj_spa">住艺君推荐设计师</span>
+				  						<span class="tj_spa">住艺推荐设计师</span>
 				  						<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 				  					</div>
 				  					<div class="tj_box leave_word">
@@ -220,7 +220,7 @@ HTML;
 										</div>
 									</div>
 				  				<div class="tj_box">
-				  					<span class="tj_spa">住艺君推荐设计师</span>
+				  					<span class="tj_spa">住艺推荐设计师</span>
 				  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 				  				</div>
 				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
@@ -255,7 +255,7 @@ HTML;
 					  				</div>
 					  				</div>
 					  				<div class="tj_box">
-					  					<span class="tj_spa">住艺君推荐设计师</span>
+					  					<span class="tj_spa">住艺推荐设计师</span>
 					  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 					  				</div>
 									<span class="jm_time">见面时间：8月24日 3:00PM</span>
@@ -299,7 +299,7 @@ HTML;
 										</div>
 									</div>
 				  				<div class="tj_box">
-				  					<span class="tj_spa">住艺君推荐设计师</span>
+				  					<span class="tj_spa">住艺推荐设计师</span>
 				  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 				  				</div>
 				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
@@ -334,7 +334,7 @@ HTML;
 					  				</div>
 					  				</div>
 					  				<div class="tj_box">
-					  					<span class="tj_spa">住艺君推荐设计师</span>
+					  					<span class="tj_spa">住艺推荐设计师</span>
 					  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 					  				</div>
 									<span class="jm_time">见面时间：8月24日 3:00PM</span>
@@ -364,8 +364,8 @@ HTML;
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								<div class="true_time queren_btn">
-					  					<span class="true_btnb true_btnaa" yes_url="$yesUrl">确认深度合作</span>
-					  					<span class="true_btna" no_url="$noUrl">不要深度合作</span>
+					  					<span class="true_btnb true_btnaa" yes_url="$yesUrl">开始深度合作</span>
+					  					<span class="true_btna" no_url="$noUrl">计划有变，暂时先不合作了</span>
 				  					</div>
 				  				
 				  			</div>
@@ -394,11 +394,11 @@ HTML;
 					  				</div>
 					  				</div>
 					  				<div class="tj_box">
-					  					<span class="tj_spa">住艺君推荐设计师</span>
+					  					<span class="tj_spa">住艺推荐设计师</span>
 					  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
 					  				</div>
-					  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
-									<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
+					  				<span class="jm_time">约见时间：8月24日 3:00PM</span>
+									<span class="jm_money">约见地点：北京市光华路2号9层1003室</span>
 									<span class="jm_time">见面2小时</span>
 									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 									<div class="true_time queren_btn">

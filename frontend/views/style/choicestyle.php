@@ -19,14 +19,13 @@
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">
-                <ul>
+                 <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="style_test.html">风格测试</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
                     <li><a href="user.html">我的住艺</a></li>
-                    <li><a href="designer_list.html">意见反馈</a></li>
-                    <li><a href="designer_list.html">退出登录</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
             <div class="down_right_zd"></div> 

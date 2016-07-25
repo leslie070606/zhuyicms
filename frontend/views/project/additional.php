@@ -30,24 +30,23 @@ use yii\helpers\Url;
                 <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="style_test.html">风格测试</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
                     <li><a href="user.html">我的住艺</a></li>
-                    <li><a href="designer_list.html">意见反馈</a></li>
-                    <li><a href="designer_list.html">退出登录</a></li>
+                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
             <div class="down_right_zd"></div>  
 
             <div class="submit_box">
-                <span class="submit_true">提交成功</span>
-                <span class="submit_truea">需求可以在我的住艺里修改</span>
+                <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
+                <span class="submit_truea">需求可随时在【我的住艺】中修改</span>
                 <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
 
                 <input class="dema_ipt" type="text" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
-                    <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
-                    <span class="here_b">（上传png... 不大于＊k图片）</span>
+                    <span class="here_a">请上传户型图、房屋照片</span>
+                    <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
                         <input type="hidden" value="" name='home' class="home" />
                         <ul id="ula">
@@ -57,8 +56,8 @@ use yii\helpers\Url;
                 </div>
 
                 <div class=" submit_here submit_herea">
-                    <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
-                    <span class="here_b">（上传png... 不大于＊k图片）</span>
+                    <span class="here_a">请上传已收集的理想之家</span>
+                    <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
                         <input type="hidden" value="" name="like" class="like" />
                         <ul id="ulb">
@@ -68,30 +67,31 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="type_list">
+                	<span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
                     <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
-                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重灯光设计</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重儿童房设计</span>
+                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>灯光及光氛围</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>儿童房的设计</span>
                     </div>
                     <div>
-                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重施工团队认证</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重家具极其环保材质</span>
+                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>施工团队是否可靠</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>家具和材料的环保性</span>
                     </div>
                     <div>
-                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重收纳整理设计</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重各自均有独立空间</span>
+                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>收纳整理空间</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>家庭成员彼此拥有相对独立空间</span>
                     </div>
                     <div>
-                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重收藏品等爱好满足</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重独特创新的亮点</span>
+                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>艺术品、收藏品的巧妙应用</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>与众不同的个性化之家</span>
                     </div>
                 </div>
-                <textarea class="text_box"  name="description" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
+                <textarea class="text_box"  name="description" id="answer-for-q-3" rows="10" placeholder="更多个性化需求，在这里告诉住艺吧！"></textarea>
                 <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
-                    提交并查看设计师
+                    完成！立刻查看设计师！
                 </button>
                 <?= Html::endForm(); ?>
-                <span class="center_nameaa"><a href="index.php?r=project/choose_designer">跳过</a></span>
+                <span class="center_nameaa"><a href="index.php?r=project/choose_designer">稍后再填</a></span>
             </div>
         </div>	
     </body>
