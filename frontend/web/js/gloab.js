@@ -1,4 +1,7 @@
 $(function(){
+	var widthaa=$(".here_img").width();
+	$(".here_img").css("height",widthaa*.56);
+
 	touch.on(".top_right","tap",function(ev){
 		var right=parseInt($(".down_right").css("right"));
 		if(right<0){
