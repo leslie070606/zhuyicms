@@ -121,19 +121,23 @@ class ZyartsetsController extends Controller {
         } else {
             //读取显示图片
             $imgurl = '';
-            if ($imgstr = $model->image_ids) {
-
+            if ($model->image_ids) {
+                $imgstr = $model->image_ids;
                 $imgarr = explode(',', $imgstr);
                 $imgarr = array_filter($imgarr);
                 foreach ($imgarr as $imgid) {
+                    //查询图片
                     $imgModel = new \common\models\ZyImages();
                     $img = $imgModel->findOne($imgid);
-                    $imgurl[] =Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$img->url;
+                    if ($img) {
+                        $imgurl[] = Yii::$app->request->hostInfo . "/zhuyicms/frontend/web" . $img->url;
+                       // $initialPreview = ;
+                    }
                 }
             }
 
             return $this->render('update', [
-            'model' => $model, 'imgurl' =>$imgurl,
+                        'model' => $model, 'imgurl' => $imgurl,
             ]);
         }
     }
@@ -165,7 +169,7 @@ class ZyartsetsController extends Controller {
         }
     }
 
-    public function actionUpimg() {
+    public function actionUploadimage() {
         return "1111111111";
     }
 

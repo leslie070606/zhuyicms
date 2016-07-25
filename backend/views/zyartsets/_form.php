@@ -45,13 +45,14 @@ use yii\helpers\Url;
             'allowedFileExtensions' => ['jpg', 'gif', 'png'],
             'previewFileType' => 'image',
             'initialPreviewAsData' => true, // 是否展示预览图
+            'initialPreviewConfig' => $p2,
             'overwriteInitial' => false,
             'browseLabel' => '选择图片',
             'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
             'maxFileCount' => 10, //允许上传最多的图片5张  
             'maxFileSize' => 2000, //限制图片最大200kB  
-            'uploadUrl' => Url::to(['/upload/image']), //异步上传接口地址
-            //'uploadExtraData' => ['testid' => 'listimg'],
+            'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
+            'uploadExtraData' => ['imgid' => 1],
             // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
             'showUpload' => FALSE,
             // 展示图片区域是否可点击选择多文件
