@@ -39,6 +39,27 @@ use yii\helpers\Html;
                 </div>
 
                 <div class="form-group">
+                    <label for="alma_mater">毕业院校及专业</label>
+                    <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'id' => 'alma_mater']) ?>
+                    <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
+                </div>
+                <div class="form-group">
+                    <label for="company">就职机构及头衔</label>
+                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control','id' => 'company']) ?>
+                    <?= Html::error($model, 'company', ['class' => 'error']); ?>
+                </div>                               
+                
+                <div class="form-group"> 
+                    <label for="ever_office">已往服务的事务所/设计公司</label>
+                    <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control', 'id' => 'ever_office']) ?>
+                    <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
+                </div>
+                <div class="form-group">
+                    <label for="winning">获奖经历</label>
+                    <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'id' => 'winning']) ?>
+                    <?= Html::error($model, 'winning', ['class' => 'error']); ?>
+                </div>
+                <div class="form-group">
                     <label for="tag">个性标签</label>
                     <?= Html::activeInput('text', $model, 'tag', ['class' => 'form-control', 'placeholder' => '多标签以(英文逗号)分隔', 'id' => 'tag']) ?>
                     <?= Html::error($model, 'tag', ['class' => 'error']); ?>
@@ -47,25 +68,6 @@ use yii\helpers\Html;
                 <div class="form-group">
                     <label for="sign">签约状态</label>
                     <?= Html::activeRadioList($model, 'sign', [1 => '已签约', 0 => '未签约'], ['class' => 'fav-list', 'id' => "sign"]) ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="alma_mater">毕业院校</label>
-                    <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'id' => 'alma_mater']) ?>
-                    <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="company">工作单位</label>
-                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'id' => 'company']) ?>
-                    <?= Html::error($model, 'company', ['class' => 'error']); ?>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="winning">获奖经历</label>
-                    <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'id' => 'winning']) ?>
-                    <?= Html::error($model, 'winning', ['class' => 'error']); ?>
                 </div>
 
             </div>
@@ -85,19 +87,6 @@ use yii\helpers\Html;
             <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
             <?= Html::activeHiddenInput($modeladditional, 'designer_id', ['id' => 'id-additional', 'value' => '0']) ?>
             <div class="box-body">
-
-                <div class="form-group">
-                    <label for="custom_service">内部对接客服</label>
-                    <?= Html::activeInput('text', $modeladditional, 'custom_service', ['class' => 'form-control', 'id' => 'custom_service']) ?>
-                    <?= Html::error($modeladditional, 'custom_service', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="ideas">设计理念</label>
-                    <?= Html::activeTextarea($modeladditional, 'ideas', ['class' => 'form-control', 'rows' => '3', 'id' => 'ideas']) ?>
-                    <?= Html::error($modeladditional, 'ideas', ['class' => 'error']); ?>
-                </div>
-
                 <div class="form-group ">
                     <label for="phone">手机</label>
                     <?= Html::activeInput('text', $modeladditional, 'phone', ['class' => 'form-control', 'id' => 'phone']) ?>
@@ -120,6 +109,24 @@ use yii\helpers\Html;
                     <label for="address">住址</label>
                     <?= Html::activeInput('text', $modeladditional, 'address', ['class' => 'form-control', 'id' => 'address']) ?>
                     <?= Html::error($modeladditional, 'address', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="ideas">设计理念</label>
+                    <?= Html::activeTextarea($modeladditional, 'ideas', ['class' => 'form-control', 'rows' => '3', 'id' => 'ideas']) ?>
+                    <?= Html::error($modeladditional, 'ideas', ['class' => 'error']); ?>
+                </div>
+                <div class="form-group">
+                    <label for="works">代表作品</label>
+                    <?= Html::activeTextarea($modeladditional, 'works', ['class' => 'form-control', 'rows'
+=> '3','id' => 'works']) ?>
+                    <?= Html::error($modeladditional, 'works', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="ideal_customer">理想的服务对象</label>
+                    <?= Html::activeTextarea($modeladditional, 'ideal_customer', ['class' => 'form-control', 'id' => 'ideal_customer']) ?>
+                    <?= Html::error($modeladditional, 'ideal_customer', ['class' => 'error']); ?>
                 </div>
             </div>
             <!-- /.box-body -->
@@ -148,12 +155,6 @@ use yii\helpers\Html;
             <?= Html::activeHiddenInput($modelwork, 'designer_id', ['id' => 'id-work', 'value' => '0']) ?>
             <div class="box-body">
                 <div class="form-group">
-                    <label for="category">类别</label>
-                    <?= Html::activeDropDownList($modelwork, 'category', [ 1 => '硬装设计师', 2 => '软装设计师', 3 => '其他'], ['class' => 'form-control', 'multiple' => '',  'id' => 'category']) ?>
-                    <?= Html::error($modelwork, 'category', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
                     <label for="city">所在城市</label>
                     <?= Html::activeInput('text', $modelwork, 'city', ['class' => 'form-control','id' => 'city']) ?>
                     <?= Html::error($modelwork, 'city', ['class' => 'error']); ?>
@@ -164,12 +165,24 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'service_city', ['class' => 'form-control','id' => 'service_city']) ?>
                     <?= Html::error($modelwork, 'service_city', ['class' => 'error']); ?>
                 </div>
+
+                <div class="form-group">
+                    <label for="customer">客户对象</label>
+                    <?= Html::activeInput('text', $modelwork, 'customer', ['class' => 'form-control','id' => 'customer']) ?>
+                    <?= Html::error($modelwork, 'customer', ['class' => 'error']); ?>
+                </div>
                 
                 <div class="form-group">
-                    <label for="matching">设计师配合度</label>
+                    <label for="matching">配合度</label>
                     <?= Html::activeInput('text', $modelwork, 'matching', ['class' => 'form-control','id' => 'matching']) ?>
                     <?= Html::error($modelwork, 'matching', ['class' => 'error']); ?>
                 </div>
+                <div class="form-group">
+                    <label for="service_type">服务类型</label>
+                    <?= Html::activeInput('text', $modelwork, 'service_type', ['class' => 'form-control','id' => 'service_type']) ?>
+                    <?= Html::error($modelwork, 'service_type', ['class' => 'error']); ?>
+                </div>
+
                 
                 <div class="form-group">
                     <label for="butt_joint">施工对接</label>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -206,19 +219,18 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'lower_centiare', ['class' => 'form-control', 'id' => 'lower_centiare']) ?>
                     <?= Html::error($modelwork, 'lower_centiare', ['class' => 'error']); ?>
                 </div>
+                <div class="form-group">
+                    <label for="charge">设计费收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control', 'placeh
+older' => '范围', 'id' => 'charge']) ?>
+                    <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
+                </div>
 
                 <div class="form-group">
                     <label for="style">擅长的设计风格</label>
                     <?= Html::activeInput('text', $modelwork, 'style', ['class' => 'form-control', 'id' => 'style']) ?>
                     <?= Html::error($modelwork, 'style', ['class' => 'error']); ?>
                 </div>
-
-                <div class="form-group">
-                    <label for="nowork_time">不能接活时段</label>
-                    <?= Html::activeInput('text', $modelwork, 'nowork_time', ['class' => 'form-control', 'id' => 'nowork_time']) ?>
-                    <?= Html::error($modelwork, 'nowork_time', ['class' => 'error']); ?>
-                </div>
-
             </div>
             <div class="box-footer"style='text-align: center;'>
                 <button class="btn btn-primary pull-left" type="reset"  onclick="ajaxWork();">提交</button>

@@ -4,23 +4,11 @@ use yii\helpers\Url;
 use kartik\file\FileInput;
 ?>
 
-<?php
-// 非ActiveForm的表单
-//echo '<label class="control-label">图片</label>';
-//echo FileInput::widget([
-//    'model' => $model,
-//    'attribute' => 'name[]',
-//    'options' => ['multiple' => true]
-//]);
-?>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title">设计师列表</h3>
-<!--                <p style="text-align:right;">
-                    <a href="<?php // Url::to(['add'])  ?>" class="btn btn-primary">添加</a>
-                </p>-->
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -49,6 +37,7 @@ use kartik\file\FileInput;
                             <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
                                 <thead>
                                     <tr role="row" style="background-color: #00c0ef;color: #ffffff;">
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">ID</th>
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">姓名</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">性别</th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">签约状态</th>
@@ -63,6 +52,7 @@ use kartik\file\FileInput;
                                 <tbody>
                                     <?php foreach ($data as $designer) { ?>
                                         <tr role="row" class="odd">
+                                            <td class="sorting_1"><?= $designer->id ?></td>
                                             <td class="sorting_1"><?= $designer->name ?></td>
                                             <td><?php
                                                 if ($designer->sex == 1) {
