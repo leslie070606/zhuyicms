@@ -122,9 +122,9 @@ class DesignerController extends controller {
             $designerId = $designerbasicModel->id;
 
 			$upFile = UploadedFile::getInstance($designerbasicModel,"image_id");
-			Yii::info($upFile,'pushNotifications');
 			//图片存放位置
-			$dir = Yii::getAlias('@webroot') . "/uploads/";
+			$dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
+			Yii::info($dir,'pushNotifications');
 			if(!is_dir($dir)){
 				@mkdir($dir,'0777',true);
 			}
@@ -134,13 +134,12 @@ class DesignerController extends controller {
 			$upFile->saveAs($dir);
 
 			//操作zy_images表
-			$uploadSuccessPath = "/uploads/" . $fileName;
+			$uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
 			$imageModel = new \common\models\ZyImages();
 			$imageModel->url = $uploadSuccessPath;
 			$imageId = '';
 			if($imageModel->save()){
 				$imageId = $imageModel->image_id;
-				var_dump($imageId);
 				$ret = $designerbasicModel->findOne($designerId);
 				if(empty($ret)){
 					return false;
