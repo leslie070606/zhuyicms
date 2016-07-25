@@ -6,7 +6,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\ArtsetsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-echo Yii::getAlias('@web');
+
 $this->title = '作品页';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

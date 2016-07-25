@@ -100,12 +100,11 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'sort')->textInput() ?>
 
-    <?= $form->field($model, 'complete_time')->textInput() ?>
+    <?php echo $form->field($model, 'complete_time')->textInput() ?>
 
-    <?= $form->field($model, 'create_time')->textInput() ?>
+    <?php //$form->field($model, 'create_time')->textInput() ?>
 
-    <?= $form->field($model, 'update_time')->textInput() ?>
-
+    <?php //$form->field($model, 'update_time')->textInput() ?>
 
     <div class="form-group"style="margin-top:100px;" >
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
