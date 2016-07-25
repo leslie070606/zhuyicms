@@ -60,93 +60,100 @@ class ProjectController extends \common\util\BaseController {
         return $this->render('match_designer');
     }
 
+    //需求附加信息
     public function actionAdditional() {
 
         $tokenModel = new \app\components\Token();
 
+        if ($post = Yii::$app->request->post()) {
 
+            $model = new ZyProject();
+            $project = $model->findOne(14);
 
+            $project->compound = $post['compound'] ? $post['compound'] : '';
+            $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
+            $project->description = $post['description'] ? $post['description'] : '';
+            
+            //家的照片
+            if ($post['home']) {
 
-        if (Yii::$app->request->post()) {
+                $accessToken = $tokenModel->getToken();
 
-            $res = $tokenModel->getImg('AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL');
+                //分割
+                $postArr = explode('$', $post['home']);
+
+                // 除去空数组
+                $postArr = array_filter($postArr);
+
+                $imgId = '';
+                foreach ($postArr as $mid) {
+                    $wd = new \app\components\WeixinDownloadImg();
+                    $imgModel = new \common\models\ZyImages();
+                    //上传图片
+                    $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+                    if ($uploadImgUrl) {
+                        $imgModel->url = $uploadImgUrl;
+                        // print_r($imgModel->save());
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+
+                if ($imgId) {
+
+                    $project->home_img = $imgId;
+                }
+
+                // $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
+            }
+            
+            //喜欢的照片
+            if ($post['like']) {
+
+                $accessToken = $tokenModel->getToken();
+
+                //分割
+                $postArr = explode('$', $post['like']);
+
+                // 除去空数组
+                $postArr = array_filter($postArr);
+
+                $imgId = '';
+                foreach ($postArr as $mid) {
+                    $wd = new \app\components\WeixinDownloadImg();
+                    $imgModel = new \common\models\ZyImages();
+                    //上传图片
+                    $uploadImgUrl = $wd->wxDownImg($mid, $accessToken);
+                    if ($uploadImgUrl) {
+                        $imgModel->url = $uploadImgUrl;
+                        // print_r($imgModel->save());
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+
+                if ($imgId) {
+
+                    $project->favorite_img = $imgId;
+                }
+            }
+
+            $res = $project->save();
 
             echo "<pre>";
-            echo($res);
+            var_dump($res);
             exit;
-
-            /* $img = file_get_contents('http://www.baidu.com/img/baidu_logo.gif');
-
-              $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-              if (!is_dir($dir))
-              mkdir($dir, 0777, true);
-
-              //$ext = strrchr('http://www.baidu.com/img/baidu_logo.gif', ".");
-              $ext = '.jpg';
-
-              $fileName = $dir . '/' . date("HiiHsHis") . $ext;
-              //echo $fileName;
-              $res = file_put_contents($fileName, $img);
-              echo $res;
-              echo '<img src="' . $fileName . '">';
-              exit; */
         }
-
-
-//        $upfile = UploadedFile::getInstanceByName('aa');
-
-
-        $tokenModel = new \app\components\Token();
-
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
 
         return $this->render('additional', ['jsarr' => $jsarr]);
-
-        // if ($project_id = Yii::$app->request->get('project_id')) {
-        //echo $project_id;
-        // }
-    }
-
-    public function GrabImage($url, $filename = "") {
-        if ($url == ""):return false;
-        endif;
-        //如果$url地址为空，直接退出
-        if ($filename == "") {
-
-
-            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-
-            if (!is_dir($dir))
-                mkdir($dir, 0777, true);
-            //if ($model->validate()) {//未验证
-            //文件名
-            //$fileName = date("HiiHsHis") . $upfile->baseName . "." . $upfile->extension;
-            $ext = strrchr($url, ".");
-            $fileName = date("HiiHsHis") . $ext;
-
-            // $fileName = $dir . "/" . $fileName;
-            // echo $fileName;exit;
-//            //如果没有指定新的文件名
-//            $ext = strrchr($url, ".");
-//            //得到$url的图片格式
-//            if ($ext != ".gif" && $ext != ".jpg"):return false;
-//            endif;
-//            //如果图片格式不为.gif或者.jpg，直接退出
-//            $filename = date("dMYHis") . $ext;
-//            //用天月面时分秒来命名新的文件名
-        }
-        ob_start(); //打开输出
-        readfile($url); //输出图片文件
-        $img = ob_get_contents(); //得到浏览器输出
-        ob_end_clean(); //清除输出并关闭
-        $size = strlen($img); //得到图片大小
-        $fp2 = @fopen($filename, "a");
-        var_dump($fp2);
-        exit;
-        fwrite($fp2, $img); //向当前目录写入图片文件，并重新命名
-        fclose($fp2);
-        return $filename; //返回新的文件名
     }
 
     //匹配设计师

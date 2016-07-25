@@ -44,16 +44,13 @@ use yii\helpers\Url;
                 <span class="submit_truea">需求可以在我的住艺里修改</span>
                 <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
 
-                <input class="dema_ipt" type="text" placeholder="请填写居住的小区名称" />
+                <input class="dema_ipt" type="text" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">上传户型图、家的照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" class="home" />
+                        <input type="hidden" value="" name='home' class="home" />
                         <ul id="ula">
-<!--                        <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu"></i></li>-->
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
                     </div>
@@ -63,7 +60,7 @@ use yii\helpers\Url;
                     <span class="here_a">上传已收集的喜欢照片（最多上传10张）</span>
                     <span class="here_b">（上传png... 不大于＊k图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" class="like" />
+                        <input type="hidden" value="" name="like" class="like" />
                         <ul id="ulb">
                             <li class="add_img iconfont icon-tianjia"></li>
                         </ul>
@@ -71,6 +68,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="type_list">
+                    <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重灯光设计</span>
                         <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重儿童房设计</span>
@@ -88,7 +86,7 @@ use yii\helpers\Url;
                         <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>注重独特创新的亮点</span>
                     </div>
                 </div>
-                <textarea class="text_box"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
+                <textarea class="text_box"  name="description" id="answer-for-q-3" rows="10" placeholder="更详细的描述，更精准的匹配！（不超过2000字）"></textarea>
                 <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
                     提交并查看设计师
                 </button>
@@ -122,8 +120,9 @@ use yii\helpers\Url;
                 // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
             }
         });
-
-
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
         touch.on(".add_img", "tap", function (ev) {
             var _this = $(ev.currentTarget);
@@ -136,85 +135,105 @@ use yii\helpers\Url;
 
             var length = $(ev.currentTarget).siblings().length;
             var likestr = '';
-            var nuber  =0;
-            if (length < 10) {
-                // 拍照选择图片
-                wx.chooseImage({
-                    count: 9, // 默认9
-                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                    success: function (res) {
+            var nuber = 0;
 
-                        //$("#w").attr("src", res.localIds);
-                        //alert(res.localIds);
-                        images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-                        //alert(images.localId[0]);
+            // 拍照选择图片
+            wx.chooseImage({
+                count: 9, // 默认9
+                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                success: function (res) {
+                    images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
 
-                        var html = "";
+                    var html = "";
+                    // alert(indexx)
+                    if (index == 1) {
 
-                        // alert(indexx)
-                        if (index == 1) {
-
-                            for (var i = 0; i < images.localId.length; i++) {
-                                var htmllll = images.localId[i];
-
-                                html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                                var ge=images.localId.length;
-                                // 上传图片
-                                wx.uploadImage({
-                                    localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                    isShowProgressTips: 1, // 默认为1，显示进度提示
-                                    success: function (res) {
-                                        serverId = res.serverId; // 返回图片的服务器端ID
-                                        likestr += serverId + "$";
-                                        var aa = 1;
-
-
-                                        nuber++;
-                                        //alert(nuber);
-                                        //alert(ge);
+                        for (var i = 0; i < images.localId.length; i++) {
+                            var htmllll = images.localId[i];
+                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                            var ge = images.localId.length;
+                            // 上传图片
+                            wx.uploadImage({
+                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                isShowProgressTips: 1, // 默认为1，显示进度提示
+                                success: function (res) {
+                                    serverId = res.serverId; // 返回图片的服务器端ID
+                                    likestr += serverId + "$";
+                                    nuber++;
+                                    if (isAndroid) {
                                         if (nuber >= ge) {
                                             var like_val = $(".like").val();
                                             $(".like").val(like_val + likestr);
-                                            alert($(".like").val())
+
                                             likestr = likestr.toString().split("$");
                                             for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                                 $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                                alert($("#ulb li:eq(" + i + ")").prop("img_id"));
                                             }
                                         }
+                                    } else {
+                                        var like_val = $(".like").val();
+                                        $(".like").val(like_val + likestr);
 
-
-
+                                        likestr = likestr.toString().split("$");
+                                        for (var i = 0; i < $("#ulb li").length - 1; i++) {
+                                            $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                        }
                                     }
-                                });
 
-
-                            }
-
-                            $("#ulb").prepend(html);
-                            img_height_auto();
-                            auto_click();
-
-
-                        } else {
-                            for (var i = 0; i < images.localId.length; i++) {
-                                html += '<li><img src="' + images.localId[i] + '"> <i class="iconfont icon-shanchu"></i><input class="img_file" value="' + images.localId[i] + '" name="aa_' + i + '" type="text" /> </li>';
-                            }
-                            $("#ula").prepend(html);
+                                }
+                            });
                         }
 
+                        $("#ulb").prepend(html);
+                        img_height_auto();
+                        auto_click();
+                    } else {
+                        for (var i = 0; i < images.localId.length; i++) {
+                            var htmllll = images.localId[i];
+                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                            var ge = images.localId.length;
+                            // 上传图片
+                            wx.uploadImage({
+                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                                isShowProgressTips: 1, // 默认为1，显示进度提示
+                                success: function (res) {
+                                    serverId = res.serverId; // 返回图片的服务器端ID
+                                    likestr += serverId + "$";
+                                    nuber++;
+                                    if (isAndroid) {
+                                        if (nuber >= ge) {
+                                            var like_val = $(".home").val();
+                                            $(".home").val(like_val + likestr);
 
+                                            likestr = likestr.toString().split("$");
+                                            for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                                $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                            }
+                                        }
+                                    } else {
+                                        var like_val = $(".home").val();
+                                        $(".home").val(like_val + likestr);
+                                                 alert($(".home").val())
+                                        likestr = likestr.toString().split("$");
+                                        for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                            $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                        }
+                                    }
+                                }
+                            });
+                        }
 
+                        $("#ula").prepend(html);
+                        img_height_auto();
+                        auto_click();
                     }
-                });
 
-            } else {
-                return false;
-            }
-            ;
+                }
+
+            })
         });
 
-
     });
+
 </script>

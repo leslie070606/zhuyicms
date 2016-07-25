@@ -140,6 +140,10 @@ class DesignerController extends controller {
 			$imageId = '';
 			if($imageModel->save()){
 				$imageId = $imageModel->image_id;
+<<<<<<< HEAD
+=======
+				
+>>>>>>> zhuyimaster
 				$ret = $designerbasicModel->findOne($designerId);
 				if(empty($ret)){
 					return false;

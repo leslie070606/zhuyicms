@@ -1,30 +1,44 @@
 $(function () {
+    
     img_height_auto();
     touch.on(".list_spa", "tap", function (ev) {
+        var project_tags="";
         var get = $(ev.currentTarget).find("i");
         if (get.hasClass("icon-weixuanzhong")) {
             get.removeClass("icon-weixuanzhong").addClass("icon-xuanzhong");
         } else {
             get.addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
-        }
-        ;
+        };
         auto_click();
+        $(".type_list .icon-xuanzhong").each(function(index){
+            var length=$(".type_list .icon-xuanzhong").length;
+            var text=$(this).parent().text();
+            if(index>length-2){
+                project_tags+=text;
+            }else{
+                project_tags+=text+"$";
+            }
+            
+        })
+        $("#project_tags").val(project_tags);
+        
     });
 
      $("body").on("click",".here_img_box li",function(ev){
 	 	if($(this).hasClass("add_img")){
 	 		
 	 	}else{
-	 		var ull=$(ev.currentTarget).parent("ul");
+	 		var ull=$(this).parent("ul");
 	 			$(this).remove();
 	 			var gettt="";
-	 			ull.find("li").each(function(){
-	 				var img_id=$(this).prop("img_id");
+	 			var length=ull.find("li").length-1;
+	 			for(var i=0; i<length;i++){
+	 				var img_id=ull.find("li:eq("+i+")").prop("img_id");
 	 				gettt+=img_id+"$";
-	 			})
-	 			$(".like").val(gettt);
+	 			}
+	 			ull.prev("input").val(gettt);
+                                //alert(ull.prev("input").val());
 	 			auto_click();
-                                alert(ull.prev("input").val())
 	 	}
 	 });
 
