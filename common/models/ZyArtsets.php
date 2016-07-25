@@ -41,9 +41,9 @@ class ZyArtsets extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['designer_id', 'design_cost', 'total_cost', 'sort', 'complete_time', 'create_time', 'update_time'], 'integer'],
+            [['designer_id', 'design_cost', 'total_cost', 'sort', 'create_time', 'update_time'], 'integer'],
             [['remark'], 'string'],
-            [['image_ids', 'video_ids', 'topic', 'brief', 'art_path', 'location', 'city', 'address'], 'string', 'max' => 50],
+            [['image_ids', 'video_ids', 'topic', 'brief', 'art_path', 'location', 'complete_time','city', 'address'], 'string', 'max' => 150],
         ];
     }
 

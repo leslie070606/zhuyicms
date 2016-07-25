@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'total_cost',
             'remark:ntext',
             'sort',
-            'complete_time:datetime',
+            'complete_time',
             'create_time:datetime',
             'update_time:datetime',
         ],

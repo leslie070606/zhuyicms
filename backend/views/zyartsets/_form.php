@@ -45,14 +45,14 @@ use yii\helpers\Url;
             'allowedFileExtensions' => ['jpg', 'gif', 'png'],
             'previewFileType' => 'image',
             'initialPreviewAsData' => true, // 是否展示预览图
-            'initialPreviewConfig' => $p2,
+            'initialPreviewConfig' => $initialPreview,
             'overwriteInitial' => false,
             'browseLabel' => '选择图片',
             'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
             'maxFileCount' => 10, //允许上传最多的图片5张  
             'maxFileSize' => 2000, //限制图片最大200kB  
             'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
-            'uploadExtraData' => ['imgid' => 1],
+            'uploadExtraData' => ['art_id' => $model->art_id],
             // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
             'showUpload' => FALSE,
             // 展示图片区域是否可点击选择多文件
@@ -63,7 +63,7 @@ use yii\helpers\Url;
                 // 设置具体图片的查看属性为false,默认为true
                 'showZoom' => true,
                 // 设置具体图片的上传属性为true,默认为true
-                'showUpload' => TRUE,
+                'showUpload' => true,
                 // 设置具体图片的移除属性为true,默认为true
                 'showRemove' => true,
             ],
@@ -100,12 +100,11 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'sort')->textInput() ?>
 
-    <?= $form->field($model, 'complete_time')->textInput() ?>
+    <?php echo $form->field($model, 'complete_time')->textInput() ?>
 
-    <?= $form->field($model, 'create_time')->textInput() ?>
+    <?php //$form->field($model, 'create_time')->textInput() ?>
 
-    <?= $form->field($model, 'update_time')->textInput() ?>
-
+    <?php //$form->field($model, 'update_time')->textInput() ?>
 
     <div class="form-group"style="margin-top:100px;" >
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
