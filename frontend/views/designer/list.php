@@ -51,12 +51,11 @@
 			<?php
 				foreach($data as $v){
 					//获取单个设计师的名字，头像，作品等信息
-					var_dump($v);
 					$designerId		= $v['designer_id'];
 					$name 			= $v['name'];
 					$tag			= $v['tag'];
-					$headPortrait 	= $v['head_portrait'];
-					$artPath 		= $v['art']->art_path;
+					$headPortrait 	= Yii::$app->request->hostInfo . $v['head_portrait'];
+					$artPath		= "img/home_page/banner_head.jpg";
 
 					$html = <<<HTML
 						<div class="pro_here iconfont">
@@ -93,27 +92,91 @@ touch.on(".sifting","tap",function(ev){
         url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list';?>"+"&&params="+get,
         data: "",
         success: function(data){
-        	console.log("js output...........");
+        	console.log("筛选设计师...");
             console.log(data);
 			$(".sousuo_box").animate({marginTop:-height},400);
         }
     })
 
 })
-touch.on(".pro_here>img","tap",function(ev){
+$("body").on("click",".pro_here>img",function(ev){
 	var designer_id = $(ev.currentTarget).attr("designer_id");
     $.ajax({
    		type: "GET",
-        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/index';?>"+"&&params="+designer_id,
+        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail';?>"+"&&params="+designer_id,
         data: "",
         success: function(data){
         	console.log("js output...........");
             console.log(data);
-			window.location.href="<?php echo Yii::getAlias('@web').'/index.php?r=designer/index';?>"+"&&params="+designer_id;
+			window.location.href="<?php echo Yii::getAlias('@web').'/index.php?r=designer/detail';?>"+"&&params="+designer_id;
         }
     })
 });
+var truefalse=true;
+$(window).on("scroll",function(){
+	var height=$(window).height();
+	var scrrol =document.body.scrollTop;
+	var heighta=$(".des_box").height();	
+	var get=heighta-height-scrrol;
+	
+console.log(get);
+	if(get<300&&truefalse){
+		truefalse=false;
+		var length=$(".designer_box .pro_here").length;
+		
+		$.ajax({
+			type:"get",
+			data:"",
+        	url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list';?>"+"&&params="+length,
+			async:true,
+			success:function(data){
+				 data = eval('('+decodeURI(data)+')');
+				console.log(data);
+				jiazai(data);
+				truefalse=true;
+			}
+		});
+		
+									
+	}
+})
+
+var yyyy=0
+function jiazai(data){
+	//var data=[{name:"www",biaoqian:["牛逼1","厉害1"]},{name:"www2",biaoqian:["牛逼2","厉害2"]},{name:"www3",biaoqian:["牛逼3","厉害3"]}]
+	
+		var length=data.length;
+		for(var i=0;i<data.length;i++){
+			var vtag=data[i].tag.split(",");
+			var htmlabb='';
+		for(var b=0;b<vtag.length;b++){
+			var html="<span>"+vtag[b]+"</span>"
+			htmlabb+=html;
+		}
+		var html='<div class="pro_here iconfont">'
+						+'<img designer_id="'+data[i].designer_id+'" class="here_img" src="'+data[i].background+'" />'
+						+'<div class="here_zhe"></div>'
+						+'<div class="here_botaa"></div>'
+						+'<div class="here_bottom line_center">'
+							+'<div class="here_head">'
+								+'<img src="'+data[i].head_portrait+'" />'
+							+'</div>'
+			
+							+'<div class="bottom_name">'
+								+'<span class="here_name">'+data[i].name+'</span>'
+								+'<span class="here_namea">'+data[i].designer_id+'</span>'
+							+'</div>'
+							+'<div class="bottom_label bottom_referral">'
+								+htmlabb
+							+'</div>'
+							
+							
+						+'</div>'
+					+'</div>'
+		$(".designer_box").append(html);
+		var widthaa=$(".here_img").width();
+		$(".here_img").css("height",widthaa*.56);	
+		yyyy++;
+	}
+}
 </script>
-
-
-

@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 use yii\db\ActiveRecord;
+use Yii;
 
 class DesignerBasic extends ActiveRecord{
 	public static function tableName(){
@@ -9,6 +10,13 @@ class DesignerBasic extends ActiveRecord{
 
 	public function getDesignersCount(){
 		return $this->find()->count();
+	}
+
+	public function getPartDesigners($start){
+		$count 	= 3;//固定显示3条数据.
+		$sql 	= "SELECT * FROM zyj_designer_basic LIMIT $start,$count;";
+		$rows 	= Yii::$app->db->createCommand($sql)->queryAll();
+		return $rows;
 	}
 	
 	public function getAllDesigners(){
