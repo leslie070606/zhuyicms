@@ -32,10 +32,7 @@ $this->title = "";
             ]
         )
         ?>
-        <h1>
-            设计师管理
-            <small>Preview</small>
-        </h1>
+
 <!--        <ol class="breadcrumb">
             <li><a href="<?php //Url::to(['index/index'])?>"><i class="fa fa-dashboard"></i>首页</a></li>
             <li><a href="<?php //Url::to(['designer/index'])?>">设计师列表</a></li>

@@ -1,9 +1,13 @@
 <?php
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\file\FileInput;
 ?>
-
+<h2>
+    设计师管理
+    <small>Preview</small>
+</h2>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
@@ -20,15 +24,15 @@ use kartik\file\FileInput;
                         <!-- 搜索-->
                         <div class="col-sm-6">
                             <div class="box-tools pull-right">
-                                <?= Html::beginForm('', 'post', ['id' => 'form-search']); ?>
+<?= Html::beginForm('', 'post', ['id' => 'form-search']); ?>
                                 <div style="width: 200px;" class="input-group input-group-sm">
                                     <!--<input type="text" placeholder="Search" class="form-control pull-right" name="table_search">-->
-                                    <?= Html::input('text', 'table_search',$search_word?$search_word:'', ['class' => 'form-control pull-right', 'placeholder' => 'Search', 'id' => 'table_search']) ?>
+<?= Html::input('text', 'table_search', $search_word ? $search_word : '', ['class' => 'form-control pull-right', 'placeholder' => 'Search', 'id' => 'table_search']) ?>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </div>
-                                 <?= Html::endForm(); ?>
+<?= Html::endForm(); ?>
                             </div>
                         </div>
                     </div>
@@ -50,7 +54,7 @@ use kartik\file\FileInput;
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">操作</th></tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($data as $designer) { ?>
+<?php foreach ($data as $designer) { ?>
                                         <tr role="row" class="odd">
                                             <td class="sorting_1"><?= $designer->id ?></td>
                                             <td class="sorting_1"><?= $designer->name ?></td>
@@ -78,7 +82,7 @@ use kartik\file\FileInput;
                                             <td><a href="<?= Url::to(['detail', 'id' => $designer->id]) ?>">查看</a>|<a href="<?= Url::to(['edit', 'id' => $designer->id]) ?>">编辑</a> | <a href="<?= Url::to(['delete', 'id' => $designer->id]) ?>">删除</a></td>
                                         </tr>
 
-                                    <?php } ?>
+<?php } ?>
 
                                 </tbody>
                                 <tfoot>

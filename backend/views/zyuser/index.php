@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\ZyUserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zy Users';
+$this->title = '用户列表';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-user-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zy User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('创建用户', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,18 +25,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'user_id',
-            'project_id',
-            'style_id',
-            'favored_designer_ids',
-            'name',
-            // 'openid',
-            // 'nickname',
-            // 'phone',
+            //'project_id',
+            //'style_id',
+            //'favored_designer_ids',
+            //'name',
+             'openid',
+             'phone',
+             'nickname',
+         
             // 'email:email',
             // 'status',
             // 'profession',
-            // 'sex',
-            // 'city',
+             'sex',
+             'city',
             // 'language',
             // 'country',
             // 'headimgurl:url',
