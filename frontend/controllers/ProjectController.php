@@ -73,7 +73,8 @@ class ProjectController extends \common\util\BaseController {
             $project->compound = $post['compound'] ? $post['compound'] : '';
             $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
             $project->description = $post['description'] ? $post['description'] : '';
-
+            
+            //家的照片
             if ($post['home']) {
 
                 $accessToken = $tokenModel->getToken();
@@ -108,7 +109,8 @@ class ProjectController extends \common\util\BaseController {
 
                 // $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
             }
-
+            
+            //喜欢的照片
             if ($post['like']) {
 
                 $accessToken = $tokenModel->getToken();

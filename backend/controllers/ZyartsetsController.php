@@ -8,17 +8,17 @@ use backend\models\search\ArtsetsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ZyartsetsController implements the CRUD actions for ZyArtsets model.
  */
-class ZyartsetsController extends Controller
-{
+class ZyartsetsController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,14 +33,13 @@ class ZyartsetsController extends Controller
      * Lists all ZyArtsets models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ArtsetsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -49,10 +48,9 @@ class ZyartsetsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -61,15 +59,50 @@ class ZyartsetsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new ZyArtsets();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->art_id]);
+        if ($ee = Yii::$app->request->post()) {
+            $model->load(Yii::$app->request->post());
+            //$upfile = UploadedFile::getInstancesByName('ImgSelect');
+            $upfile = UploadedFile::getInstances($model, 'image_ids');
+            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+
+            $imgId = '';
+            //如果有图片
+            if (count($upfile) > 0) {
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+
+                foreach ($upfile as $imgobjct) {
+
+                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+
+                    $dirimg = $dir . "/" . $fileName;
+
+                    //echo $dir."####";
+                    //保存图片
+                    if ($imgobjct->saveAs($dirimg)) {
+                        $imgModel = new \common\models\ZyImages();
+                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+
+                        $imgModel->url = $uploadSuccessPath;
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+                $model->image_ids = $imgId;
+            }
+            //保存数据
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->art_id]);
+            }
         } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -80,15 +113,27 @@ class ZyartsetsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->art_id]);
         } else {
+            //读取显示图片
+            $imgurl = '';
+            if ($imgstr = $model->image_ids) {
+
+                $imgarr = explode(',', $imgstr);
+                $imgarr = array_filter($imgarr);
+                foreach ($imgarr as $imgid) {
+                    $imgModel = new \common\models\ZyImages();
+                    $img = $imgModel->findOne($imgid);
+                    $imgurl[] =Yii::$app->request->hostInfo."/zhuyicms/frontend/web".$img->url;
+                }
+            }
+
             return $this->render('update', [
-                'model' => $model,
+            'model' => $model, 'imgurl' =>$imgurl,
             ]);
         }
     }
@@ -99,8 +144,7 @@ class ZyartsetsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -113,8 +157,7 @@ class ZyartsetsController extends Controller
      * @return ZyArtsets the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = ZyArtsets::findOne($id)) !== null) {
             return $model;
         } else {
@@ -122,7 +165,8 @@ class ZyartsetsController extends Controller
         }
     }
 
-	public function actionUpimg(){
-		return "1111111111";
-	}
+    public function actionUpimg() {
+        return "1111111111";
+    }
+
 }
