@@ -66,7 +66,7 @@ $videoModel = new ZyVideo();
 <?php foreach ($data as $value) { ?>
                     <div class="pro_here">
                         <div class="pro_here_bcimg iconfont icon-bofang1">
-                            <img class="" src="<?php $video = $videoModel::findOne($value['video_id']);
+                            <img class="here_img" src="<?php $video = $videoModel::findOne($value['video_id']);
     echo Yii::getAlias('@web') . $video['video_image'];
     ?>" />
                         </div>
