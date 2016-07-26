@@ -34,4 +34,20 @@ class DesignerBasic extends ActiveRecord{
 	public function getFilteredDesigners($condition){
 		return $this->find()->where($condition)->all();
 	}
+
+	public function getHeadPortrait($did){
+		if(!isset($did)){
+			return null;
+		}
+		$rows = $this->findOne($did);
+		if(empty($rows)){
+			return null;
+		}
+		$imgId = $rows->image_id;
+		$rows = \frontend\models\Images::findOne($imgId);		
+		if(empty($rows)){
+			return null;
+		}
+		return $rows->url;
+	}
 }
