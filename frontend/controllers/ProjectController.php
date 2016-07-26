@@ -92,7 +92,7 @@ class ProjectController extends \common\util\BaseController {
         if ($post = Yii::$app->request->post()) {
 
             $model = new ZyProject();
-            $project = $model->findOne(14);
+            $project = $model->findOne($project_id);
 
             $project->compound = $post['compound'] ? $post['compound'] : '';
             $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
