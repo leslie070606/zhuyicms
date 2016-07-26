@@ -6,7 +6,7 @@ use yii\web\Controller;
 
 class IndexController extends Controller {
 
-    public $layout = false;
+    public $layout = 'zhuyimain';
 
     public function actionIndex() {
 //        //初始化session
@@ -37,6 +37,7 @@ class IndexController extends Controller {
         //session_set_cookie_params(10);
         $session->set('user_id', '123');
         //$session->removeall();
+        return $this->render('test');
     }
 
 }
