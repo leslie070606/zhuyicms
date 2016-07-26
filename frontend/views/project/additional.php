@@ -186,6 +186,8 @@ use yii\helpers\Url;
                         }
 
                         $("#ulb").prepend(html);
+                        alert($(".home").val());
+                        alert($(".like").val());
                         img_height_auto();
                         auto_click();
                     } else {
@@ -225,6 +227,8 @@ use yii\helpers\Url;
                         }
 
                         $("#ula").prepend(html);
+                        alert($(".home").val());
+                        alert($(".like").val());
                         img_height_auto();
                         auto_click();
                     }
