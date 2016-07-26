@@ -26,6 +26,24 @@ class ProjectController extends \common\util\BaseController {
 
     //题目页
     public function actionMatch_designer() {
+        //判断跳转
+        //初始化session
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        if ($user_id = $session->get('user_id')) {
+            $model = new ZyProject();
+            $project = $model->findOne(['user_id'=>$user_id]);
+            
+            //如果有需求就跳转到个人中心
+            if($project){
+                echo "个人中心!";exit;
+            }
+            
+        } else {
+            return $this->redirect(['user/login']);
+        }
 
         if ($prostr = Yii::$app->request->get('g')) {
             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -73,7 +91,7 @@ class ProjectController extends \common\util\BaseController {
             $project->compound = $post['compound'] ? $post['compound'] : '';
             $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
             $project->description = $post['description'] ? $post['description'] : '';
-            
+
             //家的照片
             if ($post['home']) {
 
@@ -109,7 +127,7 @@ class ProjectController extends \common\util\BaseController {
 
                 // $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
             }
-            
+
             //喜欢的照片
             if ($post['like']) {
 
