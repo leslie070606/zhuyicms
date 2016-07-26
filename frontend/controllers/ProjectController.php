@@ -52,7 +52,7 @@ class ProjectController extends \common\util\BaseController {
             $aera = explode('$', $proarr[2]);
             $model = new ZyProject();
             //$model->project_id = 2;
-            $model->user_id = 1;
+            $model->user_id = $user_id;
             $model->city = $proarr[0];
             $model->home_type = $proarr[1];
             $model->covered_area = $aera[0];
