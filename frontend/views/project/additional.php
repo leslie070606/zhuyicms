@@ -67,7 +67,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="type_list">
-                	<span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
+                    <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
                     <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>灯光及光氛围</span>
@@ -91,7 +91,7 @@ use yii\helpers\Url;
                     完成！立刻查看设计师！
                 </button>
                 <?= Html::endForm(); ?>
-                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?=$project_id ?>">稍后再填</a></span>
+                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
             </div>
         </div>	
     </body>
@@ -160,6 +160,7 @@ use yii\helpers\Url;
                                 success: function (res) {
                                     serverId = res.serverId; // 返回图片的服务器端ID
                                     likestr += serverId + "$";
+
                                     nuber++;
                                     if (isAndroid) {
                                         if (nuber >= ge) {
@@ -172,8 +173,10 @@ use yii\helpers\Url;
                                             }
                                         }
                                     } else {
-                                        alert(nuber);
-                                        if(nuber > 1){
+
+                                    uploadIOS(images.localId[i],i);
+                                        //alert(nuber);
+
                                         var like_val = $(".like").val();
                                         $(".like").val(like_val + likestr);
 
@@ -181,7 +184,7 @@ use yii\helpers\Url;
                                         for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                             $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
-                                    }
+
                                     }
 
                                 }
@@ -219,7 +222,7 @@ use yii\helpers\Url;
                                     } else {
                                         var like_val = $(".home").val();
                                         $(".home").val(like_val + likestr);
-                                                 //alert($(".home").val())
+                                        //alert($(".home").val())
                                         likestr = likestr.toString().split("$");
                                         for (var i = 0; i < $("#ula li").length - 1; i++) {
                                             $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
@@ -242,5 +245,21 @@ use yii\helpers\Url;
         });
 
     });
+
+
+    function uploadIOS(localId,i) {
+        wx.uploadImage({
+            localId: localId,
+            success: function (res) {
+                serverIds.push(res.serverId);
+                i++;
+                if (i < length) {
+                    upload(localId,i);
+                } else {
+                     alert("serverIds" + serverIds);
+                }
+            }
+        })
+    }
 
 </script>
