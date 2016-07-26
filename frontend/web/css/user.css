@@ -63,7 +63,7 @@
 .queren_btn  {  height: .3rem;}
 .queren_btn >span { position: absolute; width: 1.8rem; top: 0; bottom: 0; margin: auto; height: .6rem; line-height: .6rem; text-align: center; color: #FFFFFF;}
 .queren_btn .true_btnb { background: #FF4E38; right: .3rem;}
-.queren_btn .true_btna { background: #9F9FA0; right: 2.5rem;}
+.queren_btn .true_btna { background: #9F9FA0; right: 2.5rem;width:3.3rem;}
 .color_ccca { width: 2rem; line-height: .2rem; color: #9F9FA0;}
 .ooo_spa,.ooo_spb { position: absolute; right: 0; text-align: right;}
  .ooo_spa{top: .15rem;}
