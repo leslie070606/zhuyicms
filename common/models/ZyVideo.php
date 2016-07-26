@@ -30,9 +30,9 @@ class ZyVideo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['video_url', 'designer_id', 'update_time'], 'required'],
-            [['designer_id', 'create_time', 'update_time'], 'integer'],
-            [['video_url', 'video_image'], 'string', 'max' => 100],
+            [['video_url', 'designer_id',], 'required'],
+            [['designer_id'], 'integer'],
+            [['video_url', 'video_image'], 'string', 'max' => 200],
         ];
     }
 
@@ -47,7 +47,7 @@ class ZyVideo extends \yii\db\ActiveRecord
             'video_image' => '视频封面图',
             'designer_id' => '设计师ID',
             'create_time' => '创建时间',
-            'update_time' => '添加时间',
+            'update_time' => '更新时间',
         ];
     }
 }

@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ZyVideo */
 
-$this->title = 'Create Zy Video';
+$this->title = '创建视频';
 $this->params['breadcrumbs'][] = ['label' => 'Zy Videos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

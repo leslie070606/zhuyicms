@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\VideoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zy Videos';
+$this->title = '视频管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-video-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Zy Video', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加视频', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?=
     GridView::widget([

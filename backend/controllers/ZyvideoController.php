@@ -85,6 +85,7 @@ class ZyvideoController extends Controller {
             $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
             //}
             $model->video_image = $uploadSuccessPath;
+            $model->create_time = time();
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }
@@ -103,27 +104,32 @@ class ZyvideoController extends Controller {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-
+        $oldimg = $model->video_image;//原始图片
         if ($model->load(Yii::$app->request->post())) {
 
             $upfile = UploadedFile::getInstance($model, "video_image");
 
-            //文件上传存放的目录
-            //$dir = Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
-            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-            //echo $dir;exit;
-            if (!is_dir($dir))
-                mkdir($dir, 0777, true);
-            //if ($model->validate()) {//未验证
-            //文件名
-            $fileName = date("HiiHsHis") . $upfile->baseName . "." . $upfile->extension;
+            if ($upfile) {
 
-            $dir = $dir . "/" . $fileName;
-            $upfile->saveAs($dir);
-            $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-            //}
-            $model->video_image = $uploadSuccessPath;
+                //文件上传存放的目录
+                //$dir = Yii::getAlias("@webroot") . "/upload/" . date("Ymd");
+                $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+                //echo $dir;exit;
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+                //if ($model->validate()) {//未验证
+                //文件名
+                $fileName = date("HiiHsHis") . $upfile->baseName . "." . $upfile->extension;
 
+                $dir = $dir . "/" . $fileName;
+                $upfile->saveAs($dir);
+                $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+                //}
+                $model->video_image = $uploadSuccessPath;
+            }else {
+                $model->video_image = $oldimg;
+            }
+            $model->update_time = time();
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }

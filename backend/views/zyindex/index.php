@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Zy Indices';
+$this->title = '首页管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-index-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Zy Index', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('添加视频', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
