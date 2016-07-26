@@ -172,6 +172,7 @@ use yii\helpers\Url;
                                             }
                                         }
                                     } else {
+                                        (nuber >= ge){
                                         var like_val = $(".like").val();
                                         $(".like").val(like_val + likestr);
 
@@ -180,13 +181,14 @@ use yii\helpers\Url;
                                             $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
                                     }
+                                    }
 
                                 }
                             });
                         }
 
                         $("#ulb").prepend(html);
-                        alert($(".home").val());
+                        //alert($(".home").val());
                         alert($(".like").val());
                         img_height_auto();
                         auto_click();
