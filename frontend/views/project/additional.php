@@ -172,7 +172,8 @@ use yii\helpers\Url;
                                             }
                                         }
                                     } else {
-                                        if(nuber >= ge){
+                                        alert(nuber);
+                                        if(nuber > 1){
                                         var like_val = $(".like").val();
                                         $(".like").val(like_val + likestr);
 
