@@ -104,6 +104,9 @@ class DesignerController extends controller {
 
                 $designerWorkModel = new \backend\models\DesignerWork();
                 $dm = $designerWorkModel::findOne(['designer_id' => $id]);
+                $dm->nowork_time = date('Y-m-d', $dm->nowork_time);
+                $dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
+
                 if ($dm) {
                     $designerWorkModel = $dm;
                 }
@@ -115,55 +118,55 @@ class DesignerController extends controller {
         }
     }
 
-	public function actionImage(){
+    public function actionImage() {
         if (Yii::$app->request->isPost) {
-        	$designerbasicModel = new \backend\models\DesignerBasic();
+            $designerbasicModel = new \backend\models\DesignerBasic();
             $designerbasicModel->load(Yii::$app->request->post());
             $designerId = $designerbasicModel->id;
 
-			$upFile = UploadedFile::getInstance($designerbasicModel,"image_id");
-			//图片存放位置
-			$dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
-			Yii::info($dir,'pushNotifications');
-			if(!is_dir($dir)){
-				@mkdir($dir,'0777',true);
-			}
-		
-			$fileName = $upFile->baseName . "." . $upFile->extension;
-			$dir = $dir . "/" .$fileName;
-			$upFile->saveAs($dir);
+            $upFile = UploadedFile::getInstance($designerbasicModel, "image_id");
+            //图片存放位置
+            $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
+            Yii::info($dir, 'pushNotifications');
+            if (!is_dir($dir)) {
+                @mkdir($dir, '0777', true);
+            }
 
-			//操作zy_images表
-			$uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-			$imageModel = new \common\models\ZyImages();
-			$imageModel->url = $uploadSuccessPath;
-			$imageId = '';
-			if($imageModel->save()){
-				$imageId = $imageModel->image_id;
-				$ret = $designerbasicModel->findOne($designerId);
-				if(empty($ret)){
-					return false;
-				}
-				$ret->image_id = $imageId;
-				$ret->save();
-			}else{
-				return false;
-			};
+            $fileName = $upFile->baseName . "." . $upFile->extension;
+            $dir = $dir . "/" . $fileName;
+            $upFile->saveAs($dir);
+
+            //操作zy_images表
+            $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+            $imageModel = new \common\models\ZyImages();
+            $imageModel->url = $uploadSuccessPath;
+            $imageId = '';
+            if ($imageModel->save()) {
+                $imageId = $imageModel->image_id;
+                $ret = $designerbasicModel->findOne($designerId);
+                if (empty($ret)) {
+                    return false;
+                }
+                $ret->image_id = $imageId;
+                $ret->save();
+            } else {
+                return false;
+            };
 
 
-			$ret = array('designer_id' => $designerId,'upfile' => $upFile);
-			$json = json_encode($ret);
+            $ret = array('designer_id' => $designerId, 'upfile' => $upFile);
+            $json = json_encode($ret);
 
-			//return $json;
+            //return $json;
             return $this->render('image', ['model' => $designerbasicModel]);
-
-		}else{
+        } else {
             // 非添加动作 跳转页面
             $designerbasicModel = new \backend\models\DesignerBasic();
 
             return $this->render('image', ['model' => $designerbasicModel]);
         }
-	}
+    }
+
     public function actionAdd() {
         // 返回json格式响应
         // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -179,37 +182,10 @@ class DesignerController extends controller {
                 //判断model
                 $designerbasicModel = new \backend\models\DesignerBasic();
 
-
                 $designerbasicModel->load(Yii::$app->request->post());
 
-				/*
-				$upFile = UploadedFile::getInstanceByName("image_id");
-				Yii::info($upFile,'pushNotifications');
-				//图片存放位置
-				$dir = Yii::getAlias('@webroot') . "/uploads/";
-				if(!is_dir($dir)){
-					@mkdir($dir,'0777',true);
-				}
-				
-				$fileName = $upFile->baseName . "." . $upFile->extension;
-				$dir = $dir . "/" .$fileName;
-				$upFile->saveAs($dir);
-				//操作zy_images表
-				$uploadSuccessPath = "/uploads/" . $fileName;
-				$imageModel = new \common\models\ZyImages();
-				$imageModel->url = $uploadSuccessPath;
-				$imageId = '';
-				if($imageModel->save()){
-					$imageId = $imageModel->image_id;
-				}else{
-					return false;
-				};
-				$designerbasicModel->image_id = $imageId;
-				*/
-				/*--------------------------------------------*/
-
                 if ($designerbasicModel->save()) {
-                    
+
                     //return '添加成功!';
                     $res = array('designerID' => $designerbasicModel->id, 'msg' => '添加成功!');
                     $resjson = json_encode($res);
@@ -219,7 +195,12 @@ class DesignerController extends controller {
                 }
             } else if ("DesignerWork" == $formx[1]) { //添加work表
                 $designerWorkModel = new \backend\models\DesignerWork();
-                $designerWorkModel->load(Yii::$app->request->post());
+                $post = Yii::$app->request->post();
+                $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
+                $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
+
+                $designerWorkModel->load($post);
+
                 if ($designerWorkModel->save()) {
                     return '添加成功!';
                 } else {
@@ -277,13 +258,15 @@ class DesignerController extends controller {
             if (!is_dir($dir))
                 mkdir($dir);
             if ($model->validate()) {
-                echo var_dump($model);exit;
-                 echo $model['image_id']->baseName;exit;
+                echo var_dump($model);
+                exit;
+                echo $model['image_id']->baseName;
+                exit;
                 //文件名
                 $fileName = date("HiiHsHis") . $model->image_id->baseName . "." . $model->image_id->extension;
                 $dir = $dir . "/" . $fileName;
-                
-               
+
+
                 $model->image_id->saveAs($dir);
                 $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
             }
@@ -293,5 +276,5 @@ class DesignerController extends controller {
 //            "uploadSuccessPath" => $uploadSuccessPath,
 //        ]);
     }
-    
+
 }

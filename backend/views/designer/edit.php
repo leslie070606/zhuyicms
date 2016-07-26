@@ -2,6 +2,8 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use dosamigos\datepicker\DatePicker;
+
 ?>
 <div class="row">
     <div class="col-md-6">
@@ -182,6 +184,35 @@ use yii\helpers\Html;
                     <?= Html::activeInput('text', $modelwork, 'service_type', ['class' => 'form-control','id' => 'service_type']) ?>
                     <?= Html::error($modelwork, 'service_type', ['class' => 'error']); ?>
                 </div>
+                <?=
+                $form->field($modelwork, 'nowork_time')->widget(
+                        DatePicker::className(), [
+                    // inline too, not bad
+                    'inline' => true,
+                    // modify template for custom rendering
+                    'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+                        'language' => 'zh-CN',
+                    ]
+                ]);
+                ?>
+
+                <?=
+                $form->field($modelwork, 'nowork_time2')->widget(
+                        DatePicker::className(), [
+                    // inline too, not bad
+                    'inline' => true,
+                    // modify template for custom rendering
+                    'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+                        'language' => 'zh-CN',
+                    ]
+                ]);
+                ?>
 
                 <div class="form-group">
                     <label for="butt_joint">施工对接</label>&nbsp;&nbsp;&nbsp;&nbsp;

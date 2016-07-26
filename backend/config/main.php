@@ -6,6 +6,7 @@ $params = array_merge(
 
 return [
     'defaultRoute' => 'index',
+    'language'=>'zh-CN',
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',

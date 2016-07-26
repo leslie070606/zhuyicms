@@ -90,6 +90,8 @@ class ProjectController extends \common\util\BaseController {
         $tokenModel = new \app\components\Token();
 
         if ($post = Yii::$app->request->post()) {
+            echo "<pre>";
+            print_r($post);exit;
 
             $model = new ZyProject();
             $project = $model->findOne($project_id);
