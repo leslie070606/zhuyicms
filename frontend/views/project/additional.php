@@ -91,7 +91,7 @@ use yii\helpers\Url;
                     完成！立刻查看设计师！
                 </button>
                 <?= Html::endForm(); ?>
-                <span class="center_nameaa"><a href="index.php?r=project/choose_designer">稍后再填</a></span>
+                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?=$project_id ?>">稍后再填</a></span>
             </div>
         </div>	
     </body>

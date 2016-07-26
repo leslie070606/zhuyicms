@@ -221,15 +221,22 @@ use yii\helpers\Html;
                 </div>
 
                 <div class="form-group">
-                    <label for="accept_area">每平米设计费最低要求</label>
+                    <label for="lower_centiare">每平米设计费最低要求</label>
 <?= Html::activeInput('text', $modelwork, 'lower_centiare', ['class' => 'form-control', 'id' => 'lower_centiare']) ?>
 <?= Html::error($modelwork, 'lower_centiare', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="charge">设计费收费标准</label>
                     <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control', 'placeh
-older' => '范围', 'id' => 'charge']) ?>
+older' => '', 'id' => 'charge']) ?>
 <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
+                </div>
+                
+                <div class="form-group">
+                    <label for="charge_work">设计费+施工收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeh
+older' => '', 'id' => 'charge_work']) ?>
+<?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">

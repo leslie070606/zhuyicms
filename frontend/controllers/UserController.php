@@ -22,6 +22,7 @@ class UserController extends ZyuserController {
         return $this->render('login');
     }
 
+    //手机登录
     public function actionPhone() {
         //手机登录
         $phone = Yii::$app->request->post('phone');
@@ -42,13 +43,15 @@ class UserController extends ZyuserController {
                 // echo $user[0]['user_id'];exit;
                 //如果不是第一次登录
                 if (count($user)) {
-
+                    //加session
                     $session->set('user_id', $user[0]['user_id']);
-                    //加ssion
-                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                    echo "登陆成功!";
-                    echo $session->get('user_id');
-                    exit;
+                    // 跳转首页
+                    return $this->redirect(['index/index']);
+
+//                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                    echo "登陆成功!";
+//                    echo $session->get('user_id');
+//                    exit;
                 } else {
                     //第一次登录添加
                     $userModel->phone = $phone;
@@ -63,13 +66,18 @@ class UserController extends ZyuserController {
                         $userId = $userModel->attributes['user_id'];
                         $session->set('user_id', $userId);
 
-                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                        echo $res;
-                        echo "添加成功!";
-                        echo $session->get('user_id');
-                        exit;
+                        // 跳转首页
+                        return $this->redirect(['index/index']);
+//                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                        echo $res;
+//                        echo "添加成功!";
+//                        echo $session->get('user_id');
+//                        exit;
                     }
                 }
+            } else {
+                //验证码错误
+                return $this->redirect(['phone']);
             }
         }
     }
@@ -111,10 +119,12 @@ class UserController extends ZyuserController {
             //登陆成功 加ssion
             $userId = $user['user_id'];
             $session->set('user_id', $userId);
-            echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-            echo "登陆成功!";
-            echo $session->get('user_id');
-            exit;
+            // 跳转首页
+            return $this->redirect(['index/index']);
+//            echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//            echo "登陆成功!";
+//            echo $session->get('user_id');
+//            exit;
         } else {
             //第一次登陆绑定手机
             return $this->redirect(array('user/addphone', 'userinfo' => $userinfo));
@@ -180,18 +190,21 @@ class UserController extends ZyuserController {
                     if ($res) {
                         // 登录成功!
                         $session->set('user_id', $userId);
-                        echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
-                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                        echo "登录成功!<br>";
-                        echo "您的昵称是:" . $userArr['nickname'] . "<br>";
-                        echo "您绑定的手机号是:" . $phone . "<br>";
-                        echo $session->get('user_id');
-                        exit;
+                        // 跳转首页
+                        return $this->redirect(['index/index']);
+//                        echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
+//                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                        echo "登录成功!<br>";
+//                        echo "您的昵称是:" . $userArr['nickname'] . "<br>";
+//                        echo "您绑定的手机号是:" . $phone . "<br>";
+//                        echo $session->get('user_id');
+//                        exit;
                     }
                 } else {
-                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                    echo "验证码错误!";
-                    exit;
+//                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                    echo "验证码错误!";
+//                    exit;
+                    return $this->redirect(['login']);
                 }
             } else {
                 echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
