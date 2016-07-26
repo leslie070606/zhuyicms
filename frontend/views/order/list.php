@@ -49,31 +49,35 @@
                     <span class="head_name">张三</span>
                     <span class="head_more">免费预约一次</span>
                 </div>
-
-
+				<div class="nac_boxa">
+					<span class="active">订单</span>
+					<span>需求</span>
+					<span>收藏</span>
+				</div>	
                 <ul class="bxslidera" id="nav_box">
                     <li>
                         <div class="dingdan">
                             <?php
                             if (empty($data) || !is_array($data)) {
-                                echo("暂无订单\n");
+								
+								$html = <<<HTML
+								<div class="Blank_Page">
+				  					<span>目前还没有订单产生<br/>
+				  					快 <a href="designer_list.html" class="red">提交需求</a>约见设计师吧
+				  					</span>
+				  				</div>
+HTML;
+								echo $html;
                             } else {
                                 foreach ($data as $d) {
-                                    $orderId = $d['order_id'];
-                                    //var_dump($orderId);
-
-                                    //获取设计师的头像，标签等信息。
-                                    $designerId = $d['designer_id'];
-                                    $designerM = new \frontend\models\DesignerBasic();
-                                    $ret = $designerM->getDesignerById($designerId);
-                                    //根据此订单查到的设计师ID，如果是找不到数据，接着下一次循环
-                                    if (empty($ret)) {
-                                        continue;
-                                    }
-                                    $name = $ret->name;
-                                    $tagStr = $ret->tag;
-                                    $tagStr = "hongkong,台湾小屌丝,设计小生";
-                                    $tagArr = explode(',', $tagStr);
+                                    $orderId 		= $d['order_id'];
+									$userId			= $d['user_id'];
+									$orderType		= $d['order_type'];
+									$designerId 	= $d['designer']['designer_id'];
+									$name 			= $d['designer']['name'];
+									$headPortrait 	= $d['designer']['head_portrait'];
+									$tagStr			= $d['designer']['tag'];
+                                    $tagArr 		= explode(',', $tagStr);
                                     $labelSpan = '';
                                     if (count($tagArr) == 1) {
                                         $labelSpan = "<span>$tagArr[0]</span>";
@@ -84,23 +88,13 @@
                                         }
                                     }
 
-                                    $zyImage = new \frontend\models\Images();
-                                    $img = $zyImage->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT, $designerId);
-                                    if (!empty($img)) {
-                                        $headPortrait = $img->url;
-                                    } else {
-                                        $headPortrait = "/img/home_page/banner_head.jpg";
-                                    }
-
                                     //订单状态
-                                    $status = $d['status'];
-                                    $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
-                                    //订单类型，用户自动创建还是客服创建。
-                                    $orderType = 0;
-                                    //$orderType	= $d['service_type'];
+									$status		= $d['status'];
+                                    $statusMsg 	= \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
+                                    $orderType 	= $d['order_type'];
                                     //用户创建并且待设计师确认
-                                    if ($orderType == 0 &&
-                                            $status == \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
+                                    if ($status ==
+							\frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
                                         $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
@@ -466,3 +460,87 @@ HTML;
         </section>
     </body>
 </html>
+
+<script type="text/javascript">
+$(function(){
+	//标题点击事件
+	var indexaa;
+	var index=7;
+	var htmll="";
+	function duang(){
+		$("#nav_box").animate({left:-widtha*indexaa},400,function(){
+				if(indexaa==2&&index==7){
+				$.ajax({
+				type:"get",
+				url:"<?php echo Yii::getAlias('@web') . '/index.php?r=my/show';?>",
+				async:true,
+				success:function(data){
+					if(data==-1){
+						return false;
+					}
+					data = eval('('+decodeURI(data)+')');
+					var htmlaa='';
+					for(var i=0;i<data.length;i++){
+						var gett=data[i].tag;
+						if(gett.indexOf(",")<0){
+							htmlaa='<span>'+data[i].tag+'</span>';
+						}else{
+							gett=gett.split(",");
+							for(var a=0;a<gett.length;a++){
+								var hah='<span>'+gett[a]+'</span>'
+								htmlaa+=hah;
+							}
+						}
+					var html='<div class="pro_here iconfont" designer_id="'+data[i].designer_id+'">'
+							+'<a href="'+data[i].redirect_url+'"><img class="here_img" src="'+data[i].background+'" /></a>'
+							+'<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
+							+'<div class="here_zhe"></div>'
+							+'<div class="here_botaa"></div>'
+							+'<div class="here_bottom line_center">'
+								+'<div class="here_head">'
+									+'<img src="'+data[i].head_portrait+'" />'
+								+'</div>'
+								+'<div class="bottom_name">'
+									+'<span class="here_name">'+data[i].name+'</span>'
+									+'<span class="here_namea">暂缺数据</span>'
+								+'</div>'
+								+'<div class="bottom_label bottom_referral">'+htmlaa+'</div>'
+							+'</div>'
+						+'</div>'
+						$(".collect").append(html);
+						index++;
+					}
+					$(".loading_box").hide();
+				}
+				});
+			}
+			var heighttt=$("#nav_box>li:eq("+indexaa+")").css("height");
+			$("#nav_box").css("height",heighttt);
+		});
+		$(".nac_boxa>span:eq("+indexaa+")").addClass("active").siblings().removeClass("active");
+	}
+	
+	touch.on(".nac_boxa>span","tap",function(ev){
+		indexaa=$(ev.currentTarget).index();
+		duang();
+		
+		
+	});
+	$(document).on("click",".shanchu_box",function(){
+		var _this=$(this);
+		//注释写死user_id为1
+		var user_id=1;
+		var designer_id=_this.parents(".iconfont").attr("designer_id");
+		var params=[user_id,designer_id];
+		$.ajax({
+				type:"get",
+				url:"<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect';?>"+"&&params="+params,
+				async:true,
+				success:function(data){
+					_this.parents(".iconfont").remove();
+				}
+		});
+	});
+	
+});
+</script>

@@ -7,7 +7,7 @@ use yii\web\Controller;
 use frontend\models;
 
 class DesignerController extends Controller {
-
+	public $layout = false;
     public function actionGet_designer_basic_info($designerId) {
         if (!isset($designerId)) {
             return false;
@@ -40,6 +40,50 @@ class DesignerController extends Controller {
         return json_encode($data);
     }
 
+	public function actionDetail(){
+		$request = Yii::$app->request;
+		/*
+		if(!$request->isAjax){
+			return false;
+		}*/
+		
+		$params = $request->get('params');
+		if(!isset($params)){
+			return false;
+		}
+		$designerId 	= $params;
+		$dbModel = new \frontend\models\DesignerBasic();
+		$rows = $dbModel->getDesignerById($designerId);
+		if(empty($rows)){
+			return false;
+		}
+		$name 			= $rows->name;
+		$tag 			= $rows->tag;
+
+		$imageId 		= $rows->image_id;
+		$imageModel 	= new \frontend\models\Images();
+		$ret = $imageModel->findOne($imageId);
+		if(empty($ret)){
+			return false;
+		}
+		$headPortrait 	= $ret->url;
+		$background 	= "img/home_page/banner_head.jpg";
+		//作品...
+        $data = array(
+			'designer_id' 	=> $designerId,		//ID
+            'name' 			=> $name, 			//姓名
+            'tag' 			=> $tag, 			//标签
+            'head_portrait' => $headPortrait, 	//头像
+            'background' 	=> $background, 	//背景
+			'winnings'		=> '国内优秀设计师，作品多次获得国外专家一致好评',
+			'artsets'		=> array(
+				array('topic' => 'ai','brief' => 'aii','path' => 'aiii'),
+				array('topic' => 'bi','brief' => 'bii','path' => 'biii'),
+				array('topic' => 'ci','brief' => 'cii','path' => 'ciii')
+			)
+        );
+        return $this->render("detail", ['data' => $data]);
+	}
     public function actionIndex() {
         //从上一个页面传过来，必须保证要有designer_id
         $request = Yii::$app->request;
@@ -79,7 +123,88 @@ class DesignerController extends Controller {
         return $this->renderPartial("index", ['data' => $data]);
     }
 
-    public function actionList() {
+	public function actionFilter(){
+        $request = Yii::$app->request;
+        if ($request->isAjax) {
+            $params = $request->get('params');
+            if (!isset($params)) {
+                return false;
+            }
+
+            $pArray 	= explode(',', $params);
+            $category 	= $pArray['0'];
+            $serveCity 	= $pArray['1'];
+            $condition 	= array(
+                'category' => $category,
+                'serve_city' => $serveCity,
+            );
+            $designerBasicM = new \frontend\models\DesignerBasic();
+
+            $ret = $designerBasicM->getFilteredDesigners($condition);
+            return $ret;
+        }
+	}
+
+	public function actionList(){
+		//默认第一次进来只显示前3条数据.
+		$start = 0;
+
+        $request = Yii::$app->request;
+		if($request->isAjax){
+            $params = $request->get('params');
+            if (!isset($params)) {
+                return false;
+            }
+			$start = $params;
+		}
+
+		$debModel = new \frontend\models\DesignerBasic();
+		$rows = $debModel->getPartDesigners($start);
+		//var_dump($rows);
+		if(empty($rows)){
+			return false;
+		}
+
+		$data = array();
+        foreach ($rows as $v) {
+            $designerId 	= $v['id'];
+			$imageId		= $v['image_id'];
+            $name 			= $v['name'];
+            $tag 			= $v['tag'];
+			
+			$imageModel		= new \frontend\models\Images();
+            $ret 			= $imageModel->findOne($imageId);
+			if(empty($ret)){
+				//无头像信息,后期设置个默认头像
+				continue;
+			}
+            $headPortrait 	= $ret->url;
+
+			$artsetsModel	= new \frontend\models\Artsets();
+            $artRet = $artsetsModel->getOneArtByDesignerId($designerId);
+            if (empty($artRet)) {
+                //如果此设计师没有作品，直接忽略
+                //continue;
+            }
+
+            $designerRet = array(
+                'designer_id' 	=> $designerId,
+                'name' 			=> $name,
+                'tag' 			=> $tag,
+                'head_portrait' => $headPortrait,
+                'background' 	=> "img/home_page/banner_head.jpg",
+                'art' 			=> $artRet,
+            );
+            $data[] = $designerRet;
+        }
+		if($request->isAjax){
+			return json_encode($data);
+		}else{
+        	return $this->render("list", ["data" => $data]);
+		}
+	}
+
+    public function actionList111() {
         /*
          * 筛选
          */
@@ -99,51 +224,55 @@ class DesignerController extends Controller {
             );
             $designerBasicM = new \frontend\models\DesignerBasic();
 
-            $ret = "response to ajax";
-            //$ret = $designerBasicM->getFilteredDesigners($condition);
+            $ret = $designerBasicM->getFilteredDesigners($condition);
             return $ret;
         }
-
 
         $designerBasicModel = new \frontend\models\DesignerBasic();
         $allDesigners = $designerBasicModel->getAlldesigners();
 
-        $designerId = $ret->designer_id;
         $imageModel = new \frontend\models\Images();
-
         $artsetsModel = new \frontend\models\Artsets();
 
         $counter = 0;
 
+		/*
         //分页及对ajax输入请求的判断
         $cnt = $designerBasicModel->getDesignersCount();
         $pagination = new \yii\data\Pagination(['totalCount' => $cnt]);
         $ret = $designerBasicModel->find()
-                        ->offset($pagination->offset)->limit($pagination->limit)->all();
-        foreach ($ret as $k => $v) {
-            $designerId = $v->designer_id;
-            $name = $v->name;
-            $tag = $v->tag;
-            $ret = $imageModel->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT, $designerId);
-            $headPortrait = !empty($ret->url) ? $ret->url : "";
+             ->offset($pagination->offset)->limit($pagination->limit)->all();
+		*/
+		$data = array();
+        foreach ($allDesigners as $v) {
+            $designerId 	= $v->id;
+			$imageId		= $v->image_id;
+            $name 			= $v->name;
+            $tag 			= $v->tag;
+            $ret 			= $imageModel->findOne($imageId);
+			if(empty($ret)){
+				//无头像信息,后期设置个默认头像
+				continue;
+			}
+            $headPortrait 	= $ret->url;
             $artRet = $artsetsModel->getOneArtByDesignerId($designerId);
             if (empty($artRet)) {
                 //如果此设计师没有作品，直接忽略
-                continue;
+                //continue;
             }
-            //组装数据结构
+
             $designerRet = array(
-                'designer_id' => $designerId,
-                'name' => $name,
-                'tag' => $tag,
+                'designer_id' 	=> $designerId,
+                'name' 			=> $name,
+                'tag' 			=> $tag,
                 'head_portrait' => $headPortrait,
-                'art' => $artRet,
+                'art' 			=> $artRet,
             );
             $counter++;
             $data[] = $designerRet;
         }
-        //var_dump($data);
-        return $this->renderPartial("list", ["data" => $data, 'pagination' => $pagination]);
+        return $this->renderPartial("list", ["data" => $data]);
+        //return $this->renderPartial("list", ["data" => $data, 'pagination' => $pagination]);
     }
 
     //搜索设计师
