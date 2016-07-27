@@ -94,7 +94,7 @@ class ZyProject extends \yii\db\ActiveRecord {
         $this->home_img = '';
         foreach ($imgarr as $imgId) {
             $imgUrl = $imgModel->findOne($imgId);
-            $this->home_img .= "<a href='http://www.zhuyihome.com".$imgUrl->url."'>".\yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px'))."</a>";
+            $this->home_img .= "<a href='http://www.zhuyihome.com" . $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
         }
 
         return $this->home_img;
@@ -109,7 +109,7 @@ class ZyProject extends \yii\db\ActiveRecord {
         $this->favorite_img = '';
         foreach ($imgarr as $imgId) {
             $imgUrl = $imgModel->findOne($imgId);
-            $this->favorite_img .= \yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px'));
+            $this->favorite_img .= "<a href='http://www.zhuyihome.com" . $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
         }
 
         return $this->favorite_img;
