@@ -29,21 +29,19 @@ use Yii;
  * @property integer $create_time
  * @property integer $update_time
  */
-class ZyUser extends \yii\db\ActiveRecord
-{
+class ZyUser extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return '{{%zy_user}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
 //            [['project_id', 'style_id', 'status', 'sex', 'create_time', 'update_time'], 'integer'],
 //            [['name', 'phone', 'email', 'sex', 'city', 'language', 'country', 'headimgurl', 'privilege', 'create_time', 'update_time'], 'required'],
@@ -55,15 +53,13 @@ class ZyUser extends \yii\db\ActiveRecord
 //            [['language'], 'string', 'max' => 10],
 //            [['country'], 'string', 'max' => 20],
 //            [['unionid', 'privilege'], 'string', 'max' => 200],
-            
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'user_id' => 'User ID',
             'project_id' => '需求ID',
@@ -88,4 +84,10 @@ class ZyUser extends \yii\db\ActiveRecord
             'update_time' => 'Update Time',
         ];
     }
+
+    function beforeSave() {
+        $this->create_time = time();
+        return true;
+    }
+
 }
