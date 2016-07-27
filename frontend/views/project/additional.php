@@ -67,7 +67,7 @@ use yii\helpers\Url;
                 </div>
 
                 <div class="type_list">
-                	<span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
+                    <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
                     <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>灯光及光氛围</span>
@@ -91,7 +91,7 @@ use yii\helpers\Url;
                     完成！立刻查看设计师！
                 </button>
                 <?= Html::endForm(); ?>
-                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?=$project_id ?>">稍后再填</a></span>
+                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
             </div>
         </div>	
     </body>
@@ -125,55 +125,56 @@ use yii\helpers\Url;
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
         touch.on(".add_img", "tap", function (ev) {
-        	var _this=$(this); 
+            var _this = $(this);
             var html = "";
-			var likestr="";
-			var i=0;
+            var likestr = "";
+            var i = 0;
             if (_this.parents("ul").attr("id") == "ulb") {
-            	upload($("#ulb"),$(".like"))
-              
+                upload($("#ulb"), $(".like"),i)
+
             } else {
-                upload($("#ula"),$(".home"))
+                upload($("#ula"), $(".home"),i)
             }
 
-           
-           	
-           	
+
+
+
         });
 
     });
 
 // 拍照选择图片
 
-function upload(ul_id, val_class) {
-	wx.uploadImage({
-		count: 9, // 默认9
-		sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-		sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-		localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-		success: function(res) {
-			likestr += serverId + "$";
-			html += '<li><img src="' + localId + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-			i++;
-			if(i < length) {
-				upload(ul_id, val_class);
-			} else {
-				var like_val = val_class.val();
-				val_class.val(like_val + likestr);
-				likestr = likestr.toString().split("$");
-				for(var b = 0; b < ul_id.find("li").length - 1; b++) {
-					ul_id.find("li:eq(" + b + ") ").prop("img_id", likestr[b]);
+    function upload(ul_id, val_class,i) {
+        wx.uploadImage({
+            count: 9, // 默认9
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+            success: function (res) {
+                likestr += serverId + "$";
+                html += '<li><img src="' + localId + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                i++;
+                if (i < length) {
+                    upload(ul_id, val_class);
+                } else {
+                    var like_val = val_class.val();
+                    val_class.val(like_val + likestr);
+                    likestr = likestr.toString().split("$");
+                    for (var b = 0; b < ul_id.find("li").length - 1; b++) {
+                        ul_id.find("li:eq(" + b + ") ").prop("img_id", likestr[b]);
 
-				}
-				ul_id.prepend(html);
-				img_height_auto();
-				auto_click();
-			}
-		},
-		fail: function() {
-			alert("upload fail please wait a moment and try again");
-		}
-	});
+                    }
+                    ul_id.prepend(html);
+                    img_height_auto();
+                    auto_click();
+                }
+            },
+            fail: function () {
+                alert("upload fail please wait a moment and try again");
+            }
+        });
 
-};
+    }
+    ;
 </script>
