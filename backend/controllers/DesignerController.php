@@ -103,9 +103,14 @@ class DesignerController extends controller {
                 }
 
                 $designerWorkModel = new \backend\models\DesignerWork();
-                $dm = $designerWorkModel::findOne(['designer_id' => $id]);
-                $dm->nowork_time = date('Y-m-d', $dm->nowork_time);
-                $dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
+                $dm = $designerWorkModel->findOne(['designer_id' => $id]);
+				if(!empty($dm)){
+                	$dm->nowork_time = date('Y-m-d', $dm->nowork_time);
+                	$dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
+				}else{
+					$dm->nowork_time = date('Y-m-d',time());
+					$dm->nowork_time2 = date('Y-m-d',time() + 24 * 3600);
+				}
 
                 if ($dm) {
                     $designerWorkModel = $dm;
