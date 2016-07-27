@@ -94,7 +94,7 @@ class ZyProject extends \yii\db\ActiveRecord {
         $this->home_img = '';
         foreach ($imgarr as $imgId) {
             $imgUrl = $imgModel->findOne($imgId);
-            $this->home_img .= \yii\helpers\Html::img(Yii::$app->request->hostInfo.$imgUrl, array('width' => '100px', 'height' => '100px'));
+            $this->home_img .= \yii\helpers\Html::img(Yii::$app->request->hostInfo.$imgUrl->url, array('width' => '100px', 'height' => '100px'));
         }
 
         return $this->home_img;
