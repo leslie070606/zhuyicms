@@ -55,11 +55,11 @@
 					$name 			= $v['name'];
 					$tag			= $v['tag'];
 					$headPortrait 	= Yii::$app->request->hostInfo . $v['head_portrait'];
-					$artPath		= "img/home_page/banner_head.jpg";
+					$background		= $v['background'];
 
 					$html = <<<HTML
 						<div class="pro_here iconfont">
-							<img class="here_img" src="$artPath" designer_id="$designerId"/>
+							<img class="here_img" src="$background" designer_id="$designerId"/>
 							<div class="here_zhe"></div>
 							<div class="here_botaa"></div>
 							<div class="here_bottom line_center">
