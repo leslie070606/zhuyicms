@@ -94,6 +94,11 @@ HTML;
                                     //用户创建并且待设计师确认
                                     if ($status ==
 							\frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
+										//$rows = \frontend\models\Order::findOne($orderId);
+										//$createTime = $rows->create_time;
+										$create_time = time();
+										$timestamp = $create_time + 24 * 3600;
+										$time = date('Y-m-d H:i:s',$timestamp);	
                                         $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
@@ -117,11 +122,25 @@ HTML;
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								  				<div class="true_time">
-								  					住艺管家正在协调设计师的意向和时间订单状态 将在6月19日 20：00 前更新
-								  				</div></div>
+								  				住艺管家正在协调设计师的意向和时间订单状态 将在{$time}前更新
+								  				</div>
+											</div>
 HTML;
                                     } elseif ($orderType == 0 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
+										$rows = \frontend\models\Order::findOne($orderId);
+										//设计师的空闲时间，以,分隔
+										/*
+										$timeStr = $rows->designer_rest_time;
+										$timeArr = split(',',$timeStr);
+										$time1 = date("m-d",$timeArr[0]);
+										$time2 = date("m-d",$timeArr[1]);
+										$time3 = date("m-d",$timeArr[2]);
+										*/
+										$time1 = date("m-d",time());
+										$time2 = date("m-d",time() + 24 * 3600);
+										$time3 = date("m-d",time() + 48 * 3600);
+										
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
 											<div class="zy_pp dd_here" order_id = "$orderId">
@@ -142,7 +161,7 @@ HTML;
 												</div>
 				  								<div class="tj_box leave_word">
 				  									<span class="tj_spa">设计师留言：</span>
-				  									<span class="tj_spb">我6月10日上午；6月11日上午；6月12日上午有时间。 请在12小时内确认时间。</span>
+				  									<span class="tj_spb">我<span class="time_list">{$time1};{$time2};{$time3}</span>有时间。 请在12小时内确认时间。</span>
 				  								</div>
 				  				
 												<span class="jm_time">见面2小时</span>
