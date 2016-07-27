@@ -100,6 +100,7 @@ touch.on(".queren_btn .true_btnaa","tap",function(ev){
 			success: function(data) {
 				_this.find(".right_type").html("已深度合作");
 				_this.find(".jm_money,.time").remove();
+				_this.find(".jm_money").after('<input type="hidden" value="" name="list_val" class="list_val"><ul class="hetong_box"></ul>')
 				_this.find(".queren_btn").html('<span class="true_btnb hetong">上传合同</span>').addClass(".hetong_btn")
 			}
 		});
