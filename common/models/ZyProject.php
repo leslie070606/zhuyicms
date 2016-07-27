@@ -90,14 +90,29 @@ class ZyProject extends \yii\db\ActiveRecord {
         $imgModel = new ZyImages();
         $imgarr = explode(',', $this->home_img);
         $imgarr = array_filter($imgarr);
-        
+
         $this->home_img = '';
         foreach ($imgarr as $imgId) {
             $imgUrl = $imgModel->findOne($imgId);
-            $this->home_img .= \yii\helpers\Html::img('http://www.zhuyihome.com'.$imgUrl->url, array('width' => '100px', 'height' => '100px'));
+            $this->home_img .= "<a href='http://www.zhuyihome.com".$imgUrl->url."'>".\yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px'))."</a>";
         }
 
         return $this->home_img;
+    }
+
+    public function getFavoriteImage() {
+
+        $imgModel = new ZyImages();
+        $imgarr = explode(',', $this->favorite_img);
+        $imgarr = array_filter($imgarr);
+
+        $this->favorite_img = '';
+        foreach ($imgarr as $imgId) {
+            $imgUrl = $imgModel->findOne($imgId);
+            $this->favorite_img .= \yii\helpers\Html::img('http://www.zhuyihome.com' . $imgUrl->url, array('width' => '100px', 'height' => '100px'));
+        }
+
+        return $this->favorite_img;
     }
 
 }
