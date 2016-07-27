@@ -160,7 +160,6 @@ class DesignerController extends Controller {
 
 		$debModel = new \frontend\models\DesignerBasic();
 		$rows = $debModel->getPartDesigners($start);
-		//var_dump($rows);
 		if(empty($rows)){
 			return false;
 		}
@@ -171,29 +170,27 @@ class DesignerController extends Controller {
 			$imageId		= $v['image_id'];
             $name 			= $v['name'];
             $tag 			= $v['tag'];
+
+			if(empty($tag)){
+				$tag = "设计达人,艺术家";
+			}
 			
 			$imageModel		= new \frontend\models\Images();
             $ret 			= $imageModel->findOne($imageId);
 			if(empty($ret)){
 				//无头像信息,后期设置个默认头像
-				continue;
+				//continue;
+				$headPortrait = "/img/home_page/banner_head.jpg";
+			}else{
+            	$headPortrait 	= $ret->url;
 			}
-            $headPortrait 	= $ret->url;
-
-			$artsetsModel	= new \frontend\models\Artsets();
-            $artRet = $artsetsModel->getOneArtByDesignerId($designerId);
-            if (empty($artRet)) {
-                //如果此设计师没有作品，直接忽略
-                //continue;
-            }
-
+			$background = "/img/home_page/prob.jpg";
             $designerRet = array(
                 'designer_id' 	=> $designerId,
                 'name' 			=> $name,
                 'tag' 			=> $tag,
                 'head_portrait' => $headPortrait,
-                'background' 	=> "img/home_page/banner_head.jpg",
-                'art' 			=> $artRet,
+                'background' 	=> $background,
             );
             $data[] = $designerRet;
         }
@@ -203,81 +200,10 @@ class DesignerController extends Controller {
         	return $this->render("list", ["data" => $data]);
 		}
 	}
-
-    public function actionList111() {
-        /*
-         * 筛选
-         */
-        $request = Yii::$app->request;
-        if ($request->isAjax) {
-            $params = $request->get('params');
-            if (!isset($params)) {
-                return false;
-            }
-
-            $pArray = explode(',', $params);
-            $category = $pArray['0'];
-            $serveCity = $pArray['1'];
-            $condition = array(
-                'category' => $category,
-                'serve_city' => $serveCity,
-            );
-            $designerBasicM = new \frontend\models\DesignerBasic();
-
-            $ret = $designerBasicM->getFilteredDesigners($condition);
-            return $ret;
-        }
-
-        $designerBasicModel = new \frontend\models\DesignerBasic();
-        $allDesigners = $designerBasicModel->getAlldesigners();
-
-        $imageModel = new \frontend\models\Images();
-        $artsetsModel = new \frontend\models\Artsets();
-
-        $counter = 0;
-
-		/*
-        //分页及对ajax输入请求的判断
-        $cnt = $designerBasicModel->getDesignersCount();
-        $pagination = new \yii\data\Pagination(['totalCount' => $cnt]);
-        $ret = $designerBasicModel->find()
-             ->offset($pagination->offset)->limit($pagination->limit)->all();
-		*/
-		$data = array();
-        foreach ($allDesigners as $v) {
-            $designerId 	= $v->id;
-			$imageId		= $v->image_id;
-            $name 			= $v->name;
-            $tag 			= $v->tag;
-            $ret 			= $imageModel->findOne($imageId);
-			if(empty($ret)){
-				//无头像信息,后期设置个默认头像
-				continue;
-			}
-            $headPortrait 	= $ret->url;
-            $artRet = $artsetsModel->getOneArtByDesignerId($designerId);
-            if (empty($artRet)) {
-                //如果此设计师没有作品，直接忽略
-                //continue;
-            }
-
-            $designerRet = array(
-                'designer_id' 	=> $designerId,
-                'name' 			=> $name,
-                'tag' 			=> $tag,
-                'head_portrait' => $headPortrait,
-                'art' 			=> $artRet,
-            );
-            $counter++;
-            $data[] = $designerRet;
-        }
-        return $this->renderPartial("list", ["data" => $data]);
-        //return $this->renderPartial("list", ["data" => $data, 'pagination' => $pagination]);
-    }
-
     //搜索设计师
     public function actionHunt() {
         $request = Yii::$app->request;
+		$searchKey = "";
         if ($request->isAjax) {
             $searchKey = Yii::$app->request->get('search_key');
         }
