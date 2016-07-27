@@ -326,7 +326,7 @@ HTML;
 				  				
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
-								<input type="hidden" value="" name="list_val" id="#list_val" />
+								<input type="hidden" value="" name="list_val" class="list_val" />
 								<ul class="hetong_box">
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
@@ -466,13 +466,9 @@ wx.config({
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
       $(document).on("click", ".hetong", function (ev) {
-            var _this = $(ev.currentTarget);
+            var _this = $(this);
             var index;
-            if (_this.parents("ul").attr("id") == "ulb") {
-                index = 1;
-            } else {
-                index = 0;
-            }
+            
 
             var length = $(ev.currentTarget).siblings().length;
             var likestr = '';
@@ -502,8 +498,8 @@ wx.config({
                                     nuber++;
                                     if (isAndroid) {
                                         if (nuber >= ge) {
-                                            var like_val = $("#list_val").val();
-                                            $("#list_val").val(like_val + likestr);
+                                            var like_val =_this.parents(".zy_pp").find(".list_val").val();
+                                            _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
 
                                             likestr = likestr.toString().split("$");
                                             for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
@@ -511,8 +507,8 @@ wx.config({
                                             }
                                         }
                                     } else {
-                                        var like_val = $("#list_val").val();
-                                        $("#list_val").val(like_val + likestr);
+                                        var like_val =_this.parents(".zy_pp").find(".list_val").val();
+                                        _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
                                         likestr = likestr.toString().split("$");
                                         for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
                                             $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
@@ -525,7 +521,7 @@ wx.config({
 
                         $(".hetong_box").prepend(html);
                         img_height_auto();
-                        var get_val=$("#list_val").val;
+                        var get_val=_this.parents(".zy_pp").find(".list_val").val;
                         $.ajax({
                         	type:"get",
                         	url:"",
