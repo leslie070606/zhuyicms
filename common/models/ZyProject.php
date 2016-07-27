@@ -31,21 +31,19 @@ use Yii;
  * @property string $description
  * @property string $project_tags
  */
-class ZyProject extends \yii\db\ActiveRecord
-{
+class ZyProject extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return '{{%zy_project}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
 //            [['user_id', 'city', 'address', 'budget_design', 'description', 'project_tags'], 'required'],
 //            [['user_id'], 'integer'],
@@ -59,8 +57,7 @@ class ZyProject extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'project_id' => 'ID主键',
             'user_id' => '用户ID',
@@ -87,4 +84,20 @@ class ZyProject extends \yii\db\ActiveRecord
             'project_tags' => '客户注重项',
         ];
     }
+
+    public function getHomeImage() {
+
+        $imgModel = new ZyImages();
+        $imgarr = explode(',', $this->home_img);
+        $imgarr = array_filter($imgarr);
+        
+        $this->home_img = '';
+        foreach ($imgarr as $imgId) {
+            $imgUrl = $imgModel->findOne($imgId);
+            $this->home_img .= \yii\helpers\Html::img(Yii::$app->request->hostInfo.$imgUrl, array('width' => '100px', 'height' => '100px'));
+        }
+
+        return $this->home_img;
+    }
+
 }

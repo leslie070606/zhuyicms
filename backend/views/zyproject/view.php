@@ -49,12 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'project_status',
             'service_type',
             [
-                'label' => '家图片',
+                'label' => '家的照片',
                 'format' => 'raw',
-                'value' => 1
+                'value' => $model->getHomeImage(),
         
             ],
-            'home_img',
+          
             'favorite_img',
             'designer_level',
             'match_json',
