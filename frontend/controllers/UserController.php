@@ -12,7 +12,6 @@ class UserController extends ZyuserController {
     public $layout = false;
 
     public function actionIndex() {
-
         return $this->render('index');
     }
 
@@ -219,7 +218,7 @@ class UserController extends ZyuserController {
         return $this->render('addphone');
     }
 
-    public function actionloginout() {
+    public function actionLoginout() {
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
