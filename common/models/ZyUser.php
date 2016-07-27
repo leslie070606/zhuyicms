@@ -84,10 +84,10 @@ class ZyUser extends \yii\db\ActiveRecord {
             'update_time' => 'Update Time',
         ];
     }
-
-    function beforeSave() {
-        $this->create_time = time();
-        return true;
-    }
+//
+//    public function beforeSave() {
+//        $this->create_time = time();
+//        return true;
+//    }
 
 }

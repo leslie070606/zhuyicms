@@ -41,7 +41,7 @@ class DesignerController extends controller {
     }
 
     public function actionEdit($id) {
-
+        error_reporting( E_ALL&~E_NOTICE );
         $id = (int) $id;
         //if(!$id){$id = Yii::$app->request->post('id');}
         // 判断是否有可编辑数据
@@ -68,11 +68,16 @@ class DesignerController extends controller {
                     $designerWorkModel = new \backend\models\DesignerWork();
 
                     //判断是否有值
-                    $dm = $designerWorkModel->find($id)->one();
+                    $dm = $designerWorkModel::findOne(['designer_id' => $id]);
                     if ($dm) {
                         $designerWorkModel = $dm;
                     }
-                    $designerWorkModel->load(Yii::$app->request->post());
+                    $post = Yii::$app->request->post();
+                    $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
+                    $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
+
+                    $designerWorkModel->load($post);
+
                     if ($designerWorkModel->save()) {
                         return '修改成功!';
                     } else {
@@ -103,16 +108,16 @@ class DesignerController extends controller {
                 }
 
                 $designerWorkModel = new \backend\models\DesignerWork();
-                $dm = $designerWorkModel->find(['designer_id' => $id])->one();
-                //var_dump($dm);exit;
-                if($dm->nowork_time && $dm->nowork_time2){
-                    $dm->nowork_time = date('Y-m-d', $dm->nowork_time);
-                    $dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
-                }else{
+                $dm = $designerWorkModel::findOne(['designer_id' => $id]);
+
+                if ($dm->nowork_time && $dm->nowork_time2) {
+                    $dm->nowork_time = date('Y-m-d', (int) $dm->nowork_time);
+                    $dm->nowork_time2 = date('Y-m-d', (int) $dm->nowork_time2);
+                } else {
                     $dm->nowork_time = '';
                     $dm->nowork_time2 = '';
                 }
-            
+
 
                 if ($dm) {
                     $designerWorkModel = $dm;
@@ -150,7 +155,7 @@ class DesignerController extends controller {
             $imageId = '';
             if ($imageModel->save()) {
                 $imageId = $imageModel->image_id;
-                $ret = $designerbasicModel->findOne($designerId);
+                $ret = $designerbasicModel::findOne($designerId);
                 if (empty($ret)) {
                     return false;
                 }
@@ -205,7 +210,9 @@ class DesignerController extends controller {
                 $post = Yii::$app->request->post();
                 $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                 $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
-
+                
+//                echo "<pre>";
+//                print_r($post);exit;
                 $designerWorkModel->load($post);
 
                 if ($designerWorkModel->save()) {
