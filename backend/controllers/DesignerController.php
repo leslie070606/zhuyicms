@@ -41,7 +41,7 @@ class DesignerController extends controller {
     }
 
     public function actionEdit($id) {
-        error_reporting( E_ALL&~E_NOTICE );
+        error_reporting(E_ALL & ~E_NOTICE);
         $id = (int) $id;
         //if(!$id){$id = Yii::$app->request->post('id');}
         // 判断是否有可编辑数据
@@ -72,12 +72,23 @@ class DesignerController extends controller {
                     if ($dm) {
                         $designerWorkModel = $dm;
                     }
+
+                    //无值添加
                     $post = Yii::$app->request->post();
+
+
+                    //字段处理
+                    $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+
+                    $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
                     $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                     $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
 
                     $designerWorkModel->load($post);
 
+//                    echo "<pre>";
+//                    print_r($post);
+//                    exit;
                     if ($designerWorkModel->save()) {
                         return '修改成功!';
                     } else {
@@ -110,16 +121,20 @@ class DesignerController extends controller {
                 $designerWorkModel = new \backend\models\DesignerWork();
                 $dm = $designerWorkModel::findOne(['designer_id' => $id]);
 
-                if ($dm->nowork_time && $dm->nowork_time2) {
-                    $dm->nowork_time = date('Y-m-d', (int) $dm->nowork_time);
-                    $dm->nowork_time2 = date('Y-m-d', (int) $dm->nowork_time2);
-                } else {
-                    $dm->nowork_time = '';
-                    $dm->nowork_time2 = '';
-                }
-
-
                 if ($dm) {
+                    if ($dm->include_project) {
+                        $dm->include_project = explode(',', $dm->include_project);
+                    };
+                    if ($dm->pay_extra) {
+                        $dm->pay_extra = explode(',', $dm->pay_extra);
+                    };
+                    if ($dm->nowork_time && $dm->nowork_time2) {
+                        $dm->nowork_time = date('Y-m-d', (int) $dm->nowork_time);
+                        $dm->nowork_time2 = date('Y-m-d', (int) $dm->nowork_time2);
+                    } else {
+                        $dm->nowork_time = '';
+                        $dm->nowork_time2 = '';
+                    }
                     $designerWorkModel = $dm;
                 }
                 // 非编辑动作 跳转页面
@@ -180,6 +195,8 @@ class DesignerController extends controller {
     }
 
     public function actionAdd() {
+        error_reporting(E_ALL & ~E_NOTICE);
+
         // 返回json格式响应
         // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         // 判断是否是ajax提交 以及是否是添加动作
@@ -208,11 +225,14 @@ class DesignerController extends controller {
             } else if ("DesignerWork" == $formx[1]) { //添加work表
                 $designerWorkModel = new \backend\models\DesignerWork();
                 $post = Yii::$app->request->post();
+
+                //字段处理
                 $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                 $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
-                
-//                echo "<pre>";
-//                print_r($post);exit;
+
+                $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+
+                $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
                 $designerWorkModel->load($post);
 
                 if ($designerWorkModel->save()) {
