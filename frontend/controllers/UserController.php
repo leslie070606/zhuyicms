@@ -219,6 +219,16 @@ class UserController extends ZyuserController {
         return $this->render('addphone');
     }
 
+    public function actionloginout() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        // 销毁session中所有已注册的数据
+        $session->destroy();
+        return $this->redirect(['index/index']);
+    }
+
     public function actionSendmsg() {
 
         $phone = Yii::$app->request->post('phone');

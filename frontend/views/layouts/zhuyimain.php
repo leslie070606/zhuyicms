@@ -1,4 +1,6 @@
-
+<?php
+use yii\helpers\Url;
+?>
 <div class="index_box">
 <header class="header_top iconfont icon-logo">
                    <!--<input id="ipt" type="text" value="0" />-->
@@ -11,7 +13,7 @@
         <li><a href="designer_list.html">使用指南</a></li>
         <li><a href="user.html">我的住艺</a></li>
         <li><a href="designer_list.html">更多意见</a></li>
-        <li><a href="designer_list.html">暂时登出</a></li>
+        <li><a href="<?php echo Url::toRoute('/user/loginout');?>">暂时登出</a></li>
     </ul>
 </section> 
 <div class="down_right_zd"></div> 
