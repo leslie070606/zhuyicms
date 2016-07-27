@@ -68,7 +68,7 @@ class DesignerController extends controller {
                     $designerWorkModel = new \backend\models\DesignerWork();
 
                     //判断是否有值
-                    $dm = $designerWorkModel::findOne(['designer_id' => $id]);
+                    $dm = $designerWorkModel->find($id)->one();
                     if ($dm) {
                         $designerWorkModel = $dm;
                     }
