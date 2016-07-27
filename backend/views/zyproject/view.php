@@ -54,8 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->getHomeImage(),
         
             ],
-          
-            'favorite_img',
+            [
+                'label' => '喜欢的照片',
+                'format' => 'raw',
+                'value' => $model->getFavoriteImage(),
+        
+            ],
             'designer_level',
             'match_json',
             'description:ntext',
