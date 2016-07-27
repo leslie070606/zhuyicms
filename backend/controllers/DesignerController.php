@@ -104,13 +104,15 @@ class DesignerController extends controller {
 
                 $designerWorkModel = new \backend\models\DesignerWork();
                 $dm = $designerWorkModel->findOne(['designer_id' => $id]);
-				if(!empty($dm)){
-                	$dm->nowork_time = date('Y-m-d', $dm->nowork_time);
-                	$dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
-				}else{
-					$dm->nowork_time = date('Y-m-d',time());
-					$dm->nowork_time2 = date('Y-m-d',time() + 24 * 3600);
-				}
+                
+                if($dm->nowork_time && $dm->nowork_time2){
+                    $dm->nowork_time = date('Y-m-d', $dm->nowork_time);
+                    $dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
+                }else{
+                    $dm->nowork_time = date('Y-m-d', time());
+                    $dm->nowork_time2 = date('Y-m-d', time());
+                }
+            
 
                 if ($dm) {
                     $designerWorkModel = $dm;
@@ -132,7 +134,7 @@ class DesignerController extends controller {
             $upFile = UploadedFile::getInstance($designerbasicModel, "image_id");
             //图片存放位置
             $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
-           // Yii::info($dir, 'pushNotifications');
+            // Yii::info($dir, 'pushNotifications');
             if (!is_dir($dir)) {
                 @mkdir($dir, '0777', true);
             }
