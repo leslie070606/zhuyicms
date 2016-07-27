@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ZyUser */
 
-$this->title = 'Create Zy User';
-$this->params['breadcrumbs'][] = ['label' => 'Zy Users', 'url' => ['index']];
+$this->title = '创建用户';
+$this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-user-create">

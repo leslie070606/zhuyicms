@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ZyUser */
 
-$this->title = 'Update Zy User: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Zy Users', 'url' => ['index']];
+$this->title = '更新用户: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->user_id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

@@ -55,6 +55,7 @@ class UserController extends ZyuserController {
                 } else {
                     //第一次登录添加
                     $userModel->phone = $phone;
+                    $userModel->create_time = time();
                     $res = $userModel->save();
 
                     if ($res) {
@@ -168,6 +169,7 @@ class UserController extends ZyuserController {
                         $user->country = $userArr['country'];
                         $user->headimgurl = $userArr['headimgurl'];
                         $user->unionid = $userArr['unionid'];
+                        $user->update_time = tome();
                         $res = $user->save();
                         $userId = $user->attributes['user_id'];
                     } else {
@@ -182,6 +184,7 @@ class UserController extends ZyuserController {
                         $userModel->country = $userArr['country'];
                         $userModel->headimgurl = $userArr['headimgurl'];
                         $userModel->unionid = $userArr['unionid'];
+                        $userModel->create_time = time();
                         $res = $userModel->save();
                         $userId = $userModel->attributes['user_id'];
                     }

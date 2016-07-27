@@ -45,16 +45,17 @@ class ZyUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'style_id', 'status', 'sex', 'create_time', 'update_time'], 'integer'],
-            [['name', 'phone', 'email', 'sex', 'city', 'language', 'country', 'headimgurl', 'privilege', 'create_time', 'update_time'], 'required'],
-            [['favored_designer_ids', 'openid', 'address'], 'string', 'max' => 100],
-            [['name'], 'string', 'max' => 32],
-            [['nickname'], 'string', 'max' => 30],
-            [['phone', 'profession', 'city', 'headimgurl'], 'string', 'max' => 50],
-            [['email'], 'string', 'max' => 256],
-            [['language'], 'string', 'max' => 10],
-            [['country'], 'string', 'max' => 20],
-            [['unionid', 'privilege'], 'string', 'max' => 200],
+//            [['project_id', 'style_id', 'status', 'sex', 'create_time', 'update_time'], 'integer'],
+//            [['name', 'phone', 'email', 'sex', 'city', 'language', 'country', 'headimgurl', 'privilege', 'create_time', 'update_time'], 'required'],
+//            [['favored_designer_ids', 'openid', 'address'], 'string', 'max' => 100],
+//            [['name'], 'string', 'max' => 32],
+//            [['nickname'], 'string', 'max' => 30],
+//            [['phone', 'profession', 'city', 'headimgurl'], 'string', 'max' => 50],
+//            [['email'], 'string', 'max' => 256],
+//            [['language'], 'string', 'max' => 10],
+//            [['country'], 'string', 'max' => 20],
+//            [['unionid', 'privilege'], 'string', 'max' => 200],
+            
         ];
     }
 

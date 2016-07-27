@@ -127,12 +127,12 @@ class DesignerController extends controller {
             $upFile = UploadedFile::getInstance($designerbasicModel, "image_id");
             //图片存放位置
             $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
-            Yii::info($dir, 'pushNotifications');
+           // Yii::info($dir, 'pushNotifications');
             if (!is_dir($dir)) {
                 @mkdir($dir, '0777', true);
             }
 
-            $fileName = $upFile->baseName . "." . $upFile->extension;
+            $fileName = date("HiiHsHis") . $upFile->baseName . "." . $upFile->extension;
             $dir = $dir . "/" . $fileName;
             $upFile->saveAs($dir);
 
