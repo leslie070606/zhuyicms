@@ -483,8 +483,7 @@
                         var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
                         var datea = new Date(gettt);
                         var time = datea.getTime();
-                        //var order = $(".foin_zy").attr("order_id") + "," + time;
-                        var order = time + "," + $(".foin_zy").attr("order_id");
+                        var order = $(".foin_zy").attr("order_id") + "," + time;
                         // alert('123');
 
                         $.ajax({

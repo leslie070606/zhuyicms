@@ -73,10 +73,15 @@ class OrderController extends Controller {
         $userId =1;
         $orderM = new \frontend\models\Order();
         $ret = $orderM->getOrdersByUserId($userId);
+
+		$tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+
 		//此用户下面没有订单
-		if(empty($ret)){
-			return $this->render("list",['data' => -1]);
-		}else{
+		//if(empty($ret)){
+		//	return $this->render("list",['data' => -1,'jsarr' => $jsarr]);
+		//}else{
 			$data = array();
 			foreach($ret as $r){
 				$orderId 	= $r['order_id']; 
@@ -117,7 +122,8 @@ class OrderController extends Controller {
 			}
 			/*
 			if(empty($data)){
-				return $this->render("list",['data' => -1]);
+				//return $this->render("list",['data' => -1]);
+				return $this->render("list",['data' => -1,'jsarr' => $jsarr]);
 			}*/
 			$data = array(
 				array(
@@ -130,6 +136,30 @@ class OrderController extends Controller {
 						'name' => '千岛湖1',
 						'head_portrait' => 'img/home_page/banner_head.jpg',
 						'tag' => '啊啊啊,吼吼吼',
+					)
+				),
+				array(
+					'order_id' 	=> 10,
+					'user_id'	=> 1,
+					'status'	=> 1,
+					'order_type' => 0,
+					'designer' => array(	
+						'designer_id' => 10,
+						'name' => '阿西吧！！！',
+						'head_portrait' => 'img/home_page/banner_head.jpg',
+						'tag' => 'ffffff,ggggg',
+					)
+				),
+				array(
+					'order_id' 	=> 10,
+					'user_id'	=> 1,
+					'status'	=> 1,
+					'order_type' => 1,
+					'designer' => array(	
+						'designer_id' => 10,
+						'name' => '阿西吧！！！',
+						'head_portrait' => 'img/home_page/banner_head.jpg',
+						'tag' => 'ffffff,ggggg',
 					)
 				),
 				array(
@@ -151,9 +181,9 @@ class OrderController extends Controller {
 					'order_type' => 0,
 					'designer' => array(	
 						'designer_id' => 3,
-						'name' => '千岛湖3',
+						'name' => '千岛湖333',
 						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake333,fake333',
+						'tag' => 'fake333333,fake333',
 					)
 				),
 				array(
@@ -217,8 +247,9 @@ class OrderController extends Controller {
 					)
 				)
 			);
-        	return $this->render("list", ['data' => $data]);
-		}
+        //	return $this->render("list", ['data' => $data]);
+			return $this->render("list",['data' => $data,'jsarr' => $jsarr]);
+		//}
     }
 
     public function actionChange() {
@@ -229,41 +260,30 @@ class OrderController extends Controller {
         }
         $params = $request->get('params');
         $params = explode(',', $params);
-        $orderId = $params[1];
-        $orderModel = new \frontend\models\Order();
-        $orderRet = $orderModel->getOrderById($orderId);
+		if(empty($params)){
+			return false;
+		}
+        $orderId = $params[0];
+		$rows = \frontend\models\Order::findOne($orderId);
+		/*
+		if(empty($rows)){
+			return false;
+		}*/
 
-        $orderStatus = $orderRet->status;
-        switch ($orderStatus) {
+        //$currentStatus = $rows->status;
+		$currentStatus = \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME;
+        switch ($currentStatus) {
             case \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME:
-                //从前台传过来的时间。
-                $appointmentTime = $params[0];
+				//带用户确认时间状态，用户点击一个前台传递过来的时间。
+                $appointmentTime = $params[1];
                 $newSts = \frontend\models\Order::STATUS_WAITING_MEETING;
 
-                //$orderRet->appointment_time = $appointmentTime;
-                $orderRet->status = $newSts;
-                $orderRet->update_time = time();
-                $orderRet->save();
+				/*
+                $rows->appointment_time = $appointmentTime;
+                $rows->status 			= $newSts;
+                $rows->update_time 		= time();
+                $rows->save();*/
                 break;
-            default:
-                break;
-        }
-    }
-
-    public function actionCooperation() {
-        $request = Yii::$app->request;
-        if (!$request->isAjax) {
-            return false;
-        }
-        $params = $request->get('params');
-        $params = explode(',', $params);
-
-        $orderId = $params[0];
-        $orderModel = new \frontend\models\Order();
-        $orderRet = $orderModel->getOrderById($orderId);
-
-        $orderStatus = $orderRet->status;
-        switch ($orderStatus) {
             case \frontend\models\Order::STATUS_MET_DONE:
                 $yesNo = $params[1];
                 if ($yesNo == 'yes') {
@@ -272,13 +292,18 @@ class OrderController extends Controller {
                     $newSts = \frontend\models\Order::STATUS_MET_DEEP_COOPERATION;
                 }
 
-                $orderRet->status = $newSts;
-                $orderRet->update_time = time();
-                $orderRet->save();
+                $rows->status = $newSts;
+                $rows->update_time = time();
+                $rows->save();
                 break;
             default:
                 break;
         }
     }
 
+	public function actionContract(){
+		$tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+	}
 }
