@@ -16,16 +16,19 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->project_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->project_id], [
+        <?=
+        Html::a('Delete', ['delete', 'id' => $model->project_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
+    <?=
+    DetailView::widget([
         'model' => $model,
         'attributes' => [
             'project_id',
@@ -45,6 +48,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'home_type',
             'project_status',
             'service_type',
+            [
+                'label' => '家图片',
+                'format' => 'raw',
+                'value' => 1
+        
+            ],
             'home_img',
             'favorite_img',
             'designer_level',
@@ -52,6 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'project_tags',
         ],
-    ]) ?>
+    ])
+    ?>
 
 </div>
