@@ -15,7 +15,7 @@ if (!$session->isActive) {
     <section class="down_right">
         <ul>
             <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
-            <li><a href="designer_list.html">住艺设计师</a></li>
+            <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
             <li><a href="designer_list.html">使用指南</a></li>
             <li><a href="user.html">我的住艺</a></li>
             <li><a href="designer_list.html">更多意见</a></li>

@@ -112,7 +112,7 @@ touch.on(".sifting","tap",function(ev){
 
 })
 $("body").on("click",".pro_here",function(ev){
-	var designer_id = $(ev.currentTarget).attr("designer_id");
+	var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
     $.ajax({
    		type: "GET",
         url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail';?>"+"&&params="+designer_id,
@@ -124,6 +124,22 @@ $("body").on("click",".pro_here",function(ev){
         }
     })
 });
+
+touch.on(".pro_here","tap",function(ev){
+	var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
+    $.ajax({
+   		type: "GET",
+        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail';?>"+"&&params="+designer_id,
+        data: "",
+        success: function(data){
+        	console.log("js output...........");
+            console.log(data);
+			window.location.href="<?php echo Yii::getAlias('@web').'/index.php?r=designer/detail';?>"+"&&params="+designer_id;
+        }
+    })
+});
+
+
 var truefalse=true;
 $(window).on("scroll",function(){
 	var height=$(window).height();
