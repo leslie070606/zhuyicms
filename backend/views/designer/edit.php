@@ -268,6 +268,13 @@ use dosamigos\datepicker\DatePicker;
                     <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
                 </div>
                 
+                 <div class="form-group">
+                    <label for="charge_work">设计费+施工收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeh
+older' => '', 'id' => 'charge_work']) ?>
+                    <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
+                </div>
+                
                 <div class="form-group">
                     <label for="style">擅长的设计风格</label>
                     <?= Html::activeInput('text', $modelwork, 'style', ['class' => 'form-control', 'id' => 'style']) ?>
