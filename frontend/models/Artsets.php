@@ -62,6 +62,17 @@ class Artsets extends ActiveRecord{
 			'viedo_url' => $viedoUrl,
 		);
 		
-		return json_encode($data);
+		return $data;
+	}
+
+	public function getPartArtsByDesignerId($did){
+		if(!isset($did) || empty($did)){
+			return NULL;
+		}
+		$ret = $this->find()->where(['designer_id' => $did])->limit(3)->all();
+		if(empty($ret)){
+			return NULL;
+		}
+		return $ret;
 	}
 }
