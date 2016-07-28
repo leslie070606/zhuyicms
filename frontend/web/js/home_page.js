@@ -18,5 +18,19 @@ $(function(){
 			gettt--;
 		}
 	});
+	touch.on(".charges_zd","tap",function(){
+		$(".check_charges").animate({bottom:'-8rem'},300);
+			$(".charges_zd").animate({opacity:0},300,function(){
+				$(".charges_zd").hide();
+			});
+			$("body,html").css("overflow","auto");
+			gettt--;
+	})
+	
+var img_height=$(".pro_here_bcimg").height();
+	touch.on(".pro_here_bcimg","tap",function(ev){
+		$(this).next(".video-js").get(0).play();
+		$(".video-js").css("height",img_height);
+	});
 
 })

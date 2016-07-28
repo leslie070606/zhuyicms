@@ -11,7 +11,7 @@
 ;(function($){
 
 	var plugin = {};
-
+	var home_page_img=1;
 	var defaults = {
 
 		// GENERAL
