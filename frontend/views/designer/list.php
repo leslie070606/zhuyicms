@@ -111,7 +111,7 @@ touch.on(".sifting","tap",function(ev){
     })
 
 })
-$("body").on("click",".pro_here>img",function(ev){
+$("body").on("click",".pro_here",function(ev){
 	var designer_id = $(ev.currentTarget).attr("designer_id");
     $.ajax({
    		type: "GET",
