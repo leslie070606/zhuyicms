@@ -41,7 +41,7 @@ class DesignerController extends controller {
     }
 
     public function actionEdit($id) {
-
+        error_reporting(E_ALL & ~E_NOTICE);
         $id = (int) $id;
         //if(!$id){$id = Yii::$app->request->post('id');}
         // 判断是否有可编辑数据
@@ -72,7 +72,34 @@ class DesignerController extends controller {
                     if ($dm) {
                         $designerWorkModel = $dm;
                     }
-                    $designerWorkModel->load(Yii::$app->request->post());
+
+                    //无值添加
+                    $post = Yii::$app->request->post();
+
+
+                    //字段处理
+                    //xl modified
+                    if (isset($post['DesignerWork']['pay_extra']) && !empty($post['DesignerWork']['pay_extra'])) {
+                        $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                    } else {
+                        $post['DesignerWork']['pay_extra'] = '';
+                    }
+
+                    if (isset($post['DesignerWork']['include_project']) && !empty($post['DesignerWork']['include_project'])) {
+                        $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                    } else {
+                        $post['DesignerWork']['include_project'] = '';
+                    }
+                    //$post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                    //$post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                    $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
+                    $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
+
+                    $designerWorkModel->load($post);
+
+//                    echo "<pre>";
+//                    print_r($post);
+//                    exit;
                     if ($designerWorkModel->save()) {
                         return '修改成功!';
                     } else {
@@ -103,16 +130,22 @@ class DesignerController extends controller {
                 }
 
                 $designerWorkModel = new \backend\models\DesignerWork();
-                $dm = $designerWorkModel->findOne(['designer_id' => $id]);
-				if(!empty($dm)){
-                	$dm->nowork_time = date('Y-m-d', $dm->nowork_time);
-                	$dm->nowork_time2 = date('Y-m-d', $dm->nowork_time2);
-				}else{
-					$dm->nowork_time = date('Y-m-d',time());
-					$dm->nowork_time2 = date('Y-m-d',time() + 24 * 3600);
-				}
+                $dm = $designerWorkModel::findOne(['designer_id' => $id]);
 
                 if ($dm) {
+                    if ($dm->include_project) {
+                        $dm->include_project = explode(',', $dm->include_project);
+                    };
+                    if ($dm->pay_extra) {
+                        $dm->pay_extra = explode(',', $dm->pay_extra);
+                    };
+                    if ($dm->nowork_time && $dm->nowork_time2) {
+                        $dm->nowork_time = date('Y-m-d', (int) $dm->nowork_time);
+                        $dm->nowork_time2 = date('Y-m-d', (int) $dm->nowork_time2);
+                    } else {
+                        $dm->nowork_time = '';
+                        $dm->nowork_time2 = '';
+                    }
                     $designerWorkModel = $dm;
                 }
                 // 非编辑动作 跳转页面
@@ -132,9 +165,9 @@ class DesignerController extends controller {
             $upFile = UploadedFile::getInstance($designerbasicModel, "image_id");
             //图片存放位置
             $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
-           // Yii::info($dir, 'pushNotifications');
+            // Yii::info($dir, 'pushNotifications');
             if (!is_dir($dir)) {
-                @mkdir($dir, '0777', true);
+                @mkdir($dir, 0777, true);
             }
 
             $fileName = date("HiiHsHis") . $upFile->baseName . "." . $upFile->extension;
@@ -148,7 +181,7 @@ class DesignerController extends controller {
             $imageId = '';
             if ($imageModel->save()) {
                 $imageId = $imageModel->image_id;
-                $ret = $designerbasicModel->findOne($designerId);
+                $ret = $designerbasicModel::findOne($designerId);
                 if (empty($ret)) {
                     return false;
                 }
@@ -173,6 +206,8 @@ class DesignerController extends controller {
     }
 
     public function actionAdd() {
+        error_reporting(E_ALL & ~E_NOTICE);
+
         // 返回json格式响应
         // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         // 判断是否是ajax提交 以及是否是添加动作
@@ -201,8 +236,22 @@ class DesignerController extends controller {
             } else if ("DesignerWork" == $formx[1]) { //添加work表
                 $designerWorkModel = new \backend\models\DesignerWork();
                 $post = Yii::$app->request->post();
+
+                //字段处理
                 $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                 $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
+
+                if (isset($post['DesignerWork']['pay_extra']) && !empty($post['DesignerWork']['pay_extra'])) {
+                    $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                } else {
+                    $post['DesignerWork']['pay_extra'] = '';
+                }
+
+                if (isset($post['DesignerWork']['include_project']) && !empty($post['DesignerWork']['include_project'])) {
+                    $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                } else {
+                    $post['DesignerWork']['include_project'] = '';
+                }
 
                 $designerWorkModel->load($post);
 

@@ -59,7 +59,8 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="ever_office">以往服务的大事务所/设计公司</label>
-                    <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control','id' => 'ever_office']) ?>
+                   
+                    <?= Html::activeTextarea($model, 'ever_office', ['class' => 'form-control', 'rows' => '5', 'id' => 'ever_office']) ?>
                     <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
                 </div>
 
@@ -265,6 +266,13 @@ use dosamigos\datepicker\DatePicker;
                     <label for="charge">设计费收费标准</label>
                     <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control','id' => 'charge']) ?>
                     <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
+                </div>
+                
+                 <div class="form-group">
+                    <label for="charge_work">设计费+施工收费标准</label>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeh
+older' => '', 'id' => 'charge_work']) ?>
+                    <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
                 </div>
                 
                 <div class="form-group">

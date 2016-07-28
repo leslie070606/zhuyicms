@@ -90,8 +90,8 @@ class ProjectController extends \common\util\BaseController {
         $tokenModel = new \app\components\Token();
 
         if ($post = Yii::$app->request->post()) {
-            echo "<pre>";
-            print_r($post);exit;
+//            echo "<pre>";
+//            print_r($post);exit;
 
             $model = new ZyProject();
             $project = $model->findOne($project_id);
@@ -172,9 +172,13 @@ class ProjectController extends \common\util\BaseController {
 
             $res = $project->save();
 
-            echo "<pre>";
-            var_dump($res);
-            exit;
+            if ($res) {
+                return $this->redirect(array('project/choose_designer','project_id'=>$project_id));
+            }
+
+//            echo "<pre>";
+//            var_dump($res);
+//            exit;
         }
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
@@ -185,7 +189,6 @@ class ProjectController extends \common\util\BaseController {
     //匹配设计师
     public function actionChoose_designer() {
         //判断是否有已匹配的设计师
-        
         //引入算法类
         $matchModel = new \app\components\Match();
 

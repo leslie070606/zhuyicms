@@ -7,8 +7,8 @@ class Match {
     //$pro 用户需求
     //$des 设计师需求
     public function assigns($ProArr, $DesArr) {
-        
-        
+
+
         //完全不符合标准的设计师
         //if ($ProModel->didian == $DesModel->didian && $ProModel->fuwu == $DesModel->fuwu) {
         if (true) {
@@ -33,10 +33,16 @@ class Match {
                 //合理浮动 面积10%以内  预算50%以内
                 //计算分数
                 //面积计算
-                $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
+                $mianjiscore = 0;
+                if ($ProArr['covered_area'] && $DesArr['accept_area']) {
+                    $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
+                }
 
                 //预算计算
-                $yusuanscore = $pro_budget / $des_budget > 1 ? 1 - ($pro_budget - $des_budget) / $des_budget * 0.01 : 1 - (1 - $pro_budget / $des_budget) * 0.02;
+                $yusuanscore = 0;
+                if ($pro_budget && $des_budget) {
+                    $yusuanscore = $pro_budget / $des_budget > 1 ? 1 - ($pro_budget - $des_budget) / $des_budget * 0.01 : 1 - (1 - $pro_budget / $des_budget) * 0.02;
+                }
                 //风格计算
 //                $num = count(array_intersect($p, $d));
 //                switch ($num) {
@@ -74,9 +80,18 @@ class Match {
                 }
             } else {
                 //已超出进入黄色部分生成数组 
-                $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
-                $yusuanscore = $pro_budget / $des_budget > 1 ? 1 - ($pro_budget - $des_budget) / $des_budget * 0.01 : 1 - (1 - $pro_budget / $des_budget) * 0.02;
+                //面积计算
+                $mianjiscore = 0;
+                if ($ProArr['covered_area'] && $DesArr['accept_area']) {
+                    $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
+                }
 
+                //预算计算
+                $yusuanscore = 0;
+                if ($pro_budget && $des_budget) {
+                    $yusuanscore = $pro_budget / $des_budget > 1 ? 1 - ($pro_budget - $des_budget) / $des_budget * 0.01 : 1 - (1 - $pro_budget / $des_budget) * 0.02;
+                }
+                
                 //配合度
                 switch ($DesArr['matching']) {
                     case 0:
@@ -94,7 +109,7 @@ class Match {
                     default :
                         $peihescore = 1;
                 }
-                
+
                 $huangse = 100;
             }
 
@@ -103,7 +118,7 @@ class Match {
             //$cscore = $mianjiscore + $yusuanscore + $fenggescore + $peihescore - $huangse;
             $cscore = $mianjiscore + $yusuanscore + $peihescore - $huangse;
 
-            return round($cscore,4);
+            return round($cscore, 4);
         }
     }
 

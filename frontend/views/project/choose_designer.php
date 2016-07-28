@@ -20,7 +20,7 @@
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">
-               <ul>
+                <ul>
                     <li><a href="index.html">首页</a></li>
                     <li><a href="designer_list.html">住艺设计师</a></li>
                     <li><a href="designer_list.html">使用指南</a></li>
@@ -33,12 +33,28 @@
 
             <div class="choose_top">
                 <span class="choose_top_a">Hi  Kevin</span>
-                <span class="choose_top_b">找到了6位适合你的设计师，请从中选择3位优先约见</span>
+
+                <?php
+                $num = count($model);
+                if ($num > 0) {
+                    if ($num >= 3) {
+                        $numc = 3;
+                    } else {
+                        $numc = $num;
+                    }
+                    ?>
+                    <span class="choose_top_b">找到了<?= $num ?>位适合你的设计师，请从中选择<?= $numc ?>位优先约见</span>
+                <?php } else { ?>
+
+                    <span class="choose_top_b">未匹配到设计师,请联系客服!</span>
+
+                <?php } ?>
             </div>
 
             <div class="designer_box">
                 <?php
                 foreach ($model as $value) {
+
                     $designerModel = new frontend\models\DesignerBasic();
                     $designers = $designerModel->getDesignerById($value['did']);
 
@@ -51,20 +67,32 @@
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="img/home_page/proa.jpg" />
+                                <img src="<?php $db = new frontend\models\DesignerBasic();echo Yii::$app->params['frontDomain'].$db->getHeadPortrait($value['did']); ?>" />
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name"><?= $designers['name'] ?></span>
+                                <span class="here_name"><?= $designers['name'] ?></span> 
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span><?= $designers['name'] ?></span><span>设计大咖</span>
+                                <?php
+                                $tagArr = explode(',', $designers['tag']);
+                                if (count($tagArr)>1) {
+                                    foreach ($tagArr as $v) {
+                                        ?>
+                                        <span><?= $v ?></span>
+
+                                    <?php }
+                                } else {
+                                    ?>
+                                    <span><?= $designers['tag']?></span>
+
+                                <?php } ?>
                             </div>
 
                             <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
                         </div>
                     </div><!--pro_here end-->
-                <?php } ?> 
+<?php } ?> 
             </div>
             <span class="click_more">查看更多立即匹配出的设计师 </span>
             <div class="bot_navv">
@@ -115,8 +143,11 @@
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
             data: "",
             success: function (data) {
-                
-               alert(data);
+
+                if (data = 3) {
+                    //跳转人工
+                }
+                alert(data);
             }
         })
     })

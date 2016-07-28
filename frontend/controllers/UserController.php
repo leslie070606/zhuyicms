@@ -12,7 +12,6 @@ class UserController extends ZyuserController {
     public $layout = false;
 
     public function actionIndex() {
-
         return $this->render('index');
     }
 
@@ -217,6 +216,16 @@ class UserController extends ZyuserController {
         }
 
         return $this->render('addphone');
+    }
+
+    public function actionLoginout() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        // 销毁session中所有已注册的数据
+        $session->destroy();
+        return $this->redirect(['index/index']);
     }
 
     public function actionSendmsg() {
