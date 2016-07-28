@@ -50,4 +50,30 @@ class DesignerBasic extends ActiveRecord{
 		}
 		return $rows->url;
 	}
+
+	public function getBackground($did){
+		if(!isset($did) || empty($did)){
+			return NULL;
+		}
+		$rows = \frontend\models\Artsets::find()
+			->where(['designer_id' => $did])->orderBy('art_id ASC')->limit(1)->one();
+		if(empty($rows)){
+			return NULL;
+		}
+		$imageIds = $rows->image_ids;
+		if(!isset($imageIds) || empty($imageIds)){
+			return NULL;
+		}
+		//取出第一个图片id.
+		$tmpArr = explode(',',$imageIds);
+		$firstId = $tmpArr[0];
+		
+		$imgRows = \frontend\models\Images::findOne($firstId);
+		if(empty($imgRows)){
+			return NULL;
+		}
+
+		$background = isset($imgRows->url)? $imgRows->url : '/img/home_page/prob.jpg';
+		return $background;
+	}
 }

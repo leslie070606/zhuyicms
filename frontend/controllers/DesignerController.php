@@ -48,9 +48,10 @@ class DesignerController extends Controller {
 		}*/
 		
 		$params = $request->get('params');
-		if(!isset($params)){
+		if(!isset($params) || empty($params)){
 			return false;
 		}
+
 		$designerId 	= $params;
 		$dbModel = new \frontend\models\DesignerBasic();
 		$rows = $dbModel->getDesignerById($designerId);
@@ -59,30 +60,59 @@ class DesignerController extends Controller {
 		}
 		$name 			= $rows->name;
 		$tag 			= $rows->tag;
-
-		$imageId 		= $rows->image_id;
-		$imageModel 	= new \frontend\models\Images();
-		$ret = $imageModel->findOne($imageId);
-		if(empty($ret)){
-			return false;
+		if(!isset($tag) || empty($tag)){
+			$tag = "艺术家,设计小达人";
 		}
-		$headPortrait 	= $ret->url;
-		$background 	= "img/home_page/banner_head.jpg";
+		$tmp 			= $dbModel->getHeadPortrait($designerId);
+		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
+
+		$tmp 			= $dbModel->getBackground($designerId);
+		$background		= isset($tmp)? $tmp : "/img/home_page/prob.jpg";
 		//作品...
+		$artModel		= new \frontend\models\Artsets();
+		$artsets		= $artModel->getPartArtsByDesignerId($designerId);
+		$artCnt			= \frontend\models\Artsets::find()->where(['designer_id' => $designerId])->count();
         $data = array(
 			'designer_id' 	=> $designerId,		//ID
             'name' 			=> $name, 			//姓名
             'tag' 			=> $tag, 			//标签
             'head_portrait' => $headPortrait, 	//头像
             'background' 	=> $background, 	//背景
-			'winnings'		=> '国内优秀设计师，作品多次获得国外专家一致好评',
-			'artsets'		=> array(
-				array('topic' => 'ai','brief' => 'aii','path' => 'aiii'),
-				array('topic' => 'bi','brief' => 'bii','path' => 'biii'),
-				array('topic' => 'ci','brief' => 'cii','path' => 'ciii')
-			)
+			'winnings'		=> '',				//获奖经历
+			'art_cnt'		=> $artCnt,			//作品数量
+			'artsets'		=> $artsets			//作品集
         );
         return $this->render("detail", ['data' => $data]);
+	}
+
+	public function actionArtsets(){
+		$request = Yii::$app->request;
+		if(!$request->isAjax){
+			return NULL;
+		}
+
+		return json_encode(array('/img/home_page/banner_head.jpg','img/home_page/prob.jpg'));
+		$params = $request->get('params');
+		if(!isset($params) || empty($params)){
+			return NULL;
+		}
+		$artId = $params;
+		
+		$rows = \frontend\models\Artsets::findOne($artId);
+		if(empty($rows)){
+			return NULL;	
+		}else{
+			$imgIds = $rows->image_ids;
+			$imgIdsArr = explode(',',$imgIds);
+			$imgUrlArr = array();
+			foreach($imgIdsArr as $id){
+				$imgRet = \frontend\models\Images::findOne($id);
+				if(!empty($imgRet)){
+					$imgUrlArr[] = $imgRet->url;
+				}
+			}
+			return json_encode($imgUrlArr);
+		}
 	}
     public function actionIndex() {
         //从上一个页面传过来，必须保证要有designer_id
@@ -184,7 +214,10 @@ class DesignerController extends Controller {
 			}else{
             	$headPortrait 	= $ret->url;
 			}
-			$background = "/img/home_page/prob.jpg";
+			$background = \frontend\models\DesignerBasic::getBackground($designerId);
+			if(!isset($background)){
+				$background = "/img/home_page/prob.jpg";
+			}
             $designerRet = array(
                 'designer_id' 	=> $designerId,
                 'name' 			=> $name,
