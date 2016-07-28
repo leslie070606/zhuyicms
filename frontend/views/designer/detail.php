@@ -59,7 +59,6 @@
 							$artType 	= $v['type'];
 							$topic 		= $v['topic'];
 							$brief 		= $v['brief'];
-							var_dump($artType);
 						
 							$imgBackground = '';
 							$imgCount = 0;
@@ -311,7 +310,6 @@ HTML;
 		 $(".pro_img_box").show();
 		 var html="";
 		var art_id=$(this).attr("art_id");
-		alert(art_id);
 		 $.ajax({
 		 	type:"get",
         	url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets';?>"+"&&params="+art_id,
