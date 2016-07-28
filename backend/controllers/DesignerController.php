@@ -78,9 +78,20 @@ class DesignerController extends controller {
 
 
                     //字段处理
-                    $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                    //xl modified
+                    if (isset($post['DesignerWork']['pay_extra']) && !empty($post['DesignerWork']['pay_extra'])) {
+                        $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                    } else {
+                        $post['DesignerWork']['pay_extra'] = '';
+                    }
 
-                    $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                    if (isset($post['DesignerWork']['include_project']) && !empty($post['DesignerWork']['include_project'])) {
+                        $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                    } else {
+                        $post['DesignerWork']['include_project'] = '';
+                    }
+                    //$post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                    //$post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
                     $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                     $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
 
@@ -230,9 +241,18 @@ class DesignerController extends controller {
                 $post['DesignerWork']['nowork_time'] = strtotime($post['DesignerWork']['nowork_time']);
                 $post['DesignerWork']['nowork_time2'] = strtotime($post['DesignerWork']['nowork_time2']);
 
-                $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                if (isset($post['DesignerWork']['pay_extra']) && !empty($post['DesignerWork']['pay_extra'])) {
+                    $post['DesignerWork']['pay_extra'] = implode(',', $post['DesignerWork']['pay_extra']);
+                } else {
+                    $post['DesignerWork']['pay_extra'] = '';
+                }
 
-                $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                if (isset($post['DesignerWork']['include_project']) && !empty($post['DesignerWork']['include_project'])) {
+                    $post['DesignerWork']['include_project'] = implode(',', $post['DesignerWork']['include_project']);
+                } else {
+                    $post['DesignerWork']['include_project'] = '';
+                }
+
                 $designerWorkModel->load($post);
 
                 if ($designerWorkModel->save()) {
