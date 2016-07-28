@@ -6,12 +6,10 @@
     <title>设计师主页</title>
     <link rel="stylesheet" href="css/gloab.css" />
     <link rel="stylesheet" href="css/home_page.css" />
-     <link rel="stylesheet" href="css/video-js.min.css" />
     <link rel="stylesheet"  href="css/iconfont.css" />
     <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
 	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
-	<script type="text/javascript" src="js/video.min.js" ></script>
 	<script type="text/javascript" src="js/gloab.js" ></script>
    	<script type="text/javascript" src="js/home_page.js" ></script>
     
@@ -281,7 +279,7 @@ HTML;
 		</div>
 		<div class="pro_img_box" style="display: none;">
 			<div class="pro_img_zd"></div>
-			<span class="pro_img_title">1/7</span>
+<span class="pro_img_title"><i id="title_ida">1</i>/<i id="title_idb">7</i></span>
 			<ul class="bxslider">
 			</ul>
 		</div>
@@ -352,7 +350,7 @@ HTML;
 				data = eval('('+decodeURI(data)+')'); 
 				console.log(data);
 		 		var length=data.length;
-		 		$(".pro_img_title").html("1/"+length);
+		 		$("#title_idb").html(length);
 		 		for(var i=0; i<length; i++){
 		 			html+='<li><img src="'+data[i]+'" title="" /></li>';
 		 		}
