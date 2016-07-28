@@ -59,7 +59,8 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="ever_office">以往服务的大事务所/设计公司</label>
-                    <?= Html::activeInput('text', $model, 'ever_office', ['class' => 'form-control','id' => 'ever_office']) ?>
+                   
+                    <?= Html::activeTextarea($model, 'ever_office', ['class' => 'form-control', 'rows' => '5', 'id' => 'ever_office']) ?>
                     <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
                 </div>
 
