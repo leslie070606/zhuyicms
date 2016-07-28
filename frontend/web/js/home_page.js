@@ -18,5 +18,10 @@ $(function(){
 			gettt--;
 		}
 	});
+	var img_height=$(".pro_here_bcimg").height();
+	touch.on(".pro_here_bcimg","tap",function(ev){
+		$(this).next(".video-js").get(0).play();
+		$(".video-js").css("height",img_height);
+	});
 
 })
