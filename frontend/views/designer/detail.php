@@ -34,7 +34,7 @@
 		<div class="down_right_zd"></div>  
 		
 		<section class="page_banner">
-			<img class="banner_img" src="<?= $data['background'] ?>" />
+			<img class="banner_img here_img" src="<?= $data['background'] ?>" />
 			<div class="banner_mesg">
 				<div class="banner_name"><?= $data['name'] ?></div>
 				<div class="banner_bq"><span><?= $data['tag'] ?></span></div>
