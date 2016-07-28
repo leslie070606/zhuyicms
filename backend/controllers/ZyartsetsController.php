@@ -178,7 +178,7 @@ class ZyartsetsController extends Controller {
                     $imgModel = new \common\models\ZyImages();
                     $img = $imgModel->findOne($imgid);
                     if ($img) {
-                        $imgurl[] = Yii::$app->request->hostInfo . "/zhuyicms/frontend/web" . $img->url;
+                        $imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
 
                         //设置删除
                         $initialPreview[] = array('url' => Url::toRoute('/zyartsets/imgdelete'), 'key' => $imgid . "$" . $id);
