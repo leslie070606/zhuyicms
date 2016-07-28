@@ -56,6 +56,18 @@
 					$tag			= $v['tag'];
 					$headPortrait 	= Yii::$app->request->hostInfo . $v['head_portrait'];
 					$background		= $v['background'];
+					$labelSpan		= '';
+					if(isset($tag) && !empty($tag)){
+						$tagArr 		= explode(',',$tag);
+                        if (count($tagArr) == 1) {
+                        	$labelSpan = "<span>$tagArr[0]</span>";
+                        } else {
+                        	foreach ($tagArr as $t) {
+                            	$lt = "<span>$t</span>";
+                                $labelSpan .= $lt;
+                            }
+                        }
+					}
 
 					$html = <<<HTML
 						<div class="pro_here iconfont">
@@ -67,10 +79,10 @@
 									<img src="$headPortrait" />
 								</div>
 								<div class="bottom_name">
-									<span class="here_name">$name</span>
+									<span class="here_name">{$name}</span>
 								</div>
 								<div class="bottom_label bottom_referral">
-									<span>$tag</span>
+									{$labelSpan}
 								</div>
 							</div>
 						</div>

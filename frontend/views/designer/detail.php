@@ -50,40 +50,16 @@
 			</div>
 			<div class="pro_box">
 				<?php
-					$data = array(
-						'designer_id' => 1,
-						'name'	=> 'qixinliang',
-						'tag'	=> '111,222',
-						'head_portrait' => '/img/home_page/banner_head.jpg',
-						'background' => '/img/home_page/prob.jpg',
-						'winnings' => 'aaaaa',
-						'art_cnt' => '2',
-						'artsets' => array(
-							array('art_id' => 1,
-							'type' => 0,
-							'image_ids' => '1,2',
-							'topic' => 'aaaaa',
-							'brief' => 'bbbbbbbbbbbbbbbb'),
-
-							array('art_id' => 2,
-							'type' => 1,
-							'video_ids' => '1',
-							'topic' => 'ccc',
-							'brief' => 'dddddddddddddddd')
-						)
-					);
 					//此设计师没有作品。
 					if($data['art_cnt'] == 0 || empty($data['artsets'])){
 						echo "此设计师暂无作品";
 					}else{
 						foreach($data['artsets'] as $v){
-							/*
-							$topic = $v->topic;
-							$brief = $v->brief;
-							$path  = $v->art_path;
-							*/
 							$artId 		= $v['art_id'];
 							$artType 	= $v['type'];
+							$topic 		= $v['topic'];
+							$brief 		= $v['brief'];
+							var_dump($artType);
 						
 							$imgBackground = '';
 							$imgCount = 0;
@@ -111,15 +87,9 @@
 								$videoBackground = isset($rows->video_image)? $rows->video_image : "/img/home_page/proc.jpg";
 							}
 
-						$topic = "意大利111";
-						$brief = "佛罗伦萨";
-						$path  = "";
 
 						$imgBackground = isset($imgBackground)? $imgBackground : "/img/home_page/prob.jpg";
-						$imgBackground = "/img/home_page/prob.jpg";
 						$imgCount = isset($imgCount)? $imgCount : 0;
-						$videoUrl = "http://vjs.zencdn.net/v/oceans.mp4";
-						$viedoBackground = "/img/home_page/proc.jpg";
 						//图片
 						if($artType == 0){
 							$html = <<<HTML
@@ -137,9 +107,9 @@ HTML;
 							$html = <<<HTML
 					<div class="pro_here">
 						<div class="pro_here_bcimg iconfont icon-bofang1">
-							<img class="" src="$viedoBackground"/>
+							<img class="" src="$videoBackground"/>
 						</div>
-						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="$viedoBackground">
+						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="$videoBackground">
 							<source src="$videoUrl" type='video/mp4' />
 						</video>
 						<div class="here_botaa"></div>
@@ -148,7 +118,6 @@ HTML;
 						</div>
 					</div>
 HTML;
-
 						}
 					echo $html;
 					}
@@ -341,7 +310,8 @@ HTML;
 	$("body").on("click",".pro_img",function(){
 		 $(".pro_img_box").show();
 		 var html="";
-		var art_id=$(this).prop("art_id");
+		var art_id=$(this).attr("art_id");
+		alert(art_id);
 		 $.ajax({
 		 	type:"get",
         	url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets';?>"+"&&params="+art_id,

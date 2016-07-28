@@ -90,8 +90,7 @@ class DesignerController extends Controller {
 		if(!$request->isAjax){
 			return NULL;
 		}
-
-		return json_encode(array('/img/home_page/banner_head.jpg','img/home_page/prob.jpg'));
+		//return json_encode(array('/img/home_page/banner_head.jpg','img/home_page/prob.jpg'));
 		$params = $request->get('params');
 		if(!isset($params) || empty($params)){
 			return NULL;
@@ -214,6 +213,9 @@ class DesignerController extends Controller {
 			}else{
             	$headPortrait 	= $ret->url;
 			}
+			$headPortrait = isset($headPortrait) && !empty($headPortrait)? 
+				$headPortrait : '/img/home_page/banner_head.jpg';
+
 			$background = \frontend\models\DesignerBasic::getBackground($designerId);
 			if(!isset($background)){
 				$background = "/img/home_page/prob.jpg";
