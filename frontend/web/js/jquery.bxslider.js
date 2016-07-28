@@ -84,8 +84,23 @@
 		onSliderLoad: function() {},
 		onSlideBefore: function() {},
 		onSlideAfter: function() {},
-		onSlideNext: function() {},
-		onSlidePrev: function() {},
+		onSlideNext: function() {
+			home_page_img++;
+			var nuber=$("#title_idb").html();
+			if(home_page_img>nuber){
+				home_page_img=1;
+			}
+			$("#title_ida").html(home_page_img);
+		},
+		onSlidePrev: function() {
+			home_page_img--;
+			var nuber=$("#title_idb").html();
+			if(home_page_img<1){
+				home_page_img=nuber;
+			}
+			$("#title_ida").html(home_page_img);
+		},
+
 		onSliderResize: function() {}
 	}
 
