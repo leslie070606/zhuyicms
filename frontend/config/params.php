@@ -1,4 +1,4 @@
 <?php
 return [
-    'adminEmail' => 'admin@example.com',
+    'frontDomain' => 'http://zhuyihome.com',
 ];

@@ -1,5 +1,5 @@
 $(function(){
-	var widthaa = $(".here_img").width();
+	var widthaa = $("body").width();
 	$(".here_img,.pro_here").css("height", widthaa * .56);
 
 	touch.on(".top_right","tap",function(ev){

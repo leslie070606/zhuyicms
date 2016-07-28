@@ -16,7 +16,8 @@ class OrderController extends Controller {
         $request = Yii::$app->request->get('params');
         $dataRetrived = array();
         if ($request) {
-
+            
+            echo $request;exit;
             $dearr = explode('$', $request);
             $dataRetrived['user_id'] = $dearr[0];
             $dataRetrived['project_id'] = $dearr[1];
@@ -24,6 +25,7 @@ class OrderController extends Controller {
             //是否人工匹配
             if (!$dearr[2]) {
                 return 3; //未选设计师
+                //跳转到人工服务
             } else {
 
                 $dataRetrived['designer_ids'] = explode(',', $dearr[2]);

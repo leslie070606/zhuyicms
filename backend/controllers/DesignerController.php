@@ -167,7 +167,7 @@ class DesignerController extends controller {
             $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
             // Yii::info($dir, 'pushNotifications');
             if (!is_dir($dir)) {
-                @mkdir($dir, '0777', true);
+                @mkdir($dir, 0777, true);
             }
 
             $fileName = date("HiiHsHis") . $upFile->baseName . "." . $upFile->extension;
