@@ -84,7 +84,7 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'brief')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'art_path')->textInput(['maxlength' => true]) ?>
+    <?php // $form->field($model, 'art_path')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
 
