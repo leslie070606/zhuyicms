@@ -71,7 +71,7 @@ if (!$session->isActive) {
 
             <?= Html::endForm(); ?>
             <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
-                    <i class="iconfont icon-sousuo" style="font-size: .44rem;"></i>微信登录
+                    <i class="iconfont icon-weixin" style="font-size: .44rem;"></i>微信登录
                 </div></a>
         </section>
 
