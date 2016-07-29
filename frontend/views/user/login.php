@@ -2,6 +2,12 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
+
+$session = Yii::$app->session;
+if (!$session->isActive) {
+    $session->open();
+}
 ?>
 <!DOCTYPE html>
 <html>
