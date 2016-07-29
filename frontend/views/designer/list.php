@@ -26,7 +26,7 @@ if (!$session->isActive) {
         <div class="des_box">
             <header class="header_top iconfont icon-logo">
                 <a href="<?= 'index.php?r=designer/hunt' ?>" style="color: #ffffff;"><span class="top_left iconfont icon-sousuo"></span></a>
-                <span class="top_lefta iconfont icon-shaixuan"></span>
+<!--                <span class="top_lefta iconfont icon-shaixuan"></span>-->
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">

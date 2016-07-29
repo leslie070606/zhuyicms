@@ -17,7 +17,7 @@
 
 .bg_banner img {float: left; width: 100%;}
 .bx-wrapper .bx-pager {
-	width:.8rem ;
+	width:.34rem ;
 	color: #666;
 	position: absolute;
 	bottom: .2rem;
@@ -26,6 +26,7 @@
 	
 }
 .bx-wrapper .bx-pager .bx-pager-item { float: left; background: #FFFFFF; width: .08rem; height: .08rem; margin-right: .1rem;-moz-opacity:0.5;  -khtml-opacity: 0.5;  opacity: 0.5;}
+.bx-wrapper .bx-pager .bx-pager-item:last-child {margin-right: 0;}
 .bx-wrapper .bx-pager .bx-pager-item.hyeee{width: .16rem; background:#FFFFFF;-moz-opacity:1;  -khtml-opacity: 1;  opacity: 1;
  animation: myfirst .3s;
 -moz-animation: myfirst .3s;	/* Firefox */
