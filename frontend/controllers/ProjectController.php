@@ -39,7 +39,7 @@ class ProjectController extends \common\util\BaseController {
             //如果有需求就跳转到个人中心
             if ($project) {
                 return $this->redirect(['order/list']);
-               // echo "个人中心!";
+                // echo "个人中心!";
                 //exit;
             }
         } else {
@@ -59,6 +59,8 @@ class ProjectController extends \common\util\BaseController {
             $model->covered_area = $aera[0];
             $model->use_area = $aera[1];
             $model->work_time = $proarr[3];
+            $model->project_num = $this->createProNum();
+            $model->create_time = time();
 
             //判断是设计还是设计+施工
             if ($proarr[4] == 'budget_design') {
@@ -290,10 +292,31 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionEditadditional() {
+        if ($post = Yii::$app->request->post()) {
+            
+            echo "<pre>";
+            print_r($post);exit;
+        }
+        //echo $this->createProNum();exit;
         $projectModel = new ZyProject();
+        $project_id = Yii::$app->request->get('project_id');
+        $model = $projectModel::findOne(['project_id' => $project_id]);
+        $model = $projectModel::findOne(56);
 
-        $model = $projectModel::findOne(['user_id' => 14]);
         return $this->render('editadditional', ['model' => $model]);
+    }
+
+    public function createProNum() {
+        $arr = range(1, 10);
+
+        shuffle($arr);
+        $phonestr = '';
+        foreach ($arr as $values) {
+            $phonestr = $phonestr . $values;
+        }
+        $phonestr = substr($phonestr, 3, 4);
+        $phonestr = substr(time(), -2) . $phonestr;
+        return $phonestr;
     }
 
 }
