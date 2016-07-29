@@ -91,7 +91,7 @@ $videoModel = new ZyVideo();
                     </div><!--pro_here end-->
 <?php } ?>
             </div><!--pro_box end-->
-            <div class="see_more"><a href="designer_list.html">认识更多设计师</a></div>
+            <div class="see_more"><a href="<?php echo Url::toRoute('/designer/list'); ?>">认识更多设计师</a></div>
 
         </section><!--production end-->
 

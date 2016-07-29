@@ -9,7 +9,7 @@ use yii;
 
 class UserController extends ZyuserController {
 
-    public $layout = false;
+    public $layout = 'zhuyimain';
 
     public function actionIndex() {
         return $this->render('index');

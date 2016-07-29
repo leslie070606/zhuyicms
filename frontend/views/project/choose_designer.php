@@ -147,7 +147,10 @@
                 if (data = 3) {
                     //跳转人工
                 }
-                alert(data);
+                if(data = 1){
+                    window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
+                }
+                //alert(data);
             }
         })
     })

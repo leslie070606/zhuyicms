@@ -38,8 +38,9 @@ class ProjectController extends \common\util\BaseController {
 
             //如果有需求就跳转到个人中心
             if ($project) {
-                echo "个人中心!";
-                exit;
+                return $this->redirect(['order/list']);
+               // echo "个人中心!";
+                //exit;
             }
         } else {
             return $this->redirect(['user/login']);
