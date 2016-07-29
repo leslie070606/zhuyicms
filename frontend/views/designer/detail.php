@@ -325,7 +325,7 @@ HTML;
     });
     var nubeee = 0;
     var htmllll = $(".pro_img_box").html();
-    $("body").on("click", ".pro_img", function () {
+    touch.on(".pro_img", "tap", function () {
         $(".pro_img_box").show();
         var html = "";
         var art_id = $(this).attr("art_id");
@@ -347,7 +347,7 @@ HTML;
         });
 
     });
-    $("body").on("click", ".pro_img_box", function () {
+    touch.on(".pro_img_box", "tap", function () {
 
         $(this).hide();
         $(this).html(htmllll);

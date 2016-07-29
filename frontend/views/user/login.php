@@ -65,7 +65,7 @@ if (!$session->isActive) {
             </div>
             <div style="position: relative"><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <div class="login_talk">
-                <span class="iconfont icon-xuanzhong">注册即表示本人同意<a class="red	">《用户协议》</a></span>
+                <span class="iconfont icon-xuanzhong">注册即表示本人同意<a class="red">《用户协议和隐私协议》</a></span>
             </div>
             <input type="hidden" value="" id="phonestr" name="phonestr" />
 
