@@ -23,38 +23,57 @@ $videoModel = new ZyVideo();
         <script type="text/javascript" src="js/index.js" ></script>
     </head>
     <body>
-        <div class="banner">
-            <img src="img/index/indexa.jpg" />
-            <div class="banner_mesg">
-                <span class="mesg_spa">好设计在住艺</span>
-                <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">找设计师</a></span>
-            </div>
-        </div>
-        <div class="fingerpost">
-            <div class="post_title">
-                <span class=" iconfont icon-lingxing"><a>设计指南</a></span>
-            </div>
-            <ul class="bxslider">
-                <li>
-                    <img src="img/index/indexa.jpg" title="" />
-                    <span class="bxs_title">设计师收费标准</span>
-                </li>
-                <li>
-                    <img src="img/index/indexb.jpg" title=""  />
-                    <span class="bxs_title">设计师的价值</span>
-                </li>
-                <li>
-                    <img src="img/index/indexa.jpg" title=""  />
-                    <span class="bxs_title">如何有效沟通</span>
-                </li>
-                <li>
-                    <img src="img/index/indexb.jpg" title=""  />
-                    <span class="bxs_title">小小白的第一课</span>
-                </li>
-            </ul>
+       <div class="banner">
+				<ul class="bxslider bxslideraa">
+					<li>
+						<img src="img/index/banner_a.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_b.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_c.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_d.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_e.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_f.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_g.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_h.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_i.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/banner_j.jpg" title="" />
+					</li>
+					
+				</ul>
+				
+				<span class="mesg_spb"><a href="choose_style.html" style="top: 2.4rem;">开始设计</a></span>
+			</div>
+			<div class="fingerpost">
+				<div class="post_title">
+					<span class=" iconfont icon-lingxing"><a>设计指南</a></span>
+				</div>
+				<ul class="bxslider bxsliderbb">
+					<li>
+						<img src="img/index/zhinana.jpg" title="" />
+					</li>
+					<li>
+						<img src="img/index/zhinanb.jpg" title="" />
+					</li>
+				</ul>
 
-
-        </div>
+			</div>
 
         <section class="production">
             <div class="pro_title">
@@ -91,7 +110,7 @@ $videoModel = new ZyVideo();
                     </div><!--pro_here end-->
 <?php } ?>
             </div><!--pro_box end-->
-            <div class="see_more"><a href="<?php echo Url::toRoute('/designer/list'); ?>">认识更多设计师</a></div>
+            <div class="see_more"><a href="<?php echo Url::toRoute('designer/list'); ?>">认识更多设计师</a></div>
 
         </section><!--production end-->
 

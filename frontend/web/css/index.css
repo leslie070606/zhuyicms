@@ -5,7 +5,7 @@
 .banner .banner_mesg>span { display: block; position: relative; font-weight: bold;}
 .mesg_spa { font-size: .66rem; color: #FFFFFF;}
 .mesg_spb { height: .66rem; margin-top: .3rem;}
-.mesg_spb a,.btn_bot a { width: 1.8rem; height: .56rem; line-height: .56rem; position: absolute; top: 0px; left: 50%; margin-left: -.9rem; color: #FF4E38; background: #FFFFff;}
+.mesg_spb a,.btn_bot a { width: 1.8rem; display: block; text-align: center; height: .56rem; line-height: .56rem; position: absolute; top: 0px; left: 50%; margin-left: -.9rem; color: #FF4E38; background: #FFFFff;}
 .btn_bot { float: left; width: 100%; position: relative; margin-bottom: .6rem;}
 .btn_bot a { background: #FF4E38; color: #FFFFFF;}
 .fingerpost { position: relative; clear: both;}
@@ -75,7 +75,7 @@
 }
 .bot_btn_aa { text-align: center; position: relative; margin: .8rem 0 1.2rem 0; float: left; width: 100%;}
 .bot_btn_aa span { width: 1.8rem; height: .56rem; line-height: .56rem; background:#ff4e38; color:#ffffff; position: absolute; left: 50%; margin-left: -.9rem;}
-
+.banner .bx-controls { display: none;}
 
 
 
