@@ -1,6 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\Url;
+
+$session = Yii::$app->session;
+if (!$session->isActive) {
+    $session->open();
+}
 ?>
 <div class="project-form">
 
