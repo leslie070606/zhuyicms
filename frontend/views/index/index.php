@@ -23,57 +23,57 @@ $videoModel = new ZyVideo();
         <script type="text/javascript" src="js/index.js" ></script>
     </head>
     <body>
-       <div class="banner">
-				<ul class="bxslider bxslideraa">
-					<li>
-						<img src="img/index/banner_a.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_b.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_c.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_d.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_e.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_f.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_g.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_h.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_i.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/banner_j.jpg" title="" />
-					</li>
-					
-				</ul>
-				
-				<span class="mesg_spb"><a href="choose_style.html" style="top: 2.4rem;">开始设计</a></span>
-			</div>
-			<div class="fingerpost">
-				<div class="post_title">
-					<span class=" iconfont icon-lingxing"><a>设计指南</a></span>
-				</div>
-				<ul class="bxslider bxsliderbb">
-					<li>
-						<img src="img/index/zhinana.jpg" title="" />
-					</li>
-					<li>
-						<img src="img/index/zhinanb.jpg" title="" />
-					</li>
-				</ul>
+        <div class="banner">
+            <ul class="bxslider bxslideraa">
+                <li>
+                    <img src="img/index/banner_a.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_b.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_c.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_d.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_e.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_f.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_g.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_h.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_i.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/banner_j.jpg" title="" />
+                </li>
 
-			</div>
+            </ul>
+
+            <span class="mesg_spb"><a href="choose_style.html" style="top: 2.4rem;">开始设计</a></span>
+        </div>
+        <div class="fingerpost">
+            <div class="post_title">
+                <span class=" iconfont icon-lingxing"><a>设计指南</a></span>
+            </div>
+            <ul class="bxslider bxsliderbb">
+                <li>
+                    <img src="img/index/zhinana.jpg" title="" />
+                </li>
+                <li>
+                    <img src="img/index/zhinanb.jpg" title="" />
+                </li>
+            </ul>
+
+        </div>
 
         <section class="production">
             <div class="pro_title">
@@ -82,16 +82,18 @@ $videoModel = new ZyVideo();
                 </span>
             </div>
             <div class="pro_box">
-<?php foreach ($data as $value) { ?>
+                <?php foreach ($data as $value) { ?>
                     <div class="pro_here">
                         <div class="pro_here_bcimg iconfont icon-bofang1">
-                            <img class="here_img" src="<?php $video = $videoModel::findOne($value['video_id']);
-    echo Yii::getAlias('@web') . $video['video_image'];
-    ?>" />
+                            <img class="here_img" src="<?php
+                            $video = $videoModel::findOne($value['video_id']);
+                            echo Yii::getAlias('@web') . $video['video_image'];
+                            ?>" />
                         </div>
-                        <video id="example_video1" class="video-js vjs-default-skin"  preload="none" height="4.2rem" poster="<?php $video = $videoModel::findOne($value['video_id']);
-    echo Yii::getAlias('@web') . $video['video_image'];
-    ?>">
+                        <video id="example_video1" class="video-js vjs-default-skin"  preload="none" height="4.2rem" poster="<?php
+                               $video = $videoModel::findOne($value['video_id']);
+                               echo Yii::getAlias('@web') . $video['video_image'];
+                               ?>">
                             <source src="<?php echo $video['video_url']; ?>" type='video/mp4' />
                         </video>
                         <div class="here_botaa"></div>
@@ -104,7 +106,7 @@ $videoModel = new ZyVideo();
                                 <span class="here_name"><?= $value['designer_name'] ?></span><span class="here_namea"><?= $value['designer_city'] ?></span>
                             </div>
                             <div class="bottom_referral">
-                    <?= $value['description'] ?>
+    <?= $value['description'] ?>
                             </div>
                         </div>
                     </div><!--pro_here end-->
@@ -138,15 +140,15 @@ $videoModel = new ZyVideo();
             </div>
             <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">开始设计</a></span>
         </section><!--use_zy end-->
+
         <section class="nav_bot">
 
-            <span><a href="#">关于住艺</a></span>
-            <span><a href="#">设计师入驻</a></span>
-            <span><a href="#">住艺招聘</a></span>
-            <span><a href="#">公装项目</a></span>
-
-
-        </section><!--nav_bot end-->
+            <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06&scene=1&srcid=0719nZGFjUf0jqEav6uGUFTF#rd">关于住艺</a></span>
+            <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
+            <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000488&idx=2&sn=a74c70e75e22df2ada22991f71ea7db5&scene=1&srcid=0719WSPBkdkd80QnSiKBzKgl#rd">住艺招聘</a></span>
+            <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>
+        </section>
+        <!--nav_bot end-->
 
 
         <footer class="foot">

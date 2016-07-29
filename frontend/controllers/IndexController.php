@@ -39,5 +39,9 @@ class IndexController extends Controller {
         //$session->removeall();
         return $this->render('test');
     }
+    
+    public function actionToolsdesign(){
+        return $this->render('toolsdesign');
+    }
 
 }
