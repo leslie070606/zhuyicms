@@ -58,7 +58,7 @@ $videoModel = new ZyVideo();
 
             </ul>
 
-            <span class="mesg_spb"><a href="choose_style.html" style="top: 2.4rem;">开始设计</a></span>
+            <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>" style="top: 2.4rem;">开始设计</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">
