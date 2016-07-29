@@ -48,35 +48,35 @@
                     <span class="head_name">张三</span>
                     <span class="head_more">免费预约一次</span>
                 </div>
-				<div class="nac_boxa">
-					<span class="active">订单</span>
-					<span>需求</span>
-					<span>收藏</span>
-				</div>	
+                <div class="nac_boxa">
+                    <span class="active">订单</span>
+                    <span>需求</span>
+                    <span>收藏</span>
+                </div>	
                 <ul class="bxslidera" id="nav_box">
                     <li>
                         <div class="dingdan">
                             <?php
                             if (empty($data) || !is_array($data)) {
-								
-								$html = <<<HTML
+
+                                $html = <<<HTML
 								<div class="Blank_Page">
 				  					<span>目前还没有订单产生<br/>
 				  					快 <a href="designer_list.html" class="red">提交需求</a>约见设计师吧
 				  					</span>
 				  				</div>
 HTML;
-								echo $html;
+                                echo $html;
                             } else {
                                 foreach ($data as $d) {
-                                    $orderId 		= $d['order_id'];
-									$userId			= $d['user_id'];
-									$orderType		= $d['order_type'];
-									$designerId 	= $d['designer']['designer_id'];
-									$name 			= $d['designer']['name'];
-									$headPortrait 	= $d['designer']['head_portrait'];
-									$tagStr			= $d['designer']['tag'];
-                                    $tagArr 		= explode(',', $tagStr);
+                                    $orderId = $d['order_id'];
+                                    $userId = $d['user_id'];
+                                    $orderType = $d['order_type'];
+                                    $designerId = $d['designer']['designer_id'];
+                                    $name = $d['designer']['name'];
+                                    $headPortrait = $d['designer']['head_portrait'];
+                                    $tagStr = $d['designer']['tag'];
+                                    $tagArr = explode(',', $tagStr);
                                     $labelSpan = '';
                                     if (count($tagArr) == 1) {
                                         $labelSpan = "<span>$tagArr[0]</span>";
@@ -88,17 +88,17 @@ HTML;
                                     }
 
                                     //订单状态
-									$status		= $d['status'];
-                                    $statusMsg 	= \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
-                                    $orderType 	= $d['order_type'];
+                                    $status = $d['status'];
+                                    $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
+                                    $orderType = $d['order_type'];
                                     //用户创建并且待设计师确认
                                     if ($status ==
-							\frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
-										//$rows = \frontend\models\Order::findOne($orderId);
-										//$createTime = $rows->create_time;
-										$create_time = time();
-										$timestamp = $create_time + 24 * 3600;
-										$time = date('Y-m-d H:i:s',$timestamp);	
+                                            \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
+                                        //$rows = \frontend\models\Order::findOne($orderId);
+                                        //$createTime = $rows->create_time;
+                                        $create_time = time();
+                                        $timestamp = $create_time + 24 * 3600;
+                                        $time = date('Y-m-d H:i:s', $timestamp);
                                         $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
@@ -128,19 +128,19 @@ HTML;
 HTML;
                                     } elseif ($orderType == 0 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
-										$rows = \frontend\models\Order::findOne($orderId);
-										//设计师的空闲时间，以,分隔
-										/*
-										$timeStr = $rows->designer_rest_time;
-										$timeArr = split(',',$timeStr);
-										$time1 = date("m-d",$timeArr[0]);
-										$time2 = date("m-d",$timeArr[1]);
-										$time3 = date("m-d",$timeArr[2]);
-										*/
-										$time1 = date("m-d",time());
-										$time2 = date("m-d",time() + 24 * 3600);
-										$time3 = date("m-d",time() + 48 * 3600);
-										
+                                        $rows = \frontend\models\Order::findOne($orderId);
+                                        //设计师的空闲时间，以,分隔
+                                        /*
+                                          $timeStr = $rows->designer_rest_time;
+                                          $timeArr = split(',',$timeStr);
+                                          $time1 = date("m-d",$timeArr[0]);
+                                          $time2 = date("m-d",$timeArr[1]);
+                                          $time3 = date("m-d",$timeArr[2]);
+                                         */
+                                        $time1 = date("m-d", time());
+                                        $time2 = date("m-d", time() + 24 * 3600);
+                                        $time3 = date("m-d", time() + 48 * 3600);
+
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
 											<div class="zy_pp dd_here" order_id = "$orderId">
@@ -240,7 +240,7 @@ HTML;
 				  				
 				  			</div>
 HTML;
-                                    }elseif($status == \frontend\models\Order::STATUS_CANCEL_MEETING) {
+                                    } elseif ($status == \frontend\models\Order::STATUS_CANCEL_MEETING) {
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
@@ -365,6 +365,12 @@ HTML;
                         </div>
 
                     </li>
+                    <li class="xuqiu_box">
+                        
+                        
+                    </li>
+                    
+                    <li></li>
                 </ul>
 
             </section>
@@ -373,91 +379,109 @@ HTML;
 </html>
 
 <script type="text/javascript">
-$(function(){
-	//标题点击事件
-	var indexaa;
-	var index=7;
-	var htmll="";
-	function duang(){
-		$("#nav_box").animate({left:-widtha*indexaa},400,function(){
-				if(indexaa==2&&index==7){
-				$.ajax({
-				type:"get",
-				url:"<?php echo Yii::getAlias('@web') . '/index.php?r=my/show';?>",
-				async:true,
-				success:function(data){
-					if(data==-1){
-						return false;
-					}
-					data = eval('('+decodeURI(data)+')');
-					var htmlaa='';
-					for(var i=0;i<data.length;i++){
-						var gett=data[i].tag;
-						if(gett.indexOf(",")<0){
-							htmlaa='<span>'+data[i].tag+'</span>';
-						}else{
-							gett=gett.split(",");
-							for(var a=0;a<gett.length;a++){
-								var hah='<span>'+gett[a]+'</span>'
-								htmlaa+=hah;
-							}
-						}
-					var html='<div class="pro_here iconfont" designer_id="'+data[i].designer_id+'">'
-							+'<a href="'+data[i].redirect_url+'"><img class="here_img" src="'+data[i].background+'" /></a>'
-							+'<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
-							+'<div class="here_zhe"></div>'
-							+'<div class="here_botaa"></div>'
-							+'<div class="here_bottom line_center">'
-								+'<div class="here_head">'
-									+'<img src="'+data[i].head_portrait+'" />'
-								+'</div>'
-								+'<div class="bottom_name">'
-									+'<span class="here_name">'+data[i].name+'</span>'
-									+'<span class="here_namea">暂缺数据</span>'
-								+'</div>'
-								+'<div class="bottom_label bottom_referral">'+htmlaa+'</div>'
-							+'</div>'
-						+'</div>'
-						$(".collect").append(html);
-						index++;
-					}
-					$(".loading_box").hide();
-				}
-				});
-			}
-			var heighttt=$("#nav_box>li:eq("+indexaa+")").css("height");
-			$("#nav_box").css("height",heighttt);
-		});
-		$(".nac_boxa>span:eq("+indexaa+")").addClass("active").siblings().removeClass("active");
-	}
-	
-	touch.on(".nac_boxa>span","tap",function(ev){
-		indexaa=$(ev.currentTarget).index();
-		duang();
-		
-		
-	});
-	$(document).on("click",".shanchu_box",function(){
-		var _this=$(this);
-		//注释写死user_id为1
-		var user_id=1;
-		var designer_id=_this.parents(".iconfont").attr("designer_id");
-		var params=[user_id,designer_id];
-		$.ajax({
-				type:"get",
-				url:"<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect';?>"+"&&params="+params,
-				async:true,
-				success:function(data){
-					_this.parents(".iconfont").remove();
-				}
-		});
-	});
-	
-});
+    $(function () {
+        //标题点击事件
+        var indexaa;
+        var index = 7;
+        var xiuqiu = 8;
+        var htmll = "";
+        function duang() {
+            $("#nav_box").animate({left: -widtha * indexaa}, 400, function () {
+                if (indexaa == 2 && index == 7) {
+                    $.ajax({
+                        type: "get",
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/show'; ?>",
+                        async: true,
+                        success: function (data) {
+                            if (data == -1) {
+                                return false;
+                            }
+                            data = eval('(' + decodeURI(data) + ')');
+                            var htmlaa = '';
+                            for (var i = 0; i < data.length; i++) {
+                                var gett = data[i].tag;
+                                if (gett.indexOf(",") < 0) {
+                                    htmlaa = '<span>' + data[i].tag + '</span>';
+                                } else {
+                                    gett = gett.split(",");
+                                    for (var a = 0; a < gett.length; a++) {
+                                        var hah = '<span>' + gett[a] + '</span>'
+                                        htmlaa += hah;
+                                    }
+                                }
+                                var html = '<div class="pro_here iconfont" designer_id="' + data[i].designer_id + '">'
+                                        + '<a href="' + data[i].redirect_url + '"><img class="here_img" src="' + data[i].background + '" /></a>'
+                                        + '<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
+                                        + '<div class="here_zhe"></div>'
+                                        + '<div class="here_botaa"></div>'
+                                        + '<div class="here_bottom line_center">'
+                                        + '<div class="here_head">'
+                                        + '<img src="' + data[i].head_portrait + '" />'
+                                        + '</div>'
+                                        + '<div class="bottom_name">'
+                                        + '<span class="here_name">' + data[i].name + '</span>'
+                                        + '<span class="here_namea">暂缺数据</span>'
+                                        + '</div>'
+                                        + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
+                                        + '</div>'
+                                        + '</div>'
+                                $(".collect").append(html);
+                                index++;
+                            }
+                            $(".loading_box").hide();
+                        }
+                    });
+                }
+
+
+                if (indexaa == 1 && xiuqiu == 8) {
+                    $.ajax({
+                        type: "GET",
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=project/updateadditional'; ?>",
+                        data: "",
+                        success: function (data) {
+                           $(".xuqiu_box").html(data);
+                           xiuqiu++;
+                        
+                            var heighttt = $("#nav_box>li:eq(" + indexaa + ")").css("height");
+                $("#nav_box").css("height", heighttt);
+                            
+                        }
+                    })
+                    
+                }
+               
+            });
+            $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
+        }
+
+        touch.on(".nac_boxa>span", "tap", function (ev) {
+            indexaa = $(ev.currentTarget).index();
+            duang();
+
+
+        });
+        $(document).on("click", ".shanchu_box", function () {
+            var _this = $(this);
+            //注释写死user_id为1
+            var user_id = 1;
+            var designer_id = _this.parents(".iconfont").attr("designer_id");
+            var params = [user_id, designer_id];
+            $.ajax({
+                type: "get",
+                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                async: true,
+                success: function (data) {
+                    _this.parents(".iconfont").remove();
+                }
+            });
+        });
+
+    });
 
 //调用微信接口
 
-wx.config({
+    wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
         timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
@@ -484,10 +508,10 @@ wx.config({
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
-      $(document).on("click", ".hetong", function (ev) {
+        $(document).on("click", ".hetong", function (ev) {
             var _this = $(this);
             var index;
-            
+
 
             var length = $(ev.currentTarget).siblings().length;
             var likestr = '';
@@ -503,53 +527,53 @@ wx.config({
 
                     var html = "";
                     // alert(indexx)
-                        for (var i = 0; i < images.localId.length; i++) {
-                            var htmllll = images.localId[i];
-                            html += '<li class="hetong_here"><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                            var ge = images.localId.length;
-                            // 上传图片
-                            wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                isShowProgressTips: 1, // 默认为1，显示进度提示
-                                success: function (res) {
-                                    serverId = res.serverId; // 返回图片的服务器端ID
-                                    likestr += serverId + "$";
-                                    nuber++;
-                                    if (isAndroid) {
-                                        if (nuber >= ge) {
-                                            var like_val =_this.parents(".zy_pp").find(".list_val").val();
-                                            _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
-
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
-                                                $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                            }
-                                        }
-                                    } else {
-                                        var like_val =_this.parents(".zy_pp").find(".list_val").val();
+                    for (var i = 0; i < images.localId.length; i++) {
+                        var htmllll = images.localId[i];
+                        html += '<li class="hetong_here"><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                        var ge = images.localId.length;
+                        // 上传图片
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                serverId = res.serverId; // 返回图片的服务器端ID
+                                likestr += serverId + "$";
+                                nuber++;
+                                if (isAndroid) {
+                                    if (nuber >= ge) {
+                                        var like_val = _this.parents(".zy_pp").find(".list_val").val();
                                         _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
+
                                         likestr = likestr.toString().split("$");
                                         for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
                                             $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
                                     }
-
+                                } else {
+                                    var like_val = _this.parents(".zy_pp").find(".list_val").val();
+                                    _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
+                                    likestr = likestr.toString().split("$");
+                                    for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
+                                        $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                    }
                                 }
-                            });
-                        }
 
-                        $(".hetong_box").prepend(html);
-                        img_height_auto();
-                        var get_val=_this.parents(".zy_pp").find(".list_val").val;
-                        $.ajax({
-                        	type:"get",
-                        	url:"",
-                        	async:true,
-                        	success:function(){
-                        		alert(get_val)
-                        	}
+                            }
                         });
-                    
+                    }
+
+                    $(".hetong_box").prepend(html);
+                    img_height_auto();
+                    var get_val = _this.parents(".zy_pp").find(".list_val").val;
+                    $.ajax({
+                        type: "get",
+                        url: "",
+                        async: true,
+                        success: function () {
+                            alert(get_val)
+                        }
+                    });
+
 
                 }
 
@@ -557,9 +581,9 @@ wx.config({
         });
 
     });
-function img_height_auto(){
-	var width=$(".here_img_box li img").width();
-	 $(".here_img_box li img").css("height",width);
-	 $(".add_img").css({"width":width,"height":width})
-}
+    function img_height_auto() {
+        var width = $(".here_img_box li img").width();
+        $(".here_img_box li img").css("height", width);
+        $(".add_img").css({"width": width, "height": width})
+    }
 </script>

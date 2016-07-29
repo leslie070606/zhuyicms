@@ -173,7 +173,7 @@ class ProjectController extends \common\util\BaseController {
             $res = $project->save();
 
             if ($res) {
-                return $this->redirect(array('project/choose_designer','project_id'=>$project_id));
+                return $this->redirect(array('project/choose_designer', 'project_id' => $project_id));
             }
 
 //            echo "<pre>";
@@ -277,6 +277,22 @@ class ProjectController extends \common\util\BaseController {
             //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
         return $this->render('choose_designer', ['model' => $scoreArr]);
+    }
+
+    public function actionUpdateadditional() {
+        //echo "1231";exit;
+        $projectModel = new ZyProject();
+
+        $model = $projectModel::findOne(['user_id' => 16]);
+
+        return $this->render('updateadditional', ['model' => $model]);
+    }
+
+    public function actionEditadditional() {
+        $projectModel = new ZyProject();
+
+        $model = $projectModel::findOne(['user_id' => 14]);
+        return $this->render('editadditional', ['model' => $model]);
     }
 
 }
