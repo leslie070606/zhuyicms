@@ -9,8 +9,8 @@ use yii;
 
 class UserController extends ZyuserController {
 
-    public $layout = 'zhuyimain';
-
+   // public $layout = 'zhuyimain';
+    public $layout = false;
     public function actionIndex() {
         return $this->render('index');
     }
