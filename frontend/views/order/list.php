@@ -368,8 +368,8 @@ HTML;
 										</div>
 									</div>
 				  				
-								<span class="jm_time">见面2小时111</span>
-								<span class="jm_money"><a>￥800</a>(111首次免费约见)</span>
+								<span class="jm_time">见面2小时</span>
+								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								<input type="hidden" value="" name="list_val" class="list_val" />
 								<ul class="hetong_box">
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
@@ -377,7 +377,7 @@ HTML;
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
 								</ul>
 									<div class="true_time queren_btn hetong_btn">
-					  					<span class="true_btnb hetong">上传合同2</span>
+					  					<span class="true_btnb hetong">上传合同</span>
 				  					</div>
 				  				
 				  			</div>
