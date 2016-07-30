@@ -213,5 +213,46 @@ class OrderController extends Controller {
 		$tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
+   		$accessToken = $tokenModel->getToken();
+	
+
+		$request = Yii::$app->request;
+		if(!$request->isAjax){
+			return false;
+		}
+		$params = $request->get('params');
+		if(!isset($params) || empty($params)){
+			return false;
+		}
+		//前台ajax数据传送格式为订单号$图片id1,图片id2...
+		$params = explode('$',$params);
+		if(empty($params)){
+			return false;
+		}
+		$orderId = $params[0];
+		$orderRows = \frontend\models\Order::findOne($orderId);
+		$imagesStr = $params[1];
+		if(isset($imagesStr)){
+			$imagesArr = explode(',',$imagesStr);
+		}
+
+		if(empty($imagesArr)){
+			return false;
+		}
+		
+		$imgIds = '';
+		foreach($imagesArr as $id){
+			$wd 			= new \app\components\WeixinDownloadImg();			
+			$imgModel 		= new \common\models\ZyImages();
+            $uploadImgUrl 	= $wd->wxDownImg($mid, $accessToken);
+			if($uploadImgUrl){
+				$imgModel->url = $uploadImgUrl;
+				if($imgModel->save()){
+					$imgIds .= ',' . (string)$imgModel->attributes['image_id'];
+				}
+			}
+		}
+		$orderRows->contract = $imgIds;
+		$orderRows->save();
 	}
 }

@@ -575,10 +575,10 @@ HTML;
 
                     $(".hetong_box").prepend(html);
                     img_height_auto();
-                    var get_val = _this.parents(".zy_pp").find(".list_val").val;
+                    var get_val = _this.parents(".zy_pp").find(".list_val").val();
                     $.ajax({
                         type: "get",
-                        url: "",
+                		url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/contract'; ?>" + "&&params=" + get_val,
                         async: true,
                         success: function () {
                             alert(get_val)
