@@ -531,6 +531,7 @@ HTML;
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
        touch.on(".hetong", "tap", function (ev) {
+			alert("123");
             var _this = $(this);
             var index;
 
