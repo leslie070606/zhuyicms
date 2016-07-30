@@ -44,6 +44,8 @@ class UserController extends ZyuserController {
                 if (count($user)) {
                     //加session
                     $session->set('user_id', $user[0]['user_id']);
+                    
+                    $user->save();
                     // 跳转首页
                     return $this->redirect(['index/index']);
 
@@ -226,6 +228,11 @@ class UserController extends ZyuserController {
         // 销毁session中所有已注册的数据
         $session->destroy();
         return $this->redirect(['index/index']);
+    }
+    
+    public function actionFeedback(){
+        
+        return $this->render('feedback');
     }
 
     public function actionSendmsg() {
