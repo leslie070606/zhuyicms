@@ -99,10 +99,11 @@ touch.on(".queren_btn .true_btnaa","tap",function(ev){
 			async: true,
 			success: function(data) {
 				_this.find(".right_type").html("已深度合作");
+				_this.find(".jm_money:eq(0),.jm_time:eq(0)").remove();
 				_this.find(".jm_money").after('<input type="hidden" value="" name="list_val" class="list_val"><ul class="hetong_box"></ul>');
-				_this.find(".jm_money,.time").remove();
 				_this.find(".queren_btn").html('<span class="true_btnb hetong">上传合同</span>').addClass(".hetong_btn")
-			}
+		_this.find(".hetong_box").css("borderTop","none");
+	}
 		});
 	});
 	
@@ -135,11 +136,9 @@ touch.on(".queren_btn .true_btnaa","tap",function(ev){
 //	 document.body.addEventListener('touchmove', function(event) {
 //      event.preventDefault();
 //   }, false);
- touch.on(".true_btn","tap",function(ev){
+touch.on(".true_btn","tap",function(ev){
  	$(ev.currentTarget).parents(".zy_pp").addClass("foin_zy").siblings().removeClass("foin_zy");
  });
-
-
 var currYear = (new Date()).getFullYear();	
 			var opt={};
 			opt.date = {preset : 'date'};
@@ -155,12 +154,22 @@ var currYear = (new Date()).getFullYear();
 				nowText: "今天",
 				stepMinute: 30,
 		        startYear: currYear - 10, //开始年份
-		        endYear: currYear + 10, //结束年份
-		        get:["7月4号","7月2号","7月3号"]
+		        endYear: currYear + 10 //结束年份
+		        
 			};
-
-	
-		  
-			var optTime = $.extend(opt['time'], opt['default'],{get:["7月6号","7月2号","7月3号"]});
-		    $(".true_btn").mobiscroll(optTime).time(optTime);
+			$(".true_btn").each(function(ev){
+				var gettt=[];
+				var grrr=$(this).parents(".zy_pp").find(".time_list");
+				grrr.find(">i").each(function(){
+					var h=$(this).html().split("-");
+						h=h[1]+"月"+h[2]+"日";
+					 gettt.push(h);					
+				});
+				console.log(gettt)
+				var time_list="";
+				var optTime = $.extend(opt['time'], opt['default'],{get:gettt});
+		    	$(this).mobiscroll(optTime).time(optTime);
+			});
+		  	
+		    
 });

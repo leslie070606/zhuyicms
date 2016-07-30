@@ -18,19 +18,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'designer_id')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList([1 => '待用户确认时间',2 => '待见面',3 => '预约已取消',4 => '不见面',5 => '待确认见面完成',6 => '已见面',7 => '已见面未深度合作', 8 => '已深度合作未上传合同']) ?>
 
     <?= $form->field($model, 'appointment_location')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'appointment_time')->textInput() ?>
+    <?= $form->field($model, 'designer_spare_time')->textInput([ 'placeholder' => '三个时间，请按照格式（2000-1-1）填写，并以英文逗号分隔开三个时间！']) ?>
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'service_type')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'create_time')->textInput() ?>
-
-    <?= $form->field($model, 'update_time')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

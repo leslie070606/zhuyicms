@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\ZyOrder */
 
-$this->title = 'Create Zy Order';
+$this->title = '创建订单';
 $this->params['breadcrumbs'][] = ['label' => 'Zy Orders', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

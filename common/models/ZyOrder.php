@@ -21,6 +21,35 @@ use Yii;
  */
 class ZyOrder extends \yii\db\ActiveRecord
 {
+    const STATUS_DISABLED = -1;
+    const STATUS_WAITING_DESIGNER_TO_CONFIRM = 0;
+    const STATUS_WAITING_USER_TO_CONFIRM_TIME = 1;
+    const STATUS_WAITING_MEETING = 2;
+    const STATUS_CANCEL_MEETING = 3;
+    const STATUS_NOT_TO_MEET = 4;
+    const STATUS_WAITING_MET_DONE = 5;
+    const STATUS_MET_DONE = 6;
+    const STATUS_MET_NOT_DEEP_COOPERATION = 7;
+    const STATUS_MET_DEEP_COOPERATION = 8;
+    const STATUS_WAITING_CONTRACT = 9;
+    const STATUS_SERVICE_END = 10;
+    const STATUS_SERVICE_CANCELLED = 11;
+
+    static $ORDER_STATUS_DICT = array(
+        self::STATUS_DISABLED => '无效订单',
+        self::STATUS_WAITING_DESIGNER_TO_CONFIRM => '待设计师确认',
+        self::STATUS_WAITING_USER_TO_CONFIRM_TIME => '待用户确认时间',
+        self::STATUS_WAITING_MEETING => '待见面',
+        self::STATUS_CANCEL_MEETING => '预约已取消',
+        self::STATUS_NOT_TO_MEET => '不见面',
+        self::STATUS_WAITING_MET_DONE => '待确认见面完成',
+        self::STATUS_MET_DONE => '已见面',
+        self::STATUS_MET_NOT_DEEP_COOPERATION => '已见面未深度合作',
+        self::STATUS_MET_DEEP_COOPERATION => '已深度合作',
+        self::STATUS_WAITING_CONTRACT => '已深度合作未上传合同',
+        self::STATUS_SERVICE_END => '已深度合作已上传合同',
+        self::STATUS_SERVICE_CANCELLED => '取消合作'
+    );
     /**
      * @inheritdoc
      */
@@ -35,10 +64,10 @@ class ZyOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'project_id', 'designer_id', 'status', 'appointment_time', 'create_time', 'update_time'], 'required'],
+            [['user_id', 'project_id', 'designer_id'], 'required'],
             [['user_id', 'project_id', 'designer_id', 'status', 'appointment_time', 'create_time', 'update_time'], 'integer'],
-            [['appointment_location', 'service_type'], 'string', 'max' => 50],
-            [['remark'], 'string', 'max' => 100],
+            [['appointment_location', 'service_type'], 'string', 'max' => 255],
+            [['remark'], 'string', 'max' => 255],
         ];
     }
 
@@ -48,15 +77,16 @@ class ZyOrder extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'order_id' => 'ID主键',
+            'order_id' => '订单ID',
             'user_id' => '用户ID',
-            'project_id' => '项目ID',
+            'project_id' => '需求ID',
             'designer_id' => '设计师ID',
             'status' => '订单状态',
+			'designer_spare_time' => '设计师的空闲时间',
             'appointment_location' => '约见地点',
             'appointment_time' => '约见时间',
             'remark' => '订单备注',
-            'service_type' => '服务类型',
+            'service_type' => '订单类型',
             'create_time' => '创建订单',
             'update_time' => '修改时间',
         ];

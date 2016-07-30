@@ -40,6 +40,71 @@ class DesignerController extends Controller {
         return json_encode($data);
     }
 
+	public function actionArts(){
+		$request = Yii::$app->request;
+		/*
+		if(!$request->isAjax){
+			return false;
+		}*/
+		$params = $request->get('params');
+		/*
+		if(!isset($params) || empty($params)){
+			return false;
+		}*/
+		$designerId = $params;
+
+		$artModel = new \frontend\models\Artsets();
+		$artsets  = $artModel->getArtsetsByDesignerId($designerId);
+		$data = array();
+		if(!empty($artsets)){
+			foreach($artsets as $a){
+				//var_dump($a);
+				$artId = $a->art_id;
+				$type = $a->type;
+				$background = '';
+				$imageUrlArr = array();
+				$videoUrl = '';
+				if($type == 0){
+					$imageIds = isset($a->image_ids)? $a->image_ids : '';
+					$imageIdsArr = explode(',',$imageIds);
+					//$imageUrlArr = array();
+					foreach($imageIdsArr as $id){
+						$ret = \frontend\models\Images::findOne($id);
+						if(empty($ret)){
+							continue;
+						}
+						$imageUrlArr[] = $ret->url;
+					}
+					if(!empty($imageUrlArr)){
+						$background = $imageUrlArr[0];
+					}
+				}elseif($type == 1){
+					$videoId = isset($a->video_ids)? $a->video_ids : '';
+                    $rows = \common\models\ZyVideo::findOne($videoId);
+                    if(!empty($rows)){
+                    	$videoUrl = $rows->video_url;
+                    }
+                    $background = isset($rows->video_image)? $rows->video_image : "/img/home_page/proc.jpg";
+				}
+
+				$element = array(
+					'art_id' => $artId,
+					'type' => $type, 
+					'background' => $background,
+					'image_urls' => $imageUrlArr,
+					'video_url' => $videoUrl	
+				);
+				$data[] = $element;
+			}
+		}
+		$data = json_encode($data);
+		return $data;
+		//return $this->render("alls",['data' => $data]);
+	}
+	public function actionAlls(){
+		return $this->render("alls");
+	}
+
 	public function actionDetail(){
 		$request = Yii::$app->request;
 		/*

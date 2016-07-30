@@ -89,6 +89,7 @@ HTML;
                                     $orderId = $d['order_id'];
                                     $userId = $d['user_id'];
                                     $orderType = $d['order_type'];
+									$dSpareTime = $d['designer_spare_time'];
                                     $designerId = $d['designer']['designer_id'];
                                     $name = $d['designer']['name'];
                                     $headPortrait = $d['designer']['head_portrait'];
@@ -104,6 +105,8 @@ HTML;
                                         }
                                     }
 
+									$appointmentTime = date("Y-m-d H:i:s",$d['appointment_time']);
+									$appointmentLocation = $d['appointment_location'];
                                     //订单状态
                                     $status = $d['status'];
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
@@ -111,9 +114,12 @@ HTML;
                                     //用户创建并且待设计师确认
                                     if ($status ==
                                             \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
-                                        //$rows = \frontend\models\Order::findOne($orderId);
-                                        //$createTime = $rows->create_time;
-                                        $create_time = time();
+                                        $rows = \frontend\models\Order::findOne($orderId);
+										if(!empty($rows)){
+                                        	$createTime = $rows->create_time;
+										}else{
+                                        	$create_time = time();
+										}
                                         $timestamp = $create_time + 24 * 3600;
                                         $time = date('Y-m-d H:i:s', $timestamp);
                                         $html = <<<HTML
@@ -143,20 +149,18 @@ HTML;
 								  				</div>
 											</div>
 HTML;
+									//客服创建，订单类型字段为0，状态为待用户确认时间。
                                     } elseif ($orderType == 0 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
-                                        $rows = \frontend\models\Order::findOne($orderId);
+                                        //$rows = \frontend\models\Order::findOne($orderId);
                                         //设计师的空闲时间，以,分隔
-                                        /*
-                                          $timeStr = $rows->designer_rest_time;
-                                          $timeArr = split(',',$timeStr);
-                                          $time1 = date("m-d",$timeArr[0]);
-                                          $time2 = date("m-d",$timeArr[1]);
-                                          $time3 = date("m-d",$timeArr[2]);
-                                         */
-                                        $time1 = date("m-d", time());
-                                        $time2 = date("m-d", time() + 24 * 3600);
-                                        $time3 = date("m-d", time() + 48 * 3600);
+                                        //  $timeStr = $rows->designer_rest_time;
+                                        //  $timeArr = explode(',',$timeStr);
+
+										$dSpareArr = explode(',',$dSpareTime);
+										$time1 = isset($dSpareArr[0])? $dSpareArr[0] : '';
+										$time2 = isset($dSpareArr[1])? $dSpareArr[1] : '';
+										$time3 = isset($dSpareArr[2])? $dSpareArr[2] : '';
 
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
@@ -178,7 +182,7 @@ HTML;
 												</div>
 				  								<div class="tj_box leave_word">
 				  									<span class="tj_spa">设计师留言：</span>
-				  									<span class="tj_spb">我<span class="time_list">{$time1};{$time2};{$time3}</span>有时间。 请在12小时内确认时间。</span>
+				  									<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在12小时内确认时间。</span>
 				  								</div>
 				  				
 												<span class="jm_time">见面2小时</span>
@@ -192,6 +196,14 @@ HTML;
 HTML;
                                     } elseif ($orderType == 1 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
+							//客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
+                                        $dSpareArr = explode(',',$dSpareTime);
+                                        $time1 = isset($dSpareArr[0])? $dSpareArr[0] : '
+';
+                                        $time2 = isset($dSpareArr[1])? $dSpareArr[1] : '
+';
+                                        $time3 = isset($dSpareArr[2])? $dSpareArr[2] : '
+';
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
 									<div class="zy_pp">
@@ -224,7 +236,7 @@ HTML;
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
-				  						<span class="tj_spb">我6月10日上午；6月11日上午；6月12日上午有时间。 请在12小时内确认时间。</span>
+				  						<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在12小时内确认时间。</span>
 				  					</div>
 				  				
 									<span class="jm_time">见面2小时</span>
@@ -249,8 +261,8 @@ HTML;
 											$statusMsg
 										</div>
 									</div>
-				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
-								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
+				  				<span class="jm_time">见面时间：{$appointmentTime}</span>
+								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
@@ -290,12 +302,8 @@ HTML;
 											$statusMsg
 										</div>
 									</div>
-				  				<div class="tj_box">
-				  					<span class="tj_spa">住艺推荐设计师</span>
-				  					<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
-				  				</div>
-				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
-								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
+				  				<span class="jm_time">见面时间：{$appointmentTime}</span>
+								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
@@ -316,8 +324,8 @@ HTML;
 											$statusMsg
 										</div>
 									</div>
-				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
-								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
+				  				<span class="jm_time">见面时间：{$appointmentTime}</span>
+								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
@@ -342,8 +350,8 @@ HTML;
 										</div>
 									</div>
 				  				
-				  				<span class="jm_time">见面时间：8月24日 3:00PM</span>
-								<span class="jm_money">见面地点：北京市光华路2号9层1003室</span>
+				  				<span class="jm_time">见面时间：{$appointmentTime}</span>
+								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  		</div>
 HTML;
                                     } elseif ($status == \frontend\models\Order::STATUS_MET_DEEP_COOPERATION) {
@@ -360,8 +368,8 @@ HTML;
 										</div>
 									</div>
 				  				
-								<span class="jm_time">见面2小时</span>
-								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+								<span class="jm_time">见面2小时111</span>
+								<span class="jm_money"><a>￥800</a>(111首次免费约见)</span>
 								<input type="hidden" value="" name="list_val" class="list_val" />
 								<ul class="hetong_box">
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
@@ -369,7 +377,7 @@ HTML;
 											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
 								</ul>
 									<div class="true_time queren_btn hetong_btn">
-					  					<span class="true_btnb hetong">上传合同</span>
+					  					<span class="true_btnb hetong">上传合同2</span>
 				  					</div>
 				  				
 				  			</div>
@@ -383,10 +391,7 @@ HTML;
 
                     </li>
                     <li class="xuqiu_box">
-                        
-                        
                     </li>
-                    
                     <li></li>
                 </ul>
 

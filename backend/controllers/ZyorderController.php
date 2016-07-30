@@ -64,14 +64,30 @@ class ZyorderController extends Controller
     public function actionCreate()
     {
         $model = new ZyOrder();
+		
+        if($model->load(Yii::$app->request->post())){
+			//客服创建完的订单，已经跟设计师沟通过，状态初始值为待用户确认时间。
+			$model->status = 
+				\common\models\ZyOrder::STATUS_WAITING_USER_TO_CONFIRM_TIME;
+			$model->create_time = time();
+			$model->update_time = time();
+			if($model->save()){
+				return $this->redirect(['view','id' => $model->order_id]);
+			}
+		}else{
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+		}
 
+		/*
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->order_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
-        }
+        }*/
     }
 
     /**
@@ -84,13 +100,16 @@ class ZyorderController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->order_id]);
-        } else {
-            return $this->render('update', [
+        if($model->load(Yii::$app->request->post())){
+			$model->update_time = time();
+			if($model->save()){
+				return $this->redirect(['view','id' => $model->order_id]);
+			}
+		}else{
+            return $this->render('create', [
                 'model' => $model,
             ]);
-        }
+		}
     }
 
     /**
