@@ -527,16 +527,11 @@ HTML;
             }
         });
         var u = navigator.userAgent;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
        touch.on(".hetong", "tap", function (ev) {
 			alert("123");
             var _this = $(this);
             var index;
-
-
-            var length = $(ev.currentTarget).siblings().length;
             var likestr = '';
             var nuber = 0;
 
@@ -547,7 +542,7 @@ HTML;
                 sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                 success: function (res) {
                     images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-
+					alert("222");		
                     var html = "";
                     // alert(indexx)
                     for (var i = 0; i < images.localId.length; i++) {
