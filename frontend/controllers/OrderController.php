@@ -72,7 +72,14 @@ class OrderController extends Controller {
     }
 
     public function actionList() {
-        $userId =1;
+		
+		/*
+		$userId = $session->get("user_id");
+		if(!isset($userId) || empty($userId)){
+			;//回去登陆
+		}*/
+		$userId = 1;
+
         $orderM = new \frontend\models\Order();
         $ret = $orderM->getOrdersByUserId($userId);
 
@@ -81,9 +88,12 @@ class OrderController extends Controller {
         $jsarr = $tokenModel->getSignature();
 
 		//此用户下面没有订单
-		//if(empty($ret)){
-		//	return $this->render("list",['data' => -1,'jsarr' => $jsarr]);
-		//}else{
+		if(empty($ret)){
+			//没有提交需求的，快提交需求
+			//提交需求，还未选择设计师
+			//提交需求，住艺君给推荐，未匹配上设计师
+			return $this->render("list",['data' => -1,'jsarr' => $jsarr]);
+		}else{
 			$data = array();
 			foreach($ret as $r){
 				$orderId 	= $r['order_id']; 
@@ -106,13 +116,34 @@ class OrderController extends Controller {
 					$headPortrait = $imgRet->url;
 				}
 				$status 	= $r['status'];
-				$orderType 	= $r['service_type'];//用于区别用户自己创建还是客服辅助创建。
-				
+				$orderType 	= $r['service_type'];//区别用户自己创建还是客服辅助创建。
+				$dSpareTime = isset($r['designer_spare_time'])? $r['designer_spare_time'] : '';
+				$appointmentTime = isset($r['appointment_time'])? $r['appointment_time'] : '';
+				$appointmentLocation = isset($r['appointment_location'])? $r['appointment_location'] : '';
+
+				/*
+				 * 如果当前的订单状态是待见面状态，
+				 * 那么appointment_time是不为空的，
+				 * 如果当前的时间超过了用户的见面时间，
+				 * 那么需要置状态为下一个待确认见面完成状态。
+				 */
+				//后期放入队列中，有个守护进程去从队列里取数据，并进行监听。
+				if($status == \frontend\models\Order::STATUS_WAITING_MEETING){
+					if(time() > $appointmentTime){
+						$orderM = new \frontend\models\Order();	
+						$status = \frontend\models\Order::STATUS_WAITING_MET_DONE;
+						$orderM->setStatus($orderId,$status);
+					}
+				}
+
 				$element 	= array(
-					'order_id' 		=> $orderId,
-					'user_id'		=> $userId,
-					'status' 		=> $status,
-					'order_type'	=> $orderType,
+					'order_id' 				=> $orderId,
+					'user_id'				=> $userId,
+					'status' 				=> $status,
+					'order_type'			=> $orderType,
+					'designer_spare_time' 	=> $dSpareTime,
+					'appointment_time'		=> $appointmentTime,
+					'appointment_location'	=> $appointmentLocation,
 					'designer'	=> array(
 						'designer_id'	=> $designerId,
 						'name'			=> $name,	
@@ -122,136 +153,12 @@ class OrderController extends Controller {
 				);
 				$data[] = $element;
 			}
-			/*
 			if(empty($data)){
 				//return $this->render("list",['data' => -1]);
 				return $this->render("list",['data' => -1,'jsarr' => $jsarr]);
-			}*/
-			$data = array(
-				array(
-					'order_id' 	=> 1,
-					'user_id'	=> 1,
-					'status'	=> 0,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 1,
-						'name' => '千岛湖1',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => '啊啊啊,吼吼吼',
-					)
-				),
-				array(
-					'order_id' 	=> 10,
-					'user_id'	=> 1,
-					'status'	=> 1,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 10,
-						'name' => '阿西吧！！！',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'ffffff,ggggg',
-					)
-				),
-				array(
-					'order_id' 	=> 10,
-					'user_id'	=> 1,
-					'status'	=> 1,
-					'order_type' => 1,
-					'designer' => array(	
-						'designer_id' => 10,
-						'name' => '阿西吧！！！',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'ffffff,ggggg',
-					)
-				),
-				array(
-					'order_id' 	=> 2,
-					'user_id'	=> 1,
-					'status'	=> 2,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 2,
-						'name' => '千岛湖2',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake222,fake222',
-					)
-				),
-				array(
-					'order_id' 	=> 3,
-					'user_id'	=> 1,
-					'status'	=> 3,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 3,
-						'name' => '千岛湖333',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake333333,fake333',
-					)
-				),
-				array(
-					'order_id' 	=> 4,
-					'user_id'	=> 1,
-					'status'	=> 4,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 4,
-						'name' => '千岛湖4',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake444,fake444',
-					)
-				),
-				array(
-					'order_id' 	=> 5,
-					'user_id'	=> 1,
-					'status'	=> 5,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 5,
-						'name' => '千岛湖5',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake555,fake555',
-					)
-				),
-				array(
-					'order_id' 	=> 6,
-					'user_id'	=> 1,
-					'status'	=> 6,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 6,
-						'name' => '千岛湖6',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake666,fake666',
-					)
-				),
-				array(
-					'order_id' 	=> 7,
-					'user_id'	=> 1,
-					'status'	=> 7,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 7,
-						'name' => '千岛湖7',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake777,fake777',
-					)
-				),
-				array(
-					'order_id' 	=> 8,
-					'user_id'	=> 1,
-					'status'	=> 8,
-					'order_type' => 0,
-					'designer' => array(	
-						'designer_id' => 8,
-						'name' => '千岛湖8',
-						'head_portrait' => 'img/home_page/banner_head.jpg',
-						'tag' => 'fake888,fake888',
-					)
-				)
-			);
-        //	return $this->render("list", ['data' => $data]);
+			}
 			return $this->render("list",['data' => $data,'jsarr' => $jsarr]);
-		//}
+		}
     }
 
     public function actionChange() {
@@ -267,31 +174,30 @@ class OrderController extends Controller {
 		}
         $orderId = $params[0];
 		$rows = \frontend\models\Order::findOne($orderId);
-		/*
 		if(empty($rows)){
 			return false;
-		}*/
+		}
 
-        //$currentStatus = $rows->status;
-		$currentStatus = \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME;
+		$appointmentLocation = isset($rows->appointment_location)? $rows->appointment_location : '待定';
+        $currentStatus = $rows->status;
         switch ($currentStatus) {
             case \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME:
 				//带用户确认时间状态，用户点击一个前台传递过来的时间。
-                $appointmentTime = $params[1];
+                $appointmentTime = ($params[1] / 1000);
                 $newSts = \frontend\models\Order::STATUS_WAITING_MEETING;
 
-				/*
                 $rows->appointment_time = $appointmentTime;
                 $rows->status 			= $newSts;
                 $rows->update_time 		= time();
-                $rows->save();*/
+                $rows->save();
+				return $appointmentLocation;
                 break;
             case \frontend\models\Order::STATUS_MET_DONE:
                 $yesNo = $params[1];
                 if ($yesNo == 'yes') {
-                    $newSts = \frontend\models\Order::STATUS_MET_NOT_DEEP_COOPERATION;
-                } elseif ($yesNo == 'no') {
                     $newSts = \frontend\models\Order::STATUS_MET_DEEP_COOPERATION;
+                } elseif ($yesNo == 'no') {
+                    $newSts = \frontend\models\Order::STATUS_MET_NOT_DEEP_COOPERATION;
                 }
 
                 $rows->status = $newSts;

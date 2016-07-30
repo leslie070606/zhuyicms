@@ -126,7 +126,7 @@
 .report_mesg { float: left; width: 92%; padding: 0 4%; margin-top: .2rem; line-height: 150%; color: #C9C9CA;}
 .report_here { float: left; width: 100%; clear: both; position: relative;}
 .tj_btn { width: 84%; float: left; clear: both; margin:.8rem 8%; height: .88rem; background: #FF4E38; color: #FFFFFF; font-size: .28rem; text-align: center; line-height: .88rem;}
-
+.time_list i { margin-right:.3rem;}
 
 
 
