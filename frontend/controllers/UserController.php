@@ -6,11 +6,13 @@ use common\util\emaysms\Sms;
 use backend\controllers\ZyuserController;
 use frontend\models\User;
 use yii;
+use yii\helpers\Url;
 
 class UserController extends ZyuserController {
 
-   // public $layout = 'zhuyimain';
+    // public $layout = 'zhuyimain';
     public $layout = false;
+
     public function actionIndex() {
         return $this->render('index');
     }
@@ -33,7 +35,6 @@ class UserController extends ZyuserController {
             if ($phonestr == $code) {
                 $userModel = new User();
                 $user = $userModel->find()->where(['phone' => $phone])->all();
-
                 //初始化session
                 $session = Yii::$app->session;
                 if (!$session->isActive) {
@@ -44,11 +45,16 @@ class UserController extends ZyuserController {
                 if (count($user)) {
                     //加session
                     $session->set('user_id', $user[0]['user_id']);
-                    
-                    
+//                    $url = "http://www.baidu.com";
+//                    echo "< script language='javascript' type='text/javascript'>";
+//                    echo "window.location.href='$url'";
+//                    echo "< /script>";
+                    //echo 113;
+                    //header("Location: http://bbs.lampbrother.net");
                     // 跳转首页
-                    return $this->redirect(['index/index']);
-
+                     return $this->redirect(['index/index']);
+                    //return $this->redirect(array('/index/index','id'=>12));Yii::$app->response->send();
+                    // return $this->render('../index/index');
 //                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 //                    echo "登陆成功!";
 //                    echo $session->get('user_id');
@@ -70,6 +76,7 @@ class UserController extends ZyuserController {
 
                         // 跳转首页
                         return $this->redirect(['index/index']);
+
 //                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 //                        echo $res;
 //                        echo "添加成功!";
@@ -195,7 +202,8 @@ class UserController extends ZyuserController {
                         // 登录成功!
                         $session->set('user_id', $userId);
                         // 跳转首页
-                        return $this->redirect(['index/index']);
+                        return $this->redirect(['index/index', 'a' => 'b']);
+                        // return $this->render('index/index');
 //                        echo "<img src='" . $userArr['headimgurl'] . "'/><br>";
 //                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 //                        echo "登录成功!<br>";
@@ -229,10 +237,30 @@ class UserController extends ZyuserController {
         $session->destroy();
         return $this->redirect(['index/index']);
     }
-    
-    public function actionFeedback(){
-        
-        return $this->render('feedback');
+
+    public function actionFeedback() {
+
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $answer = Yii::$app->request->get('answer');
+
+        if ($answer) {
+            //return $answer;
+            $feedModel = new \common\models\ZyFeedback();
+            $feedModel->feedback = $answer;
+            $feedModel->create_time = time();
+            if ($session->get('user_id')) {
+                $feedModel->user_id = (int) $session->get('user_id');
+            }
+
+            if ($feedModel->save()) {
+                return 1;
+            }
+        } else {
+            return $this->render('feedback');
+        }
     }
 
     public function actionSendmsg() {
@@ -247,7 +275,7 @@ class UserController extends ZyuserController {
 
         $ret = $sms->send(array($phone), '【住艺】欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ] 客服电话:4000-600-636');
         //$res = $sms->login();
-       // return $ret;
+        // return $ret;
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
             return $phonestr;

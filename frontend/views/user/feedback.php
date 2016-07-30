@@ -68,16 +68,31 @@ if (!$session->isActive) {
     </body>
 </html>
 <script type="text/javascript">
-	touch.on(".feedback_box .chose_btn","tap",function(){
-		var html=$(".text_box").val();
-		$.ajax({
-			type:"get",
-			url:"",
-			async:true,
-			success:function(data){
-					out_line();
-			}
-		});
-	})
-	
+    touch.on(".feedback_box .chose_btn", "tap", function () {
+        var html = $(".text_box").val();
+        $.ajax({
+            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=user/feedback';?>"+"&&answer="+html,
+            type: "get",
+            success: function (data) {
+                //alert(data);
+                if (data) {
+                    out_line();
+
+                }
+            }
+        });
+    })
+
+    function out_line() {
+        $(".out_Capacity").show().animate({
+            opacity: 1
+        }, 1000, function () {
+            $(".out_Capacity").animate({
+                opacity: 0
+            }, 1000, function () {
+                $(".out_Capacity").hide();
+            })
+        });
+    }
+
 </script>
