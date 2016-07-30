@@ -551,7 +551,7 @@ HTML;
                     // alert(indexx)
                     for (var i = 0; i < images.localId.length; i++) {
                         var htmllll = images.localId[i];
-                        html += '<li class="hetong_here"><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                        html += '<li class="hetong_here"><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu1"></i></li>';
                         var ge = images.localId.length;
                         // 上传图片
                         wx.uploadImage({
@@ -561,7 +561,7 @@ HTML;
                                 serverId = res.serverId; // 返回图片的服务器端ID
                                 likestr += serverId + "$";
                                 nuber++;
-                                if (isAndroid) {
+                              
                                     if (nuber >= ge) {
                                         var like_val = _this.parents(".zy_pp").find(".list_val").val();
                                         _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
@@ -571,14 +571,7 @@ HTML;
                                             $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
                                     }
-                                } else {
-                                    var like_val = _this.parents(".zy_pp").find(".list_val").val();
-                                    _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
-                                    likestr = likestr.toString().split("$");
-                                    for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
-                                        $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                    }
-                                }
+                                
 
                             }
                         });
