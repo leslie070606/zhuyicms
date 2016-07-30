@@ -88,7 +88,7 @@ if (!$session->isActive) {
                 //dataType: 'json',
                 data: $form.serialize(),
                 success: function (data) {
-                    //alert(data);
+                    alert(data);
                     $('#phonestr').val(data);
 
                 }

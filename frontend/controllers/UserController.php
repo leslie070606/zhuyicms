@@ -239,7 +239,8 @@ class UserController extends ZyuserController {
         $sms = new Sms();
 
         $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
-        //return $ret;
+        //$res = $sms->login();
+        return $ret;
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
 

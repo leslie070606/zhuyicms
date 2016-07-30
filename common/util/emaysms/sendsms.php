@@ -23,17 +23,17 @@ $gwUrl = 'http://hprpt2.eucp.b2m.cn:8080/sdk/SDKService?wsdl';
  * 序列号,请通过亿美销售人员获取
  0SDK-EBB-6699-RHSLS
  */
-$serialNumber = '0SDK-EBB-6699-RDRLP';
+$serialNumber = '8SDK-EMY-6699-RIUSM';
 
 /**
  * 密码,请通过亿美销售人员获取
  */
-$password = '342948';
+$password = '710528';
 
 /**
  * 登录后所持有的SESSION KEY，即可通过login方法时创建
  */
-$sessionKey = '342948';
+$sessionKey = '710528';
 
 /**
  * 连接超时时间，单位为秒

@@ -286,12 +286,16 @@ class ProjectController extends \common\util\BaseController {
         //echo "1231";exit;
         $projectModel = new ZyProject();
 
+
         $model = $projectModel::findOne(['user_id' => 16]);
 
         return $this->render('updateadditional', ['model' => $model]);
     }
 
     public function actionEditadditional() {
+        $tokenModel = new \app\components\Token();
+        $jsarr = $tokenModel->getSignature();
+
         if ($post = Yii::$app->request->post()) {
             
             echo "<pre>";
@@ -303,7 +307,7 @@ class ProjectController extends \common\util\BaseController {
         $model = $projectModel::findOne(['project_id' => $project_id]);
         $model = $projectModel::findOne(56);
 
-        return $this->render('editadditional', ['model' => $model]);
+        return $this->render('editadditional', ['model' => $model,'jsarr' => $jsarr]);
     }
 
     public function createProNum() {

@@ -23,6 +23,11 @@ class Sms {
     	$retsms = $GLOBALS['client']->sendSMS($phones,$message);
         return  $retsms;
 	}
+        
+        public function login(){
+            $res = login();
+            return $res;
+        }
 }
 
 ?>
