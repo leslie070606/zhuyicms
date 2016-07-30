@@ -530,7 +530,7 @@ HTML;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
-        $(document).on("click", ".hetong", function (ev) {
+       touch.on(".hetong", "tap", function (ev) {
             var _this = $(this);
             var index;
 
