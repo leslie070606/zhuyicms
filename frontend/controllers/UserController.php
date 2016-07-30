@@ -238,12 +238,11 @@ class UserController extends ZyuserController {
         //$sms = Yii::$app->Sms;
         $sms = new Sms();
 
-        $ret = $sms->send(array($phone), '欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ]');
+        $ret = $sms->send(array($phone), '【住艺】欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ] 客服电话:4000-600-636');
         //$res = $sms->login();
-        return $ret;
+       // return $ret;
         //$ret 返回0 代表成功！,其他则有错误
         if ($ret == 0) {
-
             return $phonestr;
         };
     }
