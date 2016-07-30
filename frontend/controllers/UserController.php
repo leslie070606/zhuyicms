@@ -45,7 +45,7 @@ class UserController extends ZyuserController {
                     //加session
                     $session->set('user_id', $user[0]['user_id']);
                     
-                    $user->save();
+                    
                     // 跳转首页
                     return $this->redirect(['index/index']);
 
