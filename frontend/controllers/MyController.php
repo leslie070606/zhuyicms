@@ -78,13 +78,9 @@ class MyController extends Controller{
 		}
         $params         = $request->get('params');
 		$params			= explode(',',$params);
-		$userId			= $params[0];
-		$designerId		= $params[1];
+		$userId			= isset($params[0])? $params[0] : 1;
+		$designerId		= isset($params[1])? $params[1] : 1;
 
-		/*
-        $userId         = isset($params['user_id'])? $params['user_id'] : 0;
-        $designerId     = isset($params['designer_id'])? $params['designer_id'] : 0;
-		*/
         $collectModel   = new \frontend\models\CollectDesigner();
     
         $ret = $collectModel->find()->where(['user_id'=> $userId,'designer_id' => $designerId,'status' => \
@@ -132,8 +128,7 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
 			return -1;
 		}
 
-        //$userId         = isset($params['user_id'])? $params['user_id'] : 0;
-		$userId 		= 1;
+        $userId         = isset($params['user_id'])? $params['user_id'] : 1;
 		$collectM       = new \frontend\models\CollectDesigner();
 		$data			= $collectM->getCollectDesignerById($userId);
 
@@ -143,19 +138,24 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
 			foreach($data as $d){
 				$designerId 		= $d['designer_id'];
 				//设计师个人主页的跳转路径返回给前端
-				$redirectUrl 		= Yii::getAlias('@web') . '/index.php?r=designer/index&&params=' . $designerId;
-				$designerBasicModel = new \frontend\models\DesignerBasic();
-        		$imageModel 		= new \frontend\models\Images();
-        		$artsetsModel 		= new \frontend\models\Artsets();
+				$redirectUrl 		= Yii::getAlias('@web') . '/index.php?r=designer/detail&&params=' . $designerId;
+				$dbModel 			= new \frontend\models\DesignerBasic();
+				$rows 				= $dbModel->getDesignerById($designerId);
+				if(empty($rows)){
+					continue;
+				}
 
-				$ret 				= $designerBasicModel->findOne($designerId);
 				//设计师名字，标签
-				$name 				= $ret->name;
-				$tag  				= $ret->tag;
-			    $ret 				= $imageModel->getImage(\frontend\models\Images::IMAGE_DESIGNER_HEAD_PORTRAIT,$designerId);
-            	$headPortrait   	= !empty($ret)? $ret->url : "";
-		        $ret   				= $imageModel->getImage(\frontend\models\Images::IMAGE_DESIGNER_BACKGROUND,$designerId);
-				$background			= !empty($ret)? $ret->url : "";
+				$name 				= $rows->name;
+				$tag  				= $rows->tag;
+        		if(!isset($tag) || empty($tag)){
+            		$tag = "艺术家,设计小达人";
+        		}
+        		$tmp            = $dbModel->getHeadPortrait($designerId);
+        		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
+        
+        		$tmp            = $dbModel->getBackground($designerId);
+        		$background     = isset($tmp)? $tmp : "/img/home_page/prob.jpg";
 
 
 				$designerRet = array(
