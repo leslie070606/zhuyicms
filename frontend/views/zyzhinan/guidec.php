@@ -1,3 +1,12 @@
+<?php
+
+use yii\helpers\Url;
+
+$session = Yii::$app->session;
+if (!$session->isActive) {
+    $session->open();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +27,24 @@
 			<span class="top_right iconfont icon-gongneng"></span>
 		</header>
 		<section class="down_right">
-				<ul>
-					<li><a href="index.html">首页</a></li>
-					<li><a href="designer_list.html">住艺设计师</a></li>
-					<li><a href="style_test.html">风格测试</a></li>
-					<li><a href="designer_list.html">使用指南</a></li>
-					<li><a href="user.html">我的住艺</a></li>
-					<li><a href="feedback.html">意见反馈</a></li>
-					<li><a href="login.html">退出登录</a></li>
-				</ul>
-		</section> 
+                <ul>
+                    <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
+                    <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
+                    <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多意见</a></li>
+                    <li>   <?php if ($session->get('user_id')) { ?>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+
+                        <?php } else { ?>
+
+                            <a href = "<?php echo Url::toRoute('/user/login'); ?>">立即登录</a>
+
+                        <?php }; ?>
+
+                    </li>
+                </ul>
+            </section> 
 		<div class="down_right_zd"></div>  
 		<div class="guide_box_here">
 			<span class="guide_box_title">住艺精选设计师</span>
