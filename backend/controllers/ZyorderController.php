@@ -77,6 +77,8 @@ class ZyorderController extends Controller
 			$rows = \common\models\ZyUser::findOne($userId);
 			if(!empty($rows)){
 				$phone = $rows->phone;
+			}else{
+				$phone = '';
 			}
 		
 			$designerId = $model->attributes['designer_id'];
