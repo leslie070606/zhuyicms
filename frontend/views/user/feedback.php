@@ -54,7 +54,7 @@ if (!$session->isActive) {
             <div class="submit_box feedback_box">
 
 
-                <textarea class="text_box" style="margin-top: 1.28rem;"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="聊聊我们的产品"></textarea>
+                <textarea class="text_box" style="margin-top: 1.28rem;"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="Hi,这里是建议和意见的收集地，但住艺也时刻准备好听你的所有关于家的故事和倾诉。"></textarea>
                 <div class="chose_btn">
                     提交
                 </div>

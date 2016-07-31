@@ -52,7 +52,7 @@ if (!$session->isActive) {
             </section>  
 
             <div class="login_title">
-                输入手机号码用于登录
+                现在登录<br/>你的需求就会被住艺永久记录，并可以随时更改
             </div>
             <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
             <div class="login_ipt">

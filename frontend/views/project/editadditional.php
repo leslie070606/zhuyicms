@@ -60,20 +60,20 @@ if (!$session->isActive) {
                         需求单：<?= $model->project_num ?>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">主要服务的城市</span>
+                        <span class="here_title">城市</span>
                         <span class="here_meng"><?= $model->city ?></span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">房型</span>
+                        <span class="here_title">住宅类型</span>
                         <span class="here_meng"><?= $model->home_type ?></span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">平米数</span>
+                        <span class="here_title">住宅面积</span>
                         <span class="here_meng"><?= $model->covered_area ?></span>
                     </div>
 
                     <div class="edit_here">
-                        <span class="here_title">装修时间</span>
+                        <span class="here_title">开工时间</span>
                         <span class="here_meng"><?= $model->work_time ?></span>
                     </div>
 
@@ -90,7 +90,7 @@ if (!$session->isActive) {
                         </span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">设计类型</span>
+                        <span class="here_title">设计师类型</span>
                         <span class="here_meng"><?= $model->designer_level ?></span>
                     </div>
                     <span class="fill_more">填写更多需求清单</span>
@@ -172,7 +172,7 @@ if (!$session->isActive) {
                                 }
                                 ?>"></i>收纳整理空间</span>
                             <span class="right_sp list_spa"><i class="iconfont <?php
-                                if (in_array('家庭成员彼此拥有相对独立空间', $project_tags_arr)) {
+                                if (in_array('家庭成员拥有相对独立空间', $project_tags_arr)) {
                                     echo "icon-xuanzhong";
                                 } else {
                                     echo "icon-weixuanzhong";

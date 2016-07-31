@@ -52,7 +52,7 @@ if (!$session->isActive) {
             </section>   
 
             <div class="login_title">
-                请输入要绑定的手机号码
+                绑定手机号<br />你的需求就会被住艺永久记录，并可以随时更改
             </div>
             <?= Html::beginForm('', 'post', ['id' => 'form-addphone']); ?>
             <div class="login_ipt">

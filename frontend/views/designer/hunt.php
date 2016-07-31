@@ -51,7 +51,7 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
             <div class="hunt_here">
                 <div class="hunt_input">
-                    <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
+                    <input class="ipu" type="text"  placeholder="试试输入设计师姓名或关键字" />
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
 

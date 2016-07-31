@@ -55,13 +55,15 @@ if (!$session->isActive) {
                     <span class="box_sob">新房，二手房重新装修</span>
                 </div>
                 <a href="http://www.baidu.com"><div class="boxa_box">
-                        <span class="box_soa">庭院景观</span>
-                        <span class="box_sob">庭院、花园、景观规划</span>
-                    </div></a>
-                <a href="http://www.baidu.com"><div class="boxa_box">
                         <span class="box_soa">软装咨询</span>
                         <span class="box_sob">效果提升  统一风格</span>
                     </div></a>
+                
+                <a href="http://www.baidu.com"><div class="boxa_box">
+                        <span class="box_soa">庭院景观</span>
+                        <span class="box_sob">庭院、花园、景观规划</span>
+                    </div></a>
+                
                 <a href="http://www.baidu.com"><div class="boxa_box">
                         <span class="box_soa">公装设计</span>
                         <span class="box_sob">办公室 商铺 会所 艺术馆</span>
@@ -152,7 +154,7 @@ if (!$session->isActive) {
                     <div class="six_box">
                         <input class="dema_ipt" type="text" placeholder="预算（万）" />
                         <div class="dema_explain">
-                            <span class="explain_title">硬装设计<i id="sgdj">+施工对接</i>：</span>
+                            <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">
                               	住艺参考：如果你需要设计+施工服务，综合考虑市场价及结合设计师报价后（依据设计师个人差异，设计费用报价多在￥400/㎡~￥1200/㎡区间内浮动），住艺建议你为每平米预留约￥3000预算（包含设计费，材料，施工等），以确保设计及施工质量。
                             </div>

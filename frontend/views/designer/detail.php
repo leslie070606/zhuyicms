@@ -143,7 +143,7 @@ HTML;
 
                     <section class="Basic_Info">
                         <div class="post_title">
-                            <span class=" iconfont icon-lingxing"><a>基本信息</a></span>
+                            <span class=" iconfont icon-lingxing"><a>认识设计师</a></span>
                         </div>
                         <div class="Basic_Info_box">
                             <div class="info_here">
@@ -156,7 +156,7 @@ HTML;
                                             <span class="addition">附加服务</span>
                                     </div>-->
                                     <div class="topb">
-                                        <span>硬件设计</span>
+                                        <span>硬装设计</span>
                                         <div class="topb_box">
                                             <span>平面设计图</span>
                                             <span>立面设计图</span>
@@ -170,9 +170,9 @@ HTML;
                                         <span>施工对接</span>
                                         <div class="topb_box">
                                             <span>推荐施工队</span>
-                                            <span>资质施工队</span>
+                                            <span>自有施工队</span>
                                             <span>材料购买陪同</span>
-                                            <span>去工地N次</span>
+                                            <span>工地现场监理</span>
                                         </div>
                                     </div><!--topb end-->
 
@@ -182,7 +182,7 @@ HTML;
                                             <span>家居平面图</span>
                                             <span>产品推荐</span>
                                             <span>家具定制</span>
-                                            <span>家居陪买</span>
+                                            <span>家具购买陪同</span>
                                             <span>主材推荐</span>
                                         </div>
                                     </div><!--topb end-->
@@ -192,8 +192,8 @@ HTML;
                                         <div class="topb_box">
 
                                             <span>建筑设计</span>
-                                            <span>艺术品咨询</span>
-                                            <span>景观设计</span>
+                                            <span>艺术品陈设咨询</span>
+                                            <span>庭院景观设计</span>
                                         </div>
                                     </div><!--topb end-->
                                 </div>
@@ -210,7 +210,7 @@ HTML;
 
                             <div class="info_here">
                                 <div class="info_here_left">
-                                    擅长风格
+                                    风格特点
                                 </div>
                                 <div class="info_here_right cccc">
                                     皆可
@@ -219,7 +219,7 @@ HTML;
 
                             <div class="info_here">
                                 <div class="info_here_left">
-                                    荣誉奖项
+                                    过往经历及奖项
                                 </div>
                                 <div class="info_here_right cccc">
                                     <?php echo $data['winnings'] ?>
@@ -230,32 +230,29 @@ HTML;
 
                     </section><!--Basic_Info end-->
                     <div class="page_bottom">
-                        <span class="bota" id="check"><a>查看收费</a></span>
-                        <span class="bota sc_bot"><a>收藏</a></span>
-                        <span class="botb"><a>客服</a></span>
+                        <span class="bota" id="check"><a>查看费用</a></span>
+                        <span class="bota sc_bot"><a>收藏设计师</a></span>
+                        <span class="botb"><a>联络客服</a></span>
                     </div>
 
 
                     <div class="charges_zd"></div>
                     <div class="check_charges">
                         <div>
-                            <span class="charges_left charges_title">全包费用</span>
+                            <span class="charges_left charges_title">设计+施工</span>
                             <span class="charges_right red">￥ 2800+ / ㎡</span>
                         </div>
-                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>
-                        <div class="charges_huia">备注：价格浮动因项目面积耳钉。如主材、家具均有设计师团队购买，则收费面议。</div>
+<!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
+                        <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
 
                         <div>
-                            <span class="charges_left charges_title chargesaas">专业设计</span>
+                            <span class="charges_left charges_title chargesaas">设计</span>
                         </div>
                         <div>
-                            <span class="charges_left">小于125㎡</span>
-                            <span class="charges_right red">10万元 一口价</span>
+                            <span class="charges_left">设计费</span>
+                            <span class="charges_right red">￥300+/㎡</span>
                         </div>
-                        <div>
-                            <span class="charges_left">大于125㎡</span>
-                            <span class="charges_right red">均价￥800/㎡</span>
-                        </div>
+                       
                         <div class="charges_hui">含：平面图设计+立面图设计+水电图造型图等施工用途设计+效果图+家具选样清单。</div>
                     </div>
 
@@ -289,7 +286,7 @@ HTML;
     touch.on(".sc_bot", "tap", function (ev) {
         console.log(ev.currentTarget)
         if ($(this).hasClass("active")) {
-            $(this).html("收藏");
+            $(this).html("收藏设计师");
             $(this).removeClass("active");
             collect_status = 1;
 
