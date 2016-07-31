@@ -58,7 +58,7 @@ $videoModel = new ZyVideo();
 
             </ul>
 
-            <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>" style="top: 2.4rem;">开始设计</a></span>
+            <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>" style="top: 2.4rem;">找设计师</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">
@@ -66,10 +66,13 @@ $videoModel = new ZyVideo();
             </div>
             <ul class="bxslider bxsliderbb">
                 <li>
-                    <img src="img/index/zhinana.jpg" title="" />
+                    <a href="<?php echo Url::toRoute('/zyzhinan/guidea'); ?>"><img src="img/index/zhinana.jpg" title="" /></a>
                 </li>
                 <li>
-                    <img src="img/index/zhinanb.jpg" title="" />
+                    <a href="<?php echo Url::toRoute('/zyzhinan/guideb'); ?>"><img src="img/index/zhinanb.jpg" title="" /></a>
+                </li>
+                <li>
+                    <a href="<?php echo Url::toRoute('/zyzhinan/guidec'); ?>"><img src="img/index/zhinanc.jpg" title="" /></a>
                 </li>
             </ul>
 
@@ -138,7 +141,7 @@ $videoModel = new ZyVideo();
                 <span class="use_text use_two">签约 获得方案</span>
                 <span class=" iconfont icon-jiantou use_three"></span>
             </div>
-            <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">开始设计</a></span>
+            <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">找设计师</a></span>
         </section><!--use_zy end-->
 
         <section class="nav_bot">

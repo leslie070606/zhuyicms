@@ -36,9 +36,9 @@ if (!$session->isActive) {
                 <ul>
                     <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
-                    <li><a href="designer_list.html">设计指南</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -60,20 +60,20 @@ if (!$session->isActive) {
                         需求单：<?= $model->project_num ?>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">主要服务的城市</span>
+                        <span class="here_title">城市</span>
                         <span class="here_meng"><?= $model->city ?></span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">房型</span>
+                        <span class="here_title">住宅类型</span>
                         <span class="here_meng"><?= $model->home_type ?></span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">平米数</span>
+                        <span class="here_title">住宅面积</span>
                         <span class="here_meng"><?= $model->covered_area ?></span>
                     </div>
 
                     <div class="edit_here">
-                        <span class="here_title">装修时间</span>
+                        <span class="here_title">开工时间</span>
                         <span class="here_meng"><?= $model->work_time ?></span>
                     </div>
 
@@ -90,7 +90,7 @@ if (!$session->isActive) {
                         </span>
                     </div>
                     <div class="edit_here">
-                        <span class="here_title">设计类型</span>
+                        <span class="here_title">设计师类型</span>
                         <span class="here_meng"><?= $model->designer_level ?></span>
                     </div>
                     <span class="fill_more">填写更多需求清单</span>
@@ -107,7 +107,7 @@ if (!$session->isActive) {
                             <ul id="ula">
                                 <li><img src="img/home_page/1.jpg" imageId="1"/><i class="iconfont icon-shanchu1"></i></li>
                                 <li><img src="img/home_page/1.jpg" imageId="2"/><i class="iconfont icon-shanchu1"></i></li>
-                                 <li><img src="img/home_page/1.jpg" /><i class="iconfont icon-shanchu1"></i></li>
+                                <li><img src="img/home_page/1.jpg" /><i class="iconfont icon-shanchu1"></i></li>
                                 <li><img src="img/home_page/1.jpg" /><i class="iconfont icon-shanchu1"></i></li>
                                 <li class="add_img iconfont icon-tianjia"></li>
                             </ul>
@@ -172,7 +172,7 @@ if (!$session->isActive) {
                                 }
                                 ?>"></i>收纳整理空间</span>
                             <span class="right_sp list_spa"><i class="iconfont <?php
-                                if (in_array('家庭成员彼此拥有相对独立空间', $project_tags_arr)) {
+                                if (in_array('家庭成员拥有相对独立空间', $project_tags_arr)) {
                                     echo "icon-xuanzhong";
                                 } else {
                                     echo "icon-weixuanzhong";
@@ -238,59 +238,49 @@ if (!$session->isActive) {
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
         var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 
-        touch.on(".add_img", "tap", function (ev) {
-            var _this = $(ev.currentTarget);
-            var index;
-            if (_this.parents("ul").attr("id") == "ulb") {
-                index = 1;
-            } else {
-                index = 0;
-            }
 
-            var length = $(ev.currentTarget).siblings().length;
-            var likestr = '';
-            var nuber = 0;
 
-            // 拍照选择图片
-            wx.chooseImage({
-                count: 9, // 默认9
-                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                success: function (res) {
-                    images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
+    });
+    touch.on(".add_img", "tap", function (ev) {
+        var _this = $(ev.currentTarget);
+        var index;
+        if (_this.parents("ul").attr("id") == "ulb") {
+            index = 1;
+        } else {
+            index = 0;
+        }
 
-                    var html = "";
-                    // alert(indexx)
-                    if (index == 1) {
+        var length = $(ev.currentTarget).siblings().length;
+        var likestr = '';
+        var nuber = 0;
 
-                        for (var i = 0; i < images.localId.length; i++) {
-                            var htmllll = images.localId[i];
-                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                            var ge = images.localId.length;
-                            // 上传图片
-                            wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                isShowProgressTips: 1, // 默认为1，显示进度提示
-                                success: function (res) {
-                                    serverId = res.serverId; // 返回图片的服务器端ID
-                                    likestr += serverId + "$";
+        // 拍照选择图片
+        wx.chooseImage({
+            count: 9, // 默认9
+            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+            success: function (res) {
+                images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
 
-                                    nuber++;
-                                    if (isAndroid) {
-                                        if (nuber >= ge) {
-                                            var like_val = $(".like").val();
-                                            $(".like").val(like_val + likestr);
+                var html = "";
+                // alert(indexx)
+                if (index == 1) {
 
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ulb li").length - 1; i++) {
-                                                $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                            }
-                                        }
-                                    } else {
+                    for (var i = 0; i < images.localId.length; i++) {
+                        var htmllll = images.localId[i];
+                        html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                        var ge = images.localId.length;
+                        // 上传图片
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                serverId = res.serverId; // 返回图片的服务器端ID
+                                likestr += serverId + "$";
 
-                                        uploadIOS(images.localId[i], i);
-                                        //alert(nuber);
-
+                                nuber++;
+                                if (isAndroid) {
+                                    if (nuber >= ge) {
                                         var like_val = $(".like").val();
                                         $(".like").val(like_val + likestr);
 
@@ -298,66 +288,76 @@ if (!$session->isActive) {
                                         for (var i = 0; i < $("#ulb li").length - 1; i++) {
                                             $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
+                                    }
+                                } else {
 
+                                    uploadIOS(images.localId[i], i);
+                                    //alert(nuber);
+
+                                    var like_val = $(".like").val();
+                                    $(".like").val(like_val + likestr);
+
+                                    likestr = likestr.toString().split("$");
+                                    for (var i = 0; i < $("#ulb li").length - 1; i++) {
+                                        $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                     }
 
                                 }
-                            });
-                        }
 
-                        $("#ulb").prepend(html);
-                        //alert($(".home").val());
-                        //alert($(".like").val());
-                        img_height_auto();
-                    } else {
-                        for (var i = 0; i < images.localId.length; i++) {
-                            var htmllll = images.localId[i];
-                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                            var ge = images.localId.length;
-                            // 上传图片
-                            wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                isShowProgressTips: 1, // 默认为1，显示进度提示
-                                success: function (res) {
-                                    serverId = res.serverId; // 返回图片的服务器端ID
-                                    likestr += serverId + "$";
-                                    nuber++;
-                                    if (isAndroid) {
-                                        if (nuber >= ge) {
-                                            var like_val = $(".home").val();
-                                            $(".home").val(like_val + likestr);
+                            }
+                        });
+                    }
 
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                            }
-                                        }
-                                    } else {
+                    $("#ulb").prepend(html);
+                    //alert($(".home").val());
+                    //alert($(".like").val());
+                    img_height_auto();
+                } else {
+                    for (var i = 0; i < images.localId.length; i++) {
+                        var htmllll = images.localId[i];
+                        html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
+                        var ge = images.localId.length;
+                        // 上传图片
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                serverId = res.serverId; // 返回图片的服务器端ID
+                                likestr += serverId + "$";
+                                nuber++;
+                                if (isAndroid) {
+                                    if (nuber >= ge) {
                                         var like_val = $(".home").val();
                                         $(".home").val(like_val + likestr);
-                                        //alert($(".home").val())
+
                                         likestr = likestr.toString().split("$");
                                         for (var i = 0; i < $("#ula li").length - 1; i++) {
                                             $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                         }
                                     }
+                                } else {
+                                    var like_val = $(".home").val();
+                                    $(".home").val(like_val + likestr);
+                                    //alert($(".home").val())
+                                    likestr = likestr.toString().split("$");
+                                    for (var i = 0; i < $("#ula li").length - 1; i++) {
+                                        $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
+                                    }
                                 }
-                            });
-                        }
-
-                        $("#ula").prepend(html);
-                        //alert($(".home").val());
-                        //alert($(".like").val());
-                        img_height_auto();
+                            }
+                        });
                     }
 
+                    $("#ula").prepend(html);
+                    //alert($(".home").val());
+                    //alert($(".like").val());
+                    img_height_auto();
                 }
 
-            })
-        });
+            }
 
+        })
     });
-
 
     function uploadIOS(localId, i) {
         wx.uploadImage({
@@ -389,27 +389,28 @@ if (!$session->isActive) {
             })
             _this.find(".imgID").val(val);
         });
-        
-         $("body").on("click",".here_img_box li",function(ev){
-	 	if($(this).hasClass("add_img")){
-	 	}else{
-                   
-                    var ull=$(this).parents(".here_img_box");
-                    var val="";
-                     var vala="";
-                     $(this).remove();
-                     ull.find("img").each(function(){
-                       if($(this).attr("imageId")){
-                            vala+=$(this).attr("imageId")+",";;
-                          }else{
-                            val+=$(this).attr("src")+",";  
-                          }   
-                     });
-                     ull.find(".home").val(val);
-                     ull.find(".imgID").val(vala);
-                     
-	 	}
-	 });
+
+        $("body").on("click", ".here_img_box li", function (ev) {
+            if ($(this).hasClass("add_img")) {
+            } else {
+
+                var ull = $(this).parents(".here_img_box");
+                var val = "";
+                var vala = "";
+                $(this).remove();
+                ull.find("img").each(function () {
+                    if ($(this).attr("imageId")) {
+                        vala += $(this).attr("imageId") + ",";
+                        ;
+                    } else {
+                        val += $(this).attr("src") + ",";
+                    }
+                });
+                ull.find(".home").val(val);
+                ull.find(".imgID").val(vala);
+
+            }
+        });
 
     });
 

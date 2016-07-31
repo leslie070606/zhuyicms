@@ -43,5 +43,9 @@ class IndexController extends Controller {
     public function actionToolsdesign(){
         return $this->render('toolsdesign');
     }
+    
+    public function actionAgreement(){
+        return $this->render('agreement');
+    }
 
 }

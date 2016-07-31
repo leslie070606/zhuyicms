@@ -34,9 +34,9 @@ if (!$session->isActive) {
                 <ul>
                     <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
-                    <li><a href="designer_list.html">设计指南</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -54,7 +54,7 @@ if (!$session->isActive) {
                 <img src="img/index/gz_banner.jpg" />
                 <div class="banner_mesg">
                     <span class="mesg_spa">好设计在住艺</span>
-                    <span class="mesg_spb"><a href="javascript:">匹配设计师</a></span>
+                    <span class="mesg_spb"><a href="javascript:">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
@@ -128,7 +128,7 @@ if (!$session->isActive) {
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
-                <span>匹配设计师</span>
+                <span>找设计师</span>
             </div>
             <section class="nav_bot">
 

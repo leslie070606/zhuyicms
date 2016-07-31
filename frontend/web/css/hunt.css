@@ -17,6 +17,11 @@
 .bottom_name, .bottom_referral {
     left: 1.16rem;
 }
+.bottom_name .here_name::after {
+    content: "丨";
+    padding-left: .2rem;
+    color: #221814;
+}
 
 
 

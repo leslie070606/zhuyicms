@@ -33,9 +33,9 @@ if (!$session->isActive) {
                 <ul>
                     <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
-                    <li><a href="designer_list.html">设计指南</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -51,19 +51,16 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
             <div class="hunt_here">
                 <div class="hunt_input">
-                    <input class="ipu" type="text"  placeholder="请输入设计师姓名或设计师作品" />
-                    <span class="iconfont icon-sousuo"></span>
+                    <input class="ipu" type="text"  placeholder="试试输入设计师姓名或关键字" />
+                    <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
-                <div class="history">
-                    <span class="his_title">
-                        历史搜索
-                    </span>
-                    <ul class="his_ul">
-                        <li class=""><a href="designer_list.html">设计</a></li>
-                        <li><a href="designer_list.html">软装</a></li>
-                        <li><a href="designer_list.html">硬装</a></li>
-                    </ul>
+
+                <div class="hunt_here_box">
+                    <!-- 设计师 -->
+
                 </div>
+
+
                 <div class="choose">
                     <span class="his_title">
                         热门推荐
@@ -75,7 +72,7 @@ if (!$session->isActive) {
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">Keiji Ashizawa</span>
+                                <span class="here_name">Keiji Ashizawa</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
                                 <span>台湾暖男</span><span>设计大咖</span>
@@ -121,3 +118,26 @@ if (!$session->isActive) {
         </div>
     </body>
 </html>
+<script type="text/javascript">
+
+    function search() {
+        var search_key = $(".ipu").val();
+        $.ajax({
+            url: '<?php echo Yii::getAlias('@web') . '/index.php?r=designer/hunt' ?>' + "&&search_key=" + search_key,
+            type: 'get',
+            //dataType: 'json',
+            data: '',
+            success: function (data) {
+                if (data) {
+                   // alert(data);
+                    $(".hunt_here_box").html(data);
+                }
+                else{
+                    $(".hunt_here_box").html(data);
+
+                }
+
+            }
+        });
+    }
+</script>
