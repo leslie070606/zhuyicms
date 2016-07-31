@@ -76,7 +76,7 @@ if (!$session->isActive) {
                     <div class="dem_where">
                         <span class="">北京</span>
                         <span>上海</span>
-                        <span>保定</span>
+                        <span>成都</span>
                     </div>
                     <span class="list_title">其他城市</span>
                     <input class="dema_ipt" type="text" placeholder="输入城市名称" />

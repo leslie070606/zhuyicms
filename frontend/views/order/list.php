@@ -462,6 +462,7 @@ HTML;
                         url: "<?php echo Yii::getAlias('@web') . '/index.php?r=project/updateadditional'; ?>",
                         data: "",
                         success: function (data) {
+                            //alert(data);
                            $(".xuqiu_box").html(data);
                            xiuqiu++;
                         

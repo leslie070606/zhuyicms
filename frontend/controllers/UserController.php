@@ -76,6 +76,7 @@ class UserController extends ZyuserController {
 
                         // 跳转首页
                         return $this->redirect(['index/index']);
+                        //Yii::$app->getUrlManager()->createUrl('url');
 
 //                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 //                        echo $res;
