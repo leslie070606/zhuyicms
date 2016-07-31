@@ -164,51 +164,10 @@ HTML;
                                             <span class="standard">标准服务</span>
                                             <span class="addition">附加服务</span>
                                     </div>-->
-<<<<<<< HEAD
+
                                     <div class="topb" id="topb"  all_type =<?= $allType?>>
                                         <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
-=======
-                                    <div class="topb">
-                                        <span>硬装设计</span>
-                                        <div class="topb_box">
-                                            <span>平面设计图</span>
-                                            <span>立面设计图</span>
-                                            <span>施工对接图</span>
-                                            <span>单次咨询</span>
-                                            <span>主材推荐</span>
-                                        </div>
-                                    </div><!--topb end-->
 
-                                    <div class="topb">
-                                        <span>施工对接</span>
-                                        <div class="topb_box">
-                                            <span>推荐施工队</span>
-                                            <span>自有施工队</span>
-                                            <span>材料购买陪同</span>
-                                            <span>工地现场监理</span>
-                                        </div>
-                                    </div><!--topb end-->
-
-                                    <div class="topb">
-                                        <span>软装设计</span>
-                                        <div class="topb_box">
-                                            <span>家居平面图</span>
-                                            <span>产品推荐</span>
-                                            <span>家具定制</span>
-                                            <span>家具购买陪同</span>
-                                            <span>主材推荐</span>
-                                        </div>
-                                    </div><!--topb end-->
-
-                                    <div class="topb">
-                                        <span>其他</span>
-                                        <div class="topb_box">
-
-                                            <span>建筑设计</span>
-                                            <span>艺术品陈设咨询</span>
-                                            <span>庭院景观设计</span>
-                                        </div>
->>>>>>> zhuyimaster
                                     </div><!--topb end-->
                                 </div>
                             </div><!--info_here end-->
