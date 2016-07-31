@@ -137,6 +137,9 @@ class DesignerController extends Controller {
 		$artModel		= new \frontend\models\Artsets();
 		$artsets		= $artModel->getPartArtsByDesignerId($designerId);
 		$artCnt			= \frontend\models\Artsets::find()->where(['designer_id' => $designerId])->count();
+		//收费...
+		$dWorkModel 	= new \frontend\models\DesignerWork();
+		$cost = $dWorkModel->getCost($designerId);
         $data = array(
 			'designer_id' 	=> $designerId,		//ID
             'name' 			=> $name, 			//姓名
@@ -145,7 +148,8 @@ class DesignerController extends Controller {
             'background' 	=> $background, 	//背景
 			'winnings'		=> '',				//获奖经历
 			'art_cnt'		=> $artCnt,			//作品数量
-			'artsets'		=> $artsets			//作品集
+			'artsets'		=> $artsets,		//作品集
+			'cost'			=> $cost
         );
         return $this->render("detail", ['data' => $data]);
 	}

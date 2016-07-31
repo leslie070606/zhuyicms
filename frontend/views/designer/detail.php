@@ -238,9 +238,14 @@ HTML;
 
                     <div class="charges_zd"></div>
                     <div class="check_charges">
+					<?php
+						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
+						$chargeWork = isset($data['cost']['charge_work'])? $data['cost']['charge_work'] : '面议';
+						$chargeWork = 2900;
+					?>
                         <div>
                             <span class="charges_left charges_title">全包费用</span>
-                            <span class="charges_right red">￥ 2800+ / ㎡</span>
+                            <span class="charges_right red">￥<?php echo $chargeWork ?> + / ㎡</span>
                         </div>
                         <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>
                         <div class="charges_huia">备注：价格浮动因项目面积耳钉。如主材、家具均有设计师团队购买，则收费面议。</div>

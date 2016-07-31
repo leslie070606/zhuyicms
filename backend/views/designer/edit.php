@@ -270,8 +270,7 @@ use dosamigos\datepicker\DatePicker;
                 
                  <div class="form-group">
                     <label for="charge_work">设计费+施工收费标准</label>
-                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'placeh
-older' => '', 'id' => 'charge_work']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control','id' => 'charge_work']) ?>
                     <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
                 </div>
                 
