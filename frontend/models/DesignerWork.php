@@ -29,4 +29,30 @@ class DesignerWork extends ActiveRecord{
 		return array('charge'=> $charge,'charge_work' => $chargeWork);
 	}
 	
+	public function getServiceContent($designerId){
+		$rows = $this->find()->where(['designer_id' => $designerId])->one();
+		$serviceContent = '';
+		if(!empty($rows)){
+			$serviceContent = $rows->include_project;
+		}
+		return $serviceContent;
+	}
+
+	public function getServeCity($designerId){
+		$rows = $this->find()->where(['designer_id' => $designerId])->one();
+		$serveCity = '全国';
+		if(!empty($rows)){
+			$serveCity = $rows->service_city;
+		}
+		return $serveCity;
+	}
+
+	public function getStyle($designerId){
+		$rows = $this->find()->where(['designer_id' => $designerId])->one();
+		$style = '皆可';
+		if(!empty($rows)){
+			$style = $rows->style;
+		}
+		return $style;
+	}
 }
