@@ -240,6 +240,8 @@ class UserController extends ZyuserController {
     }
 
     public function actionFeedback() {
+        $tokenModel = new \app\components\Token();
+         $jsarr = $tokenModel->getSignature();
 
         $session = Yii::$app->session;
         if (!$session->isActive) {
@@ -260,7 +262,7 @@ class UserController extends ZyuserController {
                 return 1;
             }
         } else {
-            return $this->render('feedback');
+            return $this->render('feedback',['jsarr' => $jsarr]);
         }
     }
 
