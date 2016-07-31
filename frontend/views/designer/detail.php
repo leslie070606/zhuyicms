@@ -241,7 +241,6 @@ HTML;
 					<?php
 						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
 						$chargeWork = isset($data['cost']['charge_work'])? $data['cost']['charge_work'] : '面议';
-						$chargeWork = 2900;
 					?>
                         <div>
                             <span class="charges_left charges_title">全包费用</span>
@@ -255,7 +254,7 @@ HTML;
                         </div>
                         <div>
                             <span class="charges_left">小于125㎡</span>
-                            <span class="charges_right red">10万元 一口价</span>
+                            <span class="charges_right red"><?php echo $charge?></span>
                         </div>
                         <div>
                             <span class="charges_left">大于125㎡</span>

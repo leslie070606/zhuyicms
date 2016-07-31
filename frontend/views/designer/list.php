@@ -82,6 +82,7 @@ if (!$session->isActive) {
                     $tag = $v['tag'];
                     $headPortrait = Yii::$app->request->hostInfo . $v['head_portrait'];
                     $background = $v['background'];
+					$city = $v['city'];
                     $labelSpan = '';
                     if (isset($tag) && !empty($tag)) {
                         $tagArr = explode(',', $tag);
@@ -106,6 +107,7 @@ if (!$session->isActive) {
 								</div>
 								<div class="bottom_name">
 									<span class="here_name">{$name}</span>
+									<span class="here_namea">{$city}</span>
 								</div>
 								<div class="bottom_label bottom_referral">
 									{$labelSpan}
@@ -218,7 +220,7 @@ HTML;
 
                     + '<div class="bottom_name">'
                     + '<span class="here_name">' + data[i].name + '</span>'
-                    + '<span class="here_namea">' + data[i].designer_id + '</span>'
+                    + '<span class="here_namea">' + data[i].city + '</span>'
                     + '</div>'
                     + '<div class="bottom_label bottom_referral">'
                     + htmlabb

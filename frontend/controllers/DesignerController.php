@@ -289,12 +289,16 @@ class DesignerController extends Controller {
 			if(!isset($background)){
 				$background = "/img/home_page/prob.jpg";
 			}
+
+			$dWorkModel = new \frontend\models\DesignerWork();
+			$city = $dWorkModel->getCity($designerId);
             $designerRet = array(
                 'designer_id' 	=> $designerId,
                 'name' 			=> $name,
                 'tag' 			=> $tag,
                 'head_portrait' => $headPortrait,
                 'background' 	=> $background,
+				'city'			=> $city
             );
             $data[] = $designerRet;
         }

@@ -8,6 +8,16 @@ class DesignerWork extends ActiveRecord{
 		return 'zyj_designer_work';
 	}
 
+	public function getCity($designerId){
+		$rows = $this->find()->where(['designer_id' => $designerId])->one();
+		$city = '';
+		if(!empty($rows)){
+			return isset($rows->city)? $rows->city : '北京';
+		}
+
+		return '北京';
+	}
+
 	public function getCost($designerId){
 		$rows = $this->find()->where(['designer_id' => $designerId])->one();
 		$charge = '';
@@ -18,4 +28,5 @@ class DesignerWork extends ActiveRecord{
 		}
 		return array('charge'=> $charge,'charge_work' => $chargeWork);
 	}
+	
 }
