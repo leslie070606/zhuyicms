@@ -311,21 +311,21 @@ class DesignerController extends Controller {
         $request = Yii::$app->request;
         $searchKey = "";
         if ($request->isAjax) {
-
+            $data = '';
             $searchKey = Yii::$app->request->get('search_key');
             if ($searchKey) {
                 $designerM = new \frontend\models\DesignerBasic();
-                $data = $designerM->findBySql("SELECT * FROM zy_designer_basic WHERE name LIKE '%" . $searchKey . "%'");
-                
-                echo "<pre>";
-                print_r($data);
+                $designer = $designerM::findBySql("select * from zyj_designer_basic where name like '%" . $searchKey . "%'");
+                $data = $designer->all();
+//                echo "<pre>";
+//                print_r($designer[0]['name']);
                 //return $data;
                 if ($data) {
                     return $this->render('searchdesigner', ['data' => $data]);
-                }else{
+                } else {
                     return FALSE;
                 }
-            } else {    
+            } else {
                 return FALSE;
             }
         }

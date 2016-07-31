@@ -71,6 +71,9 @@ $videoModel = new ZyVideo();
                 <li>
                     <img src="img/index/zhinanb.jpg" title="" />
                 </li>
+                <li>
+                    <img src="img/index/zhinanc.jpg" title="" />
+                </li>
             </ul>
 
         </div>
