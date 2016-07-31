@@ -42,7 +42,7 @@ class UserController extends ZyuserController {
                 }
                 // echo $user[0]['user_id'];exit;
                 //如果不是第一次登录
-                if (count($user)) {
+                if (count($user)>0) {
                     //加session
                     $session->set('user_id', $user[0]['user_id']);
 //                    $url = "http://www.baidu.com";
@@ -124,7 +124,7 @@ class UserController extends ZyuserController {
         $userModel = new User();
         $user = $userModel->find()->where(['openid' => $userArr['openid']])->one();
 
-        if (count($user)) {
+        if (count($user)>0) {
             //登陆成功 加ssion
             $userId = $user['user_id'];
             $session->set('user_id', $userId);
@@ -177,7 +177,7 @@ class UserController extends ZyuserController {
                         $user->country = $userArr['country'];
                         $user->headimgurl = $userArr['headimgurl'];
                         $user->unionid = $userArr['unionid'];
-                        $user->update_time = tome();
+                        $user->update_time = time();
                         $res = $user->save();
                         $userId = $user->attributes['user_id'];
                     } else {
