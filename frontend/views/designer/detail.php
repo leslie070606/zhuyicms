@@ -141,6 +141,15 @@ HTML;
                     ?>
                     <div class="see_more"><a href="#">查看更多作品</a></div>
 
+					<?php
+						$serveCity = $data['serve_city'];
+						$style = $data['style'];
+						$winning = $data['winning'];
+						$yingType = $data['service_content']['ying_type'];
+						$gongType = $data['service_content']['gong_type'];
+						$ruanType = $data['service_content']['ruan_type'];
+						$allType = $yingType.','.$gongType.','.$ruanType;
+					?>
                     <section class="Basic_Info">
                         <div class="post_title">
                             <span class=" iconfont icon-lingxing"><a>基本信息</a></span>
@@ -155,46 +164,8 @@ HTML;
                                             <span class="standard">标准服务</span>
                                             <span class="addition">附加服务</span>
                                     </div>-->
-                                    <div class="topb">
-                                        <span>硬件设计</span>
-                                        <div class="topb_box">
-                                            <span>平面设计图</span>
-                                            <span>立面设计图</span>
-                                            <span>施工对接图</span>
-                                            <span>单次咨询</span>
-                                            <span>主材推荐</span>
-                                        </div>
-                                    </div><!--topb end-->
-
-                                    <div class="topb">
-                                        <span>施工对接</span>
-                                        <div class="topb_box">
-                                            <span>推荐施工队</span>
-                                            <span>资质施工队</span>
-                                            <span>材料购买陪同</span>
-                                            <span>去工地N次</span>
-                                        </div>
-                                    </div><!--topb end-->
-
-                                    <div class="topb">
-                                        <span>软装设计</span>
-                                        <div class="topb_box">
-                                            <span>家居平面图</span>
-                                            <span>产品推荐</span>
-                                            <span>家具定制</span>
-                                            <span>家居陪买</span>
-                                            <span>主材推荐</span>
-                                        </div>
-                                    </div><!--topb end-->
-
-                                    <div class="topb">
-                                        <span>其他</span>
-                                        <div class="topb_box">
-
-                                            <span>建筑设计</span>
-                                            <span>艺术品咨询</span>
-                                            <span>景观设计</span>
-                                        </div>
+                                    <div class="topb" id="topb"  all_type =<?= $allType?>>
+                                        <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
                                     </div><!--topb end-->
                                 </div>
                             </div><!--info_here end-->
@@ -204,7 +175,7 @@ HTML;
                                     服务城市
                                 </div>
                                 <div class="info_here_right cccc">
-                                    北京
+                                   <?php echo $serveCity ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -213,7 +184,7 @@ HTML;
                                     擅长风格
                                 </div>
                                 <div class="info_here_right cccc">
-                                    皆可
+                                   	<?php echo $style ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -222,7 +193,7 @@ HTML;
                                     荣誉奖项
                                 </div>
                                 <div class="info_here_right cccc">
-                                    <?php echo $data['winnings'] ?>
+                                    <?php echo $winning ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -253,13 +224,10 @@ HTML;
                             <span class="charges_left charges_title chargesaas">专业设计</span>
                         </div>
                         <div>
-                            <span class="charges_left">小于125㎡</span>
-                            <span class="charges_right red"><?php echo $charge?></span>
+                            <span class="charges_left">设计费：</span>
+                            <span class="charges_right red">￥ <?php echo $charge?>+/m²</span>
                         </div>
-                        <div>
-                            <span class="charges_left">大于125㎡</span>
-                            <span class="charges_right red">均价￥800/㎡</span>
-                        </div>
+                        
                         <div class="charges_hui">含：平面图设计+立面图设计+水电图造型图等施工用途设计+效果图+家具选样清单。</div>
                     </div>
 
