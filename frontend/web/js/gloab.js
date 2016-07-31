@@ -36,5 +36,18 @@ $(function(){
 			$(this).removeClass("red_border");	
 		}
 	});
+        
+        
+        function out_line() {
+	$(".out_Capacity").show().animate({
+		opacity: 1
+	}, 1000, function() {
+		$(".out_Capacity").animate({
+			opacity: 0
+		}, 1000, function() {
+			$(".out_Capacity").hide();
+		})
+	});
+	}
 });
 

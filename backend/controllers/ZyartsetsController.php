@@ -61,6 +61,7 @@ class ZyartsetsController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
+        error_reporting( E_ALL&~E_NOTICE );
         $model = new ZyArtsets();
 
         if ($ee = Yii::$app->request->post()) {
@@ -99,6 +100,7 @@ class ZyartsetsController extends Controller {
             
             //插入时间
             $model->create_time = time();
+            
             //保存数据
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->art_id]);

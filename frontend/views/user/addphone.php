@@ -37,7 +37,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
                     <li><a href="designer_list.html">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多意见</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -52,7 +52,7 @@ if (!$session->isActive) {
             </section>   
 
             <div class="login_title">
-                请输入要绑定的手机号码
+                绑定手机号<br />你的需求就会被住艺永久记录，并可以随时更改
             </div>
             <?= Html::beginForm('', 'post', ['id' => 'form-addphone']); ?>
             <div class="login_ipt">

@@ -37,7 +37,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
                     <li><a href="designer_list.html">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多意见</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -52,7 +52,7 @@ if (!$session->isActive) {
             </section>  
 
             <div class="login_title">
-                输入手机号码用于登录
+                现在登录<br/>你的需求就会被住艺永久记录，并可以随时更改
             </div>
             <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
             <div class="login_ipt">
@@ -65,7 +65,7 @@ if (!$session->isActive) {
             </div>
             <div style="position: relative"><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <div class="login_talk">
-                <span class="iconfont icon-xuanzhong">注册即表示本人同意<a class="red">《用户协议和隐私协议》</a></span>
+                <span class="iconfont icon-xuanzhong">注册即表示本人同意<a href="<?php echo Url::toRoute('/index/agreement'); ?>"class="red">《用户协议和隐私协议》</a></span>
             </div>
             <input type="hidden" value="" id="phonestr" name="phonestr" />
 

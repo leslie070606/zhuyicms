@@ -75,7 +75,7 @@ $(function(){
 			}else{
 				$(".designer_box>.pro_here").show();
 				
-				$(".click_more").html("最多从中选择三位优先匹配<br>  更多设计师,住艺会帮你人工匹配")
+				$(".click_more").html("更多设计师,住艺会帮你人工甄选")
 				var top=$("#topb").offset().top	;
 					$(window).scrollTop(top);
 			}

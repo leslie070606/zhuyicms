@@ -36,7 +36,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
                     <li><a href="designer_list.html">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="designer_list.html">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多意见</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
@@ -55,7 +55,7 @@ if (!$session->isActive) {
                 <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
                 <span class="submit_truea">需求可随时在【我的住艺】中修改</span>
                 <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
-
+                <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">请告诉我们更多信息,以便住艺为你匹配更适合的设计师</span>
                 <input class="dema_ipt" type="text" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">请上传户型图、房屋照片</span>
@@ -92,7 +92,7 @@ if (!$session->isActive) {
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>收纳整理空间</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>家庭成员彼此拥有相对独立空间</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>家庭成员拥有相对独立空间</span>
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>艺术品、收藏品的巧妙应用</span>
