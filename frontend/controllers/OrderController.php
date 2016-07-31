@@ -164,7 +164,7 @@ class OrderController extends Controller {
     public function actionChange() {
 		$userId = 1;//暂时写死。。。
 		$userRows = \common\models\ZyUser::findOne($userId);
-		if(empty($userRows)){
+		if(!empty($userRows)){
 			$phone = $userRows->phone;
 		}
 
