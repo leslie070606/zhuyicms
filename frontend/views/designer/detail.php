@@ -238,9 +238,18 @@ HTML;
 
                     <div class="charges_zd"></div>
                     <div class="check_charges">
+					<?php
+						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
+						$chargeWork = isset($data['cost']['charge_work'])? $data['cost']['charge_work'] : '面议';
+					?>
                         <div>
+<<<<<<< HEAD
+                            <span class="charges_left charges_title">全包费用</span>
+                            <span class="charges_right red">￥<?php echo $chargeWork ?> + / ㎡</span>
+=======
                             <span class="charges_left charges_title">设计+施工</span>
                             <span class="charges_right red">￥ 2800+ / ㎡</span>
+>>>>>>> zhuyimaster
                         </div>
 <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
                         <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
@@ -249,8 +258,17 @@ HTML;
                             <span class="charges_left charges_title chargesaas">设计</span>
                         </div>
                         <div>
+<<<<<<< HEAD
+                            <span class="charges_left">小于125㎡</span>
+                            <span class="charges_right red"><?php echo $charge?></span>
+                        </div>
+                        <div>
+                            <span class="charges_left">大于125㎡</span>
+                            <span class="charges_right red">均价￥800/㎡</span>
+=======
                             <span class="charges_left">设计费</span>
                             <span class="charges_right red">￥300+/㎡</span>
+>>>>>>> zhuyimaster
                         </div>
                        
                         <div class="charges_hui">含：平面图设计+立面图设计+水电图造型图等施工用途设计+效果图+家具选样清单。</div>

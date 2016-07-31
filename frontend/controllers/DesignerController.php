@@ -86,6 +86,74 @@ class DesignerController extends Controller {
                     if (!empty($rows)) {
                         $videoUrl = $rows->video_url;
                     }
+<<<<<<< HEAD
+                    $background = isset($rows->video_image)? $rows->video_image : "/img/home_page/proc.jpg";
+				}
+
+				$element = array(
+					'art_id' => $artId,
+					'type' => $type, 
+					'background' => $background,
+					'image_urls' => $imageUrlArr,
+					'video_url' => $videoUrl	
+				);
+				$data[] = $element;
+			}
+		}
+		$data = json_encode($data);
+		return $data;
+		//return $this->render("alls",['data' => $data]);
+	}
+	public function actionAlls(){
+		return $this->render("alls");
+	}
+
+	public function actionDetail(){
+		$request = Yii::$app->request;
+		/*
+		if(!$request->isAjax){
+			return false;
+		}*/
+		
+		$params = $request->get('params');
+		if(!isset($params) || empty($params)){
+			return false;
+		}
+
+		$designerId 	= $params;
+		$dbModel = new \frontend\models\DesignerBasic();
+		$rows = $dbModel->getDesignerById($designerId);
+		if(empty($rows)){
+			return false;
+		}
+		$name 			= $rows->name;
+		$tag 			= $rows->tag;
+		if(!isset($tag) || empty($tag)){
+			$tag = "艺术家,设计小达人";
+		}
+		$tmp 			= $dbModel->getHeadPortrait($designerId);
+		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
+
+		$tmp 			= $dbModel->getBackground($designerId);
+		$background		= isset($tmp)? $tmp : "/img/home_page/prob.jpg";
+		//作品...
+		$artModel		= new \frontend\models\Artsets();
+		$artsets		= $artModel->getPartArtsByDesignerId($designerId);
+		$artCnt			= \frontend\models\Artsets::find()->where(['designer_id' => $designerId])->count();
+		//收费...
+		$dWorkModel 	= new \frontend\models\DesignerWork();
+		$cost = $dWorkModel->getCost($designerId);
+        $data = array(
+			'designer_id' 	=> $designerId,		//ID
+            'name' 			=> $name, 			//姓名
+            'tag' 			=> $tag, 			//标签
+            'head_portrait' => $headPortrait, 	//头像
+            'background' 	=> $background, 	//背景
+			'winnings'		=> '',				//获奖经历
+			'art_cnt'		=> $artCnt,			//作品数量
+			'artsets'		=> $artsets,		//作品集
+			'cost'			=> $cost
+=======
                     $background = isset($rows->video_image) ? $rows->video_image : "/img/home_page/proc.jpg";
                 }
 
@@ -149,6 +217,7 @@ class DesignerController extends Controller {
             'winnings' => '', //获奖经历
             'art_cnt' => $artCnt, //作品数量
             'artsets' => $artsets   //作品集
+>>>>>>> zhuyimaster
         );
         return $this->render("detail", ['data' => $data]);
     }
@@ -264,6 +333,36 @@ class DesignerController extends Controller {
 
         $data = array();
         foreach ($rows as $v) {
+<<<<<<< HEAD
+            $designerId 	= $v['id'];
+			$imageId		= $v['image_id'];
+            $name 			= $v['name'];
+            $tag 			= $v['tag'];
+
+			if(empty($tag)){
+				$tag = "设计达人,艺术家";
+			}
+			
+			$imageModel		= new \frontend\models\Images();
+            $ret 			= $imageModel->findOne($imageId);
+			if(empty($ret)){
+				//无头像信息,后期设置个默认头像
+				//continue;
+				$headPortrait = "/img/home_page/banner_head.jpg";
+			}else{
+            	$headPortrait 	= $ret->url;
+			}
+			$headPortrait = isset($headPortrait) && !empty($headPortrait)? 
+				$headPortrait : '/img/home_page/banner_head.jpg';
+
+			$background = \frontend\models\DesignerBasic::getBackground($designerId);
+			if(!isset($background)){
+				$background = "/img/home_page/prob.jpg";
+			}
+
+			$dWorkModel = new \frontend\models\DesignerWork();
+			$city = $dWorkModel->getCity($designerId);
+=======
             $designerId = $v['id'];
             $imageId = $v['image_id'];
             $name = $v['name'];
@@ -289,12 +388,18 @@ class DesignerController extends Controller {
             if (!isset($background)) {
                 $background = "/img/home_page/prob.jpg";
             }
+>>>>>>> zhuyimaster
             $designerRet = array(
                 'designer_id' => $designerId,
                 'name' => $name,
                 'tag' => $tag,
                 'head_portrait' => $headPortrait,
+<<<<<<< HEAD
+                'background' 	=> $background,
+				'city'			=> $city
+=======
                 'background' => $background,
+>>>>>>> zhuyimaster
             );
             $data[] = $designerRet;
         }
