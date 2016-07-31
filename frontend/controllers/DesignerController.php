@@ -128,6 +128,7 @@ class DesignerController extends Controller {
 		if(!isset($tag) || empty($tag)){
 			$tag = "艺术家,设计小达人";
 		}
+		$winning		= isset($rows->winning)? $rows->winning : '';
 		$tmp 			= $dbModel->getHeadPortrait($designerId);
 		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
 
@@ -140,16 +141,50 @@ class DesignerController extends Controller {
 		//收费...
 		$dWorkModel 	= new \frontend\models\DesignerWork();
 		$cost = $dWorkModel->getCost($designerId);
+		
+		//基本信息服务范围.
+		$serviceContent = $dWorkModel->getServiceContent($designerId);
+		$yingzhuangArr = array(1,2,3,4);
+		$gongzhuangArr = array(5,6,7,8);
+		$ruanzhuangArr = array(9,10,11);
+		//后期用一个变量，按位或来操作。
+		$yingType = 0;
+		$gongType = 0;
+		$ruanType = 0;
+		if(!empty($serviceContent)){
+			foreach($serviceContent as $s){
+				if(in_array($s,$yingzhuangArr)){
+					$yingType = 1;
+				}elseif(in_array($s,$gongzhuangArr)){
+					$gongType = 1;
+				}elseif(in_array($s,$ruanzhuangArr)){
+					$ruanType = 1;
+				}
+			}
+		}
+
+		//服务城市
+		$serveCity = $dWorkModel->getServeCity($designerId);
+		//擅长风格
+		$style = $dWorkModel->getStyle($designerId);
         $data = array(
-			'designer_id' 	=> $designerId,		//ID
-            'name' 			=> $name, 			//姓名
-            'tag' 			=> $tag, 			//标签
-            'head_portrait' => $headPortrait, 	//头像
-            'background' 	=> $background, 	//背景
-			'winnings'		=> '',				//获奖经历
-			'art_cnt'		=> $artCnt,			//作品数量
-			'artsets'		=> $artsets,		//作品集
-			'cost'			=> $cost
+			'designer_id' 		=> $designerId,		//ID
+            'name' 				=> $name, 			//姓名
+            'tag' 				=> $tag, 			//标签
+            'head_portrait' 	=> $headPortrait, 	//头像
+            'background' 		=> $background, 	//背景
+			'winnings'			=> '',				//获奖经历
+			'art_cnt'			=> $artCnt,			//作品数量
+			'artsets'			=> $artsets,		//作品集
+			'cost'				=> $cost,
+			'service_content' 	=> array(
+				'ying_type' 	=> $yingType,	
+				'gong_type' 	=> $gongType,
+				'ruan_type' 	=> $ruanType
+			),
+			'serve_city'		=> $serveCity,
+			'style'				=> $style,
+			'winning'			=> $winning
         );
         return $this->render("detail", ['data' => $data]);
 	}
