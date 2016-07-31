@@ -141,6 +141,15 @@ HTML;
                     ?>
                     <div class="see_more"><a href="#">查看更多作品</a></div>
 
+					<?php
+						$serveCity = $data['serve_city'];
+						$style = $data['style'];
+						$winning = $data['winning'];
+						$yingType = $data['service_content']['ying_type'];
+						$gongType = $data['service_content']['gong_type'];
+						$ruanType = $data['service_content']['ruan_type'];
+						$allType = $yingType.','.$gongType.','.$ruanType;
+					?>
                     <section class="Basic_Info">
                         <div class="post_title">
                             <span class=" iconfont icon-lingxing"><a>认识设计师</a></span>
@@ -155,6 +164,10 @@ HTML;
                                             <span class="standard">标准服务</span>
                                             <span class="addition">附加服务</span>
                                     </div>-->
+<<<<<<< HEAD
+                                    <div class="topb" id="topb"  all_type =<?= $allType?>>
+                                        <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
+=======
                                     <div class="topb">
                                         <span>硬装设计</span>
                                         <div class="topb_box">
@@ -195,6 +208,7 @@ HTML;
                                             <span>艺术品陈设咨询</span>
                                             <span>庭院景观设计</span>
                                         </div>
+>>>>>>> zhuyimaster
                                     </div><!--topb end-->
                                 </div>
                             </div><!--info_here end-->
@@ -204,7 +218,7 @@ HTML;
                                     服务城市
                                 </div>
                                 <div class="info_here_right cccc">
-                                    北京
+                                   <?php echo $serveCity ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -213,7 +227,7 @@ HTML;
                                     风格特点
                                 </div>
                                 <div class="info_here_right cccc">
-                                    皆可
+                                   	<?php echo $style ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -222,7 +236,7 @@ HTML;
                                     过往经历及奖项
                                 </div>
                                 <div class="info_here_right cccc">
-                                    <?php echo $data['winnings'] ?>
+                                    <?php echo $winning ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -259,6 +273,12 @@ HTML;
                         </div>
                         <div>
 <<<<<<< HEAD
+                            <span class="charges_left">设计费：</span>
+                            <span class="charges_right red">￥ <?php echo $charge?>+/m²</span>
+                        </div>
+                        
+=======
+<<<<<<< HEAD
                             <span class="charges_left">小于125㎡</span>
                             <span class="charges_right red"><?php echo $charge?></span>
                         </div>
@@ -271,6 +291,7 @@ HTML;
 >>>>>>> zhuyimaster
                         </div>
                        
+>>>>>>> zhuyimaster
                         <div class="charges_hui">含：平面图设计+立面图设计+水电图造型图等施工用途设计+效果图+家具选样清单。</div>
                     </div>
 

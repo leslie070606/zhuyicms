@@ -1,5 +1,14 @@
 $(function(){
-		
+	var all_type=$("#topb").attr("all_type");
+	all_type=all_type.split(",");
+	for(var b=0;b<all_type.length;b++){
+		alert(all_type[b]);
+		if(all_type[b]==1){
+			$("#topb>span:eq("+b+")").show();
+		}else{
+			$("#topb>span:eq("+b+")").hide();
+		}
+	};
 	var gettt=0;
 	touch.on("#check","tap",function(ev){
 		if(gettt==0){
