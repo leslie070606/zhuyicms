@@ -237,13 +237,7 @@ HTML;
                             <span class="charges_left">小于125㎡</span>
                             <span class="charges_right red"><?php echo $charge?></span>
                         </div>
-                        <div>
-                            <span class="charges_left">大于125㎡</span>
-                            <span class="charges_right red">均价￥800/㎡</span>
-
-                        <div class="charges_hui">含：平面图设计+立面图设计+水电图造型图等施工用途设计+效果图+家具选样清单。</div>
-                    </div>
-
+                      
 
                 </div>
         </div>
