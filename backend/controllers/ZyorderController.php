@@ -71,6 +71,21 @@ class ZyorderController extends Controller
 				\common\models\ZyOrder::STATUS_WAITING_USER_TO_CONFIRM_TIME;
 			$model->create_time = time();
 			$model->update_time = time();
+
+			//发送短信
+			$userId = $model->attributes['user_id'];
+			$rows = \common\models\ZyUser::findOne($userId);
+			if(!empty($rows)){
+				$phone = $rows->phone;
+			}
+		
+			$designerId = $model->attributes['designer_id'];
+			$dRows = \backend\models\DesignerBasic::findOne($designerId);
+			if(!empty($dRows)){
+				$designerName = $dRows->name;
+			}
+			$sms = new \common\util\emaysms\Sms();
+        	$ret = $sms->send(array($phone),'【住艺】尊敬的用户,设计师'. $designerName . '已回复了见面时间，请尽快到住艺微信公众号-我的订单中进行查看并确认。客服电话:4000-600-636');
 			if($model->save()){
 				return $this->redirect(['view','id' => $model->order_id]);
 			}

@@ -162,6 +162,11 @@ class OrderController extends Controller {
     }
 
     public function actionChange() {
+		$userId = 1;//暂时写死。。。
+		$userRows = \common\models\ZyUser::findOne($userId);
+		if(!empty($userRows)){
+			$phone = $userRows->phone;
+		}
 
         $request = Yii::$app->request;
         if (!$request->isAjax) {
@@ -190,6 +195,25 @@ class OrderController extends Controller {
                 $rows->status 			= $newSts;
                 $rows->update_time 		= time();
                 $rows->save();
+
+				$newTime = date('Y-m-d H:i:s',$appointmentTime);
+            	$sms = new \common\util\emaysms\Sms();
+  				Yii::info($phone, 'pushNotifications');
+  				Yii::info($newTime, 'pushNotifications');
+            	$ret = $sms->send(array($phone),'【住艺】尊敬的用户,你的设计师将于' . $newTime. '前往' . $appointmentLocation . '与你首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
+				Yii::info($ret,'pushNotifications');
+				//给设计师发短信。
+				$designerId = $rows->designer_id;
+				$rows = \frontend\models\DesignerBasic::findOne($designerId);
+				if(!empty($rows)){
+					$name = $rows->name;
+				}
+				$dAdditionalModel = new \frontend\models\DesignerAdditional();
+				$phone = $dAdditionalModel->getPhoneByDesignerId($designerId);
+				$phone = isset($phone)? $phone : "15810649252";
+				Yii::info($phone,'pushNotifications');
+            	$ret = $sms->send(array($phone),'【住艺】Hi'.$name.',你的客户已确定' . $newTime. '前往' . $appointmentLocation . '与你首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
+				Yii::info($ret,'pushNotifications');
 				return $appointmentLocation;
                 break;
             case \frontend\models\Order::STATUS_MET_DONE:
