@@ -7,9 +7,7 @@ use yii\web\Controller;
 use frontend\models;
 
 class DesignerController extends Controller {
-
-    public $layout = false;
-
+	public $layout = false;
     public function actionGet_designer_basic_info($designerId) {
         if (!isset($designerId)) {
             return false;
@@ -42,51 +40,50 @@ class DesignerController extends Controller {
         return json_encode($data);
     }
 
-    public function actionArts() {
-        $request = Yii::$app->request;
-        /*
-          if(!$request->isAjax){
-          return false;
-          } */
-        $params = $request->get('params');
-        /*
-          if(!isset($params) || empty($params)){
-          return false;
-          } */
-        $designerId = $params;
+	public function actionArts(){
+		$request = Yii::$app->request;
+		/*
+		if(!$request->isAjax){
+			return false;
+		}*/
+		$params = $request->get('params');
+		/*
+		if(!isset($params) || empty($params)){
+			return false;
+		}*/
+		$designerId = $params;
 
-        $artModel = new \frontend\models\Artsets();
-        $artsets = $artModel->getArtsetsByDesignerId($designerId);
-        $data = array();
-        if (!empty($artsets)) {
-            foreach ($artsets as $a) {
-                //var_dump($a);
-                $artId = $a->art_id;
-                $type = $a->type;
-                $background = '';
-                $imageUrlArr = array();
-                $videoUrl = '';
-                if ($type == 0) {
-                    $imageIds = isset($a->image_ids) ? $a->image_ids : '';
-                    $imageIdsArr = explode(',', $imageIds);
-                    //$imageUrlArr = array();
-                    foreach ($imageIdsArr as $id) {
-                        $ret = \frontend\models\Images::findOne($id);
-                        if (empty($ret)) {
-                            continue;
-                        }
-                        $imageUrlArr[] = $ret->url;
-                    }
-                    if (!empty($imageUrlArr)) {
-                        $background = $imageUrlArr[0];
-                    }
-                } elseif ($type == 1) {
-                    $videoId = isset($a->video_ids) ? $a->video_ids : '';
+		$artModel = new \frontend\models\Artsets();
+		$artsets  = $artModel->getArtsetsByDesignerId($designerId);
+		$data = array();
+		if(!empty($artsets)){
+			foreach($artsets as $a){
+				//var_dump($a);
+				$artId = $a->art_id;
+				$type = $a->type;
+				$background = '';
+				$imageUrlArr = array();
+				$videoUrl = '';
+				if($type == 0){
+					$imageIds = isset($a->image_ids)? $a->image_ids : '';
+					$imageIdsArr = explode(',',$imageIds);
+					//$imageUrlArr = array();
+					foreach($imageIdsArr as $id){
+						$ret = \frontend\models\Images::findOne($id);
+						if(empty($ret)){
+							continue;
+						}
+						$imageUrlArr[] = $ret->url;
+					}
+					if(!empty($imageUrlArr)){
+						$background = $imageUrlArr[0];
+					}
+				}elseif($type == 1){
+					$videoId = isset($a->video_ids)? $a->video_ids : '';
                     $rows = \common\models\ZyVideo::findOne($videoId);
-                    if (!empty($rows)) {
-                        $videoUrl = $rows->video_url;
+                    if(!empty($rows)){
+                    	$videoUrl = $rows->video_url;
                     }
-<<<<<<< HEAD
                     $background = isset($rows->video_image)? $rows->video_image : "/img/home_page/proc.jpg";
 				}
 
@@ -131,6 +128,7 @@ class DesignerController extends Controller {
 		if(!isset($tag) || empty($tag)){
 			$tag = "艺术家,设计小达人";
 		}
+		$winning		= isset($rows->winning)? $rows->winning : '';
 		$tmp 			= $dbModel->getHeadPortrait($designerId);
 		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
 
@@ -143,114 +141,82 @@ class DesignerController extends Controller {
 		//收费...
 		$dWorkModel 	= new \frontend\models\DesignerWork();
 		$cost = $dWorkModel->getCost($designerId);
+		
+		//基本信息服务范围.
+		$serviceContent = $dWorkModel->getServiceContent($designerId);
+		$yingzhuangArr = array(1,2,3,4);
+		$gongzhuangArr = array(5,6,7,8);
+		$ruanzhuangArr = array(9,10,11);
+		//后期用一个变量，按位或来操作。
+		$yingType = 0;
+		$gongType = 0;
+		$ruanType = 0;
+		if(!empty($serviceContent)){
+			foreach($serviceContent as $s){
+				if(in_array($s,$yingzhuangArr)){
+					$yingType = 1;
+				}elseif(in_array($s,$gongzhuangArr)){
+					$gongType = 1;
+				}elseif(in_array($s,$ruanzhuangArr)){
+					$ruanType = 1;
+				}
+			}
+		}
+
+		//服务城市
+		$serveCity = $dWorkModel->getServeCity($designerId);
+		//擅长风格
+		$style = $dWorkModel->getStyle($designerId);
         $data = array(
-			'designer_id' 	=> $designerId,		//ID
-            'name' 			=> $name, 			//姓名
-            'tag' 			=> $tag, 			//标签
-            'head_portrait' => $headPortrait, 	//头像
-            'background' 	=> $background, 	//背景
-			'winnings'		=> '',				//获奖经历
-			'art_cnt'		=> $artCnt,			//作品数量
-			'artsets'		=> $artsets,		//作品集
-			'cost'			=> $cost
-=======
-                    $background = isset($rows->video_image) ? $rows->video_image : "/img/home_page/proc.jpg";
-                }
-
-                $element = array(
-                    'art_id' => $artId,
-                    'type' => $type,
-                    'background' => $background,
-                    'image_urls' => $imageUrlArr,
-                    'video_url' => $videoUrl
-                );
-                $data[] = $element;
-            }
-        }
-        $data = json_encode($data);
-        return $data;
-        //return $this->render("alls",['data' => $data]);
-    }
-
-    public function actionAlls() {
-        return $this->render("alls");
-    }
-
-    public function actionDetail() {
-        $request = Yii::$app->request;
-        /*
-          if(!$request->isAjax){
-          return false;
-          } */
-
-        $params = $request->get('params');
-        if (!isset($params) || empty($params)) {
-            return false;
-        }
-
-        $designerId = $params;
-        $dbModel = new \frontend\models\DesignerBasic();
-        $rows = $dbModel->getDesignerById($designerId);
-        if (empty($rows)) {
-            return false;
-        }
-        $name = $rows->name;
-        $tag = $rows->tag;
-        if (!isset($tag) || empty($tag)) {
-            $tag = "艺术家,设计小达人";
-        }
-        $tmp = $dbModel->getHeadPortrait($designerId);
-        $headPortrait = isset($tmp) ? $tmp : "/img/home_page/banner_head.jpg";
-
-        $tmp = $dbModel->getBackground($designerId);
-        $background = isset($tmp) ? $tmp : "/img/home_page/prob.jpg";
-        //作品...
-        $artModel = new \frontend\models\Artsets();
-        $artsets = $artModel->getPartArtsByDesignerId($designerId);
-        $artCnt = \frontend\models\Artsets::find()->where(['designer_id' => $designerId])->count();
-        $data = array(
-            'designer_id' => $designerId, //ID
-            'name' => $name, //姓名
-            'tag' => $tag, //标签
-            'head_portrait' => $headPortrait, //头像
-            'background' => $background, //背景
-            'winnings' => '', //获奖经历
-            'art_cnt' => $artCnt, //作品数量
-            'artsets' => $artsets   //作品集
->>>>>>> zhuyimaster
+			'designer_id' 		=> $designerId,		//ID
+            'name' 				=> $name, 			//姓名
+            'tag' 				=> $tag, 			//标签
+            'head_portrait' 	=> $headPortrait, 	//头像
+            'background' 		=> $background, 	//背景
+			'winnings'			=> '',				//获奖经历
+			'art_cnt'			=> $artCnt,			//作品数量
+			'artsets'			=> $artsets,		//作品集
+			'cost'				=> $cost,
+			'service_content' 	=> array(
+				'ying_type' 	=> $yingType,	
+				'gong_type' 	=> $gongType,
+				'ruan_type' 	=> $ruanType
+			),
+			'serve_city'		=> $serveCity,
+			'style'				=> $style,
+			'winning'			=> $winning
         );
         return $this->render("detail", ['data' => $data]);
-    }
+	}
 
-    public function actionArtsets() {
-        $request = Yii::$app->request;
-        if (!$request->isAjax) {
-            return NULL;
-        }
-        //return json_encode(array('/img/home_page/banner_head.jpg','img/home_page/prob.jpg'));
-        $params = $request->get('params');
-        if (!isset($params) || empty($params)) {
-            return NULL;
-        }
-        $artId = $params;
-
-        $rows = \frontend\models\Artsets::findOne($artId);
-        if (empty($rows)) {
-            return NULL;
-        } else {
-            $imgIds = $rows->image_ids;
-            $imgIdsArr = explode(',', $imgIds);
-            $imgUrlArr = array();
-            foreach ($imgIdsArr as $id) {
-                $imgRet = \frontend\models\Images::findOne($id);
-                if (!empty($imgRet)) {
-                    $imgUrlArr[] = $imgRet->url;
-                }
-            }
-            return json_encode($imgUrlArr);
-        }
-    }
-
+	public function actionArtsets(){
+		$request = Yii::$app->request;
+		if(!$request->isAjax){
+			return NULL;
+		}
+		//return json_encode(array('/img/home_page/banner_head.jpg','img/home_page/prob.jpg'));
+		$params = $request->get('params');
+		if(!isset($params) || empty($params)){
+			return NULL;
+		}
+		$artId = $params;
+		
+		$rows = \frontend\models\Artsets::findOne($artId);
+		if(empty($rows)){
+			return NULL;	
+		}else{
+			$imgIds = $rows->image_ids;
+			$imgIdsArr = explode(',',$imgIds);
+			$imgUrlArr = array();
+			foreach($imgIdsArr as $id){
+				$imgRet = \frontend\models\Images::findOne($id);
+				if(!empty($imgRet)){
+					$imgUrlArr[] = $imgRet->url;
+				}
+			}
+			return json_encode($imgUrlArr);
+		}
+	}
     public function actionIndex() {
         //从上一个页面传过来，必须保证要有designer_id
         $request = Yii::$app->request;
@@ -290,7 +256,7 @@ class DesignerController extends Controller {
         return $this->renderPartial("index", ['data' => $data]);
     }
 
-    public function actionFilter() {
+	public function actionFilter(){
         $request = Yii::$app->request;
         if ($request->isAjax) {
             $params = $request->get('params');
@@ -298,10 +264,10 @@ class DesignerController extends Controller {
                 return false;
             }
 
-            $pArray = explode(',', $params);
-            $category = $pArray['0'];
-            $serveCity = $pArray['1'];
-            $condition = array(
+            $pArray 	= explode(',', $params);
+            $category 	= $pArray['0'];
+            $serveCity 	= $pArray['1'];
+            $condition 	= array(
                 'category' => $category,
                 'serve_city' => $serveCity,
             );
@@ -310,30 +276,29 @@ class DesignerController extends Controller {
             $ret = $designerBasicM->getFilteredDesigners($condition);
             return $ret;
         }
-    }
+	}
 
-    public function actionList() {
-        //默认第一次进来只显示前3条数据.
-        $start = 0;
+	public function actionList(){
+		//默认第一次进来只显示前3条数据.
+		$start = 0;
 
         $request = Yii::$app->request;
-        if ($request->isAjax) {
+		if($request->isAjax){
             $params = $request->get('params');
             if (!isset($params)) {
                 return false;
             }
-            $start = $params;
-        }
+			$start = $params;
+		}
 
-        $debModel = new \frontend\models\DesignerBasic();
-        $rows = $debModel->getPartDesigners($start);
-        if (empty($rows)) {
-            return false;
-        }
+		$debModel = new \frontend\models\DesignerBasic();
+		$rows = $debModel->getPartDesigners($start);
+		if(empty($rows)){
+			return false;
+		}
 
-        $data = array();
+		$data = array();
         foreach ($rows as $v) {
-<<<<<<< HEAD
             $designerId 	= $v['id'];
 			$imageId		= $v['image_id'];
             $name 			= $v['name'];
@@ -362,79 +327,32 @@ class DesignerController extends Controller {
 
 			$dWorkModel = new \frontend\models\DesignerWork();
 			$city = $dWorkModel->getCity($designerId);
-=======
-            $designerId = $v['id'];
-            $imageId = $v['image_id'];
-            $name = $v['name'];
-            $tag = $v['tag'];
-
-            if (empty($tag)) {
-                $tag = "设计达人,艺术家";
-            }
-
-            $imageModel = new \frontend\models\Images();
-            $ret = $imageModel->findOne($imageId);
-            if (empty($ret)) {
-                //无头像信息,后期设置个默认头像
-                //continue;
-                $headPortrait = "/img/home_page/banner_head.jpg";
-            } else {
-                $headPortrait = $ret->url;
-            }
-            $headPortrait = isset($headPortrait) && !empty($headPortrait) ?
-                    $headPortrait : '/img/home_page/banner_head.jpg';
-
-            $background = \frontend\models\DesignerBasic::getBackground($designerId);
-            if (!isset($background)) {
-                $background = "/img/home_page/prob.jpg";
-            }
->>>>>>> zhuyimaster
             $designerRet = array(
-                'designer_id' => $designerId,
-                'name' => $name,
-                'tag' => $tag,
+                'designer_id' 	=> $designerId,
+                'name' 			=> $name,
+                'tag' 			=> $tag,
                 'head_portrait' => $headPortrait,
-<<<<<<< HEAD
                 'background' 	=> $background,
 				'city'			=> $city
-=======
-                'background' => $background,
->>>>>>> zhuyimaster
             );
             $data[] = $designerRet;
         }
-        if ($request->isAjax) {
-            return json_encode($data);
-        } else {
-            return $this->render("list", ["data" => $data]);
-        }
-    }
-
+		if($request->isAjax){
+			return json_encode($data);
+		}else{
+        	return $this->render("list", ["data" => $data]);
+		}
+	}
     //搜索设计师
     public function actionHunt() {
-
         $request = Yii::$app->request;
-        $searchKey = "";
+		$searchKey = "";
         if ($request->isAjax) {
-            $data = '';
             $searchKey = Yii::$app->request->get('search_key');
-            if ($searchKey) {
-                $designerM = new \frontend\models\DesignerBasic();
-                $designer = $designerM::findBySql("select * from zyj_designer_basic where name like '%" . $searchKey . "%'");
-                $data = $designer->all();
-//                echo "<pre>";
-//                print_r($designer[0]['name']);
-                //return $data;
-                if ($data) {
-                    return $this->render('searchdesigner', ['data' => $data]);
-                } else {
-                    return FALSE;
-                }
-            } else {
-                return FALSE;
-            }
         }
-        return $this->render('hunt');
+        $designerM = new \frontend\models\DesignerBasic();
+        $data = $designerM->findBySql("SELECT * FROM zy_designer_basic WHERE name LIKE '%" . $searchKey . "%'");
+        return $this->render('hunt', ['data' => $data]);
     }
 
 }

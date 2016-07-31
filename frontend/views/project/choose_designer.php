@@ -34,7 +34,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
                     <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多意见</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
