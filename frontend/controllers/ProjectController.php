@@ -327,7 +327,7 @@ class ProjectController extends \common\util\BaseController {
         $projectModel = new ZyProject();
 
 
-        $model = $projectModel::findOne(['user_id' => 16]);
+        $model = $projectModel::findOne(['user_id' => $user_id]);
 
 //        echo "<pre>";
 //        print_r($model);exit;
