@@ -14,10 +14,9 @@ class OrderController extends Controller {
     public function actionIndex() {
 
         $request = Yii::$app->request->get('params');
+        
         $dataRetrived = array();
         if ($request) {
-            
-            echo $request;exit;
             $dearr = explode('$', $request);
             $dataRetrived['user_id'] = $dearr[0];
             $dataRetrived['project_id'] = $dearr[1];
@@ -43,10 +42,10 @@ class OrderController extends Controller {
                 'project_id' => $dataRetrived['project_id'],
                 'designer_id' => $d,
                 'status' => \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM,
-                'appointment_time' => time(),
-                'appointment_location' => '见面地点',
-                'remark' => '订单',
-                'service_type' => 0, //客服创建为1,用户:0
+                'appointment_time' => '',
+                'appointment_location' => '',
+                'remark' => '',
+                'service_type' => 1, //客服创建为0,用户:1
                 'create_time' => time(),
                 'update_time' => time(),
             );

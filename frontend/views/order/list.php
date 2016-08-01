@@ -89,7 +89,7 @@ HTML;
                                     $orderId = $d['order_id'];
                                     $userId = $d['user_id'];
                                     $orderType = $d['order_type'];
-									$dSpareTime = $d['designer_spare_time'];
+                                    $dSpareTime = $d['designer_spare_time'];
                                     $designerId = $d['designer']['designer_id'];
                                     $name = $d['designer']['name'];
                                     $headPortrait = $d['designer']['head_portrait'];
@@ -105,8 +105,12 @@ HTML;
                                         }
                                     }
 
-									$appointmentTime = date("Y-m-d H:i:s",$d['appointment_time']);
-									$appointmentLocation = $d['appointment_location'];
+                                    if (isset($d['appointment_time']) && !empty($d['appointment_time'])) {
+                                        $appointmentTime = date("Y-m-d H:i:s", $d['appointment_time']);
+                                    }else{
+                                        $appointmentTime = date("Y-m-d H:i:s",time());
+                                    }
+                                    $appointmentLocation = $d['appointment_location'];
                                     //订单状态
                                     $status = $d['status'];
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
@@ -115,12 +119,12 @@ HTML;
                                     if ($status ==
                                             \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
                                         $rows = \frontend\models\Order::findOne($orderId);
-										if(!empty($rows)){
-                                        	$createTime = $rows->create_time;
-										}else{
-                                        	$create_time = time();
-										}
-                                        $timestamp = $create_time + 24 * 3600;
+                                        if (!empty($rows)) {
+                                            $createTime = $rows->create_time;
+                                        } else {
+                                            $createTime = time();
+                                        }
+                                        $timestamp = $createTime + 24 * 3600;
                                         $time = date('Y-m-d H:i:s', $timestamp);
                                         $html = <<<HTML
                             				<div class="dd_here">
@@ -149,7 +153,7 @@ HTML;
 								  				</div>
 											</div>
 HTML;
-									//客服创建，订单类型字段为0，状态为待用户确认时间。
+                                        //客服创建，订单类型字段为0，状态为待用户确认时间。
                                     } elseif ($orderType == 0 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
                                         //$rows = \frontend\models\Order::findOne($orderId);
@@ -157,10 +161,10 @@ HTML;
                                         //  $timeStr = $rows->designer_rest_time;
                                         //  $timeArr = explode(',',$timeStr);
 
-										$dSpareArr = explode(',',$dSpareTime);
-										$time1 = isset($dSpareArr[0])? $dSpareArr[0] : '';
-										$time2 = isset($dSpareArr[1])? $dSpareArr[1] : '';
-										$time3 = isset($dSpareArr[2])? $dSpareArr[2] : '';
+                                        $dSpareArr = explode(',', $dSpareTime);
+                                        $time1 = isset($dSpareArr[0]) ? $dSpareArr[0] : '';
+                                        $time2 = isset($dSpareArr[1]) ? $dSpareArr[1] : '';
+                                        $time3 = isset($dSpareArr[2]) ? $dSpareArr[2] : '';
 
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
@@ -196,13 +200,13 @@ HTML;
 HTML;
                                     } elseif ($orderType == 1 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
-							//客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
-                                        $dSpareArr = explode(',',$dSpareTime);
-                                        $time1 = isset($dSpareArr[0])? $dSpareArr[0] : '
+                                        //客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
+                                        $dSpareArr = explode(',', $dSpareTime);
+                                        $time1 = isset($dSpareArr[0]) ? $dSpareArr[0] : '
 ';
-                                        $time2 = isset($dSpareArr[1])? $dSpareArr[1] : '
+                                        $time2 = isset($dSpareArr[1]) ? $dSpareArr[1] : '
 ';
-                                        $time3 = isset($dSpareArr[2])? $dSpareArr[2] : '
+                                        $time3 = isset($dSpareArr[2]) ? $dSpareArr[2] : '
 ';
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
@@ -463,17 +467,17 @@ HTML;
                         data: "",
                         success: function (data) {
                             //alert(data);
-                           $(".xuqiu_box").html(data);
-                           xiuqiu++;
-                        
+                            $(".xuqiu_box").html(data);
+                            xiuqiu++;
+
                             var heighttt = $("#nav_box>li:eq(" + indexaa + ")").css("height");
-                $("#nav_box").css("height", heighttt);
-                            
+                            $("#nav_box").css("height", heighttt);
+
                         }
                     })
-                    
+
                 }
-               
+
             });
             $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
         }
@@ -528,8 +532,8 @@ HTML;
         });
         var u = navigator.userAgent;
 
-       touch.on(".hetong", "tap", function (ev) {
-			alert("123");
+        touch.on(".hetong", "tap", function (ev) {
+            alert("123");
             var _this = $(this);
             var index;
             var likestr = '';
@@ -542,7 +546,7 @@ HTML;
                 sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
                 success: function (res) {
                     images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-					alert("222");		
+                    alert("222");
                     var html = "";
                     // alert(indexx)
                     for (var i = 0; i < images.localId.length; i++) {
@@ -557,17 +561,17 @@ HTML;
                                 serverId = res.serverId; // 返回图片的服务器端ID
                                 likestr += serverId + "$";
                                 nuber++;
-                              
-                                    if (nuber >= ge) {
-                                        var like_val = _this.parents(".zy_pp").find(".list_val").val();
-                                        _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
 
-                                        likestr = likestr.toString().split("$");
-                                        for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
-                                            $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                        }
+                                if (nuber >= ge) {
+                                    var like_val = _this.parents(".zy_pp").find(".list_val").val();
+                                    _this.parents(".zy_pp").find(".list_val").val(like_val + likestr);
+
+                                    likestr = likestr.toString().split("$");
+                                    for (var i = 0; i < $(".hetong_box li").length - 1; i++) {
+                                        $(".hetong_box li:eq(" + i + ") ").prop("img_id", likestr[i]);
                                     }
-                                
+                                }
+
 
                             }
                         });
@@ -578,7 +582,7 @@ HTML;
                     var get_val = _this.parents(".zy_pp").find(".list_val").val();
                     $.ajax({
                         type: "get",
-                		url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/contract'; ?>" + "&&params=" + get_val,
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/contract'; ?>" + "&&params=" + get_val,
                         async: true,
                         success: function () {
                             alert(get_val)

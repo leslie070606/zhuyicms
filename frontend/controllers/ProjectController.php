@@ -32,19 +32,20 @@ class ProjectController extends \common\util\BaseController {
         if (!$session->isActive) {
             $session->open();
         }
-        if ($user_id = $session->get('user_id')) {
-            $model = new ZyProject();
-            $project = $model->findOne(['user_id' => $user_id]);
-
-            //如果有需求就跳转到个人中心
-            if ($project) {
-                return $this->redirect(['order/list']);
-                // echo "个人中心!";
-                //exit;
-            }
-        } else {
-            return $this->redirect(['user/login']);
-        }
+//        if ($user_id = $session->get('user_id')) {
+//            $model = new ZyProject();
+//            $project = $model->findOne(['user_id' => $user_id]);
+//
+//            //如果有需求就跳转到个人中心
+//            if ($project) {
+//                return $this->redirect(['order/list']);
+//                // echo "个人中心!";
+//                //exit;
+//            }
+//        } else {
+//            return $this->redirect(['user/login']);
+//        }
+        $user_id = 22;
 
         if ($prostr = Yii::$app->request->get('g')) {
             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

@@ -161,14 +161,14 @@ if (!$session->isActive) {
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
             data: "",
             success: function (data) {
-
+               // alert(data);
                 if (data = 3) {
                     //跳转人工
                 }
                 if(data = 1){
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }
-                //alert(data);
+                
             }
         })
     })
