@@ -139,7 +139,10 @@ HTML;
                         }
                     }
                     ?>
-                    <div class="see_more"><a href="#">查看更多作品</a></div>
+					<?php
+						$href = Yii::getAlias('@web') . '/index.php?r=designer/alls&&params=' . $data['designer_id'];
+					?>
+                    <div class="see_more"><a href=<?php echo $href?>>查看更多作品</a></div>
 
 					<?php
 						$serveCity = $data['serve_city'];
