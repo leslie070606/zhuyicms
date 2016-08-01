@@ -72,7 +72,10 @@ class OrderController extends Controller {
 
     public function actionList() {
 
-
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
         $userId = $session->get("user_id");
         if (!isset($userId) || empty($userId)) {
             return $this->redirect(['user/login']);

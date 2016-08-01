@@ -192,6 +192,10 @@ class ProjectController extends \common\util\BaseController {
 
     //匹配设计师
     public function actionChoose_designer() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
         if ($user_id = $session->get('user_id')) {
             $model = new ZyProject();
             $project = $model->findOne(['user_id' => $user_id]);
