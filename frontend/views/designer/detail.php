@@ -243,7 +243,7 @@ HTML;
     </body>
 </html>
 <script type="text/javascript">
-
+$(function(){
     function GetQueryString(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
@@ -297,10 +297,11 @@ HTML;
     });
     var nubeee = 0;
     var htmllll = $(".pro_img_box").html();
-    touch.on(".pro_img", "tap", function () {
+    touch.on(".pro_img", "tap", function (ev) {
         $(".pro_img_box").show();
         var html = "";
-        var art_id = $(this).attr("art_id");
+        var art_id = $(ev.currentTarget).attr("art_id");
+	
         $.ajax({
             type: "get",
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
@@ -311,10 +312,13 @@ HTML;
                 var length = data.length;
                 $("#title_idb").html(length);
                 for (var i = 0; i < length; i++) {
-                    html += '<li><img src="' + data[i] + '" title="" /></li>';
+                    html += '<li><img src="' + data[i] + '"  /></li>';
                 }
                 $(".bxslider").html(html);
+				$(".bxslider li:last img").onload=function(){
                 $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
+					};
+				
             }
         });
 
@@ -324,4 +328,5 @@ HTML;
         $(this).hide();
         $(this).html(htmllll);
     });
+});
 </script>
