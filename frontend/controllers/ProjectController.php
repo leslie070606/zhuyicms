@@ -201,11 +201,11 @@ class ProjectController extends \common\util\BaseController {
             $project = $model->findOne(['user_id' => $user_id]);
 
             //如果有需求就跳转到个人中心
-            if ($project) {
-                return $this->redirect(['order/list']);
-                // echo "个人中心!";
-                //exit;
-            }
+//            if ($project) {
+//                return $this->redirect(['order/list']);
+//                // echo "个人中心!";
+//                //exit;
+//            }
         } else {
             return $this->redirect(['user/login']);
         }
