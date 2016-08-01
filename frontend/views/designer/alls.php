@@ -77,7 +77,7 @@ $(function(){
 			for(var i=0;i<data.length;i++){
 				var type=data[i].type;
 				if(type==0){
-					var html='<div class="pro_here pro_img iconfont">'
+					var html='<div class="pro_here pro_img iconfont" art_id="'+data[i].art_id+'">'
 						+'<img class="here_img" src="'+data[i].background+'" />'
 						+'<div class="img_icon"><span class=" iconfont icon-tupian">'+data[i].image_urls.length+'张图</span></div>'
 						+'<div class="here_botaa"></div>'
@@ -100,29 +100,33 @@ $(function(){
 				$(this).next(".video-js").get(0).play();
 				$(".video-js").css("height",img_height);
 			});
-			
-			var htmllll=$(".pro_img_box").html();
-			touch.on(".pro_img","tap",function(){
-				 $(".pro_img_box").show();
-				 var html="";
-				 $.ajax({
-				 	type:"get",
-				 	url:"",
-				 	async:true,
-				 	success:function(data){
-				 		data=["img/index/indexa.jpg","img/index/indexb.jpg","img/index/indexa.jpg"];
-				 		var length=data.length;
-				 		
-				 		for(var i=0; i<length; i++){
-				 			html+='<li><img src="'+data[i]+'" title="" /></li>';
-				 		}
-				 		$(".bxslider").html(html);
-				 		 $('.bxslider').bxSlider({controls:false,auto:false, pause:4000,speed:600});
-					$("#title_idb").html(length);
-				 	}
-				 });
-				
-			});
+    var nubeee = 0;
+    var htmllll = $(".pro_img_box").html();
+    touch.on(".pro_img", "tap", function (ev) {
+        $(".pro_img_box").show();
+        var html = "";
+        var art_id = $(ev.currentTarget).attr("art_id");
+	
+        $.ajax({
+            type: "get",
+            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
+            async: true,
+            success: function (data) {
+                data = eval('(' + decodeURI(data) + ')');
+                console.log(data);
+                var length = data.length;
+                $("#title_idb").html(length);
+                for (var i = 0; i < length; i++) {
+                    html += '<li><img src="' + data[i] + '"  /></li>';
+                }
+                $(".bxslider").html(html);
+				setTimeout(function(){
+                $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});},100);
+		     	$("#title_idb").html(length);	
+            }
+        });
+
+    });
 			touch.on(".pro_img_box","tap",function(){
 				$(this).hide();
 				$(this).html(htmllll);
