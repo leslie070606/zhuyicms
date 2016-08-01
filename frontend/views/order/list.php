@@ -96,7 +96,7 @@ if (!$session->isActive) {
                                 $html = <<<HTML
 								<div class="Blank_Page">
 				  					<span>目前还没有订单产生<br/>
-				  					快 <a href="designer_list.html" class="red">提交需求</a>约见设计师吧
+				  					快 <a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">提交需求</a>约见设计师吧
 				  					</span>
 				  				</div>
 HTML;
