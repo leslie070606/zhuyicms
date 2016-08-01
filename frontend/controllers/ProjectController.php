@@ -185,9 +185,9 @@ class ProjectController extends \common\util\BaseController {
 //            exit;
         }
         // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-
-        return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
+        // $jsarr = $tokenModel->getSignature();
+        //return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
+        return $this->render('additional', ['project_id' => $project_id]);
     }
 
     //匹配设计师
@@ -297,7 +297,7 @@ class ProjectController extends \common\util\BaseController {
             //$scoreArr = $scoreArr + $scoreArr + $scoreArr + $scoreArr;
             //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
-        return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' =>$user_id,'project_id'=>$project_id]);
+        return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' => $user_id, 'project_id' => $project_id]);
     }
 
     public function actionUpdateadditional() {
