@@ -326,10 +326,9 @@ $(function(){
         });
 
     });
-    touch.on(".pro_img_box", "tap", function () {
-
-        $(this).hide();
-        $(this).html(htmllll);
+    touch.on(".pro_img_box","tap",function(ev){
+    	$(ev.currentTarget).hide();
+        $(ev.currentTarget).html(htmllll);
     });
 });
 </script>
