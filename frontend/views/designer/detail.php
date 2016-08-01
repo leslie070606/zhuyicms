@@ -141,7 +141,6 @@ HTML;
                     ?>
 					<?php
 						$href = Yii::getAlias('@web') . '/index.php?r=designer/alls&&params=' . $data['designer_id'];
-						var_dump($href);
 					?>
                     <div class="see_more"><a href=<?php echo $href?>>查看更多作品</a></div>
 

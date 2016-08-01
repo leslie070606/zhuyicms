@@ -50,78 +50,8 @@
 			</section>
 			<div class="down_right_zd"></div>
 				<div class="pro_box" style="top: 0;">
-					<div class="pro_here">
-						<div class="pro_here_bcimg iconfont icon-bofang1">
-							<img class="" src="img/home_page/proc.jpg" />
-						</div>
-						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-							<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-						</video>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							软糖沙发
-						</div>
-					</div>
-					<!--pro_here end-->
-
-					<div class="pro_here pro_img iconfont">
-						<img class="here_img" src="img/home_page/prob.jpg" />
-
-						<div class="img_icon"><span class=" iconfont icon-tupian">8张图</span></div>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							偶像派质感餐厅
-						</div>
-					</div>
-					<!--pro_here end-->
-
-					<div class="pro_here">
-						<div class="pro_here_bcimg iconfont icon-bofang1">
-							<img class="" src="img/home_page/proc.jpg" />
-						</div>
-						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-							<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-						</video>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							软糖沙发
-						</div>
-					</div>
-					<!--pro_here end-->
-					<div class="pro_here">
-						<div class="pro_here_bcimg iconfont icon-bofang1">
-							<img class="" src="img/home_page/proc.jpg" />
-						</div>
-						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-							<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-						</video>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							软糖沙发
-						</div>
-					</div>
-					<!--pro_here end-->
-					
-					<div class="pro_here">
-						<div class="pro_here_bcimg iconfont icon-bofang1">
-							<img class="" src="img/home_page/proc.jpg" />
-						</div>
-						<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-							<source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
-						</video>
-						<div class="here_botaa"></div>
-						<div class="here_bottom line_center">
-							软糖沙发
-						</div>
-					</div>
-					<!--pro_here end-->
 				</div>
 				<!--pro_box end-->
-
-			
-		
-			
-
 		</div>
 		</div>
 		<div class="pro_img_box" style="display: none;">
@@ -144,7 +74,6 @@ $(function(){
         success:function(data){
             var html_box="";
 			data = eval('('+decodeURI(data)+')'); 
-			console.log(data);
 			for(var i=0;i<data.length;i++){
 				var type=data[i].type;
 				if(type==0){
@@ -189,6 +118,7 @@ $(function(){
 				 		}
 				 		$(".bxslider").html(html);
 				 		 $('.bxslider').bxSlider({controls:false,auto:false, pause:4000,speed:600});
+					$("#title_idb").html(length);
 				 	}
 				 });
 				
