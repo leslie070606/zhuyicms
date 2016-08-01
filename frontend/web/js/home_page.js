@@ -1,4 +1,8 @@
 $(function(){
+        var length=$(".pro_box .pro_here").length;
+        if(length<3){
+            $(".see_more").hide();
+        }
 	var all_type=$("#topb").attr("all_type");
 	all_type=all_type.split(",");
 	for(var b=0;b<all_type.length;b++){
@@ -40,5 +44,7 @@ var img_height=$(".pro_here_bcimg").height();
 		$(ev.currentTarget).next(".video-js").get(0).play();
 		$(".video-js").css("height",img_height);
 	});
+        
+        
 
 })

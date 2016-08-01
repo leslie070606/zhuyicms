@@ -79,7 +79,7 @@
 .bot_btn_aa span { width: 1.8rem; height: .56rem; line-height: .56rem; background:#ff4e38; color:#ffffff; position: absolute; left: 50%; margin-left: -.9rem;}
 .banner .bx-controls { display: none;}
 .bxsliderbb .bxs_title { position: absolute; left: 0; top: 2.4rem; z-index: 99991;}
-
+.tools_box .bx-wrapper .bx-pager { width:.8rem; margin-left:-.4rem;}
 
 
 
