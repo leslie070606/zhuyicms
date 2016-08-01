@@ -64,6 +64,7 @@ class DesignerController extends Controller {
 				$background = '';
 				$imageUrlArr = array();
 				$videoUrl = '';
+				$topic = isset($a->topic)? $a->topic : '';
 				if($type == 0){
 					$imageIds = isset($a->image_ids)? $a->image_ids : '';
 					$imageIdsArr = explode(',',$imageIds);
@@ -92,7 +93,8 @@ class DesignerController extends Controller {
 					'type' => $type, 
 					'background' => $background,
 					'image_urls' => $imageUrlArr,
-					'video_url' => $videoUrl	
+					'video_url' => $videoUrl,
+					'topic'	=> $topic
 				);
 				$data[] = $element;
 			}

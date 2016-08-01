@@ -14,7 +14,6 @@
 		<script type="text/javascript" src="js/jquery.bxslider.js"></script>
 		<!--<script type="text/javascript" src="js/video.min.js" ></script>-->
 		<script type="text/javascript" src="js/gloab.js"></script>
-		<script type="text/javascript" src="js/home_page.js"></script>
 	</head>
 
 	<body>
@@ -125,41 +124,85 @@
 
 		</div>
 		</div>
-		<!--<div class="pro_img_box">
+		<div class="pro_img_box" style="display: none;">
 			<div class="pro_img_zd"></div>
-			<span class="pro_img_title">1/7</span>
+			<span class="pro_img_title"><i id="title_ida">1</i>/<i id="title_idb">7</i></span>
 			<ul class="bxslider">
-				<li>
-					<img src="img/index/indexa.jpg" title="" />
-				</li>
-				<li>
-					<img src="img/index/indexb.jpg" title="" />
-				</li>
-				<li>
-					<img src="img/index/indexa.jpg" title="" />
-				</li>
-				<li>
-					<img src="img/index/indexb.jpg" title="" />
-				</li>
+				
 			</ul>
-		</div>-->
+		</div>
 	</body>
 
 </html>
 <script>
 $(function(){
-	var designer_id = 4;
- 	$.ajax({
-		type:"get",
-		url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/arts';?>"+"&&params="+designer_id,
-		async:true,
-		success:function(data){
+    var designer_id =getUrlParam('params');
+    $.ajax({
+        type:"get",
+        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/arts'; ?>" + "&&params=" + designer_id,
+        async:true,
+        success:function(data){
+            var html_box="";
+			data = eval('('+decodeURI(data)+')'); 
 			console.log(data);
-			var data = eval('('+decodeURI(data)+')'); 
-			console.log(data);
-
-		}
- 	});
+			for(var i=0;i<data.length;i++){
+				var type=data[i].type;
+				if(type==0){
+					var html='<div class="pro_here pro_img iconfont">'
+						+'<img class="here_img" src="'+data[i].background+'" />'
+						+'<div class="img_icon"><span class=" iconfont icon-tupian">'+data[i].image_urls.length+'张图</span></div>'
+						+'<div class="here_botaa"></div>'
+						+'<div class="here_bottom line_center">'+data[i].topic+'</div></div>'
+						
+						html_box+=html;
+				}else if(type==1){
+					var htmla='<div class="pro_here"><div class="pro_here_bcimg iconfont icon-bofang1"><img class="" src="'+data[i].background+'" /></div>'
+							+'<video id="example_video1" class="video-js vjs-default-skin" preload="none" poster="'+data[i].background+'"><source src="'+data[i].video_url+'" /></video>'
+							+'<div class="here_botaa"></div>'
+							+'<div class="here_bottom line_center">'+data[i].topic+'</div>'
+						+'</div>'
+						html_box+=htmla;
+				}
+				
+			}
+			$(".pro_box").html(html_box);
+			var img_height=$(".pro_here_bcimg").height();
+			touch.on(".pro_here_bcimg","tap",function(ev){
+				$(this).next(".video-js").get(0).play();
+				$(".video-js").css("height",img_height);
+			});
+			
+			var htmllll=$(".pro_img_box").html();
+			touch.on(".pro_img","tap",function(){
+				 $(".pro_img_box").show();
+				 var html="";
+				 $.ajax({
+				 	type:"get",
+				 	url:"",
+				 	async:true,
+				 	success:function(data){
+				 		data=["img/index/indexa.jpg","img/index/indexb.jpg","img/index/indexa.jpg"];
+				 		var length=data.length;
+				 		
+				 		for(var i=0; i<length; i++){
+				 			html+='<li><img src="'+data[i]+'" title="" /></li>';
+				 		}
+				 		$(".bxslider").html(html);
+				 		 $('.bxslider').bxSlider({controls:false,auto:false, pause:4000,speed:600});
+				 	}
+				 });
+				
+			});
+			touch.on(".pro_img_box","tap",function(){
+				$(this).hide();
+				$(this).html(htmllll);
+			});
+        }
+    });
 })
-
+function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
 </script>
