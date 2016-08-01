@@ -79,7 +79,7 @@ if (!$session->isActive) {
             <section id="user_box" class="custom">
                 <div class="user_top">
                     <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
-                    <span class="head_name">张三</span>
+                    <span class="head_name">住艺君</span>
                     <span class="head_more">免费预约一次</span>
                 </div>
                 <div class="nac_boxa">
@@ -93,13 +93,13 @@ if (!$session->isActive) {
                             <?php
                             if (empty($data) || !is_array($data)) {
 
-                                $html = <<<HTML
+                                $html = '
 								<div class="Blank_Page">
 				  					<span>目前还没有订单产生<br/>
-				  					快 <a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">提交需求</a>约见设计师吧
+				  					快 <a href="'.Url::toRoute('project/match_designer').'" class="red">提交需求</a>约见设计师吧
 				  					</span>
-				  				</div>
-HTML;
+				  				</div>';
+
                                 echo $html;
                             } else {
                                 foreach ($data as $d) {
