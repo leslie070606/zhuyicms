@@ -58,7 +58,24 @@ if (!$session->isActive) {
                 </ul>
             </section>
             <div class="down_right_zd"></div>
-
+			<div class="help_bot_zd" style="display: none; opacity: 0.5;"></div>
+			<div class="help_bot_btn">
+				<span class="iphone_btn" style="display: none; top: 0px;">
+					<a href="tel:4000-600-636">
+					<i class="iconfont icon-kefu"></i>
+					</a>
+				</span>
+				<span class="bot_btn" style="display: none; top: 0px;">
+					<a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
+					<i class="iconfont icon-bot"></i>
+					</a>
+				</span>
+				<span class="help_btn">
+					<a>
+					<i class="iconfont icon-bangzhu"></i>
+					</a>
+				</span>
+			</div>
             <section id="user_box" class="custom">
                 <div class="user_top">
                     <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
