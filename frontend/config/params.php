@@ -1,4 +1,4 @@
 <?php
 return [
-    'frontDomain' => 'http://putiyun.cc',
+    'frontDomain' => 'http://abc.80h.kim',
 ];
