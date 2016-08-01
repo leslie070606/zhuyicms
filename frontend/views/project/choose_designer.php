@@ -129,8 +129,8 @@ if (!$session->isActive) {
 </html>
 <script>
     touch.on(".navv_tj", "tap", function (ev) {
-        var user_id = 1;
-        var project_id = 2;
+        var user_id = <?=$user_id ?>;
+        var project_id = <?=$project_id ?>;
         var html = "";
         var is_pipei = "";
         var length = $(".pro_here .icon-xuanzhong").length;
@@ -161,14 +161,14 @@ if (!$session->isActive) {
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
             data: "",
             success: function (data) {
-
+               // alert(data);
                 if (data = 3) {
                     //跳转人工
                 }
                 if(data = 1){
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }
-                //alert(data);
+                
             }
         })
     })

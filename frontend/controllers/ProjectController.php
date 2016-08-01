@@ -45,6 +45,7 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
+        
 
         if ($prostr = Yii::$app->request->get('g')) {
             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -184,13 +185,34 @@ class ProjectController extends \common\util\BaseController {
 //            exit;
         }
         // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-
-        return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
+        // $jsarr = $tokenModel->getSignature();
+        //return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
+        return $this->render('additional', ['project_id' => $project_id]);
     }
 
     //匹配设计师
     public function actionChoose_designer() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        if ($user_id = $session->get('user_id')) {
+            $model = new ZyProject();
+            $project = $model->findOne(['user_id' => $user_id]);
+
+            //如果有需求就跳转到个人中心
+            if ($project) {
+                return $this->redirect(['order/list']);
+                // echo "个人中心!";
+                //exit;
+            }
+        } else {
+            return $this->redirect(['user/login']);
+        }
+
+
+
+
         //判断是否有已匹配的设计师
         //引入算法类
         $matchModel = new \app\components\Match();
@@ -279,12 +301,29 @@ class ProjectController extends \common\util\BaseController {
             //$scoreArr = $scoreArr + $scoreArr + $scoreArr + $scoreArr;
             //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
-        return $this->render('choose_designer', ['model' => $scoreArr]);
+        return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' => $user_id, 'project_id' => $project_id]);
     }
 
     public function actionUpdateadditional() {
-        // echo 1;
-        //echo "1231";exit;
+        
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        if ($user_id = $session->get('user_id')) {
+//            $model = new ZyProject();
+//            $project = $model->findOne(['user_id' => $user_id]);
+//
+//            //如果有需求就跳转到个人中心
+//            if ($project) {
+//                return $this->redirect(['order/list']);
+//                // echo "个人中心!";
+//                //exit;
+//            }
+        } else {
+            return $this->redirect(['user/login']);
+        }
+        
         $projectModel = new ZyProject();
 
 
