@@ -84,7 +84,7 @@ body>div:nth-child(1),body>section:nth-child(1) {
  .down_right ul li a {color: #FFFFFF; font-size: .26rem;}
  .down_right ul li:last-child { position: absolute; border-bottom: none; bottom: 0; width: 100%; height: .88rem; left: 0;}
   .down_right ul li:last-child a {  color: #9F9FA0;}
-.down_right_zd { display: none; position: fixed; width: 100%; height: 100%; background: #000000; opacity: 0; z-index: 99995;}
+.down_right_zd { display: none; left:0; right:0; position: fixed; width: 100%; height: 100%; background: #000000; opacity: 0; z-index: 99995;}
 .icon-lingxing:before {
     position: absolute;
     font-size: 2.5rem;

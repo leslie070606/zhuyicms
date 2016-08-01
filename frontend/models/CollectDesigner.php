@@ -32,8 +32,7 @@ Class CollectDesigner extends ActiveRecord{
 		if(empty($userId)){
 			return false;
 		}
-		$sql = "SELECT DISTINCT designer_id FROM $this->_name WHERE user_id=$userId AND 
-status=1 GROUP BY designer_id";
+		$sql = "SELECT DISTINCT designer_id FROM $this->_name WHERE user_id=$userId AND status=1 GROUP BY designer_id";
 		$ret = Yii::$app->db->createCommand($sql)->queryAll();
 
 		//$ret = $this->findBySql("SELECT DISTINCT designer_id FROM {$this->_name} WHERE user_id=$userId AND status=1 GROUP BY designer_id");

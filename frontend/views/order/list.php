@@ -58,7 +58,24 @@ if (!$session->isActive) {
                 </ul>
             </section>
             <div class="down_right_zd"></div>
-
+			<div class="help_bot_zd" style="display: none; opacity: 0.5;"></div>
+			<div class="help_bot_btn">
+				<span class="iphone_btn" style="display: none; top: 0px;">
+					<a href="tel:4000-600-636">
+					<i class="iconfont icon-kefu"></i>
+					</a>
+				</span>
+				<span class="bot_btn" style="display: none; top: 0px;">
+					<a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
+					<i class="iconfont icon-bot"></i>
+					</a>
+				</span>
+				<span class="help_btn">
+					<a>
+					<i class="iconfont icon-bangzhu"></i>
+					</a>
+				</span>
+			</div>
             <section id="user_box" class="custom">
                 <div class="user_top">
                     <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
@@ -396,7 +413,13 @@ HTML;
                     </li>
                     <li class="xuqiu_box">
                     </li>
-                    <li></li>
+                    <li>
+						<div class="collect">
+                            <div class="loading_box">
+                                <img src="img/loading.gif"  />
+                            </div>
+						</div>
+					</li>
                 </ul>
 
             </section>
@@ -423,8 +446,9 @@ HTML;
                                 return false;
                             }
                             data = eval('(' + decodeURI(data) + ')');
-                            var htmlaa = '';
+							
                             for (var i = 0; i < data.length; i++) {
+                            	var htmlaa = '';
                                 var gett = data[i].tag;
                                 if (gett.indexOf(",") < 0) {
                                     htmlaa = '<span>' + data[i].tag + '</span>';
@@ -451,7 +475,8 @@ HTML;
                                         + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
                                         + '</div>'
                                         + '</div>'
-                                $(".collect").append(html);
+                            	$(".collect").append(html);
+								
                                 index++;
                             }
                             $(".loading_box").hide();

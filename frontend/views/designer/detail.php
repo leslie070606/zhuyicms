@@ -51,7 +51,9 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
 
             <section class="page_banner">
-                <img class="banner_img here_img" src="<?= $data['background'] ?>" />
+		    <div class="banner_zd" style=" position:absolute; width
+100%; height:100%;top:0;left:0; z-index:0; background:#000000; opacity:0.1;"></div>           
+			 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
                 <div class="banner_mesg">
                     <div class="banner_name"><?= $data['name'] ?></div>
                     <div class="banner_bq"><span><?= $data['tag'] ?></span></div>
@@ -208,7 +210,8 @@ HTML;
                     <div class="page_bottom">
                         <span class="bota" id="check"><a>查看费用</a></span>
                         <span class="bota sc_bot"><a>收藏设计师</a></span>
-                        <span class="botb"><a>联络客服</a></span>
+                        <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
+联络客服</a></span>
                     </div>
 
 
@@ -221,7 +224,7 @@ HTML;
                         <div>
 
                             <span class="charges_left charges_title">全包费用</span>
-                            <span class="charges_right red">￥<?php echo $chargeWork ?> + / ㎡</span>
+                            <span class="charges_right red">￥<?php echo $chargeWork ?>+ /㎡</span>
 
                         </div>
 <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
@@ -233,8 +236,9 @@ HTML;
                         <div>
 
                             <span class="charges_left">设计费：</span>
-                            <span class="charges_right red">￥ <?php echo $charge?>+/m²</span>
+                            <span class="charges_right red">￥ <?php echo $charge?>+ /m²</span>
                         </div>
+						<div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
                         </div>
                 </div>
         </div>

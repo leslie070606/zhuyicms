@@ -65,16 +65,21 @@ $(function(){
 		}
 	});
 	//上一步点击事件
+	var grttt=true;
 	touch.on(".bot_btn_box .prev_btn","tap",function(){
 		var index=$(".demand_big>.active").index()-1;
-		if(nuber<index+1){
-			nuber=index+1;
-			
+		if(nuber<=index+1&&$(".bot_btn_box").hasClass("true_btn")){
+			grttt=true;
 		}
-		if($(".bot_btn_box").hasClass("true_btn")){
-				nuber+=1;
-			}
+		if(nuber<=index){
+			nuber=index+1;
+		}
 		
+		if($(".bot_btn_box").hasClass("true_btn")&&grttt){
+				nuber+=1;
+				grttt=false;
+			}
+	
 		$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
 		$(".bot_btn_box").addClass("true_btn");
 		if(index==0){

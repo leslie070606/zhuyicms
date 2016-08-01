@@ -12,7 +12,7 @@ if (!$session->isActive) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>工装设计</title>
+        <title>公装设计</title>
         <link rel="stylesheet" href="css/gloab.css" />
         <link rel="stylesheet" href="css/index.css" />
         <link rel="stylesheet" href="css/video-js.min.css" />
@@ -134,7 +134,7 @@ if (!$session->isActive) {
 
                 <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06&scene=1&srcid=0719nZGFjUf0jqEav6uGUFTF#rd">关于住艺</a></span>
                 <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
-                <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000488&idx=2&sn=a74c70e75e22df2ada22991f71ea7db5&scene=1&srcid=0719WSPBkdkd80QnSiKBzKgl#rd">住艺招聘</a></span>
+                <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=2247484893&idx=3&sn=61ad8cdec4d8fca83cc640324baf0b3a&scene=1&srcid=0714eN73BsxsGBnKEyQTPQFc&from=singlemessage&isappinstalled=0#wechat_redirect">住艺招聘</a></span>
                 <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>
             </section><!--nav_bot end-->
 
