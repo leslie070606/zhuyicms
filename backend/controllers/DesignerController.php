@@ -330,16 +330,50 @@ class DesignerController extends controller {
 //            "uploadSuccessPath" => $uploadSuccessPath,
 //        ]);
     }
-    
-    public function actionHeadimg(){
-        
-        
-        
-        
-        return $this->render('headimg');
-        
-        
-        
+
+    public function actionHeadimg() {
+
+        $uploadSuccessPath = "";
+        $debasicModel = new \backend\models\DesignerBasic();
+        if (Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+            $designerId = $post['DesignerBasic']['id'];
+            // echo $designerId;exit;
+            $upFile = UploadedFile::getInstance($debasicModel, "head_imgid");
+            //文件上传存放的目录
+            $dir = Yii::getAlias('@frontend') . "/web/uploads/" . date("Ymd");
+
+            if (!is_dir($dir)) {
+                @mkdir($dir, 0777, true);
+            }
+            if ($upFile) {
+                $fileName = date("HiiHsHis") . $upFile->baseName . "." . $upFile->extension;
+                $dir = $dir . "/" . $fileName;
+                $upFile->saveAs($dir);
+
+                //操作zy_images表
+                $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+                $imageModel = new \common\models\ZyImages();
+                $imageModel->url = $uploadSuccessPath;
+
+                if ($imageModel->save()) {
+                    $imageId = $imageModel->attributes['image_id'];
+                    $ret = $debasicModel::findOne($designerId);
+                    if (empty($ret)) {
+                        return false;
+                    }
+                    $ret->head_imgid = $imageId;
+                    if($ret->save()){
+                        Yii::$app->getSession()->setFlash('success', '保存成功');
+                        Yii::$app->getSession()->setFlash('imgurl', $uploadSuccessPath);
+                    }
+                } else {
+                    return false;
+                };
+            }
+        }
+
+        return $this->render('headimg', ['model' => $debasicModel]);
     }
 
 }

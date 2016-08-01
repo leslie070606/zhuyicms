@@ -8,7 +8,7 @@ use yii\helpers\Html;
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">设计师头像管理</h3>
+                <h3 class="box-title">设计师背景图</h3>
             </div>
             <?= Html::beginForm('', 'post', ['id' => 'form-head','enctype' =>'multipart/form-data']); ?>
             <div class="box-body">
@@ -19,9 +19,9 @@ use yii\helpers\Html;
                 </div>
                 
                 <div class="form-group">
-                    <label for="image_id">头像</label>
-                    <?= Html::activeFileInput($model, 'image_id', ['class' => '', 'id' => 'image_id']) ?>
-                    <?= Html::error($model, 'image_id', ['class' => 'error']); ?>
+                    <label for="image_id">背景图</label>
+                    <?= Html::activeFileInput($model, 'head_imgid', ['class' => '', 'id' => 'head_imgid']) ?>
+                    <?= Html::error($model, 'head_imgid', ['class' => 'error']); ?>
                 </div>
                 
             </div>
@@ -33,6 +33,13 @@ use yii\helpers\Html;
             <?= Html::endForm(); ?>
         </div>
     </div>
+    <?php
+     if(Yii::$app->getSession()->hasFlash('success')){
+  
+           // echo Yii::$app->getSession()->getFlash('success');   
+  
+     }
+    ?>
 </div> 
-
+<img src="<?= Yii::$app->params['frontDomain'].Yii::$app->getSession()->getFlash('imgurl') ?>" />
 
