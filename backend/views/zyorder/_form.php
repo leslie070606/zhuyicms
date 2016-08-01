@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'designer_id')->textInput() ?>
 
-    <?= $form->field($model, 'status')->dropDownList([1 => '待用户确认时间',2 => '待见面',3 => '预约已取消',4 => '不见面',5 => '待确认见面完成',6 => '已见面',7 => '已见面未深度合作', 8 => '已深度合作未上传合同']) ?>
+    <?= $form->field($model, 'status')->dropDownList([1 => '待用户确认时间',2 => '待见面',3 => '预约已取消',5 => '待确认见面完成',6 => '已见面',7 => '已见面未深度合作', 8 => '已深度合作未上传合同']) ?>
 
     <?= $form->field($model, 'appointment_location')->textInput(['maxlength' => true]) ?>
 
