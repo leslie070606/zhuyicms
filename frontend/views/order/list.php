@@ -392,7 +392,13 @@ HTML;
                     </li>
                     <li class="xuqiu_box">
                     </li>
-                    <li></li>
+                    <li>
+						<div class="collect">
+                            <div class="loading_box">
+                                <img src="img/loading.gif"  />
+                            </div>
+						</div>
+					</li>
                 </ul>
 
             </section>
@@ -419,8 +425,9 @@ HTML;
                                 return false;
                             }
                             data = eval('(' + decodeURI(data) + ')');
-                            var htmlaa = '';
+							
                             for (var i = 0; i < data.length; i++) {
+                            	var htmlaa = '';
                                 var gett = data[i].tag;
                                 if (gett.indexOf(",") < 0) {
                                     htmlaa = '<span>' + data[i].tag + '</span>';
@@ -447,7 +454,8 @@ HTML;
                                         + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
                                         + '</div>'
                                         + '</div>'
-                                $(".collect").append(html);
+                            	$(".collect").append(html);
+								
                                 index++;
                             }
                             $(".loading_box").hide();
