@@ -228,20 +228,14 @@ HTML;
                         <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
 
                         <div>
-                            <span class="charges_left charges_title chargesaas">设计</span>
+                            <span class="charges_left charges_title chargesaas">专业设计</span>
                         </div>
                         <div>
 
                             <span class="charges_left">设计费：</span>
                             <span class="charges_right red">￥ <?php echo $charge?>+/m²</span>
                         </div>
-                        
-
-                            <span class="charges_left">小于125㎡</span>
-                            <span class="charges_right red"><?php echo $charge?></span>
                         </div>
-                      
-
                 </div>
         </div>
         <div class="pro_img_box" style="display: none;">

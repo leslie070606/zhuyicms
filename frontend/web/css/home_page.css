@@ -36,7 +36,7 @@ body {  padding-bottom: 1.88rem;}
 .post_title span { width: 2.5rem; top: 0rem; z-index: 9999; position: absolute; height: .66rem; font-size: .32rem; line-height: .66rem; left: 50%; margin-left: -1.25rem;}
 .post_title span a { color: #FFFFFF; font-weight: bold; display: block; position: absolute; width: 100%; z-index: 99;}
 .topb { width: 100%; float: left; overflow: hidden;}
-.topb>span { float: left; width: 100%; font-size: .24rem;}
+.topb>span { float: left; margin-right:.3rem; color:#9f9fa0; font-size: .24rem;}
 .topb>div>Span { margin-right: .4rem; float: left; line-height: .36rem;}
 .page_bottom .bota {width: 25%;}
 .topb_box { margin-top:.1rem ; color: #9F9FA0;float: left; width: 100%;}
@@ -47,8 +47,8 @@ body {  padding-bottom: 1.88rem;}
 .info_here .cccc { color:#9F9FA0; font-size: .24rem;}
 .info_here .zuop { margin-right: .4rem;}
 .Basic_Info_box { clear: both;float: left;width: 100%; position: relative; top: .4rem;}
-.info_here_left { font-size: .24rem;  float: left; width: 26%; text-indent: .3rem;}
-.info_here_right { font-size: .2rem; float: right; width: 74%;}
+.info_here_left { font-size: .24rem;  float: left; width: 30%; text-indent: .3rem;}
+.info_here_right { font-size: .2rem; float: right; width: 70%;}
 .Basic_Info_box .red { color: #ff4f38;}
 .addition { position: relative; padding-left: .3rem;}
 .standard { margin-right: .4rem; position: relative; padding-left: .3rem;}
