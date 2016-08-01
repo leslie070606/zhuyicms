@@ -51,6 +51,23 @@ class DesignerBasic extends ActiveRecord{
 		return $rows->url;
 	}
 
+	public function getHeadBackground($did){
+		if(!isset($did)){
+			return null;
+		}
+		$rows = $this->findOne($did);
+		if(empty($rows)){
+			return null;
+		}
+		$imgId = $rows->head_imgid;
+		$rows = \frontend\models\Images::findOne($imgId);		
+		if(empty($rows)){
+			return null;
+		}
+		return $rows->url;
+
+	}
+
 	public function getBackground($did){
 		if(!isset($did) || empty($did)){
 			return NULL;

@@ -134,7 +134,8 @@ class DesignerController extends Controller {
 		$tmp 			= $dbModel->getHeadPortrait($designerId);
 		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
 
-		$tmp 			= $dbModel->getBackground($designerId);
+		$tmp 			= $dbModel->getHeadBackground($designerId);
+		//$tmp 			= $dbModel->getBackground($designerId);
 		$background		= isset($tmp)? $tmp : "/img/home_page/prob.jpg";
 		//作品...
 		$artModel		= new \frontend\models\Artsets();
