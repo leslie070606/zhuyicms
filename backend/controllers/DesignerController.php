@@ -330,5 +330,13 @@ class DesignerController extends controller {
 //            "uploadSuccessPath" => $uploadSuccessPath,
 //        ]);
     }
+    
+    public function actionHeadimg(){
+        
+        return $this->render('headimg');
+        
+        
+        
+    }
 
 }
