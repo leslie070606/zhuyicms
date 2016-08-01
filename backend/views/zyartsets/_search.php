@@ -19,6 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'designer_id') ?>
 
+    <?= $form->field($model, 'type') ?>
+
     <?= $form->field($model, 'image_ids') ?>
 
     <?= $form->field($model, 'video_ids') ?>

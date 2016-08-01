@@ -27,6 +27,7 @@ use yii\helpers\Url;
     ?>
 
     <?= $form->field($model, 'designer_id')->textInput() ?>
+    <?= $form->field($model, 'type')->dropDownList([0 => '图片',1 => '视频']) ?>
     <?php
     // 非ActiveForm的表单  图片上传
     echo '<label class="control-label">图片</label>';
