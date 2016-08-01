@@ -55,6 +55,7 @@ class ZyArtsets extends \yii\db\ActiveRecord
         return [
             'art_id' => 'ID主键',
             'designer_id' => '设计师ID',
+			'type'		=> '作品类型',
             'image_ids' => '作品相关图片',
             'video_ids' => '作品相关视频',
             'topic' => '作品的名称',
