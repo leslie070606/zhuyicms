@@ -315,9 +315,9 @@ $(function(){
                     html += '<li><img src="' + data[i] + '"  /></li>';
                 }
                 $(".bxslider").html(html);
-				$(".bxslider li:last img").onload=function(){
-                $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
-					};
+				setTimeout(function(){
+                $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});},100);
+				
 				
             }
         });
