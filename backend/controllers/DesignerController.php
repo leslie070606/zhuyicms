@@ -333,6 +333,9 @@ class DesignerController extends controller {
     
     public function actionHeadimg(){
         
+        
+        
+        
         return $this->render('headimg');
         
         
