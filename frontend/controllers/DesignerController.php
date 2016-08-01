@@ -144,6 +144,7 @@ class DesignerController extends Controller {
 		
 		//基本信息服务范围.
 		$serviceContent = $dWorkModel->getServiceContent($designerId);
+		$serviceContent = explode(',',$serviceContent);
 		$yingzhuangArr = array(1,2,3,4);
 		$gongzhuangArr = array(5,6,7,8);
 		$ruanzhuangArr = array(9,10,11);
