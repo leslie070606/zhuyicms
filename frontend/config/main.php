@@ -29,7 +29,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'session' => array(
-            'timeout' => 10,
+            'timeout' => 1000000000,
         ),
     /*
       'urlManager' => [
