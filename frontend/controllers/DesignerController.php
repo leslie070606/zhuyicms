@@ -319,10 +319,10 @@ class DesignerController extends Controller {
 
             $imageModel = new \frontend\models\Images();
             $ret = $imageModel->findOne($imageId);
-            
+
             //头图
             $headimgmodel = $imageModel->findOne($headimgid);
-            
+
             if (empty($ret)) {
                 //无头像信息,后期设置个默认头像
                 //continue;
@@ -332,12 +332,15 @@ class DesignerController extends Controller {
             }
             $headPortrait = isset($headPortrait) && !empty($headPortrait) ?
                     $headPortrait : '/img/home_page/banner_head.jpg';
-            
+
             //读取头图
             //$background = \frontend\models\DesignerBasic::getBackground($designerId);
-            
-            $headimg = $headimgmodel->url?$headimgmodel->url:'/img/home_page/designer_headimg.jpg';
-            
+            if (empty($headimgmodel)) {
+                $headimg = 'img/home_page/designer_headimg.jpg';
+            } else {
+                $headimg = $headimgmodel->url;
+            }
+
 //            if (!isset($background)) {
 //                $background = "/img/home_page/prob.jpg";
 //            }
