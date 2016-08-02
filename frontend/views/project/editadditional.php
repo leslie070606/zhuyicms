@@ -124,11 +124,12 @@ if (!$session->isActive) {
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $initialPreview,
-                                    'overwriteInitial' => false,
+                                    'overwriteInitial' => true,
                                     'browseLabel' => '选择图片',
                                     'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
-                                    'maxFileCount' => 10, //允许上传最多的图片5张  
-                                    'maxFileSize' => 2000, //限制图片最大200kB  
+                                    'dropZoneTitle'=>'点击上传文件...',
+                                    'maxFileCount' => 8, //允许上传最多的图片5张  
+                                    'maxFileSize' => 10000, //限制图片最大200kB  
                                     'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
                                     'uploadExtraData' => ['project_id' => $model->project_id],
                                     // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
