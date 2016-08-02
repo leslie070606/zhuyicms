@@ -51,8 +51,7 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
 
             <section class="page_banner">
-		    <div class="banner_zd" style=" position:absolute; width
-100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
+		    <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
 			 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
                 <div class="banner_mesg">
                     <div class="banner_name"><?= $data['name'] ?></div>
