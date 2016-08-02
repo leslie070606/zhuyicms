@@ -128,7 +128,7 @@ if (!$session->isActive) {
                                     'browseLabel' => '选择图片',
                                     'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
                                     'dropZoneTitle'=>'点击上传文件...',
-                                    'maxFileCount' => 8, //允许上传最多的图片5张  
+                                    'maxFileCount' => 12, //允许上传最多的图片5张  
                                     'maxFileSize' => 10000, //限制图片最大200kB  
                                     'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
                                     'uploadExtraData' => ['project_id' => $model->project_id],
