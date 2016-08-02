@@ -311,6 +311,7 @@ class DesignerController extends Controller {
             $imageId = $v['image_id'];
             $name = $v['name'];
             $tag = $v['tag'];
+            $headimgid = $v['head_imgid	'];
 
             if (empty($tag)) {
                 $tag = "设计达人,艺术家";
@@ -318,6 +319,10 @@ class DesignerController extends Controller {
 
             $imageModel = new \frontend\models\Images();
             $ret = $imageModel->findOne($imageId);
+            
+            //头图
+            $headimgmodel = $imageModel->findOne($headimgid);
+            
             if (empty($ret)) {
                 //无头像信息,后期设置个默认头像
                 //continue;
@@ -327,11 +332,15 @@ class DesignerController extends Controller {
             }
             $headPortrait = isset($headPortrait) && !empty($headPortrait) ?
                     $headPortrait : '/img/home_page/banner_head.jpg';
-
-            $background = \frontend\models\DesignerBasic::getBackground($designerId);
-            if (!isset($background)) {
-                $background = "/img/home_page/prob.jpg";
-            }
+            
+            //读取头图
+            //$background = \frontend\models\DesignerBasic::getBackground($designerId);
+            
+            $headimg = $headimgmodel->url?$headimgmodel->url:'/img/home_page/designer_headimg.jpg';
+            
+//            if (!isset($background)) {
+//                $background = "/img/home_page/prob.jpg";
+//            }
 
             $dWorkModel = new \frontend\models\DesignerWork();
             $city = $dWorkModel->getCity($designerId);
@@ -340,7 +349,7 @@ class DesignerController extends Controller {
                 'name' => $name,
                 'tag' => $tag,
                 'head_portrait' => $headPortrait,
-                'background' => $background,
+                'background' => $headimg,
                 'city' => $city
             );
             $data[] = $designerRet;
