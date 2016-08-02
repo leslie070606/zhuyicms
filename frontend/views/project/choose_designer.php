@@ -93,7 +93,7 @@ if (!$session->isActive) {
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                
+                                <a href="<?php echo Url::toRoute(['/designer/detail','params'=>$value['did']]); ?>">
                                 <img src="<?php
                                 $db = new frontend\models\DesignerBasic();
                                 if ($db->getHeadPortrait($value['did'])) {
@@ -102,6 +102,7 @@ if (!$session->isActive) {
                                     echo Yii::$app->params['frontDomain'] . '/img/home_page/banner_head.jpg';
                                 }
                                 ?>" />
+                                </a>
                             </div>
 
                             <div class="bottom_name">
