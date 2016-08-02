@@ -2,9 +2,13 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use kartik\file\FileInput;
 
-$project_tags_arr = explode('$', $model->project_tags);
-
+if (isset($model->project_tags)) {
+    $project_tags_arr = explode('$', $model->project_tags);
+}else{
+    $project_tags_arr = array();
+}
 $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
@@ -40,11 +44,11 @@ if (!$session->isActive) {
                     <li>   <?php if ($session->get('user_id')) { ?>
                             <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
-                        <?php } else { ?>
+<?php } else { ?>
 
                             <a href = "<?php echo Url::toRoute('/user/login'); ?>">立即登录</a>
 
-                        <?php }; ?>
+<?php }; ?>
 
                     </li>
                 </ul>
@@ -92,7 +96,7 @@ if (!$session->isActive) {
                         <span class="here_meng"><?= $model->designer_level ?></span>
                     </div>
                     <span class="fill_more">填写更多需求清单</span>
-                    <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+<?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
 
                     <input class="dema_ipt" type="text"value="<?= $model->compound ?>" name="compound" placeholder="请填写居住的小区名称" />
                     <div class=" submit_here">
@@ -101,7 +105,47 @@ if (!$session->isActive) {
                         <div class="here_img_box">
                             <input type="hidden" value="" name='home' class="home" />
                             <input type="hidden" value="1,2" name='homeImgId' class="imgID" />
+                            <?php
+                            echo FileInput::widget([
+                                'model' => $model,
+                                'attribute' => 'image_ids[]',
+                                //           'options' => ['multiple' => true],
+                                'name' => 'ImgSelect',
+                                'language' => 'zh-CN',
+                                'options' => ['multiple' => true, 'accept' => 'image/*'],
+                                'pluginOptions' => [
 
+                                    'initialPreview' => $imgurl,
+                                    // 'initialPreviewConfig' => $initialPreviewConfig,  
+                                    'allowedPreviewTypes' => ['image'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png'],
+                                    'previewFileType' => 'image',
+                                    'initialPreviewAsData' => true, // 是否展示预览图
+                                    'initialPreviewConfig' => $initialPreview,
+                                    'overwriteInitial' => false,
+                                    'browseLabel' => '选择图片',
+                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
+                                    'maxFileCount' => 10, //允许上传最多的图片5张  
+                                    'maxFileSize' => 2000, //限制图片最大200kB  
+                                    'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
+                                    'uploadExtraData' => ['art_id' => $model->art_id],
+                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
+                                    'showUpload' => FALSE,
+                                    // 展示图片区域是否可点击选择多文件
+                                    //'browseOnZoneClick' => true,
+                                    'uploadAsync' => TRUE, //配置异步上传还是同步上传  
+                                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
+                                    'fileActionSettings' => [
+                                        // 设置具体图片的查看属性为false,默认为true
+                                        'showZoom' => true,
+                                        // 设置具体图片的上传属性为true,默认为true
+                                        'showUpload' => true,
+                                        // 设置具体图片的移除属性为true,默认为true
+                                        'showRemove' => true,
+                                    ],
+                                ],
+                            ]);
+                            ?>
                             <ul id="ula">
                                 <li><img src="img/home_page/1.jpg" imageId="1"/><i class="iconfont icon-shanchu1"></i></li>
                                 <li><img src="img/home_page/1.jpg" imageId="2"/><i class="iconfont icon-shanchu1"></i></li>
@@ -198,7 +242,7 @@ if (!$session->isActive) {
                     <button class="chose_btn zhihui" type="submit"  style="border: none;">
                         保存
                     </button>
-                    <?= Html::endForm(); ?>
+<?= Html::endForm(); ?>
 
                 </div>
 
@@ -209,5 +253,5 @@ if (!$session->isActive) {
 </html>
 <script>
 
-   
+
 </script>

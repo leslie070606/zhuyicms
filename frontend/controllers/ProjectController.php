@@ -341,8 +341,8 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionEditadditional() {
-        $tokenModel = new \app\components\Token();
-        $jsarr = $tokenModel->getSignature();
+       // $tokenModel = new \app\components\Token();
+        //$jsarr = $tokenModel->getSignature();
 
         if ($post = Yii::$app->request->post()) {
 
@@ -354,9 +354,9 @@ class ProjectController extends \common\util\BaseController {
         $projectModel = new ZyProject();
         $project_id = Yii::$app->request->get('project_id');
         $model = $projectModel::findOne(['project_id' => $project_id]);
-        $model = $projectModel::findOne(56);
+        //$model = $projectModel::findOne(56);
 
-        return $this->render('editadditional', ['model' => $model, 'jsarr' => $jsarr]);
+        return $this->render('editadditional', ['model' => $model]);
     }
 
     public function createProNum() {
