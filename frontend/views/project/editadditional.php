@@ -124,7 +124,7 @@ if (!$session->isActive) {
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $initialPreview,
-                                    'overwriteInitial' => true,
+                                    'overwriteInitial' => false,
                                     'browseLabel' => '选择图片',
                                     'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
                                     'dropZoneTitle'=>'点击上传文件...',
