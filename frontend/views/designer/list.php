@@ -120,6 +120,7 @@ HTML;
                 }
                 ?>
             </div>
+                        <div id="jiazai_ing" style=" float: left; display: none; width: 100%;color: #9F9FA0; text-align: center; margin: .4rem 0;">正在努力加载中...</div>
         </div>
     </body>
 </html>
@@ -161,8 +162,6 @@ HTML;
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id,
             data: "",
             success: function (data) {
-                console.log("js output...........");
-                console.log(data);
                 window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id;
             }
         })
@@ -177,20 +176,24 @@ HTML;
         var get = heighta - height - scrrol;
 
         console.log(get);
-        if (get < 300 && truefalse) {
+        if (get <= 0 && truefalse) {
             truefalse = false;
             var length = $(".designer_box .pro_here").length;
-
+            $("#jiazai_ing").show();
             $.ajax({
                 type: "get",
                 data: "",
                 url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list'; ?>" + "&&params=" + length,
                 async: true,
                 success: function (data) {
+                     if(data==""||data==null){
+                    $("#jiazai_ing").html("抱歉,没有更多的设计师了~");
+                           truefalse=false;
+                }
                     data = eval('(' + decodeURI(data) + ')');
-                    console.log(data);
                     jiazai(data);
                     truefalse = true;
+                    $("#jiazai_ing").hide();
                 }
             });
 
@@ -200,9 +203,9 @@ HTML;
 
     var yyyy = 0
     function jiazai(data) {
-        //var data=[{name:"www",biaoqian:["牛逼1","厉害1"]},{name:"www2",biaoqian:["牛逼2","厉害2"]},{name:"www3",biaoqian:["牛逼3","厉害3"]}]
 
         var length = data.length;
+       
         for (var i = 0; i < data.length; i++) {
             var vtag = data[i].tag.split(",");
             var htmlabb = '';
