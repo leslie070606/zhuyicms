@@ -206,15 +206,19 @@ HTML;
                         </div>
 
                     </section><!--Basic_Info end-->
-                    <div class="page_bottom">
+                    
+
+
+                   
+                </div>
+                
+                <div class="page_bottom">
                         <span class="bota" id="check"><a>查看费用</a></span>
                         <span class="bota sc_bot"><a>收藏设计师</a></span>
                         <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
 联络客服</a></span>
                     </div>
-
-
-                    <div class="charges_zd"></div>
+                 <div class="charges_zd"></div>
                     <div class="check_charges">
 					<?php
 						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
@@ -239,7 +243,6 @@ HTML;
                         </div>
 						<div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
                         </div>
-                </div>
         </div>
         <div class="pro_img_box" style="display: none;">
             <div class="pro_img_zd"></div>
