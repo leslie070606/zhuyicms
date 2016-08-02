@@ -311,7 +311,7 @@ class DesignerController extends Controller {
             $imageId = $v['image_id'];
             $name = $v['name'];
             $tag = $v['tag'];
-            $headimgid = $v['head_imgid	'];
+            $headimgid = $v['head_imgid'];
 
             if (empty($tag)) {
                 $tag = "设计达人,艺术家";
