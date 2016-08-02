@@ -68,7 +68,7 @@ body {
 body>div:nth-child(1),body>section:nth-child(1) {
 	 max-width: 500px; position: absolute; left: 0; width: 100%; right: 0; margin: 0 auto;
 }
-.pro_here_bcimg {position: absolute; font-size: .82rem !important; width: 100%; height: 100%; left: 0; top: -.01rem; z-index: 99;}
+.pro_here_bcimg {position: absolute; font-size: .82rem !important; width: 100%; height: 100%; left: 0; top: 0; z-index: 99;}
 .Blank_Page { text-align: center !important; height: 5rem; display: block; position: relative; background: #FFFFFF; color: #9F9FA0;}
 .red { color: #FF4E38;}
 .Blank_Page>span { line-height: .4rem; width: 100%; float: left; margin-top: 2rem;}
@@ -386,7 +386,7 @@ position: absolute;
    /* box-shadow:1px 1px 12px #c9c9ca;*/
 }
 /*.vjs-poster{  background-size: 100% !important;}*/
-.pro_here {width: 100%; float: left; height: 100%; overflow: hidden; position: relative; top:-.01rem;}
+.pro_here {width: 100%; float: left; height: 100%; position: relative; top:-.01rem;}
 .pro_here video { width: 100%; height: 100%; float: left;}
 .video-js .vjs-big-play-button {
 	    font-size: 2em !important;
@@ -400,3 +400,15 @@ position: absolute;
 .hunt_title { position: absolute; width: 100%; height: .88rem; line-height: .88rem; text-align: center; color: #FFFFFF; font-size: .36rem; left: 0; top: 0;}
 .icon-shanchu1 { width: .32rem; height: .32rem; font-size: .20rem !important; position: absolute; color:#FFFFFF !important; background: #000000; opacity: .5;}
 .icon-shanchu1::before { position: absolute; left: .06rem; top: .06rem;}
+ /*图片上传样式*/
+ .file-preview-frame { width: 31%; margin: 0 1.4%; margin-bottom: 2%;}
+ .file-drop-zone { margin: 0; padding: 0;border: 0;  border-radius: 0; }
+ .container { padding: 0;}
+ .close { display: none;}
+ .file-thumbnail-footer { position:static; height: 0; overflow: hidden;}
+.kv-file-remove { top:7px; right: 7px; position: absolute;}
+.kv-fileinput-caption { display: none;}
+.file-caption { display: none !important;}
+.input-group-btn,.btn-file { width: 100%;}
+.btn-primary { border-radius: 0; margin-bottom: .2rem;}
+.fileinput-remove-button { display: none;}

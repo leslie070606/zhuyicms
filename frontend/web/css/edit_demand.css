@@ -1,5 +1,5 @@
 .edit { font-size: .24rem;}
-.edit_box { width: 92% !important;}
+.edit_box { width: 92% !important; margin-left: 4%;}
 .edit_top { padding: .4rem 0; border-bottom: 1px solid #EEEFEF;}
 .edit_here { display: block;  margin-top: .4rem;}
 .edit_here .here_meng { float: right; color: #9F9FA0;}

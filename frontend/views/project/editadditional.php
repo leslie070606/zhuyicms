@@ -14,9 +14,9 @@ if (!$session->isActive) {
     $session->open();
 }
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
+
+
+ 
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>编辑需求</title>
@@ -26,8 +26,9 @@ if (!$session->isActive) {
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
         <script type="text/javascript" src="js/gloab.js" ></script>
-
-    </head>
+      
+    
+  
     <body>
         <div class="edit_box">
             <header class="header_top iconfont icon-logo">
@@ -105,10 +106,11 @@ if (!$session->isActive) {
                         <div class="here_img_box">
                             <input type="hidden" value="" name='home' class="home" />
                             <input type="hidden" value="1,2" name='homeImgId' class="imgID" />
+                             <ul id="ula">
                             <?php
                             echo FileInput::widget([
                                 'model' => $model,
-                                'attribute' => 'image_ids[]',
+                                'attribute' => 'home_img[]',
                                 //           'options' => ['multiple' => true],
                                 'name' => 'ImgSelect',
                                 'language' => 'zh-CN',
@@ -128,7 +130,7 @@ if (!$session->isActive) {
                                     'maxFileCount' => 10, //允许上传最多的图片5张  
                                     'maxFileSize' => 2000, //限制图片最大200kB  
                                     'uploadUrl' => Url::to(['/zyartsets/uploadimage']), //异步上传接口地址
-                                    'uploadExtraData' => ['art_id' => $model->art_id],
+                                    'uploadExtraData' => ['project_id' => $model->project_id],
                                     // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
                                     'showUpload' => FALSE,
                                     // 展示图片区域是否可点击选择多文件
@@ -137,21 +139,15 @@ if (!$session->isActive) {
                                     // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
                                     'fileActionSettings' => [
                                         // 设置具体图片的查看属性为false,默认为true
-                                        'showZoom' => true,
+                                        'showZoom' => FALSE,
                                         // 设置具体图片的上传属性为true,默认为true
                                         'showUpload' => true,
                                         // 设置具体图片的移除属性为true,默认为true
-                                        'showRemove' => true,
+                                        'showRemove' => TRUE,
                                     ],
                                 ],
                             ]);
                             ?>
-                            <ul id="ula">
-                                <li><img src="img/home_page/1.jpg" imageId="1"/><i class="iconfont icon-shanchu1"></i></li>
-                                <li><img src="img/home_page/1.jpg" imageId="2"/><i class="iconfont icon-shanchu1"></i></li>
-                                <li><img src="img/home_page/1.jpg" /><i class="iconfont icon-shanchu1"></i></li>
-                                <li><img src="img/home_page/1.jpg" /><i class="iconfont icon-shanchu1"></i></li>
-                                <li class="add_img iconfont icon-tianjia"></li>
                             </ul>
                         </div>
                     </div>
@@ -248,10 +244,6 @@ if (!$session->isActive) {
 
             </div>
 
-        </div>	
+        </div>
+    
     </body>
-</html>
-<script>
-
-
-</script>

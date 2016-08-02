@@ -45,7 +45,7 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
-        
+
 
         if ($prostr = Yii::$app->request->get('g')) {
             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -305,7 +305,7 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionUpdateadditional() {
-        
+
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
@@ -323,7 +323,7 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
-        
+
         $projectModel = new ZyProject();
 
 
@@ -341,9 +341,9 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionEditadditional() {
-       // $tokenModel = new \app\components\Token();
+        // $tokenModel = new \app\components\Token();
         //$jsarr = $tokenModel->getSignature();
-
+        $this->layout = "editadditional"; //设置使用的布局文件
         if ($post = Yii::$app->request->post()) {
 
             echo "<pre>";
@@ -355,8 +355,26 @@ class ProjectController extends \common\util\BaseController {
         $project_id = Yii::$app->request->get('project_id');
         $model = $projectModel::findOne(['project_id' => $project_id]);
         //$model = $projectModel::findOne(56);
+        $imgurl = '';
+        $initialPreview = '';
+        if ($model->home_img) {
+            $imgstr = $model->home_img;
+            $imgarr = explode(',', $imgstr);
+            $imgarr = array_filter($imgarr);
+            foreach ($imgarr as $imgid) {
+                //查询图片
+                $imgModel = new \common\models\ZyImages();
+                $img = $imgModel->findOne($imgid);
+                if ($img) {
+                    $imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
 
-        return $this->render('editadditional', ['model' => $model]);
+                    //设置删除
+                   // $initialPreview[] = array('url' => Url::toRoute('/zyartsets/imgdelete'), 'key' => $imgid . "$" . $id);
+                }
+            }
+        }
+
+        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview,]);
     }
 
     public function createProNum() {
