@@ -110,6 +110,8 @@ if (!$session->isActive) {
                                     $designerId = $d['designer']['designer_id'];
                                     $name = $d['designer']['name'];
                                     $headPortrait = $d['designer']['head_portrait'];
+									//头图
+									$headBackground = isset($d['designer']['head_background'])? $d['designer']['head_background'] : '/img/home_page/prob.jpg';
                                     $tagStr = $d['designer']['tag'];
                                     $tagArr = explode(',', $tagStr);
                                     $labelSpan = '';
@@ -170,8 +172,7 @@ if (!$session->isActive) {
 								  				</div>
 											</div>
 HTML;
-                                        //客服创建，订单类型字段为0，状态为待用户确认时间。
-                                    } elseif ($orderType == 0 &&
+                                    } elseif ($orderType == 1 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
                                         //$rows = \frontend\models\Order::findOne($orderId);
                                         //设计师的空闲时间，以,分隔
@@ -215,7 +216,8 @@ HTML;
 												</div>
 				  							</div>
 HTML;
-                                    } elseif ($orderType == 1 &&
+                                        //客服创建，订单类型字段为0，状态为待用户确认时间。
+                                    } elseif ($orderType == 0 &&
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
                                         //客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
                                         $dSpareArr = explode(',', $dSpareTime);
@@ -227,11 +229,9 @@ HTML;
 ';
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
-									<div class="zy_pp">
+										<div class="zy_pp" order_id = "$orderId">
 				  						<div class="pro_here iconfont">
-											<a href="home_page.html">
-												<img class="here_img" src="img/home_page/prob.jpg">
-											</a>
+												<img class="here_img" src="$headBackground">
 											<div class="here_zhe"></div>
 											<div class="here_botaa"></div>
 									
