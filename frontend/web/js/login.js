@@ -2,7 +2,7 @@ $(function(){
 	var ipta,btn,iptb=false;
 	var ico=true;
 	$("#phone").blur(function(){
-		var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+		var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
 		if(!myreg.test($("#phone").val())) 
 		{ 
 		    $("#worry").show();

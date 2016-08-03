@@ -29,7 +29,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'session' => array(
-            'timeout' => 10,
+            'timeout' => 1000000000,
         ),
     /*
       'urlManager' => [
@@ -39,6 +39,15 @@ return [
       ],
       ],
      */
+        'assetManager' => [
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'jsOptions' => [
+                        'position' => \yii\web\View::POS_HEAD,
+                    ]
+                ],
+            ],
+        ],
     ],
     'params' => $params,
 ];

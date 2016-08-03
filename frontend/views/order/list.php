@@ -79,7 +79,7 @@ if (!$session->isActive) {
             <section id="user_box" class="custom">
                 <div class="user_top">
                     <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
-                    <span class="head_name">张三</span>
+                    <span class="head_name">住艺君</span>
                     <span class="head_more">免费预约一次</span>
                 </div>
                 <div class="nac_boxa">
@@ -93,13 +93,13 @@ if (!$session->isActive) {
                             <?php
                             if (empty($data) || !is_array($data)) {
 
-                                $html = <<<HTML
+                                $html = '
 								<div class="Blank_Page">
 				  					<span>目前还没有订单产生<br/>
-				  					快 <a href="designer_list.html" class="red">提交需求</a>约见设计师吧
+				  					快 <a href="'.Url::toRoute('project/match_designer').'" class="red">提交需求</a>约见设计师吧
 				  					</span>
-				  				</div>
-HTML;
+				  				</div>';
+
                                 echo $html;
                             } else {
                                 foreach ($data as $d) {
@@ -533,14 +533,14 @@ HTML;
 
 //调用微信接口
 
-    wx.config({
-        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
-        timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
-        nonceStr: 'zhuyi', // 必填，生成签名的随机串
-        signature: "<?= $jsarr['signature'] ?>", // 必填，签名，见附录1
-        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-    });
+//    wx.config({
+//        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+//        appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
+//        timestamp: <?php // $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
+//        nonceStr: 'zhuyi', // 必填，生成签名的随机串
+//        signature: "<?PHP // $jsarr['signature'] ?>", // 必填，签名，见附录1
+//        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+//    });
     //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
     var images = {
         localId: [],

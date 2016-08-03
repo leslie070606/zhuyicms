@@ -6,6 +6,7 @@ use Yii;
 use common\models\ZyProject;
 use backend\models\DesignerWork;
 use yii\web\UploadedFile;
+use yii\helpers\Url;
 
 class ProjectController extends \common\util\BaseController {
 
@@ -45,7 +46,7 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
-        
+
 
         if ($prostr = Yii::$app->request->get('g')) {
             // \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -83,6 +84,7 @@ class ProjectController extends \common\util\BaseController {
     }
 
     //需求附加信息
+    //old代码 未启用
     public function actionAdditional() {
 
         //已添加的项目ID
@@ -201,11 +203,11 @@ class ProjectController extends \common\util\BaseController {
             $project = $model->findOne(['user_id' => $user_id]);
 
             //如果有需求就跳转到个人中心
-            if ($project) {
-                return $this->redirect(['order/list']);
-                // echo "个人中心!";
-                //exit;
-            }
+//            if ($project) {
+//                return $this->redirect(['order/list']);
+//                // echo "个人中心!";
+//                //exit;
+//            }
         } else {
             return $this->redirect(['user/login']);
         }
@@ -305,7 +307,7 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionUpdateadditional() {
-        
+
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
@@ -323,7 +325,7 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
-        
+
         $projectModel = new ZyProject();
 
 
@@ -341,22 +343,120 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionEditadditional() {
-        $tokenModel = new \app\components\Token();
-        $jsarr = $tokenModel->getSignature();
-
-        if ($post = Yii::$app->request->post()) {
-
-            echo "<pre>";
-            print_r($post);
-            exit;
-        }
-        //echo $this->createProNum();exit;
+        $this->layout = "editadditional"; //设置使用的布局文件
+//      echo Yii::$app->request->hostInfo;exit;
         $projectModel = new ZyProject();
         $project_id = Yii::$app->request->get('project_id');
-        $model = $projectModel::findOne(['project_id' => $project_id]);
-        $model = $projectModel::findOne(56);
+        // 提交数据
+        if ($post = Yii::$app->request->post()) {
+            
+            
+              echo "<pre>";
+            print_r($post);
+            exit;
+            
+            $modelpost = $projectModel->load($post);
+            $model = $projectModel::findOne(['project_id' => $project_id]);
+            $model->compound = $post['compound'] ? $post['compound'] : '';
+            $model->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
+            $model->description = $post['description'] ? $post['description'] : '';
 
-        return $this->render('editadditional', ['model' => $model, 'jsarr' => $jsarr]);
+
+            $upfile = UploadedFile::getInstances($modelpost, 'home_img');
+            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+            
+            
+            echo "<pre>";
+            print_r($upfile);
+            exit;
+            
+            $imgId = '';
+            //如果有图片
+            if (count($upfile) > 0) {
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+
+                foreach ($upfile as $imgobjct) {
+
+                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+
+                    $dirimg = $dir . "/" . $fileName;
+
+                    //保存图片
+                    if ($imgobjct->saveAs($dirimg)) {
+                        $imgModel = new \common\models\ZyImages();
+                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+
+                        $imgModel->url = $uploadSuccessPath;
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+                $model->image_ids = $imgId;
+            }
+
+
+
+            
+        }
+        //echo $this->createProNum();exit;
+
+        $model = $projectModel::findOne(['project_id' => $project_id]);
+        //$model = $projectModel::findOne(56);
+        $imgurl = '';
+        $initialPreview = '';
+        if ($model->home_img) {
+            $imgstr = $model->home_img;
+            $imgarr = explode(',', $imgstr);
+            $imgarr = array_filter($imgarr);
+            foreach ($imgarr as $imgid) {
+                //查询图片
+                $imgModel = new \common\models\ZyImages();
+                $img = $imgModel->findOne($imgid);
+                if ($img) {
+                    $imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
+
+                    //设置删除
+                    $initialPreview[] = array('url' => Url::toRoute('/project/homeimgdelete'), 'key' => $imgid . "$" . $project_id);
+                }
+            }
+        }
+
+        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview,]);
+    }
+
+    public function actionHomeimgdelete() {
+        if ($imgid = Yii::$app->request->post('key')) {
+            $imgModel = new \common\models\ZyImages();
+
+            $idarr = explode('$', $imgid);
+            //删除 图片表
+            $model = $imgModel->findOne($idarr[0]);
+            $model->delete();
+
+            // $artmodel = new ZyArtsets();
+            $proModel = new ZyProject();
+            $proModel = $proModel->findOne($idarr[1]);
+
+            if ($proModel->home_img) {
+                $imgarr = explode(',', $proModel->home_img);
+                for ($i = 0; $i < count($imgarr); $i++) {
+                    if ($imgarr[$i] == $idarr[0]) {
+                        unset($imgarr[$i]);
+                    }
+                }
+
+                $proModel->home_img = implode(",", $imgarr);
+            }
+            //$proModel->home_img = str_replace($idarr[0], '', $artmodel->home_img);
+
+            $proModel->save();
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['success' => true];
     }
 
     public function createProNum() {

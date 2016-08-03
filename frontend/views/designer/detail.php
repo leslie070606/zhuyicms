@@ -51,8 +51,7 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
 			<input type="hidden" id="user_id" value="<?php echo $data['user_id']?>" />
             <section class="page_banner">
-		    <div class="banner_zd" style=" position:absolute; width
-100%; height:100%;top:0;left:0; z-index:0; background:#000000; opacity:0.1;"></div>           
+		    <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
 			 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
                 <div class="banner_mesg">
                     <div class="banner_name"><?= $data['name'] ?></div>
@@ -207,15 +206,19 @@ HTML;
                         </div>
 
                     </section><!--Basic_Info end-->
-                    <div class="page_bottom">
+                    
+
+
+                   
+                </div>
+                
+                <div class="page_bottom">
                         <span class="bota" id="check"><a>查看费用</a></span>
                         <span class="bota sc_bot"><a>收藏设计师</a></span>
                         <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
 联络客服</a></span>
                     </div>
-
-
-                    <div class="charges_zd"></div>
+                 <div class="charges_zd"></div>
                     <div class="check_charges">
 					<?php
 						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
@@ -240,7 +243,6 @@ HTML;
                         </div>
 						<div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
                         </div>
-                </div>
         </div>
         <div class="pro_img_box" style="display: none;">
             <div class="pro_img_zd"></div>

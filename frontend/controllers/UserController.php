@@ -25,16 +25,17 @@ class UserController extends ZyuserController {
 
     //手机登录
     public function actionPhone() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
         //手机登录
         $phone = Yii::$app->request->post('phone');
         $phonestr = Yii::$app->request->post('phonestr');
         $code = Yii::$app->request->post('code');
 
         if ('16810649253' == $phonestr) {
-            $session = Yii::$app->session;
-            if (!$session->isActive) {
-                $session->open();
-            }
+
             $session->set('user_id', 26);
             return $this->redirect(['index/index']);
         }
@@ -45,10 +46,6 @@ class UserController extends ZyuserController {
                 $userModel = new User();
                 $user = $userModel->find()->where(['phone' => $phone])->all();
                 //初始化session
-                $session = Yii::$app->session;
-                if (!$session->isActive) {
-                    $session->open();
-                }
                 // echo $user[0]['user_id'];exit;
                 //如果不是第一次登录
                 if (count($user) > 0) {

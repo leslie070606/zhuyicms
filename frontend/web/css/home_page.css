@@ -1,6 +1,6 @@
 body {  padding-bottom: 1.88rem;}
 .page_banner { width: 100%; position: relative; z-index: 1; overflow: hidden; color: #FFFFFF;}
-.page_banner .banner_img { width: 100%;  float: left;}
+.page_banner .banner_img { width: 100%;  float: left; position: relative; z-index: 0;}
 .page_banner>div { position: absolute; width: 100%; text-align: center; z-index: 22;}
 .banner_head {width: 2.2rem; height: 2.2rem; background: #FFFFFF; left: 50%; margin-left: -1.1rem; float: left; text-align: center;  border-radius: 1.1rem; overflow: hidden; position: relative; bottom: 1rem; z-index: 9;}
 .pro_title .titl_span { z-index: 9;}
@@ -27,8 +27,8 @@ body {  padding-bottom: 1.88rem;}
  .bx-wrapper { height: 100%;}
 .Basic_Info { clear: both; margin-top: .8rem; padding-bottom: 2.4rem;   float: left; width: 100%;}
 .pro_img_box { position: fixed; z-index: 100010; top: 0; max-width: 500px; height: 100%; left: 0; bottom: 0;  right:0; margin:auto; }
-.pro_img_zd { position: absolute; width: 100%; height: 100%; top: 0; left: 0;z-index: 99998; background: #000000;}
-.page_bottom { position: fixed; max-width: 500px; margin: 0 auto; left: 0; right: 0; background: #FFFFFF; border-top: 1px solid #eeefef; z-index: 100000; font-size: .26rem; width: 100%; bottom: 0px; left: 0; height: .88rem; line-height: .88rem;}
+.pro_img_zd { position: absolute; width: 100%; height: 100%; top: 0; left: 0;z-index: 99988; background: #000000;}
+.page_bottom { position: fixed; max-width: 500px; margin: 0 auto; left: 0; right: 0; background: #FFFFFF; border-top: 1px solid #eeefef; z-index: 99990; font-size: .26rem; width: 100%; bottom: 0px; left: 0; height: .88rem; line-height: .88rem;}
 .page_bottom .botb a { color:#FFFFFF ;}
 .page_bottom .botb {width: 50%; background: #ff4e38;}
 .page_bottom .botb>span { font-size: .24rem;}
@@ -77,3 +77,4 @@ body {  padding-bottom: 1.88rem;}
 .pro_here { margin-top: 0;}
 .charges_huibbb { color: #9F9FA0 !important;}
 .bx-wrapper .bx-viewport { max-height: 60%;}
+page_box .bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item {    display: none !important;}

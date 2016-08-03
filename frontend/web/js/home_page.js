@@ -15,11 +15,14 @@ $(function(){
 	var gettt=0;
 	touch.on("#check","tap",function(ev){
 		if(gettt==0){
+                        $(".page_bottom").css("z-index",100000);
+                        $(".charges_zd").css("z-index",99998);
 			$(".charges_zd").show();
 			$(".check_charges").animate({bottom:0},300);
 			$(".charges_zd").animate({opacity:.4},300);
 			$("body,html").css("overflow","hidden");
 			gettt++;
+                        
 		}else{
 			
 			$(".check_charges").animate({bottom:'-8rem'},300);
@@ -28,6 +31,8 @@ $(function(){
 			});
 			$("body,html").css("overflow","auto");
 			gettt--;
+                        $(".page_bottom").css("z-index",99990);
+                        $(".charges_zd").css("z-index",99988);
 		}
 	});
 	touch.on(".charges_zd","tap",function(){

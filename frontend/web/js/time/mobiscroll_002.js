@@ -509,11 +509,39 @@
             el.bind('click', function (e) {
                 if (!tap) {
                     // If handler was not called on touchend, call it on click;
-                    var html = $("#get_id .dw-sel .dw-i").html();
-                    handler.call(this, e);
-                    var val = $("#appTime").val();
-                    $("#appTime").val(html + val);
+                   var url = $(".foin_zy .true_btn").attr("confirm_time");
+
+                        var reg = /\d+/g;
+                        var date = new Date;
+                        var year = date.getFullYear();
+                        var html = $("#get_id .dw-sel .dw-i").html().match(reg);
+                        handler.call(this, e);
+
+                        var val = $("#appTime").val();
+                        var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
+                        var datea = new Date(gettt);
+                        var time = datea.getTime();
+                        var order = $(".foin_zy").attr("order_id") + "," + time;
+                        // alert('123');
+
+                        $.ajax({
+                            type: "get",
+                            url: url + "&&params=" + order,
+                            async: true,
+                            success: function (data) {
+                                var htmlll = '<span class="jm_time">见面时间：' + html +" "+ val + '</span><span class="jm_money">见面地点：'+data+'</span>'
+                                $(".foin_zy .true_time ,.foin_zy .leave_word").remove();
+                                $(".foin_zy .right_type").html("待见面");
+                                $(".foin_zy .jm_time").before(htmlll);
+                            }
+                        });
+                     
+                        
                 }
+                         tap = true;
+                    setTimeout(function () {
+                        tap = false;
+                   		 }, 300);
             });
 
         };

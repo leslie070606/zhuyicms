@@ -34,7 +34,7 @@ $(function(){
 		};
 	});
 	
-	$(document).on("click",".box_sjs li",function(){
+	touch.on(".box_sjs li","tap",function(){
 		
 		var id=$(this).attr("id");
 		var last=parseInt(id.substr(-1));
@@ -48,7 +48,7 @@ $(function(){
                             $(".navv_tj").addClass("zhihui");
 			}
 	})
-		$(document).on("click",".rg_pp",function(ev){
+		touch.on(".rg_pp","tap",function(ev){
 			if($(this).find(".iconfont").hasClass("icon-xuanzhong")){
 				$(this).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
                                 if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
