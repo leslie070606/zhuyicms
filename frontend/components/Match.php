@@ -33,7 +33,7 @@ class Match {
                 //合理浮动 面积10%以内  预算50%以内
                 //计算分数
                 //面积计算
-                $mianjiscore = 0;
+                $mianjiscore = 1;
                 if ($ProArr['covered_area'] && $DesArr['accept_area']) {
                     $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
                 }
@@ -81,7 +81,7 @@ class Match {
             } else {
                 //已超出进入黄色部分生成数组 
                 //面积计算
-                $mianjiscore = 0;
+                $mianjiscore = 1;
                 if ($ProArr['covered_area'] && $DesArr['accept_area']) {
                     $mianjiscore = $ProArr['covered_area'] / $DesArr['accept_area'] > 1 ? 1 : (49 + $ProArr['covered_area'] / $DesArr['accept_area']) / 50;
                 }
