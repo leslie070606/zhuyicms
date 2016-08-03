@@ -42,15 +42,13 @@ class DesignerController extends Controller {
 
 	public function actionArts(){
 		$request = Yii::$app->request;
-		/*
 		if(!$request->isAjax){
 			return false;
-		}*/
+		}
 		$params = $request->get('params');
-		/*
 		if(!isset($params) || empty($params)){
 			return false;
-		}*/
+		}
 		$designerId = $params;
 
 		$artModel = new \frontend\models\Artsets();
@@ -108,6 +106,14 @@ class DesignerController extends Controller {
 	}
 
 	public function actionDetail(){
+		//把这个用户ID传给前台，前台根据用户ID来做判断，
+		//如果为空，需要跳转到登陆页面
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $userId = $session->get("user_id");
+
 		$request = Yii::$app->request;
 		/*
 		if(!$request->isAjax){
@@ -172,6 +178,7 @@ class DesignerController extends Controller {
 		//擅长风格
 		$style = $dWorkModel->getStyle($designerId);
         $data = array(
+			'user_id'			=> $userId,
 			'designer_id' 		=> $designerId,		//ID
             'name' 				=> $name, 			//姓名
             'tag' 				=> $tag, 			//标签
