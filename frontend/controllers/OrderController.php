@@ -106,9 +106,9 @@ class OrderController extends Controller {
 
 			if($hasProject == 0){
 				$toFrontend = -1;
-			}elseif($hasProject == 1 && $needSystem == 0){
+			}elseif($hasProject == 1 && $needSystemMatch == 0){
 				$toFrontend = -2;
-			}elseif($hasProject == 1 && $needSystem == 1){
+			}elseif($hasProject == 1 && $needSystemMatch == 1){
 				$toFrontend = -3;
 			}
             return $this->render("list", ['data' => -1, 'jsarr' => $jsarr]);
