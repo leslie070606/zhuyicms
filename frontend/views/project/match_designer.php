@@ -87,24 +87,15 @@ if (!$session->isActive) {
                 <div class="demand_here here_2">
                     <span class="dem_title">你的住宅类型是？</span>
                     <span>第<a class="red">2</a>题/7题</span>
-                    <div class="fx_box">
-                        <div class="fx_here">
-                            <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>平层公寓</span>
-                        </div>
-                        <div class="fx_here">
-                            <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>复式/Loft</span>
-                        </div>
-                        <div class="fx_here">
-                            <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>独栋/联排别墅</span>
-                        </div>
-                        <div class="fx_here">
-                            <img class="here_bc" src="img/home_page/1.jpg" />
-                            <span>胡同/乡居/弄堂</span>
-                        </div>
-                    </div>
+                   <div class="fx_box four_box">
+					
+					
+					<div class="fx_here">平层公寓</div>
+					<div class="fx_here">复式</div>
+					<div class="fx_here">别墅</div>
+				
+					
+				</div>
                     <input class="dema_ipt" type="text" placeholder="其他住宅（例如：旧仓库/厂房/房车/集装箱）" />
                 </div>
 
@@ -332,7 +323,7 @@ if (!$session->isActive) {
                 $(ev.currentTarget).addClass("active").siblings().removeClass("active");
                 $(".bot_btn_box").addClass("true_btn");
                 $(".here_2 .dema_ipt").val("");
-                b = $(ev.currentTarget).find(">span").html();
+                b = $(ev.currentTarget).html();
             }
 
 

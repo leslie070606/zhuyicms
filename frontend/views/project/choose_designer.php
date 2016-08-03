@@ -76,16 +76,33 @@ if (!$session->isActive) {
                     $designerModel = new frontend\models\DesignerBasic();
                     $designers = $designerModel->getDesignerById($value['did']);
 
+                    $imageModel = new \frontend\models\Images();
+                    //头图
+                    $headimgmodel = $imageModel->findOne($designers['head_imgid']);
+                    if (empty($headimgmodel)) {
+                        $headimg = 'img/home_page/designer_headimg.jpg';
+                    } else {
+                        $headimg = $headimgmodel->url;
+                    }
                     //获取头像
                     ?>
                     <div class="pro_here iconfont" id="" value_id="<?= $value['did'] ?>">
 
-                        <a href="#"><img class="here_img" src="img/home_page/prob.jpg" /></a>
+                        <a href="<?php echo Url::toRoute(['/designer/detail','params'=>$value['did']]); ?>"><img class="here_img" src="<?= $headimg ?>" /></a>
                         <div class="here_zhe"></div>
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="<?php $db = new frontend\models\DesignerBasic();echo Yii::$app->params['frontDomain'].$db->getHeadPortrait($value['did']); ?>" />
+                                <a href="<?php echo Url::toRoute(['/designer/detail','params'=>$value['did']]); ?>">
+                                <img src="<?php
+                                $db = new frontend\models\DesignerBasic();
+                                if ($db->getHeadPortrait($value['did'])) {
+                                    echo Yii::$app->params['frontDomain'] . $db->getHeadPortrait($value['did']);
+                                } else {
+                                    echo Yii::$app->params['frontDomain'] . '/img/home_page/banner_head.jpg';
+                                }
+                                ?>" />
+                                </a>
                             </div>
 
                             <div class="bottom_name">
@@ -94,15 +111,16 @@ if (!$session->isActive) {
                             <div class="bottom_label bottom_referral">
                                 <?php
                                 $tagArr = explode(',', $designers['tag']);
-                                if (count($tagArr)>1) {
+                                if (count($tagArr) > 1) {
                                     foreach ($tagArr as $v) {
                                         ?>
                                         <span><?= $v ?></span>
 
-                                    <?php }
+                                        <?php
+                                    }
                                 } else {
                                     ?>
-                                    <span><?= $designers['tag']?></span>
+                                    <span><?= $designers['tag'] ?></span>
 
                                 <?php } ?>
                             </div>
@@ -110,7 +128,7 @@ if (!$session->isActive) {
                             <span class="bot_input"><i class="input_box iconfont icon-weixuanzhong"></i></span>
                         </div>
                     </div><!--pro_here end-->
-<?php } ?> 
+                <?php } ?> 
             </div>
             <span class="click_more">查看更多立即匹配出的设计师 </span>
             <div class="bot_navv">
@@ -129,8 +147,8 @@ if (!$session->isActive) {
 </html>
 <script>
     touch.on(".navv_tj", "tap", function (ev) {
-        var user_id = <?=$user_id ?>;
-        var project_id = <?=$project_id ?>;
+        var user_id = <?= $user_id ?>;
+        var project_id = <?= $project_id ?>;
         var html = "";
         var is_pipei = "";
         var length = $(".pro_here .icon-xuanzhong").length;
@@ -161,14 +179,14 @@ if (!$session->isActive) {
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
             data: "",
             success: function (data) {
-               // alert(data);
+                // alert(data);
                 if (data = 3) {
                     //跳转人工
                 }
-                if(data = 1){
+                if (data = 1) {
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }
-                
+
             }
         })
     })

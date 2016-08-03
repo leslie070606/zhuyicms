@@ -86,7 +86,8 @@ class OrderController extends Controller {
 
         $tokenModel = new \app\components\Token();
         // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
+       // $jsarr = $tokenModel->getSignature();
+        $jsarr = '';
 
         //此用户下面没有订单
         if (empty($ret)) {

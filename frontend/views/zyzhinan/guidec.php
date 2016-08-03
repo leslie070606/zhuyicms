@@ -47,7 +47,7 @@ if (!$session->isActive) {
             </section> 
 		<div class="down_right_zd"></div>  
 		<div class="guide_box_here">
-			<span class="guide_box_title">住艺精选设计师</span>
+			<span class="guide_box_title">设计师能为你做什么?</span>
 			<div class="here_b_box">
 				<span class="box_spa"><i></i>设计的黄金三角</span>
 				<span class="box_spb">功能需求，美学需求，和预算需求，是设计价值体现的黄金三角形。设计师所做的工作就是根据用户的需求和偏好，在这个三角中找到完美的平衡点。</span>
