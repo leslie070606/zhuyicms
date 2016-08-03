@@ -358,11 +358,13 @@ class ProjectController extends \common\util\BaseController {
             $projectModel->load(Yii::$app->request->post());
             //接收图片
             $upfile = UploadedFile::getInstances($projectModel, 'home_img');
+            
+           $favoriteupfile = UploadedFile::getInstances($projectModel, 'favorite_img');
+            
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-
-            echo "<pre>";
-            print_r($upfile);exit;
+            
             $imgId = '';
+            $imgId_favorite = '';
             //如果有图片
             if (count($upfile) > 0) {
                 if (!is_dir($dir))
@@ -394,6 +396,38 @@ class ProjectController extends \common\util\BaseController {
                 }
             }
             
+            //喜欢的图片
+            if (count($favoriteupfile) > 0) {
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+
+                foreach ($favoriteupfile as $imgobjct) {
+
+                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+
+                    $dirimg = $dir . "/" . $fileName;
+
+                    //保存图片
+                    if ($imgobjct->saveAs($dirimg)) {
+                        $imgModel = new \common\models\ZyImages();
+                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+
+                        $imgModel->url = $uploadSuccessPath;
+                        if ($imgModel->save()) {
+                            $imgId_favorite .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+                if ($model->favorite_img) {
+                    $model->favorite_img = $model->favorite_img . $imgId_favorite;
+                }  else {
+                    $model->home_img = ltrim($imgId_favorite, ",");
+                }
+            }
+            
+            
             //添加更新时间
             $model->update_time = time();
             //var_dump($model->save());
@@ -408,6 +442,12 @@ class ProjectController extends \common\util\BaseController {
         //$model = $projectModel::findOne(56);
         $imgurl = '';
         $initialPreview = '';
+        
+        //喜歡的圖片
+        $favorite_imgurl = '';
+        $favorite_initialPreview = '';
+        
+        //家的圖片讀取
         if ($model->home_img) {
             $imgstr = $model->home_img;
             $imgarr = explode(',', $imgstr);
@@ -424,8 +464,26 @@ class ProjectController extends \common\util\BaseController {
                 }
             }
         }
+        
+        //喜歡的圖片讀取
+         if ($model->favorite_img) {
+            $imgstr = $model->favorite_img;
+            $imgarr = explode(',', $imgstr);
+            $imgarr = array_filter($imgarr);
+            foreach ($imgarr as $imgid) {
+                //查询图片
+                $imgModel = new \common\models\ZyImages();
+                $img = $imgModel->findOne($imgid);
+                if ($img) {
+                    $favorite_imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
 
-        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview,]);
+                    //设置删除
+                    $favorite_initialPreview[] = array('url' => Url::toRoute('/project/favoriteimgdelete'), 'key' => $imgid . "$" . $project_id);
+                }
+            }
+        }
+
+        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview, 'favorite_imgurl'=>$favorite_imgurl, 'favorite_initialPreview'=>$favorite_initialPreview]);
     }
 
     public function actionHomeimgdelete() {
@@ -450,6 +508,37 @@ class ProjectController extends \common\util\BaseController {
                 }
 
                 $proModel->home_img = implode(",", $imgarr);
+            }
+            //$proModel->home_img = str_replace($idarr[0], '', $artmodel->home_img);
+
+            $proModel->save();
+        }
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['success' => true];
+    }
+    
+     public function actionFavoriteimgdelete() {
+        if ($imgid = Yii::$app->request->post('key')) {
+            $imgModel = new \common\models\ZyImages();
+
+            $idarr = explode('$', $imgid);
+            //删除 图片表
+            $model = $imgModel->findOne($idarr[0]);
+            $model->delete();
+
+            // $artmodel = new ZyArtsets();
+            $proModel = new ZyProject();
+            $proModel = $proModel->findOne($idarr[1]);
+
+            if ($proModel->favorite_img) {
+                $imgarr = explode(',', $proModel->favorite_img);
+                for ($i = 0; $i < count($imgarr); $i++) {
+                    if ($imgarr[$i] == $idarr[0]) {
+                        unset($imgarr[$i]);
+                    }
+                }
+
+                $proModel->favorite_img = implode(",", $imgarr);
             }
             //$proModel->home_img = str_replace($idarr[0], '', $artmodel->home_img);
 

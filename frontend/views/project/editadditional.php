@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\file\FileInput;
+
 use yii\widgets\ActiveForm;
 if (isset($model->project_tags)) {
     $project_tags_arr = explode('$', $model->project_tags);
@@ -134,14 +135,14 @@ if (!$session->isActive) {
                                     // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
                                     'showUpload' => false,
                                     // 展示图片区域是否可点击选择多文件
-                                    //'browseOnZoneClick' => true,
+                                    'browseOnZoneClick' => true,
                                     'uploadAsync' => TRUE, //配置异步上传还是同步上传  
                                     // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
                                     'fileActionSettings' => [
                                         // 设置具体图片的查看属性为false,默认为true
                                         'showZoom' => TRUE,
                                         // 设置具体图片的上传属性为true,默认为true
-                                        'showUpload' => true,
+                                        'showUpload' => FALSE,
                                         // 设置具体图片的移除属性为true,默认为true
                                         'showRemove' => TRUE,
                                     ],
@@ -157,7 +158,48 @@ if (!$session->isActive) {
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
                         <ul id="ulb">
-                     
+                     <?php
+                      echo FileInput::widget([
+                                'model' => $model,
+                                'attribute' => 'favorite_img[]',
+                                //           'options' => ['multiple' => true],
+                                'name' => 'ImgSelect2',
+                                'language' => 'zh-CN',
+                                'options' => ['multiple' => true, 'accept' => 'image/*'],
+                                'pluginOptions' => [
+
+                                    'initialPreview' => $favorite_imgurl,
+                                    // 'initialPreviewConfig' => $initialPreviewConfig,  
+                                    'allowedPreviewTypes' => ['image'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png'],
+                                    'previewFileType' => 'image',
+                                    'initialPreviewAsData' => true, // 是否展示预览图
+                                    'initialPreviewConfig' => $favorite_initialPreview,
+                                    'overwriteInitial' => false,
+                                    'browseLabel' => '选择图片',
+                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
+                                    'dropZoneTitle' => '点击上传文件...',
+                                    'maxFileCount' => 12, //允许上传最多的图片5张  
+                                    'maxFileSize' => 10000, //限制图片最大200kB  
+                                    'uploadUrl' => Url::to(['/index/uploadimage']), //异步上传接口地址
+                                    'uploadExtraData' => ['project_id' => $model->project_id],
+                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
+                                    'showUpload' => false,
+                                    // 展示图片区域是否可点击选择多文件
+                                    'browseOnZoneClick' => true,
+                                    'uploadAsync' => TRUE, //配置异步上传还是同步上传  
+                                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
+                                    'fileActionSettings' => [
+                                        // 设置具体图片的查看属性为false,默认为true
+                                        'showZoom' => TRUE,
+                                        // 设置具体图片的上传属性为true,默认为true
+                                        'showUpload' => FALSE,
+                                        // 设置具体图片的移除属性为true,默认为true
+                                        'showRemove' => TRUE,
+                                    ],
+                                ],
+                            ]);
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -211,7 +253,7 @@ if (!$session->isActive) {
                             } else {
                                 echo "icon-weixuanzhong";
                             }
-                            ?>"></i>家庭成员彼此拥有相对独立空间</span>
+                            ?>"></i>家庭成员拥有相对独立空间</span>
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont <?php
