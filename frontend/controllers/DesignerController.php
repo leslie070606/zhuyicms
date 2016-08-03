@@ -42,58 +42,15 @@ class DesignerController extends Controller {
         return json_encode($data);
     }
 
-<<<<<<< HEAD
-	public function actionArts(){
-		$request = Yii::$app->request;
-		if(!$request->isAjax){
-			return false;
-		}
-		$params = $request->get('params');
-		if(!isset($params) || empty($params)){
-			return false;
-		}
-		$designerId = $params;
-
-		$artModel = new \frontend\models\Artsets();
-		$artsets  = $artModel->getArtsetsByDesignerId($designerId);
-		$data = array();
-		if(!empty($artsets)){
-			foreach($artsets as $a){
-				//var_dump($a);
-				$artId = $a->art_id;
-				$type = $a->type;
-				$background = '';
-				$imageUrlArr = array();
-				$videoUrl = '';
-				$topic = isset($a->topic)? $a->topic : '';
-				if($type == 0){
-					$imageIds = isset($a->image_ids)? $a->image_ids : '';
-					$imageIdsArr = explode(',',$imageIds);
-					//$imageUrlArr = array();
-					foreach($imageIdsArr as $id){
-						$ret = \frontend\models\Images::findOne($id);
-						if(empty($ret)){
-							continue;
-						}
-						$imageUrlArr[] = $ret->url;
-					}
-					if(!empty($imageUrlArr)){
-						$background = $imageUrlArr[0];
-					}
-				}elseif($type == 1){
-					$videoId = isset($a->video_ids)? $a->video_ids : '';
-=======
     public function actionArts() {
         $request = Yii::$app->request;
-        /*
-          if(!$request->isAjax){
-          return false;
-          } */
+        if (!$request->isAjax) {
+            return false;
+        }
         $params = $request->get('params');
-        /*
-          if(!isset($params) || empty($params)){
-          return false;
-          } */
+        if (!isset($params) || empty($params)) {
+            return false;
+        }
         $designerId = $params;
 
         $artModel = new \frontend\models\Artsets();
@@ -124,126 +81,12 @@ class DesignerController extends Controller {
                     }
                 } elseif ($type == 1) {
                     $videoId = isset($a->video_ids) ? $a->video_ids : '';
->>>>>>> zhuyimaster
+
                     $rows = \common\models\ZyVideo::findOne($videoId);
                     if (!empty($rows)) {
                         $videoUrl = $rows->video_url;
                     }
-<<<<<<< HEAD
-                    $background = isset($rows->video_image)? $rows->video_image : "/img/home_page/proc.jpg";
-				}
 
-				$element = array(
-					'art_id' => $artId,
-					'type' => $type, 
-					'background' => $background,
-					'image_urls' => $imageUrlArr,
-					'video_url' => $videoUrl,
-					'topic'	=> $topic
-				);
-				$data[] = $element;
-			}
-		}
-		$data = json_encode($data);
-		return $data;
-		//return $this->render("alls",['data' => $data]);
-	}
-	public function actionAlls(){
-		return $this->render("alls");
-	}
-
-	public function actionDetail(){
-		//把这个用户ID传给前台，前台根据用户ID来做判断，
-		//如果为空，需要跳转到登陆页面
-        $session = Yii::$app->session;
-        if (!$session->isActive) {
-            $session->open();
-        }
-        $userId = $session->get("user_id");
-
-		$request = Yii::$app->request;
-		/*
-		if(!$request->isAjax){
-			return false;
-		}*/
-		
-		$params = $request->get('params');
-		if(!isset($params) || empty($params)){
-			return false;
-		}
-
-		$designerId 	= $params;
-		$dbModel = new \frontend\models\DesignerBasic();
-		$rows = $dbModel->getDesignerById($designerId);
-		if(empty($rows)){
-			return false;
-		}
-		$name 			= $rows->name;
-		$tag 			= $rows->tag;
-		if(!isset($tag) || empty($tag)){
-			$tag = "艺术家,设计小达人";
-		}
-		$winning		= isset($rows->winning)? $rows->winning : '';
-		$tmp 			= $dbModel->getHeadPortrait($designerId);
-		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
-
-		$tmp 			= $dbModel->getHeadBackground($designerId);
-		//$tmp 			= $dbModel->getBackground($designerId);
-		$background		= isset($tmp)? $tmp : "/img/home_page/prob.jpg";
-		//作品...
-		$artModel		= new \frontend\models\Artsets();
-		$artsets		= $artModel->getPartArtsByDesignerId($designerId);
-		$artCnt			= \frontend\models\Artsets::find()->where(['designer_id' => $designerId])->count();
-		//收费...
-		$dWorkModel 	= new \frontend\models\DesignerWork();
-		$cost = $dWorkModel->getCost($designerId);
-		
-		//基本信息服务范围.
-		$serviceContent = $dWorkModel->getServiceContent($designerId);
-		$serviceContent = explode(',',$serviceContent);
-		$yingzhuangArr = array(1,2,3,4);
-		$gongzhuangArr = array(5,6,7,8);
-		$ruanzhuangArr = array(9,10,11);
-		//后期用一个变量，按位或来操作。
-		$yingType = 0;
-		$gongType = 0;
-		$ruanType = 0;
-		if(!empty($serviceContent)){
-			foreach($serviceContent as $s){
-				if(in_array($s,$yingzhuangArr)){
-					$yingType = 1;
-				}elseif(in_array($s,$gongzhuangArr)){
-					$gongType = 1;
-				}elseif(in_array($s,$ruanzhuangArr)){
-					$ruanType = 1;
-				}
-			}
-		}
-
-		//服务城市
-		$serveCity = $dWorkModel->getServeCity($designerId);
-		//擅长风格
-		$style = $dWorkModel->getStyle($designerId);
-        $data = array(
-			'user_id'			=> $userId,
-			'designer_id' 		=> $designerId,		//ID
-            'name' 				=> $name, 			//姓名
-            'tag' 				=> $tag, 			//标签
-            'head_portrait' 	=> $headPortrait, 	//头像
-            'background' 		=> $background, 	//背景
-			'winnings'			=> '',				//获奖经历
-			'art_cnt'			=> $artCnt,			//作品数量
-			'artsets'			=> $artsets,		//作品集
-			'cost'				=> $cost,
-			'service_content' 	=> array(
-				'ying_type' 	=> $yingType,	
-				'gong_type' 	=> $gongType,
-				'ruan_type' 	=> $ruanType
-			),
-			'serve_city'		=> $serveCity,
-			'style'				=> $style,
-			'winning'			=> $winning
-=======
                     $background = isset($rows->video_image) ? $rows->video_image : "/img/home_page/proc.jpg";
                 }
 
@@ -268,6 +111,14 @@ class DesignerController extends Controller {
     }
 
     public function actionDetail() {
+        //把这个用户ID传给前台，前台根据用户ID来做判断，
+        //如果为空，需要跳转到登陆页面
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $userId = $session->get("user_id");
+
         $request = Yii::$app->request;
         /*
           if(!$request->isAjax){
@@ -332,6 +183,7 @@ class DesignerController extends Controller {
         //擅长风格
         $style = $dWorkModel->getStyle($designerId);
         $data = array(
+            'user_id' => $userId,
             'designer_id' => $designerId, //ID
             'name' => $name, //姓名
             'tag' => $tag, //标签
@@ -349,7 +201,6 @@ class DesignerController extends Controller {
             'serve_city' => $serveCity,
             'style' => $style,
             'winning' => $winning
->>>>>>> zhuyimaster
         );
         return $this->render("detail", ['data' => $data]);
     }
