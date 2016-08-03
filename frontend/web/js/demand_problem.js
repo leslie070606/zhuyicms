@@ -48,7 +48,7 @@ $(function(){
 		if($(".bot_btn_box").hasClass("true_btn")){
 			var index=$(".demand_big>.active").index()+1;
 			$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
-			if(index>=nuber){
+			if(index>nuber){
 				$(".bot_btn_box").removeClass("true_btn");
 			}else{
 				$(".bot_btn_box").addClass("true_btn");
@@ -65,20 +65,17 @@ $(function(){
 		}
 	});
 	//上一步点击事件
-	var grttt=true;
+	var grttt=false;
 	touch.on(".bot_btn_box .prev_btn","tap",function(){
 		var index=$(".demand_big>.active").index()-1;
-		if(nuber<=index+1&&$(".bot_btn_box").hasClass("true_btn")){
+		if(nuber<=index&&$(".bot_btn_box").hasClass("true_btn")){
+			nuber++;
 			grttt=true;
+
 		}
-		if(nuber<=index){
-			nuber=index+1;
+		if(nuber<index){
+			nuber=index;
 		}
-		
-		if($(".bot_btn_box").hasClass("true_btn")&&grttt){
-				nuber+=1;
-				grttt=false;
-			}
 	
 		$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
 		$(".bot_btn_box").addClass("true_btn");

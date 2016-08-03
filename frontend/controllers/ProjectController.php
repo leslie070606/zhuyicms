@@ -349,27 +349,19 @@ class ProjectController extends \common\util\BaseController {
         $project_id = Yii::$app->request->get('project_id');
         // 提交数据
         if ($post = Yii::$app->request->post()) {
-            
-            
-              echo "<pre>";
-            print_r($post);
-            exit;
-            
-            $modelpost = $projectModel->load($post);
+
             $model = $projectModel::findOne(['project_id' => $project_id]);
             $model->compound = $post['compound'] ? $post['compound'] : '';
             $model->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
             $model->description = $post['description'] ? $post['description'] : '';
-
-
-            $upfile = UploadedFile::getInstances($modelpost, 'home_img');
+            
+            $projectModel->load(Yii::$app->request->post());
+            //接收图片
+            $upfile = UploadedFile::getInstances($projectModel, 'home_img');
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-            
-            
+
             echo "<pre>";
-            print_r($upfile);
-            exit;
-            
+            print_r($upfile);exit;
             $imgId = '';
             //如果有图片
             if (count($upfile) > 0) {
@@ -395,12 +387,20 @@ class ProjectController extends \common\util\BaseController {
                         }
                     }
                 }
-                $model->image_ids = $imgId;
+                if ($model->home_img) {
+                    $model->home_img = $model->home_img . $imgId;
+                }  else {
+                    $model->home_img = ltrim($imgId, ",");
+                }
             }
-
-
-
             
+            //添加更新时间
+            $model->update_time = time();
+            //var_dump($model->save());
+            if ($model->save()) {
+              
+                return $this->redirect(['order/list']);
+            }
         }
         //echo $this->createProNum();exit;
 

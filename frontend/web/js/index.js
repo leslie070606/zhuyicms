@@ -14,7 +14,5 @@ $(function(){
 		$(this).next(".video-js").get(0).play();
 		$(".video-js").css("height",img_height);
 	});
-	var height_tit=$(".bxsliderbb").height();
-	var height_tita=(height_tit-$(".fingerpost .bxs_title").height())/2;
-	$(".fingerpost .bxs_title").css("top",height_tita)
+	
 });

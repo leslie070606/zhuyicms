@@ -381,7 +381,7 @@ position: absolute;
     color: #ffffff;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin: -.4rem 0 0 -.44rem;
     z-index: 1660;
    /* box-shadow:1px 1px 12px #c9c9ca;*/
 }
@@ -402,7 +402,7 @@ position: absolute;
 .icon-shanchu1::before { position: absolute; left: .06rem; top: .06rem;}
  /*图片上传样式*/
 /* .kv-file-content { width: 100%; float: left;}*/
- .file-preview-frame { width: 47%; margin: 0 1.4%; padding: 3px; margin-bottom: 2%; display: 	inline; height:auto;}
+/* .file-preview-frame { width: 47%; margin: 0 1.4%; padding: 3px; margin-bottom: 2%; display: 	inline; height:auto;}
  .file-drop-zone { margin: 0; padding: 0;border: 0;  border-radius: 0; }
  .container { padding: 0;}
  .close { display: none;}
@@ -414,7 +414,7 @@ position: absolute;
 .btn-primary { border-radius: 0; margin-bottom: .2rem;}
 .fileinput-remove-button { display: none;}
 .file-preview-image { height: auto !important;}
-.file-error-message ul li { width: 100% !important;}
+.file-error-message ul li { width: 100% !important;}*/
 
 
 

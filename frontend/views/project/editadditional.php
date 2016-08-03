@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\file\FileInput;
-
+use yii\widgets\ActiveForm;
 if (isset($model->project_tags)) {
     $project_tags_arr = explode('$', $model->project_tags);
 } else {
@@ -93,7 +93,12 @@ if (!$session->isActive) {
                     <span class="here_meng"><?= $model->designer_level ?></span>
                 </div>
                 <span class="fill_more">填写更多需求清单</span>
-                <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+                <?php
+                $form = ActiveForm::begin([
+                            'method' => 'post',
+                            'options' => ['enctype' => 'multipart/form-data'],
+                ]);
+                ?>
 
                 <input class="dema_ipt" type="text"value="<?= $model->compound ?>" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
@@ -134,7 +139,7 @@ if (!$session->isActive) {
                                     // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
                                     'fileActionSettings' => [
                                         // 设置具体图片的查看属性为false,默认为true
-                                        'showZoom' => FALSE,
+                                        'showZoom' => TRUE,
                                         // 设置具体图片的上传属性为true,默认为true
                                         'showUpload' => true,
                                         // 设置具体图片的移除属性为true,默认为true
@@ -152,9 +157,7 @@ if (!$session->isActive) {
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
                         <ul id="ulb">
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu1"></i></li>
-                            <li><img src="img/home_page/1.jpg"/><i class="iconfont icon-shanchu1"></i></li>
-                            <li class="add_img iconfont icon-tianjia"></li>
+                     
                         </ul>
                     </div>
                 </div>
@@ -231,7 +234,7 @@ if (!$session->isActive) {
                 <button class="chose_btn zhihui" type="submit"  style="border: none;">
                     保存
                 </button>
-                <?= Html::endForm(); ?>
+                <?php ActiveForm::end(); ?>
 
             </div>
 

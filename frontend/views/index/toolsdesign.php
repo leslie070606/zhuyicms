@@ -51,53 +51,60 @@ if (!$session->isActive) {
             </section>
             <div class="down_right_zd"></div> 
             <div class="banner">
-                <img src="img/index/gz_banner.jpg" />
+                <img src="img/index/banner_g.jpg" />
                 <div class="banner_mesg">
-                    <span class="mesg_spa">好设计在住艺</span>
-                    <span class="mesg_spb"><a href="javascript:">找设计师</a></span>
+                    <span class="mesg_spb"><a href="javascript:" style="top: .6rem;">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
                 <div class="post_title">
-                    <span class=" iconfont icon-lingxing"><a>住艺指南</a></span>
+                    <span class=" iconfont icon-lingxing"><a>公装作品</a></span>
                 </div>
-                <ul class="bxslider bxsliderbb">
-                    <li>
-                        <img src="img/index/gz1_imga.jpg" title="" />
-                        <!--<span class="bxs_title">设计师的价值</span>-->
-                    </li>
-                    <li>
-                        <img src="img/index/gz1_imgb.jpg" title="" />
-                    </li>
-                    <li>
-                        <img src="img/index/gz1_imgc.jpg" title="" />
-                    </li>
-                    <li>
-                        <img src="img/index/gz1_imgd.jpg" title="" />
-                    </li>
-                </ul>
 
-                <ul class="bxslider bxsliderbb">
-                    <li>
-                        <img src="img/index/gz_imga.jpg" title="" />
-                    </li>
-                    <li>
-                        <img src="img/index/gz_imgb.jpg" title="" />
-                    </li>
-                    <li>
-                        <img src="img/index/gz_imgc.jpg" title="" />
-                    </li>
-                    <li>
-                        <img src="img/index/gz_imgd.jpg" title="" />
-                    </li>
-                </ul>
+                <div style="position: relative;">
+                    <span class="bxs_title" id="bxs_titlea">燕家2号</span>
+                    <ul class="bxslider bxsliderbb">
+                        <li>
+                            <img src="img/index/gz1_imga.jpg" title="" />
+
+                        </li>
+                        <li>
+                            <img src="img/index/gz1_imgb.jpg" title="" />
+                        </li>
+                        <li>
+                            <img src="img/index/gz1_imgc.jpg" title="" />
+                        </li>
+                        <li>
+                            <img src="img/index/gz1_imgd.jpg" title="" />
+                        </li>
+                    </ul>
+                </div>
+                <div style="position: relative;">
+                    <div style="position: absolute; width: 100%; height: 100%; left: 0; top:0; background: #000000; opacity: .2; z-index: 999;"></div>
+                    <span class="bxs_title">海狸工坊</span>
+                    <ul class="bxslider bxsliderbb">
+                        <li>
+                            <img src="img/index/gz_imga.jpg" title="" />
+
+                        </li>
+                        <li>
+                            <img src="img/index/gz_imgb.jpg" title="" />
+                        </li>
+                        <li>
+                            <img src="img/index/gz_imgc.jpg" title="" />
+                        </li>
+                        <li>
+                            <img src="img/index/gz_imgd.jpg" title="" />
+                        </li>
+                    </ul>
+                </div>
 
 
             </div>
 
             <section class="production">
                 <div class="pro_title">
-                    <span class="titl_span">精品案例
+                    <span class="titl_span">精品视频
                         <a></a>
                     </span>
                 </div>
@@ -107,7 +114,7 @@ if (!$session->isActive) {
                             <img class="here_img" src="img/home_page/proc.jpg" />
                         </div>
                         <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-                            <source src="img/gaizaojia.mp4" type='video/mp4' />
+                            <source src="img/住艺—燕家二号（最终版）_自定义转码_640x480.MP4" type='video/mp4' />
                         </video>
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
@@ -124,7 +131,6 @@ if (!$session->isActive) {
                             </a>
                         </div>
                     </div>
-                    <!--pro_here end-->
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
