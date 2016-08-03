@@ -88,11 +88,28 @@ class OrderController extends Controller {
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
 
+		$projectModel = new \frontend\models\Project();
+		$projectRows = $projectModel->getProjectByUserId($userId);
+		$hasProject = 0; //0代表没有需求。
+		if(!empty($projectRows)){
+			$hasProject = 1;
+		}
+
+		//是否需要人工（系统）匹配
+		$needSystemMatch = 0;
         //此用户下面没有订单
         if (empty($ret)) {
             //没有提交需求的，快提交需求
             //提交需求，还未选择设计师
             //提交需求，住艺君给推荐，未匹配上设计师
+
+			if($hasProject == 0){
+				$toFrontend = -1;
+			}elseif($hasProject == 1 && $needSystem == 0){
+				$toFrontend = -2;
+			}elseif($hasProject == 1 && $needSystem == 1){
+				$toFrontend = -3;
+			}
             return $this->render("list", ['data' => -1, 'jsarr' => $jsarr]);
         } else {
             $data = array();
@@ -116,6 +133,8 @@ class OrderController extends Controller {
                 } else {
                     $headPortrait = $imgRet->url;
                 }
+				$dbModel = new \frontend\models\DesignerBasic();
+				$headBackground = $dbModel->getHeadBackground($designerId);
                 $status = $r['status'];
                 $orderType = $r['service_type']; //区别用户自己创建还是客服辅助创建。
                 $dSpareTime = isset($r['designer_spare_time']) ? $r['designer_spare_time'] : '';
@@ -149,6 +168,7 @@ class OrderController extends Controller {
                         'designer_id' => $designerId,
                         'name' => $name,
                         'head_portrait' => $headPortrait,
+						'head_background' => $headBackground,
                         'tag' => $tag
                     )
                 );
