@@ -49,7 +49,7 @@ if (!$session->isActive) {
                 </ul>
             </section>
             <div class="down_right_zd"></div>  
-
+			<input type="hidden" id="user_id" value="<?php echo $data['user_id']?>" />
             <section class="page_banner">
 		    <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
 			 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
@@ -264,11 +264,15 @@ $(function(){
     var url = window.location.href;
     var designer_id = GetQueryString("params");
 
-    var user_id = 1;
+    var user_id = $("#user_id").val();
     var params = user_id + "," + designer_id;
 
     var collect_status = 0;
     touch.on(".sc_bot", "tap", function (ev) {
+		if(user_id==""){
+			//跳转登录页
+			window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=user/login'; ?>";
+		}else{
         console.log(ev.currentTarget)
         if ($(this).hasClass("active")) {
             $(this).html("收藏设计师");
@@ -303,7 +307,7 @@ $(function(){
             })
 
         }
-
+		}
     });
     var nubeee = 0;
     var htmllll = $(".pro_img_box").html();
