@@ -48,8 +48,8 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div>  
             <div class="guide_box_here">
                 <a class="here_a_a" href="<?php echo Url::toRoute('/zyzhinan/guidea'); ?>"><img src="img/index/zhinana.jpg" /></a>
-                <a class="here_a_a" href="<?php echo Url::toRoute('/zyzhinan/guideb'); ?>"><img src="img/index/zhinanb.jpg" /></a>
                 <a class="here_a_a" href="<?php echo Url::toRoute('/zyzhinan/guidec'); ?>"><img src="img/index/zhinanc.jpg" /></a>
+                <a class="here_a_a" href="<?php echo Url::toRoute('/zyzhinan/guideb'); ?>"><img src="img/index/zhinanb.jpg" /></a>
             </div>
 
         </div>	

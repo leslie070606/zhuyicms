@@ -28,10 +28,7 @@ body{ padding-top: 0;}
 .dema_ipt { border: none; width:92%; border-right: 4px solid #c9c9ca; height: .88rem; background: #eeefef;  outline: none; text-indent: .3rem; font-size: .24rem;}
 .fx_box { width: 100%; margin: .4rem auto .8rem; float: left;}
 .fx_box .fx_here {
-    width: 2.5rem;
-    height: 2.1rem;
-    /* float: left; */
-    line-height: 2.1rem;
+    width: 2.1rem;
     position: relative;
 }
 .fx_box .here_bc { width: 100%; float: left; height: 100%;}

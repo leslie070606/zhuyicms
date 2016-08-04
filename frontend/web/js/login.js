@@ -58,7 +58,7 @@ $(function(){
 	var html=$(".djser").html();
 	 $(".djser").click(function(){
 		if($(this).html()==html&&ipta){
-			 $(".djser").removeClass("active");
+                $(".djser").removeClass("active");
 		 $(".djser").html("<a id='djtimer'>59</a>s后重新发送");
 		 $("#code").attr("placeholder","验证码");
 		 $(".login_title").html("已将验证码发送至此手机号码");

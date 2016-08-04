@@ -103,8 +103,8 @@ if (!$session->isActive) {
                     <span class="dem_title">你的家多大？</span>
                     <span>第<a class="red">3</a>题/7题</span>
 
-                    <input class="dema_ipt three_ipt" type="text" placeholder="建筑面积（㎡）" />
-                    <input class="dema_ipt three_ipta" type="text" placeholder="使用面积 （㎡）" />
+                    <input class="dema_ipt three_ipt" type="tel" placeholder="建筑面积（㎡）" />
+                    <input class="dema_ipt three_ipta" type="tel" placeholder="使用面积 （㎡）" />
                 </div>
 
                 <div class="demand_here here_4">
@@ -143,7 +143,7 @@ if (!$session->isActive) {
                     <span class="dem_title">你的大致预算是？</span>
                     <span>第<a class="red">6</a>题/7题</span>
                     <div class="six_box">
-                        <input class="dema_ipt" type="text" placeholder="预算（万）" />
+                        <input class="dema_ipt" type="tel" placeholder="预算（万）" />
                         <div class="dema_explain">
                             <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">
