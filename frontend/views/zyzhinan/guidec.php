@@ -50,7 +50,7 @@ if (!$session->isActive) {
 			<span class="guide_box_title">设计师能为你做什么?</span>
 			<div class="here_b_box">
                             <span class="box_spa" style="font-weight: bold;"><i></i>设计的黄金三角</span>
-				<span class="box_spb">功能需求，美学需求，和预算需求，是设计价值体现的黄金三角形。设计师所做的工作就是根据用户的需求和偏好，在这个三角中找到完美的平衡点。</span>
+                            <span class="box_spb" style="font-weight: bold;">功能需求，美学需求，和预算需求，是设计价值体现的黄金三角形。设计师所做的工作就是根据用户的需求和偏好，在这个三角中找到完美的平衡点。</span>
 				<span class="box_spb">真正的设计，首先是‘量身定制’。好的设计师会主动分析用户个人生习惯，定制解决动线功能、收纳家具功能、结构区域划分，为客户定制一个舒适合理的空间。</span>
 				<span class="box_spb">在审美上，设计师可以在充分了解个人品味风格基础上、把控空间整体的线条和色彩和谐、合理搭配软装。</span>
 				<span class="box_spb"> 设计师为客户严控预算，把钱花在该花的地方。在对材料产品设备的性价比充分了解和熟悉运用的基础上，设计师能帮用户在控制总预算的同时保证最终效果。</span>

@@ -429,11 +429,22 @@ HTML;
 
 <script type="text/javascript">
     $(function () {
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+       
         //标题点击事件
         var indexaa;
         var index = 7;
         var xiuqiu = 8;
         var htmll = "";
+        var urll=getUrlParam("tiaozhuanP");
+        if(urll=="xiuqiu"){
+            indexaa=1;
+            duang();
+        }
         function duang() {
             $("#nav_box").animate({left: -widtha * indexaa}, 400, function () {
                 if (indexaa == 2 && index == 7) {

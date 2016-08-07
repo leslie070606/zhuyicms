@@ -469,6 +469,7 @@
                     startX = getCoord(e, 'X');
                     startY = getCoord(e, 'Y');
                 }).bind('touchend', function (e) {
+                    if($(this).parent().hasClass("dwb-s")){
                     // If movement is less than 20px, fire the click event handler
                     if (Math.abs(getCoord(e, 'X') - startX) < 20 && Math.abs(getCoord(e, 'Y') - startY) < 20) {
                         var url = $(".foin_zy .true_btn").attr("confirm_time");
@@ -498,6 +499,9 @@
                             }
                         });
                     }
+                }else{
+					handler.call(this, e);
+                   }
                     //确定时间按钮点击
                     tap = true;
                     setTimeout(function () {
@@ -507,6 +511,7 @@
             }
 
             el.bind('click', function (e) {
+                 if($(this).parent().hasClass("dwb-s")){
                 if (!tap) {
                     // If handler was not called on touchend, call it on click;
                    var url = $(".foin_zy .true_btn").attr("confirm_time");
@@ -535,9 +540,10 @@
                                 $(".foin_zy .jm_time").before(htmlll);
                             }
                         });
-                     
-                        
                 }
+                }else{
+					handler.call(this, e);
+                   }
                          tap = true;
                     setTimeout(function () {
                         tap = false;

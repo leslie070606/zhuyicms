@@ -131,6 +131,7 @@ touch.on(".queren_btn .true_btnaa","tap",function(ev){
 		var height=$(window).height()-$("#user_box").height()-tishia-$(".header_top").height()*2;
 		var heighta=(height-$(this).find(">span").height())/2;
 		$(this).css("height",height);
+                
 		$(this).find(">span").css("marginTop",heighta)
 	});
 //	 document.body.addEventListener('touchmove', function(event) {
