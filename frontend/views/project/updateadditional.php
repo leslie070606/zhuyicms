@@ -1,6 +1,11 @@
 <?php
 
 use yii\helpers\Url;
+if($model->home_img){
+    $imgID = explode(',', $model->home_img);
+    $imgModel = new \frontend\models\Images();
+    $img = $imgModel->findOne($imgID[0]);
+}
 ?>
 <?php if ($model) { ?>
     <div class="xuqiu">
@@ -9,7 +14,9 @@ use yii\helpers\Url;
                 <span class="xq_top_left">需求单：<?= $model->project_num ?></span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
             </div>
             <div class="xuqiu_center">
-                <img class="center_img" src="img/home_page/proa.jpg" />
+                <?php if($img){?>
+                <img class="center_img" src="<?=Yii::$app->params['frontDomain'].$img->url ?>" />
+                <?php } ?>
                 <div class="center_here">
                     <span class="here_left">城市：</span>
                     <span class="here_right"><?= $model->city ?></span>
