@@ -380,10 +380,17 @@ class DesignerController extends Controller {
         $searchKey = "";
         if ($request->isAjax) {
             $searchKey = Yii::$app->request->get('search_key');
+            if ($searchKey) {
+                $designerM = new \frontend\models\DesignerBasic();
+                $designer = $designerM::findBySql("select * from zyj_designer_basic where name like '%" . $searchKey . "%'")->all();
+
+                if (count($designer) > 0) {
+                    return $this->render('searchdesigner', ['data' => $designer]);
+                }
+            }
+        } else {
+            return $this->render('hunt');
         }
-        $designerM = new \frontend\models\DesignerBasic();
-        $data = $designerM->findBySql("SELECT * FROM zy_designer_basic WHERE name LIKE '%" . $searchKey . "%'");
-        return $this->render('hunt', ['data' => $data]);
     }
 
 }

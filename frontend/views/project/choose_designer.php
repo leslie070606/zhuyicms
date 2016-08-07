@@ -50,7 +50,7 @@ if (!$session->isActive) {
             <div class="down_right_zd"></div> 
 
             <div class="choose_top">
-                <span class="choose_top_a">Hi  Kevin</span>
+                <span class="choose_top_a"></span>
 
                 <?php
                 $num = count($model);
