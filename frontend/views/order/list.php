@@ -510,6 +510,20 @@ HTML;
                                 index++;
                             }
                             $(".loading_box").hide();
+        					touch.on( ".shanchu_box","tap", function () {
+            					var _this = $(this);
+								var user_id = $("body").attr("user_id");
+            					var designer_id = _this.parents(".iconfont").attr("designer_id");
+            					var params = [user_id, designer_id];
+            					$.ajax({
+                					type: "get",
+                					url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                					async: true,
+                					success: function (data) {
+                    					_this.parents(".iconfont").remove();
+                					}
+            					});
+        					});
                         }
                     });
                 }
@@ -543,7 +557,7 @@ HTML;
 
 
         });
-        $(document).on("click", ".shanchu_box", function () {
+        touch.on( ".shanchu_box","tap", function () {
             var _this = $(this);
 			var user_id = $("body").attr("user_id");
             var designer_id = _this.parents(".iconfont").attr("designer_id");
