@@ -51,20 +51,18 @@ class UserController extends ZyuserController {
                 if (count($user) > 0) {
                     //加session
                     $session->set('user_id', $user[0]['user_id']);
-//                    $url = "http://www.baidu.com";
-//                    echo "< script language='javascript' type='text/javascript'>";
-//                    echo "window.location.href='$url'";
-//                    echo "< /script>";
-                    //echo 113;
-                    //header("Location: http://bbs.lampbrother.net");
+
+                    //存入cookie
+                    $time = time() + 60 * 60 * 24 * 7 * 30; //记录一个月
+                    $cookie = new \yii\web\Cookie();
+                    $cookie->name = 'zuyiuser_remeber';
+                    $cookie->expire = $time;
+                    $cookie->httpOnly = true;
+                    $cookie->value = base64_encode($user[0]['user_id'] . '#' . $time);
+                    Yii::$app->response->getCookies()->add($cookie);
+
                     // 跳转首页
                     return $this->redirect(['index/index']);
-                    //return $this->redirect(array('/index/index','id'=>12));Yii::$app->response->send();
-                    // return $this->render('../index/index');
-//                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//                    echo "登陆成功!";
-//                    echo $session->get('user_id');
-//                    exit;
                 } else {
                     //第一次登录添加
                     $userModel->phone = $phone;
@@ -79,15 +77,17 @@ class UserController extends ZyuserController {
 
                         $userId = $userModel->attributes['user_id'];
                         $session->set('user_id', $userId);
+                        //存入cookie
+                        $time = time() + 60 * 60 * 24 * 7 * 30; //记录一个月
+                        $cookie = new \yii\web\Cookie();
+                        $cookie->name = 'zuyiuser_remeber';
+                        $cookie->expire = $time;
+                        $cookie->httpOnly = true;
+                        $cookie->value = base64_encode($userId . '#' . $time);
+                        Yii::$app->response->getCookies()->add($cookie);
 
                         // 跳转首页
                         return $this->redirect(['index/index']);
-                        //Yii::$app->getUrlManager()->createUrl('url');
-//                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//                        echo $res;
-//                        echo "添加成功!";
-//                        echo $session->get('user_id');
-//                        exit;
                     }
                 }
             } else {
@@ -134,6 +134,16 @@ class UserController extends ZyuserController {
             //登陆成功 加ssion
             $userId = $user['user_id'];
             $session->set('user_id', $userId);
+
+            //存入cookie
+            $time = time() + 60 * 60 * 24 * 7 * 30; //记录一个月
+            $cookie = new \yii\web\Cookie();
+            $cookie->name = 'zuyiuser_remeber';
+            $cookie->expire = $time;
+            $cookie->httpOnly = true;
+            $cookie->value = base64_encode($userId . '#' . $time);
+            Yii::$app->response->getCookies()->add($cookie);
+
             // 跳转首页
             return $this->redirect(['index/index']);
 //            echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
@@ -163,7 +173,7 @@ class UserController extends ZyuserController {
         if ($phone && $code) {//无提交读取页面
             if (!empty($userArr)) {
 
-                //echo $phonestr;exit;
+                //检查验证码
                 if ($phonestr == $code) {
                     $userModel = new User();
                     //查询手机号码
@@ -207,6 +217,14 @@ class UserController extends ZyuserController {
                     if ($res) {
                         // 登录成功!
                         $session->set('user_id', $userId);
+                        //存入cookie
+                        $time = time() + 60 * 60 * 24 * 7 * 30; //记录一个月
+                        $cookie = new \yii\web\Cookie();
+                        $cookie->name = 'zuyiuser_remeber';
+                        $cookie->expire = $time;
+                        $cookie->httpOnly = true;
+                        $cookie->value = base64_encode($userId . '#' . $time);
+                        Yii::$app->response->getCookies()->add($cookie);
                         // 跳转首页
                         return $this->redirect(['index/index', 'a' => 'b']);
                         // return $this->render('index/index');
@@ -240,7 +258,11 @@ class UserController extends ZyuserController {
             $session->open();
         }
         // 销毁session中所有已注册的数据
-        $session->destroy();
+     
+        $session->remove('user_id');
+        $cookie = Yii::$app->request->cookies->get('zuyiuser_remeber'); //移除一个 Cookie 对象 
+        if($cookie){\Yii::$app->response->getCookies()->remove($cookie);}
+        
         return $this->redirect(['index/index']);
     }
 

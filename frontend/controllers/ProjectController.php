@@ -12,19 +12,6 @@ class ProjectController extends \common\util\BaseController {
 
     public $layout = false;
 
-    public function actionRequirement() {
-
-        $model = new Project();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['select-designer', 'project_id' => $model->id]);
-        } else {
-            return $this->render('requirement', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
     //题目页
     public function actionMatch_designer() {
         //判断跳转
@@ -191,8 +178,11 @@ class ProjectController extends \common\util\BaseController {
         //return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
         return $this->render('additional', ['project_id' => $project_id]);
     }
-    
-    public function actionAdditional() {}
+
+    public function actionAdditional() {
+        
+    }
+
     //匹配设计师
     public function actionChoose_designer() {
         $session = Yii::$app->session;
@@ -212,9 +202,6 @@ class ProjectController extends \common\util\BaseController {
         } else {
             return $this->redirect(['user/login']);
         }
-
-
-
 
         //判断是否有已匹配的设计师
         //引入算法类
@@ -343,8 +330,9 @@ class ProjectController extends \common\util\BaseController {
         }
     }
 
+    //个人中心编辑需求
     public function actionEditadditional() {
-        $this->enableCsrfValidation = false;//关闭csrf验证
+        $this->enableCsrfValidation = false; //关闭csrf验证
         $this->layout = "editadditional"; //设置使用的布局文件
 //      echo Yii::$app->request->hostInfo;exit;
         $projectModel = new ZyProject();
@@ -356,15 +344,15 @@ class ProjectController extends \common\util\BaseController {
             $model->compound = $post['compound'] ? $post['compound'] : '';
             $model->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
             $model->description = $post['description'] ? $post['description'] : '';
-            
+
             $projectModel->load(Yii::$app->request->post());
             //接收图片
             $upfile = UploadedFile::getInstances($projectModel, 'home_img');
-            
-           $favoriteupfile = UploadedFile::getInstances($projectModel, 'favorite_img');
-            
+
+            $favoriteupfile = UploadedFile::getInstances($projectModel, 'favorite_img');
+
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-            
+
             $imgId = '';
             $imgId_favorite = '';
             //如果有图片
@@ -393,11 +381,11 @@ class ProjectController extends \common\util\BaseController {
                 }
                 if ($model->home_img) {
                     $model->home_img = $model->home_img . $imgId;
-                }  else {
+                } else {
                     $model->home_img = ltrim($imgId, ",");
                 }
             }
-            
+
             //喜欢的图片
             if (count($favoriteupfile) > 0) {
                 if (!is_dir($dir))
@@ -424,18 +412,18 @@ class ProjectController extends \common\util\BaseController {
                 }
                 if ($model->favorite_img) {
                     $model->favorite_img = $model->favorite_img . $imgId_favorite;
-                }  else {
+                } else {
                     $model->favorite_img = ltrim($imgId_favorite, ",");
                 }
             }
-            
-            
+
+
             //添加更新时间
             $model->update_time = time();
             //var_dump($model->save());
             if ($model->save()) {
-              
-                return $this->redirect(['order/list','tiaozhuanP' => 'xiuqiu']);
+
+                return $this->redirect(['order/list', 'tiaozhuanP' => 'xiuqiu']);
             }
         }
         //echo $this->createProNum();exit;
@@ -444,11 +432,11 @@ class ProjectController extends \common\util\BaseController {
         //$model = $projectModel::findOne(56);
         $imgurl = '';
         $initialPreview = '';
-        
+
         //喜歡的圖片
         $favorite_imgurl = '';
         $favorite_initialPreview = '';
-        
+
         //家的圖片讀取
         if ($model->home_img) {
             $imgstr = $model->home_img;
@@ -466,9 +454,9 @@ class ProjectController extends \common\util\BaseController {
                 }
             }
         }
-        
+
         //喜歡的圖片讀取
-         if ($model->favorite_img) {
+        if ($model->favorite_img) {
             $imgstr = $model->favorite_img;
             $imgarr = explode(',', $imgstr);
             $imgarr = array_filter($imgarr);
@@ -485,9 +473,10 @@ class ProjectController extends \common\util\BaseController {
             }
         }
 
-        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview, 'favorite_imgurl'=>$favorite_imgurl, 'favorite_initialPreview'=>$favorite_initialPreview]);
+        return $this->render('editadditional', ['model' => $model, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview, 'favorite_imgurl' => $favorite_imgurl, 'favorite_initialPreview' => $favorite_initialPreview]);
     }
 
+    //删除家的照片
     public function actionHomeimgdelete() {
         if ($imgid = Yii::$app->request->post('key')) {
             $imgModel = new \common\models\ZyImages();
@@ -519,7 +508,8 @@ class ProjectController extends \common\util\BaseController {
         return ['success' => true];
     }
     
-     public function actionFavoriteimgdelete() {
+    //删除喜欢的照片
+    public function actionFavoriteimgdelete() {
         if ($imgid = Yii::$app->request->post('key')) {
             $imgModel = new \common\models\ZyImages();
 
