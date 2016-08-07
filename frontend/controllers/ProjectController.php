@@ -180,7 +180,99 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionAdditional() {
-        
+        $this->layout = "editadditional"; //设置使用的布局文件
+        //已添加的项目ID
+        $project_id = Yii::$app->request->get('project_id');
+        if (!$project_id) {
+            //没有提交成功跳转返回
+            return $this->redirect(['match_designer']);
+        }
+
+        $model = new ZyProject();
+
+        if ($post = Yii::$app->request->post()) {
+
+            $project = $model->findOne($project_id);
+
+            //接收图片
+            $upfile = UploadedFile::getInstances($model, 'home_img');
+            $favoriteupfile = UploadedFile::getInstances($model, 'favorite_img');
+
+            $project->compound = $post['compound'] ? $post['compound'] : '';
+            $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
+            $project->description = $post['description'] ? $post['description'] : '';
+
+            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+            
+             $imgId = '';
+             $imgId_favorite = '';
+            //如果有图片
+            if (count($upfile) > 0) {
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+
+               
+                foreach ($upfile as $imgobjct) {
+
+                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+
+                    $dirimg = $dir . "/" . $fileName;
+
+                    //保存图片
+                    if ($imgobjct->saveAs($dirimg)) {
+                        $imgModel = new \common\models\ZyImages();
+                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+
+                        $imgModel->url = $uploadSuccessPath;
+                        if ($imgModel->save()) {
+                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+         
+                $project->home_img = ltrim($imgId, ",");
+            }
+            
+            //喜欢的照片
+            //如果有图片
+            if (count($favoriteupfile) > 0) {
+                if (!is_dir($dir))
+                    mkdir($dir, 0777, true);
+
+                foreach ($favoriteupfile as $imgobjct) {
+
+                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+
+                    $dirimg = $dir . "/" . $fileName;
+
+                    //保存图片
+                    if ($imgobjct->saveAs($dirimg)) {
+                        $imgModel = new \common\models\ZyImages();
+                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+
+                        $imgModel->url = $uploadSuccessPath;
+                        if ($imgModel->save()) {
+                            $imgId_favorite .= ',' . (string) $imgModel->attributes['image_id'];
+                        } else {
+                            return '';
+                        }
+                    }
+                }
+         
+                $project->favorite_img = ltrim($imgId_favorite, ",");
+            }
+            $project->update_time = time();
+            $res = $project->save();
+
+            if ($res) {
+                return $this->redirect(array('project/choose_designer', 'project_id' => $project_id));
+            }
+        }
+
+        // 获取JS签名
+        return $this->render('additional', ['project_id' => $project_id, 'model' => $model]);
     }
 
     //匹配设计师
@@ -302,15 +394,7 @@ class ProjectController extends \common\util\BaseController {
             $session->open();
         }
         if ($user_id = $session->get('user_id')) {
-//            $model = new ZyProject();
-//            $project = $model->findOne(['user_id' => $user_id]);
-//
-//            //如果有需求就跳转到个人中心
-//            if ($project) {
-//                return $this->redirect(['order/list']);
-//                // echo "个人中心!";
-//                //exit;
-//            }
+            
         } else {
             return $this->redirect(['user/login']);
         }

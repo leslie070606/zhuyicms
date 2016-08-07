@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Url;
-if($model->home_img){
+
+if(isset($model->home_img)){
     $imgID = explode(',', $model->home_img);
     $imgModel = new \frontend\models\Images();
     $img = $imgModel->findOne($imgID[0]);

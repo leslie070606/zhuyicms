@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use kartik\file\FileInput;
+use yii\widgets\ActiveForm;
+
 $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
@@ -54,16 +57,89 @@ if (!$session->isActive) {
             <div class="submit_box">
                 <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
                 <span class="submit_truea">需求可随时在【我的住艺】中修改</span>
-                <?= Html::beginForm('', 'post', ['id' => 'form-additional']); ?>
+                <?php
+                $form = ActiveForm::begin([
+                            'method' => 'post',
+                            'options' => ['enctype' => 'multipart/form-data'],
+                ]);
+                ?>
                 <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">请告诉我们更多信息,以便住艺为你匹配更适合的设计师</span>
                 <input class="dema_ipt" type="text" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">请上传户型图、房屋照片</span>
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" name='home' class="home" />
                         <ul id="ula">
-                            <li class="add_img iconfont icon-tianjia"></li>
+                            <?php
+                            //使用ActiveForm的表单
+                            echo $form->field($model, 'home_img[]')->widget(FileInput::classname(), [
+                                'options' => ['multiple' => true],
+                                'pluginOptions' => [
+                                    'allowedPreviewTypes' => ['image'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+                                    'previewFileType' => 'image',
+                                    'initialPreviewAsData' => true, // 是否展示预览图
+                                    'overwriteInitial' => false,
+                                    'browseLabel' => '选择图片',
+                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
+                                    'dropZoneTitle' => '点击上传文件...',
+                                    'maxFileCount' => 12, //允许上传最多的图片5张  
+                                    'maxFileSize' => 10000, //限制图片最大200kB  
+                                    'uploadUrl' => Url::to(['/index/uploadimage']), //异步上传接口地址
+                                    'uploadExtraData' => ['project_id' => $model->project_id],
+                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
+                                    'showUpload' => false,
+                                    // 展示图片区域是否可点击选择多文件
+                                    'browseOnZoneClick' => true,
+                                    'fileActionSettings' => [
+                                        // 设置具体图片的查看属性为false,默认为true
+                                        'showZoom' => TRUE,
+                                        // 设置具体图片的上传属性为true,默认为true
+                                        'showUpload' => FALSE,
+                                        // 设置具体图片的移除属性为true,默认为true
+                                        'showRemove' => TRUE,
+                                    ],
+                                ],
+                            ]);
+                            ?>
+                            <?php
+//                            echo FileInput::widget([
+//                                'model' => $model,
+//                                'attribute' => 'home_img[]',
+//                                //           'options' => ['multiple' => true],
+//                                'name' => 'ImgSelect',
+//                                'language' => 'zh-CN',
+//                                'options' => ['multiple' => true, 'accept' => 'image/*'],
+//                                'pluginOptions' => [
+//
+//                                    // 'initialPreviewConfig' => $initialPreviewConfig,  
+//                                    'allowedPreviewTypes' => ['image'],
+//                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+//                                    'previewFileType' => 'image',
+//                                    'initialPreviewAsData' => FALSE, // 是否展示预览图
+//                                    'overwriteInitial' => false,
+//                                    'browseLabel' => '选择图片',
+//                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
+//                                    'dropZoneTitle' => '点击上传文件...',
+//                                    'maxFileCount' => 12, //允许上传最多的图片5张  
+//                                    'maxFileSize' => 10000, //限制图片最大200kB  
+//                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
+//                                    'showUpload' => false,
+//                                    // 展示图片区域是否可点击选择多文件
+//                                    'browseOnZoneClick' => true,
+//                                    'uploadAsync' => false, //配置异步上传还是同步上传  
+//                                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
+//                                    'fileActionSettings' => [
+//                                        // 设置具体图片的查看属性为false,默认为true
+//                                        'showZoom' => TRUE,
+//                                        // 设置具体图片的上传属性为true,默认为true
+//                                        'showUpload' => FALSE,
+//                                        // 设置具体图片的移除属性为true,默认为true
+//                                        'showRemove' => TRUE,
+//                                    ],
+//                                ],
+//                            ]);
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -72,9 +148,41 @@ if (!$session->isActive) {
                     <span class="here_a">请上传已收集的理想之家</span>
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
-                        <input type="hidden" value="" name="like" class="like" />
                         <ul id="ulb">
-                            <li class="add_img iconfont icon-tianjia"></li>
+                            <?php
+                            //使用ActiveForm的表单
+                            echo $form->field($model, 'favorite_img[]')->widget(FileInput::classname(), [
+                                'options' => ['multiple' => true, 'accept' => 'image/*'],
+                                'name' => 'ImgSelect2',
+                                'language' => 'zh-CN',
+                                'pluginOptions' => [
+                                    'allowedPreviewTypes' => ['image'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
+                                    'previewFileType' => 'image',
+                                    'initialPreviewAsData' => false, // 是否展示预览图
+                                    'overwriteInitial' => false,
+                                    'browseLabel' => '选择图片',
+                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
+                                    'dropZoneTitle' => '点击上传文件...',
+                                    'maxFileCount' => 12, //允许上传最多的图片5张  
+                                    'maxFileSize' => 10000, //限制图片最大200kB  
+                                    'uploadUrl' => Url::to(['/index/uploadimage']), //异步上传接口地址
+                                    'uploadExtraData' => ['project_id' => $model->project_id],
+                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
+                                    'showUpload' => false,
+                                    // 展示图片区域是否可点击选择多文件
+                                    'browseOnZoneClick' => true,
+                                    'fileActionSettings' => [
+                                        // 设置具体图片的查看属性为false,默认为true
+                                        'showZoom' => TRUE,
+                                        // 设置具体图片的上传属性为true,默认为true
+                                        'showUpload' => FALSE,
+                                        // 设置具体图片的移除属性为true,默认为true
+                                        'showRemove' => TRUE,
+                                    ],
+                                ],
+                            ]);
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -103,176 +211,12 @@ if (!$session->isActive) {
                 <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
                     完成！立刻查看设计师！
                 </button>
-                <?= Html::endForm(); ?>
+                <?php ActiveForm::end(); ?>
                 <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
             </div>
         </div>	
     </body>
 </html>
 <script type="text/javascript">
-//    wx.config({
-//        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-//        appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
-//        timestamp: <?php // $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
-//        nonceStr: 'zhuyi', // 必填，生成签名的随机串
-//        signature: "<?php // $jsarr['signature'] ?>", // 必填，签名，见附录1
-//        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-//    });
-    //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
-    var images = {
-        localId: [],
-        serverId: []
-    };
-    wx.ready(function () {
-
-        wx.checkJsApi({
-            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
-            success: function (res) {
-                //alert(res);
-                // 以键值对的形式返回，可用的api值true，不可用为false
-                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-            }
-        });
-        var u = navigator.userAgent;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-
-        touch.on(".add_img", "tap", function (ev) {
-            var _this = $(ev.currentTarget);
-            var index;
-            if (_this.parents("ul").attr("id") == "ulb") {
-                index = 1;
-            } else {
-                index = 0;
-            }
-
-            var length = $(ev.currentTarget).siblings().length;
-            var likestr = '';
-            var nuber = 0;
-
-            // 拍照选择图片
-            wx.chooseImage({
-                count: 9, // 默认9
-                sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                success: function (res) {
-                    images.localId = res.localIds; // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-
-                    var html = "";
-                    // alert(indexx)
-                    if (index == 1) {
-
-                        for (var i = 0; i < images.localId.length; i++) {
-                            var htmllll = images.localId[i];
-                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                            var ge = images.localId.length;
-                            // 上传图片
-                            wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                isShowProgressTips: 1, // 默认为1，显示进度提示
-                                success: function (res) {
-                                    serverId = res.serverId; // 返回图片的服务器端ID
-                                    likestr += serverId + "$";
-
-                                    nuber++;
-                                    if (isAndroid) {
-                                        if (nuber >= ge) {
-                                            var like_val = $(".like").val();
-                                            $(".like").val(like_val + likestr);
-
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ulb li").length - 1; i++) {
-                                                $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                            }
-                                        }
-                                    } else {
-
-                                    uploadIOS(images.localId[i],i);
-                                        //alert(nuber);
-
-                                        var like_val = $(".like").val();
-                                        $(".like").val(like_val + likestr);
-
-                                        likestr = likestr.toString().split("$");
-                                        for (var i = 0; i < $("#ulb li").length - 1; i++) {
-                                            $("#ulb li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                        }
-
-                                    }
-
-                                }
-                            });
-                        }
-
-                        $("#ulb").prepend(html);
-                        //alert($(".home").val());
-                        //alert($(".like").val());
-                        img_height_auto();
-                        auto_click();
-                    } else {
-                        for (var i = 0; i < images.localId.length; i++) {
-                            var htmllll = images.localId[i];
-                            html += '<li><img src="' + htmllll + '" value=""> <i class="iconfont icon-shanchu"></i></li>';
-                            var ge = images.localId.length;
-                            // 上传图片
-                            wx.uploadImage({
-                                localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                                isShowProgressTips: 1, // 默认为1，显示进度提示
-                                success: function (res) {
-                                    serverId = res.serverId; // 返回图片的服务器端ID
-                                    likestr += serverId + "$";
-                                    nuber++;
-                                    if (isAndroid) {
-                                        if (nuber >= ge) {
-                                            var like_val = $(".home").val();
-                                            $(".home").val(like_val + likestr);
-
-                                            likestr = likestr.toString().split("$");
-                                            for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                                $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                            }
-                                        }
-                                    } else {
-                                        var like_val = $(".home").val();
-                                        $(".home").val(like_val + likestr);
-                                        //alert($(".home").val())
-                                        likestr = likestr.toString().split("$");
-                                        for (var i = 0; i < $("#ula li").length - 1; i++) {
-                                            $("#ula li:eq(" + i + ") ").prop("img_id", likestr[i]);
-                                        }
-                                    }
-                                }
-                            });
-                        }
-
-                        $("#ula").prepend(html);
-                        //alert($(".home").val());
-                        //alert($(".like").val());
-                        img_height_auto();
-                        auto_click();
-                    }
-
-                }
-
-            })
-        });
-
-    });
-
-
-    function uploadIOS(localId,i) {
-        wx.uploadImage({
-            localId: localId,
-            success: function (res) {
-                serverIds.push(res.serverId);
-                i++;
-                if (i < length) {
-                    upload(localId,i);
-                } else {
-                     alert("serverIds" + serverIds);
-                }
-            }
-        })
-    }
 
 </script>
