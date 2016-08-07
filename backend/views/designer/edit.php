@@ -17,6 +17,12 @@ use dosamigos\datepicker\DatePicker;
             <?= Html::beginForm('', 'post', ['id' => 'form-basic']); ?>
             <div class="box-body">
                 <div class="form-group">
+                    <label for="sort">排序</label>
+                    <?= Html::activeInput('text', $model, 'sort', ['class' => 'form-control','id' => 'sort']) ?>
+                    <?= Html::error($model, 'sort', ['class' => 'error']); ?>
+                </div>
+
+                <div class="form-group">
                     <label for="name">姓名</label>
                     <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control','id' => 'name']) ?>
                     <?= Html::error($model, 'name', ['class' => 'error']); ?>

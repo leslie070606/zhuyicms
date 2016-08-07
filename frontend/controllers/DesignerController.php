@@ -309,7 +309,8 @@ class DesignerController extends Controller {
         }
 
         $debModel = new \frontend\models\DesignerBasic();
-        $rows = $debModel->getPartDesigners($start);
+        $rows = $debModel->getSortedDesigners($start);
+        //$rows = $debModel->getPartDesigners($start);
         if (empty($rows)) {
             return false;
         }
