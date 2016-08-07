@@ -6,8 +6,10 @@ use kartik\file\FileInput;
 
 use yii\widgets\ActiveForm;
 if (isset($model->project_tags)) {
+    $project_tags = $model->project_tags;
     $project_tags_arr = explode('$', $model->project_tags);
 } else {
+    $project_tags = '';
     $project_tags_arr = array();
 }
 $session = Yii::$app->session;
@@ -100,7 +102,7 @@ if (!$session->isActive) {
                             'options' => ['enctype' => 'multipart/form-data'],
                 ]);
                 ?>
-
+                <input name="_csrf" type="hidden" id="_csrf" value="<?= Yii::$app->request->csrfToken ?>">
                 <input class="dema_ipt" type="text"value="<?= $model->compound ?>" name="compound" placeholder="请填写居住的小区名称" />
                 <div class=" submit_here">
                     <span class="here_a">请上传户型图、房屋照片</span>
@@ -206,7 +208,7 @@ if (!$session->isActive) {
 
                 <div class="type_list">
                     <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
-                    <input type="hidden" name="project_tags" id="project_tags" value="" />
+                    <input type="hidden" name="project_tags" id="project_tags" value="<?= $project_tags?>" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont <?php
                             if (in_array('灯光及光氛围', $project_tags_arr)) {

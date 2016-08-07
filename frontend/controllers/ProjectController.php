@@ -85,7 +85,7 @@ class ProjectController extends \common\util\BaseController {
 
     //需求附加信息
     //old代码 未启用
-    public function actionAdditional() {
+    public function actionAdditionalold() {
 
         //已添加的项目ID
         $project_id = Yii::$app->request->get('project_id');
@@ -191,7 +191,8 @@ class ProjectController extends \common\util\BaseController {
         //return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
         return $this->render('additional', ['project_id' => $project_id]);
     }
-
+    
+    public function actionAdditional() {}
     //匹配设计师
     public function actionChoose_designer() {
         $session = Yii::$app->session;
@@ -343,6 +344,7 @@ class ProjectController extends \common\util\BaseController {
     }
 
     public function actionEditadditional() {
+        $this->enableCsrfValidation = false;//关闭csrf验证
         $this->layout = "editadditional"; //设置使用的布局文件
 //      echo Yii::$app->request->hostInfo;exit;
         $projectModel = new ZyProject();
@@ -423,7 +425,7 @@ class ProjectController extends \common\util\BaseController {
                 if ($model->favorite_img) {
                     $model->favorite_img = $model->favorite_img . $imgId_favorite;
                 }  else {
-                    $model->home_img = ltrim($imgId_favorite, ",");
+                    $model->favorite_img = ltrim($imgId_favorite, ",");
                 }
             }
             
@@ -433,7 +435,7 @@ class ProjectController extends \common\util\BaseController {
             //var_dump($model->save());
             if ($model->save()) {
               
-                return $this->redirect(['order/list']);
+                return $this->redirect(['order/list','tiaozhuanP' => 'xiuqiu']);
             }
         }
         //echo $this->createProNum();exit;
