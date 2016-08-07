@@ -20,8 +20,6 @@ class MyController extends Controller{
 		if(empty($params)){
 			return false;
 		}
-		var_dump($params);
-
 		/*
         $userId         = isset($params['user_id'])? $params['user_id'] : 0;
         $designerId     = isset($params['designer_id'])? $params['designer_id'] : 0;
