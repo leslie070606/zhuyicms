@@ -6,7 +6,7 @@ use yii\helpers\Url;
     <div class="xuqiu">
         <div class="xuqiu_here">
             <div class="xq_here_top">
-                <span class="xq_top_left">需求单：<?= $model->project_id ?></span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
+                <span class="xq_top_left">需求单：<?= $model->project_num ?></span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
             </div>
             <div class="xuqiu_center">
                 <img class="center_img" src="img/home_page/proa.jpg" />
