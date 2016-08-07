@@ -490,7 +490,7 @@ HTML;
                                     }
                                 }
                                 var html = '<div class="pro_here iconfont" designer_id="' + data[i].designer_id + '">'
-                                        + '<a href="' + data[i].redirect_url + '"><img class="here_img" src="' + data[i].background + '" /></a>'
+                                        + '<a href="' + data[i].redirect_url+'&&collect_status=1"><img class="here_img" src="' + data[i].background + '" /></a>'
                                         + '<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
                                         + '<div class="here_zhe"></div>'
                                         + '<div class="here_botaa"></div>'
