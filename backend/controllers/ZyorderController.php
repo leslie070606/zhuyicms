@@ -83,6 +83,7 @@ class ZyorderController extends Controller
 		
 			$designerId = $model->attributes['designer_id'];
 			$dRows = \backend\models\DesignerBasic::findOne($designerId);
+			$designerName = '';
 			if(!empty($dRows)){
 				$designerName = $dRows->name;
 			}

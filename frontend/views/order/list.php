@@ -6,7 +6,9 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$userId = $session->get("user_id");
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +35,7 @@ if (!$session->isActive) {
 
     </head>
 
-    <body>
+    <body user_id="<?php echo $userId?>">
         <section class="user_box">
             <header class="header_top iconfont icon-logo">
                 <span class="top_right iconfont icon-gongneng"></span>
@@ -488,7 +490,7 @@ HTML;
                                     }
                                 }
                                 var html = '<div class="pro_here iconfont" designer_id="' + data[i].designer_id + '">'
-                                        + '<a href="' + data[i].redirect_url + '"><img class="here_img" src="' + data[i].background + '" /></a>'
+                                        + '<a href="' + data[i].redirect_url+'&&collect_status=1"><img class="here_img" src="' + data[i].background + '" /></a>'
                                         + '<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
                                         + '<div class="here_zhe"></div>'
                                         + '<div class="here_botaa"></div>'
@@ -498,7 +500,7 @@ HTML;
                                         + '</div>'
                                         + '<div class="bottom_name">'
                                         + '<span class="here_name">' + data[i].name + '</span>'
-                                        + '<span class="here_namea">暂缺数据</span>'
+                                        + '<span class="here_namea">' + data[i].city+ '</span>'
                                         + '</div>'
                                         + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
                                         + '</div>'
@@ -508,6 +510,20 @@ HTML;
                                 index++;
                             }
                             $(".loading_box").hide();
+        					touch.on( ".shanchu_box","tap", function () {
+            					var _this = $(this);
+								var user_id = $("body").attr("user_id");
+            					var designer_id = _this.parents(".iconfont").attr("designer_id");
+            					var params = [user_id, designer_id];
+            					$.ajax({
+                					type: "get",
+                					url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                					async: true,
+                					success: function (data) {
+                    					_this.parents(".iconfont").remove();
+                					}
+            					});
+        					});
                         }
                     });
                 }
@@ -541,10 +557,9 @@ HTML;
 
 
         });
-        $(document).on("click", ".shanchu_box", function () {
+        touch.on( ".shanchu_box","tap", function () {
             var _this = $(this);
-            //注释写死user_id为1
-            var user_id = 1;
+			var user_id = $("body").attr("user_id");
             var designer_id = _this.parents(".iconfont").attr("designer_id");
             var params = [user_id, designer_id];
             $.ajax({
