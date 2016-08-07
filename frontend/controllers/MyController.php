@@ -152,7 +152,7 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
         		$tmp            = $dbModel->getHeadPortrait($designerId);
         		$headPortrait   = isset($tmp)? $tmp : "/img/home_page/banner_head.jpg";
         
-        		$tmp            = $dbModel->getBackground($designerId);
+        		$tmp            = $dbModel->getHeadBackground($designerId);
         		$background     = isset($tmp)? $tmp : "/img/home_page/prob.jpg";
 
 
