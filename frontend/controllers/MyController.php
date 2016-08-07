@@ -121,12 +121,21 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
 	}
 
 	public function actionShow(){
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $userId = $session->get("user_id");
+        if (!isset($userId) || empty($userId)) {
+            return $this->redirect(['user/login']);
+        }
+
         $request = Yii::$app->request;
 		if(!$request->isAjax){
 			return -1;
 		}
 
-        $userId         = isset($params['user_id'])? $params['user_id'] : 1;
+        //$userId         = isset($params['user_id'])? $params['user_id'] : 1;
 		$collectM       = new \frontend\models\CollectDesigner();
 		$data			= $collectM->getCollectDesignerById($userId);
 
@@ -155,10 +164,13 @@ frontend\models\CollectDesigner::STATUS_OK])->all();
         		$tmp            = $dbModel->getHeadBackground($designerId);
         		$background     = isset($tmp)? $tmp : "/img/home_page/prob.jpg";
 
+				$dWorkModel 	= new \frontend\models\DesignerWork();
+				$city 			= $dWorkModel->getCity($designerId);
 
 				$designerRet = array(
                 	'designer_id'   => $designerId,
                 	'name'          => $name,
+					'city'			=> $city,
                 	'tag'           => $tag,
                 	'head_portrait' => $headPortrait,
 					'background'	=> $background,
