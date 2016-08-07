@@ -6,7 +6,9 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$userId = $session->get("user_id");
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +35,7 @@ if (!$session->isActive) {
 
     </head>
 
-    <body>
+    <body user_id="<?php echo $userId?>">
         <section class="user_box">
             <header class="header_top iconfont icon-logo">
                 <span class="top_right iconfont icon-gongneng"></span>
@@ -498,7 +500,7 @@ HTML;
                                         + '</div>'
                                         + '<div class="bottom_name">'
                                         + '<span class="here_name">' + data[i].name + '</span>'
-                                        + '<span class="here_namea">暂缺数据</span>'
+                                        + '<span class="here_namea">' + data[i].city+ '</span>'
                                         + '</div>'
                                         + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
                                         + '</div>'
@@ -543,8 +545,7 @@ HTML;
         });
         $(document).on("click", ".shanchu_box", function () {
             var _this = $(this);
-            //注释写死user_id为1
-            var user_id = 1;
+			var user_id = $("body").attr("user_id");
             var designer_id = _this.parents(".iconfont").attr("designer_id");
             var params = [user_id, designer_id];
             $.ajax({
