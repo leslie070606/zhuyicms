@@ -96,8 +96,10 @@ class OrderController extends Controller {
 			$hasProject = 1;
 		}
 
-		//是否需要人工（系统）匹配
-		$needSystemMatch = 0;
+		//是否需要人工匹配
+		$isRengong = isset($projectRows->is_rengong)? $projectRows->is_rengong : 0;
+
+		$toFrontend = -1;
         //此用户下面没有订单
         if (empty($ret)) {
             //没有提交需求的，快提交需求
@@ -106,12 +108,12 @@ class OrderController extends Controller {
 
 			if($hasProject == 0){
 				$toFrontend = -1;
-			}elseif($hasProject == 1 && $needSystemMatch == 0){
+			}elseif($hasProject == 1 && $isRengong == 0){
 				$toFrontend = -2;
-			}elseif($hasProject == 1 && $needSystemMatch == 1){
+			}elseif($hasProject == 1 && $isRengong == 1){
 				$toFrontend = -3;
 			}
-            return $this->render("list", ['data' => -1, 'jsarr' => $jsarr]);
+            return $this->render("list", ['data' => $toFrontend, 'jsarr' => $jsarr]);
         } else {
             $data = array();
             foreach ($ret as $r) {

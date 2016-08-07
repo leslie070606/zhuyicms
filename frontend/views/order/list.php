@@ -91,16 +91,33 @@ if (!$session->isActive) {
                     <li>
                         <div class="dingdan">
                             <?php
-                            if (empty($data) || !is_array($data)) {
+                            if ($data == -1) {
 
                                 $html = '
 								<div class="Blank_Page">
-				  					<span>目前还没有订单产生<br/>
-				  					快 <a href="'.Url::toRoute('project/match_designer').'" class="red">提交需求</a>约见设计师吧
-				  					</span>
-				  				</div>';
-
+									<span>你还没有产生订单<br/>
+										可以先浏览  <a href="'.Url::toRoute('designer/list').'" class="red">住艺的设计师</a>
+									</span>
+								</div>';
                                 echo $html;
+							}elseif($data == -2){
+								$html = '
+								<div class="Blank_Page">
+									<span>
+										你还没有产生订单<br/>
+										<a href="'.Url::toRoute('project/match_designer').'" class="red">点击选择住艺设计师</a>
+									</span>
+								</div>';
+								echo $html;
+							}elseif($data == -3){
+								$html = '
+								<div class="Blank_Page">
+									<span>
+										住艺客服正在努力帮您匹配设<br/>
+										计师，我们将在48小时内为您</br>
+										匹配到合适您的设计师
+									</span>
+								</div>';
                             } else {
                                 foreach ($data as $d) {
                                     $orderId = $d['order_id'];
