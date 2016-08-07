@@ -23,6 +23,8 @@ if(empty($ret)){
                     <tbody>
 
                         <tr>
+                            <td>排序</td>
+                            <td><?= $model->sort ? $model->sort : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>姓名</td>
 <!--                             <td><span class='label label-success'></span></td>-->
                             <td><?= $model->name ? $model->name : "<span class='label label-warning'>NULL</span>" ?></td>

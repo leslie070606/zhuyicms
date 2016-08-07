@@ -18,6 +18,19 @@ class DesignerBasic extends ActiveRecord{
 		$rows 	= Yii::$app->db->createCommand($sql)->queryAll();
 		return $rows;
 	}
+
+	public function getSortedDesigners($start){
+		$count 	= 3;//固定显示3条数据.
+		$sql 	= "SELECT * FROM zyj_designer_basic ORDER BY sort ASC LIMIT $start,$count";
+		$rows 	= Yii::$app->db->createCommand($sql)->queryAll();
+		return $rows;
+	}
+	
+	public function getAllSortedDesigners(){
+		$sql = "SELECT * FROM zyj_designer_basic ORDER BY sort ASC";
+		$rows 	= Yii::$app->db->createCommand($sql)->queryAll();
+		return $rows;
+	}
 	
 	public function getAllDesigners(){
 		return $this->find()->all();

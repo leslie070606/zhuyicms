@@ -664,7 +664,17 @@
                         position(true);
                     }, 100);
                 });
-                html = '<td id="get_id"><div class="dwwl dwrc dwwl1"><div class="dwl">天</div><div class="dww" style="height:180px;min-width:70px;"><div class="dw-ul" style="-webkit-transition:all 0s ease-out;-webkit-transform:translate3d(0,36px,0);"><div class="dw-bf"><div class="dw-li dw-v" data-val="0" style="height:36px;line-height:36px;"><div class="dw-i">' + that.settings.get[0] + '</div></div><div class="dw-li dw-sel dw-v" data-val="30" style="height:36px;line-height:36px;"><div class="dw-i">' + that.settings.get[1] + '</div></div><div class="dw-li dw-v" data-val="60" style="height:36px;line-height:36px;"><div class="dw-i">' + that.settings.get[2] + '</div></div></div></div><div class="dwwo"></div></div><div class="dwwol"></div></div></td>'
+				var htmm="";	
+               	for(var a=0;a<that.settings.get.length;a++){
+                	var gttt='';
+                	if(a==0){
+                		gttt='dw-li dw-sel dw-v';
+                	}else{
+                		gttt='dw-li dw-v';
+                	}
+                	htmm+='<div class="'+gttt+'" data-val="'+a*30+'" style="height:36px;line-height:36px;"><div class="dw-i">' + that.settings.get[a] +'</div></div>';
+               	}
+                html = '<td id="get_id"><div class="dwwl dwrc dwwl1"><div class="dwl">天</div><div class="dww" style="height:180px;min-width:70px;"><div class="dw-ul" style="-webkit-transition:all 0s ease-out;-webkit-transform:translate3d(0,36px,0);"><div class="dw-bf">' + htmm + '</div></div><div class="dwwo"></div></div><div class="dwwol"></div></div></td>'
                 $(".dwrc tr").append(html);
                 $(".dwv").html("选择时间").addClass("new_class").removeClass("dwv")
                 //alert();
