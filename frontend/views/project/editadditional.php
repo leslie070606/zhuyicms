@@ -122,7 +122,7 @@ if (!$session->isActive) {
                                     'initialPreview' => $imgurl,
                                     // 'initialPreviewConfig' => $initialPreviewConfig,  
                                     'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png','jpeg'],
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $initialPreview,
@@ -173,7 +173,7 @@ if (!$session->isActive) {
                                     'initialPreview' => $favorite_imgurl,
                                     // 'initialPreviewConfig' => $initialPreviewConfig,  
                                     'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png','jpeg'],
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $favorite_initialPreview,
