@@ -2,7 +2,7 @@
 
 use yii\helpers\Url;
 ?>
-<?php if ($model) {  ?>
+<?php if ($model) { ?>
     <div class="xuqiu">
         <div class="xuqiu_here">
             <div class="xq_here_top">
@@ -35,16 +35,32 @@ use yii\helpers\Url;
                     }
                     ?>
                 </div>
+                <?php
+                //判断是否有订单
+                $orderModel = new frontend\models\Order();
+                $order = $orderModel->getOrdersByUserId($model->user_id);
+                if (count($order) <= 0) {
+                    //var_dump($order);
+                    ?>
+
+                    <div class = "center_here" style = "line-height:.7rem; margin-bottom:.4rem">
+                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
+                    </div>
+                    <?php
+                }
+                ?>
+
+
             </div>
         </div>
     </div>
 <?php } else { ?>
-<div class="Blank_Page">
-    <span>
-        你还没有填写预约需求哦<br/>
-        详细的需求清单可以让设计师更快给出方案<br /> 
-        <a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">填写需求</a>
-    </span>
+    <div class="Blank_Page">
+        <span>
+            你还没有填写预约需求哦<br/>
+            详细的需求清单可以让设计师更快给出方案<br /> 
+            <a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">填写需求</a>
+        </span>
 
-</div>
+    </div>
 <?php } ?>

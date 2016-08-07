@@ -189,107 +189,108 @@ class ProjectController extends \common\util\BaseController {
         if (!$session->isActive) {
             $session->open();
         }
+
+        //判断是否有用户
         if ($user_id = $session->get('user_id')) {
             $model = new ZyProject();
             $project = $model->findOne(['user_id' => $user_id]);
 
-            //如果有需求就跳转到个人中心
-//            if ($project) {
-//                return $this->redirect(['order/list']);
-//                // echo "个人中心!";
-//                //exit;
-//            }
+            //如果未找到需求  重新提交
+            if (count($project) <= 0) {
+                return $this->redirect('match_designer');
+            }
         } else {
             return $this->redirect(['user/login']);
         }
 
-        //判断是否有已匹配的设计师
-        //引入算法类
-        $matchModel = new \app\components\Match();
-
-        $project_id = Yii::$app->request->get('project_id');
-        if (!$project_id) {
-            //没有需求跳转到题目页
-            return $this->redirect('match_designer');
-        }
-        //全部设计师
-        $designerModel = new DesignerWork();
-        $designerArr = $designerModel->find()->all();
-
+//        //判断是否有需求 没有跳到题目页
+//        $project_id = Yii::$app->request->get('project_id');
+//        if (!$project_id) {
+//            //没有需求跳转到题目页
+//            return $this->redirect('match_designer');
+//        }
         //根据ID查找需求
-        $projectModel = new ZyProject();
-        $project = $projectModel->findOne($project_id);
-        $scoreArr = array();
+//        $projectModel = new ZyProject();
+//        $project = $projectModel->findOne($project_id);
 
-        //循环判断设计师
-        for ($i = 0; $i < count($designerArr); $i++) {
-            //完全不符合标准的设计师
-            // 判断城市
-            $tcity = false;
-            if ($designerArr[$i]['service_city'] != '全国') {
-                $descity = explode(',', $designerArr[$i]['service_city']);
-                $tcity = in_array($project['city'], $descity);
-            } else {
-                $tcity = TRUE;
+        $project_id = $project->project_id;
+        $scoreArr = array(); //匹配设计师
+        //判断是否有已匹配的设计师json 有就直接显示
+        if ($project->match_json) {
+            $scoreArr = json_decode($project->match_json, TRUE);
+        } else {
+            //引入算法类
+            $matchModel = new \app\components\Match();
+
+            //全部设计师
+            $designerModel = new DesignerWork();
+            $designerArr = $designerModel->find()->all();
+
+            //循环判断设计师
+            for ($i = 0; $i < count($designerArr); $i++) {
+                //完全不符合标准的设计师
+                // 判断城市
+                $tcity = false;
+                if ($designerArr[$i]['service_city'] != '全国') {
+                    $descity = explode(',', $designerArr[$i]['service_city']);
+                    $tcity = in_array($project['city'], $descity);
+                } else {
+                    $tcity = TRUE;
+                }
+
+                //判断时间
+                $usertime = time();
+                switch ($project['work_time']) {
+
+                    case "我想尽快开始":
+                        $usertime = time();
+                        break;
+                    case "3个月以后":
+                        $usertime = time() + 60 * 60 * 24 * 30 * 3;
+                        break;
+                    case "我不是很着急":
+                        $usertime = time() + 60 * 60 * 24 * 365;
+                        break;
+                }
+                // 判断时间是否允许
+                $projecttime = TRUE;
+                if ($designerArr[$i]['nowork_time'] < $usertime && $usertime < $designerArr[$i]['nowork_time2']) {
+                    $projecttime = false;
+                }
+
+                if ($tcity && $projecttime) {
+                    
+                } else {
+
+                    //跳出本次循环
+                    continue;
+                }
+
+                $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
+                $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
+                //匹配设计师计算分数
+                $scoreArr[$i]['score'] = $matchModel->assigns($project, $designerArr[$i]);
             }
 
-//判断时间
-            $usertime = time();
-            switch ($project['work_time']) {
+            //判断是否为空
+            if (count($scoreArr) > 0) {
 
-                case "我想尽快开始":
-                    $usertime = time();
-                    break;
-                case "3个月以后":
-                    $usertime = time() + 60 * 60 * 24 * 30 * 3;
-                    break;
-                case "我不是很着急":
-                    $usertime = time() + 60 * 60 * 24 * 365;
-                    break;
+                //排序
+                foreach ($scoreArr as $key => $value) {
+
+                    $rating[$key] = $value['score'];
+                }
+                // 按照score降序排列
+                array_multisort($rating, SORT_DESC, $scoreArr);
+
+                if (count($scoreArr) >= 9) {
+                    $scoreArr = array_slice($scoreArr, 0, 9);
+                }
+
+                $project->match_json = json_encode($scoreArr);
+                $project->save();
+                //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
             }
-// 判断时间是否允许
-            $projecttime = TRUE;
-            if ($designerArr[$i]['nowork_time'] < $usertime && $usertime < $designerArr[$i]['nowork_time2']) {
-                $projecttime = false;
-            }
-
-            if ($tcity && $projecttime) {
-                
-            } else {
-
-                //跳出本次循环
-                continue;
-            }
-
-            $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
-            $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
-//匹配设计师计算分数
-            $scoreArr[$i]['score'] = $matchModel->assigns($project, $designerArr[$i]);
-        }
-
-//判断是否为空
-        if (count($scoreArr) > 0) {
-
-            //排序
-            foreach ($scoreArr as $key => $value) {
-
-                $rating[$key] = $value['score'];
-            }
-            // 按照score降序排列
-            array_multisort($rating, SORT_DESC, $scoreArr);
-
-            if (count($scoreArr) >= 9) {
-                $scoreArr = array_slice($scoreArr, 0, 9);
-            }
-
-//            echo "<pre>";
-//            print_r($scoreArr);
-//            exit;
-
-            $project->match_json = json_encode($scoreArr);
-            $project->save();
-            //$scoreArr = $scoreArr + $scoreArr + $scoreArr + $scoreArr;
-            //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
         }
         return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' => $user_id, 'project_id' => $project_id]);
     }
@@ -507,7 +508,7 @@ class ProjectController extends \common\util\BaseController {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return ['success' => true];
     }
-    
+
     //删除喜欢的照片
     public function actionFavoriteimgdelete() {
         if ($imgid = Yii::$app->request->post('key')) {

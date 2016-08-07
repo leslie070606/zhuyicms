@@ -23,6 +23,10 @@ class OrderController extends Controller {
 
             //是否人工匹配
             if (!$dearr[2]) {
+                $model = new \common\models\ZyProject();
+                $project = $model->findOne(['project_id' => $dearr[1]]);
+                $project->is_rengong = '1';
+                $project->save();
                 return 3; //未选设计师
                 //跳转到人工服务
             } else {
