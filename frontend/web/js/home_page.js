@@ -1,4 +1,14 @@
 $(function(){
+		function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
+		var collect_status = getUrlParam("collect_status");
+		if(collect_status==1){
+			$(".sc_bot a").addClass("active").html("已收藏");
+		}
         var length=$(".pro_box .pro_here").length;
         if(length<3){
             $(".see_more").hide();
