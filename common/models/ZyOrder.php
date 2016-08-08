@@ -86,6 +86,7 @@ class ZyOrder extends \yii\db\ActiveRecord
             'appointment_location' => '约见地点',
             'appointment_time' => '约见时间',
             'remark' => '订单备注',
+			'reason' => '推荐理由',
             'service_type' => '订单类型',
             'create_time' => '创建订单',
             'update_time' => '修改时间',

@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'appointment_location',
             'appointment_time:datetime',
             'remark',
+			'reason',
             'service_type',
             'create_time:datetime',
             'update_time:datetime',

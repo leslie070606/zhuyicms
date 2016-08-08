@@ -147,6 +147,8 @@ class OrderController extends Controller {
                 $dSpareTime = isset($r['designer_spare_time']) ? $r['designer_spare_time'] : '';
                 $appointmentTime = isset($r['appointment_time']) ? $r['appointment_time'] : '';
                 $appointmentLocation = isset($r['appointment_location']) ? $r['appointment_location'] : '';
+				//推荐理由
+				$reason = isset($r['reason'])? $r['reason'] : '客服推荐';
 
                 /*
                  * 如果当前的订单状态是待见面状态，
@@ -171,6 +173,7 @@ class OrderController extends Controller {
                     'designer_spare_time' => $dSpareTime,
                     'appointment_time' => $appointmentTime,
                     'appointment_location' => $appointmentLocation,
+					'reason' => $reason,
                     'designer' => array(
                         'designer_id' => $designerId,
                         'name' => $name,

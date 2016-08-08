@@ -149,6 +149,8 @@ $userId = $session->get("user_id");
                                         $appointmentTime = date("Y-m-d H:i:s",time());
                                     }
                                     $appointmentLocation = $d['appointment_location'];
+									//推荐理由
+									$reason = isset($d['reason'])? $d['reason'] : '客服推荐';
                                     //订单状态
                                     $status = $d['status'];
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
@@ -272,7 +274,7 @@ HTML;
 				  					</div>
 				  					<div class="tj_box">
 				  						<span class="tj_spa">住艺推荐设计师</span>
-				  						<span class="tj_spb"><a>推荐理由：</a>匹配客服后台编辑</span>
+				  						<span class="tj_spb"><a>推荐理由：</a><?php echo $reason?></span>
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
