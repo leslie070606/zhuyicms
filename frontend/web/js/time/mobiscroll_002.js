@@ -684,6 +684,9 @@
                 $(".dwrc tr").append(html);
                 $(".dwv").html("选择时间").addClass("new_class").removeClass("dwv")
                 //alert();
+                if(that.settings.get.length==1){
+                    $("#get_id .dw-ul").css("transform","translate3d(0,72px,0)");
+                }   
             }
 
             // Events

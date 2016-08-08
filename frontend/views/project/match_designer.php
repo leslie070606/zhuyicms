@@ -54,17 +54,17 @@ if (!$session->isActive) {
                     <span class="box_soa">装修设计</span>
                     <span class="box_sob">新房，二手房重新装修</span>
                 </div>
-                <a href="http://www.baidu.com"><div class="boxa_box">
+                <a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc"><div class="boxa_box">
                         <span class="box_soa">软装咨询</span>
                         <span class="box_sob">效果提升  统一风格</span>
                     </div></a>
                 
-                <a href="http://www.baidu.com"><div class="boxa_box">
+                <a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc"><div class="boxa_box">
                         <span class="box_soa">庭院景观</span>
                         <span class="box_sob">庭院、花园、景观规划</span>
                     </div></a>
                 
-                <a href="http://www.baidu.com"><div class="boxa_box">
+                <a href="<?php echo Url::toRoute('index/toolsdesign'); ?>"><div class="boxa_box">
                         <span class="box_soa">公装设计</span>
                         <span class="box_sob">办公室 商铺 会所 艺术馆</span>
                     </div></a>
