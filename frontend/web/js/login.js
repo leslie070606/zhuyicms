@@ -23,7 +23,16 @@ $(function(){
 		if($(this).val()==""){
 			iptb=false;
 		}
+                var vala=$("#hideen").val();
+		var valb=$("#code").val();
 		panduan();
+		if(vala!=valb){
+			$("#sub").attr("disabled",true);
+                         $("#worry").hide();
+		}else{
+			$("#sub").attr("disabled",false);
+                        $("#worry").show().html("验证码有误,请重新输入!");
+		}
 	});
 	touch.on(".btnn","tap",function(ev){
 		if($(ev.currentTarget).hasClass("btn_true")){
