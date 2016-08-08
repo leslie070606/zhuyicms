@@ -64,9 +64,13 @@ if (!$session->isActive) {
 
                 <span class="huoqu djser truee" onclick="sendmsg()">获取验证码</span>
             </div>
+            <input type="hidden" value="<?php if (Yii::$app->getSession()->hasFlash('msg')) {
+                    echo Yii::$app->getSession()->getFlash('msg');
+                } ?>" id="msg" name="msg" />
+
             <input type="hidden" value="" id="phonestr" name="phonestr" />
-            <div for=""><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
-            <?= Html::endForm(); ?>
+            <div style="position: relative;"><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
+<?= Html::endForm(); ?>
         </section>
     </body>
 </html>

@@ -60,6 +60,16 @@ $userId = $session->get("user_id");
                 </ul>
             </section>
             <div class="down_right_zd"></div>
+			
+			<div class="out_true_box">
+				<div class="out_true">
+					<div class="out_true_top">确认退出登录？</div>
+					<div class="out_true_bott">
+						<span class="quxiao">取消</span>
+						<span class="queding">确定</span>
+					</div>
+				</div>
+			</div>
             <div class="help_bot_zd" style="display: none; opacity: 0.5;"></div>
             <div class="help_bot_btn">
                 <span class="iphone_btn" style="display: none; top: 0px;">
@@ -78,10 +88,30 @@ $userId = $session->get("user_id");
                     </a>
                 </span>
             </div>
+            <?php
+            $userModel = new frontend\models\User();
+            $user = $userModel->findOne($userId);
+            $username = '';
+            if(isset($user['nickname']) && !empty($user['nickname'])){
+                $username = $user['nickname'];
+            }  else {
+                $username = $user['phone'];
+                
+                $username = substr_replace($username, '****', 3, 4);	
+            }
+            $headimg = '';
+            if(isset($user['headimgurl'])){
+                $headimg = $user['headimgurl'];
+            }  else {
+                $headimg = 'img/home_page/banner_head.jpg';
+            }
+//            echo "<pre>";
+//            print_r($user['nickname']);exit;
+            ?>
             <section id="user_box" class="custom">
                 <div class="user_top">
-                    <span class="head_img"><img src="img/home_page/banner_head.jpg"/></span>
-                    <span class="head_name">住艺君</span>
+                    <span class="head_img"><img src="<?=$headimg ?>"/></span>
+                    <span class="head_name"><?=$username ?></span>
                     <span class="head_more">免费预约一次</span>
                 </div>
                 <div class="nac_boxa">
@@ -413,7 +443,6 @@ HTML;
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								<input type="hidden" value="" name="list_val" class="list_val" />
 								
-				  				<iframe class="yijianmian" src="{$downurl}" name="uploadhetong" style=" width:100%; border:none; overflow:hidden;"></iframe>
 				  			</div>
 HTML;
                                     }
@@ -545,7 +574,9 @@ HTML;
 
             });
             $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
-        }
+            var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
+		setTimeout(function(){$(".bxslidera").height(heightttt)},100);
+       }
 
         touch.on(".nac_boxa>span", "tap", function (ev) {
             indexaa = $(ev.currentTarget).index();

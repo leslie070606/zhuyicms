@@ -154,7 +154,7 @@ $videoModel = new ZyVideo();
 
         <section class="nav_bot">
 
-            <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06&scene=1&srcid=0719nZGFjUf0jqEav6uGUFTF#rd">关于住艺</a></span>
+            <span><a href="<?php echo Url::toRoute('zyzhinan/about'); ?>">关于住艺</a></span>
             <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
             <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=2247484893&idx=3&sn=61ad8cdec4d8fca83cc640324baf0b3a&scene=1&srcid=0714eN73BsxsGBnKEyQTPQFc&from=singlemessage&isappinstalled=0#wechat_redirect">住艺招聘</a></span>
             <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>

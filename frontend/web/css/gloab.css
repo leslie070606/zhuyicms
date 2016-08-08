@@ -416,6 +416,13 @@ position: absolute;
 .file-preview-image { height: auto !important;}
 .file-error-message ul li { width: 100% !important;}
 
+/*退出弹出*/
+.out_true_box { display: none; position: fixed; width: 100%; z-index: 99999; height: 100%; top: 0; left: 0;}
+.out_true { width: 4.9rem; height: 1.9rem; background: #FFFFFF; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto;}
+.out_true .out_true_top { height: 1.1rem; text-align: center; line-height: 1.1rem; font-size: .28rem; font-weight: bold; box-sizing: border-box; border-bottom: 1px solid #9F9FA0;}
+.out_true .out_true_bott { line-height: .8rem;}
+.out_true .out_true_bott>span { float: left; width: 50%; text-align: center;}
+.out_true .out_true_bott .queding { box-sizing: border-box; border-left: 1px solid #9F9FA0;}
 
 
 

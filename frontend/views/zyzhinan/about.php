@@ -34,7 +34,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -46,38 +46,35 @@ if (!$session->isActive) {
                 </ul>
             </section> 
             <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<span class="queding">确定</span>
-					</div>
-				</div>
-			</div>  
+
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <span class="queding">确定</span>
+                    </div>
+                </div>
+            </div>  
             <div class="guide_box_here">
-                <span class="guide_box_title">住艺有何不同</span>
-                <div class="here_a_box">
-                    <span class="box_spa red">家居设计的“高级定制”</span>
-                    <span class="box_spb">住艺帮你甄选最值得推荐的设计师，将为你量身定制最合适你家的设计方案</span>
+                <span class="guide_box_title">一百个字 ，读懂住艺</span>
+                <span class="iconfont icon-logo1"></span>
+                <div class="here_c_box">
+                    <span class="box_sp">“住艺”是康泰纳仕集团(Condé Nast)旗下，与《安邸AD》关联的全新室内设计师平台。</span>
+                    <span class="box_sp">住艺集结了国内最优质的设计人才，只为帮你找到最理想的设计师，让空间变成家。</span>
+                    <span class="box_sp">住艺还将为你提供从需求梳理、专业咨询、产品推荐，到质量把控的全程无忧管家式服务，让从此你摆脱装修设计的繁琐困难，变得省心舒心。</span>
+                    <span class="box_sp">除了家之外，如果你想拥有独一无二的办公室、餐厅或店铺，住艺同样能够帮助你！</span>
+                    <span class="box_sp">来住艺，与设计师一起来实现你的梦想空间吧！</span>
                 </div>
-                <div class="here_a_box">
-                    <span class="box_spa red">每一分钱都花在刀刃上</span>
-                    <span class="box_spb">住艺设计师都是材料和工艺的大师，将协助你拟定精细预算</span>
-                </div>
-                <div class="here_a_box">
-                    <span class="box_spa red">管家式的全程服务</span>
-                    <span class="box_spb">住艺为你提供一对一的管家服务，将协助你从设计到实施的全流程，解答你在各个环节的疑问</span>
-                </div>
-                <div class="here_a_box">
-                    <span class="box_spa red">能够完美落地的设计方案</span>
-                    <span class="box_spb">除了设计方案，住艺设计师还将协助你对接经验丰富的施工团队并监督每一个施工细节</span>
-                </div>
-                <div class="here_a_box">
-                    <span class="box_spa red">摆脱建材选择困难症</span>
-                    <span class="box_spb">最后，住艺设计师将努力为你甄选高品质建材，让你摆脱逛建材城这件苦差事</span>
-                </div>
+
+
+
+
+
+
+
+
+
             </div>
 
         </div>	

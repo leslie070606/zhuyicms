@@ -316,6 +316,7 @@ class OrderController extends Controller {
         $orderRows->save();
     }
     
+    //合同上传
     public function actionUploadhetong(){
         $this->layout = "editadditional"; //设置使用的布局文件
         //echo 1;exit;

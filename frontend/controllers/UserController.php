@@ -238,10 +238,9 @@ class UserController extends ZyuserController {
 //                        exit;
                     }
                 } else {
-//                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//                    echo "验证码错误!";
-//                    exit;
-                    return $this->redirect(['login']);
+                    // 验证码错误!
+                    Yii::$app->getSession()->setFlash('msg', '验证码错误,请重新获取!');
+                    return $this->render('Addphone');
                 }
             } else {
                 echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
@@ -259,11 +258,13 @@ class UserController extends ZyuserController {
             $session->open();
         }
         // 销毁session中所有已注册的数据
-     
+
         $session->remove('user_id');
         $cookie = Yii::$app->request->cookies->get('zuyiuser_remeber'); //移除一个 Cookie 对象 
-        if($cookie){\Yii::$app->response->getCookies()->remove($cookie);}
-        
+        if ($cookie) {
+            \Yii::$app->response->getCookies()->remove($cookie);
+        }
+
         return $this->redirect(['index/index']);
     }
 

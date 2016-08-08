@@ -386,6 +386,8 @@ class DesignerController extends Controller {
 
                 if (count($designer) > 0) {
                     return $this->render('searchdesigner', ['data' => $designer]);
+                }else{
+                    return FALSE;
                 }
             }
         } else {

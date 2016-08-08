@@ -49,6 +49,16 @@ if (!$session->isActive) {
                 </ul>
             </section>
 			<div class="down_right_zd"></div>
+			
+			<div class="out_true_box">
+				<div class="out_true">
+					<div class="out_true_top">确认退出登录？</div>
+					<div class="out_true_bott">
+						<span class="quxiao">取消</span>
+						<span class="queding">确定</span>
+					</div>
+				</div>
+			</div>
             <div class="sousuo_box">
                 <div class="sousuo_title">
                     设计师类别

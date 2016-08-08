@@ -48,7 +48,17 @@ if (!$session->isActive) {
                     </li>
                 </ul>
             </section>
-            <div class="down_right_zd"></div>  
+            <div class="down_right_zd"></div>
+			
+			<div class="out_true_box">
+				<div class="out_true">
+					<div class="out_true_top">确认退出登录？</div>
+					<div class="out_true_bott">
+						<span class="quxiao">取消</span>
+						<span class="queding">确定</span>
+					</div>
+				</div>
+			</div>  
 			<input type="hidden" id="user_id" value="<?php echo $data['user_id']?>" />
             <section class="page_banner">
 		    <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
