@@ -538,7 +538,12 @@ HTML;
             index++;
             }
             $(".loading_box").hide();
-            touch.on(".shanchu_box", "tap", function () {
+           var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
+		setTimeout(function(){$(".bxslidera").height(heightttt)},100);
+            }
+    });
+    }
+ touch.on(".shanchu_box", "tap", function () {
             var _this = $(this);
             var user_id = $("body").attr("user_id");
             var designer_id = _this.parents(".iconfont").attr("designer_id");
@@ -552,10 +557,6 @@ HTML;
                     }
             });
             });
-            }
-    });
-    }
-
 
     if (indexaa == 1 && xiuqiu == 8) {
     $.ajax({
@@ -566,8 +567,10 @@ HTML;
             //alert(data);
             $(".xuqiu_box").html(data);
             xiuqiu++;
-            var heighttt = $("#nav_box>li:eq(" + indexaa + ")").css("height");
-            $("#nav_box").css("height", heighttt);
+            var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
+		setTimeout(function(){$(".bxslidera").height(heightttt)},100);
+            
+            
             }
     })
 
@@ -575,10 +578,7 @@ HTML;
 
     });
     $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
-    var heightttt = $(".bxslidera li:eq(" + indexaa + ")").height();
-    setTimeout(function () {
-    $(".bxslidera").height(heightttt)
-    }, 100);
+   
     }
 
     touch.on(".nac_boxa>span", "tap", function (ev) {
