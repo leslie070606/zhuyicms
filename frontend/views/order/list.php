@@ -240,11 +240,11 @@ HTML;
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
                                         //客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
                                         $dSpareArr = explode(',', $dSpareTime);
-                                        $time1 = isset($dSpareArr[0]) ? '<i>'.$dSpareArr[0].'</i>' : '
+                                        $time1 = $dSpareArr[0] ? '<i>'.$dSpareArr[0].'</i>' : '
 ';
-                                        $time2 = isset($dSpareArr[1]) ? '<i>'.$dSpareArr[1].'</i>' : '
+                                        $time2 = $dSpareArr[1] ? '<i>'.$dSpareArr[1].'</i>' : '
 ';
-                                        $time3 = isset($dSpareArr[2]) ? '<i>'.$dSpareArr[2].'</i>' : '
+                                        $time3 = $dSpareArr[2] ? '<i>'.$dSpareArr[2].'</i>' : '
 ';
                                         $time = $time1.$time2.$time3;
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
