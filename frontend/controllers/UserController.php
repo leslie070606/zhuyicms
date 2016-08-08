@@ -34,7 +34,7 @@ class UserController extends ZyuserController {
         $phonestr = Yii::$app->request->post('phonestr');
         $code = Yii::$app->request->post('code');
 
-        if ('16810649253' == $phonestr) {
+        if ('16810649253' == $phone) {
 
             $session->set('user_id', 26);
             return $this->redirect(['index/index']);
