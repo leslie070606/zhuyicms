@@ -492,7 +492,7 @@
                             url: url + "&&params=" + order,
                             async: true,
                             success: function (data) {
-                                var htmlll = '<span class="jm_time">见面时间：' + html +" "+ val + '</span><span class="jm_money">见面地点：'+data+'</span>'
+                                var htmlll = '<span class="jm_time">见面时间：' + gettt + '</span><span class="jm_money">见面地点：'+data+'</span>'
                                 $(".foin_zy .true_time ,.foin_zy .leave_word").remove();
                                 $(".foin_zy .right_type").html("待见面");
                                 $(".foin_zy .jm_time").before(htmlll);
@@ -534,7 +534,7 @@
                             url: url + "&&params=" + order,
                             async: true,
                             success: function (data) {
-                                var htmlll = '<span class="jm_time">见面时间：' + html +" "+ val + '</span><span class="jm_money">见面地点：'+data+'</span>'
+                                var htmlll = '<span class="jm_time">见面时间：'+gettt+'</span><span class="jm_money">见面地点：'+data+'</span>'
                                 $(".foin_zy .true_time ,.foin_zy .leave_word").remove();
                                 $(".foin_zy .right_type").html("待见面");
                                 $(".foin_zy .jm_time").before(htmlll);
