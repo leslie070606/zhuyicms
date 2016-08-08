@@ -578,7 +578,8 @@ HTML;
 
     });
     $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
-   
+    var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
+    setTimeout(function(){$(".bxslidera").height(heightttt)},100);
     }
 
     touch.on(".nac_boxa>span", "tap", function (ev) {
