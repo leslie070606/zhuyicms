@@ -38,7 +38,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -56,14 +56,15 @@ if (!$session->isActive) {
                     <div class="out_true_top">确认退出登录？</div>
                     <div class="out_true_bott">
                         <span class="quxiao">取消</span>
-                        <span class="queding">确定</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
                     </div>
                 </div>
             </div> 
             <div class="banner">
                 <img src="img/index/banner_g.jpg" />
                 <div class="banner_mesg">
-                    <span class="mesg_spb"><a href="javascript:" style="top: .6rem;">找设计师</a></span>
+                    <span class="mesg_spb"><a href="http://form.mikecrm.com/UWcirG:" style="top: .6rem;">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
@@ -144,7 +145,7 @@ if (!$session->isActive) {
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
-                <span>找设计师</span>
+                <a href="http://form.mikecrm.com/UWcirG"><span>找设计师</span></a>
             </div>
             <section class="nav_bot">
 

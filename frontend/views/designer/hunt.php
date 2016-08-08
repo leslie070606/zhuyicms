@@ -37,7 +37,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -55,7 +55,8 @@ if (!$session->isActive) {
                     <div class="out_true_top">确认退出登录？</div>
                     <div class="out_true_bott">
                         <span class="quxiao">取消</span>
-                        <span class="queding">确定</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+</a>
                     </div>
                 </div>
             </div>  
@@ -75,7 +76,7 @@ if (!$session->isActive) {
                     <span class="his_title">
                         热门推荐
                     </span>
-                    <a href=" ">
+                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>26]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160801/1047471039104739未标题-1.jpg" />
@@ -92,7 +93,7 @@ if (!$session->isActive) {
                         </div>
                     </a >
 
-                    <a href="Choose_designer.html">
+                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>44]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160801/1051511023105123未标题-1.jpg" />
@@ -109,7 +110,7 @@ if (!$session->isActive) {
                         </div>
                     </a >
 
-                    <a href="Choose_designer.html">
+                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>18]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160803/0018180041001841芃芃.jpg" />

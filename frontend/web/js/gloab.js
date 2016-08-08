@@ -1,11 +1,15 @@
 $(function () {
 
-    touch.on(".down_right li:last-child", "tap", function () {
+    touch.on(".down_right li:last-child", "tap", function (ev) {
+        if($(ev.currentTarget).find("a").html()=="暂时登出"){
         $(".out_true_box").show();
+    }
     });
     touch.on(".out_true_box .quxiao", "tap", function () {
         $(".out_true_box").hide();
     });
+ 
+    
     var widthaa = $("body").width();
     $(".here_img,.pro_here").css("height", widthaa * .56);
 

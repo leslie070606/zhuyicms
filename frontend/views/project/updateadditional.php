@@ -52,7 +52,7 @@ if(isset($model->home_img)){
                     ?>
 
                     <div class = "center_here" style = "line-height:.7rem; margin-bottom:.4rem">
-                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
+                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a style="color: #ffffff;" href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
                     </div>
                     <?php
                 }

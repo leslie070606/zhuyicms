@@ -35,7 +35,8 @@
 					<div class="out_true_top">确认退出登录？</div>
 					<div class="out_true_bott">
 						<span class="quxiao">取消</span>
-						<span class="queding">确定</span>
+						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
 					</div>
 				</div>
 			</div> 
