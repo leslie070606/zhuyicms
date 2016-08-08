@@ -240,12 +240,13 @@ HTML;
                                             $status == \frontend\models\Order::STATUS_WAITING_USER_TO_CONFIRM_TIME) {
                                         //客服和设计师沟通完毕，需要先更新订单的设计师三个空闲时间段，并且需要把订单状态置成待用户确认时间。
                                         $dSpareArr = explode(',', $dSpareTime);
-                                        $time1 = isset($dSpareArr[0]) ? $dSpareArr[0] : '
+                                        $time1 = isset($dSpareArr[0]) ? '<i>'.$dSpareArr[0].'</i>' : '
 ';
-                                        $time2 = isset($dSpareArr[1]) ? $dSpareArr[1] : '
+                                        $time2 = isset($dSpareArr[1]) ? '<i>'.$dSpareArr[1].'</i>' : '
 ';
-                                        $time3 = isset($dSpareArr[2]) ? $dSpareArr[2] : '
+                                        $time3 = isset($dSpareArr[2]) ? '<i>'.$dSpareArr[2].'</i>' : '
 ';
+                                        $time = $time1.$time2.$time3;
                                         $confirmTime = Yii::getAlias('@web') . '/index.php?r=order/change';
                                         $html = <<<HTML
 										<div class="zy_pp" order_id = "$orderId">
@@ -276,7 +277,7 @@ HTML;
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
-				  						<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在12小时内确认时间。</span>
+				  						<span class="tj_spb">我<span class="time_list">{$time}</span>有时间。 请在12小时内确认时间。</span>
 				  					</div>
 				  				
 									<span class="jm_time">见面2小时</span>
