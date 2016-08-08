@@ -115,4 +115,15 @@ class ZyProject extends \yii\db\ActiveRecord {
         return $this->favorite_img;
     }
 
+	public function getRengong($projectId){
+		$rows = $this->findOne($projectId);
+		if(empty($rows)){
+			return "否";
+		}
+		$isRengong = $rows->is_rengong;
+		if(!isset($isRengong) || empty($isRengong)){
+			return "否";
+		}
+		return "是";
+	}
 }

@@ -64,6 +64,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'match_json',
             'description:ntext',
             'project_tags',
+			[
+				'label'		=> '是否人工匹配',
+				'format' 	=> 'raw',
+				'value'		=> $model->getRengong($model->project_id),
+			],
         ],
     ])
     ?>
