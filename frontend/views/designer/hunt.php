@@ -83,7 +83,7 @@ if (!$session->isActive) {
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">陈暄</span>
+                                <span class="here_name">陈暄</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
                                 <span>硬装设计师</span><span>软装设计师</span>
@@ -100,7 +100,7 @@ if (!$session->isActive) {
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">程晖</span>
+                                <span class="here_name">程晖</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
                                 <span>软装设计师</span><span>公装设计师</span>
@@ -117,7 +117,7 @@ if (!$session->isActive) {
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">芃芃</span>
+                                <span class="here_name">芃芃</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
                                 <span>软装设计师</span><span>公装设计师</span>

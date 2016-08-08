@@ -68,16 +68,21 @@ $(function(){
 		touch.on(".click_more","tap",function(ev){
 		
 			if(nuber==0){
-				$(".designer_box>.pro_here:eq(3),.designer_box>.pro_here:eq(4),.designer_box>.pro_here:eq(5)").show();
+                            setTimeout(function(){
+                                $(".designer_box>.pro_here:eq(3),.designer_box>.pro_here:eq(4),.designer_box>.pro_here:eq(5)").show();
 				nuber++;
 				var top=$("#topa").offset().top; 
 				$(window).scrollTop(top)
+                            },300)
+				
 			}else{
+                            setTimeout(function(){
 				$(".designer_box>.pro_here").show();
 				
 				$(".click_more").html("更多设计师,住艺会帮你人工甄选")
 				var top=$("#topb").offset().top	;
 					$(window).scrollTop(top);
+                            },300)
 			}
 		})
                 

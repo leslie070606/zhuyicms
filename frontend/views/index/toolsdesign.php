@@ -64,7 +64,7 @@ if (!$session->isActive) {
             <div class="banner">
                 <img src="img/index/banner_g.jpg" />
                 <div class="banner_mesg">
-                    <span class="mesg_spb"><a href="http://form.mikecrm.com/UWcirG:" style="top: .6rem;">找设计师</a></span>
+                    <span class="mesg_spb"><a href="http://form.mikecrm.com/UWcirG" style="top: .6rem;">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
