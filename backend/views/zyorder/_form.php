@@ -28,6 +28,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'reason')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'service_type')->dropDownList([0 => '客服创建',1 => '用户创建']) ?>
 
     <div class="form-group">
