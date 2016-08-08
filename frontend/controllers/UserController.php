@@ -92,7 +92,8 @@ class UserController extends ZyuserController {
                 }
             } else {
                 //验证码错误
-                return $this->redirect(['phone']);
+                Yii::$app->getSession()->setFlash('msg', '验证码错误,请重新获取!');
+                return $this->render('login');
             }
         }
     }

@@ -68,6 +68,8 @@ if (!$session->isActive) {
                 <span class="iconfont icon-xuanzhong">注册即表示本人同意<a href="<?php echo Url::toRoute('/index/agreement'); ?>"class="red">《用户协议和隐私协议》</a></span>
             </div>
             <input type="hidden" value="" id="phonestr" name="phonestr" />
+            
+            <input type="hidden" value="<?php if(Yii::$app->getSession()->hasFlash('msg')){echo Yii::$app->getSession()->getFlash('msg');} ?>" id="msg" name="msg" />
 
             <?= Html::endForm(); ?>
             <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
