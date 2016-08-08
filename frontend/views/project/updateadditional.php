@@ -15,7 +15,7 @@ if(isset($model->home_img)){
                 <span class="xq_top_left">需求单：<?= $model->project_num ?></span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
             </div>
             <div class="xuqiu_center">
-                <?php if($img){?>
+                <?php if(isset($img)){?>
                 <img class="center_img" src="<?=Yii::$app->params['frontDomain'].$img->url ?>" />
                 <?php } ?>
                 <div class="center_here">

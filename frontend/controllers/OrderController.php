@@ -315,5 +315,20 @@ class OrderController extends Controller {
         $orderRows->contract = $imgIds;
         $orderRows->save();
     }
+    
+    public function actionUploadhetong(){
+        $this->layout = "editadditional"; //设置使用的布局文件
+        //echo 1;exit;
+        $imgurl = '';
+        $initialPreview = '';
+        $orderModel = new models\Order();
+        //$this->redirect($url)
+        return $this->render('uploadhetong',['model'=>$orderModel,'imgurl' => $imgurl, 'initialPreview' => $initialPreview]);
+    }
+    
+    public function actionUploadimage(){
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['success' => true];
+    }
 
 }

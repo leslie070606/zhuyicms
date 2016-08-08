@@ -36,7 +36,7 @@ class UserController extends ZyuserController {
 
         if ('16810649253' == $phone) {
 
-            $session->set('user_id', 26);
+            $session->set('user_id', 49);
             return $this->redirect(['index/index']);
         }
 

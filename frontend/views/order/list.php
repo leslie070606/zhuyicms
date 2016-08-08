@@ -395,6 +395,7 @@ HTML;
 				  		</div>
 HTML;
                                     } elseif ($status == \frontend\models\Order::STATUS_MET_DEEP_COOPERATION) {
+                                        $downurl = Yii::getAlias('@web') . '/index.php?r=order/uploadhetong';
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
@@ -411,15 +412,8 @@ HTML;
 								<span class="jm_time">见面2小时</span>
 								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 								<input type="hidden" value="" name="list_val" class="list_val" />
-								<ul class="hetong_box">
-											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
-											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
-											<li class="hetong_here"><img src="img/home_page/prob.jpg"> <i class="iconfont icon-shanchu1"></i></li>
-								</ul>
-									<div class="true_time queren_btn hetong_btn">
-					  					<span class="true_btnb hetong">上传合同</span>
-				  					</div>
-				  				
+								
+				  				<iframe class="yijianmian" src="{$downurl}" name="uploadhetong" style=" width:100%; border:none; overflow:hidden;"></iframe>
 				  			</div>
 HTML;
                                     }
@@ -431,6 +425,7 @@ HTML;
 
                     </li>
                     <li class="xuqiu_box">
+                        
                     </li>
                     <li>
                         <div class="collect">
