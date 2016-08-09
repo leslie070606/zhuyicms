@@ -37,7 +37,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                        <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -49,21 +49,21 @@ if (!$session->isActive) {
                 </ul>
             </section>
             <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
 
-					</div>
-				</div>
-			</div>  
-			<input type="hidden" id="user_id" value="<?php echo $data['user_id']?>" />
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                    </div>
+                </div>
+            </div>  
+            <input type="hidden" id="user_id" value="<?php echo $data['user_id'] ?>" />
             <section class="page_banner">
-		    <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
-			 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
+                <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
+                <img class="banner_img here_img" src="<?= $data['background'] ?>" />
                 <div class="banner_mesg">
                     <div class="banner_name"><?= $data['name'] ?></div>
                     <div class="banner_bq"><span><?= $data['tag'] ?></span></div>
@@ -151,20 +151,20 @@ HTML;
                         }
                     }
                     ?>
-					<?php
-						$href = Yii::getAlias('@web') . '/index.php?r=designer/alls&&params=' . $data['designer_id'];
-					?>
-                    <div class="see_more"><a href=<?php echo $href?>>查看更多作品</a></div>
+                    <?php
+                    $href = Yii::getAlias('@web') . '/index.php?r=designer/alls&&params=' . $data['designer_id'];
+                    ?>
+                    <div class="see_more"><a href=<?php echo $href ?>>查看更多作品</a></div>
 
-					<?php
-						$serveCity = $data['serve_city'];
-						$style = $data['style'];
-						$winning = $data['winning'];
-						$yingType = $data['service_content']['ying_type'];
-						$gongType = $data['service_content']['gong_type'];
-						$ruanType = $data['service_content']['ruan_type'];
-						$allType = $yingType.','.$gongType.','.$ruanType;
-					?>
+                    <?php
+                    $serveCity = $data['serve_city'];
+                    $style = $data['style'];
+                    $winning = $data['winning'];
+                    $yingType = $data['service_content']['ying_type'];
+                    $gongType = $data['service_content']['gong_type'];
+                    $ruanType = $data['service_content']['ruan_type'];
+                    $allType = $yingType . ',' . $gongType . ',' . $ruanType;
+                    ?>
                     <section class="Basic_Info">
                         <div class="post_title">
                             <span class=" iconfont icon-lingxing"><a>认识设计师</a></span>
@@ -180,7 +180,7 @@ HTML;
                                             <span class="addition">附加服务</span>
                                     </div>-->
 
-                                    <div class="topb" id="topb"  all_type =<?= $allType?>>
+                                    <div class="topb" id="topb"  all_type =<?= $allType ?>>
                                         <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
 
                                     </div><!--topb end-->
@@ -192,7 +192,7 @@ HTML;
                                     服务城市
                                 </div>
                                 <div class="info_here_right cccc">
-                                   <?php echo $serveCity ?>
+                                    <?php echo $serveCity ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -201,7 +201,7 @@ HTML;
                                     风格特点
                                 </div>
                                 <div class="info_here_right cccc">
-                                   	<?php echo $style ?>
+                                    <?php echo $style ?>
                                 </div>
                             </div><!--info_here end-->
 
@@ -217,43 +217,43 @@ HTML;
                         </div>
 
                     </section><!--Basic_Info end-->
-                    
 
 
-                   
+
+
                 </div>
-                
+
                 <div class="page_bottom">
-                        <span class="bota" id="check"><a>查看费用</a></span>
-                        <span class="bota sc_bot"><a>收藏设计师</a></span>
-                        <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
-联络客服</a></span>
+                    <span class="bota" id="check"><a>查看费用</a></span>
+                    <span class="bota sc_bot"><a>收藏设计师</a></span>
+                    <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
+                            联络客服</a></span>
+                </div>
+                <div class="charges_zd"></div>
+                <div class="check_charges">
+                    <?php
+                    $charge = isset($data['cost']['charge']) ? $data['cost']['charge'] : '面议';
+                    $chargeWork = isset($data['cost']['charge_work']) ? $data['cost']['charge_work'] : '面议';
+                    ?>
+                    <div>
+
+                        <span class="charges_left charges_title">全包费用</span>
+                        <span class="charges_right red">￥<?php echo $chargeWork ?>+ /㎡</span>
+
                     </div>
-                 <div class="charges_zd"></div>
-                    <div class="check_charges">
-					<?php
-						$charge = isset($data['cost']['charge'])? $data['cost']['charge'] : '面议';
-						$chargeWork = isset($data['cost']['charge_work'])? $data['cost']['charge_work'] : '面议';
-					?>
-                        <div>
+                    <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
+                    <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
 
-                            <span class="charges_left charges_title">全包费用</span>
-                            <span class="charges_right red">￥<?php echo $chargeWork ?>+ /㎡</span>
+                    <div>
+                        <span class="charges_left charges_title chargesaas">专业设计</span>
+                    </div>
+                    <div>
 
-                        </div>
-<!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
-                        <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
-
-                        <div>
-                            <span class="charges_left charges_title chargesaas">专业设计</span>
-                        </div>
-                        <div>
-
-                            <span class="charges_left">设计费：</span>
-                            <span class="charges_right red">￥ <?php echo $charge?>+ /m²</span>
-                        </div>
-						<div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
-                        </div>
+                        <span class="charges_left">设计费：</span>
+                        <span class="charges_right red">￥ <?php echo $charge ?>+ /m²</span>
+                    </div>
+                    <div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
+                </div>
         </div>
         <div class="pro_img_box" style="display: none;">
             <div class="pro_img_zd"></div>
@@ -264,93 +264,151 @@ HTML;
     </body>
 </html>
 <script type="text/javascript">
-$(function(){
-    function GetQueryString(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null)
-            return  unescape(r[2]);
-        return null;
-    }
-    var url = window.location.href;
-    var designer_id = GetQueryString("params");
-
-    var user_id = $("#user_id").val();
-    var params = user_id + "," + designer_id;
-
-    var collect_status = 0;
-    touch.on(".sc_bot", "tap", function (ev) {
-		if(user_id==""){
-			//跳转登录页
-			window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=user/login'; ?>";
-		}else{
-        console.log(ev.currentTarget)
-        if ($(this).hasClass("active")) {
-            $(this).html("收藏设计师");
-            $(this).removeClass("active");
-            collect_status = 1;
-
-        } else {
-            $(this).html("已收藏");
-            $(this).addClass("active");
-            collect_status = 2;
-        }
-
-        if (collect_status == 1) {
-            $.ajax({
-                type: "GET",
-                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
-                data: "",
-                success: function (data) {
-                    console.log("js output...........11111");
-                    console.log(data);
-                }
-            })
-        } else if (collect_status == 2) {
-            $.ajax({
-                type: "GET",
-                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
-                data: "",
-                success: function (data) {
-                    console.log("js output...........2222222222222");
-                    console.log(data);
-                }
-            })
-
-        }
-		}
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx1344a7a9fac82094', // 必填，公众号的唯一标识
+        timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
+        nonceStr: 'zhuyi', // 必填，生成签名的随机串
+        signature: "<?= $jsarr['signature'] ?>", // 必填，签名，见附录1
+        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     });
-    var nubeee = 0;
-    var htmllll = $(".pro_img_box").html();
-    touch.on(".pro_img", "tap", function (ev) {
-        $(".pro_img_box").show();
-        var html = "";
-        var art_id = $(ev.currentTarget).attr("art_id");
-	
-        $.ajax({
-            type: "get",
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
-            async: true,
-            success: function (data) {
-                data = eval('(' + decodeURI(data) + ')');
-                console.log(data);
-                var length = data.length;
-                $("#title_idb").html(length);
-                for (var i = 0; i < length; i++) {
-                    html += '<li><img src="' + data[i] + '"  /></li>';
-                }
-                $(".bxslider").html(html);
-				setTimeout(function(){
-                $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});},100);
-				
-				
+
+    wx.ready(function () {
+
+        wx.checkJsApi({
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function (res) {
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            }
+        });
+
+        //分享给朋友
+        wx.onMenuShareAppMessage({
+            title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
+            desc: '黄小宣，标签1//标签2//标签3，服务城市：全国', // 分享描述
+            link: '<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>', // 分享链接
+            imgUrl: '#', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                alert('已分享');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
+            link: 'http://puti.kim/index.php?r=style/share', // 分享链接
+            imgUrl: '#', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                alert('分享成功!');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
             }
         });
 
     });
-    touch.on(".pro_img_box","tap",function(ev){
-    	$(ev.currentTarget).hide();
-        $(ev.currentTarget).html(htmllll);
+    $(function () {
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null)
+                return  unescape(r[2]);
+            return null;
+        }
+        var url = window.location.href;
+        var designer_id = GetQueryString("params");
+
+        var user_id = $("#user_id").val();
+        var params = user_id + "," + designer_id;
+
+        var collect_status = 0;
+        touch.on(".sc_bot", "tap", function (ev) {
+            if (user_id == "") {
+                //跳转登录页
+                window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=user/login'; ?>";
+            } else {
+                console.log(ev.currentTarget)
+                if ($(this).hasClass("active")) {
+                    $(this).html("收藏设计师");
+                    $(this).removeClass("active");
+                    collect_status = 1;
+
+                } else {
+                    $(this).html("已收藏");
+                    $(this).addClass("active");
+                    collect_status = 2;
+                }
+
+                if (collect_status == 1) {
+                    $.ajax({
+                        type: "GET",
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                        data: "",
+                        success: function (data) {
+                            console.log("js output...........11111");
+                            console.log(data);
+                        }
+                    })
+                } else if (collect_status == 2) {
+                    $.ajax({
+                        type: "GET",
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
+                        data: "",
+                        success: function (data) {
+                            console.log("js output...........2222222222222");
+                            console.log(data);
+                        }
+                    })
+
+                }
+            }
+        });
+        var nubeee = 0;
+        var htmllll = $(".pro_img_box").html();
+        touch.on(".pro_img", "tap", function (ev) {
+            $(".pro_img_box").show();
+            var html = "";
+            var art_id = $(ev.currentTarget).attr("art_id");
+
+            $.ajax({
+                type: "get",
+                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
+                async: true,
+                success: function (data) {
+                    data = eval('(' + decodeURI(data) + ')');
+                    console.log(data);
+                    var length = data.length;
+                    $("#title_idb").html(length);
+                    for (var i = 0; i < length; i++) {
+                        html += '<li><img src="' + data[i] + '"  /></li>';
+                    }
+                    $(".bxslider").html(html);
+                    setTimeout(function () {
+                        $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
+                    }, 100);
+
+
+                }
+            });
+
+        });
+        touch.on(".pro_img_box", "tap", function (ev) {
+            $(ev.currentTarget).hide();
+            $(ev.currentTarget).html(htmllll);
+        });
     });
-});
 </script>

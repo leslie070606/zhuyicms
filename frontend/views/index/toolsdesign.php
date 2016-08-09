@@ -161,7 +161,7 @@ if (!$session->isActive) {
                     VIP客服  <a href="tel:4000600636">4000-600-636</a>
                 </span>
                 <span class="foot_b">
-                    © zhuyi, Inc.
+                    京ICP备16029306号
                 </span>
             </footer>
 

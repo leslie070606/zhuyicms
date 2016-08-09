@@ -111,6 +111,11 @@ class DesignerController extends Controller {
     }
 
     public function actionDetail() {
+        
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
         //把这个用户ID传给前台，前台根据用户ID来做判断，
         //如果为空，需要跳转到登陆页面
         $session = Yii::$app->session;
@@ -202,7 +207,7 @@ class DesignerController extends Controller {
             'style' => $style,
             'winning' => $winning
         );
-        return $this->render("detail", ['data' => $data]);
+        return $this->render("detail", ['data' => $data, 'jsarr'=>$jsarr]);
     }
 
     public function actionArtsets() {
@@ -386,7 +391,7 @@ class DesignerController extends Controller {
 
                 if (count($designer) > 0) {
                     return $this->render('searchdesigner', ['data' => $designer]);
-                }else{
+                } else {
                     return FALSE;
                 }
             }

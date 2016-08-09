@@ -81,7 +81,7 @@ if (!$session->isActive) {
 </html>
 <script type="text/javascript">
     function sendmsg() {
-        if ($(".djser").hasClass("truee")) {
+        if ($(".djser").hasClass("active")) {
             var $form = $('#form-phone');
 
             $.ajax({
