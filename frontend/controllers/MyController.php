@@ -81,8 +81,7 @@ class MyController extends Controller{
 
         $collectModel   = new \frontend\models\CollectDesigner();
     
-        $ret = $collectModel->find()->where(['user_id'=> $userId,'designer_id' => $designerId,'status' => \
-frontend\models\CollectDesigner::STATUS_OK])->all();
+        $ret = $collectModel->find()->where(['user_id'=> $userId,'designer_id' => $designerId,'status' => \frontend\models\CollectDesigner::STATUS_OK])->all();
         //未收藏过
         if(empty($ret)){
             return false;
