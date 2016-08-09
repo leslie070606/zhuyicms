@@ -271,7 +271,7 @@ HTML;
 				  					</div>
 				  					<div class="tj_box">
 				  						<span class="tj_spa">住艺推荐设计师</span>
-				  						<span class="tj_spb"><a>推荐理由：</a><?php echo $reason?></span>
+				  						<span class="tj_spb"><a>推荐理由：</a>{$reason}</span>
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
