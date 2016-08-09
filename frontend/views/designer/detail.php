@@ -196,7 +196,7 @@ HTML;
 
                             <div class="info_here">
                                 <div class="info_here_left">
-                                    过往经历及奖项
+                                    设计师经历
                                 </div>
                                 <div class="info_here_right cccc">
                                     <?php echo $winning ?>
