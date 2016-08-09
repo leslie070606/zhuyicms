@@ -410,7 +410,7 @@ position: absolute;
 .kv-file-remove { top:3px; right: 3px; position: absolute;}
 .kv-fileinput-caption { display: none;}
 .file-caption { display: none !important;}
-.input-group-btn,.btn-file { width: 100%;}
+.input-group-btn,.btn-file { width: 40%;}
 .btn-primary { border-radius: 0; margin-bottom: .2rem;}
 .fileinput-remove-button { display: none;}
 .file-preview-image { height: auto !important;}

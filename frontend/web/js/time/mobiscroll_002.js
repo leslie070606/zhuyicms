@@ -480,7 +480,7 @@
                         var html = $("#get_id .dw-sel .dw-i").html().match(reg);
                         handler.call(this, e);
 
-                        var val = $("#appTime").val();
+                         var val = $(".foin_zy .true_time input").val();
                         var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
                         var datea = new Date(gettt);
                         var time = datea.getTime();
@@ -522,7 +522,7 @@
                         var html = $("#get_id .dw-sel .dw-i").html().match(reg);
                         handler.call(this, e);
 
-                        var val = $("#appTime").val();
+                         var val = $(".foin_zy .true_time input").val();
                         var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
                         var datea = new Date(gettt);
                         var time = datea.getTime();
