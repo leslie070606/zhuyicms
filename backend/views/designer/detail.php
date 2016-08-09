@@ -1,15 +1,14 @@
-<?php 
+<?php
 $imageId = $model->image_id;
 $imageModel = new \common\models\ZyImages();
 
 $ret = $imageModel->findOne($imageId);
 $url = '';
-if(empty($ret)){
-	$url = '';
-}else{
-	$url = $ret->url;
+if (empty($ret)) {
+    $url = '';
+} else {
+    $url = $ret->url;
 }
-
 ?>
 <div class="row">
     <div class="col-xs-12">
@@ -28,8 +27,8 @@ if(empty($ret)){
                             <td>姓名</td>
 <!--                             <td><span class='label label-success'></span></td>-->
                             <td><?= $model->name ? $model->name : "<span class='label label-warning'>NULL</span>" ?></td>
-							<td>头像</td>
-							<td><img src="<?php echo 'http://aaa.com' . $url?>" /></td>
+                            <td>头像</td>
+                            <td><img src="<?php echo 'http://aaa.com' . $url ?>" /></td>
                             <td>性別</td>
                             <td><?= $model->sex ? "男" : "女" ?></td>
                         </tr>
@@ -51,7 +50,7 @@ if(empty($ret)){
                         <tr>
                             <td>就职机构及头衔</td>
                             <td><?= $model->company ? $model->company : "<span class='label label-warning'>NULL</span>" ?></td>
-                           <td>以往服务的大事务所/设计公司</td>
+                            <td>以往服务的大事务所/设计公司</td>
                             <td><?= $model->ever_office ? $model->ever_office : "<span class='label label-w
 arning'>NULL</span>" ?></td>
                         </tr>
@@ -59,6 +58,8 @@ arning'>NULL</span>" ?></td>
                         <tr>
                             <td>毕业院校及专业</td>
                             <td><?= $model->alma_mater ? $model->alma_mater : "<span class='label label-warning'>NULL</span>" ?></td>
+                            <td>设计师经历</td>
+                            <td><?= $model->experience ? $model->experience : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>获奖经历</td>
                             <td><?= $model->winning ? $model->winning : "<span class='label label-warning'>NULL</span>" ?></td>
                         </tr>
@@ -97,7 +98,7 @@ arning'>NULL</span>" ?></td>
                             <td>服务类型</td>
                             <td><?= $modelwork->service_type ? $modelwork->service_type : "<span class='lab
 el label-warning'>NULL</span>" ?></td>
-						</tr>
+                        </tr>
 
                         <tr>
                             <td>施工对接</td>
@@ -156,7 +157,7 @@ ning'>NULL</span>" ?></td>
                             <td>微信</td>
                             <td><?= $modeladditional->wechat ? $modeladditional->wechat : "<span class='label label-warning'>NULL</span>" ?></td>
                         </tr>
-                        
+
                         <tr>
                             <td>邮箱</td>
                             <td><?= $modeladditional->email ? $modeladditional->email : "<span class='label label-warning'>NULL</span>" ?></td>

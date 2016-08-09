@@ -111,15 +111,14 @@ class DesignerController extends Controller {
     }
 
     public function actionDetail() {
-        
+
         // 分享JS接口
         $tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
-        
-        
-          //$jsarr = $tokenModel->getJspticket();
-          
+
+
+        //$jsarr = $tokenModel->getJspticket();
         //把这个用户ID传给前台，前台根据用户ID来做判断，
         //如果为空，需要跳转到登陆页面
         $session = Yii::$app->session;
@@ -150,7 +149,7 @@ class DesignerController extends Controller {
         if (!isset($tag) || empty($tag)) {
             $tag = "艺术家,设计小达人";
         }
-        $winning = isset($rows->winning) ? $rows->winning : '';
+        $experience = isset($rows->experience) ? $rows->experience : '';
         $tmp = $dbModel->getHeadPortrait($designerId);
         $headPortrait = isset($tmp) ? $tmp : "/img/home_page/banner_head.jpg";
 
@@ -198,7 +197,6 @@ class DesignerController extends Controller {
             'tag' => $tag, //标签
             'head_portrait' => $headPortrait, //头像
             'background' => $background, //背景
-            'winnings' => '', //获奖经历
             'art_cnt' => $artCnt, //作品数量
             'artsets' => $artsets, //作品集
             'cost' => $cost,
@@ -209,9 +207,9 @@ class DesignerController extends Controller {
             ),
             'serve_city' => $serveCity,
             'style' => $style,
-            'winning' => $winning
+            'experience' => $experience
         );
-        return $this->render("detail", ['data' => $data, 'jsarr'=>$jsarr]);
+        return $this->render("detail", ['data' => $data, 'jsarr' => $jsarr]);
     }
 
     public function actionArtsets() {
@@ -274,7 +272,7 @@ class DesignerController extends Controller {
         $data = array(
             'name' => $ret->name, //姓名
             'tag' => $ret->tag, //标签
-            'winnings' => $ret->winning, //获奖经历
+            'experience' => $ret->experience, //获奖经历
             'head_portrait' => $headPortrait, //头像
             'background' => $background, //背景
             'artsets' => $artRet, //设计师作品集

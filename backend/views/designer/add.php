@@ -68,6 +68,11 @@ use dosamigos\datepicker\DatePicker;
                     <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
+                    <label for="experience">设计师经历</label>
+                    <?= Html::activeTextarea($model, 'experience', ['class' => 'form-control', 'rows' => '5', 'id' => 'experience']) ?>
+                    <?= Html::error($model, 'experience', ['class' => 'error']); ?>
+                </div>
+                <div class="form-group">
                     <label for="winning">获奖经历</label>
                     <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'id' => 'winning']) ?>
                     <?= Html::error($model, 'winning', ['class' => 'error']); ?>
