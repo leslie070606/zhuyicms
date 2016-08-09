@@ -209,7 +209,7 @@ HTML;
 
                             <div class="info_here">
                                 <div class="info_here_left">
-                                    过往经历及奖项
+                                    设计师经历
                                 </div>
                                 <div class="info_here_right cccc">
                                     <?php echo $winning ?>
@@ -234,13 +234,26 @@ HTML;
                 <div class="charges_zd"></div>
                 <div class="check_charges">
                     <?php
-                    $charge = isset($data['cost']['charge']) ? $data['cost']['charge'] : '面议';
-                    $chargeWork = isset($data['cost']['charge_work']) ? $data['cost']['charge_work'] : '面议';
+                    $charge = isset($data['cost']['charge']) ? $data['cost']['charge'] : 0;
+                    $chargeWork = isset($data['cost']['charge_work']) ? $data['cost']['charge_work'] : 0;
                     ?>
                     <div>
 
                         <span class="charges_left charges_title">全包费用</span>
-                        <span class="charges_right red">￥<?php echo $chargeWork ?>+ /㎡</span>
+                        <?php
+
+								if($chargeWork == 0){
+									$html = <<<HTML
+                            <span class="charges_right red">面议</span>
+HTML;
+								}else{
+									$html = <<<HTML
+                            <span class="charges_right red">￥{$chargeWork}+
+ /㎡</span>
+HTML;
+								}
+								echo $html;
+							?>
 
                     </div>
                     <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
@@ -252,7 +265,18 @@ HTML;
                     <div>
 
                         <span class="charges_left">设计费：</span>
-                        <span class="charges_right red">￥ <?php echo $charge ?>+ /m²</span>
+                        <?php
+								if($charge == 0){
+									$html = <<<HTML
+                            			<span class="charges_right red">面议</span>
+HTML;
+								}else{
+									$html = <<<HTML
+                                                <span class="charges_right red">￥ {$charge}+ /m²</span>
+HTML;
+								}
+								echo $html;
+							?>
                     </div>
                     <div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
                 </div>
