@@ -21,6 +21,8 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/jquery.bxslider.js"></script>
         <script type="text/javascript" src="js/gloab.js" ></script>
         <script type="text/javascript" src="js/home_page.js" ></script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
 
     </head>
     <body>
