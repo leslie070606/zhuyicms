@@ -241,19 +241,18 @@ HTML;
 
                         <span class="charges_left charges_title">全包费用</span>
                         <?php
-
-								if($chargeWork == 0){
-									$html = <<<HTML
+                        if ($chargeWork == 0) {
+                            $html = <<<HTML
                             <span class="charges_right red">面议</span>
 HTML;
-								}else{
-									$html = <<<HTML
+                        } else {
+                            $html = <<<HTML
                             <span class="charges_right red">￥{$chargeWork}+
  /㎡</span>
 HTML;
-								}
-								echo $html;
-							?>
+                        }
+                        echo $html;
+                        ?>
 
                     </div>
                     <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
@@ -266,17 +265,17 @@ HTML;
 
                         <span class="charges_left">设计费：</span>
                         <?php
-								if($charge == 0){
-									$html = <<<HTML
+                        if ($charge == 0) {
+                            $html = <<<HTML
                             			<span class="charges_right red">面议</span>
 HTML;
-								}else{
-									$html = <<<HTML
+                        } else {
+                            $html = <<<HTML
                                                 <span class="charges_right red">￥ {$charge}+ /m²</span>
 HTML;
-								}
-								echo $html;
-							?>
+                        }
+                        echo $html;
+                        ?>
                     </div>
                     <div class="charges_hui">住艺参考：设计费会根据项目的复杂程度、面积大小、使用材料等具体因素而变更。</div>
                 </div>
@@ -313,128 +312,129 @@ HTML;
         wx.onMenuShareAppMessage({
             title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
             desc: '<?= $data['name'] ?>，<?php echo $style ?>，服务城市：<?php echo $serveCity ?>', // 分享描述
-            link: '<?php echo Yii::$app->params['frontDomain'] + '/index.php?r=designer/detail'; ?>'+'&&params='."<?php echo $data['designer_id'];?>", // 分享链接
-            imgUrl: '#', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                alert('已分享');
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            fail: function (res) {
-                alert(JSON.stringify(res));
-            }
-        });
+                        link: "<?php echo Yii::$app->params['frontDomain']; ?> + '/index.php?r=designer/detail&&params='+<?php echo $data['designer_id']; ?>", // 分享链接
 
-        //分享到朋友圈
-        wx.onMenuShareTimeline({
-            title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
-            link: '<?php echo Yii::$app->params['frontDomain'] + '/index.php?r=designer/detail'; ?>'+'&&params='."<?php echo $data['designer_id'];?>",// 分享链接
-            imgUrl: '#', // 分享图标
-            success: function () {
-                // 用户确认分享后执行的回调函数
-                alert('分享成功!');
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            },
-            fail: function (res) {
-                alert(JSON.stringify(res));
-            }
-        });
+                                    imgUrl: '#', // 分享图标
+                                    type: '', // 分享类型,music、video或link，不填默认为link
+                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                    success: function () {
+                                        // 用户确认分享后执行的回调函数
+                                        alert('已分享');
+                                    },
+                                    cancel: function () {
+                                        // 用户取消分享后执行的回调函数
+                                    },
+                                    fail: function (res) {
+                                        alert(JSON.stringify(res));
+                                    }
+                                });
 
-    });
-    $(function () {
-        function GetQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null)
-                return  unescape(r[2]);
-            return null;
-        }
-        var url = window.location.href;
-        var designer_id = GetQueryString("params");
+                                //分享到朋友圈
+                                wx.onMenuShareTimeline({
+                                    title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
+                                    link: "<?php echo Yii::$app->params['frontDomain']; ?> + '/index.php?r=designer/detail&&params='+<?php echo $data['designer_id']; ?>", // 分享链接
+                                                imgUrl: '#', // 分享图标
+                                                success: function () {
+                                                    // 用户确认分享后执行的回调函数
+                                                    alert('分享成功!');
+                                                },
+                                                cancel: function () {
+                                                    // 用户取消分享后执行的回调函数
+                                                },
+                                                fail: function (res) {
+                                                    alert(JSON.stringify(res));
+                                                }
+                                            });
 
-        var user_id = $("#user_id").val();
-        var params = user_id + "," + designer_id;
+                                        });
+                                        $(function () {
+                                            function GetQueryString(name) {
+                                                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                                                var r = window.location.search.substr(1).match(reg);
+                                                if (r != null)
+                                                    return  unescape(r[2]);
+                                                return null;
+                                            }
+                                            var url = window.location.href;
+                                            var designer_id = GetQueryString("params");
 
-        var collect_status = 0;
-        touch.on(".sc_bot", "tap", function (ev) {
-            if (user_id == "") {
-                //跳转登录页
-                window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=user/login'; ?>";
-            } else {
-                console.log(ev.currentTarget)
-                if ($(this).hasClass("active")) {
-                    $(this).html("收藏设计师");
-                    $(this).removeClass("active");
-                    collect_status = 1;
+                                            var user_id = $("#user_id").val();
+                                            var params = user_id + "," + designer_id;
 
-                } else {
-                    $(this).html("已收藏");
-                    $(this).addClass("active");
-                    collect_status = 2;
-                }
+                                            var collect_status = 0;
+                                            touch.on(".sc_bot", "tap", function (ev) {
+                                                if (user_id == "") {
+                                                    //跳转登录页
+                                                    window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=user/login'; ?>";
+                                                } else {
+                                                    console.log(ev.currentTarget)
+                                                    if ($(this).hasClass("active")) {
+                                                        $(this).html("收藏设计师");
+                                                        $(this).removeClass("active");
+                                                        collect_status = 1;
 
-                if (collect_status == 1) {
-                    $.ajax({
-                        type: "GET",
-                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
-                        data: "",
-                        success: function (data) {
-                            console.log("js output...........11111");
-                            console.log(data);
-                        }
-                    })
-                } else if (collect_status == 2) {
-                    $.ajax({
-                        type: "GET",
-                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
-                        data: "",
-                        success: function (data) {
-                            console.log("js output...........2222222222222");
-                            console.log(data);
-                        }
-                    })
+                                                    } else {
+                                                        $(this).html("已收藏");
+                                                        $(this).addClass("active");
+                                                        collect_status = 2;
+                                                    }
 
-                }
-            }
-        });
-        var nubeee = 0;
-        var htmllll = $(".pro_img_box").html();
-        touch.on(".pro_img", "tap", function (ev) {
-            $(".pro_img_box").show();
-            var html = "";
-            var art_id = $(ev.currentTarget).attr("art_id");
+                                                    if (collect_status == 1) {
+                                                        $.ajax({
+                                                            type: "GET",
+                                                            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                                                            data: "",
+                                                            success: function (data) {
+                                                                console.log("js output...........11111");
+                                                                console.log(data);
+                                                            }
+                                                        })
+                                                    } else if (collect_status == 2) {
+                                                        $.ajax({
+                                                            type: "GET",
+                                                            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
+                                                            data: "",
+                                                            success: function (data) {
+                                                                console.log("js output...........2222222222222");
+                                                                console.log(data);
+                                                            }
+                                                        })
 
-            $.ajax({
-                type: "get",
-                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
-                async: true,
-                success: function (data) {
-                    data = eval('(' + decodeURI(data) + ')');
-                    console.log(data);
-                    var length = data.length;
-                    $("#title_idb").html(length);
-                    for (var i = 0; i < length; i++) {
-                        html += '<li><img src="' + data[i] + '"  /></li>';
-                    }
-                    $(".bxslider").html(html);
-                    setTimeout(function () {
-                        $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
-                    }, 100);
+                                                    }
+                                                }
+                                            });
+                                            var nubeee = 0;
+                                            var htmllll = $(".pro_img_box").html();
+                                            touch.on(".pro_img", "tap", function (ev) {
+                                                $(".pro_img_box").show();
+                                                var html = "";
+                                                var art_id = $(ev.currentTarget).attr("art_id");
+
+                                                $.ajax({
+                                                    type: "get",
+                                                    url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/artsets'; ?>" + "&&params=" + art_id,
+                                                    async: true,
+                                                    success: function (data) {
+                                                        data = eval('(' + decodeURI(data) + ')');
+                                                        console.log(data);
+                                                        var length = data.length;
+                                                        $("#title_idb").html(length);
+                                                        for (var i = 0; i < length; i++) {
+                                                            html += '<li><img src="' + data[i] + '"  /></li>';
+                                                        }
+                                                        $(".bxslider").html(html);
+                                                        setTimeout(function () {
+                                                            $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
+                                                        }, 100);
 
 
-                }
-            });
+                                                    }
+                                                });
 
-        });
-        touch.on(".pro_img_box", "tap", function (ev) {
-            $(ev.currentTarget).hide();
-            $(ev.currentTarget).html(htmllll);
-        });
-    });
+                                            });
+                                            touch.on(".pro_img_box", "tap", function (ev) {
+                                                $(ev.currentTarget).hide();
+                                                $(ev.currentTarget).html(htmllll);
+                                            });
+                                        });
 </script>
