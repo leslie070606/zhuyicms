@@ -62,7 +62,7 @@ if (!$session->isActive) {
             <div class="auth_code login_ipt">
                 <?= \yii\helpers\Html::input('text', 'code', '', ['id' => 'code']); ?>
 
-                <span class="huoqu djser truee" onclick="sendmsg()">获取验证码</span>
+                <span class="huoqu djser truee active" onclick="sendmsg()">获取验证码</span>
             </div>
             <input type="hidden" value="<?php if (Yii::$app->getSession()->hasFlash('msg')) {
                     echo Yii::$app->getSession()->getFlash('msg');

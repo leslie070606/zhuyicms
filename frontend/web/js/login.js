@@ -32,13 +32,10 @@ $(function(){
 	});
 	
 	$(".login_ipt input").on("focus",function(){
-		$(this).addClass("active");
 		$(".weixin_login").hide();
 	})
 	$(".login_ipt input").on("blur",function(){
-		if($(this).val()==""){
-			$(this).removeClass("active");
-		}
+		
 		$(".weixin_login").show();
 	})
 	touch.on(".login_talk","tap",function(ev){
