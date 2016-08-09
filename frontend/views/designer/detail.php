@@ -313,7 +313,7 @@ HTML;
         wx.onMenuShareAppMessage({
             title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
             desc: '<?= $data['name'] ?>，<?php echo $style ?>，服务城市：<?php echo $serveCity ?>', // 分享描述
-            link: '<?php echo Yii::$app->params['frontDomain'] . '/index.php?r=designer/detail'; ?>'.'&&params='."<?php echo $data['designer_id'];?>", // 分享链接
+            link: '<?php echo Yii::$app->params['frontDomain'] + '/index.php?r=designer/detail'; ?>'+'&&params='."<?php echo $data['designer_id'];?>", // 分享链接
             imgUrl: '#', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -332,7 +332,7 @@ HTML;
         //分享到朋友圈
         wx.onMenuShareTimeline({
             title: '在住艺，我找到了一个好设计师，一起来认识TA吧！', // 分享标题
-            link: '<?php echo Yii::$app->params['frontDomain'] . '/index.php?r=designer/detail'; ?>'.'&&params='."<?php echo $data['designer_id'];?>",// 分享链接
+            link: '<?php echo Yii::$app->params['frontDomain'] + '/index.php?r=designer/detail'; ?>'+'&&params='."<?php echo $data['designer_id'];?>",// 分享链接
             imgUrl: '#', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
