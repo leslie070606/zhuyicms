@@ -115,13 +115,11 @@ class DesignerController extends Controller {
         // 分享JS接口
         $tokenModel = new \app\components\Token();
         // 获取JS签名
-       // $jsarr = $tokenModel->getSignature();
+        $jsarr = $tokenModel->getSignature();
         
         
-          $jsarr = $tokenModel->getJspticket();
+          //$jsarr = $tokenModel->getJspticket();
           
-          echo "<pre>";
-          print_r($jsarr);exit;
         //把这个用户ID传给前台，前台根据用户ID来做判断，
         //如果为空，需要跳转到登陆页面
         $session = Yii::$app->session;
