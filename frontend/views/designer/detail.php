@@ -237,26 +237,8 @@ HTML;
                     $charge = isset($data['cost']['charge']) ? $data['cost']['charge'] : 0;
                     $chargeWork = isset($data['cost']['charge_work']) ? $data['cost']['charge_work'] : 0;
                     ?>
-                    <div>
-
-                        <span class="charges_left charges_title">全包费用</span>
-                        <?php
-                        if ($chargeWork == 0) {
-                            $html = <<<HTML
-                            <span class="charges_right red">面议</span>
-HTML;
-                        } else {
-                            $html = <<<HTML
-                            <span class="charges_right red">￥{$chargeWork}+
- /㎡</span>
-HTML;
-                        }
-                        echo $html;
-                        ?>
-
-                    </div>
+                    
                     <!--                        <div class="charges_hui charges_huibbb">含：专业设计+认证施工+主材帮挑+家具选样清单+现场陪买2次（4小时）</div>-->
-                    <div class="charges_huia">住艺参考：如果主材、家具由设计师团队全权购买，这部分的价格将由设计师和用户面议确定。</div>
 
                     <div>
                         <span class="charges_left charges_title chargesaas">专业设计</span>
