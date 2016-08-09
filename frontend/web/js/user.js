@@ -162,9 +162,11 @@ var currYear = (new Date()).getFullYear();
 				var gettt=[];
 				var grrr=$(this).parents(".zy_pp").find(".time_list");
 				grrr.find(">i").each(function(){
+                                        if($(this).html().replace(/<\/?[^>]*>/gim,"")!=""){
 					var h=$(this).html().split("-");
 						h=h[1]+"月"+h[2]+"日";
 					 gettt.push(h);					
+                                     }
 				});
 				console.log(gettt)
 				var time_list="";
