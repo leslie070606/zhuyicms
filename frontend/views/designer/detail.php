@@ -159,7 +159,7 @@ HTML;
                     <?php
                     $serveCity = $data['serve_city'];
                     $style = $data['style'];
-                    $winning = $data['winning'];
+                    $experience = $data['experience'];
                     $yingType = $data['service_content']['ying_type'];
                     $gongType = $data['service_content']['gong_type'];
                     $ruanType = $data['service_content']['ruan_type'];
@@ -207,10 +207,10 @@ HTML;
 
                             <div class="info_here">
                                 <div class="info_here_left">
-                                    过往经历及奖项
+									设计师经历
                                 </div>
                                 <div class="info_here_right cccc">
-                                    <?php echo $winning ?>
+                                    <?php echo $experience ?>
                                 </div>
                             </div><!--info_here end-->
 

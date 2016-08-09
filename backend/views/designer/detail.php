@@ -60,6 +60,8 @@ arning'>NULL</span>" ?></td>
                             <td>毕业院校及专业</td>
                             <td><?= $model->alma_mater ? $model->alma_mater : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>设计师经历</td>
+                            <td><?= $model->experience ? $model->experience : "<span class='label label-warning'>NULL</span>" ?></td>
+                            <td>获奖经历</td>
                             <td><?= $model->winning ? $model->winning : "<span class='label label-warning'>NULL</span>" ?></td>
                         </tr>
 
