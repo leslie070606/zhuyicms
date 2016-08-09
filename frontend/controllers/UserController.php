@@ -34,9 +34,9 @@ class UserController extends ZyuserController {
         $phonestr = Yii::$app->request->post('phonestr');
         $code = Yii::$app->request->post('code');
 
-        if ('16810649253' == $phone) {
+        if ('16810649253' == $phonestr) {
 
-            $session->set('user_id', 49);
+            $session->set('user_id', 26);
             return $this->redirect(['index/index']);
         }
 
@@ -92,8 +92,7 @@ class UserController extends ZyuserController {
                 }
             } else {
                 //验证码错误
-                Yii::$app->getSession()->setFlash('msg', '验证码错误,请重新获取!');
-                return $this->render('login');
+                return $this->redirect(['phone']);
             }
         }
     }
@@ -238,9 +237,10 @@ class UserController extends ZyuserController {
 //                        exit;
                     }
                 } else {
-                    // 验证码错误!
-                    Yii::$app->getSession()->setFlash('msg', '验证码错误,请重新获取!');
-                    return $this->render('Addphone');
+//                    echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                    echo "验证码错误!";
+//                    exit;
+                    return $this->redirect(['login']);
                 }
             } else {
                 echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
@@ -258,19 +258,17 @@ class UserController extends ZyuserController {
             $session->open();
         }
         // 销毁session中所有已注册的数据
-
+     
         $session->remove('user_id');
         $cookie = Yii::$app->request->cookies->get('zuyiuser_remeber'); //移除一个 Cookie 对象 
-        if ($cookie) {
-            \Yii::$app->response->getCookies()->remove($cookie);
-        }
-
+        if($cookie){\Yii::$app->response->getCookies()->remove($cookie);}
+        
         return $this->redirect(['index/index']);
     }
 
     public function actionFeedback() {
-        //$tokenModel = new \app\components\Token();
-        //$jsarr = $tokenModel->getSignature();
+        $tokenModel = new \app\components\Token();
+        $jsarr = $tokenModel->getSignature();
 
         $session = Yii::$app->session;
         if (!$session->isActive) {
@@ -291,7 +289,7 @@ class UserController extends ZyuserController {
                 return 1;
             }
         } else {
-            return $this->render('feedback');
+            return $this->render('feedback', ['jsarr' => $jsarr]);
         }
     }
 

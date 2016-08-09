@@ -37,7 +37,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -48,18 +48,7 @@ if (!$session->isActive) {
                     </li>
                 </ul>
             </section>
-            <div class="down_right_zd"></div>
-
-            <div class="out_true_box">
-                <div class="out_true">
-                    <div class="out_true_top">确认退出登录？</div>
-                    <div class="out_true_bott">
-                        <span class="quxiao">取消</span>
-                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
-</a>
-                    </div>
-                </div>
-            </div>  
+            <div class="down_right_zd"></div>  
             <div class="hunt_here">
                 <div class="hunt_input">
                     <input class="ipu" type="text"  placeholder="试试输入设计师姓名或关键字" />
@@ -76,62 +65,56 @@ if (!$session->isActive) {
                     <span class="his_title">
                         热门推荐
                     </span>
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>26]); ?>">
+                    <a href="Choose_designer.html">
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="/uploads/20160801/1047471039104739未标题-1.jpg" />
+                                <img src="img/home_page/proa.jpg" />
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">陈暄</span><span class="here_namea">北京</span>
+                                <span class="here_name">Keiji Ashizawa</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>硬装设计师</span><span>软装设计师</span>
+                                <span>台湾暖男</span><span>设计大咖</span>
                             </div>
 
 
                         </div>
-                    </a >
+                    </a>
 
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>44]); ?>">
+                    <a href="Choose_designer.html">
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="/uploads/20160801/1051511023105123未标题-1.jpg" />
+                                <img src="img/home_page/proa.jpg" />
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">程晖</span><span class="here_namea">北京</span>
+                                <span class="here_name">Keiji Ashizawa</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>软装设计师</span><span>公装设计师</span>
+                                <span>台湾暖男</span><span>设计大咖</span>
                             </div>
 
 
                         </div>
-                    </a >
+                    </a>
 
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>18]); ?>">
+                    <a href="Choose_designer.html">
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="/uploads/20160803/0018180041001841芃芃.jpg" />
+                                <img src="img/home_page/proa.jpg" />
                             </div>
 
                             <div class="bottom_name">
-                                <span class="here_name">芃芃</span><span class="here_namea">北京</span>
+                                <span class="here_name">Keiji Ashizawa</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>软装设计师</span><span>公装设计师</span>
+                                <span>台湾暖男</span><span>设计大咖</span>
                             </div>
-
-
                         </div>
-                    </a >
+                    </a>
                 </div>
             </div>
-        </div>
-        <div class="out_Capacity">
-            <div class="zdang"></div>
-            <div class="mengs">未找到设计师!</div>
         </div>
     </body>
 </html>
@@ -145,28 +128,16 @@ if (!$session->isActive) {
             //dataType: 'json',
             data: '',
             success: function (data) {
-
                 if (data) {
-                    // alert(data);
+                   // alert(data);
                     $(".hunt_here_box").html(data);
-                } else {
-                    out_line();
+                }
+                else{
+                    $(".hunt_here_box").html(data);
 
                 }
 
             }
         });
     }
-    function out_line() {
-        $(".out_Capacity").show().animate({
-            opacity: 1
-        }, 1000, function () {
-            $(".out_Capacity").animate({
-                opacity: 0
-            }, 1000, function () {
-                $(".out_Capacity").hide();
-            })
-        });
-    }
-
 </script>

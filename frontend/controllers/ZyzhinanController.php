@@ -24,8 +24,5 @@ class ZyzhinanController extends Controller {
     public function actionGuidec(){
         return $this->render('guidec');
     }
-    
-    public function actionAbout(){
-        return $this->render('about');
-    }
+
 }

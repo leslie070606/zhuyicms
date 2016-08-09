@@ -39,7 +39,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -63,13 +63,11 @@ if (!$session->isActive) {
 
                 <span class="huoqu djser truee active" onclick="sendmsg()">获取验证码</span>
             </div>
-            <div style="position: relative"><button id="sub" class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
+            <div style="position: relative"><button class="login_ipt btnn" style="border: none;font-size: .28rem;" type="submit">完成</button><span id="worry">您输入的手机号有误，请重新输入</span></div>
             <div class="login_talk">
                 <span class="iconfont icon-xuanzhong">注册即表示本人同意<a href="<?php echo Url::toRoute('/index/agreement'); ?>"class="red">《用户协议和隐私协议》</a></span>
             </div>
             <input type="hidden" value="" id="phonestr" name="phonestr" />
-            
-            <input type="hidden" value="<?php if(Yii::$app->getSession()->hasFlash('msg')){echo Yii::$app->getSession()->getFlash('msg');} ?>" id="msg" name="msg" />
 
             <?= Html::endForm(); ?>
             <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
@@ -81,7 +79,7 @@ if (!$session->isActive) {
 </html>
 <script type="text/javascript">
     function sendmsg() {
-        if ($(".djser").hasClass("active")) {
+        if ($(".djser").hasClass("truee")) {
             var $form = $('#form-phone');
 
             $.ajax({

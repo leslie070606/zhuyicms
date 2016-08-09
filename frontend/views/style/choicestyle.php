@@ -28,18 +28,7 @@
                     <li><a href="designer_list.html">暂时登出</a></li>
                 </ul>
             </section> 
-            <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
-
-					</div>
-				</div>
-			</div> 
+            <div class="down_right_zd"></div> 
 
             <section class="style_boxa">
                 <div class="box_title">请选择3种你最喜欢的风格</div>

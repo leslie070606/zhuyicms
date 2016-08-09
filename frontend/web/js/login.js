@@ -1,16 +1,11 @@
 $(function(){
-    
-        if($("#msg").val()!=""){
-            var mes=$("#msg").val();
-             $("#worry").show().html(mes);
-        }
 	var ipta,btn,iptb=false;
 	var ico=true;
 	$("#phone").blur(function(){
 		var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(16[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
 		if(!myreg.test($("#phone").val())) 
 		{ 
-		    $("#worry").show().html("您输入的手机号有误，请重新输入");
+		    $("#worry").show();
 		    ipta=false;
 		}else{
 			ipta=true;
@@ -28,9 +23,14 @@ $(function(){
 		if($(this).val()==""){
 			iptb=false;
 		}
-                panduan();
+		panduan();
 	});
-	
+	touch.on(".btnn","tap",function(ev){
+		if($(ev.currentTarget).hasClass("btn_true")){
+			window.location.href="index.html";
+		}
+		
+	});
 	$(".login_ipt input").on("focus",function(){
 		$(this).addClass("active");
 		$(".weixin_login").hide();

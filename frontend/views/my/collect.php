@@ -48,7 +48,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -60,17 +60,6 @@ if (!$session->isActive) {
                 </ul>
             </section>
             <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
-
-					</div>
-				</div>
-			</div>
             <div class="help_bot_zd"></div>
             <div class="help_bot_btn">
                 <span class="iphone_btn">

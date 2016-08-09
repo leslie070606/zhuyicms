@@ -4,5 +4,5 @@ return [
     'supportEmail' => 'support@example.com',
     'user.passwordResetTokenExpire' => 3600,
     'dictionary' => require __DIR__ .'/dictionary.php',
-    'frontDomain' => 'http://zhuyihome.com',
+    'frontDomain' => 'http://abc.80h.kim',
 ];

@@ -1,8 +1,7 @@
 <?php
 
 use yii\helpers\Url;
-
-if(isset($model->home_img)){
+if($model->home_img){
     $imgID = explode(',', $model->home_img);
     $imgModel = new \frontend\models\Images();
     $img = $imgModel->findOne($imgID[0]);
@@ -15,7 +14,7 @@ if(isset($model->home_img)){
                 <span class="xq_top_left">需求单：<?= $model->project_num ?></span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
             </div>
             <div class="xuqiu_center">
-                <?php if(isset($img)){?>
+                <?php if($img){?>
                 <img class="center_img" src="<?=Yii::$app->params['frontDomain'].$img->url ?>" />
                 <?php } ?>
                 <div class="center_here">
@@ -52,7 +51,7 @@ if(isset($model->home_img)){
                     ?>
 
                     <div class = "center_here" style = "line-height:.7rem; margin-bottom:.4rem">
-                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a style="color: #ffffff;" href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
+                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
                     </div>
                     <?php
                 }

@@ -111,11 +111,6 @@ class DesignerController extends Controller {
     }
 
     public function actionDetail() {
-        
-        // 分享JS接口
-        $tokenModel = new \app\components\Token();
-        // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
         //把这个用户ID传给前台，前台根据用户ID来做判断，
         //如果为空，需要跳转到登陆页面
         $session = Yii::$app->session;
@@ -207,7 +202,7 @@ class DesignerController extends Controller {
             'style' => $style,
             'winning' => $winning
         );
-        return $this->render("detail", ['data' => $data, 'jsarr'=>$jsarr]);
+        return $this->render("detail", ['data' => $data]);
     }
 
     public function actionArtsets() {
@@ -385,19 +380,10 @@ class DesignerController extends Controller {
         $searchKey = "";
         if ($request->isAjax) {
             $searchKey = Yii::$app->request->get('search_key');
-            if ($searchKey) {
-                $designerM = new \frontend\models\DesignerBasic();
-                $designer = $designerM::findBySql("select * from zyj_designer_basic where name like '%" . $searchKey . "%'")->all();
-
-                if (count($designer) > 0) {
-                    return $this->render('searchdesigner', ['data' => $designer]);
-                } else {
-                    return FALSE;
-                }
-            }
-        } else {
-            return $this->render('hunt');
         }
+        $designerM = new \frontend\models\DesignerBasic();
+        $data = $designerM->findBySql("SELECT * FROM zy_designer_basic WHERE name LIKE '%" . $searchKey . "%'");
+        return $this->render('hunt', ['data' => $data]);
     }
 
 }

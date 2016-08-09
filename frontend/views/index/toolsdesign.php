@@ -38,7 +38,7 @@ if (!$session->isActive) {
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
                     <li>   <?php if ($session->get('user_id')) { ?>
-                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+                            <a href="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
                         <?php } else { ?>
 
@@ -49,22 +49,11 @@ if (!$session->isActive) {
                     </li>
                 </ul>
             </section>
-            <div class="down_right_zd"></div>
-
-            <div class="out_true_box">
-                <div class="out_true">
-                    <div class="out_true_top">确认退出登录？</div>
-                    <div class="out_true_bott">
-                        <span class="quxiao">取消</span>
-                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
-
-                    </div>
-                </div>
-            </div> 
+            <div class="down_right_zd"></div> 
             <div class="banner">
                 <img src="img/index/banner_g.jpg" />
                 <div class="banner_mesg">
-                    <span class="mesg_spb"><a href="http://form.mikecrm.com/UWcirG" style="top: .6rem;">找设计师</a></span>
+                    <span class="mesg_spb"><a href="javascript:" style="top: .6rem;">找设计师</a></span>
                 </div>
             </div>
             <div class="fingerpost">
@@ -122,22 +111,22 @@ if (!$session->isActive) {
                 <div class="pro_box">
                     <div class="pro_here">
                         <div class="pro_here_bcimg iconfont icon-bofang1">
-                            <img class="here_img" src="img/index/yanjia_22.jpg" />
+                            <img class="here_img" src="img/home_page/proc.jpg" />
                         </div>
                         <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
-                            <source src="http://osszhuyi.oss-cn-qingdao.aliyuncs.com/zhuyivideo/yanjiaerhao.mp4" type='video/mp4' />
+                            <source src="img/住艺—燕家二号（最终版）_自定义转码_640x480.MP4" type='video/mp4' />
                         </video>
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
                             <a href="home_page.html">
                                 <div class="here_head">
-                                    <img src="img/index/liuxiaopu.jpg" />
+                                    <img src="img/home_page/banner_head.jpg" />
                                 </div>
                                 <div class="bottom_name">
-                                    <span class="here_name">刘小普</span><span class="here_namea">北京</span>
+                                    <span class="here_name">Keiji Ashizawa</span><span class="here_namea">北京</span>
                                 </div>
                                 <div class="bottom_referral">
-                                    燕家二号
+                                    奇趣百变的青春魔术，来自西班牙Yono
                                 </div>
                             </a>
                         </div>
@@ -145,11 +134,11 @@ if (!$session->isActive) {
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
-                <a href="http://form.mikecrm.com/UWcirG"><span>找设计师</span></a>
+                <span>找设计师</span>
             </div>
             <section class="nav_bot">
 
-                <span><a href="<?php echo Url::toRoute('zyzhinan/about'); ?>">关于住艺</a></span>
+                <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06&scene=1&srcid=0719nZGFjUf0jqEav6uGUFTF#rd">关于住艺</a></span>
                 <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
                 <span><a href="http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=2247484893&idx=3&sn=61ad8cdec4d8fca83cc640324baf0b3a&scene=1&srcid=0714eN73BsxsGBnKEyQTPQFc&from=singlemessage&isappinstalled=0#wechat_redirect">住艺招聘</a></span>
                 <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>
@@ -161,7 +150,7 @@ if (!$session->isActive) {
                     VIP客服  <a href="tel:4000600636">4000-600-636</a>
                 </span>
                 <span class="foot_b">
-                    京ICP备16029306号
+                    © zhuyi, Inc.
                 </span>
             </footer>
 

@@ -68,7 +68,7 @@ body {
 body>div:nth-child(1),body>section:nth-child(1) {
 	 max-width: 500px; position: absolute; left: 0; width: 100%; right: 0; margin: 0 auto;
 }
-.pro_here_bcimg {position: absolute; font-size: .82rem !important; width: 100%; height: 100%; left: 0; top: -1px; z-index: 99;}
+.pro_here_bcimg {position: absolute; font-size: .82rem !important; width: 100%; height: 100%; left: 0; top: 0; z-index: 99;}
 .Blank_Page { text-align: center !important; height: 5rem; display: block; position: relative; background: #FFFFFF; color: #9F9FA0;}
 .red { color: #FF4E38;}
 .Blank_Page>span { line-height: .4rem; width: 100%; float: left; margin-top: 2rem;}
@@ -416,14 +416,7 @@ position: absolute;
 .file-preview-image { height: auto !important;}
 .file-error-message ul li { width: 100% !important;}
 
-/*退出弹出*/
-.out_true_box { display: none; position: fixed; width: 100%; z-index: 99999; height: 100%; top: 0; left: 0;}
-.out_true { width: 4.9rem; height: 1.9rem; background: #FFFFFF; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto;}
-.out_true .out_true_top { height: 1.1rem; text-align: center; line-height: 1.1rem; font-size: .28rem; font-weight: bold; box-sizing: border-box; border-bottom: 1px solid #c9c9ca;}
-.out_true .out_true_bott { line-height: .8rem;}
-.out_true .out_true_bott>span,.out_true .out_true_bott>a { color: #ff4e38; font-size: .24rem; float: left; width: 50%; text-align: center;}
-.out_true .out_true_bott .queding,.out_true .out_true_bott a { box-sizing: border-box; border-left: 1px solid #c9c9ca;}
-.out_true .out_true_bott a>span { display: block; border: none;}
+
 
 
 
