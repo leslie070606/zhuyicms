@@ -25,6 +25,8 @@ class Token {
             $ret = $this->doCurlGetRequest($url, $para);
 
             $retData = json_decode($ret, true);
+            
+           return $retData;exit;
 
             //如果成功不在返回errcode信息 直接返回access_token
             if (!$retData || isset($retData['errcode'])) {
