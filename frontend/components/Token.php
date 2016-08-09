@@ -51,7 +51,7 @@ class Token {
         );
         $res = $this->doCurlGetRequest($jsurl, $para);
         $res = json_decode($res, TRUE);
-        return $res['ticket'];
+        return $res;
     }
 
     // 生成JS signature
