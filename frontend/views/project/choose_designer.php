@@ -48,41 +48,66 @@ if (!$session->isActive) {
                 </ul>
             </section> 
             <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
 
-					</div>
-				</div>
-			</div> 
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                    </div>
+                </div>
+            </div> 
 
             <div class="choose_top">
                 <span class="choose_top_a"></span>
 
                 <?php
                 $num = count($model);
-                if ($num > 0) {
-                    if ($num >= 3) {
-                        $numc = 3;
-                    } else {
-                        $numc = $num;
+                $isredall = false; //是否全是红色
+                //红色数量
+                $counti = 1;
+                foreach ($model as $val) {
+
+                    if (isset($val['red'])) {
+                        $counti++;
                     }
-                    ?>
-                    <span class="choose_top_b">找到了<?= $num ?>位适合你的设计师，请从中选择<?= $numc ?>位优先约见</span>
-                <?php } else { ?>
+                }
+                //如果都是红色
+                if ($counti = $num) {
+                    $isredall = true;
+                    echo '<span class="choose_top_b">未匹配到设计师,请联系客服!</span>';
+                } else {
 
-                    <span class="choose_top_b">未匹配到设计师,请联系客服!</span>
+                    if ($num > 0) {
+                        if ($num >= 3) {
+                            $numc = 3;
+                        } else {
+                            $numc = $num;
+                        }
+                        ?>
+                        <span class="choose_top_b">找到了<?= $num ?>位适合你的设计师，请从中选择<?= $numc ?>位优先约见</span>
+                    <?php } else { ?>
 
-                <?php } ?>
+                        <span class="choose_top_b">未匹配到设计师,请联系客服!</span>
+
+                    <?php
+                    }
+                }
+                ?>
             </div>
 
             <div class="designer_box">
                 <?php
                 foreach ($model as $value) {
+                    
+                    //如果不都是红色 不显示红色设计师 跳出本次循环
+                    if (!$isredall) {
+                        if (isset($val['red'])) {
+                            continue;
+                        }
+                    }
 
                     $designerModel = new frontend\models\DesignerBasic();
                     $designers = $designerModel->getDesignerById($value['did']);
@@ -149,7 +174,7 @@ if (!$session->isActive) {
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>-->
                 </ul>
                 <span class="navv_tj zhihui">提交</span>
-                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">没有发现喜欢的设计师，请住艺管家为我再次甄选 </i></span>
+                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">没有发现喜欢的设计师，请住艺为我甄选</i></span>
 
             </div>		
         </div>

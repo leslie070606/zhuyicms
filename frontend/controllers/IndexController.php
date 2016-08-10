@@ -12,8 +12,13 @@ class IndexController extends Controller {
 
         $model = new \common\models\ZyIndex();
         $video = $model->find()->orderBy('sort asc')->all();
+        
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
 
-        return $this->render('index', ['data' => $video]);
+        return $this->render('index', ['data' => $video, 'jsarr' => $jsarr]);
     }
     
     public function actionTest(){

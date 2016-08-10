@@ -65,7 +65,7 @@ if (!$session->isActive) {
 				</div>
 			</div>  
 
-            <div class="submit_box">
+            <div class="submit_boxa">
                 <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
                 <span class="submit_truea">需求可随时在【我的住艺】中修改</span>
                 <?php

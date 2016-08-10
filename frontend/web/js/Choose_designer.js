@@ -30,7 +30,7 @@ $(function(){
 			$("#htmll").text("人工匹配");
                          $(".navv_tj").removeClass("zhihui");
 		}else {
-			$("#htmll").text("你可以不选择设计师，我们将为你人工匹配");
+			$("#htmll").text("没有发现喜欢的设计师，请住艺为我甄选");
 		};
 	});
 	
@@ -42,7 +42,7 @@ $(function(){
 		$(this).remove();
 		var lenfth=$(".box_sjs li").length;
 		if(lenfth==0){
-			$("#htmll").text("你可以不选择设计师，我们将为你人工匹配");
+			$("#htmll").text("没有发现喜欢的设计师，请住艺为我甄选");
 		}
                 if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
                             $(".navv_tj").addClass("zhihui");

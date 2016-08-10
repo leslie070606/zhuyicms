@@ -295,16 +295,6 @@ class ProjectController extends \common\util\BaseController {
             return $this->redirect(['user/login']);
         }
 
-//        //判断是否有需求 没有跳到题目页
-//        $project_id = Yii::$app->request->get('project_id');
-//        if (!$project_id) {
-//            //没有需求跳转到题目页
-//            return $this->redirect('match_designer');
-//        }
-        //根据ID查找需求
-//        $projectModel = new ZyProject();
-//        $project = $projectModel->findOne($project_id);
-
         $project_id = $project->project_id;
         $scoreArr = array(); //匹配设计师
         //判断是否有已匹配的设计师json 有就直接显示
@@ -360,8 +350,14 @@ class ProjectController extends \common\util\BaseController {
 
                 $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
                 $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
+                
+                $score = $matchModel->assigns($project, $designerArr[$i]);
                 //匹配设计师计算分数
-                $scoreArr[$i]['score'] = $matchModel->assigns($project, $designerArr[$i]);
+                $scoreArr[$i]['score'] = $score;
+                
+                if($score < -200){
+                    $scoreArr[$i]['red'] = $score;
+                }
             }
 
             //判断是否为空
