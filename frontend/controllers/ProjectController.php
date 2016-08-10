@@ -207,15 +207,15 @@ class ProjectController extends \common\util\BaseController {
             $project->description = $post['description'] ? $post['description'] : '';
 
             $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-            
-             $imgId = '';
-             $imgId_favorite = '';
+
+            $imgId = '';
+            $imgId_favorite = '';
             //如果有图片
             if (count($upfile) > 0) {
                 if (!is_dir($dir))
                     mkdir($dir, 0777, true);
 
-               
+
                 foreach ($upfile as $imgobjct) {
 
                     $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
@@ -235,10 +235,10 @@ class ProjectController extends \common\util\BaseController {
                         }
                     }
                 }
-         
+
                 $project->home_img = ltrim($imgId, ",");
             }
-            
+
             //喜欢的照片
             //如果有图片
             if (count($favoriteupfile) > 0) {
@@ -264,7 +264,7 @@ class ProjectController extends \common\util\BaseController {
                         }
                     }
                 }
-         
+
                 $project->favorite_img = ltrim($imgId_favorite, ",");
             }
             $project->update_time = time();
@@ -285,7 +285,7 @@ class ProjectController extends \common\util\BaseController {
         if (!$session->isActive) {
             $session->open();
         }
-         // 分享JS接口
+        // 分享JS接口
         $tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
@@ -307,6 +307,10 @@ class ProjectController extends \common\util\BaseController {
         //判断是否有已匹配的设计师json 有就直接显示
         if ($project->match_json) {
             $scoreArr = json_decode($project->match_json, TRUE);
+            //截取显示9个
+            if (count($scoreArr) >= 9) {
+                $scoreArr = array_slice($scoreArr, 0, 9);
+            }
         } else {
             //引入算法类
             $matchModel = new \app\components\Match();
@@ -356,13 +360,13 @@ class ProjectController extends \common\util\BaseController {
                 }
 
                 $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
-               // $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
-                
+                // $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
+
                 $score = $matchModel->assigns($project, $designerArr[$i]);
                 //匹配设计师计算分数
                 $scoreArr[$i]['score'] = $score;
-                
-                if($score < -200){
+
+                if ($score < -200) {
                     $scoreArr[$i]['red'] = $score;
                 }
             }
@@ -378,12 +382,16 @@ class ProjectController extends \common\util\BaseController {
                 // 按照score降序排列
                 array_multisort($rating, SORT_DESC, $scoreArr);
 
+                //保存数据库
+                $project->match_json = json_encode($scoreArr);
+                $project->save();
+
+                //截取显示9个
                 if (count($scoreArr) >= 9) {
                     $scoreArr = array_slice($scoreArr, 0, 9);
                 }
 
-                $project->match_json = json_encode($scoreArr);
-                $project->save();
+
                 //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
             }
         }
