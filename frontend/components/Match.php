@@ -23,10 +23,21 @@ class Match {
             if ($ProArr['budget_design']) {
                 $pro_budget = $ProArr['budget_design'];
                 $des_budget = $DesArr['charge'] ? $DesArr['charge'] : 1;
+//            if(is_string($peihescore)){
+//                
+//            }
             } else {
                 $pro_budget = $ProArr['budget_design_work'];
                 $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 1;
             }
+            
+            //用户预算
+            $pro_budget = $pro_budget * 10000; //以万为单位
+            
+            $pro_budget = $pro_budget / $ProArr['covered_area'];//用户每平米预算
+            
+            //用户面积不能为零
+            $ProArr['covered_area'] = $ProArr['covered_area']?$ProArr['covered_area']:1;
 
             if (!$DesArr['accept_area']) {
                 $DesArr['accept_area'] = 0;
@@ -83,7 +94,7 @@ class Match {
                     default :
                         $peihescore = 1;
                 }
-                $huangse = 100;
+                //$huangse = 100;
             }
             //黄色浮动
             else if ($ProArr['covered_area'] * 1.1 >= $DesArr['accept_area'] && $pro_budget * 1.5 >= $des_budget) {

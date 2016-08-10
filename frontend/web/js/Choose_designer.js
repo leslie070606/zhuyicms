@@ -49,13 +49,13 @@ $(function(){
 			}
 	})
 		touch.on(".rg_pp","tap",function(ev){
-			if($(this).find(".iconfont").hasClass("icon-xuanzhong")){
-				$(this).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
+			if($(ev.currentTarget).find(".iconfont").hasClass("icon-xuanzhong")){
+				$(ev.currentTarget).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
                                 if($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong")&&$(".box_sjs li").length==0){
                             $(".navv_tj").addClass("zhihui");
                             }
 			}else{
-				$(this).find(".iconfont").addClass("icon-xuanzhong").removeClass("icon-weixuanzhong");
+				$(ev.currentTarget).find(".iconfont").addClass("icon-xuanzhong").removeClass("icon-weixuanzhong");
                                 $(".navv_tj").removeClass("zhihui");
 			}
 		});
