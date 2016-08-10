@@ -169,7 +169,7 @@ class Match {
                         $peihescore = 1;
                 }
 
-                $huangse = 100;
+                $huangse = 1000;
             }
 
             //设计设总分

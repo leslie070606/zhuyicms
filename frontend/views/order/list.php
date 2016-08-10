@@ -472,135 +472,142 @@ HTML;
 
 <script type="text/javascript">
     $(function () {
-    function getUrlParam(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg); //匹配目标参数
-    if (r != null)
-            return unescape(r[2]);
-    return null; //返回参数值
-    }
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null)
+                return unescape(r[2]);
+            return null; //返回参数值
+        }
 
-    //标题点击事件
-    var indexaa;
-    var index = 7;
-    var xiuqiu = 8;
-    var urll = getUrlParam("tiaozhuanP");
-    if (urll == "xiuqiu") {
-    indexaa = 1;
-    duang();
-    }
-    function duang() {
-    $("#nav_box").animate({left: - widtha * indexaa}, 400, function () {
-    if (indexaa == 2 && index == 7) {
-    $.ajax({
-    type: "get",
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/show'; ?>",
-            async: true,
-            success: function (data) {
-            if (data == - 1) {
-             var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家</span></div>'
-                    $(".collect").html(htmlla);
+        //标题点击事件
+        var indexaa;
+        var index = 7;
+        var xiuqiu = 8;
+        var urll = getUrlParam("tiaozhuanP");
+        if (urll == "xiuqiu") {
+            indexaa = 1;
+            duang();
+        }
+        function duang() {
+            $("#nav_box").animate({left: - widtha * indexaa}, 400, function () {
+                if (indexaa == 2 && index == 7) {
+                $.ajax({
+                type: "get",
+                        url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/show'; ?>",
+                        async: true,
+                        success: function (data) {
+                            if (data == -1) {
+                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家</span></div>'
+                                $(".collect").html(htmlla);
+                            }
+
+                            data = eval('(' + decodeURI(data) + ')');
+                            for (var i = 0; i < data.length; i++) {
+                                var htmlaa = '';
+                                var gett = data[i].tag;
+                                if (gett.indexOf(",") < 0) {
+                                    htmlaa = '<span>' + data[i].tag + '</span>';
+                                } else {
+                                    gett = gett.split(",");
+                                    for (var a = 0; a < gett.length; a++) {
+                                        var hah = '<span>' + gett[a] + '</span>'
+                                        htmlaa += hah;
+                                    }
+                                }
+                                var html = '<div class="pro_here iconfont" designer_id="' + data[i].designer_id + '">'
+                                        + '<a href="' + data[i].redirect_url + '&&collect_status=1"><img class="here_img" src="' + data[i].background + '" /></a>'
+                                        + '<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
+                                        + '<div class="here_zhe"></div>'
+                                        + '<div class="here_botaa"></div>'
+                                        + '<div class="here_bottom line_center">'
+                                        + '<div class="here_head">'
+                                        + '<img src="' + data[i].head_portrait + '" />'
+                                        + '</div>'
+                                        + '<div class="bottom_name">'
+                                        + '<span class="here_name">' + data[i].name + '</span>'
+                                        + '<span class="here_namea">' + data[i].city + '</span>'
+                                        + '</div>'
+                                        + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
+                                        + '</div>'
+                                        + '</div>'
+                                $(".collect").append(html);
+                                index++;
+                            }
+                            $(".loading_box").hide();
+                            var heightttt = $(".bxslidera li:eq(" + indexaa + ")").height();
+                            setTimeout(function () {
+                                $(".bxslidera").height(heightttt)
+                            }, 100);
+                            }
+                    touch.on(".shanchu_box", "tap", function () {
+                        var _this = $(this);
+                        var user_id = $("body").attr("user_id");
+                        var designer_id = _this.parents(".iconfont").attr("designer_id");
+                        var params = [user_id, designer_id];
+                        $.ajax({
+                            type: "get",
+                            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                            async: true,
+                            success: function (data) {
+                                _this.parents(".iconfont").remove();
+                            }
+                        });
+                    });
+                    });
+                }
+
+
+                if (indexaa == 1 && xiuqiu == 8) {
+                $.ajax({
+                    type: "GET",
+                    url: "<?php echo Yii::getAlias('@web') . '/index.php?r=project/updateadditional'; ?>",
+                    data: "",
+                    success: function (data) {
+                        //alert(data);
+                        $(".xuqiu_box").html(data);
+                        xiuqiu++;
+                        var heightttt = $(".bxslidera li:eq(" + indexaa + ")").height();
+                        setTimeout(function () {
+                            $(".bxslidera").height(heightttt)
+                        }, 100);
+
+
+                    }
+                })
+
             }
-             
-            data = eval('(' + decodeURI(data) + ')');
-            for (var i = 0; i < data.length; i++) {
-            var htmlaa = '';
-            var gett = data[i].tag;
-            if (gett.indexOf(",") < 0) {
-            htmlaa = '<span>' + data[i].tag + '</span>';
-            } else {
-            gett = gett.split(",");
-            for (var a = 0; a < gett.length; a++) {
-            var hah = '<span>' + gett[a] + '</span>'
-                    htmlaa += hah;
-            }
-            }
-            var html = '<div class="pro_here iconfont" designer_id="' + data[i].designer_id + '">'
-                    + '<a href="' + data[i].redirect_url + '&&collect_status=1"><img class="here_img" src="' + data[i].background + '" /></a>'
-                    + '<span class="shanchu_box"><i class="iconfont icon-shanchu1"></i></span>'
-                    + '<div class="here_zhe"></div>'
-                    + '<div class="here_botaa"></div>'
-                    + '<div class="here_bottom line_center">'
-                    + '<div class="here_head">'
-                    + '<img src="' + data[i].head_portrait + '" />'
-                    + '</div>'
-                    + '<div class="bottom_name">'
-                    + '<span class="here_name">' + data[i].name + '</span>'
-                    + '<span class="here_namea">' + data[i].city + '</span>'
-                    + '</div>'
-                    + '<div class="bottom_label bottom_referral">' + htmlaa + '</div>'
-                    + '</div>'
-                    + '</div>'
-                    $(".collect").append(html);
-            index++;
-            }
-            $(".loading_box").hide();
-           var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
-		setTimeout(function(){$(".bxslidera").height(heightttt)},100);
-            }
-    });
-    }
- touch.on(".shanchu_box", "tap", function () {
+
+            });
+                    $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
+            var heightttt = $(".bxslidera li:eq(" + indexaa + ")").height();
+            setTimeout(function () {
+                $(".bxslidera").height(heightttt)
+            }, 100);
+        }
+
+        touch.on(".nac_boxa>span", "tap", function (ev) {
+            indexaa = $(ev.currentTarget).index();
+            duang();
+        });
+        touch.on(".shanchu_box", "tap", function () {
             var _this = $(this);
             var user_id = $("body").attr("user_id");
             var designer_id = _this.parents(".iconfont").attr("designer_id");
             var params = [user_id, designer_id];
             $.ajax({
-            type: "get",
-                    url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
-                    async: true,
-                    success: function (data) {
+                type: "get",
+                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
+                async: true,
+                success: function (data) {
                     _this.parents(".iconfont").remove();
-                    }
+                }
             });
-            });
-
-    if (indexaa == 1 && xiuqiu == 8) {
-    $.ajax({
-    type: "GET",
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=project/updateadditional'; ?>",
-            data: "",
-            success: function (data) {
-            //alert(data);
-            $(".xuqiu_box").html(data);
-            xiuqiu++;
-            var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
-		setTimeout(function(){$(".bxslidera").height(heightttt)},100);
-            
-            
-            }
-    })
-
-    }
-
-    });
-    $(".nac_boxa>span:eq(" + indexaa + ")").addClass("active").siblings().removeClass("active");
-    var heightttt=$(".bxslidera li:eq("+indexaa+")").height();
-    setTimeout(function(){$(".bxslidera").height(heightttt)},100);
-    }
-
-    touch.on(".nac_boxa>span", "tap", function (ev) {
-    indexaa = $(ev.currentTarget).index();
-    duang();
-    });
-    touch.on(".shanchu_box", "tap", function () {
-    var _this = $(this);
-    var user_id = $("body").attr("user_id");
-    var designer_id = _this.parents(".iconfont").attr("designer_id");
-    var params = [user_id, designer_id];
-    $.ajax({
-    type: "get",
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
-            async: true,
-            success: function (data) {
-            _this.parents(".iconfont").remove();
-            }
-    });
-    });
+        });
     });
     function img_height_auto() {
-    var width = $(".here_img_box li img").width();
-    $(".here_img_box li img").css("height", width);
-    $(".add_img").css({"width": width, "height": width})
+        var width = $(".here_img_box li img").width();
+        $(".here_img_box li img").css("height", width);
+        $(".add_img").css({"width": width, "height": width})
     }
 </script>
