@@ -173,9 +173,6 @@ class ProjectController extends \common\util\BaseController {
                 return $this->redirect(array('project/choose_designer', 'project_id' => $project_id));
             }
 
-//            echo "<pre>";
-//            var_dump($res);
-//            exit;
         }
         // 获取JS签名
         // $jsarr = $tokenModel->getSignature();
