@@ -30,19 +30,19 @@ class Match {
                 $pro_budget = $ProArr['budget_design_work'];
                 $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 1;
             }
-            
+
             //用户面积不能为零
-            $ProArr['covered_area'] = $ProArr['covered_area']?$ProArr['covered_area']:1;
-            
+            $ProArr['covered_area'] = $ProArr['covered_area'] ? $ProArr['covered_area'] : 1;
+
             //用户预算
             $pro_budget = $pro_budget * 10000; //以万为单位
-            
-            $pro_budget = $pro_budget / $ProArr['covered_area'];//用户每平米预算
+
+            $pro_budget = $pro_budget / $ProArr['covered_area']; //用户每平米预算
 
             if (!$DesArr['accept_area']) {
                 $DesArr['accept_area'] = 0;
             }
-            
+
             // 完全符合
             if ($ProArr['covered_area'] >= $DesArr['accept_area'] && $pro_budget >= $des_budget) {
 
@@ -187,7 +187,10 @@ class Match {
             //如是黄色总分为负的
             //$cscore = $mianjiscore + $yusuanscore + $fenggescore + $peihescore - $huangse;
             $cscore = $mianjiscore + $yusuanscore + $peihescore - $huangse;
-
+//            if ($DesArr['designer_id'] == 50) {
+//                echo 'mianjiscore:' . $mianjiscore . '#####' . 'yusuanscore:' . $yusuanscore . "####" . 'peihescore:' . $peihescore;
+//                exit;
+//            }
             return round($cscore, 4);
         }
     }

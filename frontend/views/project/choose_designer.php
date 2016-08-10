@@ -77,7 +77,7 @@ if (!$session->isActive) {
                     }
                 }
                 //如果都是红色
-                if ($counti = $num) {
+                if ($counti == $num) {
                     $isredall = true;
                     echo '<span class="choose_top_b">根据您预算未找到合适的设计师,请参考以下推荐的设计师!</span>';
                 } else {
