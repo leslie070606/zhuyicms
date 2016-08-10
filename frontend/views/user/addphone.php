@@ -56,11 +56,11 @@ if (!$session->isActive) {
             </div>
             <?= Html::beginForm('', 'post', ['id' => 'form-addphone']); ?>
             <div class="login_ipt">
-                <?= \yii\helpers\Html::input('text', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>
+                <?= \yii\helpers\Html::input('tel', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>
 
             </div>
             <div class="auth_code login_ipt">
-                <?= \yii\helpers\Html::input('text', 'code', '', ['id' => 'code']); ?>
+                <?= \yii\helpers\Html::input('tel', 'code', '', ['id' => 'code']); ?>
 
                 <span class="huoqu djser truee active" onclick="sendmsg()">获取验证码</span>
             </div>

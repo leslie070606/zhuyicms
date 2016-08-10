@@ -14,6 +14,10 @@ class ProjectController extends \common\util\BaseController {
 
     //题目页
     public function actionMatch_designer() {
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
         //判断跳转
         //初始化session
         $session = Yii::$app->session;
@@ -67,7 +71,7 @@ class ProjectController extends \common\util\BaseController {
             }
         }
 
-        return $this->render('match_designer');
+        return $this->render('match_designer', ['jsarr' => $jsarr]);
     }
 
     //需求附加信息
@@ -281,7 +285,10 @@ class ProjectController extends \common\util\BaseController {
         if (!$session->isActive) {
             $session->open();
         }
-
+         // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
         //判断是否有用户
         if ($user_id = $session->get('user_id')) {
             $model = new ZyProject();
@@ -380,7 +387,7 @@ class ProjectController extends \common\util\BaseController {
                 //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
             }
         }
-        return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' => $user_id, 'project_id' => $project_id]);
+        return $this->render('choose_designer', ['model' => $scoreArr, 'user_id' => $user_id, 'project_id' => $project_id, 'jsarr' => $jsarr]);
     }
 
     public function actionUpdateadditional() {

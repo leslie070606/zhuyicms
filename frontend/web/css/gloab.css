@@ -433,13 +433,13 @@ position: absolute;
 }
 
 .file-caption-main {
-    width: 40%;
+    width: 1.2rem;
 }
 .hidden-xs {
      display: inline !important;
      font-size: .24rem;
 }
-
+.glyphicon { display: none !important;}
 
 
 

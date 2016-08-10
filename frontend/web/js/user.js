@@ -100,7 +100,7 @@ touch.on(".queren_btn .true_btnaa","tap",function(ev){
 			success: function(data) {
 				_this.find(".right_type").html("已深度合作");
 				_this.find(".jm_money:eq(0),.jm_time:eq(0)").remove();
-				
+				_this.find(".queren_btn").remove();
 	}
 		});
 	});

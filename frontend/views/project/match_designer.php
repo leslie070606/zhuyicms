@@ -20,6 +20,8 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
         <script type="text/javascript" src="js/gloab.js" ></script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
     </head>
     <body>
         <div class="demand_box">
@@ -47,17 +49,17 @@ if (!$session->isActive) {
                 </ul>
             </section>  
             <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
 
-					</div>
-				</div>
-			</div>  
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                    </div>
+                </div>
+            </div>  
 
             <div class="first_box here_0">
                 <span class="dem_title">你需要的服务类型？</span>
@@ -69,12 +71,12 @@ if (!$session->isActive) {
                         <span class="box_soa">软装咨询</span>
                         <span class="box_sob">效果提升  统一风格</span>
                     </div></a>
-                
+
                 <a href="https://jinshuju.net/f/gGZI3n"><div class="boxa_box">
                         <span class="box_soa">庭院景观</span>
                         <span class="box_sob">庭院、花园、景观规划</span>
                     </div></a>
-                
+
                 <a href="http://form.mikecrm.com/UWcirG"><div class="boxa_box">
                         <span class="box_soa">公装设计</span>
                         <span class="box_sob">办公室 商铺 会所 艺术馆</span>
@@ -98,15 +100,15 @@ if (!$session->isActive) {
                 <div class="demand_here here_2">
                     <span class="dem_title">你的住宅类型是？</span>
                     <span>第<a class="red">2</a>题/7题</span>
-                   <div class="fx_box four_box">
-					
-					
-					<div class="fx_here">平层公寓</div>
-					<div class="fx_here">复式</div>
-					<div class="fx_here">别墅</div>
-				
-					
-				</div>
+                    <div class="fx_box four_box">
+
+
+                        <div class="fx_here">平层公寓</div>
+                        <div class="fx_here">复式</div>
+                        <div class="fx_here">别墅</div>
+
+
+                    </div>
                     <input class="dema_ipt" type="text" placeholder="其他住宅（例如：旧仓库/厂房/房车/集装箱）" />
                 </div>
 
@@ -158,7 +160,7 @@ if (!$session->isActive) {
                         <div class="dema_explain">
                             <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">
-                              	住艺参考：如果你需要设计+施工服务，综合考虑市场价及结合设计师报价后（依据设计师个人差异，设计费用报价多在￥400/㎡~￥1200/㎡区间内浮动），住艺建议你为每平米预留约￥3000预算（包含设计费，材料，施工等），以确保设计及施工质量。
+                                住艺参考：如果你需要设计+施工服务，综合考虑市场价及结合设计师报价后（依据设计师个人差异，设计费用报价多在￥400/㎡~￥1200/㎡区间内浮动），住艺建议你为每平米预留约￥3000预算（包含设计费，材料，施工等），以确保设计及施工质量。
                             </div>
                         </div>
                     </div>
@@ -242,7 +244,7 @@ if (!$session->isActive) {
                     url: "<?php echo Yii::getAlias('@web') . '/index.php?r=project/match_designer'; ?>" + "&&g=" + demand,
                     async: true,
                     success: function (data) {
-                        if (data){
+                        if (data) {
                             window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/additional'; ?>" + "&&project_id=" + data;
                         }
                         //console.log(data);
@@ -475,4 +477,64 @@ if (!$session->isActive) {
     });
 
 </script>
+<script type="text/javascript">
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: 'wx8f50ac309b04acf8', // 必填，公众号的唯一标识
+        timestamp: <?= $jsarr['timestamp'] ?>, // 必填，生成签名的时间戳
+        nonceStr: 'zhuyi', // 必填，生成签名的随机串
+        signature: "<?= $jsarr['signature'] ?>", // 必填，签名，见附录1
+        jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
 
+    wx.ready(function () {
+
+        wx.checkJsApi({
+            jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'chooseImage', 'uploadImage', 'downloadImage'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            success: function (res) {
+                // 以键值对的形式返回，可用的api值true，不可用为false
+                // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+            }
+        });
+
+        //分享给朋友
+        wx.onMenuShareAppMessage({
+            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
+            desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让你的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
+            link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
+
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                alert('已分享!');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
+            link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                alert('分享成功!');
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+
+    });
+</script>
