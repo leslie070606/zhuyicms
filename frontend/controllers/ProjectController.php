@@ -391,7 +391,6 @@ class ProjectController extends \common\util\BaseController {
                     $scoreArr = array_slice($scoreArr, 0, 9);
                 }
 
-
                 //$scoreArr = array_merge($scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr,$scoreArr);
             }
         }
