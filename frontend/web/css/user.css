@@ -90,7 +90,7 @@
 .xuqiu .center_here { line-height: .4rem; width: 100%; float: left;}
 .center_here .here_left {width: 1.5rem; float: left;}
 .xq_here_top .xq_top_left { float: left; }
-.xq_here_top .xq_top_btn { position: absolute; right:0; top: 0; bottom: 0; margin: auto; width: 1.2rem; height: .6rem; line-height: .6rem; text-align: center; background: #FF4E38; color: #FFFFFF;}
+.xq_here_top .xq_top_btn { position: absolute; right:0; top: 0; bottom: 0; margin: auto; width: 1.2rem; height: .6rem; line-height: .6rem; text-align: center; color: #FF4E38;}
 .here_bott { margin: .4rem 0; float: left; width: 100%;}
 .help_bot_btn { height: .88rem; width: .88rem; position: fixed; left:50%; margin-left: -.44rem; z-index: 99999; bottom: .4rem;}
 .help_bot_btn .iconfont { font-size: .46rem;}

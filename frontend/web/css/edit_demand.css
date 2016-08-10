@@ -23,7 +23,7 @@
  .type_list .iconfont { font-size: .24rem; margin-right: .2rem; color: #9F9FA0;}
  .type_list .icon-xuanzhong { color: #FF4E38;}
 .img_file { opacity: 0;}
-.text_box { width: 100%; min-height: 2.6rem; background: #eeefef; border: none; outline: none;}
+.text_box { padding: .2rem; width: 100%; min-height: 2.6rem; background: #eeefef; border: none; outline: none;}
 .add_img { background: #eeefef; font-size: .44rem !important; color: #c9c9ca; position: relative;}
 .add_img::before { position: absolute; left: 50%; top: 50%; margin: -.22rem 0 0 -.22rem;}
 .chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #FF4E38; line-height: .88rem; margin: .8rem 5% .3rem 5%; clear: both; float: left;}

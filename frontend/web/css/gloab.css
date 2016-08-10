@@ -429,14 +429,15 @@ position: absolute;
 .file-drop-zone-title {display: none;}
 .file-preview-frame {box-shadow:none; border: none;}
 .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
-    background: #ff4e38; border: none;
+    background: #ff4e38; border: none; width: 100%;
 }
 
 .file-caption-main {
     width: 40%;
 }
 .hidden-xs {
-    display: blcok !important;
+     display: inline !important;
+     font-size: .24rem;
 }
 
 

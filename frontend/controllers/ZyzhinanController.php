@@ -10,7 +10,12 @@ class ZyzhinanController extends Controller {
     public $layout = false;
     public function actionGuide() {
         
-        return $this->render('guide');
+                // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+        
+        return $this->render('guide',['jsarr' => $jsarr]);
     }
     
     public function actionGuidea(){

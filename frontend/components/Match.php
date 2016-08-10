@@ -22,10 +22,10 @@ class Match {
             //用户的预算
             if ($ProArr['budget_design']) {
                 $pro_budget = $ProArr['budget_design'];
-                $des_budget = $DesArr['charge'] ? $DesArr['charge'] : 0;
+                $des_budget = $DesArr['charge'] ? $DesArr['charge'] : 1;
             } else {
                 $pro_budget = $ProArr['budget_design_work'];
-                $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 0;
+                $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 1;
             }
 
             if (!$DesArr['accept_area']) {
