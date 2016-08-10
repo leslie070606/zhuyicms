@@ -52,6 +52,8 @@ $(function(){
 			});
 			$("body,html").css("overflow","auto");
 			gettt--;
+                        $(".page_bottom").css("z-index",99990);
+                        $(".charges_zd").css("z-index",99988);
 	})
 	
 var img_height=$(".pro_here_bcimg").height();

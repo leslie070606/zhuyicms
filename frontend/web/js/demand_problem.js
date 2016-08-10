@@ -3,7 +3,7 @@ $(function(){
 	//首页选择入口
 	touch.on(".first_box .boxa_box","tap",function(ev){
 		var index=$(ev.currentTarget).index();
-		$(ev.currentTarget).addClass("activeaa");
+		$(ev.currentTarget).addClass("activeaa").siblings().removeClass("activeaa");
 		if(index==1){
 			$(".first_box").hide();
 		}

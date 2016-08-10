@@ -149,7 +149,7 @@ if (!$session->isActive) {
                         <li><img src="img/home_page/banner_head.jpg"/><i class="iconfont icon-shanchu shanchu"></i></li>-->
                 </ul>
                 <span class="navv_tj zhihui">提交</span>
-                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">没有发现喜欢的设计师，请住艺管家为我再次甄选 </i></span>
+                <span class="rg_pp"><i class="iconfont icon-weixuanzhong rg_ppi"></i><i id="htmll">没有发现喜欢的设计师，请住艺为我甄选</i></span>
 
             </div>		
         </div>
