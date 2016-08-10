@@ -32,12 +32,12 @@ $(function(){
 	});
 	
 	$(".login_ipt input").on("focus",function(){
-		$(this).addClass("active");
+		$(this).addClass("activeaa");
 		$(".weixin_login").hide();
 	})
 	$(".login_ipt input").on("blur",function(){
 		if($(this).val()==""){
-			$(this).removeClass("active");
+			$(this).removeClass("activeaa");
 		}
 		$(".weixin_login").show();
 	})

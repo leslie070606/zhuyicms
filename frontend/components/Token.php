@@ -15,8 +15,8 @@ class Token {
 
             $para = array(
                 "grant_type" => "client_credential",
-                "appid" => "wx1344a7a9fac82094",
-                "secret" => "9243c0f51650717abdca06178461c137"
+                "appid" => "wx8f50ac309b04acf8",
+                "secret" => "4b7a5de9ff3bc73162da7164a3585dcb"
             );
 
             //$url = Yii::app()->params['WX_API_URL'] . "token";
@@ -25,7 +25,7 @@ class Token {
             $ret = $this->doCurlGetRequest($url, $para);
 
             $retData = json_decode($ret, true);
-
+            
             //如果成功不在返回errcode信息 直接返回access_token
             if (!$retData || isset($retData['errcode'])) {
 

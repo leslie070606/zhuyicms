@@ -42,6 +42,7 @@
  .hetong_here img { width: 100%; float: left; height: 100%;}
 .dingdan { background: #eeefef; overflow: hidden; }
 .dingdan>div {float: left; width: 100%; background: #FFFFFF; text-align: left;}
+.dingdan>div:last-child { margin-bottom: 0 !important;}
 .dd_here { width: 100% !important; padding: 0 !important; margin-bottom: .4rem; position: relative;}
 .dd_here:last-child { margin-bottom: 0;}
 .dd_here .here_bottom { position: relative; margin: .4rem 0;}

@@ -480,7 +480,7 @@
                         var html = $("#get_id .dw-sel .dw-i").html().match(reg);
                         handler.call(this, e);
 
-                        var val = $("#appTime").val();
+                         var val = $(".foin_zy .true_time input").val();
                         var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
                         var datea = new Date(gettt);
                         var time = datea.getTime();
@@ -522,7 +522,7 @@
                         var html = $("#get_id .dw-sel .dw-i").html().match(reg);
                         handler.call(this, e);
 
-                        var val = $("#appTime").val();
+                         var val = $(".foin_zy .true_time input").val();
                         var gettt = year + "/" + html[0] + "/" + html[1] + " " + val
                         var datea = new Date(gettt);
                         var time = datea.getTime();
@@ -683,6 +683,9 @@
                 html = '<td id="get_id"><div class="dwwl dwrc dwwl1"><div class="dwl">天</div><div class="dww" style="height:180px;min-width:70px;"><div class="dw-ul" style="-webkit-transition:all 0s ease-out;-webkit-transform:translate3d(0,36px,0);"><div class="dw-bf">' + htmm + '</div></div><div class="dwwo"></div></div><div class="dwwol"></div></div></td>'
                 $(".dwrc tr").append(html);
                 $(".dwv").html("选择时间").addClass("new_class").removeClass("dwv")
+                if(that.settings.get.length==1){
+                    $("#get_id .dw-ul").css("-webkit-transform","translate3d(0,72px,0)");
+                 }
                 //alert();
                 if(that.settings.get.length==1){
                     $("#get_id .dw-ul").css("transform","translate3d(0,72px,0)");

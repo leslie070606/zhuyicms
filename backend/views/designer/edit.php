@@ -3,7 +3,6 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use dosamigos\datepicker\DatePicker;
-
 ?>
 <div class="row">
     <div class="col-md-6">
@@ -18,13 +17,13 @@ use dosamigos\datepicker\DatePicker;
             <div class="box-body">
                 <div class="form-group">
                     <label for="sort">排序</label>
-                    <?= Html::activeInput('text', $model, 'sort', ['class' => 'form-control','id' => 'sort']) ?>
+                    <?= Html::activeInput('text', $model, 'sort', ['class' => 'form-control', 'id' => 'sort']) ?>
                     <?= Html::error($model, 'sort', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="name">姓名</label>
-                    <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control','id' => 'name']) ?>
+                    <?= Html::activeInput('text', $model, 'name', ['class' => 'form-control', 'id' => 'name']) ?>
                     <?= Html::error($model, 'name', ['class' => 'error']); ?>
                 </div>
 
@@ -36,13 +35,13 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="name">出生日期</label>
-                    <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control','id' => 'birth']) ?>
+                    <?= Html::activeInput('text', $model, 'birth', ['class' => 'form-control', 'id' => 'birth']) ?>
                     <?= Html::error($model, 'birth', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="job_year">从业年限</label>
-                    <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control','id' => 'job_year']) ?>
+                    <?= Html::activeInput('text', $model, 'job_year', ['class' => 'form-control', 'id' => 'job_year']) ?>
                     <?= Html::error($model, 'job_year', ['class' => 'error']); ?>
                 </div>
 
@@ -59,23 +58,29 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="company">就职机构及职位</label>
-                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control','id' => 'company']) ?>
+                    <?= Html::activeInput('text', $model, 'company', ['class' => 'form-control', 'id' => 'company']) ?>
                     <?= Html::error($model, 'company', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="ever_office">以往服务的大事务所/设计公司</label>
-                   
+
                     <?= Html::activeTextarea($model, 'ever_office', ['class' => 'form-control', 'rows' => '5', 'id' => 'ever_office']) ?>
                     <?= Html::error($model, 'ever_office', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="alma_mater">毕业院校及专业</label>
-                    <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control','id' => 'alma_mater']) ?>
+                    <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'id' => 'alma_mater']) ?>
                     <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="experience">设计师经历</label>
+                    <?= Html::activeTextarea($model, 'experience', ['class' => 'form-control', 'rows' => '5', 'id' => 'experience']) ?>
+                    <?= Html::error($model, 'experience', ['class' => 'error']); ?>
+                </div>
+                
                 <div class="form-group">
                     <label for="experience">设计师经历</label>
                     <?= Html::activeTextarea($model, 'experience', ['class' => 'form-control', 'rows' => '5', 'id' => 'experience']) ?>
@@ -107,40 +112,40 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="phone">电话</label>
-                    <?= Html::activeInput('text', $modeladditional, 'phone', ['class' => 'form-control','id' => 'phone']) ?>
+                    <?= Html::activeInput('text', $modeladditional, 'phone', ['class' => 'form-control', 'id' => 'phone']) ?>
                     <?= Html::error($modeladditional, 'phone', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="wechat">微信</label>
-                    <?= Html::activeInput('text', $modeladditional, 'wechat', ['class' => 'form-control','id' => 'wechat']) ?>
+                    <?= Html::activeInput('text', $modeladditional, 'wechat', ['class' => 'form-control', 'id' => 'wechat']) ?>
                     <?= Html::error($modeladditional, 'wechat', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="email">邮箱</label>
-                    <?= Html::activeInput('email', $modeladditional, 'email', ['class' => 'form-control','id' => 'email']) ?>
+                    <?= Html::activeInput('email', $modeladditional, 'email', ['class' => 'form-control', 'id' => 'email']) ?>
                     <?= Html::error($modeladditional, 'email', ['class' => 'error']); ?>
                 </div>
 
                 <div class="form-group">
                     <label for="address">住址</label>
-                    <?= Html::activeInput('text', $modeladditional, 'address', ['class' => 'form-control','id' => 'address']) ?>
+                    <?= Html::activeInput('text', $modeladditional, 'address', ['class' => 'form-control', 'id' => 'address']) ?>
                     <?= Html::error($modeladditional, 'address', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="ideas">设计理念</label>
-                    <?= Html::activeTextarea($modeladditional, 'ideas', ['class' => 'form-control', 'rows' => '3','id' => 'ideas']) ?>
+                    <?= Html::activeTextarea($modeladditional, 'ideas', ['class' => 'form-control', 'rows' => '3', 'id' => 'ideas']) ?>
                     <?= Html::error($modeladditional, 'ideas', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="works">代表作品</label>
-                    <?= Html::activeTextarea($modeladditional, 'works', ['class' => 'form-control', 'rows' => '3','id' => 'works']) ?>
+                    <?= Html::activeTextarea($modeladditional, 'works', ['class' => 'form-control', 'rows' => '3', 'id' => 'works']) ?>
                     <?= Html::error($modeladditional, 'works', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="ideal_customer">理想的服务对象</label>
-                    <?= Html::activeInput('text', $modeladditional, 'ideal_customer', ['class' => 'form-control','id' => 'ideal_customer']) ?>
+                    <?= Html::activeInput('text', $modeladditional, 'ideal_customer', ['class' => 'form-control', 'id' => 'ideal_customer']) ?>
                     <?= Html::error($modeladditional, 'ideal_customer', ['class' => 'error']); ?>
                 </div>
             </div>
@@ -172,29 +177,29 @@ use dosamigos\datepicker\DatePicker;
             <div class="box-body">
                 <div class="form-group">
                     <label for="city">所在城市</label>
-                    <?= Html::activeInput('text', $modelwork, 'city', ['class' => 'form-control','id' => 'city']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'city', ['class' => 'form-control', 'id' => 'city']) ?>
                     <?= Html::error($modelwork, 'city', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="service_city">服务城市</label>
-                    <?= Html::activeInput('text', $modelwork, 'service_city', ['class' => 'form-control','id' => 'service_city']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'service_city', ['class' => 'form-control', 'id' => 'service_city']) ?>
                     <?= Html::error($modelwork, 'service_city', ['class' => 'error']); ?>
                 </div>
                 <div class="form-group">
                     <label for="customer">客户对象</label>
-                    <?= Html::activeInput('text', $modelwork, 'customer', ['class' => 'form-control','id' => 'customer']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'customer', ['class' => 'form-control', 'id' => 'customer']) ?>
                     <?= Html::error($modelwork, 'customer', ['class' => 'error']); ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="matching">配合度</label>
-                    <?= Html::activeInput('text', $modelwork, 'matching', ['class' => 'form-control','id' => 'matching']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'matching', ['class' => 'form-control', 'id' => 'matching']) ?>
                     <?= Html::error($modelwork, 'matching', ['class' => 'error']); ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="service_type">服务类型</label>
-                    <?= Html::activeInput('text', $modelwork, 'service_type', ['class' => 'form-control','id' => 'service_type']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'service_type', ['class' => 'form-control', 'id' => 'service_type']) ?>
                     <?= Html::error($modelwork, 'service_type', ['class' => 'error']); ?>
                 </div>
                 <?=
@@ -264,7 +269,7 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="accept_area">能接受的最小面积</label>
-                    <?= Html::activeInput('text', $modelwork, 'accept_area', ['class' => 'form-control','id' => 'accept_area']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'accept_area', ['class' => 'form-control', 'id' => 'accept_area']) ?>
                     <?= Html::error($modelwork, 'accept_area', ['class' => 'error']); ?>
                 </div>
 
@@ -276,16 +281,16 @@ use dosamigos\datepicker\DatePicker;
 
                 <div class="form-group">
                     <label for="charge">设计费收费标准</label>
-                    <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control','id' => 'charge']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'charge', ['class' => 'form-control', 'id' => 'charge']) ?>
                     <?= Html::error($modelwork, 'charge', ['class' => 'error']); ?>
                 </div>
-                
-                 <div class="form-group">
+
+                <div class="form-group">
                     <label for="charge_work">设计费+施工收费标准</label>
-                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control','id' => 'charge_work']) ?>
+                    <?= Html::activeInput('text', $modelwork, 'charge_work', ['class' => 'form-control', 'id' => 'charge_work']) ?>
                     <?= Html::error($modelwork, 'charge_work', ['class' => 'error']); ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="style">擅长的设计风格</label>
                     <?= Html::activeInput('text', $modelwork, 'style', ['class' => 'form-control', 'id' => 'style']) ?>
@@ -330,7 +335,7 @@ use dosamigos\datepicker\DatePicker;
         var $form = $('#form-work');
 
         $.ajax({
-            url: $form.attr('action')+'?id='+<?= $did?>,
+            url: $form.attr('action') + '?id=' +<?= $did ?>,
             type: 'post',
             //dataType: 'json',
             data: $form.serialize(),
@@ -344,18 +349,18 @@ use dosamigos\datepicker\DatePicker;
     //提交Additional表单
     function ajaxAdditional() {
         var $form = $('#form-additional');
-       
-            $.ajax({
-                url: $form.attr('action')+'&id='+<?= $did?>,
-                type: 'post',
-                //dataType: 'json',
-                data: $form.serialize(),
-                success: function (data) {
-                    alert(data);
-                    $("#secussadditional").show();
-                }
-            });
-        
+
+        $.ajax({
+            url: $form.attr('action') + '&id=' +<?= $did ?>,
+            type: 'post',
+            //dataType: 'json',
+            data: $form.serialize(),
+            success: function (data) {
+                alert(data);
+                $("#secussadditional").show();
+            }
+        });
+
     }
 </script>
 

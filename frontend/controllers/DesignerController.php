@@ -111,11 +111,14 @@ class DesignerController extends Controller {
     }
 
     public function actionDetail() {
-        
+
         // 分享JS接口
         $tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
+
+
+        //$jsarr = $tokenModel->getJspticket();
         //把这个用户ID传给前台，前台根据用户ID来做判断，
         //如果为空，需要跳转到登陆页面
         $session = Yii::$app->session;
@@ -206,7 +209,7 @@ class DesignerController extends Controller {
             'style' => $style,
             'experience' => $experience
         );
-        return $this->render("detail", ['data' => $data, 'jsarr'=>$jsarr]);
+        return $this->render("detail", ['data' => $data, 'jsarr' => $jsarr]);
     }
 
     public function actionArtsets() {

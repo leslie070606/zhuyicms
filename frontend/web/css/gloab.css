@@ -410,7 +410,7 @@ position: absolute;
 .kv-file-remove { top:3px; right: 3px; position: absolute;}
 .kv-fileinput-caption { display: none;}
 .file-caption { display: none !important;}
-.input-group-btn,.btn-file { width: 100%;}
+.input-group-btn,.btn-file { width: 40%;}
 .btn-primary { border-radius: 0; margin-bottom: .2rem;}
 .fileinput-remove-button { display: none;}
 .file-preview-image { height: auto !important;}
@@ -424,9 +424,14 @@ position: absolute;
 .out_true .out_true_bott>span,.out_true .out_true_bott>a { color: #ff4e38; font-size: .24rem; float: left; width: 50%; text-align: center;}
 .out_true .out_true_bott .queding,.out_true .out_true_bott a { box-sizing: border-box; border-left: 1px solid #c9c9ca;}
 .out_true .out_true_bott a>span { display: block; border: none;}
-
-
-
+.file-drop-zone.clickable:hover,.file-preview {
+   border: none;
+}
+.file-drop-zone-title {display: none;}
+.file-preview-frame {box-shadow:none; border: none;}
+.input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group {
+    background: #ff4e38; border: none;
+}
 
 
 
