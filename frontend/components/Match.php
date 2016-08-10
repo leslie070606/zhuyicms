@@ -31,13 +31,13 @@ class Match {
                 $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 1;
             }
             
+            //用户面积不能为零
+            $ProArr['covered_area'] = $ProArr['covered_area']?$ProArr['covered_area']:1;
+            
             //用户预算
             $pro_budget = $pro_budget * 10000; //以万为单位
             
             $pro_budget = $pro_budget / $ProArr['covered_area'];//用户每平米预算
-            
-            //用户面积不能为零
-            $ProArr['covered_area'] = $ProArr['covered_area']?$ProArr['covered_area']:1;
 
             if (!$DesArr['accept_area']) {
                 $DesArr['accept_area'] = 0;

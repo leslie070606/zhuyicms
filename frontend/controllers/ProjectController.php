@@ -356,7 +356,7 @@ class ProjectController extends \common\util\BaseController {
                 }
 
                 $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
-                $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
+               // $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
                 
                 $score = $matchModel->assigns($project, $designerArr[$i]);
                 //匹配设计师计算分数
