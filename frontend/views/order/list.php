@@ -539,9 +539,9 @@ HTML;
                             setTimeout(function () {
                                 $(".bxslidera").height(heightttt)
                             }, 100);
-                            }
-                    touch.on(".shanchu_box", "tap", function () {
-                        var _this = $(this);
+                            
+                             touch.on(".shanchu_box", "tap", function (ev) {
+                        var _this = $(ev.currentTarget);
                         var user_id = $("body").attr("user_id");
                         var designer_id = _this.parents(".iconfont").attr("designer_id");
                         var params = [user_id, designer_id];
@@ -554,6 +554,8 @@ HTML;
                             }
                         });
                     });
+                            }
+                   
                     });
                 }
 
