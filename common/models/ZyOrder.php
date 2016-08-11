@@ -65,7 +65,7 @@ class ZyOrder extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'project_id', 'designer_id'], 'required'],
-            [['user_id', 'project_id', 'designer_id', 'status', 'appointment_time', 'create_time', 'update_time'], 'integer'],
+            [['user_id', 'project_id', 'designer_id', 'status', 'create_time','update_time'], 'integer'],
             [['appointment_location', 'service_type'], 'string', 'max' => 255],
             [['remark'], 'string', 'max' => 255],
         ];
@@ -92,4 +92,13 @@ class ZyOrder extends \yii\db\ActiveRecord
             'update_time' => '修改时间',
         ];
     }
+
+	public static function getStatusMessage($orderId){
+		$rows = self::findOne($orderId);
+		if(empty($rows)){
+			return "无效状态";
+		}
+		$status = $rows->status;
+		return self::$ORDER_STATUS_DICT[$status];
+	}
 }

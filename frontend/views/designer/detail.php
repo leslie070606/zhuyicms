@@ -97,8 +97,12 @@ if (!$session->isActive) {
                             if ($artType == 0) {
                                 $imgIds = $v['image_ids'];
                                 $imgIdsArr = explode(',', $imgIds);
+								$imgIdsArr = array_filter($imgIdsArr);
                                 $imgUrlArr = array();
                                 foreach ($imgIdsArr as $id) {
+									if(!isset($id) || empty($id)){
+										continue;
+									}
                                     $rows = \frontend\models\Images::findOne($id);
                                     if (empty($rows)) {
                                         continue;
@@ -106,7 +110,7 @@ if (!$session->isActive) {
                                     $url = $rows->url;
                                     $imgUrlArr[] = $url;
                                 }
-                                $imgBackground = $imgUrlArr[0];
+                                $imgBackground = isset($imgUrlArr[0])? $imgUrlArr[0] : '';
                                 $imgCount = count($imgUrlArr);
                             } elseif ($artType == 1) {
                                 $videoId = $v['video_ids']; //目前仅有一个视频。

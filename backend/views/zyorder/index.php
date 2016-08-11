@@ -28,7 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'project_id',
             'designer_id',
-            'status',
+            //'status',
+			[
+				'attribute' => 'status',
+				'label' => '订单状态',
+				'value' => function($model){
+					return \common\models\ZyOrder::getStatusMessage($model->order_id);
+				},
+			],
             // 'appointment_location',
             // 'appointment_time:datetime',
             // 'remark',
