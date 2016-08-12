@@ -18,7 +18,10 @@ class UserController extends ZyuserController {
     }
 
     public function actionLogin() {
-
+        
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+	}
         //判断ssion
         return $this->render('login');
     }

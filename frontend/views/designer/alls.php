@@ -108,6 +108,9 @@ if (!$session->isActive) {
 
                 }
                 $(".pro_box").html(html_box);
+                 var widthaa = $("body").width();
+                 $(".here_img,.pro_here").css("height", widthaa * .56);
+                            
                 var img_height = $(".pro_here_bcimg").height();
                 touch.on(".pro_here_bcimg", "tap", function (ev) {
                     $(this).next(".video-js").get(0).play();
@@ -137,8 +140,8 @@ if (!$session->isActive) {
                                 $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
                             }, 100);
                             $("#title_idb").html(length);
-                            var widthaa = $("body").width();
-                             $(".here_img,.pro_here").css("height", widthaa * .56);
+                            
+                           
                         }
                     });
 

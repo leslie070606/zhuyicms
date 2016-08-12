@@ -38,8 +38,8 @@
 .hetong_btn { border-top: none !important;}
 .hetong_box { float: left; width: 92%; margin-left: 3.5%; padding-top: .4rem; border-top: 1px solid #EEEFEF;}
 .hetong_box .hetong_here { width: 31%; height: 2.1rem; float: left; margin-right: 3.5%; position: relative;}
- .hetong_box .hetong_here:nth-child(3), .hetong_box .hetong_here:nth-child(6), .hetong_box .hetong_here:nth-child(9) { margin-right: 0;}
- .hetong_here img { width: 100%; float: left; height: 100%;}
+.hetong_box .hetong_here:nth-child(3), .hetong_box .hetong_here:nth-child(6), .hetong_box .hetong_here:nth-child(9) { margin-right: 0;}
+.hetong_here img { width: 100%; float: left; height: 100%;}
 .dingdan { background: #eeefef; overflow: hidden; }
 .dingdan>div {float: left; width: 100%; background: #FFFFFF; text-align: left;}
 .dingdan>div:last-child { margin-bottom: 0 !important;}
@@ -47,7 +47,14 @@
 .dd_here:last-child { margin-bottom: 0;}
 .dd_here .here_bottom { position: relative; margin: .4rem 0;}
 .jm_time,.jm_money{ display: block; text-align: left; margin-bottom: .2rem;}
-.true_time {padding: .4rem 0 .4rem; text-align: left; color: #777777; border-top: 1px solid #EEEFEF;} 
+.true_time {margin: 0 4%;
+            text-align: left;
+            color: #777777;
+            border-top: 1px solid #EEEFEF;
+            float: left;
+            width: 92%;
+            clear: both;
+            padding: .3rem 0;} 
 .jm_time, .jm_money,.true_time { text-indent: .3rem;}
 .jm_money { margin-bottom: .4rem; color: #777777;}
 .jm_money>a { color: #FF4E38; text-decoration:line-through ; font-weight: bold; margin-right: .2rem;}
@@ -68,8 +75,8 @@
 .queren_btn .true_btna { background: #777777; right: 2.5rem;width:3.3rem;}
 .color_ccca { width: 2rem; line-height: .2rem; color: #777777;}
 .ooo_spa,.ooo_spb { position: absolute; right: 0; text-align: right;}
- .ooo_spa{top: .15rem;}
- .here_bottom { bottom: 0;}
+.ooo_spa{top: .15rem;}
+.here_bottom { bottom: 0;}
 .ooo_spb { bottom: .2rem;}
 .hetong {width: 2rem !important;}
 /*.dd_here .jm_time, .dd_here .jm_money {
@@ -101,7 +108,7 @@
 .help_bot_btn .bot_btn { background: #FFFFFF; color: #FF4E38; display: none; z-index: 97;}
 .iphone_btn a,.bot_btn a { display: block; color: #FF4E38; }
 .help_bot_zd {   
-	display: none;
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
