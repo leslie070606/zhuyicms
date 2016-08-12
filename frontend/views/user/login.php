@@ -25,6 +25,10 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/login.js" ></script>
     </head>
     <body>
+        <?php
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false ) {
+			
+	?>	
         <section class="login_box">
             <header class="header_top">
                 <span class="hunt_title">登录</span>
@@ -72,10 +76,14 @@ if (!$session->isActive) {
             <input type="hidden" value="<?php if(Yii::$app->getSession()->hasFlash('msg')){echo Yii::$app->getSession()->getFlash('msg');} ?>" id="msg" name="msg" />
 
             <?= Html::endForm(); ?>
+             </section>
+        <?php }  else { ?>
+     
+ 
             <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
                     <i class="iconfont icon-weixin" style="font-size: .44rem;"></i>微信登录
                 </div></a>
-        </section>
+        <?php } ?>
 
     </body>
 </html>
