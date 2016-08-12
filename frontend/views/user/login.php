@@ -25,10 +25,7 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/login.js" ></script>
     </head>
     <body>
-        <?php
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false) {
-            ?>	
-            <section class="login_box">
+                    <section class="login_box">
                 <header class="header_top">
                     <span class="hunt_title">登录</span>
                     <!--<input id="ipt" type="text" value="0" />-->
@@ -57,6 +54,10 @@ if (!$session->isActive) {
                 <div class="login_title">
                     现在登录<br/>你的需求就会被住艺永久记录，并可以随时更改
                 </div>
+        <?php
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false) {
+            ?>	
+
                 <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
                 <div class="login_ipt">
                     <?= \yii\helpers\Html::input('tel', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>

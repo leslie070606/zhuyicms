@@ -131,7 +131,7 @@ HTML;
                 }
                 ?>
             </div>
-                        <div id="jiazai_ing" style=" float: left; display: none; width: 100%;color: #666666; text-align: center; margin: .4rem 0;">正在努力加载中...</div>
+                        <div id="jiazai_ing" style=" float: left; display: none; width: 100%;color: #777777; text-align: center; margin: .4rem 0;">正在努力加载中...</div>
         </div>
     </body>
 </html>

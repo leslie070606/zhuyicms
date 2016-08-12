@@ -15,7 +15,7 @@
 #user_tab .bx-pager { width: 100%; background: #FFFFFF; left: 0; top: 0; margin-left: 0;}
 #user_tab .bx-pager .bx-pager-item { width: 33.33%; float: left; text-align: center;}
 #user_tab .bx-pager .bx-pager-item a { display: block; width: 100%; text-align: center; height: .88rem; line-height: .88rem; top: 0px; margin: 0; border-radius: 0; background: none; color: #C9C9CA; text-indent: 0; z-index: 99;}*/
-.nac_boxa { color: #666666;}
+.nac_boxa { color: #777777;}
 .nac_boxa .active {
     border-bottom: 2px solid #FF4E38;
     box-sizing: border-box;
@@ -29,7 +29,7 @@
 .here_head img {  margin-left: .3rem;}
 .right_type { position: absolute; height: .88rem; line-height: .88rem; font-size: .24rem; right: .3rem; color: #FF4E38;}
 .fixed_top { position: fixed; max-width: 500px; margin: 0 auto; top: .88rem !important; left: 0; right: 0; background: #FFFFFF; z-index: 999;}
-.tishi {padding:.4rem  0; background: #eeefef; line-height: 150%; font-size: .20rem; color: #666666;}
+.tishi {padding:.4rem  0; background: #eeefef; line-height: 150%; font-size: .20rem; color: #777777;}
 .bottom_name .here_name::after {
     content: "丨";
     padding-left: .2rem;
@@ -47,9 +47,9 @@
 .dd_here:last-child { margin-bottom: 0;}
 .dd_here .here_bottom { position: relative; margin: .4rem 0;}
 .jm_time,.jm_money{ display: block; text-align: left; margin-bottom: .2rem;}
-.true_time {padding: .4rem 0 .4rem; text-align: left; color: #666666; border-top: 1px solid #EEEFEF;} 
+.true_time {padding: .4rem 0 .4rem; text-align: left; color: #777777; border-top: 1px solid #EEEFEF;} 
 .jm_time, .jm_money,.true_time { text-indent: .3rem;}
-.jm_money { margin-bottom: .4rem; color: #666666;}
+.jm_money { margin-bottom: .4rem; color: #777777;}
 .jm_money>a { color: #FF4E38; text-decoration:line-through ; font-weight: bold; margin-right: .2rem;}
 .zy_pp .pro_here { margin-bottom: .4rem;}
 .zy_pp .true_time { padding-left: .3rem; text-indent: 0; position: relative; float: left; width: 96%;}
@@ -57,16 +57,16 @@
 .tj_spa { display: block; font-weight: bold; margin-bottom: .2rem;}
 .tj_box { margin-left: .3rem;}
 .tj_box >span { display: block;}
-.tj_spb  { color: #666666; width: 5.7rem; margin-bottom: .4rem;}
+.tj_spb  { color: #777777; width: 5.7rem; margin-bottom: .4rem;}
 .tj_spb a {color: #FF4E38;}
 .zy_pp { margin-bottom: .4rem;}
-.color_ccc { color: #666666 !important;}
+.color_ccc { color: #777777 !important;}
 .color_ooo { color: #221814 !important;}
 .queren_btn  {  height: .3rem;}
 .queren_btn >span { position: absolute; width: 1.8rem; top: 0; bottom: 0; margin: auto; height: .6rem; line-height: .6rem; text-align: center; color: #FFFFFF;}
 .queren_btn .true_btnb { background: #FF4E38; right: .3rem;}
-.queren_btn .true_btna { background: #666666; right: 2.5rem;width:3.3rem;}
-.color_ccca { width: 2rem; line-height: .2rem; color: #666666;}
+.queren_btn .true_btna { background: #777777; right: 2.5rem;width:3.3rem;}
+.color_ccca { width: 2rem; line-height: .2rem; color: #777777;}
 .ooo_spa,.ooo_spb { position: absolute; right: 0; text-align: right;}
  .ooo_spa{top: .15rem;}
  .here_bottom { bottom: 0;}
@@ -84,7 +84,7 @@
 .xuqiu_here { font-size: .24rem;  width: 92% ; padding: 0 4%;text-align: left; float: left;  background: #FFFFFF; }
 .xuqiu_center { margin-top: .4rem;}
 .center_img { float: left; width: 2.1rem; height: 2.1rem; margin-bottom: .2rem;}
-.xuqiu_here .here_left { color: #666666;}
+.xuqiu_here .here_left { color: #777777;}
 .xq_here_top { height: 1rem; width:100%; position: relative;  border-bottom: 1px solid #EEEFEF;}
 .xq_here_top>span {  line-height:1rem; }
 .xuqiu .center_here { line-height: .4rem; width: 100%; float: left;}

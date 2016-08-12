@@ -3,13 +3,13 @@
 .select_box_a>span { display: block; text-align: center;}
 .select_name { font-weight: bold; margin: .8rem auto .2rem;}
 .dema_ipt { border: none;margin-top: .4rem; width: 100%; border-right: 4px solid #c9c9ca; height: .88rem; background: #eeefef;  outline: none; text-indent: .3rem; font-size: .24rem;}
-.chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #666666; line-height: .88rem; margin: 1.2rem 5% .3rem 5%; clear: both; float: left;}
+.chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #777777; line-height: .88rem; margin: 1.2rem 5% .3rem 5%; clear: both; float: left;}
 .chose_btn.yes_btn { background: #FF4E38;}
 .select_pereb { }
 .select_type { line-height: .3rem; margin-bottom: .8rem;}
 .select_spa { font-size: .28rem; font-weight: bold;}
 .select_spb { margin: .2rem auto .4rem;}
-.time_here { width: 31%; margin-right: 3.5%; float: left; margin-top: .3rem; height: 1.04rem; box-sizing: border-box; border: 1px solid #EEEFEF; color: #666666;}
+.time_here { width: 31%; margin-right: 3.5%; float: left; margin-top: .3rem; height: 1.04rem; box-sizing: border-box; border: 1px solid #EEEFEF; color: #777777;}
 .time_here>span { display: block;}
 .time_here.active { border-color: #FF4E38;}
 .time_here_a { margin: .2rem auto .1rem;}
