@@ -6,7 +6,7 @@
 .submit_here { margin-top: .4rem; width: 100%; float: left;}
 .submit_herea { margin-top: 0;}
 .submit_here>span { display: block;}
-.submit_here .here_b{ color: #9F9FA0; margin: .2rem 0;}
+.submit_here .here_b{ color: #777777; margin: .2rem 0;}
 .here_img_box ul li { float: left; position: relative; min-height: 100px; width: 31% !important; margin-right: 3.5%; margin-bottom: 3.5%;}
 .here_img_box li:nth-child(3),.here_img_box li:nth-child(6),.here_img_box li:nth-child(9) { margin-right: 0;}
 .type_list>div { margin-bottom: .4rem; float: left; width: 100%;}
@@ -16,12 +16,12 @@
 .type_list { margin-top: .4rem; display: block; float: left; width: 100%;}
 .type_list .left_sp, .type_list .right_sp{ float: left; width: 50%;}
  .type_list .right_sp { text-indent: .3rem;}
- .type_list .iconfont { font-size: .24rem; margin-right: .2rem; color: #9F9FA0;}
+ .type_list .iconfont { font-size: .24rem; margin-right: .2rem; color: #777777;}
  .type_list .icon-xuanzhong { color: #FF4E38;}
 .img_file { opacity: 0;}
 .text_box { width: 100%; padding: 4%;min-height: 2.6rem; line-height: 150%; font-size: .24rem; background: #eeefef; border: none; outline: none;}
-.zhihui { background: #9F9FA0 !important;}
+.zhihui { background: #777777 !important;}
 .add_img { background: #eeefef; font-size: .44rem !important; color: #c9c9ca; position: relative;}
 .add_img::before { position: absolute; left: 50%; top: 50%; margin: -.22rem 0 0 -.22rem;}
 .chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #FF4E38; line-height: .88rem; margin: .8rem 5% .3rem 5%; clear: both; float: left;}
-.center_nameaa a { display: block; float:left; width:100%; margin-bottom: .8rem; color: #9F9FA0; text-align: center;}
+.center_nameaa a { display: block; float:left; width:100%; margin-bottom: .8rem; color: #777777; text-align: center;}

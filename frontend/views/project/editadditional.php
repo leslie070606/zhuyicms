@@ -82,7 +82,7 @@ if (!$session->isActive) {
                 </div>
                 <div class="edit_here">
                     <span class="here_title">住宅面积</span>
-                    <span class="here_meng"><?= $model->covered_area ?></span>
+                    <span class="here_meng"><?= $model->use_area ?></span>
                 </div>
 
                 <div class="edit_here">

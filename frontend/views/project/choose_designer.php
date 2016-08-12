@@ -89,7 +89,7 @@ if (!$session->isActive) {
                             $numc = $num;
                         }
                         ?>
-                <span class="choose_top_b">据您的初步信息，甄选出<?= $num ?>位设计师<br/>从中选择喜欢的优先约见（最多<?= $numc ?>位）</span>
+                        <span class="choose_top_b">据您的初步信息，甄选出<?= $num ?>位设计师<br/>从中选择喜欢的优先约见（最多<?= $numc ?>位）</span>
                     <?php } else { ?>
 
                         <span class="choose_top_b">在您的地区和时间段未匹配到设计师,请联系客服!4000-600-636</span>
@@ -180,11 +180,22 @@ if (!$session->isActive) {
 
             </div>		
         </div>
-
+        <div class="out_Capacity">
+                <div class="zdang"></div>
+                <div class="mengs">您已经选择过您要见的设计师，请在我的住艺中查看</div>
+            </div>
     </body>
 </html>
 <script>
     touch.on(".navv_tj", "tap", function (ev) {
+
+        if (localStorage.getItem("key")) {
+            out_line();
+            return false;
+        } else {
+            localStorage.setItem("key", 1);
+        }
+
         var user_id = <?= $user_id ?>;
         var project_id = <?= $project_id ?>;
         var html = "";
@@ -219,6 +230,7 @@ if (!$session->isActive) {
             success: function (data) {
                 // alert(data);
                 if (data = 3) {
+
                     //跳转人工
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }

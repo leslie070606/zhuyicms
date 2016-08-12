@@ -18,7 +18,10 @@ class UserController extends ZyuserController {
     }
 
     public function actionLogin() {
-
+        
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+	}
         //判断ssion
         return $this->render('login');
     }
@@ -305,7 +308,7 @@ class UserController extends ZyuserController {
         //$sms = Yii::$app->Sms;
         $sms = new Sms();
 
-        $ret = $sms->send(array($phone), '【住艺】欢迎注册住艺设计师平台,您的验证码是[ ' . $phonestr . ' ] 客服电话:4000-600-636');
+        $ret = $sms->send(array($phone), '【住艺】很高兴认识你，您的验证码是[ ' . $phonestr . ' ]。让你成为你 敢让家不同！住艺客服：4000-600-636');
         //$res = $sms->login();
         // return $ret;
         //$ret 返回0 代表成功！,其他则有错误

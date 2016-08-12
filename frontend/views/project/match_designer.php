@@ -216,13 +216,13 @@ if (!$session->isActive) {
                 if (index == 1) {
                     $(".first_box").hide();
                 }else if(index==2){
-                    window.location.herf="https://jinshuju.net/f/uccnkD";
+                    window.location="https://jinshuju.net/f/uccnkD";
                 }else if(index==3){
-                    window.location.herf="https://jinshuju.net/f/gGZI3n";
+                    window.location="https://jinshuju.net/f/gGZI3n";
                 }else if(index==4){
-                    window.location.herf="http://form.mikecrm.com/UWcirG";
+                    window.location="http://form.mikecrm.com/UWcirG";
                 }
-            },500)
+            },500);
             
         });
 
@@ -266,51 +266,54 @@ if (!$session->isActive) {
 
         });
 
-        //下一步点击事件
-        touch.on(".bot_btn_box .next_btn", "tap", function () {
-            if ($(".bot_btn_box").hasClass("true_btn")) {
-                var index = $(".demand_big>.active").index() + 1;
-                $(".demand_big>div:eq(" + index + ")").addClass("active").siblings().removeClass("active");
-                if (index >= nuber) {
-                    $(".bot_btn_box").removeClass("true_btn");
-                } else {
-                    $(".bot_btn_box").addClass("true_btn");
-                }
+       //下一步点击事件
+	touch.on(".bot_btn_box .next_btn","tap",function(){
+		if($(".bot_btn_box").hasClass("true_btn")){
+			var index=$(".demand_big>.active").index()+1;
+			$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
+			if(index>nuber){
+				$(".bot_btn_box").removeClass("true_btn");
+			}else{
+				$(".bot_btn_box").addClass("true_btn");
+			}
 //			if(index==4){
 //				$(".bot_btn_box").addClass("true_btn");
 //			}
-                if (index >= 1 && index < 6) {
+			if(index>=1&&index<6){
+				
+				$(".bot_btn_box").addClass("center_btn").removeClass("first_btn");
+			}else{
+				$(".bot_btn_box").addClass("last_btn").removeClass("center_btn");
+			};
+		}
+	});
+	//上一步点击事件
+	var grttt=false;
+	touch.on(".bot_btn_box .prev_btn","tap",function(){
+		var index=$(".demand_big>.active").index()-1;
+		if(nuber<=index&&$(".bot_btn_box").hasClass("true_btn")){
+			nuber++;
+			grttt=true;
 
-                    $(".bot_btn_box").addClass("center_btn").removeClass("first_btn");
-                } else {
-                    $(".bot_btn_box").addClass("last_btn").removeClass("center_btn");
-                }
-                ;
-            }
-        });
-        //上一步点击事件
-        touch.on(".bot_btn_box .prev_btn", "tap", function () {
-            var index = $(".demand_big>.active").index() - 1;
-            if (nuber < index + 1) {
-                nuber = index + 1;
-
-            }
-            if ($(".bot_btn_box").hasClass("true_btn")) {
-                nuber += 1;
-            }
-
-            $(".demand_big>div:eq(" + index + ")").addClass("active").siblings().removeClass("active");
-            $(".bot_btn_box").addClass("true_btn");
-            if (index == 0) {
-                $(".bot_btn_box").addClass("first_btn").removeClass("center_btn last_btn")
-            }
-            if (index > 1 && index < 6) {
-                $(".bot_btn_box").addClass("center_btn").removeClass("first_btn last_btn");
-            } else if (index >= 6) {
-                $(".bot_btn_box").addClass("last_btn").removeClass("center_btn first_btn");
-            }
-            ;
-        });
+		}
+		if(nuber<index){
+			nuber=index;
+		}
+		
+		console.log(index);
+		console.log(nuber);
+		$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
+		$(".bot_btn_box").addClass("true_btn");
+		if(index==0){
+			$(".bot_btn_box").addClass("first_btn").removeClass("center_btn last_btn")
+		}
+		if(index>1&&index<6){
+				$(".bot_btn_box").addClass("center_btn").removeClass("first_btn last_btn");
+			}else if(index>=6){
+				$(".bot_btn_box").addClass("last_btn").removeClass("center_btn first_btn");
+			};
+	});
+	
 
 
         //第一题逻辑	

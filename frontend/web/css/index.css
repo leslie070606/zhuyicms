@@ -60,7 +60,7 @@
 .nav_bot span {  margin-right: .66rem; font-weight: bold;}
 .nav_bot span:last-child { margin-right: 0;}
 
-.foot { text-align: center; margin-top: .8rem; color: #9F9FA0;}
+.foot { text-align: center; margin-top: .8rem; color: #777777;}
 .foot>span { display: block; padding-bottom: .4rem;}
 
 .see_more {
@@ -72,7 +72,7 @@
     float: left;
 }
 .see_more a {
-    color: #9f9fa0;
+    color: #777777;
 }
 
 .bot_btn_aa { text-align: center; position: relative; margin: .8rem 0 1.2rem 0; float: left; width: 100%;}

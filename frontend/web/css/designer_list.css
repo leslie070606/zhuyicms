@@ -3,7 +3,7 @@
 .icon-shaixuan { position: absolute; font-size: .32rem !important; width: .88rem; height: 100%; left: .88rem; top: 0;}
 .des_box { text-align: center;}
 .sousuo_title { margin: .8rem 0 .4rem 0; font-size: .28rem; font-weight: bold;}
-.sousuo_tab { color: #9f9fa0; width: 100%; height: .88rem;}
+.sousuo_tab { color: #777777; width: 100%; height: .88rem;}
 .sousuo_tab>span { margin-left: 4%; float: left; height: .88rem; line-height: .88rem; width: 28%; box-sizing: border-box; border: 1px solid #EEEFEF;}
 .sousuo_tab>span:last-child { margin-right: 4%;}
 .sousuo_tab>span.active{ border-color: #FF4E38; color: #FF4E38;}

@@ -7,7 +7,7 @@
 .history {font-size: .28rem; text-indent: .3rem;}
 .his_title {  margin-bottom: .4rem; float: left;font-size: .28rem; text-indent: .3rem;}
 .his_ul li { height: .88rem; width: 100%; float: left;line-height: .88rem; text-align: left;}
-.his_ul li a { display: block; color: #9F9FA0;}
+.his_ul li a { display: block; color: #777777;}
 .his_ul li.active a { background: #FF4E38; color: #FFFFFF;}
 
 .here_bottom { position: relative; float: left; width: 100%; margin-bottom: .4rem;}

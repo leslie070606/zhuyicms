@@ -19,13 +19,18 @@ class Token {
                 "secret" => "4b7a5de9ff3bc73162da7164a3585dcb"
             );
 
+            $_checkToken = $this->_checkCacheToken($para);
+            if ($_checkToken) {
+                return $_checkToken;
+            }
+
             //$url = Yii::app()->params['WX_API_URL'] . "token";
             $url = "https://api.weixin.qq.com/cgi-bin/" . "token";
 
             $ret = $this->doCurlGetRequest($url, $para);
 
             $retData = json_decode($ret, true);
-            
+
             //如果成功不在返回errcode信息 直接返回access_token
             if (!$retData || isset($retData['errcode'])) {
 
@@ -41,8 +46,52 @@ class Token {
         }
     }
 
+    //校验缓存TOKEN
+    private function _checkCacheToken($para) {
+        $fileCacheObj = new \yii\caching\FileCache();
+        $_jsKey = 'zy_js_access_token';
+        if ($fileCacheObj->exists($_jsKey)) {
+            $_str = $fileCacheObj->get($_jsKey);
+            $_tmpRes = explode(' ', $_str);
+            $_t = time() - $_tmpRes['1'];
+            if ($_t > 3600) {
+                //重新获取
+                $this->_getToken($para, $fileCacheObj, $_jsKey);
+                $_tmpRes = explode(' ', $fileCacheObj->get($_jsKey));
+                return $_tmpRes['0'];
+            } else {
+                return $_tmpRes['0'];
+            }
+        } else {
+            $this->_getToken($para, $fileCacheObj, $_jsKey);
+            $_tmpRes = explode(' ', $fileCacheObj->get($_jsKey));
+            return $_tmpRes['0'];
+        }
+    }
+
+    private function _getToken($para, $fileCacheObj, $key) {
+        static $_num = 1;
+        $url = "https://api.weixin.qq.com/cgi-bin/" . "token";
+        $ret = $this->doCurlGetRequest($url, $para);
+        $retData = json_decode($ret, true);
+        //如果成功不在返回errcode信息 直接返回access_token
+        if (!$retData || isset($retData['errcode'])) {
+            ++$_num;
+            if ($_num > 3) {
+                return false;
+            } else {
+                $this->_getToken($para, $fileCacheObj, $key);
+            }
+        }
+        $token = $retData['access_token'];
+        $expire = $retData['expires_in'];
+        $fileCacheObj->set($key, $token . ' ' . time());
+        return;
+    }
+
     // 获取jsapi_ticket
     public function getJspticket() {
+        return $this->_checkCacheJsApiTicket();
         $accessToken = $this->getToken();
         $jsurl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket";
         $para = array(
@@ -51,6 +100,42 @@ class Token {
         );
         $res = $this->doCurlGetRequest($jsurl, $para);
         $res = json_decode($res, TRUE);
+        return $res['ticket'];
+    }
+
+    //检验JSAPI_TICKET
+    private function _checkCacheJsApiTicket() {
+        $fileCacheObj = new \yii\caching\FileCache();
+        $_jsKey = 'zy_js_ticket';
+        if ($fileCacheObj->exists($_jsKey)) {
+            $_str = $fileCacheObj->get($_jsKey);
+            $_tmpRes = explode(' ', $_str);
+            $_t = time() - $_tmpRes['1'];
+            if ($_t > 3600) {
+                //重新获取
+                $this->_getJspticket($_jsKey, $fileCacheObj);
+                $_tmpRes = explode(' ', $fileCacheObj->get($_jsKey));
+                return $_tmpRes['0'];
+            } else {
+                return $_tmpRes['0'];
+            }
+        } else {
+            $this->_getJspticket($_jsKey, $fileCacheObj);
+            $_tmpRes = explode(' ', $fileCacheObj->get($_jsKey));
+            return $_tmpRes['0'];
+        }
+    }
+
+    private function _getJspticket($key, $fileCacheObj) {
+        $accessToken = $this->getToken();
+        $jsurl = "https://api.weixin.qq.com/cgi-bin/ticket/getticket";
+        $para = array(
+            'access_token' => $accessToken,
+            'type' => 'jsapi'
+        );
+        $res = $this->doCurlGetRequest($jsurl, $para);
+        $res = json_decode($res, TRUE);
+        $fileCacheObj->set($key, $res['ticket'] . ' ' . time());
         return $res['ticket'];
     }
 
@@ -81,7 +166,7 @@ class Token {
             'access_token' => $accessToken,
             'media_id' => $media_id
         );
-        $res = $this->doCurlGetRequest($url,$para);
+        $res = $this->doCurlGetRequest($url, $para);
         return $res;
     }
 

@@ -69,7 +69,7 @@ class Artsets extends ActiveRecord{
 		if(!isset($did) || empty($did)){
 			return NULL;
 		}
-		$ret = $this->find()->where(['designer_id' => $did])->limit(3)->all();
+		$ret = $this->find()->where(['designer_id' => $did])->orderBy(' sort ')->limit(3)->all();
 		if(empty($ret)){
 			return NULL;
 		}

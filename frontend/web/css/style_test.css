@@ -9,7 +9,7 @@
 .here_div_bota,.here_div_botb { position: absolute; left: 0; z-index: 9; bottom: 0; height: .88rem;  width: 100%;}
 .here_div_botb { line-height: .88rem; z-index: 10; text-indent: .3rem;}
 .here_div_bota { background: #FFFFFF; opacity: .8;}
-.nuber { font-size: .28rem; display: block; text-align: center; margin: .2rem auto; color: #9f9fa0;}
+.nuber { font-size: .28rem; display: block; text-align: center; margin: .2rem auto; color: #777777;}
 #new_nuber { color: #FF4E38;}
 .style_here .foin,#chose_style .active { border: 2px solid #FF4E38; box-sizing: border-box;}
 .bot_nac { display: block; text-align: center; margin: .8rem auto;}
@@ -24,7 +24,7 @@
 
 .chose_btn { width: 84%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #C9C9CA; line-height: .88rem; margin: .8rem 8% .8rem 8%; clear: both; float: left;}
 .chose_btn.checkbox { background: #FF4E38;}
-.center_nameaa a { display: block; margin-bottom: .8rem; color: #9F9FA0; text-align: center;}
+.center_nameaa a { display: block; margin-bottom: .8rem; color: #777777; text-align: center;}
 /*loading*/
 #imgaa { -moz-animation:rotate 2.5s infinite linear;
             -webkit-animation:rotate 2.5s infinite linear;

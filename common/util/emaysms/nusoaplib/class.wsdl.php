@@ -789,7 +789,7 @@ class wsdl extends nusoap_base {
 			padding: 20px; font-size: 10px; background-color: #999999;
 			layer-background-color:#FFFFFF; }
 		    a,a:active  { color: charcoal; font-weight: bold; }
-		    a:visited   { color: #666666; font-weight: bold; }
+		    a:visited   { color: #777777; font-weight: bold; }
 		    a:hover     { color: cc3300; font-weight: bold; }
 		</style>
 		<script language="JavaScript" type="text/javascript">
