@@ -104,7 +104,6 @@ if (!$session->isActive) {
                 success: function (data) {
                     //alert(data);
                     $('#phonestr').val(data);
-
                 }
             });
 

@@ -8,7 +8,7 @@ if (!$session->isActive) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html style="background: #000000;">
 
     <head>
         <meta charset="utf-8">
@@ -25,9 +25,9 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/gloab.js"></script>
     </head>
 
-    <body>
+    <body style="background: #000000;">
 
-        <div class="page_box">
+        <div class="page_box" style="background: #ffffff;">
             <header class="header_top iconfont icon-logo">
                     <!--<input id="ipt" type="text" value="0" />-->
                 <span class="top_right iconfont icon-gongneng"></span>
@@ -93,7 +93,6 @@ if (!$session->isActive) {
                     if (type == 0) {
                         var html = '<div class="pro_here pro_img iconfont" art_id="' + data[i].art_id + '">'
                                 + '<img class="here_img" src="' + data[i].background + '" />'
-                                + '<div class="img_icon"><span class=" iconfont icon-tupian">' + data[i].image_urls.length + '张图</span></div>'
                                 + '<div class="here_botaa"></div>'
                                 + '<div class="here_bottom line_center">' + data[i].topic + '</div></div>'
 
@@ -109,6 +108,9 @@ if (!$session->isActive) {
 
                 }
                 $(".pro_box").html(html_box);
+                 var widthaa = $("body").width();
+                 $(".here_img,.pro_here").css("height", widthaa * .56);
+                            
                 var img_height = $(".pro_here_bcimg").height();
                 touch.on(".pro_here_bcimg", "tap", function (ev) {
                     $(this).next(".video-js").get(0).play();
@@ -138,6 +140,8 @@ if (!$session->isActive) {
                                 $('.bxslider').bxSlider({controls: false, auto: false, pause: 4000, speed: 600});
                             }, 100);
                             $("#title_idb").html(length);
+                            
+                           
                         }
                     });
 

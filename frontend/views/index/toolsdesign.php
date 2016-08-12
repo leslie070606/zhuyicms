@@ -61,12 +61,11 @@ if (!$session->isActive) {
                     </div>
                 </div>
             </div> 
-            <div class="banner">
-                <img src="img/index/banner_g.jpg" />
-                <div class="banner_mesg">
-                    <span class="mesg_spb"><a href="http://form.mikecrm.com/UWcirG" style="top: .6rem;">找设计师</a></span>
-                </div>
+            
+            <a href="http://form.mikecrm.com/UWcirG"><div class="banner">
+                <img src="img/index/tool_banner.jpg" />
             </div>
+                </a>
             <div class="fingerpost">
                 <div class="post_title">
                     <span class=" iconfont icon-lingxing"><a>公装作品</a></span>
