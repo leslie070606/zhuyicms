@@ -97,8 +97,12 @@ if (!$session->isActive) {
                             if ($artType == 0) {
                                 $imgIds = $v['image_ids'];
                                 $imgIdsArr = explode(',', $imgIds);
+								$imgIdsArr = array_filter($imgIdsArr);
                                 $imgUrlArr = array();
                                 foreach ($imgIdsArr as $id) {
+									if(!isset($id) || empty($id)){
+										continue;
+									}
                                     $rows = \frontend\models\Images::findOne($id);
                                     if (empty($rows)) {
                                         continue;
@@ -182,7 +186,7 @@ HTML;
                                     </div>-->
 
                                     <div class="topb" id="topb"  all_type =<?= $allType ?>>
-                                        <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
+                                        <span >硬装设计</span><span>施工对接</span><span>软装设计</span>
 
                                     </div><!--topb end-->
                                 </div>
