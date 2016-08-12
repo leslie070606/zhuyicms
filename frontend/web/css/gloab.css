@@ -69,7 +69,7 @@ body>div:nth-child(1),body>section:nth-child(1) {
 	 max-width: 500px; position: absolute; left: 0; width: 100%; right: 0; margin: 0 auto;
 }
 .pro_here_bcimg {position: absolute; font-size: .82rem !important; width: 100%; height: 100%; left: 0; top: -1px; z-index: 99;}
-.Blank_Page { text-align: center !important; height: 5rem; display: block; position: relative; background: #FFFFFF; color: #9F9FA0;}
+.Blank_Page { text-align: center !important; height: 5rem; display: block; position: relative; background: #FFFFFF; color: #666666;}
 .red { color: #FF4E38;}
 .Blank_Page>span { line-height: .4rem; width: 100%; float: left; margin-top: 2rem;}
 .loading_box { width: 100%; float: left;}
@@ -83,7 +83,7 @@ body>div:nth-child(1),body>section:nth-child(1) {
 .down_right ul li { display: block; height: .88rem; border-bottom: 1px solid #372e2a; line-height: .88rem; text-align: left; text-indent: .5rem;}
  .down_right ul li a {color: #FFFFFF; font-size: .26rem;}
  .down_right ul li:last-child { position: absolute; border-bottom: none; bottom: 0; width: 100%; height: .88rem; left: 0;}
-  .down_right ul li:last-child a {  color: #9F9FA0;}
+  .down_right ul li:last-child a {  color: #666666;}
 .down_right_zd { display: none; left:0; right:0; position: fixed; width: 100%; height: 100%; background: #000000; opacity: 0; z-index: 99995;}
 .icon-lingxing:before {
     position: absolute;
@@ -373,7 +373,7 @@ body>div:nth-child(1),body>section:nth-child(1) {
 position: absolute;
  right: .3rem; bottom:.28rem;
 }
-.bot_input .icon-weixuanzhong { color: #9F9FA0;}
+.bot_input .icon-weixuanzhong { color: #666666;}
 .bot_input .icon-xuanzhong { color: #FF4E38;}
 .icon-bofang1:before {
     position: absolute;
