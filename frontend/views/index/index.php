@@ -69,11 +69,12 @@ $videoModel = new ZyVideo();
                 <li>
                     <a href="<?php echo Url::toRoute('/zyzhinan/guidea'); ?>"><img src="img/index/zhinana.jpg" title="" /></a>
                 </li>
-                <li>
-                    <a href="<?php echo Url::toRoute('/zyzhinan/guideb'); ?>"><img src="img/index/zhinanb.jpg" title="" /></a>
-                </li>
+
                 <li>
                     <a href="<?php echo Url::toRoute('/zyzhinan/guidec'); ?>"><img src="img/index/zhinanc.jpg" title="" /></a>
+                </li>
+                <li>
+                    <a href="<?php echo Url::toRoute('/zyzhinan/guideb'); ?>"><img src="img/index/zhinanb.jpg" title="" /></a>
                 </li>
             </ul>
 

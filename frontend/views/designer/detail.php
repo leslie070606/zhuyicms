@@ -26,7 +26,7 @@ if (!$session->isActive) {
 
     </head>
     <body style="background: #000000;">
-        <div class="page_box">
+        <div class="page_box" style="background: #ffffff;">
             <header class="header_top iconfont icon-logo">
                     <!--<input id="ipt" type="text" value="0" />-->
                 <span class="top_right iconfont icon-gongneng"></span>
