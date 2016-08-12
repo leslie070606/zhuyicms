@@ -198,7 +198,7 @@ HTML;
                 async: true,
                 success: function (data) {
                      if(data==""||data==null){
-                    $("#jiazai_ing").html("抱歉,没有更多的设计师了~");
+                    $("#jiazai_ing").html("还有更多设计师，想认识他们？请联系住艺");
                            truefalse=false;
                 }
                     data = eval('(' + decodeURI(data) + ')');

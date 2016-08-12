@@ -18,25 +18,32 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('创建订单', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'order_id',
             'user_id',
             'project_id',
             'designer_id',
-            'status',
+            [
+                'attribute' => 'status',
+                'label' => '订单状态',
+                'value' => function($model) {
+                    return \common\models\ZyOrder::getStatusMessage($model->order_id);
+                },
+            ],
+            //'status',
             // 'appointment_location',
             // 'appointment_time:datetime',
             // 'remark',
             // 'service_type',
             // 'create_time:datetime',
             // 'update_time:datetime',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>

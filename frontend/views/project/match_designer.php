@@ -67,20 +67,20 @@ if (!$session->isActive) {
                     <span class="box_soa">装修设计</span>
                     <span class="box_sob">新房，二手房重新装修</span>
                 </div>
-                <a href="https://jinshuju.net/f/uccnkD"><div class="boxa_box">
+               <div class="boxa_box">
                         <span class="box_soa">软装咨询</span>
                         <span class="box_sob">效果提升  统一风格</span>
-                    </div></a>
+                    </div>
 
-                <a href="https://jinshuju.net/f/gGZI3n"><div class="boxa_box">
+               <div class="boxa_box">
                         <span class="box_soa">庭院景观</span>
                         <span class="box_sob">庭院、花园、景观规划</span>
-                    </div></a>
+                    </div>
 
-                <a href="http://form.mikecrm.com/UWcirG"><div class="boxa_box">
+                <div class="boxa_box">
                         <span class="box_soa">公装设计</span>
                         <span class="box_sob">办公室 商铺 会所 艺术馆</span>
-                    </div></a>
+                    </div>
             </div>
 
             <div class="demand_big">
@@ -212,9 +212,18 @@ if (!$session->isActive) {
         touch.on(".first_box .boxa_box", "tap", function (ev) {
             var index = $(ev.currentTarget).index();
             $(ev.currentTarget).addClass("activeaa");
-            if (index == 1) {
-                $(".first_box").hide();
-            }
+            setTimeout(function(){
+                if (index == 1) {
+                    $(".first_box").hide();
+                }else if(index==2){
+                    window.location.herf="https://jinshuju.net/f/uccnkD";
+                }else if(index==3){
+                    window.location.herf="https://jinshuju.net/f/gGZI3n";
+                }else if(index==4){
+                    window.location.herf="http://form.mikecrm.com/UWcirG";
+                }
+            },500)
+            
         });
 
         var nuber = 0;

@@ -34,11 +34,13 @@ class ZyorderController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
+    {   
+        $model = new \common\models\ZyOrder();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -69,6 +71,10 @@ class ZyorderController extends Controller
 			//客服创建完的订单，已经跟设计师沟通过，状态初始值为待用户确认时间。
 			$model->status = 
 				\common\models\ZyOrder::STATUS_WAITING_USER_TO_CONFIRM_TIME;
+                        //见面时间
+ 			$appointmentTime = $model->attributes['appointment_time'];
+			$appointmentTime = strtotime($appointmentTime);
+			$model->appointment_time = $appointmentTime;
 			$model->create_time = time();
 			$model->update_time = time();
 
