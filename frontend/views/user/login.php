@@ -17,7 +17,7 @@ if (!$session->isActive) {
         <title>登录</title>
         <link rel="stylesheet" href="css/gloab.css" />
         <link rel="stylesheet" href="css/login.css" />
-        <link rel="stylesheet"  href="http://at.alicdn.com/t/font_1467361951_3606887.css" />
+        <link rel="stylesheet"  href="css/iconfont.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
@@ -25,39 +25,39 @@ if (!$session->isActive) {
         <script type="text/javascript" src="js/login.js" ></script>
     </head>
     <body>
-                    <section class="login_box">
-                <header class="header_top">
-                    <span class="hunt_title">登录</span>
-                    <!--<input id="ipt" type="text" value="0" />-->
-                    <span class="top_right iconfont icon-gongneng"></span>
-                </header>
-                <section class="down_right">
-                    <ul>
-                        <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
-                        <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
-                        <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
-                        <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
-                        <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
-                        <li>   <?php if ($session->get('user_id')) { ?>
-                                <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
+        <section class="login_box">
+            <header class="header_top">
+                <span class="hunt_title">登录</span>
+                <!--<input id="ipt" type="text" value="0" />-->
+                <span class="top_right iconfont icon-gongneng"></span>
+            </header>
+            <section class="down_right">
+                <ul>
+                    <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
+                    <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
+                    <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
+                    <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
+                    <li>   <?php if ($session->get('user_id')) { ?>
+                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
-                            <?php } else { ?>
+                        <?php } else { ?>
 
-                                <a href = "<?php echo Url::toRoute('/user/login'); ?>">立即登录</a>
+                            <a href = "<?php echo Url::toRoute('/user/login'); ?>">立即登录</a>
 
-                            <?php }; ?>
+                        <?php }; ?>
 
-                        </li>
-                    </ul>
-                </section>  
+                    </li>
+                </ul>
+            </section>  
 
+
+            <?php
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false) {
+                ?>	
                 <div class="login_title">
                     现在登录<br/>你的需求就会被住艺永久记录，并可以随时更改
                 </div>
-        <?php
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false) {
-            ?>	
-
                 <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
                 <div class="login_ipt">
                     <?= \yii\helpers\Html::input('tel', 'phone', '', ['placeholder' => "手机号", 'id' => 'phone']); ?>
@@ -79,16 +79,15 @@ if (!$session->isActive) {
                 }
                 ?>" id="msg" name="msg" />
 
-            <?= Html::endForm(); ?>
+                <?= Html::endForm(); ?>
             </section>
-<?php } else { ?>
-            <section class="login_box">
+        <?php } else { ?>
 
                 <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect"><div class="weixin_login">
                         <i class="iconfont icon-weixin" style="font-size: .44rem;"></i>微信登录
                     </div></a>
             </section>
-<?php } ?>
+        <?php } ?>
 
     </body>
 </html>
