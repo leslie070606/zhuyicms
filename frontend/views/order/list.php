@@ -182,6 +182,9 @@ $userId = $session->get("user_id");
                                     $appointmentLocation = $d['appointment_location'];
                                     //推荐理由
                                     $reason = isset($d['reason']) ? $d['reason'] : '客服推荐';
+
+									//跳转路径到设计师个人主页。
+									$href = Url::toRoute(['/designer/detail','params' => $designerId]);
                                     //订单状态
                                     $status = $d['status'];
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
@@ -202,7 +205,9 @@ $userId = $session->get("user_id");
 								  				<div class="here_bottom line_center">
 
 													<div class="here_head">
+														<a href="$href">
 														<img src="$headPortrait" />
+														</a>
 													</div>
 
 													<div class="bottom_name">
@@ -241,7 +246,9 @@ HTML;
 											<div class="zy_pp dd_here" order_id = "$orderId">
 				  								<div class="here_bottom line_center">
 													<div class="here_head">
+														<a href="$href">
 														<img src="$headPortrait">
+														</a>
 													</div>
 													<div class="bottom_name">
 														<span class="here_name">$name</span>
@@ -286,7 +293,9 @@ HTML;
 									
 				  							<div class="here_bottom line_center">
 												<div class="here_head">
+													<a href="$href">
 													<img src="$headPortrait">
+													</a>
 												</div>
 											<div class="bottom_name">
 												<span class="here_name">$name</span>
@@ -321,7 +330,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 
 										<div class="bottom_label bottom_referral">
@@ -343,7 +356,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -363,7 +380,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -385,7 +406,11 @@ HTML;
                                         $html = <<<HTML
 								<div class="zy_pp dd_here" order_id="$orderId">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -410,7 +435,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -429,7 +458,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan

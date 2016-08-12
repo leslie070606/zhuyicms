@@ -185,7 +185,6 @@ class OrderController extends Controller {
                 $data[] = $element;
             }
             if (empty($data)) {
-                //return $this->render("list",['data' => -1]);
                 return $this->render("list", ['data' => -1, 'jsarr' => $jsarr]);
             }
             return $this->render("list", ['data' => $data, 'jsarr' => $jsarr]);

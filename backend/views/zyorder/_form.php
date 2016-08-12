@@ -22,7 +22,6 @@ use yii\widgets\ActiveForm;
     
     <?= $form->field($model, 'appointment_time',['inputOptions'=>['type'=>'date']])->textInput() ?>
 
-   <?= $form->field($model, 'appointment_time',['inputOptions'=>['type'=>'date']])->textInput() ?>
     <?= $form->field($model, 'appointment_location')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'designer_spare_time')->textInput([ 'placeholder' => '三个时间，请按照格式（2000-1-1）填写，并以英文逗号分隔开三个时间！']) ?>
