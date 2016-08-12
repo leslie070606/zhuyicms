@@ -180,13 +180,17 @@ if (!$session->isActive) {
 
             </div>		
         </div>
-
+        <div class="out_Capacity">
+                <div class="zdang"></div>
+                <div class="mengs">您已经选择过您要见的设计师，请在我的住艺中查看</div>
+            </div>
     </body>
 </html>
 <script>
     touch.on(".navv_tj", "tap", function (ev) {
 
         if (localStorage.getItem("key")) {
+            out_line();
             return false;
         } else {
             localStorage.setItem("key", 1);
