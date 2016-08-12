@@ -2,7 +2,7 @@
 
 use yii\helpers\Url;
 
-if(isset($model->home_img)){
+if (isset($model->home_img)) {
     $imgID = explode(',', $model->home_img);
     $imgModel = new \frontend\models\Images();
     $img = $imgModel->findOne($imgID[0]);
@@ -12,8 +12,9 @@ if(isset($model->home_img)){
     <div class="xuqiu">
         <div class="xuqiu_here">
             <div class="xq_here_top">
-                <a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
+                <span class="xq_top_left">我的需求</span><a href="<?= Url::toRoute(['editadditional', 'project_id' => $model->project_id]); ?>"><span class="xq_top_btn">编辑</span></a>
             </div>
+        
             <div class="xuqiu_center">
                 <div class="center_here">
                     <span class="here_left">城市：</span>

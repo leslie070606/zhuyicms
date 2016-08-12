@@ -498,7 +498,7 @@ HTML;
                         async: true,
                         success: function (data) {
                             if (data == -1) {
-                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家</span></div>'
+                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家<br />点击查看<a href="<?php echo Url::toRoute('/designer/list'); ?>" class="red">住艺设计师</a></span></div>'
                                 $(".collect").html(htmlla);
                             }
 

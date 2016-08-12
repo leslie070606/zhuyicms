@@ -440,7 +440,8 @@ position: absolute;
      display: inline !important;
      font-size: .24rem;
 }
-.glyphicon { display: none !important;}
+.glyphicon-folder-open { display: none !important;}
+#bot_outline { display: none; position: fixed; width: 100%; z-index: 110000; height: 100%; top: 0; left: 0;}
 
 
 

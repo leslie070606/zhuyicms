@@ -62,6 +62,16 @@ if (!$session->isActive) {
                     </div>
                 </div>
             </div>  
+
+            <div class="" id="bot_outline">
+                <div class="out_true">
+                    <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; border-bottom: none;">请先说出“设计师名字”，再进行详细咨询哦。</div>
+                    <div class="out_true_bott" style="border-top: 1px solid #9F9FA0;">
+                        <a href=" " style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">我知道了</a >
+                    </div>
+                </div>
+            </div>
+
             <input type="hidden" id="user_id" value="<?php echo $data['user_id'] ?>" />
             <section class="page_banner">
                 <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
@@ -110,7 +120,7 @@ if (!$session->isActive) {
                                     $url = $rows->url;
                                     $imgUrlArr[] = $url;
                                 }
-                                $imgBackground = isset($imgUrlArr[0])? $imgUrlArr[0] : '';
+                                $imgBackground = isset($imgUrlArr[0]) ? $imgUrlArr[0] : '';
                                 $imgCount = count($imgUrlArr);
                             } elseif ($artType == 1) {
                                 $videoId = $v['video_ids']; //目前仅有一个视频。
@@ -231,8 +241,7 @@ HTML;
                 <div class="page_bottom">
                     <span class="bota" id="check"><a>查看费用</a></span>
                     <span class="bota sc_bot"><a>收藏设计师</a></span>
-                    <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
-                            立即约见</a></span>
+                    <span class="botb"><a>立即约见</a></span>
                 </div>
                 <div class="charges_zd"></div>
                 <div class="check_charges">

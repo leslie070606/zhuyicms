@@ -22,6 +22,13 @@ $(function(){
 			$("#topb>span:eq("+b+")").hide();
 		}
 	};
+        touch.on(".botb","tap",function(ev){
+		if($("#bot_outline").css("display")=="none"){
+			$(".down_right_zd").show().animate({opacity:.5},300).css("z-index",100110);
+			$("#bot_outline").show();
+			
+		}
+	});
 	var gettt=0;
 	touch.on("#check","tap",function(ev){
 		if(gettt==0){
