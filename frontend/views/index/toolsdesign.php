@@ -61,56 +61,12 @@ if (!$session->isActive) {
                     </div>
                 </div>
             </div> 
-            
+
             <a href="http://form.mikecrm.com/UWcirG"><div class="banner">
-                <img src="img/index/tool_banner.jpg" />
-            </div>
-                </a>
-            <div class="fingerpost">
-                <div class="post_title">
-                    <span class=" iconfont icon-lingxing"><a>公装作品</a></span>
+                    <img src="img/index/tool_banner.jpg" />
                 </div>
+            </a>
 
-                <div style="position: relative;">
-                    <span class="bxs_title" id="bxs_titlea">燕家2号</span>
-                    <ul class="bxslider bxsliderbb">
-                        <li>
-                            <img src="img/index/gz1_imga.jpg" title="" />
-
-                        </li>
-                        <li>
-                            <img src="img/index/gz1_imgb.jpg" title="" />
-                        </li>
-                        <li>
-                            <img src="img/index/gz1_imgc.jpg" title="" />
-                        </li>
-                        <li>
-                            <img src="img/index/gz1_imgd.jpg" title="" />
-                        </li>
-                    </ul>
-                </div>
-                <div style="position: relative;">
-                    <div style="position: absolute; width: 100%; height: 100%; left: 0; top:0; background: #000000; opacity: .2; z-index: 999;"></div>
-                    <span class="bxs_title">海狸工坊</span>
-                    <ul class="bxslider bxsliderbb">
-                        <li>
-                            <img src="img/index/gz_imga.jpg" title="" />
-
-                        </li>
-                        <li>
-                            <img src="img/index/gz_imgb.jpg" title="" />
-                        </li>
-                        <li>
-                            <img src="img/index/gz_imgc.jpg" title="" />
-                        </li>
-                        <li>
-                            <img src="img/index/gz_imgd.jpg" title="" />
-                        </li>
-                    </ul>
-                </div>
-
-
-            </div>
 
             <section class="production">
                 <div class="pro_title">
@@ -128,19 +84,27 @@ if (!$session->isActive) {
                         </video>
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
-                            <a href="home_page.html">
-                                <div class="here_head">
-                                    <img src="img/index/liuxiaopu.jpg" />
-                                </div>
-                                <div class="bottom_name">
-                                    <span class="here_name">刘小普</span><span class="here_namea">北京</span>
-                                </div>
-                                <div class="bottom_referral">
-                                    燕家二号
-                                </div>
-                            </a>
+                            <div class="bottom_name" style="display: block; line-height: .88rem; position: initial;">
+                                <span class="here_name">燕家二号</span><span class="here_namea">餐厅</span>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="pro_here">
+                        <div class="pro_here_bcimg iconfont icon-bofang1">
+                            <img class="here_img" src="img/index/yanjia_22.jpg" />
+                        </div>
+                        <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
+                            <source src="http://osszhuyi.oss-cn-qingdao.aliyuncs.com/zhuyivideo/hailigongfang.MP4" type='video/mp4' />
+                        </video>
+                        <div class="here_botaa"></div>
+                        <div class="here_bottom line_center">
+                            <div class="bottom_name" style="display: block; line-height: .88rem; position: initial;">
+                                <span class="here_name">海狸之家</span><span class="here_namea">办公室</span>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">

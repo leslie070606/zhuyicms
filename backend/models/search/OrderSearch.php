@@ -18,8 +18,8 @@ class OrderSearch extends ZyOrder
     public function rules()
     {
         return [
-            [['order_id', 'user_id', 'project_id', 'designer_id', 'status', 'appointment_time', 'create_time', 'update_time'], 'integer'],
-            [['appointment_location', 'remark', 'service_type'], 'safe'],
+            [['order_id', 'user_id', 'project_id', 'designer_id', 'appointment_time', 'create_time', 'update_time'], 'integer'],
+            [['status', 'appointment_location', 'remark', 'service_type'], 'safe'],
         ];
     }
 
@@ -42,7 +42,6 @@ class OrderSearch extends ZyOrder
     public function search($params)
     {
         $query = ZyOrder::find();
-
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -56,6 +55,41 @@ class OrderSearch extends ZyOrder
             // $query->where('0=1');
             return $dataProvider;
         }
+
+		//前台传递过来的状态参数，
+		//MBD改成中文了，必须转变成原有的整形常量。
+		switch($this->status){
+			case '待设计师确认':
+				$this->status = ZyOrder::STATUS_WAITING_DESIGNER_TO_CONFIRM;
+				break;
+			case '待用户确认时间':
+				$this->status = ZyOrder::STATUS_WAITING_USER_TO_CONFIRM_TIME;
+				break;
+			case '待见面':
+				$this->status = ZyOrder::STATUS_WAITING_MEETING;
+				break;
+			case '预约已取消':
+				$this->status = ZyOrder::STATUS_CANCEL_MEETING;
+				break;
+			case '待确认见面完成':
+				$this->status = ZyOrder::STATUS_WAITING_MET_DONE;
+				break;
+			case '已见面':
+				$this->status = ZyOrder::STATUS_MET_DONE;
+				break;
+			case '已见面未深度合作':
+				$this->status = ZyOrder::STATUS_MET_NOT_DEEP_COOPERATION;
+				break;
+			case '已深度合作':
+				$this->status = ZyOrder::STATUS_MET_DEEP_COOPERATION;
+				break;
+			case '已深度合作未上传合同':
+				$this->status = ZyOrder::STATUS_WAITING_CONTRACT;
+				break;
+			case '已深度合作已上传合同':
+				$this->status = ZyOrder::STATUS_SERVICE_END;
+				break;
+		}
 
         // grid filtering conditions
         $query->andFilterWhere([

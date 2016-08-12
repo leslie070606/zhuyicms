@@ -100,4 +100,17 @@ class ZyOrder extends \yii\db\ActiveRecord {
         return self::$ORDER_STATUS_DICT[$status];
     }
 
+	public static function getDesignerName($designerId){
+		$rows = \backend\models\DesignerBasic::findOne($designerId);
+		$name = '';
+		if(!empty($rows)){
+			$name = $rows->name;
+		}
+		return $name;
+	}
+
+	/*
+	public function getDesigner(){
+		return $this->hasOne(\backend\models\DesignerBasic::className(),['id' => 'designer_id']);
+	}*/
 }

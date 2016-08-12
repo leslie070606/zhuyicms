@@ -150,7 +150,7 @@ $userId = $session->get("user_id");
 										匹配到合适您的设计师
 									</span>
 								</div>';
-                                echo $html;
+								echo $html;
                             } else {
                                 foreach ($data as $d) {
                                     $orderId = $d['order_id'];
@@ -256,7 +256,7 @@ HTML;
 												</div>
 				  								<div class="tj_box leave_word">
 				  									<span class="tj_spa">设计师留言：</span>
-				  									<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在12小时内确认时间。</span>
+				  									<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在24小时内确认时间。</span>
 				  								</div>
 				  				
 												<span class="jm_time">见面2小时</span>
@@ -306,7 +306,7 @@ HTML;
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
-				  						<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在12小时内确认时间。</span>
+				  						<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在24小时内确认时间。</span>
 				  					</div>
 				  				
 									<span class="jm_time">见面2小时</span>
@@ -498,7 +498,7 @@ HTML;
                         async: true,
                         success: function (data) {
                             if (data == -1) {
-                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家</span></div>'
+                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家<br />点击查看<a href="<?php echo Url::toRoute('/designer/list'); ?>" class="red">住艺设计师</a></span></div>'
                                 $(".collect").html(htmlla);
                             }
 
