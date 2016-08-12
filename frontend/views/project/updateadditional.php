@@ -25,7 +25,7 @@ if(isset($model->home_img)){
                 </div>
                 <div class="center_here">
                     <span class="here_left">平米数：</span>
-                    <span class="here_right"><?= $model->covered_area ?></span>
+                    <span class="here_right"><?= $model->use_area ?></span>
                 </div>
                 <div class="center_here">
                     <span class="here_left">装修时间：</span>
