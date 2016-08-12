@@ -113,7 +113,6 @@ $userId = $session->get("user_id");
                 <div class="user_top">
                     <span class="head_img"><img src="<?= $headimg ?>"/></span>
                     <span class="head_name"><?= $username ?></span>
-                    <span class="head_more">免费预约一次</span>
                 </div>
                 <div class="nac_boxa">
                     <span class="active">订单</span>

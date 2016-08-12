@@ -89,7 +89,7 @@ if (!$session->isActive) {
                             $numc = $num;
                         }
                         ?>
-                        <span class="choose_top_b">找到了<?= $num ?>位适合你的设计师，请从中选择<?= $numc ?>位优先约见</span>
+                <span class="choose_top_b">据您的初步信息，甄选出<?= $num ?>位设计师<br/>从中选择喜欢的优先约见（最多<?= $numc ?>位）</span>
                     <?php } else { ?>
 
                         <span class="choose_top_b">在您的地区和时间段未匹配到设计师,请联系客服!4000-600-636</span>

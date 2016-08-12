@@ -34,13 +34,13 @@ class ZyorderController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-		$model = new \common\models\ZyOrder();
+    {   
+        $model = new \common\models\ZyOrder();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-			'model' => $model,
+            'model' => $model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -19,8 +19,8 @@ use Yii;
  * @property integer $create_time
  * @property integer $update_time
  */
-class ZyOrder extends \yii\db\ActiveRecord
-{
+class ZyOrder extends \yii\db\ActiveRecord {
+
     const STATUS_DISABLED = -1;
     const STATUS_WAITING_DESIGNER_TO_CONFIRM = 0;
     const STATUS_WAITING_USER_TO_CONFIRM_TIME = 1;
@@ -50,22 +50,21 @@ class ZyOrder extends \yii\db\ActiveRecord
         self::STATUS_SERVICE_END => '已深度合作已上传合同',
         self::STATUS_SERVICE_CANCELLED => '取消合作'
     );
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return '{{%zy_order}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['user_id', 'project_id', 'designer_id'], 'required'],
-            [['user_id', 'project_id', 'designer_id', 'status', 'create_time','update_time'], 'integer'],
+            [['user_id', 'project_id', 'designer_id', 'status', 'create_time', 'update_time'], 'integer'],
             [['appointment_location', 'service_type'], 'string', 'max' => 255],
             [['remark'], 'string', 'max' => 255],
         ];
@@ -74,31 +73,31 @@ class ZyOrder extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'order_id' => '订单ID',
             'user_id' => '用户ID',
             'project_id' => '需求ID',
             'designer_id' => '设计师ID',
             'status' => '订单状态',
-			'designer_spare_time' => '设计师的空闲时间',
+            'designer_spare_time' => '设计师的空闲时间',
             'appointment_location' => '约见地点',
             'appointment_time' => '约见时间',
             'remark' => '订单备注',
-			'reason' => '推荐理由',
+            'reason' => '推荐理由',
             'service_type' => '订单类型',
             'create_time' => '创建订单',
             'update_time' => '修改时间',
         ];
     }
 
-	public static function getStatusMessage($orderId){
-		$rows = self::findOne($orderId);
-		if(empty($rows)){
-			return "无效状态";
-		}
-		$status = $rows->status;
-		return self::$ORDER_STATUS_DICT[$status];
-	}
+    public static function getStatusMessage($orderId) {
+        $rows = self::findOne($orderId);
+        if (empty($rows)) {
+            return "无效状态";
+        }
+        $status = $rows->status;
+        return self::$ORDER_STATUS_DICT[$status];
+    }
+
 }

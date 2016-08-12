@@ -67,7 +67,7 @@ if (!$session->isActive) {
 
             <div class="submit_boxa">
                 <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
-                <span class="submit_truea">需求可随时在【我的住艺】中修改</span>
+                <span class="submit_truea">需求可随时在【我的住艺】中继续填写</span>
                 <?php
                 $form = ActiveForm::begin([
                             'method' => 'post',
@@ -223,7 +223,7 @@ if (!$session->isActive) {
                     完成！立刻查看设计师！
                 </button>
                 <?php ActiveForm::end(); ?>
-                <span class="center_nameaa"><a href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
+                <span class="center_nameaa"><a style="color: #221814;" href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
             </div>
         </div>	
     </body>

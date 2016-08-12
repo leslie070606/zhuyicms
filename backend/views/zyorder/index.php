@@ -18,12 +18,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('创建订单', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'order_id',
             'user_id',
             'project_id',
@@ -42,8 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'service_type',
             // 'create_time:datetime',
             // 'update_time:datetime',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>

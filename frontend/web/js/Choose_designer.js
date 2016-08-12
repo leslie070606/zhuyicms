@@ -14,7 +14,7 @@ $(function(){
                                 $(".navv_tj").removeClass("zhihui");
 				}
 				else{
-					alert("最多选择3个")
+					alert("最多选择3位优先约见<br/>如想认识更多设计师，请联系住艺。")
 				}
 			}else {
 				$(this).addClass("icon-weixuanzhong").removeClass('icon-xuanzhong');

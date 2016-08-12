@@ -8,7 +8,7 @@ if (!$session->isActive) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html style="background: #000000;">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -25,8 +25,8 @@ if (!$session->isActive) {
 
 
     </head>
-    <body>
-        <div class="page_box">
+    <body style="background: #000000;">
+        <div class="page_box" style="background: #ffffff;">
             <header class="header_top iconfont icon-logo">
                     <!--<input id="ipt" type="text" value="0" />-->
                 <span class="top_right iconfont icon-gongneng"></span>
@@ -130,7 +130,6 @@ if (!$session->isActive) {
 					<div class="pro_here pro_img iconfont" art_id="$artId">
 						<img class="here_img" src="$imgBackground" />
 
-						<div class="img_icon"><span class=" iconfont icon-tupian">{$imgCount}张图</span></div>
 						<div class="here_botaa"></div>
 						<div class="here_bottom line_center">
 							{$topic}	
@@ -233,7 +232,7 @@ HTML;
                     <span class="bota" id="check"><a>查看费用</a></span>
                     <span class="bota sc_bot"><a>收藏设计师</a></span>
                     <span class="botb"><a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">
-                            联络客服</a></span>
+                            立即约见</a></span>
                 </div>
                 <div class="charges_zd"></div>
                 <div class="check_charges">
@@ -257,7 +256,7 @@ HTML;
 HTML;
                         } else {
                             $html = <<<HTML
-                                                <span class="charges_right red">￥ {$charge}+ /m²</span>
+                                                <span class="charges_right red">￥{$charge}/m² 起</span>
 HTML;
                         }
                         echo $html;
