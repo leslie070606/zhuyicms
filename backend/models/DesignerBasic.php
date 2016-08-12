@@ -13,4 +13,3 @@ class DesignerBasic extends ActiveRecord{
         return $this->find()->all();
     }
 }
-

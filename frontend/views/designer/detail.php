@@ -186,7 +186,7 @@ HTML;
                                     </div>-->
 
                                     <div class="topb" id="topb"  all_type =<?= $allType ?>>
-                                        <span >硬件设计</span><span>施工对接</span><span>软装设计</span>
+                                        <span >硬装设计</span><span>施工对接</span><span>软装设计</span>
 
                                     </div><!--topb end-->
                                 </div>
