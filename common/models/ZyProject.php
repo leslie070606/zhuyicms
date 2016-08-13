@@ -61,6 +61,7 @@ class ZyProject extends \yii\db\ActiveRecord {
         return [
             'project_id' => 'ID主键',
             'user_id' => '用户ID',
+            'project_num' => '需求单号',
             'city' => '城市',
             'address' => '地址',
             'compound' => '小区名称',

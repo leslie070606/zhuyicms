@@ -24,7 +24,7 @@
 .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto { bottom: 0 !important;}
 .user_top>span { display: block; text-align: center;}
 .head_img img {width: 2rem; height: 2rem; border-radius: 1rem; margin: .4rem auto .2rem auto;}
-.head_name {font-size: .38rem; font-weight: bold;}
+.head_name {font-size: .38rem; font-weight: bold; margin-bottom: .8rem;}
 .head_more { color: #FF4E38; margin:  .3rem auto .6rem;}
 .here_head img {  margin-left: .3rem;}
 .right_type { position: absolute; height: .88rem; line-height: .88rem; font-size: .24rem; right: .3rem; color: #FF4E38;}

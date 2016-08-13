@@ -8,6 +8,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,6 +51,7 @@ if (!$session->isActive) {
                     </li>
                 </ul>
             </section>  
+             <div class="down_right_zd"></div>
 
 
             <?php

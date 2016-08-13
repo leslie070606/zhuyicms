@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'project_id',
             'user_id',
+            'project_num',
             'city',
             'address',
             'compound',

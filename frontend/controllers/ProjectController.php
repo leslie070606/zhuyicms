@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\util\emaysms\Sms;
 use Yii;
 use common\models\ZyProject;
 use backend\models\DesignerWork;
@@ -25,14 +26,16 @@ class ProjectController extends \common\util\BaseController {
             $session->open();
         }
         if ($user_id = $session->get('user_id')) {
+            //获取用户信息
+            $usermodel = new \common\models\ZyUser();
+            $userInfo = $usermodel->findOne(['user_id' => $user_id]);
+            
             $model = new ZyProject();
             $project = $model->findOne(['user_id' => $user_id]);
 
             //如果有需求就跳转到个人中心
             if ($project) {
                 return $this->redirect(['order/list']);
-                // echo "个人中心!";
-                //exit;
             }
         } else {
             return $this->redirect(['user/login']);
@@ -54,18 +57,28 @@ class ProjectController extends \common\util\BaseController {
             $model->work_time = $proarr[3];
             $model->project_num = $this->createProNum();
             $model->create_time = time();
-
+            
+            $fuwu = '';
+            $yusuan = $proarr[5];
             //判断是设计还是设计+施工
             if ($proarr[4] == 'budget_design') {
                 $model->service_type = '设计';
                 $model->budget_design = $proarr[5];
+                $fuwu = '设计';
+                
             } else {
                 $model->service_type = '设计和施工';
                 $model->budget_design_work = $proarr[5];
+                $fuwu = '设计和施工';
             }
             $model->designer_level = $proarr[6];
             $res = $model->save();
             if ($res) {
+                //实例化短信接口
+                //$sms = Yii::$app->Sms;
+                $sms = new Sms();
+                $ret = $sms->send(array('13521932827'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号['.$model->attributes['project_num'].'],所在地['.$model->attributes['city'].'],开工时间['.$model->attributes['work_time'].'],需要['.$fuwu.'],预算['.$yusuan.'万],请尽快登录后台处理.');
+
                 //插入成功返回保存ID
                 return $model->attributes['project_id'];
             }
@@ -172,7 +185,6 @@ class ProjectController extends \common\util\BaseController {
             if ($res) {
                 return $this->redirect(array('project/choose_designer', 'project_id' => $project_id));
             }
-
         }
         // 获取JS签名
         // $jsarr = $tokenModel->getSignature();
@@ -646,3 +658,4 @@ class ProjectController extends \common\util\BaseController {
     }
 
 }
+

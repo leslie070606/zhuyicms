@@ -6,6 +6,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <!DOCTYPE html>
 <html>
@@ -180,68 +181,80 @@ if (!$session->isActive) {
 
             </div>		
         </div>
-        <div class="out_Capacity">
-                <div class="zdang"></div>
-                <div class="mengs">您已经选择过您要见的设计师，请在我的住艺中查看</div>
-            </div>
+        <div class="out_Capacity" style="width: 3.5rem; z-index: 10000;">
+            <div class="zdang"></div>
+            <div class="mengs" style="line-height: .4rem; margin-top: .1rem;">您已经选择过您要见的设计师<br />请在我的住艺中查看</div>
+        </div>
     </body>
 </html>
 <script>
+
     touch.on(".navv_tj", "tap", function (ev) {
 
         if (localStorage.getItem("key")) {
-            out_line();
-            return false;
-        } else {
-            localStorage.setItem("key", 1);
-        }
+            $(".out_Capacity").show().animate({
+                opacity: 1
+            }, 1000, function () {
+                $(".out_Capacity").animate({
+                    opacity: 0
+                }, 2000, function () {
+                    $(".out_Capacity").hide();
+                })
+            });
 
-        var user_id = <?= $user_id ?>;
-        var project_id = <?= $project_id ?>;
-        var html = "";
-        var is_pipei = "";
-        var length = $(".pro_here .icon-xuanzhong").length;
-        $(".pro_here .icon-xuanzhong").each(function (index) {
-            var val = $(this).parents(".pro_here").attr("value_id");
-            if (index == length - 1) {
-                html += val;
+        }
+        else{
+
+            var user_id = <?= $user_id ?>;
+            var project_id = <?= $project_id ?>;
+            var html = "";
+            var is_pipei = "";
+            var length = $(".pro_here .icon-xuanzhong").length;
+            $(".pro_here .icon-xuanzhong").each(function (index) {
+                var val = $(this).parents(".pro_here").attr("value_id");
+                if (index == length - 1) {
+                    html += val;
+                } else {
+                    html += val + ",";
+                }
+
+            })
+            if ($(".navv_tj").hasClass("zhihui")) {
+                return false;
             } else {
-                html += val + ",";
+                //alert("111")
             }
-
-        })
-        if ($(".navv_tj").hasClass("zhihui")) {
-            return false;
-        } else {
-            //alert("111")
-        }
-        if ($(".rg_pp .iconfont").hasClass("icon-xuanzhong")) {
-            is_pipei = 1;
-        } else {
-            is_pipei = 0;
-        }
-        ;
-        var str = user_id + "$" + project_id + "$" + html + "$" + is_pipei;
-
-        $.ajax({
-            type: "GET",
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
-            data: "",
-            success: function (data) {
-                // alert(data);
-                if (data = 3) {
-
-                    //跳转人工
-                    window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
-                }
-                if (data = 1) {
-                    window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
-                }
-
+            if ($(".rg_pp .iconfont").hasClass("icon-xuanzhong")) {
+                is_pipei = 1;
+            } else {
+                is_pipei = 0;
             }
-        })
+            ;
+            var str = user_id + "$" + project_id + "$" + html + "$" + is_pipei;
+
+            $.ajax({
+                type: "GET",
+                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
+                data: "",
+                success: function (data) {
+                    // alert(data);
+                    if (data = 3) {
+                        localStorage.setItem("key", 1);
+                        //跳转人工
+                        window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
+                    }
+                    if (data = 1) {
+                        localStorage.setItem("key", 1);
+                        window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
+                    }
+
+                }
+            });
+        }
     })
+    function out_line() {
 
+    }
 
 </script>
 <script type="text/javascript">

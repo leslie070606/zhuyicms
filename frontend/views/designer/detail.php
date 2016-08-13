@@ -6,6 +6,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 $userId = $session->get("user_id");
 ?>
 <!DOCTYPE html>
@@ -302,6 +303,7 @@ HTML;
         </div>
         <div class="pro_img_box" style="display: none;">
             <div class="pro_img_zd"></div>
+            <span class="pro_img_title" id="pro_title"></span>
             <span class="pro_img_title"><i id="title_ida">1</i>/<i id="title_idb">7</i></span>
             <ul class="bxslider">
             </ul>

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
 if (isset($model->home_img)) {
     $imgID = explode(',', $model->home_img);
@@ -39,14 +40,14 @@ if (isset($model->home_img)) {
                     ?>
                     <div class="center_here">
                         <span class="here_left">服务类型</span>
-                        <span class='here_right'>设计</span>
+                        <span class='here_right'>设计+施工</span>
                     </div>
                     <?php
                 } else {
                     ?>
                     <div class="center_here">
                         <span class="here_left">服务类型</span>
-                        <span class='here_right'>设计+施工</span>
+                        <span class='here_right'>设计</span>
                     </div>
                     <?php
                 }
