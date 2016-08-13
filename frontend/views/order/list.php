@@ -182,6 +182,10 @@ $userId = $session->get("user_id");
                                     $appointmentLocation = $d['appointment_location'];
                                     //推荐理由
                                     $reason = isset($d['reason']) ? $d['reason'] : '客服推荐';
+									$createTime = $d['create_time'] + 24 * 3600;
+									$createTime = date("Y-m-d H:i:s",$createTime);
+									//跳转路径到设计师个人主页。
+									$href = Url::toRoute(['/designer/detail','params' => $designerId]);
                                     //订单状态
                                     $status = $d['status'];
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
@@ -202,7 +206,9 @@ $userId = $session->get("user_id");
 								  				<div class="here_bottom line_center">
 
 													<div class="here_head">
+														<a href="$href">
 														<img src="$headPortrait" />
+														</a>
 													</div>
 
 													<div class="bottom_name">
@@ -241,7 +247,9 @@ HTML;
 											<div class="zy_pp dd_here" order_id = "$orderId">
 				  								<div class="here_bottom line_center">
 													<div class="here_head">
+														<a href="$href">
 														<img src="$headPortrait">
+														</a>
 													</div>
 													<div class="bottom_name">
 														<span class="here_name">$name</span>
@@ -256,14 +264,13 @@ HTML;
 												</div>
 				  								<div class="tj_box leave_word">
 				  									<span class="tj_spa">设计师留言：</span>
-				  									<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在24小时内确认时间。</span>
+				  									<span class="tj_spb">我在<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在<i>{$createTime}</i>前确认时间。</span>
 				  								</div>
 				  				
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 				  								<div class="true_time">
-													24小时内确认（住艺君提示：时间限量<br>
-													如未尽快确认则此时间段可能被其他客户抢走）
+													住艺君提示：时间限量，如未尽快确认则此时间段可能被其他客户抢走
 				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text" confirm_time="$confirmTime">
 												</div>
 				  							</div>
@@ -286,7 +293,9 @@ HTML;
 									
 				  							<div class="here_bottom line_center">
 												<div class="here_head">
+													<a href="$href">
 													<img src="$headPortrait">
+													</a>
 												</div>
 											<div class="bottom_name">
 												<span class="here_name">$name</span>
@@ -306,13 +315,13 @@ HTML;
 				  					</div>
 				  					<div class="tj_box leave_word">
 				  						<span class="tj_spa">设计师留言：</span>
-				  						<span class="tj_spb">我<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在24小时内确认时间。</span>
+				  						<span class="tj_spb">我在<span class="time_list"><i>{$time1}</i><i>{$time2}</i><i>{$time3}</i></span>有时间。 请在<i>{$createTime}</i>前确认时间。</span>
 				  					</div>
 				  				
 									<span class="jm_time">见面2小时</span>
 									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 				  					<div class="true_time">
-				  						24小时内确认（住艺君提示：时间限量<br> 如未尽快确认则此时间段可能被其他客户抢走）
+				  						住艺君提示：时间限量，如未尽快确认则此时间段可能被其他客户抢走
 				  						<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTimeA" type="text" confirm_time="$confirmTime">
 				  					</div>
 				  				</div>
@@ -321,7 +330,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 
 										<div class="bottom_label bottom_referral">
@@ -343,7 +356,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -363,7 +380,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -385,7 +406,11 @@ HTML;
                                         $html = <<<HTML
 								<div class="zy_pp dd_here" order_id="$orderId">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -410,7 +435,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan
@@ -429,7 +458,11 @@ HTML;
                                         $html = <<<HTML
 <div class="zy_pp dd_here">
 				  					<div class="here_bottom line_center">
-										<div class="here_head"><img src="$headPortrait"></div>
+										<div class="here_head">
+											<a href="$href">
+											<img src="$headPortrait">
+											</a>
+										</div>
 										<div class="bottom_name"><span class="here_name">$name</span><span class="here_namea" id="city">北京</span></div>
 										<div class="bottom_label bottom_referral">
 											$labelSpan

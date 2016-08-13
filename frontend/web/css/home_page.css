@@ -23,7 +23,7 @@ body {  padding-bottom: 1.88rem;}
     margin: auto;
     position: absolute !important; 
  }
- .pro_img_title { position: fixed; z-index: 99999; top: .2rem; left: 0; width: 100%; text-align: center; color: #FFFFFF; font-size: .32rem;}
+ .pro_img_title { position: fixed; z-index: 100054; top: .2rem; left: 0; width: 100%; text-align: center; color: #FFFFFF; font-size: .32rem;}
  .bx-wrapper { height: 100%;}
 .Basic_Info { clear: both; margin-top: .8rem; padding-bottom: 2.4rem;   float: left; width: 100%;}
 .pro_img_box { position: fixed; z-index: 100010; top: 0; max-width: 500px; height: 100%; left: 0; bottom: 0;  right:0; margin:auto; }

@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 use kartik\file\FileInput;
-
 use yii\widgets\ActiveForm;
+
 if (isset($model->project_tags)) {
     $project_tags = $model->project_tags;
     $project_tags_arr = explode('$', $model->project_tags);
@@ -54,17 +54,17 @@ if (!$session->isActive) {
             </ul>
         </section> 
         <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
 
-					</div>
-				</div>
-			</div>  
+        <div class="out_true_box">
+            <div class="out_true">
+                <div class="out_true_top">确认退出登录？</div>
+                <div class="out_true_bott">
+                    <span class="quxiao">取消</span>
+                    <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                </div>
+            </div>
+        </div>  
 
         <div class="edit">
 
@@ -81,7 +81,7 @@ if (!$session->isActive) {
                     <span class="here_meng"><?= $model->home_type ?></span>
                 </div>
                 <div class="edit_here">
-                    <span class="here_title">住宅面积</span>
+                    <span class="here_title">使用面积</span>
                     <span class="here_meng"><?= $model->use_area ?></span>
                 </div>
 
@@ -91,13 +91,26 @@ if (!$session->isActive) {
                 </div>
 
                 <div class="edit_here">
+                    <span class="here_title">服务类型</span>
+
+                    <?php
+                    if ($model->budget_design_work) {
+                        ?>
+                        <span class="here_meng">设计+施工</span>
+                    <?php } else { ?>
+                        <span class="here_meng">设计</span>
+                    <?php } ?>
+
+                </div>
+
+                <div class="edit_here">
                     <span class="here_title">项目预算</span>
                     <span class="here_meng">
                         <?php
                         if ($model->budget_design_work) {
-                            echo "设计+施工  预算上限" . $model->budget_design_work . "万 <br/>（包括设计费；施工人工费；辅助／主材费）";
+                            echo $model->budget_design_work . "万";
                         } else {
-                            echo "设计:预算上限" . $model->budget_design . "万 <br/>";
+                            echo $model->budget_design . "万";
                         }
                         ?>
                     </span>
@@ -133,7 +146,7 @@ if (!$session->isActive) {
                                     'initialPreview' => $imgurl,
                                     // 'initialPreviewConfig' => $initialPreviewConfig,  
                                     'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png','jpeg'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $initialPreview,
@@ -171,8 +184,8 @@ if (!$session->isActive) {
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
                         <ul id="ulb">
-                     <?php
-                      echo FileInput::widget([
+                            <?php
+                            echo FileInput::widget([
                                 'model' => $model,
                                 'attribute' => 'favorite_img[]',
                                 //           'options' => ['multiple' => true],
@@ -184,7 +197,7 @@ if (!$session->isActive) {
                                     'initialPreview' => $favorite_imgurl,
                                     // 'initialPreviewConfig' => $initialPreviewConfig,  
                                     'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png','jpeg'],
+                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
                                     'previewFileType' => 'image',
                                     'initialPreviewAsData' => true, // 是否展示预览图
                                     'initialPreviewConfig' => $favorite_initialPreview,
@@ -219,7 +232,7 @@ if (!$session->isActive) {
 
                 <div class="type_list">
                     <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
-                    <input type="hidden" name="project_tags" id="project_tags" value="<?= $project_tags?>" />
+                    <input type="hidden" name="project_tags" id="project_tags" value="<?= $project_tags ?>" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont <?php
                             if (in_array('灯光及光氛围', $project_tags_arr)) {

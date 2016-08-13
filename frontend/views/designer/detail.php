@@ -67,7 +67,7 @@ if (!$session->isActive) {
                 <div class="out_true">
                     <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; border-bottom: none;">请先说出“设计师名字”，再进行详细咨询哦。</div>
                     <div class="out_true_bott" style="border-top: 1px solid #9F9FA0;">
-                        <a href=" " style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">我知道了</a >
+                        <a href="https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc" style="font-size: .24rem; color: #ff4e38; display: block; width:100%; text-align: center;">我知道了</a >
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@ if (!$session->isActive) {
                     <?php
                     //此设计师没有作品。
                     if ($data['art_cnt'] == 0 || empty($data['artsets'])) {
-                        echo "此设计师暂无作品";
+						;
                     } else {
                         foreach ($data['artsets'] as $v) {
                             $artId = $v['art_id'];

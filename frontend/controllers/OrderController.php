@@ -150,6 +150,8 @@ class OrderController extends Controller {
 				//推荐理由
 				$reason = isset($r['reason'])? $r['reason'] : '客服推荐';
 
+				//订单创建时间
+				$createTime = isset($r['create_time'])? $r['create_time'] : time();
                 /*
                  * 如果当前的订单状态是待见面状态，
                  * 那么appointment_time是不为空的，
@@ -173,6 +175,7 @@ class OrderController extends Controller {
                     'designer_spare_time' => $dSpareTime,
                     'appointment_time' => $appointmentTime,
                     'appointment_location' => $appointmentLocation,
+					'create_time' => $createTime,
 					'reason' => $reason,
                     'designer' => array(
                         'designer_id' => $designerId,
@@ -185,7 +188,6 @@ class OrderController extends Controller {
                 $data[] = $element;
             }
             if (empty($data)) {
-                //return $this->render("list",['data' => -1]);
                 return $this->render("list", ['data' => -1, 'jsarr' => $jsarr]);
             }
             return $this->render("list", ['data' => $data, 'jsarr' => $jsarr]);
