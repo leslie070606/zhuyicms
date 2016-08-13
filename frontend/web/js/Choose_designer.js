@@ -14,7 +14,14 @@ $(function(){
                                 $(".navv_tj").removeClass("zhihui");
 				}
 				else{
-					alert("最多选择3位优先约见<br/>如想认识更多设计师，请联系住艺。")
+					$("#bot_outline,.down_right_zd").show();
+                                        $(".down_right_zd").animate({opacity: .5}, 200);
+                                       touch.on("#bot_outline .out_true_bott","tap",function(){
+                                           $("#bot_outline").hide();
+                                           $(".down_right_zd").animate({opacity: 0}, 200,function(){
+                                               $(".down_right_zd").hide();
+                                           });
+                                       }) 
 				}
 			}else {
 				$(this).addClass("icon-weixuanzhong").removeClass('icon-xuanzhong');

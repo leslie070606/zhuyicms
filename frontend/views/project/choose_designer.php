@@ -62,6 +62,14 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </div>
                 </div>
             </div> 
+            <div class="" id="bot_outline">
+                <div class="out_true">
+                    <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; border-bottom: none;">最多选择3位优先约见<br />如想认识更多设计师,请联系住艺</div>
+                    <div class="out_true_bott" style="font-size: .24rem; border-top: 1px solid #9F9FA0; line-height: .8rem; text-align: center;" >
+                        确定
+                    </div>
+                </div>
+            </div>
 
             <div class="choose_top">
                 <span class="choose_top_a"></span>
