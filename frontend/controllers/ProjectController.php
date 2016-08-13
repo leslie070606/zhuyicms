@@ -77,7 +77,7 @@ class ProjectController extends \common\util\BaseController {
                 //实例化短信接口
                 //$sms = Yii::$app->Sms;
                 $sms = new Sms();
-                $ret = $sms->send(array('13051508180'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号['.$model->attributes['project_num'].'],所在地['.$model->attributes['city'].'],开工时间['.$model->attributes['work_time'].'],需要['.$fuwu.'],预算['.$yusuan.'万],请尽快登录后台处理.');
+                $ret = $sms->send(array('13521932827'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号['.$model->attributes['project_num'].'],所在地['.$model->attributes['city'].'],开工时间['.$model->attributes['work_time'].'],需要['.$fuwu.'],预算['.$yusuan.'万],请尽快登录后台处理.');
 
                 //插入成功返回保存ID
                 return $model->attributes['project_id'];
