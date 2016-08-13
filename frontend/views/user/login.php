@@ -50,6 +50,7 @@ if (!$session->isActive) {
                     </li>
                 </ul>
             </section>  
+             <div class="down_right_zd"></div>
 
 
             <?php
