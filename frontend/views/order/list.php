@@ -271,7 +271,7 @@ HTML;
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 				  								<div class="true_time">
-													住艺君提示：时间限量，如未尽快确认则此时间段可能被其他客户抢走
+													住艺君提示：时间限量<br/>如未尽快确认则此时间段可能被其他客户抢走
 				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text" confirm_time="$confirmTime">
 												</div>
 				  							</div>
@@ -322,7 +322,7 @@ HTML;
 									<span class="jm_time">见面2小时</span>
 									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 				  					<div class="true_time">
-				  						住艺君提示：时间限量，如未尽快确认则此时间段可能被其他客户抢走
+				  						住艺君提示：时间限量<br />如未尽快确认则此时间段可能被其他客户抢走
 				  						<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTimeA" type="text" confirm_time="$confirmTime">
 				  					</div>
 				  				</div>
