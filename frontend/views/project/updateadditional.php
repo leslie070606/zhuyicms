@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
 if (isset($model->home_img)) {
     $imgID = explode(',', $model->home_img);

@@ -6,6 +6,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <div class="index_box">
     <header class="header_top iconfont icon-logo">

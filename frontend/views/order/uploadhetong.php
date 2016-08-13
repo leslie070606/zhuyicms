@@ -2,6 +2,8 @@
 
 use kartik\file\FileInput;
 use yii\helpers\Url;
+
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <head>
     <link rel="stylesheet" href="css/gloab.css" />

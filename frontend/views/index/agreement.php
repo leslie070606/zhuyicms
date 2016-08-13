@@ -9,6 +9,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <!DOCTYPE html>
 <html>
