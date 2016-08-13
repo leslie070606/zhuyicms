@@ -6,6 +6,7 @@ $session = Yii::$app->session;
 if (!$session->isActive) {
     $session->open();
 }
+$userId = $session->get("user_id");
 ?>
 <!DOCTYPE html>
 <html style="background: #000000;">
@@ -95,6 +96,19 @@ if (!$session->isActive) {
                     if ($data['art_cnt'] == 0 || empty($data['artsets'])) {
 						;
                     } else {
+						$userId = $data['user_id'];
+						$designerId = $data['designer_id'];
+						$collectStatus = 2;//未收藏。
+						if(isset($userId) && isset($designerId)){
+							$collectM = new \frontend\models\CollectDesigner();	
+							$rows = $collectM->getCollectStatus($userId,$designerId);
+							if(!empty($rows)){
+								$collectStatus = $rows[0]['status'];
+								//var_dump($collectStatus);
+							}
+						}
+						//2 未收藏，1 已收藏。
+
                         foreach ($data['artsets'] as $v) {
                             $artId = $v['art_id'];
                             $artType = $v['type'];
@@ -240,7 +254,19 @@ HTML;
 
                 <div class="page_bottom">
                     <span class="bota" id="check"><a>查看费用</a></span>
-                    <span class="bota sc_bot"><a>收藏设计师</a></span>
+				<?php
+					if($collectStatus == 2){
+						$html = <<<HTML
+                    	<span class="bota sc_bot"><a>收藏设计师</a></span>
+HTML;
+						echo $html;
+					}elseif($collectStatus == 1){
+						$html = <<<HTML
+                    	<span class="bota sc_bot"><a class="active">已收藏</a></span>
+HTML;
+						echo $html;
+					}
+				?>
                     <span class="botb"><a>立即约见</a></span>
                 </div>
                 <div class="charges_zd"></div>

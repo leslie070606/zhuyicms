@@ -59,4 +59,13 @@ Class CollectDesigner extends ActiveRecord{
 
 		return $this->updateAll($set,$where);
 	}
+
+	public function getCollectStatus($userId,$designerId){
+		if(!isset($userId) && !isset($designerId)){
+			return 0;
+		}
+        $sql = "SELECT status FROM $this->_name WHERE user_id=$userId AND designer_id=$designerId";
+        $ret = Yii::$app->db->createCommand($sql)->queryAll();
+		return $ret;
+	}
 }
