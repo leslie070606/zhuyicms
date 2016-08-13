@@ -81,7 +81,7 @@ if (!$session->isActive) {
                     <span class="here_meng"><?= $model->home_type ?></span>
                 </div>
                 <div class="edit_here">
-                    <span class="here_title">住宅面积</span>
+                    <span class="here_title">使用面积</span>
                     <span class="here_meng"><?= $model->use_area ?></span>
                 </div>
 
@@ -95,7 +95,7 @@ if (!$session->isActive) {
                     <span class="here_meng">
                         <?php
                         if ($model->budget_design_work) {
-                            echo "设计+施工  预算上限" . $model->budget_design_work . "万 <br/>（包括设计费；施工人工费；辅助／主材费）";
+                            echo "设计+施工  预算上限" . $model->budget_design_work . "万 <br/>";
                         } else {
                             echo "设计:预算上限" . $model->budget_design . "万 <br/>";
                         }

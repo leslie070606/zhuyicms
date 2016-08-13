@@ -172,23 +172,23 @@ if (!$session->isActive) {
                     <div class="seven_box">
                         <div class="seven_here">
                             <span class="seven_spa">设计大师</span>
-                            <span class="seven_spb">有多项接触设计作品</span>
+                            <span class="seven_spb">有多项杰出设计作品</span>
                             <span class="seven_spc">并获得国际大奖，享有广泛声誉</span>
-                            <span class="seven_spd">设计费平均每平米1200元+</span>
+                            <span class="seven_spd">设计费平均每平米1200元起</span>
                         </div>
 
                         <div class="seven_here">
                             <span class="seven_spa">资深设计师</span>
                             <span class="seven_spb">知名设计事务所背景</span>
-                            <span class="seven_spc">设计作品在行业内有几号的口碑</span>
-                            <span class="seven_spd">设计费平均每平米800元+</span>
+                            <span class="seven_spc">设计作品在行业内有极好的口碑</span>
+                            <span class="seven_spd">设计费平均每平米800元起</span>
                         </div>
 
                         <div class="seven_here">
                             <span class="seven_spa">新秀设计师</span>
                             <span class="seven_spb">业内新生代设计师</span>
                             <span class="seven_spc">有很好的设计理念和客户服务意识</span>
-                            <span class="seven_spd">设计费平均每平米400元+</span>
+                            <span class="seven_spd">设计费平均每平米400元起</span>
                         </div>
                     </div>
                 </div>

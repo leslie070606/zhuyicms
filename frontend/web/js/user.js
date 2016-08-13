@@ -6,6 +6,20 @@ $(function(){
 	touch.on("body","touchmove",function(){
 		auto();
 	});
+        $(".leave_word  .tj_spb i").each(function(){
+		var data=$(this).html().replace(/-/g, "/");
+		var getdata=new Date(data);
+		var month=getdata.getMonth();
+		var day=getdata.getDate();
+		var hours=getdata.getHours();
+		
+		if(hours==0){
+			hours="";
+		}else{
+			hours=hours+"点";
+		}
+		$(this).html("["+month+"月"+day+"日"+ hours+"]");
+	});
 //	//统计圆环
 //	var size=parseInt(parseInt($("html").css("font-size"))*1.2);
 //		var widtht=parseInt($("html").css("font-size"))*.08;
@@ -160,11 +174,12 @@ var currYear = (new Date()).getFullYear();
 				var gettt=[];
 				var grrr=$(this).parents(".zy_pp").find(".time_list");
 				grrr.find(">i").each(function(){
-                                    if($(this).html().replace(/<\/?[^>]*>/gim,"")!=""){
-					var h=$(this).html().split("-");
-						h=h[1]+"月"+h[2]+"日";
+                                    
+					var h=$(this).html().split("月");
+                                        
+						h=h[0].replace(/[^0-9]/ig,"")+"月"+h[1].replace(/[^0-9]/ig,"")+"日";
 					 gettt.push(h);	
-                                     }
+                                     
 				});
 				console.log(gettt)
 				var time_list="";
