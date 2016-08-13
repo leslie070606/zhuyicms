@@ -82,7 +82,10 @@ class OrderController extends Controller {
         }
         $userId = $session->get("user_id");
         if (!isset($userId) || empty($userId)) {
-            return $this->redirect(['user/login']);
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if(!$_cookieSts){
+                 return $this->redirect(['user/login']);
+            }
         }
 
         $orderM = new \frontend\models\Order();
@@ -201,7 +204,10 @@ class OrderController extends Controller {
         }
         $userId = $session->get("user_id");
         if (!isset($userId) || empty($userId)) {
-            return $this->redirect(['user/login']);
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if(!$_cookieSts){
+                 return $this->redirect(['user/login']);
+            }
         }
         $userRows = \common\models\ZyUser::findOne($userId);
 		$phone = '';

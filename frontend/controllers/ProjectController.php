@@ -38,7 +38,10 @@ class ProjectController extends \common\util\BaseController {
                 return $this->redirect(['order/list']);
             }
         } else {
-            return $this->redirect(['user/login']);
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if(!$_cookieSts){
+                 return $this->redirect(['user/login']);
+            }
         }
 
 
@@ -308,7 +311,10 @@ class ProjectController extends \common\util\BaseController {
                 return $this->redirect('match_designer');
             }
         } else {
-            return $this->redirect(['user/login']);
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if(!$_cookieSts){
+                 return $this->redirect(['user/login']);
+            }
         }
 
         $project_id = $project->project_id;
@@ -415,7 +421,10 @@ class ProjectController extends \common\util\BaseController {
         if ($user_id = $session->get('user_id')) {
             
         } else {
-            return $this->redirect(['user/login']);
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if(!$_cookieSts){
+                 return $this->redirect(['user/login']);
+            }
         }
 
         $projectModel = new ZyProject();
