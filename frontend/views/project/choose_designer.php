@@ -181,9 +181,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
             </div>		
         </div>
-        <div class="out_Capacity">
+        <div class="out_Capacity" style="width: 3.5rem;">
                 <div class="zdang"></div>
-                <div class="mengs">您已经选择过您要见的设计师，请在我的住艺中查看</div>
+                <div class="mengs" style="line-height: .4rem; margin-top: .1rem;">您已经选择过您要见的设计师<br />请在我的住艺中查看</div>
             </div>
     </body>
 </html>
@@ -193,9 +193,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         if (localStorage.getItem("key")) {
             out_line();
             return false;
-        } else {
-            localStorage.setItem("key", 1);
-        }
+        } 
+           
+       
 
         var user_id = <?= $user_id ?>;
         var project_id = <?= $project_id ?>;
@@ -231,18 +231,29 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             success: function (data) {
                 // alert(data);
                 if (data = 3) {
-
+                     localStorage.setItem("key", 1);
                     //跳转人工
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }
                 if (data = 1) {
+                    localStorage.setItem("key", 1);
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=order/list'; ?>";
                 }
 
             }
         })
     })
-
+    function out_line() {
+        $(".out_Capacity").show().animate({
+            opacity: 1
+        }, 1000, function () {
+            $(".out_Capacity").animate({
+                opacity: 0
+            }, 2000, function () {
+                $(".out_Capacity").hide();
+            })
+        });
+    }
 
 </script>
 <script type="text/javascript">
