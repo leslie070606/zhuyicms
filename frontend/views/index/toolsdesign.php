@@ -93,9 +93,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     
                     <div class="pro_here">
                         <div class="pro_here_bcimg iconfont icon-bofang1">
-                            <img class="here_img" src="img/index/yanjia_22.jpg" />
+                            <img class="here_img" src="img/index/haili.jpg" />
                         </div>
-                        <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
+                        <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/haili.jpg">
                             <source src="http://osszhuyi.oss-cn-qingdao.aliyuncs.com/zhuyivideo/hailigongfang.MP4" type='video/mp4' />
                         </video>
                         <div class="here_botaa"></div>

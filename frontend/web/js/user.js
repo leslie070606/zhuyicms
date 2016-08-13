@@ -176,15 +176,17 @@ var currYear = (new Date()).getFullYear();
 		        
 			};
 			$(".true_btn").each(function(ev){
+                            alert("111")
 				var gettt=[];
 				var grrr=$(this).parents(".zy_pp").find(".time_list");
 				grrr.find(">i").each(function(){
                                     
-					var h=$(this).html();
-                                        
-						
+					var h=$(this).html().replace(/\s+/g,"");
+                                        if(h==""){
+                                            
+                                        }else{
 					 gettt.push(h);	
-                                     
+                                        };
 				});
 				console.log(gettt)
 				var time_list="";
