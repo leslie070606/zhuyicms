@@ -181,7 +181,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
             </div>		
         </div>
-        <div class="out_Capacity" style="width: 3.5rem;">
+        <div class="out_Capacity" style="width: 3.5rem; z-index: 10000;">
                 <div class="zdang"></div>
                 <div class="mengs" style="line-height: .4rem; margin-top: .1rem;">您已经选择过您要见的设计师<br />请在我的住艺中查看</div>
             </div>
@@ -191,6 +191,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
     touch.on(".navv_tj", "tap", function (ev) {
 
         if (localStorage.getItem("key")) {
+            alert("22")
             out_line();
             return false;
         } 
