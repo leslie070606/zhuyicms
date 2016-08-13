@@ -93,7 +93,7 @@ if (!$session->isActive) {
                     <?php
                     //此设计师没有作品。
                     if ($data['art_cnt'] == 0 || empty($data['artsets'])) {
-                        echo "此设计师暂无作品";
+						;
                     } else {
                         foreach ($data['artsets'] as $v) {
                             $artId = $v['art_id'];
