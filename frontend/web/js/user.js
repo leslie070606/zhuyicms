@@ -181,6 +181,7 @@ var currYear = (new Date()).getFullYear();
 				grrr.find(">i").each(function(){
                                     
 					var h=$(this).html().replace(/\s+/g,"");
+                                        h=h.replace(/^[\[]/,"").replace(/[\]]$/,"");
                                         if(h==""){
                                             
                                         }else{
