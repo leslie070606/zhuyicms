@@ -20,7 +20,7 @@
 		
 		<section class="style_box">
 			<span class="style_title">
-				你喜欢以下哪种风格？<span class="nuber">第<i id="new_nuber">1</i>题/<i id="all_nuber">10</i>题</span>
+				您喜欢以下哪种风格？<span class="nuber">第<i id="new_nuber">1</i>题/<i id="all_nuber">10</i>题</span>
 			</span>
 			<div class="style_here active" nuber="1">
 				<div class="here_div" tetel="8a10a6"><img src="img/style_test/1.jpg"/></div>

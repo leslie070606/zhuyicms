@@ -59,7 +59,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 				</div>
 			</div>  
 		<div class="guide_box_here">
-			<span class="guide_box_title">设计师能为你做什么?</span>
+			<span class="guide_box_title">设计师能为您做什么?</span>
 			<div class="here_b_box"> 
                             <span class="box_spa" style="font-weight: bold;"><i></i>设计的黄金三角</span>
                             <span class="box_spb" style="font-weight: bold; color:#221814;">功能需求，美学需求，和预算需求，是设计价值体现的黄金三角形。设计师所做的工作就是根据用户的需求和偏好，在这个三角中找到完美的平衡点。</span>
@@ -69,7 +69,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 			</div>
 			<div class="here_b_box">
 				<span class="box_spa"><i></i>精挑细选的住艺设计师</span>
-				<span class="box_spb">这是住艺关于设计的独特观点，也是住艺精选设计师的标准。住艺团队精心挑选出全国最优秀的设计专家，确保每一位设计师都可以为你提供暖心的设计。</span>
+				<span class="box_spb">住艺团队精心挑选出全国最优秀的设计专家，确保每一位设计师都可以为您提供专业的设计。</span>
 				<span class="box_spb">行业优秀设计师收费标准一般在每平米300-2000元/之间。住艺设计师收费从每平米500元起。装修整体费用从3000元/平米起。</span>
 			</div>
 		</div>

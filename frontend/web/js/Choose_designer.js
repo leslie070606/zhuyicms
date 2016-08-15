@@ -89,7 +89,7 @@ $(function () {
             setTimeout(function () {
                 $(".designer_box>.pro_here").show();
 
-                $(".click_more").html("更多设计师,住艺会帮你人工甄选")
+                $(".click_more").html("更多设计师,住艺会帮您人工甄选")
                 var top = $("#topb").offset().top;
                 $(window).scrollTop(top);
             }, 300)

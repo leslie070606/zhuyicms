@@ -225,22 +225,22 @@ class WechatController extends Controller {
         //自动回复模式
         if ($keyword == "住艺") {
             $content = array();
-            $content[] = array("Title" => "住艺来了！很高兴认识你~ ", "Description" => "细数痛，是为了更快更好，解决痛，创造美。", "PicUrl" => "puti.kim/images/zhuyilogo2.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06#rd");
+            $content[] = array("Title" => "住艺来了！很高兴认识您~ ", "Description" => "细数痛，是为了更快更好，解决痛，创造美。", "PicUrl" => "puti.kim/images/zhuyilogo2.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06#rd");
         } else if ($keyword == "001") {
             $content = array();
             $content[] = array("Title" => "住艺改造家 | 她把宫崎骏的电影，做成了院子", "Description" => "", "PicUrl" => "puti.kim/images/gongqijun.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=1&sn=c66f91d6fb3ae8ceb2c8caee6222670c#rd");
-            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，你有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
+            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，您有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
         } else if ($keyword == '002') {
             $content = array();
             $content[] = array("Title" => "住艺改造家 | 他用1,000本书，造出隔而不断的家", "Description" => "", "PicUrl" => "puti.kim/images/002video.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000154&idx=1&sn=e4d7c1316a57cf88467636488635304b#rd");
-            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，你有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
+            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，您有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
         } else if ($keyword == '视频') {
 
             $content = array();
             $content[] = array("Title" => "住艺改造家 | 她把宫崎骏的电影，做成了院子", "Description" => "", "PicUrl" => "puti.kim/images/gongqijun.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=1&sn=c66f91d6fb3ae8ceb2c8caee6222670c#rd");
-            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，你有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
+            $content[] = array("Title" => "住艺来了 | 装修抱怨大会TOP20：这些痛，您有吗？", "Description" => "", "PicUrl" => "puti.kim/images/zhuyilogo.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000030&idx=2&sn=3a0137f07a7b793eaf1bf5bfe15d6cca#rd");
         } else {
-            $content = "Hi，谢谢你与我们互动/:,@-D 你的话我们已经收到啦，如果需要进一步帮助，不妨留下联系方式（微信号/电话/邮箱），我们会尽快与你联络！";
+            $content = "Hi，谢谢您与我们互动/:,@-D 您的话我们已经收到啦，如果需要进一步帮助，不妨留下联系方式（微信号/电话/邮箱），我们会尽快与您联络！";
         }
 
         if (is_array($content)) {
@@ -260,7 +260,7 @@ class WechatController extends Controller {
         $content = "";
         switch ($xmlObj->Event) {
             case "subscribe": //关注事件
-                $content = "Hi！认识你真好！准备好在住艺遇见更好的空间和更多精选设计师了吗？看改造视频、获取专业贴士、收实用清单，用设计改善家和生活，一起吧！回复“住艺”，了解我们；回复“视频”，看最新改造案例；喜欢的话，就将我们置顶吧！";
+                $content = "Hi！认识您真好！准备好在住艺遇见更好的空间和更多精选设计师了吗？看改造视频、获取专业贴士、收实用清单，用设计改善家和生活，一起吧！回复“住艺”，了解我们；回复“视频”，看最新改造案例；喜欢的话，就将我们置顶吧！";
                 break;
             case "unsubscribe": //取消关注事件
                 $content = "";
@@ -270,7 +270,7 @@ class WechatController extends Controller {
                     case "zhuyi_gy":
                         //$content = "点击菜单1";
                         $content = array();
-                        $content[] = array("Title" => "住艺来了!很高兴认识你~", "Description" => "细数痛,是为了更快更好,解决痛,创造美.", "PicUrl" => "puti.kim/images/zhuyilogo2.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06#rd");
+                        $content[] = array("Title" => "住艺来了!很高兴认识您~", "Description" => "细数痛,是为了更快更好,解决痛,创造美.", "PicUrl" => "puti.kim/images/zhuyilogo2.jpg", "Url" => "http://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=100000133&idx=1&sn=02f76c4f29b32ea4dfd442b83c2ddf06#rd");
                         break;
                     case "zhuyi_zx":
                         $content = "设计需求或咨询，请联络：\nvin Yang\n微信：kevinyang0229\n邮箱：kevin.yang@condenast.com.cn\n座机：010-59631694\n\n或\n\nXiaoqing Zhang\n微信：enjoylifeon\n邮箱：xiaoqing.zhang@condenast.com.cn\n座机：010-59631694";

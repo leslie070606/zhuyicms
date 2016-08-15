@@ -58,7 +58,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') === false) {
                 ?>	
                 <div class="login_title">
-                    现在登录<br/>你的需求就会被住艺永久记录，并可以随时更改
+                    现在登录<br/>您的需求就会被住艺永久记录，并可以随时更改
                 </div>
                 <?= Html::beginForm(Yii::getAlias('@web') . '/index.php?r=user/phone', 'post', ['id' => 'form-phone']); ?>
                 <div class="login_ipt">

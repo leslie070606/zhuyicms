@@ -62,23 +62,23 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 <span class="guide_box_title">住艺有何不同</span>
                 <div class="here_a_box">
                     <span class="box_spa red">家居设计的“高级定制”</span>
-                    <span class="box_spb">住艺帮你甄选最值得推荐的设计师，将为你量身定制最合适你家的设计方案</span>
+                    <span class="box_spb">住艺帮您甄选最值得推荐的设计师，将为您量身定制最合适您家的设计方案</span>
                 </div>
                 <div class="here_a_box">
                     <span class="box_spa red">每一分钱都花在刀刃上</span>
-                    <span class="box_spb">住艺设计师都是材料和工艺的大师，将协助你拟定精细预算</span>
+                    <span class="box_spb">住艺设计师都是材料和工艺的大师，将协助您拟定精细预算</span>
                 </div>
                 <div class="here_a_box">
                     <span class="box_spa red">管家式的全程服务</span>
-                    <span class="box_spb">住艺为你提供一对一的管家服务，将协助你从设计到实施的全流程，解答你在各个环节的疑问</span>
+                    <span class="box_spb">住艺为您提供一对一的管家服务，将协助您从设计到实施的全流程，解答您在各个环节的疑问</span>
                 </div>
                 <div class="here_a_box">
                     <span class="box_spa red">能够完美落地的设计方案</span>
-                    <span class="box_spb">除了设计方案，住艺设计师还将协助你对接经验丰富的施工团队并监督每一个施工细节</span>
+                    <span class="box_spb">除了设计方案，住艺设计师还将协助您对接经验丰富的施工团队并监督每一个施工细节</span>
                 </div>
                 <div class="here_a_box">
                     <span class="box_spa red">摆脱建材选择困难症</span>
-                    <span class="box_spb">最后，住艺设计师将努力为你甄选高品质建材，让你摆脱逛建材城这件苦差事</span>
+                    <span class="box_spb">最后，住艺设计师将努力为您甄选高品质建材，让您摆脱逛建材城这件苦差事</span>
                 </div>
             </div>
 

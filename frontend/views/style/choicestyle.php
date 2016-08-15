@@ -42,7 +42,7 @@
 			</div> 
 
             <section class="style_boxa">
-                <div class="box_title">请选择3种你最喜欢的风格</div>
+                <div class="box_title">请选择3种您最喜欢的风格</div>
                 <div class="style_herea" id="chose_style">
                     <div class="here_div"><img src="img/style_test/1.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">极简</div></div>
                     <div class="here_div"><img src="img/style_test/2.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">工业</div></div>

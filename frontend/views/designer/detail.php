@@ -66,17 +66,18 @@ $userId = $session->get("user_id");
             </div>  
 
             <div class="" id="bot_outline">
-                <div class="out_true">
-                    <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; border-bottom: none;">请先说出“设计师名字”，再进行详细咨询哦。</div>
-                    <div class="out_true_bott" style="border-top: 1px solid #9F9FA0;">
-                        <a href="https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc" style="font-size: .24rem; color: #ff4e38; display: block; width:100%; text-align: center;">我知道了</a >
+                <div class="out_true" style="height: 2.6rem;">
+                    <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; line-height: .35rem; height:1.8rem; border-bottom: none;">您将跳转到客服聊天界面，请输入您的姓名和手机号、以及想约见的设计师姓名，住艺客服会协商设计师的时间</div>
+                    <div class="out_true_bott" style="border-top: 1px solid #eeefef;">
+                        <span class="quxiao" style="color: #9F9FA0;" onclick="quxiao()">取消</span>
+                        <a href="https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc" style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">继续</a >
                     </div>
                 </div>
             </div>
 
             <input type="hidden" id="user_id" value="<?php echo $data['user_id'] ?>" />
-<!--选择设计师的val-->
-<input type="hidden" id="chose_val" value="<?php echo Yii::$app->request->get('pro_id');?>" />
+            <!--选择设计师的val-->
+            <input type="hidden" id="chose_val" value="<?php echo Yii::$app->request->get('pro_id'); ?>" />
             <section class="page_banner">
                 <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
                 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
@@ -97,20 +98,20 @@ $userId = $session->get("user_id");
                     <?php
                     //此设计师没有作品。
                     if ($data['art_cnt'] == 0 || empty($data['artsets'])) {
-						;
+                        ;
                     } else {
-						$userId = $data['user_id'];
-						$designerId = $data['designer_id'];
-						$collectStatus = 2;//未收藏。
-						if(isset($userId) && isset($designerId)){
-							$collectM = new \frontend\models\CollectDesigner();	
-							$rows = $collectM->getCollectStatus($userId,$designerId);
-							if(!empty($rows)){
-								$collectStatus = $rows[0]['status'];
-								//var_dump($collectStatus);
-							}
-						}
-						//2 未收藏，1 已收藏。
+                        $userId = $data['user_id'];
+                        $designerId = $data['designer_id'];
+                        $collectStatus = 2; //未收藏。
+                        if (isset($userId) && isset($designerId)) {
+                            $collectM = new \frontend\models\CollectDesigner();
+                            $rows = $collectM->getCollectStatus($userId, $designerId);
+                            if (!empty($rows)) {
+                                $collectStatus = $rows[0]['status'];
+                                //var_dump($collectStatus);
+                            }
+                        }
+                        //2 未收藏，1 已收藏。
 
                         foreach ($data['artsets'] as $v) {
                             $artId = $v['art_id'];
@@ -124,12 +125,12 @@ $userId = $session->get("user_id");
                             if ($artType == 0) {
                                 $imgIds = $v['image_ids'];
                                 $imgIdsArr = explode(',', $imgIds);
-								$imgIdsArr = array_filter($imgIdsArr);
+                                $imgIdsArr = array_filter($imgIdsArr);
                                 $imgUrlArr = array();
                                 foreach ($imgIdsArr as $id) {
-									if(!isset($id) || empty($id)){
-										continue;
-									}
+                                    if (!isset($id) || empty($id)) {
+                                        continue;
+                                    }
                                     $rows = \frontend\models\Images::findOne($id);
                                     if (empty($rows)) {
                                         continue;
@@ -257,26 +258,26 @@ HTML;
 
                 <div class="page_bottom">
                     <span class="bota" id="check"><a>查看费用</a></span>
-				<?php
-					if($collectStatus == 2){
-						$html = <<<HTML
+                    <?php
+                    if ($collectStatus == 2) {
+                        $html = <<<HTML
                     	<span class="bota sc_bot"><a>收藏设计师</a></span>
 HTML;
-						echo $html;
-					}elseif($collectStatus == 1){
-						$html = <<<HTML
+                        echo $html;
+                    } elseif ($collectStatus == 1) {
+                        $html = <<<HTML
                     	<span class="bota sc_bot"><a class="active">已收藏</a></span>
 HTML;
-						echo $html;
-					}
-				?>
-                    
-                    <?php if(Yii::$app->request->get('checkdesiger')== 1 ){ ?>
+                        echo $html;
+                    }
+                    ?>
+
+                    <?php if (Yii::$app->request->get('checkdesiger') == 1) { ?>
                         <span class="botbb" id="chose_des"><a>选择该设计师</a></span>
-                    <?php }else{ ?>
+                    <?php } else { ?>
                         <span class="botb"><a>立即约见</a></span>
                     <?php } ?>
-                    
+
                 </div>
                 <div class="charges_zd"></div>
                 <div class="check_charges">
@@ -300,7 +301,7 @@ HTML;
 HTML;
                         } else {
                             $html = <<<HTML
-                                                <span class="charges_right red">￥{$charge}/m² 起</span>
+                                                <span class="charges_right red">{$charge}元/m² 起</span>
 HTML;
                         }
                         echo $html;
@@ -377,12 +378,22 @@ HTML;
                     });
 
                 });
+function quxiao() {
+                        $("#bot_outline").hide();
+                        $(".down_right_zd").animate({opacity: .0}, 300, function () {
 
+                            $(".down_right_zd").css("z-index", 99995);
+                        })
+
+
+                    };
                 $(function () {
-                    touch.on("#chose_des","tap",function(){
-                        
+                    
+
+                    touch.on("#chose_des", "tap", function () {
+
                         var ckshejishi = $("#chose_val").val();
-                        window.location.href="<?php echo Yii::getAlias('@web') . '/index.php?r=project/choose_designer'; ?>"+'&ckshejishi='+ckshejishi;
+                        window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/choose_designer'; ?>" + '&ckshejishi=' + ckshejishi;
                     });
                     function GetQueryString(name) {
                         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");

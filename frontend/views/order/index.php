@@ -161,7 +161,7 @@ HTML;
 								  				</div>
 								  				<div class="tj_box leave_word">
 								  					<span class="tj_spa">设计师留言：</span>
-								  					<span class="tj_spb">非常抱歉，我最近1个月的档期已满，感谢你的支持 你可以考虑住艺根据私人匹配，推荐你的设计师 拷贝</span>
+								  					<span class="tj_spb">非常抱歉，我最近1个月的档期已满，感谢您的支持 您可以考虑住艺根据私人匹配，推荐您的设计师 拷贝</span>
 								  				</div>
 								  				
 												<span class="jm_time">见面2小时</span>
@@ -274,7 +274,7 @@ HTML;
 												<span class="jm_time">见面2小时</span>
 												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
 												<div class="true_time queren_btn">
-													<span class="true_btnb hetong">上传合同，让住艺管家帮你把关</span>
+													<span class="true_btnb hetong">上传合同，让住艺管家帮您把关</span>
 												</div>
 											</div>	
 HTML;

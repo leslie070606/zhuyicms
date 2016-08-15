@@ -148,7 +148,7 @@ $videoModel = new ZyVideo();
                 <span class=" iconfont icon-jiantou use_three"></span>
 
                 <span class=" iconfont icon-sheji use_one"></span>
-                <span class="use_text use_two">签约 获得方案</span>
+                <span class="use_text use_two">与设计师签约</span>
                 <span class=" iconfont icon-jiantou use_three"></span>
             </div>
             <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">找设计师</a></span>
@@ -196,8 +196,8 @@ $videoModel = new ZyVideo();
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
-            desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让你的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
+            title: '想为自己和爱的人定制一个舒服的家？我建议您去住艺看看！', // 分享标题
+            desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让您的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
@@ -217,7 +217,7 @@ $videoModel = new ZyVideo();
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
+            title: '想为自己和爱的人定制一个舒服的家？我建议您去住艺看看！', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
 

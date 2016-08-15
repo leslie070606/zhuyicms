@@ -37,9 +37,9 @@ while(1){
 					$appointmentLocation = $o->appointment_location;
             		$message = "［住艺后台］［有订单状态变更］用户$userId刚刚确定了时间、地点，>请尽快联系双方再次确定时间。";
             		$sms->send(array(ADMIN_PHONE_NUM),$message);
-					$message = "［住艺］［预约成功］尊敬的用户，你的设计师将于$appointmentTime前往$appointmentLocation与你见面，请保持电话畅通，预祝合作愉快。";
+					$message = "［住艺］［预约成功］尊敬的用户，您的设计师将于$appointmentTime前往$appointmentLocation与您见面，请保持电话畅通，预祝合作愉快。";
 					$sms->send(array(ADMIN_USER_NUM),$message);
-					$message = "发送文案：［住艺］［预约成功］Hi $designerdId，你的客户已确定$appointmentTime前往地址$appointmentLocation与你见面，请保持电话畅通，预祝合作愉快。";
+					$message = "发送文案：［住艺］［预约成功］Hi $designerdId，您的客户已确定$appointmentTime前往地址$appointmentLocation与您见面，请保持电话畅通，预祝合作愉快。";
         		}
 				break;
 			case \frontend\services\Order::STATUS_WAITING_CONTRACT:

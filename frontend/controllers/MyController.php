@@ -95,7 +95,7 @@ class MyController extends Controller{
 				//这地方有个问题，需要换一种更新的方法
 				//比如如果create_time没有赋值，会报错create_time doesn't have a default value
 				//需要换一种只更新局部改变值的数据库操作方法，而非save()
-				//而且你通过前台操作，最后数据库的数据会无限增加，而非update
+				//而且您通过前台操作，最后数据库的数据会无限增加，而非update
 				'service_times'		=> 100,
 				'create_time'		=> $now,
                 'update_time'       => $now,

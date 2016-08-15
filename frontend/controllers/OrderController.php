@@ -247,7 +247,7 @@ class OrderController extends Controller {
                 $sms = new \common\util\emaysms\Sms();
                 Yii::info($phone, 'pushNotifications');
                 Yii::info($newTime, 'pushNotifications');
-                $ret = $sms->send(array($phone), '【住艺】尊敬的用户,你的设计师将于' . $newTime . '前往' . $appointmentLocation . '与你首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
+                $ret = $sms->send(array($phone), '【住艺】尊敬的用户,您的设计师将于' . $newTime . '前往' . $appointmentLocation . '与您首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
                 Yii::info($ret, 'pushNotifications');
                 //给设计师发短信。
                 $designerId = $rows->designer_id;
@@ -259,7 +259,7 @@ class OrderController extends Controller {
                 $phone = $dAdditionalModel->getPhoneByDesignerId($designerId);
                 $phone = isset($phone) ? $phone : "15810649252";
                 Yii::info($phone, 'pushNotifications');
-                $ret = $sms->send(array($phone), '【住艺】Hi' . $name . ',你的客户已确定' . $newTime . '前往' . $appointmentLocation . '与你首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
+                $ret = $sms->send(array($phone), '【住艺】Hi' . $name . ',您的客户已确定' . $newTime . '前往' . $appointmentLocation . '与您首次见面，请保持电话畅通，预祝合作愉快。客服电话:4000-600-636');
                 Yii::info($ret, 'pushNotifications');
                 return $appointmentLocation;
                 break;

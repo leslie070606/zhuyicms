@@ -63,7 +63,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             </div>  
 
             <div class="first_box here_0">
-                <span class="dem_title">你需要的服务类型？</span>
+                <span class="dem_title">您需要的服务类型？</span>
                 <div class="boxa_box">
                     <span class="box_soa">装修设计</span>
                     <span class="box_sob">新房，二手房重新装修</span>
@@ -86,7 +86,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
             <div class="demand_big">
                 <div class="demand_here active here_1">
-                    <span class="dem_title">你的家位于？</span>
+                    <span class="dem_title">您的家位于？</span>
                     <span class="dem_list">第<a class="red">1</a>题/7题</span>
                     <span class="list_title">主要服务城市</span>
                     <div class="dem_where">
@@ -99,7 +99,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="demand_here here_2">
-                    <span class="dem_title">你的住宅类型是？</span>
+                    <span class="dem_title">您的住宅类型是？</span>
                     <span>第<a class="red">2</a>题/7题</span>
                     <div class="fx_box four_box">
 
@@ -114,7 +114,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="demand_here  here_3">
-                    <span class="dem_title">你的家多大？</span>
+                    <span class="dem_title">您的家多大？</span>
                     <span>第<a class="red">3</a>题/7题</span>
 
                     <input class="dema_ipt three_ipt" type="tel" placeholder="建筑面积（㎡）" />
@@ -130,7 +130,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                         <div>暂时还不急</div>
                     </div>
                     <span class="other_box">
-                        <span>+</span> 或告诉住艺你想开工的具体日期
+                        <span>+</span> 或告诉住艺您想开工的具体日期
                     </span>
                     <section class="other_box2">
                         <input class="dema_ipt" type="text" placeholder="具体时间" />
@@ -138,7 +138,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="demand_here here_5">
-                    <span class="dem_title">你需要哪种服务？</span>
+                    <span class="dem_title">您需要哪种服务？</span>
                     <span>第<a class="red">5</a>题/7题</span>
                     <div class="five_box">
                         <div class="last_five">
@@ -154,21 +154,21 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="demand_here here_6">
-                    <span class="dem_title">你的大致预算是？(万元)</span>
+                    <span class="dem_title">您的大致预算是？(万元)</span>
                     <span>第<a class="red">6</a>题/7题</span>
                     <div class="six_box">
                         <input class="dema_ipt" type="tel" placeholder="预算（万）" />
                         <div class="dema_explain">
                             <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">
-                                [住艺参考] 如果你需要设计+施工服务，综合考虑市场价及设计师报价后（依据设计师个人差异，设计费用报价多在400元/㎡~1200元/㎡区间内浮动），住艺建议你为每平米预留约3000元预算（包含设计费，材料，施工等），以确保设计及施工质量。
+                                [住艺参考] 如果您需要设计+施工服务，综合考虑市场价及设计师报价后（依据设计师个人差异，设计费用报价多在400元/㎡~1200元/㎡区间内浮动），住艺建议您为每平米预留约3000元预算（包含设计费，材料，施工等），以确保设计及施工质量。
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="demand_here here_7 ">
-                    <span class="dem_title">请选择你需要的设计师类型？</span>
+                    <span class="dem_title">请选择您需要的设计师类型？</span>
                     <span>第<a class="red">7</a>题/7题</span>
                     <div class="seven_box">
                         <div class="seven_here">
@@ -512,8 +512,8 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
-            desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让你的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
+            title: '想为自己和爱的人定制一个舒服的家？我建议您去住艺看看！', // 分享标题
+            desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让您的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
@@ -533,7 +533,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '想为自己和爱的人定制一个舒服的家？我建议你去住艺看看！', // 分享标题
+            title: '想为自己和爱的人定制一个舒服的家？我建议您去住艺看看！', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=index/index', // 分享链接
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
 

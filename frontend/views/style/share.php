@@ -36,8 +36,8 @@
 
                 //分享给朋友
                 wx.onMenuShareAppMessage({
-                    title: '在住艺，测试出我喜欢风格1、风格2、风格3三种室内设计风格，你呢？', // 分享标题
-                    desc: '住艺上线！特发明科学又好玩儿的游戏等你来！与5位好朋友一起测试喜好风格并分享，即可获得3次与给高端室内设计师面对面见面的机会。足足省了2400元呢！', // 分享描述
+                    title: '在住艺，测试出我喜欢风格1、风格2、风格3三种室内设计风格，您呢？', // 分享标题
+                    desc: '住艺上线！特发明科学又好玩儿的游戏等您来！与5位好朋友一起测试喜好风格并分享，即可获得3次与给高端室内设计师面对面见面的机会。足足省了2400元呢！', // 分享描述
                     link: 'http://puti.kim/index.php?r=style/share', // 分享链接
                     imgUrl: '#', // 分享图标
                     type: '', // 分享类型,music、video或link，不填默认为link
@@ -56,7 +56,7 @@
 
                 //分享到朋友圈
                 wx.onMenuShareTimeline({
-                    title: '分享给你的朋友', // 分享标题
+                    title: '分享给您的朋友', // 分享标题
                     link: 'http://puti.kim/index.php?r=style/share', // 分享链接
                     imgUrl: '#', // 分享图标
                     success: function () {

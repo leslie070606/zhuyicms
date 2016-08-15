@@ -25,7 +25,7 @@ class TestController extends Controller
 		$sms = Yii::$app->Sms;
         //参数1 手机号码数组(array(13810332009,13810332002,...))，参数2 短信内容(string)
         //13810332009,13051508180,15810649252
-		$ret = $sms->send(array(13051508180),'北京住艺科技有限公司欢迎你：yf');
+		$ret = $sms->send(array(13051508180),'北京住艺科技有限公司欢迎您：yf');
         //$ret 返回0 代表成功！,其他则有错误
         echo time();
         echo '<br>';

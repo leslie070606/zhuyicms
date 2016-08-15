@@ -137,7 +137,7 @@ $userId = $session->get("user_id");
                                 $html = '
 								<div class="Blank_Page">
 									<span>
-										你还没有产生订单<br/>
+										您还没有产生订单<br/>
 										<a href="' . Url::toRoute('project/choose_designer') . '" class="red">点击选择住艺设计师</a>
 									</span>
 								</div>';
@@ -373,7 +373,7 @@ HTML;
 									</div>
 				  				<div class="tj_box leave_word">
 				  					<span class="tj_spa">设计师留言：</span>
-				  					<span class="tj_spb">非常抱歉，我最近1个月的档期已满，感谢你的支持 你可以考虑住艺根据私人匹配，推荐你的设计师</span>
+				  					<span class="tj_spb">非常抱歉，我最近1个月的档期已满，感谢您的支持 您可以考虑住艺根据私人匹配，推荐您的设计师</span>
 				  				</div>
 				  				
 				  			</div>

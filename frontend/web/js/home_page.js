@@ -29,6 +29,8 @@ $(function(){
 			
 		}
 	});
+       
+        
 	var gettt=0;
 	touch.on("#check","tap",function(ev){
 		if(gettt==0){

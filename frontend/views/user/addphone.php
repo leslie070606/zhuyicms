@@ -53,7 +53,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             </section>   
 
             <div class="login_title">
-                绑定手机号<br />你的需求就会被住艺永久记录，并可以随时更改
+                绑定手机号<br />您的需求就会被住艺永久记录，并可以随时更改
             </div>
             <?= Html::beginForm('', 'post', ['id' => 'form-addphone']); ?>
             <div class="login_ipt">
