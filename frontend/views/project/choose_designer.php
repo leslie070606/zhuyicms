@@ -249,7 +249,8 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     touch.on(".box_sjs li", "tap", function () {
 
                     var id = thiss.attr("id");
-                            var last = parseInt(id.substr( - 1));
+                            var last = parseInt(id.substr(id.length-1));
+                            
                             $(".designer_box .pro_here:eq(" + last + ")").find(".input_box").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
                             thiss.remove();
                     })

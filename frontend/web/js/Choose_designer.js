@@ -15,7 +15,7 @@ $(function () {
                 touch.on(".box_sjs li", "tap", function () {
                     
                     var id = $(this).attr("id");
-                    var last = parseInt(id.substr(-1));
+                    var last =parseInt(id.substr(id.length-1));
                     $(".designer_box .pro_here:eq(" + last + ")").find(".input_box").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
                     $(this).remove();
                     var lenfth = $(".box_sjs li").length;
@@ -56,10 +56,9 @@ $(function () {
         ;
     });
 
-    touch.on(".box_sjs li", "tap", function () {
-
-        var id = $(this).attr("id");
-        var last = parseInt(id.substr(-1));
+    touch.on(".box_sjs li", "tap", function (ev) {
+       var id = $(ev.currentTarget).attr("id");
+       var last = parseInt(id.substr(id.length-1));
         $(".designer_box .pro_here:eq(" + last + ")").find(".input_box").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
         $(this).remove();
         var lenfth = $(".box_sjs li").length;
