@@ -128,8 +128,8 @@ $userId = $session->get("user_id");
 
                                 $html = '
 								<div class="Blank_Page">
-									<span>你还没有产生订单<br/>
-										可以先浏览  <a href="' . Url::toRoute('designer/list') . '" class="red">住艺的设计师</a>
+									<span>目前还没有订单产生<br/>
+										 先来认识<a href="' . Url::toRoute('designer/list') . '" class="red">住艺设计师</a>吧
 									</span>
 								</div>';
                                 echo $html;
@@ -202,7 +202,7 @@ $userId = $session->get("user_id");
                                             $createTime = time();
                                         }
                                         $timestamp = $createTime + 24 * 3600;
-                                        $time = date('Y-m-d H', $timestamp);
+                                        $time = date('m月d日 H', $timestamp);
                                         $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
@@ -228,7 +228,7 @@ $userId = $session->get("user_id");
 												<span class="jm_time">见面2小时</span>
 												
 								  				<div class="true_time" style="text-indent:0;">
-				住艺管家正在协调设计师的意向和时间订单状态 将在<br />{$time}点前更新
+				住艺正在协调设计师意向和时间，订单状态将在{$time}点前更新。
 								  				</div>
 											</div>
 HTML;
@@ -272,7 +272,7 @@ HTML;
 												<span class="jm_time">见面2小时</span>
 												
 				  								<div class="true_time">
-													住艺君提示：时间限量<br/>如未尽快确认则此时间段可能被其他客户抢走
+													请尽快确认时间，以防设计师被其他用户抢先约走。
 				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text" confirm_time="$confirmTime">
 												</div>
 				  							</div>
@@ -533,7 +533,7 @@ HTML;
                         async: true,
                         success: function (data) {
                             if (data == -1) {
-                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家<br />点击查看<a href="<?php echo Url::toRoute('/designer/list'); ?>" class="red">住艺设计师</a></span></div>'
+                                var htmlla = '<div class="Blank_Page"><span>别因为错过一位设计师，错过一个好的家<br />快来认识<a href="<?php echo Url::toRoute('/designer/list'); ?>" class="red">住艺设计师</a>吧</span></div>'
                                 $(".collect").html(htmlla);
                             }
 
