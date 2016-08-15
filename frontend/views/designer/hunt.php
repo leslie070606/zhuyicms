@@ -80,14 +80,14 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <a href="<?php echo Url::toRoute(['/designer/detail','params'=>26]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <img src="/uploads/20160801/1047471039104739未标题-1.jpg" />
+                                <img src="/uploads/20160812/1136361139113639陈暄1.png" />
                             </div>
 
                             <div class="bottom_name">
                                 <span class="here_name">陈暄</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>唯木空间</span>
+                                <span>十上建筑</span>
                             </div>
 
 
@@ -104,7 +104,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                                 <span class="here_name">程晖</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>十上建筑</span>
+                                <span>唯木空间</span>
                             </div>
 
 

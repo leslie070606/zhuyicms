@@ -12,12 +12,13 @@ $(function () {
                 var lii = "<li id='li_" + index + "'><img src=" + src + " /><i class='iconfont icon-shanchu shanchu'></i></li>";
                 $(".box_sjs").append(lii);
                 $(".navv_tj").removeClass("zhihui");
-                touch.on(".box_sjs li", "tap", function () {
+                touch.on(".box_sjs li", "tap", function (ev) {
                     
-                    var id = $(this).attr("id");
+                    var id = $(ev.currentTarget).attr("id");
+                   
                     var last =parseInt(id.substr(id.length-1));
                     $(".designer_box .pro_here:eq(" + last + ")").find(".input_box").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
-                    $(this).remove();
+                    $(ev.currentTarget).remove();
                     var lenfth = $(".box_sjs li").length;
                     if (lenfth == 0) {
                         $("#htmll").text("没有发现喜欢的设计师，请住艺为我甄选");
@@ -56,19 +57,7 @@ $(function () {
         ;
     });
 
-    touch.on(".box_sjs li", "tap", function (ev) {
-       var id = $(ev.currentTarget).attr("id");
-       var last = parseInt(id.substr(id.length-1));
-        $(".designer_box .pro_here:eq(" + last + ")").find(".input_box").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
-        $(this).remove();
-        var lenfth = $(".box_sjs li").length;
-        if (lenfth == 0) {
-            $("#htmll").text("没有发现喜欢的设计师，请住艺为我甄选");
-        }
-        if ($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong") && $(".box_sjs li").length == 0) {
-            $(".navv_tj").addClass("zhihui");
-        }
-    })
+   
     touch.on(".rg_pp", "tap", function (ev) {
         if ($(ev.currentTarget).find(".iconfont").hasClass("icon-xuanzhong")) {
             $(ev.currentTarget).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
