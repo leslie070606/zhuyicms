@@ -192,6 +192,7 @@ $userId = $session->get("user_id");
                                     $statusMsg = \frontend\models\Order::$ORDER_STATUS_DICT["$status"];
                                     $orderType = $d['order_type'];
                                     //用户创建并且待设计师确认
+									$html = '';
                                     if ($status ==
                                             \frontend\models\Order::STATUS_WAITING_DESIGNER_TO_CONFIRM) {
                                         $rows = \frontend\models\Order::findOne($orderId);
@@ -201,7 +202,7 @@ $userId = $session->get("user_id");
                                             $createTime = time();
                                         }
                                         $timestamp = $createTime + 24 * 3600;
-                                        $time = date('Y-m-d H:i:s', $timestamp);
+                                        $time = date('Y-m-d H', $timestamp);
                                         $html = <<<HTML
                             				<div class="dd_here">
 								  				<div class="here_bottom line_center">
@@ -227,7 +228,7 @@ $userId = $session->get("user_id");
 												<span class="jm_time">见面2小时</span>
 												
 								  				<div class="true_time" style="text-indent:0;">
-								  				住艺管家正在协调设计师的意向和时间订单状态 将在<br />{$time}前更新
+				住艺管家正在协调设计师的意向和时间订单状态 将在<br />{$time}点前更新
 								  				</div>
 											</div>
 HTML;
