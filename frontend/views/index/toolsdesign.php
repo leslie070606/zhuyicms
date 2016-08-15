@@ -63,7 +63,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
             </div> 
 
-            <a href="http://form.mikecrm.com/UWcirG"><div class="banner">
+            <a href="https://jinshuju.net/f/WxnP3w"><div class="banner">
                     <img src="img/index/tool_banner.jpg" />
                 </div>
             </a>
@@ -109,7 +109,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
-                <a href="http://form.mikecrm.com/UWcirG"><span>找设计师</span></a>
+                <a href="https://jinshuju.net/f/WxnP3w"><span>找设计师</span></a>
             </div>
             <section class="nav_bot">
 

@@ -83,7 +83,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
                 <div class="edit_here">
                     <span class="here_title">使用面积</span>
-                    <span class="here_meng"><?= $model->use_area ?></span>
+                    <span class="here_meng"><?= $model->use_area ?>平米</span>
                 </div>
 
                 <div class="edit_here">
@@ -236,12 +236,12 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <input type="hidden" name="project_tags" id="project_tags" value="<?= $project_tags ?>" />
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont <?php
-                            if (in_array('灯光及光氛围', $project_tags_arr)) {
+                            if (in_array('灯光及氛围', $project_tags_arr)) {
                                 echo "icon-xuanzhong";
                             } else {
                                 echo "icon-weixuanzhong";
                             }
-                            ?>"></i>灯光及光氛围</span>
+                            ?>"></i>灯光及氛围</span>
                         <span class="right_sp list_spa"><i class="iconfont <?php
                             if (in_array('儿童房的设计', $project_tags_arr)) {
                                 echo "icon-xuanzhong";
@@ -275,12 +275,12 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                             }
                             ?>"></i>收纳整理空间</span>
                         <span class="right_sp list_spa"><i class="iconfont <?php
-                            if (in_array('家庭成员拥有相对独立空间', $project_tags_arr)) {
+                            if (in_array('相对独立的家庭成员空间', $project_tags_arr)) {
                                 echo "icon-xuanzhong";
                             } else {
                                 echo "icon-weixuanzhong";
                             }
-                            ?>"></i>家庭成员拥有相对独立空间</span>
+                            ?>"></i>相对独立的家庭成员空间</span>
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont <?php

@@ -70,7 +70,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
                <div class="boxa_box">
                         <span class="box_soa">软装咨询</span>
-                        <span class="box_sob">效果提升  统一风格</span>
+                        <span class="box_sob">家居配饰  布局摆放</span>
                     </div>
 
                <div class="boxa_box">
@@ -154,14 +154,14 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="demand_here here_6">
-                    <span class="dem_title">你的大致预算是？</span>
+                    <span class="dem_title">你的大致预算是？(万元)</span>
                     <span>第<a class="red">6</a>题/7题</span>
                     <div class="six_box">
                         <input class="dema_ipt" type="tel" placeholder="预算（万）" />
                         <div class="dema_explain">
                             <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">
-                                住艺参考：如果你需要设计+施工服务，综合考虑市场价及结合设计师报价后（依据设计师个人差异，设计费用报价多在￥400/㎡~￥1200/㎡区间内浮动），住艺建议你为每平米预留约￥3000预算（包含设计费，材料，施工等），以确保设计及施工质量。
+                                [住艺参考] 如果你需要设计+施工服务，综合考虑市场价及设计师报价后（依据设计师个人差异，设计费用报价多在400元/㎡~1200元/㎡区间内浮动），住艺建议你为每平米预留约3000元预算（包含设计费，材料，施工等），以确保设计及施工质量。
                             </div>
                         </div>
                     </div>
@@ -173,23 +173,23 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <div class="seven_box">
                         <div class="seven_here">
                             <span class="seven_spa">设计大师</span>
-                            <span class="seven_spb">有多项杰出设计作品</span>
-                            <span class="seven_spc">并获得国际大奖，享有广泛声誉</span>
-                            <span class="seven_spd">设计费平均每平米1200元起</span>
+                            <span class="seven_spb">拥有多项杰出设计作品</span>
+                            <span class="seven_spc">屡获国际大奖，享有广泛声誉</span>
+                            <span class="seven_spd">设计费平均每平米1200元</span>
                         </div>
 
                         <div class="seven_here">
                             <span class="seven_spa">资深设计师</span>
                             <span class="seven_spb">知名设计事务所背景</span>
-                            <span class="seven_spc">设计作品在行业内有极好的口碑</span>
-                            <span class="seven_spd">设计费平均每平米800元起</span>
+                            <span class="seven_spc">设计作品有极好的行业口碑</span>
+                            <span class="seven_spd">设计费平均每平米800元</span>
                         </div>
 
                         <div class="seven_here">
                             <span class="seven_spa">新秀设计师</span>
                             <span class="seven_spb">业内新生代设计师</span>
-                            <span class="seven_spc">有很好的设计理念和客户服务意识</span>
-                            <span class="seven_spd">设计费平均每平米400元起</span>
+                            <span class="seven_spc">设计理念领先,服务意识优秀</span>
+                            <span class="seven_spd">设计费平均每平米400元</span>
                         </div>
                     </div>
                 </div>
@@ -221,7 +221,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 }else if(index==3){
                     window.location="https://jinshuju.net/f/gGZI3n";
                 }else if(index==4){
-                    window.location="http://form.mikecrm.com/UWcirG";
+                    window.location="https://jinshuju.net/f/WxnP3w";
                 }
             },500);
             

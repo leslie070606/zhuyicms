@@ -63,7 +63,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             </div>  
             <div class="hunt_here">
                 <div class="hunt_input">
-                    <input class="ipu" type="text"  placeholder="试试输入设计师姓名或关键字" />
+                    <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
 

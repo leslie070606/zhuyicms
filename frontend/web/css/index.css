@@ -12,7 +12,7 @@
 
 .post_title { display: block; margin-top: .8rem; position: relative; height: .66rem; overflow: hidden; text-align: center;}
 .post_title span { width: 2.5rem; top: 0.02rem; z-index: 9999; position: absolute; height: .66rem; font-size: .32rem; line-height: .66rem; left: 50%; margin-left: -1.25rem;}
-.post_title span a { color: #FFFFFF; font-weight: bold; display: block; position: absolute; width: 100%; z-index: 99;}
+.post_title span a { color: #FFFFFF; font-family: fzlth,tahoma,arial,sans-serif !important; font-weight: bold; display: block; position: absolute; width: 100%; z-index: 99;}
 .bg_banner { float: left; width: 100%;}
 
 .bg_banner img {float: left; width: 100%;}

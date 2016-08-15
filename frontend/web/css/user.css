@@ -96,6 +96,7 @@
 .xq_here_top>span {  line-height:1rem; }
 .xuqiu .center_here { line-height: .4rem; width: 100%; float: left;}
 .center_here .here_left {width: 1.5rem; float: left;}
+.center_here .here_right { float: right;}
 .xq_here_top .xq_top_left { float: left; }
 .xq_here_top .xq_top_btn { position: absolute; right:0; top: 0; bottom: 0; margin: auto; width: 1.2rem; height: .6rem; line-height: .6rem; text-align: center; color: #FF4E38;}
 .here_bott { margin: .4rem 0; float: left; width: 100%;}
