@@ -378,17 +378,17 @@ HTML;
                     });
 
                 });
-function quxiao() {
-                        $("#bot_outline").hide();
-                        $(".down_right_zd").animate({opacity: .0}, 300, function () {
+                function quxiao() {
+                    $("#bot_outline").hide();
+                    $(".down_right_zd").animate({opacity: .0}, 300, function () {
 
-                            $(".down_right_zd").css("z-index", 99995);
-                        })
+                        $(".down_right_zd").css("z-index", 99995);
+                    })
 
-
-                    };
+                }
+                ;
                 $(function () {
-                    
+
 
                     touch.on("#chose_des", "tap", function () {
 

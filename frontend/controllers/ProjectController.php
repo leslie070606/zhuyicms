@@ -29,7 +29,7 @@ class ProjectController extends \common\util\BaseController {
             //获取用户信息
             $usermodel = new \common\models\ZyUser();
             $userInfo = $usermodel->findOne(['user_id' => $user_id]);
-            
+
             $model = new ZyProject();
             $project = $model->findOne(['user_id' => $user_id]);
 
@@ -57,7 +57,7 @@ class ProjectController extends \common\util\BaseController {
             $model->work_time = $proarr[3];
             $model->project_num = $this->createProNum();
             $model->create_time = time();
-            
+
             $fuwu = '';
             $yusuan = $proarr[5];
             //判断是设计还是设计+施工
@@ -65,7 +65,6 @@ class ProjectController extends \common\util\BaseController {
                 $model->service_type = '设计';
                 $model->budget_design = $proarr[5];
                 $fuwu = '设计';
-                
             } else {
                 $model->service_type = '设计和施工';
                 $model->budget_design_work = $proarr[5];
@@ -77,7 +76,7 @@ class ProjectController extends \common\util\BaseController {
                 //实例化短信接口
                 //$sms = Yii::$app->Sms;
                 $sms = new Sms();
-                $ret = $sms->send(array('13521932827'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号['.$model->attributes['project_num'].'],所在地['.$model->attributes['city'].'],开工时间['.$model->attributes['work_time'].'],需要['.$fuwu.'],预算['.$yusuan.'万],请尽快登录后台处理.');
+                $ret = $sms->send(array('13521932827'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号[' . $model->attributes['project_num'] . '],所在地[' . $model->attributes['city'] . '],开工时间[' . $model->attributes['work_time'] . '],需要[' . $fuwu . '],预算[' . $yusuan . '万],请尽快登录后台处理.');
 
                 //插入成功返回保存ID
                 return $model->attributes['project_id'];
@@ -142,8 +141,6 @@ class ProjectController extends \common\util\BaseController {
 
                     $project->home_img = $imgId;
                 }
-
-                // $mid = 'AZrRol_3CMfEitrO0pxCkOWrmAAtJ8r6F80qTe78UTzmStSUVVDeM8thiwEoAzbL';
             }
 
             //喜欢的照片
@@ -187,8 +184,6 @@ class ProjectController extends \common\util\BaseController {
             }
         }
         // 获取JS签名
-        // $jsarr = $tokenModel->getSignature();
-        //return $this->render('additional', ['jsarr' => $jsarr, 'project_id' => $project_id]);
         return $this->render('additional', ['project_id' => $project_id]);
     }
 
@@ -658,4 +653,3 @@ class ProjectController extends \common\util\BaseController {
     }
 
 }
-

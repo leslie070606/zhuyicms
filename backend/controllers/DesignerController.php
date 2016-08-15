@@ -39,7 +39,8 @@ class DesignerController extends controller {
 
         return $this->render('detail', ['model' => $designerbasicModel, 'modeladditional' => $designerAdditionalModel, 'modelwork' => $designerWorkModel, 'did' => $id]);
     }
-
+    
+    //设计师编辑
     public function actionEdit($id) {
         error_reporting(E_ALL & ~E_NOTICE);
         $id = (int) $id;

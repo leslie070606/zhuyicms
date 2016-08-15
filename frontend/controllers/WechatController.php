@@ -37,7 +37,7 @@ class WechatController extends Controller {
 
     public function actionToken() {
 
-       
+
         $token = new \app\components\Token();
         $tokenstr = $token->getToken();
         echo $tokenstr;

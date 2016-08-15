@@ -246,6 +246,7 @@ class UserController extends ZyuserController {
                     return $this->render('Addphone');
                 }
             } else {
+                //找不到用户
                 echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                 echo "找不到用户!";
                 exit;

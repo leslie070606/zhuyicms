@@ -19,7 +19,7 @@ class OrderController extends Controller{
 		return $this->render("index",['data' => $data,'pagination' => $pagination,'model' => $this->_orderM]);
 	}
 
-	//create
+	//创建订单
 	public function actionAdd(){
 		if(Yii::$app->request->isPost){
 			$this->_orderM->load(Yii::$app->request->post());
