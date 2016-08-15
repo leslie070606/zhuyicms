@@ -12,7 +12,7 @@ class Artsets extends ActiveRecord{
 	}
 
 	public function getArtsetsByDesignerId($designerId){
-		return $this->find()->where(['designer_id' => $designerId])->all();
+		return $this->find()->where(['designer_id' => $designerId])->orderBy(' sort asc ')->all();
 	}
 
 	public function getOneArtByDesignerId($designerId){
