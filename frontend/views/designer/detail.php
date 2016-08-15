@@ -268,7 +268,13 @@ HTML;
 						echo $html;
 					}
 				?>
-                    <span class="botb"><a>立即约见</a></span>
+                    
+                    <?php if(Yii::$app->request->get('checkdesiger')== 1 ){ ?>
+                        <span class="botb"><a>选择该设计师</a></span>
+                    <?php }else{ ?>
+                        <span class="botb"><a>立即约见</a></span>
+                    <?php } ?>
+                    
                 </div>
                 <div class="charges_zd"></div>
                 <div class="check_charges">

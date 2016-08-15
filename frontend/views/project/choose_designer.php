@@ -135,12 +135,12 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     ?>
                     <div class="pro_here iconfont" id="" value_id="<?= $value['did'] ?>">
 
-                        <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => $value['did']]); ?>"><img class="here_img" src="<?= $headimg ?>" /></a>
+                        <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => $value['did'], 'checkdesiger'=>1]); ?>"><img class="here_img" src="<?= $headimg ?>" /></a>
                         <div class="here_zhe"></div>
                         <div class="here_botaa"></div>
                         <div class="here_bottom line_center">
                             <div class="here_head">
-                                <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => $value['did']]); ?>">
+                                <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => $value['did'], 'checkdesiger'=>1]); ?>">
                                     <img src="<?php
                                     $db = new frontend\models\DesignerBasic();
                                     if ($db->getHeadPortrait($value['did'])) {
