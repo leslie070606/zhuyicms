@@ -80,7 +80,7 @@ if (isset($model->home_img)) {
                     ?>
 
                     <div class = "center_here" style = "line-height:.7rem; margin-bottom:.4rem">
-                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a style="color: #ffffff;" href="<?php echo Url::toRoute('project/choose_designer'); ?>">选择设计师</a></span>
+                        <span class = "" style = "float:right; width:2.4rem; height:.7rem; line-height:.7rem; text-align:center; background:#ff4e38; color:#ffffff;"><a style="color: #ffffff;" href="<?php echo Url::toRoute('project/choose_designer'); ?>">去选设计师</a></span>
                     </div>
                     <?php
                 }
@@ -93,9 +93,8 @@ if (isset($model->home_img)) {
 <?php } else { ?>
     <div class="Blank_Page">
         <span>
-            你还没有填写预约需求哦<br/>
-            详细的需求清单可以让设计师更快给出方案<br /> 
-            <a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">填写需求</a>
+            希望获得设计师量身定制的装修方案？<br/>
+            快填写<a href="<?php echo Url::toRoute('project/match_designer'); ?>" class="red">需求清单</a>吧！
         </span>
 
     </div>
