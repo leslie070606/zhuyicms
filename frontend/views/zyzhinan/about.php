@@ -62,7 +62,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 			<span class="guide_box_title about_title"><a class="red">一百个字</a> ，读懂住艺</span>
 			
 			<div class="here_c_box">
-				<span class="box_sp">“住艺”是<a class="color_hei">康泰纳仕集团(Condé Nast)旗下，与《安邸AD》关联的全新室内设计师平台。</a></span>
+                            <span class="box_sp">“住艺”是<a class="color_hei">康泰纳仕集团(<i style="font-family:pictograph,sans-serif !important;">Condé Nast</i>)旗下，与《安邸AD》关联的全新室内设计师平台。</a></span>
 				<span class="box_sp">住艺集结了国内最优质的设计人才，只为帮你找到最理想的设计师，让空间变成家。</span>
 				<span class="box_sp">住艺还将为你提供从<a class="color_hei">需求梳理、专业咨询、产品推荐，到质量把控的全程无忧管家式服务，让从此你摆脱装修设计的繁琐困难，变得省心舒心。</a></span>
 				<span class="box_sp">除了家之外，如果你想拥有独一无二的办公室、餐厅或店铺，住艺同样能够帮助你！</span>

@@ -13,7 +13,7 @@ $(function(){
                 }else{
                     
                     var getdata=new Date(data);
-                    var month=getdata.getMonth();
+                    var month=getdata.getMonth()+1;
                     var day=getdata.getDate();
                     var hours=getdata.getHours();
 

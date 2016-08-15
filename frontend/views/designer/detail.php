@@ -75,6 +75,8 @@ $userId = $session->get("user_id");
             </div>
 
             <input type="hidden" id="user_id" value="<?php echo $data['user_id'] ?>" />
+<!--选择设计师的val-->
+<input type="hidden" id="chose_val" value="<?php echo Yii::$app->request->get('pro_id');?>" />
             <section class="page_banner">
                 <div class="banner_zd" style=" position:absolute; width:100%; height:100%;top:0; width: 100%;left:0; z-index:1; background:#000000; opacity:0.1;"></div>           
                 <img class="banner_img here_img" src="<?= $data['background'] ?>" />
@@ -270,7 +272,7 @@ HTML;
 				?>
                     
                     <?php if(Yii::$app->request->get('checkdesiger')== 1 ){ ?>
-                        <span class="botb"><a>选择该设计师</a></span>
+                        <span class="botbb" id="chose_des"><a>选择该设计师</a></span>
                     <?php }else{ ?>
                         <span class="botb"><a>立即约见</a></span>
                     <?php } ?>
@@ -377,6 +379,11 @@ HTML;
                 });
 
                 $(function () {
+                    touch.on("#chose_des","tap",function(){
+                        
+                        var ckshejishi = $("#chose_val").val();
+                        window.location.href="<?php echo Yii::getAlias('@web') . '/index.php?r=project/choose_designer'; ?>"+'&ckshejishi='+ckshejishi;
+                    });
                     function GetQueryString(name) {
                         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
                         var r = window.location.search.substr(1).match(reg);
@@ -414,8 +421,6 @@ HTML;
                                     url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/uncollect'; ?>" + "&&params=" + params,
                                     data: "",
                                     success: function (data) {
-                                        console.log("js output...........11111");
-                                        console.log(data);
                                     }
                                 })
                             } else if (collect_status == 2) {
