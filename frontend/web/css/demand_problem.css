@@ -58,7 +58,7 @@ body{ padding-top: 0;}
 .dema_explain { margin-top: .2rem; margin-bottom: .4rem; text-align: left; margin-left: .3rem; margin-right: .3rem;}
 .explain_title { display: block; margin: .2rem 0 .2rem;  font-weight: bold; color: #221814;}
 .explain_mesg { color: #777777; line-height: 150%;}
-.seven_box .seven_here { width: 4rem; height: 2.2rem; position: relative; color: #777777; border: 1px solid #EEEFEF; box-sizing: border-box; margin: .4rem auto 0 auto;}
+.seven_box .seven_here { width: 4rem; height: 2.2rem; position: relative; color: #777777; border: 1px solid #777777; box-sizing: border-box; margin: .4rem auto 0 auto;}
 .seven_box>.active {border-color: #FF4E38; color: #FF4E38;}
 .seven_box .seven_here>span { display: block;}
 .seven_spb,.seven_spc { font-size: .2rem;}

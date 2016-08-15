@@ -63,7 +63,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
             </div> 
 
-            <a href="http://form.mikecrm.com/UWcirG"><div class="banner">
+            <a href="https://jinshuju.net/f/WxnP3w"><div class="banner">
                     <img src="img/index/tool_banner.jpg" />
                 </div>
             </a>
@@ -93,9 +93,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     
                     <div class="pro_here">
                         <div class="pro_here_bcimg iconfont icon-bofang1">
-                            <img class="here_img" src="img/index/yanjia_22.jpg" />
+                            <img class="here_img" src="img/index/haili.jpg" />
                         </div>
-                        <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/indexb.jpg">
+                        <video id="example_video2" class="video-js vjs-default-skin" preload="none" poster="img/index/haili.jpg">
                             <source src="http://osszhuyi.oss-cn-qingdao.aliyuncs.com/zhuyivideo/hailigongfang.MP4" type='video/mp4' />
                         </video>
                         <div class="here_botaa"></div>
@@ -109,7 +109,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div><!--pro_box end-->
             </section><!--production end-->
             <div class="bot_btn_aa">
-                <a href="http://form.mikecrm.com/UWcirG"><span>找设计师</span></a>
+                <a href="https://jinshuju.net/f/WxnP3w"><span>找设计师</span></a>
             </div>
             <section class="nav_bot">
 

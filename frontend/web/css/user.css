@@ -59,7 +59,7 @@
 .jm_money { margin-bottom: .4rem; color: #777777;}
 .jm_money>a { color: #FF4E38; text-decoration:line-through ; font-weight: bold; margin-right: .2rem;}
 .zy_pp .pro_here { margin-bottom: .4rem;}
-.zy_pp .true_time { padding-left: .3rem; text-indent: 0; position: relative; float: left; width: 96%;}
+.zy_pp .true_time { text-indent: 0; position: relative; float: left; width: 96%;}
 .zy_pp .true_time .true_btn { position: absolute; border: none; font-size: .2rem; text-indent: 0; right: .3rem; top: 0; bottom: 0;width: 1.4rem; height: .6rem; background: #FF4E38; line-height: .6rem; color: #ffffff; margin: auto; text-align: center;}
 .tj_spa { display: block; font-weight: bold; margin-bottom: .2rem;}
 .tj_box { margin-left: .3rem;}
@@ -96,6 +96,7 @@
 .xq_here_top>span {  line-height:1rem; }
 .xuqiu .center_here { line-height: .4rem; width: 100%; float: left;}
 .center_here .here_left {width: 1.5rem; float: left;}
+.center_here .here_right { float: right;}
 .xq_here_top .xq_top_left { float: left; }
 .xq_here_top .xq_top_btn { position: absolute; right:0; top: 0; bottom: 0; margin: auto; width: 1.2rem; height: .6rem; line-height: .6rem; text-align: center; color: #FF4E38;}
 .here_bott { margin: .4rem 0; float: left; width: 100%;}

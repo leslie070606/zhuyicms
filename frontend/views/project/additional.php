@@ -203,7 +203,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">对于空间，我尤其注重（可复选）</span>
                     <input type="hidden" name="project_tags" id="project_tags" value="" />
                     <div>
-                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>灯光及光氛围</span>
+                        <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>灯光及氛围</span>
                         <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>儿童房的设计</span>
                     </div>
                     <div>
@@ -212,7 +212,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>收纳整理空间</span>
-                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>家庭成员拥有相对独立空间</span>
+                        <span class="right_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>相对独立的家庭成员空间</span>
                     </div>
                     <div>
                         <span class="left_sp list_spa"><i class="iconfont icon-weixuanzhong"></i>艺术品、收藏品的巧妙应用</span>

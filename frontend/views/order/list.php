@@ -225,9 +225,9 @@ $userId = $session->get("user_id");
 													</div>
 												</div>
 												<span class="jm_time">见面2小时</span>
-												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
-								  				<div class="true_time">
-								  				住艺管家正在协调设计师的意向和时间订单状态 将在{$time}前更新
+												
+								  				<div class="true_time" style="text-indent:0;">
+								  				住艺管家正在协调设计师的意向和时间订单状态 将在<br />{$time}前更新
 								  				</div>
 											</div>
 HTML;
@@ -269,7 +269,7 @@ HTML;
 				  								</div>
 				  				
 												<span class="jm_time">见面2小时</span>
-												<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+												
 				  								<div class="true_time">
 													住艺君提示：时间限量<br/>如未尽快确认则此时间段可能被其他客户抢走
 				  									<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTime" type="text" confirm_time="$confirmTime">
@@ -320,7 +320,7 @@ HTML;
 				  					</div>
 				  				
 									<span class="jm_time">见面2小时</span>
-									<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+									
 				  					<div class="true_time">
 				  						住艺君提示：时间限量<br />如未尽快确认则此时间段可能被其他客户抢走
 				  						<input value="确定时间" class="true_btn" readonly="" name="appTime" id="appTimeA" type="text" confirm_time="$confirmTime">
@@ -349,7 +349,7 @@ HTML;
 								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
-								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+								
 				  				
 				  			</div>
 HTML;
@@ -398,7 +398,7 @@ HTML;
 								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
-								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+								
 				  				
 				  			</div>
 HTML;
@@ -424,7 +424,7 @@ HTML;
 								<span class="jm_money">见面地点：{$appointmentLocation}</span>
 				  				
 								<span class="jm_time">见面2小时</span>
-								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+								
 								<div class="true_time queren_btn">
 					  					<span class="true_btnb true_btnaa" url="$url">开始深度合作</span>
 					  					<span class="true_btna" url="$url">计划有变，暂时先不合作了</span>
@@ -474,7 +474,7 @@ HTML;
 									</div>
 				  				
 								<span class="jm_time">见面2小时</span>
-								<span class="jm_money"><a>￥800</a>(首次免费约见)</span>
+								
 								<input type="hidden" value="" name="list_val" class="list_val" />
 								
 				  			</div>

@@ -1,12 +1,12 @@
 .guide_box { width: 92% !important; padding: 0  4%;}
 .guide_box_here .here_a_a,.guide_box_here .here_a_a img { float:left; width:100%;}
-.guide_box_here { font-size: .24rem; text-align: center; padding-bottom: 1rem;}
+.guide_box_here { font-size: .28rem; text-align: center; padding-bottom: 1rem;}
 .here_a_box span { display: block; text-align: center;}
 .here_a_box .box_spa { margin: .8rem auto .4rem; font-size: .32rem; color: #FF4E38;}
 .here_a_box .box_spb { color: #777777;}
 .guide_box_title { font-size: .44rem; display: block; text-align: center; margin-top:.4rem ;}
-.here_b_box .box_spa { color: #FF4E38; font-size: .28rem; margin-top: .8rem; margin-bottom: .2rem; display: block; text-align: left;}
-.here_b_box .box_spb { font-size: .24rem;  color: #777777; display: block; text-indent: 2em; text-align: left; line-height: 150%; margin-bottom: .1rem;}
+.here_b_box .box_spa { color: #FF4E38; font-size: .30rem; margin-top: .8rem; margin-bottom: .2rem; display: block; text-align: left;}
+.here_b_box .box_spb { font-size: .28rem;  color: #777777; display: block; text-indent: 2em; text-align: left; line-height: 150%; margin-bottom: .1rem;}
 .here_b_box .box_spa i { float: left; width: .12rem; height: .12rem; background: #FF4E38; margin-top: .09rem; border-radius: .06rem; margin-right: .2rem;}
 .here_c_box .box_sp {display: block; text-indent: 2em; line-height: 150%; color: #777777; margin-bottom: .4rem; text-align: left;}
 .guide_box_titlea { margin: .4rem 0; display: block; font-size: .32rem; text-align: right; margin-right: 1rem;}

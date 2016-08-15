@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList([0 => '待设计师确认',1 => '待用户确认时间',2 => '待见面',3 => '预约已取消',5 => '待确认见面完成',6 => '已见面',7 => '已见面未深度合作', 8 => '已深度合作未上传合同']) ?>
     
-    <?= $form->field($model, 'appointment_time',['inputOptions'=>['type'=>'date']])->textInput() ?>
+    <?= $form->field($model, 'appointment_time'/*,['inputOptions'=>['type'=>'date']]*/)->textInput(['placeholder' => '请按照格式(2000-01-01 00:00:00)书写']) ?>
 
     <?= $form->field($model, 'appointment_location')->textInput(['maxlength' => true]) ?>
 

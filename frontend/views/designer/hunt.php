@@ -63,7 +63,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             </div>  
             <div class="hunt_here">
                 <div class="hunt_input">
-                    <input class="ipu" type="text"  placeholder="试试输入设计师姓名或关键字" />
+                    <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
 
@@ -87,7 +87,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                                 <span class="here_name">陈暄</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>硬装设计师</span><span>软装设计师</span>
+                                <span>唯木空间</span>
                             </div>
 
 
@@ -104,7 +104,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                                 <span class="here_name">程晖</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>软装设计师</span><span>公装设计师</span>
+                                <span>十上建筑</span>
                             </div>
 
 
@@ -121,7 +121,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                                 <span class="here_name">芃芃</span><span class="here_namea">北京</span>
                             </div>
                             <div class="bottom_label bottom_referral">
-                                <span>软装设计师</span><span>公装设计师</span>
+                                <span>颐和居尚</span>
                             </div>
 
 
