@@ -422,7 +422,7 @@ position: absolute;
 .out_true .out_true_top { height: 1.1rem; text-align: center; line-height: 1.1rem; font-size: .28rem; font-weight: bold; box-sizing: border-box; border-bottom: 1px solid #eeefef;}
 .out_true .out_true_bott { line-height: .8rem;}
 .out_true .out_true_bott>span,.out_true .out_true_bott>a { color: #ff4e38; font-size: .24rem; float: left; width: 50%; text-align: center;}
-.out_true .out_true_bott .queding,.out_true .out_true_bott a { box-sizing: border-box; border-left: 1px solid #c9c9ca;}
+.out_true .out_true_bott .queding,.out_true .out_true_bott a { box-sizing: border-box; border-left: 1px solid #eeefef;}
 .out_true .out_true_bott a>span { display: block; border: none;}
 .file-drop-zone.clickable:hover,.file-preview {
    border: none;
