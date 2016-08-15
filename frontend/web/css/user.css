@@ -1,5 +1,5 @@
 .user_box { font-size: .24rem; overflow: hidden;}
-#nav_box { width: 300%; float: left; position: relative; left: 0;	}
+#nav_box { width: 300%; padding-bottom: 1rem; float: left; position: relative; left: 0;	}
 #nav_box>li { width: 33.33%; float: left;overflow: hidden; padding-bottom: .0rem; min-height: 3rem;}
 #nav_box>li>div { width: 100%; font-size: .24rem;  overflow: hidden; text-align: center;}
 .collect { float: left; width: 100%; overflow: hidden;padding-bottom: 1rem;}
