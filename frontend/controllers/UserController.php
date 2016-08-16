@@ -309,7 +309,7 @@ class UserController extends ZyuserController {
         //$sms = Yii::$app->Sms;
         $sms = new Sms();
 
-        $ret = $sms->send(array($phone), '【住艺】很高兴认识您，验证码[ ' . $phonestr . ' ]。让您成为您 敢让家不同！住艺客服：4000-600-636');
+        $ret = $sms->send(array($phone), '【住艺】很高兴认识你，验证码[ ' . $phonestr . ' ]。让你成为你 敢让家不同！住艺客服：4000-600-636');
         //$res = $sms->login();
         // return $ret;
         //$ret 返回0 代表成功！,其他则有错误

@@ -87,6 +87,10 @@ body {  padding-bottom: 1.88rem;}
     position: relative;
     top: 50%;
     transform: translate(0,-50%);
+-ms-transform: translate(0,-50%); 	/* IE 9 */
+-moz-transform: translate(0,-50%); 	/* Firefox */
+-webkit-transform: translate(0,-50%); /* Safari 和 Chrome */
+-o-transform: translate(0,-50%); 	
         
 }
 page_box .bx-wrapper .bx-pager .bx-pager-item, .bx-wrapper .bx-controls-auto .bx-controls-auto-item {    display: none !important;}

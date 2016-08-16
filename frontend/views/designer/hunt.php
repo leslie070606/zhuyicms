@@ -57,13 +57,15 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <div class="out_true_bott">
                         <span class="quxiao">取消</span>
                         <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
-</a>
+                        </a>
                     </div>
                 </div>
             </div>  
             <div class="hunt_here">
                 <div class="hunt_input">
+                    <form action="" onsubmit="return false;">
                     <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
+                    </form>
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
 
@@ -77,7 +79,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="his_title">
                         热门推荐
                     </span>
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>26]); ?>">
+                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 26]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160812/1136361139113639陈暄1.png" />
@@ -94,7 +96,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                         </div>
                     </a >
 
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>44]); ?>">
+                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 44]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160801/1051511023105123未标题-1.jpg" />
@@ -111,7 +113,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                         </div>
                     </a >
 
-                    <a href="<?php echo Url::toRoute(['/designer/detail','params'=>18]); ?>">
+                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 18]); ?>">
                         <div class="here_bottom line_center">
                             <div class="here_head">
                                 <img src="/uploads/20160803/0018180041001841芃芃.jpg" />
@@ -158,6 +160,14 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             }
         });
     }
+
+    $(window).keydown(function (event) {
+        switch (event.which) {
+            case(13):
+                search();
+                break;
+        }
+    });
     function out_line() {
         $(".out_Capacity").show().animate({
             opacity: 1

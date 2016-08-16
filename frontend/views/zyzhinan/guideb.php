@@ -59,7 +59,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 				</div>
 			</div>  
             <div class="guide_box_here">
-                <span class="guide_box_title">选择设计师之前<br/>您必须要了解的三件事情 </span>
+                <span class="guide_box_title">选择设计师之前<br/>你必须要了解的三件事情 </span>
                 <div class="here_b_box">
                     <span class="box_spa"><i></i>硬装与软装，设计师术业有专攻</span>
                     <span class="box_spb">硬装设计指的是对于空间利用，结构改造，主材使用等需要施工环节的设计。<span style="color: #221814; font-weight: bold;">软装通俗的说，就是您把房子倒过来，掉下来的都属于软装，</span>如窗帘、沙发、靠垫、壁挂、地毯、床上用品、灯具等以及装饰工艺品、植物等。简单地说，如果您需要任何施工，那么您就需要一名硬装设计师；如果只是家具或陈列品的更换，则需要一名软装设计师。有一些造诣高的硬装设计师也可以在完成硬装设计的同时完成软装设计，但普遍来说两者都是分开的。</span>
