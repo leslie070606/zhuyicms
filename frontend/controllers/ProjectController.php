@@ -222,7 +222,7 @@ class ProjectController extends \common\util\BaseController {
 
                 foreach ($upfile as $imgobjct) {
 
-                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
 
                     $dirimg = $dir . "/" . $fileName;
 
@@ -251,7 +251,7 @@ class ProjectController extends \common\util\BaseController {
 
                 foreach ($favoriteupfile as $imgobjct) {
 
-                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
 
                     $dirimg = $dir . "/" . $fileName;
 
@@ -461,7 +461,7 @@ class ProjectController extends \common\util\BaseController {
 
                 foreach ($upfile as $imgobjct) {
 
-                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
 
                     $dirimg = $dir . "/" . $fileName;
 
@@ -492,7 +492,7 @@ class ProjectController extends \common\util\BaseController {
 
                 foreach ($favoriteupfile as $imgobjct) {
 
-                    $fileName = date("HiiHsHis") . $imgobjct->baseName . "." . $imgobjct->extension;
+                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
 
                     $dirimg = $dir . "/" . $fileName;
 
@@ -650,6 +650,29 @@ class ProjectController extends \common\util\BaseController {
         $phonestr = substr($phonestr, 3, 4);
         $phonestr = substr(time(), -2) . $phonestr;
         return $phonestr;
+    }
+
+    /**
+     *  
+     * 获取随机字符串 
+     * @param int $len 
+     * @param string $type 1数字 2字符 3数字+字符 默认1 
+     */
+    public function getRandomString($len = 6, $type = '1') {
+        if ($type == '1') {
+            $str = '0123456789';
+        } elseif ($type == '2') {
+            $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
+        } elseif ($type == '3') {
+            $str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
+        }
+        $n = $len;
+        $len = strlen($str) - 1;
+        $s = '';
+        for ($i = 0; $i < $n; $i ++) {
+            $s .= $str [rand(0, $len)];
+        }
+        return $s;
     }
 
 }
