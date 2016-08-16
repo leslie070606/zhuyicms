@@ -131,6 +131,9 @@ class ZyorderController extends Controller
             $appointmentTime = strtotime($appointmentTime);
             $model->appointment_time = $appointmentTime;
 
+			$status = $model->attributes['status'];
+			$model->status = $status;
+
 			$model->update_time = time();
 			if($model->save()){
 				return $this->redirect(['view','id' => $model->order_id]);
