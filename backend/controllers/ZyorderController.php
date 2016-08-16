@@ -126,6 +126,11 @@ class ZyorderController extends Controller
         $model = $this->findModel($id);
 
         if($model->load(Yii::$app->request->post())){
+            //见面时间
+            $appointmentTime = $model->attributes['appointment_time'];
+            $appointmentTime = strtotime($appointmentTime);
+            $model->appointment_time = $appointmentTime;
+
 			$model->update_time = time();
 			if($model->save()){
 				return $this->redirect(['view','id' => $model->order_id]);
