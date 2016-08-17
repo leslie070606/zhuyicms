@@ -33,6 +33,7 @@ path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
 return [
     'frontDomain' => 'httP://zytest.zhuyidesign.com',
 ];
+
 六，/zhuyicms/frontend/controllers/UserController.php
 public function actionLogin() {   微信登录修改回调链接
 
