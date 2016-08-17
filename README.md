@@ -28,6 +28,12 @@ path: zhuyicms\vendor\yiisoft\yii2\base\Model.php
     
  四，修改 /zhuyicms/vendor/mdmsoft/yii2-admin/controllers/AssignmentController.php
  public $usernameField = 'user_name';
+ 
+ 五，/zhuyicms/frontend/config/params.php     修改前端指定域名
+return [
+    'frontDomain' => 'httP://zytest.zhuyidesign.com',
+];
+
 Yii 2 Advanced Project Template
 ===============================
 
