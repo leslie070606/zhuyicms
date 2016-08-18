@@ -57,7 +57,11 @@ class ZyOrder extends \yii\db\ActiveRecord {
     public static function tableName() {
         return '{{%zy_order}}';
     }
-
+    
+    public function getZyj_designer_basic(){
+        return $this->hasOne(\common\models\ZyjDesignerBasic::className(), ['id'=>'designer_id']);
+    }
+    
     /**
      * @inheritdoc
      */

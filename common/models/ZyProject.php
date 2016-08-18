@@ -86,19 +86,20 @@ class ZyProject extends \yii\db\ActiveRecord {
         ];
     }
 
-    public function getHomeImage() {
+    public function getHomeImage($_home_img) {
 
         $imgModel = new ZyImages();
-        $imgarr = explode(',', $this->home_img);
+        $imgarr = explode(',', $_home_img);
         $imgarr = array_filter($imgarr);
 
-        $this->home_img = '';
+        $str = '';
         foreach ($imgarr as $imgId) {
+
             $imgUrl = $imgModel->findOne($imgId);
-            $this->home_img .= "<a href='".Yii::$app->params['frontDomain']. $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img(Yii::$app->params['frontDomain'] . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
+            $str .= "<a href='" . Yii::$app->params['frontDomain'] . $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img(Yii::$app->params['frontDomain'] . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
         }
 
-        return $this->home_img;
+        return $str;
     }
 
     public function getFavoriteImage() {
@@ -110,21 +111,35 @@ class ZyProject extends \yii\db\ActiveRecord {
         $this->favorite_img = '';
         foreach ($imgarr as $imgId) {
             $imgUrl = $imgModel->findOne($imgId);
-            $this->favorite_img .= "<a href='".Yii::$app->params['frontDomain'] . $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img(Yii::$app->params['frontDomain'] . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
+            $this->favorite_img .= "<a href='" . Yii::$app->params['frontDomain'] . $imgUrl->url . "' target='_blank'>" . \yii\helpers\Html::img(Yii::$app->params['frontDomain'] . $imgUrl->url, array('width' => '100px', 'height' => '100px')) . "</a>";
         }
 
         return $this->favorite_img;
     }
 
-	public function getRengong($projectId){
-		$rows = $this->findOne($projectId);
-		if(empty($rows)){
-			return "否";
-		}
-		$isRengong = $rows->is_rengong;
-		if(!isset($isRengong) || empty($isRengong)){
-			return "否";
-		}
-		return "是";
-	}
+    public function getRengong($projectId) {
+        $rows = $this->findOne($projectId);
+        if (empty($rows)) {
+            return "否";
+        }
+        $isRengong = $rows->is_rengong;
+        if (!isset($isRengong) || empty($isRengong)) {
+            return "否";
+        }
+        return "是";
+    }
+
+    /**
+     * 单个需求订单列表
+     * @param int $_project_id 需求ID
+     */
+    public function getProjectOrderList($_project_id) {
+        $model = \common\models\ZyOrder::find();        
+        $res = $model->joinWith(['zyj_designer_basic'])->where(['project_id'=>$_project_id])
+              ->select('zy_order.order_id,zy_order.designer_id,zy_order.status,zy_order.appointment_time,zyj_designer_basic.name')
+              ->all();
+                
+        return $res;
+    }
+    
 }
