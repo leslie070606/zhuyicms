@@ -12,66 +12,180 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zy-project-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="table-responsive">
+        <table class="table">
+            <caption>
+                <h3>编号：<?= Html::encode($this->title) ?> 详情</h3>
+                <?= Html::a('编辑', ['update', 'id' => $model->project_id], ['class' => 'btn btn-primary']) ?>
+                <?=
+                Html::a('删除', ['delete', 'id' => $model->project_id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Are you sure you want to delete this item?',
+                        'method' => 'post',
+                    ],
+                ])
+                ?>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->project_id], ['class' => 'btn btn-primary']) ?>
-        <?=
-        Html::a('Delete', ['delete', 'id' => $model->project_id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ])
-        ?>
-    </p>
+            </caption>
+            <tbody>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">用户ID：</td>
+                    <td><?= $model->user_id; ?></td>
+                    <td class="bg-success" style="width: 10%;">需要单号：</td>
+                    <td><?= $model->project_num; ?></td>
+                    <td class="bg-success" style="width: 10%;">城市：</td>
+                    <td><?= $model->city; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">地址：</td>
+                    <td colspan="4"><?= empty($model->address) ? '未设置' : $model->address; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">小区名称：</td>
+                    <td colspan="4"><?= empty($model->compound) ? '未设置' : $model->compound; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">工装/家装：</td>
+                    <td colspan="4"><?= empty($model->decoration_type) ? '未设置' : $model->decoration_type; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">建筑面积：</td>
+                    <td><?= $model->covered_area; ?></td>
+                    <td class="bg-success" style="width: 10%;">使用面积：</td>
+                    <td  colspan="2"><?= $model->use_area; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">设计+施工费用：</td>
+                    <td><?= $model->budget_design_work; ?></td>
+                    <td class="bg-success" style="width: 10%;">设计费：</td>
+                    <td  colspan="2"><?= $model->budget_design; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">软装预算：</td>
+                    <td><?= $model->budget_ruan; ?></td>
+                    <td class="bg-success" style="width: 10%;">硬装预算：</td>
+                    <td><?= $model->budget_ying; ?></td>
+                    <td class="bg-success" style="width: 10%;">园林预算：</td>
+                    <td><?= $model->budget_yuanlin; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">开工时间：</td>
+                    <td colspan="4"><?= empty($model->work_time) ? '未设置' : $model->work_time; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">房型：</td>
+                    <td colspan="4"><?= empty($model->home_type) ? '未设置' : $model->home_type; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">状态：</td>
+                    <td><?= $model->project_status; ?></td>
+                    <td class="bg-success" style="width: 10%;">服务类型：</td>
+                    <td><?= $model->service_type; ?></td>
+                    <td class="bg-success" style="width: 10%;">设计师档次：</td>
+                    <td><?= $model->designer_level; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">是否人工匹配：</td>
+                    <td colspan="4"><?= $model->getRengong($model->project_id); ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">客户注重项：</td>
+                    <td colspan="4"><?= empty($model->project_tags) ? '未设置' : $model->project_tags; ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">描述/备注：</td>
+                    <td colspan="4"><?= empty($model->description) ? '未设置' : Html::encode($model->description); ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">匹配内容Json：</td>
+                    <td colspan="5"><?= empty($model->match_json) ? '未设置' : Html::encode($model->match_json); ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">家的照片：</td>
+                    <td colspan="5"><?= $model->getHomeImage($model->home_img); ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">喜欢的照片：</td>
+                    <td colspan="5"><?= $model->getFavoriteImage(); ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <?php $_orderListModel = $model->getProjectOrderList($model->project_id); ?>
+    <div class="table table-bordered">
+        <table class="table">
+            <caption>
+                <h3>需求订单</h3>
+            </caption>
+            <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>订单设计师</th>
+                    <th>下次见面时间</th>
+                    <th>订单状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($_orderListModel as $m):
+                    ?>
+                    <tr>
+                        <td><?= $m->order_id;?></td>
+                        <td><?= $m->zyj_designer_basic->name;?></td>
+                        <td><?= date('Y-m-d H:i:s',$m->appointment_time);?></td>
+                        <td><?= common\models\ZyOrder::$ORDER_STATUS_DICT[$m->status];?></td>
+                    </tr>
+                    <?php
+                endforeach;
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-    <?=
-    DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'project_id',
-            'user_id',
-            'project_num',
-            'city',
-            'address',
-            'compound',
-            'decoration_type',
-            'covered_area',
-            'use_area',
-            'budget_design_work',
-            'budget_design',
-            'budget_ruan',
-            'budget_ying',
-            'budget_yuanlin',
-            'work_time',
-            'home_type',
-            'project_status',
-            'service_type',
-            [
-                'label' => '家的照片',
-                'format' => 'raw',
-                'value' => $model->getHomeImage(),
-        
-            ],
-            [
-                'label' => '喜欢的照片',
-                'format' => 'raw',
-                'value' => $model->getFavoriteImage(),
-        
-            ],
-            'designer_level',
-            'match_json',
-            'description:ntext',
-            'project_tags',
-			[
-				'label'		=> '是否人工匹配',
-				'format' 	=> 'raw',
-				'value'		=> $model->getRengong($model->project_id),
-			],
-        ],
-    ])
+    <?php
+//    DetailView::widget([
+//        'model' => $model,
+//        'attributes' => [
+//            'project_id',
+//            'user_id',
+//            'project_num',
+//            'city',
+//            'address',
+//            'compound',
+//            'decoration_type',
+//            'covered_area',
+//            'use_area',
+//            'budget_design_work',
+//            'budget_design',
+//            'budget_ruan',
+//            'budget_ying',
+//            'budget_yuanlin',
+//            'work_time',
+//            'home_type',
+//            'project_status',
+//            'service_type',
+//            [
+//                'label' => '家的照片',
+//                'format' => 'raw',
+//                'value' => $model->getHomeImage(),
+//            ],
+//            [
+//                'label' => '喜欢的照片',
+//                'format' => 'raw',
+//                'value' => $model->getFavoriteImage(),
+//            ],
+//            'designer_level',
+//            'match_json',
+//            'description:ntext',
+//            'project_tags',
+//            [
+//                'label' => '是否人工匹配',
+//                'format' => 'raw',
+//                'value' => $model->getRengong($model->project_id),
+//            ],
+//        ],
+//    ])
     ?>
 
 </div>
