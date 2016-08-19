@@ -122,6 +122,9 @@ class UserController extends ZyuserController {
         $res = $this->doCurlGetRequest($url);
 
         $res = json_decode($res, TRUE);
+        if(!isset($res['access_token']) || empty($res['access_token'])){
+            return $this->redirect(array('index/index'));
+        }
 
         $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
         $userinfo = $this->doCurlGetRequest($urlUser);
