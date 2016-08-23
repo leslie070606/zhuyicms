@@ -39,6 +39,10 @@ class ZyProject extends \yii\db\ActiveRecord {
     public static function tableName() {
         return '{{%zy_project}}';
     }
+    
+    public function getZy_user(){
+        return $this->hasOne(\common\models\ZyUser::className(), ['user_id'=>'user_id']);
+    }
 
     /**
      * @inheritdoc

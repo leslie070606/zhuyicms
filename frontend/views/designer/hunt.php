@@ -64,7 +64,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             <div class="hunt_here">
                 <div class="hunt_input">
                     <form action="" onsubmit="return false;">
-                    <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
+                        <input class="ipu" type="text"  placeholder="请输入设计师姓名" />
                     </form>
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
@@ -79,56 +79,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="his_title">
                         热门推荐
                     </span>
-                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 26]); ?>">
-                        <div class="here_bottom line_center">
-                            <div class="here_head">
-                                <img src="/uploads/20160812/1136361139113639陈暄1.png" />
-                            </div>
-
-                            <div class="bottom_name">
-                                <span class="here_name">陈暄</span><span class="here_namea">北京</span>
-                            </div>
-                            <div class="bottom_label bottom_referral">
-                                <span>十上建筑</span>
-                            </div>
-
-
-                        </div>
-                    </a >
-
-                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 44]); ?>">
-                        <div class="here_bottom line_center">
-                            <div class="here_head">
-                                <img src="/uploads/20160801/1051511023105123未标题-1.jpg" />
-                            </div>
-
-                            <div class="bottom_name">
-                                <span class="here_name">程晖</span><span class="here_namea">北京</span>
-                            </div>
-                            <div class="bottom_label bottom_referral">
-                                <span>唯木空间</span>
-                            </div>
-
-
-                        </div>
-                    </a >
-
-                    <a href="<?php echo Url::toRoute(['/designer/detail', 'params' => 18]); ?>">
-                        <div class="here_bottom line_center">
-                            <div class="here_head">
-                                <img src="/uploads/20160803/0018180041001841芃芃.jpg" />
-                            </div>
-
-                            <div class="bottom_name">
-                                <span class="here_name">芃芃</span><span class="here_namea">北京</span>
-                            </div>
-                            <div class="bottom_label bottom_referral">
-                                <span>颐和居尚</span>
-                            </div>
-
-
-                        </div>
-                    </a >
+                    
                 </div>
             </div>
         </div>
@@ -139,7 +90,29 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
     </body>
 </html>
 <script type="text/javascript">
-
+    var _hotDesignerUrl = '<?= Url::to(['zysearchhot/get-search-hot']); ?>';
+    var _designerDetailUrl = '<?= Url::to(['designer/detail']); ?>';
+    $.ajax({
+                type: "get",
+                url: _hotDesignerUrl,
+                async: true,
+                success: function (data) {
+                    data = eval('(' + decodeURI(data) + ')');
+                    if(data.code==1){
+                        var html='';
+                        var length=data.msg.length;
+                        for(var i=0;i<length;i++){
+                            var tag=data.msg[i].dTag.split(",")[0];
+                            var htmla='<a href="'+_designerDetailUrl+"&params="+data.msg[i].dId+'"><div class="here_bottom line_center">'
+                            +'<div class="here_head"><img src="'+data.msg[i].dImg+'" /></div>'
+                            +'<div class="bottom_name"><span class="here_name">'+data.msg[i].dName+'</span><span class="here_namea">'+data.msg[i].dCity+'</span></div>'
+                            +'<div class="bottom_label bottom_referral"><span>'+tag+'</span></div></div></a >'
+                            html+=htmla;
+                        }
+                        $(".choose").append(html);
+                    }
+                }
+            });
     function search() {
         var search_key = $(".ipu").val();
         $.ajax({
@@ -148,7 +121,6 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             //dataType: 'json',
             data: '',
             success: function (data) {
-
                 if (data) {
                     // alert(data);
                     $(".hunt_here_box").html(data);

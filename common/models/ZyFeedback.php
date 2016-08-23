@@ -21,6 +21,10 @@ class ZyFeedback extends \yii\db\ActiveRecord
     {
         return '{{%zy_feedback}}';
     }
+    
+    public function getZy_user(){
+        return $this->hasOne(\common\models\ZyUser::className(), ['user_id'=>'user_id']);
+    }
 
     /**
      * @inheritdoc

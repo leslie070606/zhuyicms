@@ -33,13 +33,98 @@ class ZyprojectController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new ProjectSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //$searchModel = new ProjectSearch();        
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+//        return $this->render('index', [
+//                    'searchModel' => $searchModel,
+//                    'dataProvider' => $dataProvider,
+//        ]);
+
+        $query = ZyProject::find();
+        $query->joinWith(['zy_user']);
+
+        $query->select('zy_user.nickname,zy_project.*');
+
+        $w = $this->_getZyProjectIndexSearch();
+
+        $query->where($w);
+
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => '15']);
+
+        $model = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'model' => $model,
+                    'pages' => $pages,
+                    'getParams' => Yii::$app->request->get()
         ]);
+    }
+
+    private function _getZyProjectIndexSearch() {
+        $_params = Yii::$app->request->get();
+        if (empty($_params)) {
+            return '1';
+        }
+        foreach ($_params as $k => $v) {
+            $_params[$k] = addslashes($v);
+        }
+        $w = '1';
+        if ($_params['project_id']) {
+            $w .= ' and zy_project.project_id="' . $_params['project_id'] . '" ';
+        }
+        if ($_params['budget_design_work_x']) {
+            $w .= ' and zy_project.budget_design_work>="' . $_params['budget_design_work_x'] . '" ';
+        }
+        if ($_params['budget_design_work_s']) {
+            $w .= ' and zy_project.budget_design_work<="' . $_params['budget_design_work_s'] . '" ';
+        }
+        if ($_params['service_type']) {
+            $w .= ' and zy_project.service_type="' . $_params['service_type'] . '" ';
+        }
+        if ($_params['designer_level']) {
+            $w .= ' and zy_project.designer_level="' . $_params['designer_level'] . '" ';
+        }if ($_params['city']) {
+            $w .= ' and zy_project.city="' . $_params['city'] . '" ';
+        }
+        if ($_params['compound']) {
+            $w .= ' and zy_project.compound like "%' . $_params['compound'] . '%" ';
+        }if ($_params['budget_design_x']) {
+            $w .= ' and zy_project.budget_design>="' . $_params['budget_design_x'] . '" ';
+        }
+        if ($_params['budget_design_s']) {
+            $w .= ' and zy_project.budget_design<="' . $_params['budget_design_s'] . '" ';
+        }
+        if ($_params['home_type']) {
+            $w .= ' and zy_project.home_type like "%' . $_params['home_type'] . '%" ';
+        }
+        if ($_params['nickname']) {
+            $w .= ' and zy_user.nickname like "%' . $_params['nickname'] . '%" ';
+        }
+        if ($_params['work_time_x']) {
+            $w .= ' and zy_project.work_time>="' . $_params['work_time_x'] . '" ';
+        }
+        if ($_params['work_time_s']) {
+            $w .= ' and zy_project.work_time<="' . $_params['work_time_s'] . '" ';
+        }
+        if ($_params['project_status']) {
+            $w .= ' and zy_project.project_status="' . $_params['project_status'] . '" ';
+        }
+        if ($_params['covered_area_x']) {
+            $w .= ' and zy_project.covered_area>="' . $_params['covered_area_x'] . '" ';
+        }
+        if ($_params['covered_area_s']) {
+            $w .= ' and zy_project.covered_area<="' . $_params['covered_area_s'] . '" ';
+        }
+        if (isset($_params['is_rengong'])) {
+            if (empty($_params['is_rengong'])) {
+                $w .= ' and zy_project.is_rengong is null ';
+            } else {
+                $w .= ' and zy_project.is_rengong="' . $_params['is_rengong'] . '" ';
+            }
+        }
+
+
+        return $w;
     }
 
     /**
