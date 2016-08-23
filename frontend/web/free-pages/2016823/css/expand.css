@@ -1,0 +1,6 @@
+.expand_here { position: relative; float: left; max-width: 500px;}
+.expand_here a { position: absolute; width: 1.5rem; height: 1.5rem; left: 50%; margin-left: -.75rem; top:0; z-index: 1;}
+img { float: left;}
+.href_tb { position: absolute; width: 100%; height: 1.25rem; z-index: 3; left: 0; bottom: 2.74rem;}
+
+
