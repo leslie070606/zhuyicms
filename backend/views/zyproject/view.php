@@ -131,8 +131,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 foreach ($_orderListModel as $m):
                     ?>
                     <tr>
-                        <td><?= $m->order_id;?></td>
-                        <td><?= $m->zyj_designer_basic->name;?></td>
+                        <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->order_id;?></a></td>
+                        <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->zyj_designer_basic->name;?></a></td>
                         <td><?= date('Y-m-d H:i:s',$m->appointment_time);?></td>
                         <td><?= common\models\ZyOrder::$ORDER_STATUS_DICT[$m->status];?></td>
                     </tr>

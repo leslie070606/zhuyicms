@@ -12,13 +12,12 @@ use yii\filters\VerbFilter;
 /**
  * ZyfeedbackController implements the CRUD actions for ZyFeedback model.
  */
-class ZyfeedbackController extends Controller
-{
+class ZyfeedbackController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,14 +32,17 @@ class ZyfeedbackController extends Controller
      * Lists all ZyFeedback models.
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new FeedbackSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    public function actionIndex() {
+        //$searchModel = new FeedbackSearch();
+        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = ZyFeedback::find();
+        $model->joinWith(['zy_user']);
+        $pages = new \yii\data\Pagination(['totalCount' => $model->count(), 'pageSize' => '15']);
+        $model = $model->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'model' => $model,
+                    'pages' => $pages,
         ]);
     }
 
@@ -49,10 +51,17 @@ class ZyfeedbackController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
+        $model = $this->findModel($id);
+        if (!empty($model->user_id)) {
+            $_uModel = \common\models\ZyUser::findOne(['user_id' => $model->user_id]);
+        } else {
+            $_uModel = null;
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $model,
+                    'umodel' => $_uModel
         ]);
     }
 
@@ -61,15 +70,14 @@ class ZyfeedbackController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new ZyFeedback();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->feedback_id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -80,15 +88,14 @@ class ZyfeedbackController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->feedback_id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -99,8 +106,7 @@ class ZyfeedbackController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -113,12 +119,12 @@ class ZyfeedbackController extends Controller
      * @return ZyFeedback the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = ZyFeedback::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

@@ -203,68 +203,56 @@ class ProjectController extends \common\util\BaseController {
             $project = $model->findOne($project_id);
 
             //接收图片
-            $upfile = UploadedFile::getInstances($model, 'home_img');
-            $favoriteupfile = UploadedFile::getInstances($model, 'favorite_img');
+//            $upfile = UploadedFile::getInstances($model, 'home_img');
+//            $favoriteupfile = UploadedFile::getInstances($model, 'favorite_img');
 
             $project->compound = $post['compound'] ? $post['compound'] : '';
             $project->project_tags = $post['project_tags'] ? $post['project_tags'] : '';
             $project->description = $post['description'] ? $post['description'] : '';
 
-            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
-
+//            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+//
             $imgId = '';
             $imgId_favorite = '';
-            //如果有图片
+
+            //如果有图片 here_imga
+            $upfile = Yii::$app->request->post('here_imga');
+            $upfile = explode(',', $upfile);
+
             if (count($upfile) > 0) {
-                if (!is_dir($dir))
-                    mkdir($dir, 0777, true);
-
-
                 foreach ($upfile as $imgobjct) {
-
-                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
-
-                    $dirimg = $dir . "/" . $fileName;
-
-                    //保存图片
-                    if ($imgobjct->saveAs($dirimg)) {
+                    if (empty($imgobjct)) {
+                        
+                    } else {
                         $imgModel = new \common\models\ZyImages();
-                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-
-                        $imgModel->url = $uploadSuccessPath;
+                        $imgModel->url = $imgobjct;
                         if ($imgModel->save()) {
                             $imgId .= ',' . (string) $imgModel->attributes['image_id'];
                         } else {
-                            return '';
+                            continue;
                         }
                     }
                 }
-
                 $project->home_img = ltrim($imgId, ",");
             }
 
+
+//            }
             //喜欢的照片
-            //如果有图片
+            //如果有图片 here_imgb
+            $favoriteupfile = Yii::$app->request->post('here_imgb');
+            $favoriteupfile = explode(',', $favoriteupfile);
             if (count($favoriteupfile) > 0) {
-                if (!is_dir($dir))
-                    mkdir($dir, 0777, true);
-
                 foreach ($favoriteupfile as $imgobjct) {
-
-                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
-
-                    $dirimg = $dir . "/" . $fileName;
-
-                    //保存图片
-                    if ($imgobjct->saveAs($dirimg)) {
+                    if (empty($imgobjct)) {
+                        
+                    } else {
                         $imgModel = new \common\models\ZyImages();
-                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-
-                        $imgModel->url = $uploadSuccessPath;
+                        $imgModel->url = $imgobjct;
                         if ($imgModel->save()) {
                             $imgId_favorite .= ',' . (string) $imgModel->attributes['image_id'];
                         } else {
-                            return '';
+                            continue;
                         }
                     }
                 }
@@ -446,35 +434,29 @@ class ProjectController extends \common\util\BaseController {
 
             $projectModel->load(Yii::$app->request->post());
             //接收图片
-            $upfile = UploadedFile::getInstances($projectModel, 'home_img');
-
-            $favoriteupfile = UploadedFile::getInstances($projectModel, 'favorite_img');
-
-            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
+//            $upfile = UploadedFile::getInstances($projectModel, 'home_img');
+//
+//            $favoriteupfile = UploadedFile::getInstances($projectModel, 'favorite_img');
+//            $dir = Yii::getAlias("@frontend") . "/web/uploads/" . date("Ymd");
 
             $imgId = '';
             $imgId_favorite = '';
-            //如果有图片
+
+            //如果有图片 here_imga
+            $upfile = Yii::$app->request->post('here_imga');
+            $upfile = explode(',', $upfile);
+
             if (count($upfile) > 0) {
-                if (!is_dir($dir))
-                    mkdir($dir, 0777, true);
-
                 foreach ($upfile as $imgobjct) {
-
-                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
-
-                    $dirimg = $dir . "/" . $fileName;
-
-                    //保存图片
-                    if ($imgobjct->saveAs($dirimg)) {
+                    if (empty($imgobjct)) {
+                        
+                    } else {
                         $imgModel = new \common\models\ZyImages();
-                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-
-                        $imgModel->url = $uploadSuccessPath;
+                        $imgModel->url = $imgobjct;
                         if ($imgModel->save()) {
                             $imgId .= ',' . (string) $imgModel->attributes['image_id'];
                         } else {
-                            return '';
+                            continue;
                         }
                     }
                 }
@@ -485,36 +467,94 @@ class ProjectController extends \common\util\BaseController {
                 }
             }
 
-            //喜欢的图片
+
+//            }
+            //喜欢的照片
+            //如果有图片 here_imgb
+            $favoriteupfile = Yii::$app->request->post('here_imgb');
+            $favoriteupfile = explode(',', $favoriteupfile);
             if (count($favoriteupfile) > 0) {
-                if (!is_dir($dir))
-                    mkdir($dir, 0777, true);
-
                 foreach ($favoriteupfile as $imgobjct) {
-
-                    $fileName = date("HiiHsHis") .$this->getRandomString(). $imgobjct->baseName . "." . $imgobjct->extension;
-
-                    $dirimg = $dir . "/" . $fileName;
-
-                    //保存图片
-                    if ($imgobjct->saveAs($dirimg)) {
+                    if (empty($imgobjct)) {
+                        
+                    } else {
                         $imgModel = new \common\models\ZyImages();
-                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
-
-                        $imgModel->url = $uploadSuccessPath;
+                        $imgModel->url = $imgobjct;
                         if ($imgModel->save()) {
                             $imgId_favorite .= ',' . (string) $imgModel->attributes['image_id'];
                         } else {
-                            return '';
+                            continue;
                         }
                     }
                 }
+
                 if ($model->favorite_img) {
                     $model->favorite_img = $model->favorite_img . $imgId_favorite;
                 } else {
                     $model->favorite_img = ltrim($imgId_favorite, ",");
                 }
             }
+            //如果有图片
+//            if (count($upfile) > 0) {
+//                if (!is_dir($dir))
+//                    mkdir($dir, 0777, true);
+//
+//                foreach ($upfile as $imgobjct) {
+//
+//                    $fileName = date("HiiHsHis") . $this->getRandomString() . $imgobjct->baseName . "." . $imgobjct->extension;
+//
+//                    $dirimg = $dir . "/" . $fileName;
+//
+//                    //保存图片
+//                    if ($imgobjct->saveAs($dirimg)) {
+//                        $imgModel = new \common\models\ZyImages();
+//                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+//
+//                        $imgModel->url = $uploadSuccessPath;
+//                        if ($imgModel->save()) {
+//                            $imgId .= ',' . (string) $imgModel->attributes['image_id'];
+//                        } else {
+//                            return '';
+//                        }
+//                    }
+//                }
+//                if ($model->home_img) {
+//                    $model->home_img = $model->home_img . $imgId;
+//                } else {
+//                    $model->home_img = ltrim($imgId, ",");
+//                }
+//            }
+//
+//            //喜欢的图片
+//            if (count($favoriteupfile) > 0) {
+//                if (!is_dir($dir))
+//                    mkdir($dir, 0777, true);
+//
+//                foreach ($favoriteupfile as $imgobjct) {
+//
+//                    $fileName = date("HiiHsHis") . $this->getRandomString() . $imgobjct->baseName . "." . $imgobjct->extension;
+//
+//                    $dirimg = $dir . "/" . $fileName;
+//
+//                    //保存图片
+//                    if ($imgobjct->saveAs($dirimg)) {
+//                        $imgModel = new \common\models\ZyImages();
+//                        $uploadSuccessPath = "/uploads/" . date("Ymd") . "/" . $fileName;
+//
+//                        $imgModel->url = $uploadSuccessPath;
+//                        if ($imgModel->save()) {
+//                            $imgId_favorite .= ',' . (string) $imgModel->attributes['image_id'];
+//                        } else {
+//                            return '';
+//                        }
+//                    }
+//                }
+//                if ($model->favorite_img) {
+//                    $model->favorite_img = $model->favorite_img . $imgId_favorite;
+//                } else {
+//                    $model->favorite_img = ltrim($imgId_favorite, ",");
+//                }
+//            }
 
 
             //添加更新时间
@@ -549,7 +589,7 @@ class ProjectController extends \common\util\BaseController {
                     $imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
 
                     //设置删除
-                    $initialPreview[] = array('url' => Url::toRoute('/project/homeimgdelete'), 'key' => $imgid . "$" . $project_id);
+                    $initialPreview[] = array('url' => Url::toRoute('/project/homeimgdelete'), 'key' => $imgid . "$" . $project_id,'imgUrl'=>Yii::$app->params['frontDomain'] . $img->url);
                 }
             }
         }
@@ -567,7 +607,7 @@ class ProjectController extends \common\util\BaseController {
                     $favorite_imgurl[] = Yii::$app->params['frontDomain'] . $img->url;
 
                     //设置删除
-                    $favorite_initialPreview[] = array('url' => Url::toRoute('/project/favoriteimgdelete'), 'key' => $imgid . "$" . $project_id);
+                    $favorite_initialPreview[] = array('url' => Url::toRoute('/project/favoriteimgdelete'), 'key' => $imgid . "$" . $project_id,'imgUrl'=>Yii::$app->params['frontDomain'] . $img->url);
                 }
             }
         }

@@ -1,5 +1,4 @@
 $(function () {
-    
     img_height_auto();
     touch.on(".list_spa", "tap", function (ev) {
         var project_tags="";
@@ -24,29 +23,44 @@ $(function () {
         
     });
 
-     $("body").on("click",".here_img_box li",function(ev){
-	 	if($(this).hasClass("add_img")){
-	 		
-	 	}else{
-	 		var ull=$(this).parent("ul");
-	 			$(this).remove();
-	 			var gettt="";
-	 			var length=ull.find("li").length-1;
-	 			for(var i=0; i<length;i++){
-	 				var img_id=ull.find("li:eq("+i+")").prop("img_id");
-	 				gettt+=img_id+"$";
-	 			}
-	 			ull.prev("input").val(gettt);
-                                //alert(ull.prev("input").val());
-	 			auto_click();
-	 	}
-	 });
+     touch.on(".here_img_box li","tap",function(ev){
+                        
+                              if($(ev.currentTarget).hasClass("abc")||$(ev.currentTarget).hasClass("add_img")){
+                                  if($(ev.currentTarget).hasClass("abc")){
+                                   var _this=$(ev.currentTarget);
+                                      var key=$(ev.currentTarget).attr("_v");
+                                    var url=$(ev.currentTarget).attr("_durl");
+                                    $.post(url,'key='+key,function(data){
+                                       _this.remove();
+                                       auto_click()
+                                    });
+                                }
+                            }else{
+                                    var ull=$(ev.currentTarget).parent("ul");
+                                            $(ev.currentTarget).remove();
+                                            var gettt="";
+                                           
+                                             $("#ula li").each(function(){
+                                                if($(this).hasClass("add_img")||$(this).hasClass("abc")){
+
+                                                }else{
+                                                    var srcc=$(this).find("img").attr("src");
+                                                    gettt+=srcc+",";
+                                                }
+                                            });
+                                            ull.prev("input").val(gettt);
+                                            //alert(ull.prev("input").val());
+                                            auto_click();
+                                            
+                            }
+                     });
 
     $(".dema_ipt,.text_box").blur(function () {
         auto_click();
     });
 })
 function img_height_auto() {
+   
     var width = $(".here_img_box li img").width();
     $(".here_img_box li img").css("height", width);
     $(".add_img").css({"width": width, "height": width})

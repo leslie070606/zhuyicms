@@ -24,12 +24,14 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 <link rel="stylesheet" href="css/gloab.css" />
 <link rel="stylesheet" href="css/edit_demand.css" />
 <link rel="stylesheet"  href="css/iconfont.css" />
+<link rel="stylesheet"  href="css/submit.css" />
 <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
 <script type="text/javascript" src="js/gloab.js" ></script>
 <script type="text/javascript" src="js/submit.js" ></script>
-
+<script type="text/javascript" src="js/ajaxfileupload.js" ></script>
 <body>
+     <div class="gif_loading"><img src="img/loading_1.gif" /></div>
     <div class="edit_box">
         <header class="header_top iconfont icon-logo">
                 <!--<input id="ipt" type="text" value="0" />-->
@@ -133,49 +135,24 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="here_a">请上传户型图、房屋照片</span>
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
+                        <input type="hidden" name="here_imga" id="here_imga"  value="" />
                         <ul id="ula">
                             <?php
-                            echo FileInput::widget([
-                                'model' => $model,
-                                'attribute' => 'home_img[]',
-                                //           'options' => ['multiple' => true],
-                                'name' => 'ImgSelect',
-                                'language' => 'zh-CN',
-                                'options' => ['multiple' => true, 'accept' => 'image/*'],
-                                'pluginOptions' => [
+                            if (isset($initialPreview) && !empty($initialPreview)) {
 
-                                    'initialPreview' => $imgurl,
-                                    // 'initialPreviewConfig' => $initialPreviewConfig,  
-                                    'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
-                                    'previewFileType' => 'image',
-                                    'initialPreviewAsData' => true, // 是否展示预览图
-                                    'initialPreviewConfig' => $initialPreview,
-                                    'overwriteInitial' => false,
-                                    'browseLabel' => '选择图片',
-                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
-                                    'dropZoneTitle' => '点击上传文件...',
-                                    'maxFileCount' => 12, //允许上传最多的图片5张  
-                                    'maxFileSize' => 10000, //限制图片最大200kB  
-                                    'uploadUrl' => Url::to(['/index/uploadimage']), //异步上传接口地址
-                                    'uploadExtraData' => ['project_id' => $model->project_id],
-                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
-                                    'showUpload' => false,
-                                    // 展示图片区域是否可点击选择多文件
-                                    'browseOnZoneClick' => true,
-                                    'uploadAsync' => TRUE, //配置异步上传还是同步上传  
-                                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
-                                    'fileActionSettings' => [
-                                        // 设置具体图片的查看属性为false,默认为true
-                                        'showZoom' => TRUE,
-                                        // 设置具体图片的上传属性为true,默认为true
-                                        'showUpload' => FALSE,
-                                        // 设置具体图片的移除属性为true,默认为true
-                                        'showRemove' => TRUE,
-                                    ],
-                                ],
-                            ]);
+                                foreach ($initialPreview as $ik => $iv):
+                                    ?>
+                                    <li class="abc" _v="<?php echo $iv['key']; ?>" _durl="<?php echo $iv['url'] ?>">
+                                        <img src="<?php echo $iv['imgUrl']; ?>" style="height: 145px;">
+                                        <i class="iconfont icon-shanchu1"></i>
+                                    </li>
+                                    <?php
+                                endforeach;
+                            }
                             ?>
+                            <li class="add_img iconfont icon-tianjia upload_box" id="upload_box" >
+                                <input type="file"  accept="image/*" name="upload" id="upload" onchange="ajaxFileUpload('upload')">
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -184,49 +161,23 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="here_a">请上传已收集的理想之家</span>
                     <span class="here_b">（上传png、jpg格式，不大于4M图片）</span>
                     <div class="here_img_box">
+                        <input type="hidden" name="here_imgb" id="here_imgb" value="" />
                         <ul id="ulb">
                             <?php
-                            echo FileInput::widget([
-                                'model' => $model,
-                                'attribute' => 'favorite_img[]',
-                                //           'options' => ['multiple' => true],
-                                'name' => 'ImgSelect2',
-                                'language' => 'zh-CN',
-                                'options' => ['multiple' => true, 'accept' => 'image/*'],
-                                'pluginOptions' => [
-
-                                    'initialPreview' => $favorite_imgurl,
-                                    // 'initialPreviewConfig' => $initialPreviewConfig,  
-                                    'allowedPreviewTypes' => ['image'],
-                                    'allowedFileExtensions' => ['jpg', 'gif', 'png', 'jpeg'],
-                                    'previewFileType' => 'image',
-                                    'initialPreviewAsData' => true, // 是否展示预览图
-                                    'initialPreviewConfig' => $favorite_initialPreview,
-                                    'overwriteInitial' => false,
-                                    'browseLabel' => '选择图片',
-                                    'msgFilesTooMany' => "选择上传的图片数量({n}) 超过允许的最大图片数{m}！",
-                                    'dropZoneTitle' => '点击上传文件...',
-                                    'maxFileCount' => 12, //允许上传最多的图片5张  
-                                    'maxFileSize' => 10000, //限制图片最大200kB  
-                                    'uploadUrl' => Url::to(['/index/uploadimage']), //异步上传接口地址
-                                    'uploadExtraData' => ['project_id' => $model->project_id],
-                                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
-                                    'showUpload' => false,
-                                    // 展示图片区域是否可点击选择多文件
-                                    'browseOnZoneClick' => true,
-                                    'uploadAsync' => TRUE, //配置异步上传还是同步上传  
-                                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
-                                    'fileActionSettings' => [
-                                        // 设置具体图片的查看属性为false,默认为true
-                                        'showZoom' => TRUE,
-                                        // 设置具体图片的上传属性为true,默认为true
-                                        'showUpload' => FALSE,
-                                        // 设置具体图片的移除属性为true,默认为true
-                                        'showRemove' => TRUE,
-                                    ],
-                                ],
-                            ]);
+                            if (isset($favorite_initialPreview) && !empty($favorite_initialPreview)) {
+                            foreach ($favorite_initialPreview as $ik => $iv):
+                                ?>
+                                <li class="abc" _v="<?php echo $iv['key']; ?>" _durl="<?php echo $iv['url'] ?>">
+                                    <img src="<?php echo $iv['imgUrl']; ?>" style="height: 145px;">
+                                    <i class="iconfont icon-shanchu1"></i>
+                                </li>
+                                <?php
+                            endforeach;
+                            }
                             ?>
+                            <li class="add_img iconfont icon-tianjia upload_box" id="upload_boxa">
+                                <input accept="image/*" type="file" name="uploada" id="uploada" onchange="ajaxFileUpload('uploada')">
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -312,3 +263,105 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
     </div>
 
 </body>
+<script type="text/javascript">
+    var _uploadUrl = "<?php echo Url::to(['index/upload-image']); ?>";
+
+    function ajaxFileUpload(fileName) {
+        
+        $(".down_right_zd").show().animate({
+            opacity: .5
+        }, 200, function () {
+            $(".gif_loading").show();
+        });
+        $.ajaxFileUpload({
+            url: _uploadUrl, //用于文件上传的服务器端请求地址
+            secureuri: false, //是否需要安全协议，一般设置为false
+            fileElementId: fileName, //文件上传域的ID
+            dataType: 'json', //返回值类型 一般设置为json
+            success: function (data, status) //服务器成功响应处理函数
+            {
+
+                var src = data.msg;
+                var li_html = '<li><img src="' + src + '" /><i class="iconfont icon-shanchu1"></i></li>';
+                if (data.code != 1) {
+                    alert(data.msg);
+                } else {
+                    if (fileName == "uploada") {
+                        var val_img = "";
+                        $("#ulb").find("li:last-child").before(li_html)
+                        img_height_auto();
+                        $("#ulb li").each(function () {
+                            if ($(this).hasClass("add_img") || $(this).hasClass("abc")) {
+
+                            } else {
+                                var srcc = $(this).find("img").attr("src");
+                                val_img += srcc + ",";
+                            }
+                        });
+                        $("#here_imgb").val(val_img);
+                    } else {
+                        var val_img = "";
+                        $("#ula").find("li:last-child").before(li_html)
+                        img_height_auto();
+                        $("#ula li").each(function () {
+                            if ($(this).hasClass("add_img") || $(this).hasClass("abc")) {
+
+                            } else {
+                                var srcc = $(this).find("img").attr("src");
+                                val_img += srcc + ",";
+                            }
+                        });
+                        $("#here_imga").val(val_img);
+                        
+                    }
+
+                    touch.on(".here_img_box li", "tap", function (ev) {
+
+                        if ($(ev.currentTarget).hasClass("abc") || $(ev.currentTarget).hasClass("add_img")) {
+                            if ($(ev.currentTarget).hasClass("abc")) {
+                                var _this = $(ev.currentTarget);
+                                var key = $(ev.currentTarget).attr("_v");
+                                var url = $(ev.currentTarget).attr("_durl");
+                                $.post(url, 'key=' + key, function (data) {
+                                    _this.remove();
+                                    auto_click()
+                                });
+                            }
+                        } else {
+                            var ull = $(ev.currentTarget).parent("ul");
+                            $(ev.currentTarget).remove();
+                            var gettt = "";
+
+                            $("#ula li").each(function () {
+                                if ($(this).hasClass("add_img") || $(this).hasClass("abc")) {
+
+                                } else {
+                                    var srcc = $(this).find("img").attr("src");
+                                    gettt += srcc + ",";
+                                }
+                            });
+                            ull.prev("input").val(gettt);
+                            //alert(ull.prev("input").val());
+                            auto_click();
+
+                        }
+                    });
+                }
+                $(".down_right_zd").animate({
+                            opacity: .5
+                        }, 200, function () {
+                            
+                            $(".gif_loading,.down_right_zd").hide();
+                        });
+                        auto_click();
+            },
+            error: function (data, status, e) //服务器响应失败处理函数
+            {
+                alert(e);
+            }
+        })
+        return false;
+    }
+
+
+</script>

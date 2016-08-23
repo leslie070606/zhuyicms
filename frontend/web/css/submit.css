@@ -26,6 +26,15 @@
 .chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #FF4E38; line-height: .88rem; margin: .8rem 5% .3rem 5%; clear: both; float: left;}
 .center_nameaa a { display: block; float:left; width:100%; margin-bottom: .8rem; color: #777777; text-align: center;}
 .control-label { display: none;}
+.upload_box input {     
+	    position: absolute;
+    /* float: left; */
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    height: 100%;
+    top: 0;
+}
 
 
 
