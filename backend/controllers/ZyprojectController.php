@@ -68,6 +68,11 @@ class ZyprojectController extends Controller {
         foreach ($_params as $k => $v) {
             $_params[$k] = addslashes($v);
         }
+        unset($_params['page']);
+        unset($_params['per-page']);
+        if (empty($_params)) {
+            return '1';
+        }
         $w = '1';
         if ($_params['project_id']) {
             $w .= ' and zy_project.project_id="' . $_params['project_id'] . '" ';
