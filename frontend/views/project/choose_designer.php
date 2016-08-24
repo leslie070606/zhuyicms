@@ -217,6 +217,19 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         var ckshejishi = "<?php echo Yii::$app->request->get('ckshejishi') ? Yii::$app->request->get('ckshejishi') : ''; ?>";
         var prohere = ckshejishi.split(",");
         var pro_length = prohere.length;
+        var last_pro=prohere[pro_length-1];
+       
+        if(last_pro>3||last_pro<=6){
+            
+            $(".designer_box>.pro_here:eq(3),.designer_box>.pro_here:eq(4),.designer_box>.pro_here:eq(5)").show();
+                var top = $(".designer_box .pro_here:eq("+last_pro+")").offset().top;
+                $(window).scrollTop(top)
+        };
+        if(last_pro>6){
+             $(".designer_box>.pro_here").show();
+             var top = $(".designer_box .pro_here:eq("+last_pro+")").offset().top;
+                $(window).scrollTop(top)
+        };
         if (pro_length > 3) {
 
             pro_length = 3;
