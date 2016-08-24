@@ -58,6 +58,11 @@ class ZyOrder extends \yii\db\ActiveRecord {
         return '{{%zy_order}}';
     }
     
+    public function getZy_user(){
+        return $this->hasOne(\common\models\ZyUser::className(), ['user_id'=>'user_id'])
+;
+    }
+
     public function getZyj_designer_basic(){
         return $this->hasOne(\common\models\ZyjDesignerBasic::className(), ['id'=>'designer_id']);
     }

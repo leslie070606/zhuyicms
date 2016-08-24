@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace common\atm;
 use Yii;
 
@@ -34,3 +34,4 @@ class Event{
         return $_ret ? : self::send($apiHost, $event, $params, $retry - 1);
 	}
 }
+*/
