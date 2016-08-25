@@ -171,7 +171,8 @@ class UserController extends ZyuserController {
         $code = Yii::$app->request->post('code');
         $phonestr = Yii::$app->request->post('phonestr');
         $userArr = json_decode($userinfo, TRUE);
-
+        $uc = new \common\util\Guolu();
+        
         //初始化session
         $session = Yii::$app->session;
         if (!$session->isActive) {
@@ -191,7 +192,7 @@ class UserController extends ZyuserController {
                         //$userModel->user_id = $user[0]['user_id'];
                         // 存入用户信息
                         $user->openid = $userArr['openid'];
-                        $user->nickname = userTextEncode($userArr['nickname']);
+                        $user->nickname = $uc->userTextEncode($userArr['nickname']);
                         $user->sex = $userArr['sex'];
                         $user->language = $userArr['language'];
                         $user->city = $userArr['city'];
@@ -206,7 +207,7 @@ class UserController extends ZyuserController {
                     } else {
                         // 存入用户信息
                         $userModel->openid = $userArr['openid'];
-                        $userModel->nickname = userTextEncode($userArr['nickname']);
+                        $userModel->nickname = $uc->userTextEncode($userArr['nickname']);
                        
                         $userModel->sex = $userArr['sex'];
                         $userModel->language = $userArr['language'];

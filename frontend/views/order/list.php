@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Url;
-use common\controllers\BaseController;
+use common\util;
+
+$uc = new util\Guolu();
 
 $session = Yii::$app->session;
 if (!$session->isActive) {
@@ -97,7 +99,7 @@ $userId = $session->get("user_id");
             $username = '';
             if (isset($user['nickname']) && !empty($user['nickname'])) {
                 $username = $user['nickname'];
-                $username = userTextDecode($username);
+                $username =  $uc->userTextDecode($username);
               
                 
             } else {

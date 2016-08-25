@@ -26,9 +26,6 @@ class BaseController extends Controller {
         exit;
     }
     
-     public function __construct(){}
-    
-
     public static function checkLoginCookie() {
         $remCookie = Yii::$app->request->cookies->get('zuyiuser_remeber');
         if ($remCookie) {
