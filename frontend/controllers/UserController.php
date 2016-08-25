@@ -191,7 +191,7 @@ class UserController extends ZyuserController {
                         //$userModel->user_id = $user[0]['user_id'];
                         // 存入用户信息
                         $user->openid = $userArr['openid'];
-                        $user->nickname = $this->userTextEncode($userArr['nickname']);
+                        $user->nickname = userTextEncode($userArr['nickname']);
                         $user->sex = $userArr['sex'];
                         $user->language = $userArr['language'];
                         $user->city = $userArr['city'];
@@ -206,7 +206,8 @@ class UserController extends ZyuserController {
                     } else {
                         // 存入用户信息
                         $userModel->openid = $userArr['openid'];
-                        $userModel->nickname = $this->userTextEncode($userArr['nickname']);
+                        $userModel->nickname = userTextEncode($userArr['nickname']);
+                       
                         $userModel->sex = $userArr['sex'];
                         $userModel->language = $userArr['language'];
                         $userModel->city = $userArr['city'];
