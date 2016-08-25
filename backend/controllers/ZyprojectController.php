@@ -222,9 +222,10 @@ class ZyprojectController extends Controller {
     }
 
     //查看匹配设计师
-    public function actionMatchjson() {
-
-        return $this->render('matchjson');
+    public function actionMatchjson($id) {
+        $model = $this->findModel($id);
+        
+        return $this->render('matchjson',['model'=>$model]);
     }
 
 }
