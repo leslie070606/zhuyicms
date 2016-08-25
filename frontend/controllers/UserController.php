@@ -19,9 +19,9 @@ class UserController extends ZyuserController {
 
     public function actionLogin() {
         //判断是否是微信内登录
-        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
             return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=user/wechat_allow&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
-	}
+        }
         //判断ssion
         return $this->render('login');
     }
@@ -122,7 +122,7 @@ class UserController extends ZyuserController {
         $res = $this->doCurlGetRequest($url);
 
         $res = json_decode($res, TRUE);
-        if(!isset($res['access_token']) || empty($res['access_token'])){
+        if (!isset($res['access_token']) || empty($res['access_token'])) {
             return $this->redirect(array('index/index'));
         }
 
@@ -191,7 +191,7 @@ class UserController extends ZyuserController {
                         //$userModel->user_id = $user[0]['user_id'];
                         // 存入用户信息
                         $user->openid = $userArr['openid'];
-                        $user->nickname = $userArr['nickname'];
+                        $user->nickname = $this->userTextEncode($userArr['nickname']);
                         $user->sex = $userArr['sex'];
                         $user->language = $userArr['language'];
                         $user->city = $userArr['city'];
@@ -206,7 +206,7 @@ class UserController extends ZyuserController {
                     } else {
                         // 存入用户信息
                         $userModel->openid = $userArr['openid'];
-                        $userModel->nickname = $userArr['nickname'];
+                        $userModel->nickname = $this->userTextEncode($userArr['nickname']);
                         $userModel->sex = $userArr['sex'];
                         $userModel->language = $userArr['language'];
                         $userModel->city = $userArr['city'];
@@ -351,6 +351,16 @@ class UserController extends ZyuserController {
         }
         $phonestr = substr($phonestr, 3, 4);
         return $phonestr;
+    }
+
+    
+    public function actionTest(){
+        $str = '🔚';
+        $str1 = '的手机发链接了';
+        echo $str;
+        echo $en =  $this->userTextEncode($str1);
+       // echo $dn = $this->userTextDecode($en);
+       
     }
 
 }

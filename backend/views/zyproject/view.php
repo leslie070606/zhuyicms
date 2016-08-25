@@ -26,6 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ])
                 ?>
+                
+                 <?=
+                Html::a('查看匹配设计师', ['matchjson', 'id' => $model->project_id], [
+                    'class' => 'btn btn-success',
+                    'data' => [
+                       // 'confirm' => 'Are you sure you want to delete this item?',
+                        'method' => 'post',
+                    ],
+                ])
+                ?>
 
             </caption>
             <tbody>

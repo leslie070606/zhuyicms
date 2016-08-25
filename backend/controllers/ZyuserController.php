@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ZyuserController implements the CRUD actions for ZyUser model.
  */
-class ZyuserController extends Controller
+class ZyuserController extends \common\controllers\BaseController
 {
     /**
      * @inheritdoc

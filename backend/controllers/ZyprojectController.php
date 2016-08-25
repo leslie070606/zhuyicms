@@ -221,4 +221,10 @@ class ZyprojectController extends Controller {
         return $phonestr;
     }
 
+    //查看匹配设计师
+    public function actionMatchjson() {
+
+        return $this->render('matchjson');
+    }
+
 }

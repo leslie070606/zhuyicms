@@ -7,7 +7,7 @@ use yii\web\Controller;
 use frontend\models;
 use frontend\services;
 
-class OrderController extends Controller {
+class OrderController extends \common\controllers\BaseController {
 
     public $layout = false;
 
