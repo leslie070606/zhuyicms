@@ -39,6 +39,14 @@ class ZyorderController extends Controller
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+		//测试短信
+		$param = array('1','2');
+		//\common\atm\Event::send("bbb.com",1,$testData);
+		
+		$event = 1;
+    	$recipient = new \common\atm\Recipient();
+    	$_ret = $recipient->receive($event, $param);
+
         return $this->render('index', [
             'model' => $model,
             'searchModel' => $searchModel,
@@ -125,6 +133,10 @@ class ZyorderController extends Controller
     {
         $model = $this->findModel($id);
 
+		//原有的见面时间及见面地点。
+		$orgAppTime = $model->appointment_time;
+		$orgAppLocation = $model->appointment_location;
+
         if($model->load(Yii::$app->request->post())){
             //见面时间
             $appointmentTime = $model->attributes['appointment_time'];
@@ -133,6 +145,14 @@ class ZyorderController extends Controller
 
 			$status = $model->attributes['status'];
 			$model->status = $status;
+
+			//-------新的短信需求V1.0.1----------
+			if(isset($orgAppTime) &&!empty($orgAppTime)){
+				/*
+				$testData = array('1','2');
+				\common\atm\Event::send("localhost",1,$testData);
+				*/
+			}
 
 			$model->update_time = time();
 			if($model->save()){
