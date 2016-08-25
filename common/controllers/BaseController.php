@@ -25,6 +25,9 @@ class BaseController extends Controller {
         echo json_encode($arr);
         exit;
     }
+    
+     //public function __construct(){}
+    
 
     public static function checkLoginCookie() {
         $remCookie = Yii::$app->request->cookies->get('zuyiuser_remeber');
