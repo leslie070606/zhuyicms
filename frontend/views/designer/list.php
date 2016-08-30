@@ -17,7 +17,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         <link rel="stylesheet" href="css/gloab.css" />
         <link rel="stylesheet" href="css/designer_list.css" />
         <link rel="stylesheet"  href="//at.alicdn.com/t/font_1467361951_3606887.css" />
-        <link rel="stylesheet" href="css/pullToRefresh.css"/>
+       
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
@@ -165,24 +165,28 @@ function Refresh() {
 }
 
 function Load() {
-                var length=$(".designer_box ul li").length;
-		 $.ajax({
-                type: "get",
-                data: "",
-                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list'; ?>" + "&&params=" + length,
-                async: true,
-                success: function (data) {
-                     if(data==""||data==null){
-                    $("#jiazai_ing").html("还有更多设计师，想认识他们？请联系住艺");
-                }
-                    data = eval('(' + decodeURI(data) + ')');
-                    jiazai(data);
-                   wrapper.refresh();
-                    var html_box=$(".designer_box ul").html();
-                    localStorage.setItem("zhuyi_local",html_box);
-                  
-                }
-            });
+            
+                    var length=$(".designer_box ul li").length;
+                    $.ajax({
+                   type: "get",
+                   data: "",
+                   url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list'; ?>" + "&&params=" + length,
+                   async: true,
+                   success: function (data) {
+                        if(data==""||data==null){
+                       $(".pullUpIcon").css("background","none");
+                        $(".pullUpLabel").html("还有更多设计师，想认识他们？请联系住艺");
+                   }else{
+                       data = eval('(' + decodeURI(data) + ')');
+                       jiazai(data);
+                      wrapper.refresh();
+                       var html_box=$(".designer_box ul").html();
+                       localStorage.setItem("zhuyi_local",html_box);
+                   }
+                   }
+               });
+           
+               
 }
 //以上为下拉刷新代码
     

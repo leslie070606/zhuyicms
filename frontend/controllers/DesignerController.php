@@ -392,6 +392,49 @@ class DesignerController extends Controller {
                 $designer = $designerM::findBySql("select * from zyj_designer_basic where name like '%" . $searchKey . "%'")->all();
 
                 if (count($designer) > 0) {
+
+                    //判断用户是否登录
+                    $session = Yii::$app->session;
+                    if (!$session->isActive) {
+                        $session->open();
+                    }
+                    $userId = $session->get("user_id");
+
+                    if (!isset($userId) || empty($userId)) {
+
+                        $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+
+                        if ($_cookieSts) {
+                            //如果是登录用户
+                            $userId = $session->get("user_id");
+
+                            //插入用户的搜索信息
+                            $userModel = new \frontend\models\User();
+                            $userinfo = $userModel->findOne($userId);
+                            
+                            $userHistory = new \common\models\ZyHistory();
+
+                            $userHistory->user_id = $userId;
+                            $userHistory->user_name = $userinfo['nickname'];
+                            $userHistory->content = $searchKey;
+                            $userHistory->phone = $userinfo['phone'];
+                            $userHistory->create_time = strval(time());
+                            $userHistory->save();
+                        }
+                    } else {
+                        //插入用户的搜索信息
+                        $userModel = new \frontend\models\User();
+                        $userinfo = $userModel->findOne($userId);
+
+                        $userHistory = new \common\models\ZyHistory();
+
+                        $userHistory->user_id = $userId;
+                        $userHistory->user_name = $userinfo['nickname'];
+                        $userHistory->content = $searchKey;
+                        $userHistory->phone = $userinfo['phone'];
+                        $userHistory->create_time = (string)time();
+                        $userHistory->save();
+                    }
                     return $this->render('searchdesigner', ['data' => $designer]);
                 } else {
                     return FALSE;
