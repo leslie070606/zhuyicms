@@ -1,117 +1,110 @@
 <div class="row">
-<div class="col-md-12">
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">完全匹配</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-bordered">
-                <tbody><tr>
-                     
-                        
-                        <th style="width: 40px"> 设计师ID</th>
-                        <th style="width: 40px"> 设计师得分</th>
-                    </tr>
-                 
-                  
-                    <?php 
-                    $scoreArr = json_decode($model->match_json,true);
-                    //var_dump($scoreArr);exit;
-                    $scoreArr = $scoreArr?$scoreArr:[];
-                    foreach ($scoreArr as $sc){ 
-                        if($sc['score']<0){
-                            continue;
-                        }
-                        ?>
-                    <tr>
-                        <td><?=$sc['did'] ?></td>
-                        <td><?=$sc['score'] ?></td>
-                      
-                    </tr>
-                    <?php } ?>
-                </tbody></table>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer clearfix">
-            <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
-            </ul>
-        </div>
-    </div>
- 
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">完全匹配</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tbody><tr>
 
-     <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">硬性匹配</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <table class="table table-bordered">
-                <tbody><tr>
-                        <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                        <td>1.</td>
-                        <td>Update software</td>
-                        <td>
-                            <div class="progress progress-xs">
-                                <div style="width: 55%" class="progress-bar progress-bar-danger"></div>
-                            </div>
-                        </td>
-                        <td><span class="badge bg-red">55%</span></td>
-                    </tr>
-                    <tr>
-                        <td>2.</td>
-                        <td>Clean database</td>
-                        <td>
-                            <div class="progress progress-xs">
-                                <div style="width: 70%" class="progress-bar progress-bar-yellow"></div>
-                            </div>
-                        </td>
-                        <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                        <td>3.</td>
-                        <td>Cron job running</td>
-                        <td>
-                            <div class="progress progress-xs progress-striped active">
-                                <div style="width: 30%" class="progress-bar progress-bar-primary"></div>
-                            </div>
-                        </td>
-                        <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                        <td>4.</td>
-                        <td>Fix and squish bugs</td>
-                        <td>
-                            <div class="progress progress-xs progress-striped active">
-                                <div style="width: 90%" class="progress-bar progress-bar-success"></div>
-                            </div>
-                        </td>
-                        <td><span class="badge bg-green">90%</span></td>
-                    </tr>
-                </tbody></table>
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer clearfix">
-            <ul class="pagination pagination-sm no-margin pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">»</a></li>
-            </ul>
-        </div>
-    </div>
 
-</div>
+                            <th style="width: 40px"> 设计师ID</th>
+                            <th style="width: 40px"> 设计师姓名</th>
+                            <th style="width: 40px"> 设计师得分</th>
+                            <th style="width: 40px"> 操作</th>
+                        </tr>
+
+
+                        <?php
+                        $desBasic = new backend\models\DesignerBasic();
+
+//                        echo $pagination->offset."<br>";
+//                        echo $pagination->limit;
+                        $scoreArr = json_decode($model->match_json, true);
+                        //var_dump($scoreArr);exit;
+                        $scoreArr = $scoreArr ? $scoreArr : [];
+                        foreach ($scoreArr as $sc) {
+                            if ($sc['score'] < 0) {
+                                continue;
+                            }
+                            $desBasic = $desBasic->findOne($sc['did']);
+                            ?>
+                            <tr>
+                                <td><?= $sc['did'] ?></td>
+                                <td><?= $desBasic['name'] ?></td>
+                                <td><?= $sc['score'] ?></td>
+                                <td>推荐</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody></table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <?=
+                    \yii\widgets\LinkPager::widget([
+                        'pagination' => $pagination,
+                        'options' => [
+                            'class' => 'pagination',
+                        ]
+                    ]);
+                    ?>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">硬性匹配</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tbody><tr>
+
+
+                            <th style="width: 40px"> 设计师ID</th>
+                            <th style="width: 40px"> 设计师姓名</th>
+                            <th style="width: 40px"> 设计师得分</th>
+                            <th style="width: 40px"> 操作</th>
+                        </tr>
+
+
+                        <?php
+                        $scoreArr = json_decode($model->match_json, true);
+                        //var_dump($scoreArr);exit;
+                        $scoreArr = $scoreArr ? $scoreArr : [];
+                        foreach ($scoreArr as $sc) {
+                            if ($sc['score'] < -200 || $sc['score'] > 0) {
+                                continue;
+                            }
+                            $desBasic = $desBasic->findOne($sc['did']);
+                            ?>
+                            <tr>
+                                <td><?= $sc['did'] ?></td>
+                                <td><?= $desBasic['name'] ?></td>
+                                <td><?= $sc['score'] ?></td>
+                                <td>推荐</td>
+
+                            </tr>
+                        <?php } ?>
+                    </tbody></table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="#">«</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">»</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 
 </div>

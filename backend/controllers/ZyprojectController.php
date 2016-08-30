@@ -224,8 +224,8 @@ class ZyprojectController extends Controller {
     //查看匹配设计师
     public function actionMatchjson($id) {
         $model = $this->findModel($id);
-        
-        return $this->render('matchjson',['model'=>$model]);
+        $pagination = new \yii\data\Pagination(['totalCount' => 10, 'pageSize' => 3]);
+        return $this->render('matchjson',['model'=>$model,'pagination'=>$pagination]);
     }
 
 }
