@@ -174,7 +174,6 @@ function Load() {
                 success: function (data) {
                      if(data==""||data==null){
                     $("#jiazai_ing").html("还有更多设计师，想认识他们？请联系住艺");
-                    truefalse=false;
                 }
                     data = eval('(' + decodeURI(data) + ')');
                     jiazai(data);
@@ -226,36 +225,6 @@ function Load() {
     });
 
 
-    var truefalse = true;
-//    $(window).on("scroll", function () {
-//        var height = $(window).height();
-//        var scrrol = document.body.scrollTop;
-//        var heighta = $(".des_box").height();
-//        var get = heighta - height - scrrol;
-//        if (get <= 0 && truefalse) {
-//            truefalse = false;
-//            var length = $(".designer_box .pro_here").length;
-//            $("#jiazai_ing").show();
-//            $.ajax({
-//                type: "get",
-//                data: "",
-//                url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/list'; ?>" + "&&params=" + length,
-//                async: true,
-//                success: function (data) {
-//                     if(data==""||data==null){
-//                    $("#jiazai_ing").html("还有更多设计师，想认识他们？请联系住艺");
-//                           truefalse=false;
-//                }
-//                    data = eval('(' + decodeURI(data) + ')');
-//                    jiazai(data);
-//                    truefalse = true;
-//                    $("#jiazai_ing").hide();
-//                }
-//            });
-//
-//
-//        }
-//    })
 
     var yyyy = 0
     function jiazai(data) {

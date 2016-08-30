@@ -1,4 +1,5 @@
 <?php
+/*
 namespace common\atm;
 
 class Queue extends MemcacheQ{
@@ -16,3 +17,4 @@ class Queue extends MemcacheQ{
 		return $this->_ns . $event;
 	}
 }
+*/

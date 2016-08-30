@@ -89,6 +89,7 @@ $userId = $session->get("user_id");
             </section>
             <span class="banner_head"><img src="<?= $data['head_portrait'] ?>"/></span>
             <section class="production">
+				<input type="hidden" id="art_len" value=<?php echo $data['art_cnt']?>>
                 <div class="pro_title">
                     <span class="titl_span">作品集
                         <a></a>

@@ -1,4 +1,5 @@
 <?php
+/*
 namespace common\atm;
 use Yii;
 
@@ -19,3 +20,4 @@ class Recipient{
 		}
 	}
 }
+*/
