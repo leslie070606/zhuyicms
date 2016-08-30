@@ -97,7 +97,7 @@ class Match {
                 //$huangse = 100;
             }
             //黄色浮动
-            else if ($ProArr['covered_area'] * 1.1 >= $DesArr['accept_area'] && $pro_budget * 1.5 >= $des_budget) {
+            else if ($ProArr['covered_area'] * 1.1 >= $DesArr['accept_area'] && $pro_budget * 1.15 >= $des_budget) {
 
                 //合理浮动 面积10%以内  预算50%以内 黄色部分
                 //计算分数

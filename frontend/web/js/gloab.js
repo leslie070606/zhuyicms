@@ -1,15 +1,22 @@
 $(function () {
-
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c2212e69b1418d8a1b6506185b5c8bc3";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    // 百度统计代码
     touch.on(".down_right li:last-child", "tap", function (ev) {
-        if($(ev.currentTarget).find("a").html()=="暂时登出"){
-        $(".out_true_box").show();
-    }
+        if ($(ev.currentTarget).find("a").html() == "暂时登出") {
+            $(".out_true_box").show();
+        }
     });
     touch.on(".out_true_box .quxiao", "tap", function () {
         $(".out_true_box").hide();
     });
- 
-    
+
+
     var widthaa = $("body").width();
     $(".here_img,.pro_here").css("height", widthaa * .56);
 
