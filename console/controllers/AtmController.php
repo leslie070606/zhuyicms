@@ -5,6 +5,7 @@ use Yii;
 use yii\console\Controller;
 
 class AtmController extends Controller{
+/*
 	public function actionRun(){
 		$eventModel = new \common\models\ZyEvent();
 		$eventList = $eventModel->getAllEvents();
@@ -16,11 +17,11 @@ class AtmController extends Controller{
         		$ret = $consumerModel->consume($e->event_id);
         		//$continue = $continue || $ret;
     		}
-			/*
     		if(!$continue){
         		break;
-    		}*/
+    		}
     		usleep(1);
 		}
 	}
+*/
 }

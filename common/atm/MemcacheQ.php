@@ -1,4 +1,5 @@
 <?php
+/*
 namespace common\atm;
 use Yii;
 
@@ -12,3 +13,4 @@ class MemcacheQ{
 		return $v;
 	}
 }
+*/

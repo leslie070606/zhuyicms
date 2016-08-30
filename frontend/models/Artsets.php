@@ -6,6 +6,10 @@ class Artsets extends ActiveRecord{
 	public static function tableName(){
 		return 'zy_artsets';
 	}
+
+	public function getArtCntsByDesignerId($designerId){
+		return $this->find()->where(['designer_id' => $designerId])->count();
+	}
 	
 	public function getArtsetById($artId){
 		return $this->findOne($artId);

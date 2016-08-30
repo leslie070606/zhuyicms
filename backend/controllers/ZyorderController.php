@@ -35,14 +35,13 @@ class ZyorderController extends Controller
      */
     public function actionIndex()
     {   
+		/*
         $model = new \common\models\ZyOrder();
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
 		//测试短信
 		$param = array('1','2');
-		//\common\atm\Event::send("bbb.com",1,$testData);
-		
 		$event = 1;
     	$recipient = new \common\atm\Recipient();
     	$_ret = $recipient->receive($event, $param);
@@ -52,7 +51,75 @@ class ZyorderController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+		*/
+		$query 	= \common\models\ZyOrder::find();
+		$query->joinWith(['zy_user','zyj_designer_basic']);
+		$query->select("zy_user.nickname,zyj_designer_basic.name,zy_order.*");
+		$w 		= $this->_getZyOrderIndexSearch();
+		$query->where($w);
+	    $pages 	= new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => '15']);
+        $model 	= $query->offset($pages->offset)->limit($pages->limit)->all();
+
+        return $this->render('index', [
+                    'model' => $model,
+                    'pages' => $pages,
+                    'getParams' => Yii::$app->request->get()
+        ]);
     }
+
+	private function _getZyOrderIndexSearch() {
+        $_params = Yii::$app->request->get();
+        if (empty($_params)) {
+            return '1';
+        }
+        foreach ($_params as $k => $v) {
+            $_params[$k] = addslashes($v);
+        }
+        unset($_params['page']);
+        unset($_params['per-page']);
+        if (empty($_params)) {
+            return '1';
+        }
+        $w = '1';
+        if (isset($_params['order_id']) && !empty($_params['order_id'])) {
+            $w .= ' and zy_order.order_id="' . $_params['order_id'] . '" ';
+        }
+        if (isset($_params['apt_time_min']) && !empty($_params['apt_time_min'])) {
+			$_params['apt_time_min'] = strtotime($_params['apt_time_min']);
+            $w .= ' and zy_order.appointment_time>="' . $_params['apt_time_min'] . '" ';
+        }
+        if (isset($_params['apt_time_max']) && !empty($_params['apt_time_max'])) {
+			$_params['apt_time_max'] = strtotime($_params['apt_time_max']);
+            $w .= ' and zy_order.appointment_time<="' . $_params['apt_time_max'] . '" ';
+        }
+		if(isset($_params['designer_name']) && !empty($_params['designer_name'])){
+			$w .= 'and zyj_designer_basic.name like "%' . $_params['designer_name'] .'%" '; 
+		}
+
+		if(isset($_params['user_name']) && !empty($_params['user_name'])){
+			$w .= 'and zy_user.nickname like "%' . $_params['user_name'] .'%" '; 
+		}
+
+		if(isset($_params['apt_location']) && !empty($_params['apt_location'])){
+			$w .= 'and zy_order.apt_location like "%' . $_params['apt_location'] .'%" ';
+		}
+
+		if(isset($_params['type']) && !empty($_params['type'])){
+			$w .= 'and zy_order.service_type=' . $_params['service_type'] .'" ';
+		}
+
+		if(isset($_params['status']) && !empty($_params['status'])){
+			$w .= 'and zy_order.status=' . $_params['status'] .'" ';
+		}
+		if(isset($_params['remark']) && !empty($_params['remark'])){
+			$w .= 'and zy_order.remark like "%' . $_params['remark'] .'%" ';
+		}
+		if(isset($_params['project_id']) && !empty($_params['project_id'])){
+			$w .= 'and zy_order.project_id="' . $_params['project_id'] .'" ';
+		}
+
+		return $w;
+	}
 
     /**
      * Displays a single ZyOrder model.

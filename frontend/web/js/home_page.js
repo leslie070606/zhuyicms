@@ -9,8 +9,8 @@ $(function(){
 		if(collect_status==1){
 			$(".sc_bot a").addClass("active").html("已收藏");
 		}
-        var length=$(".pro_box .pro_here").length;
-        if(length<3){
+        var length=$("#art_len").val();
+        if(length<=3){
             $(".see_more").hide();
         }
 	var all_type=$("#topb").attr("all_type");

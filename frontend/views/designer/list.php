@@ -160,8 +160,7 @@ HTML;
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id,
             data: "",
             success: function (data) {
-                console.log("js output...........");
-                console.log(data);
+               
                 window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id;
             }
         })
