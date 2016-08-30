@@ -178,7 +178,7 @@ function Load() {
                     data = eval('(' + decodeURI(data) + ')');
                     jiazai(data);
                    wrapper.refresh();
-                    var html_box=$(".designer_box").html();
+                    var html_box=$(".designer_box ul").html();
                     localStorage.setItem("zhuyi_local",html_box);
                   
                 }
