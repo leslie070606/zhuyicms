@@ -248,7 +248,7 @@ class UserController extends ZyuserController {
                 } else {
                     // 验证码错误!
                     Yii::$app->getSession()->setFlash('msg', '验证码错误,请重新获取!');
-                    return $this->render('Addphone');
+                    return $this->render('addphone');
                 }
             } else {
                 //找不到用户

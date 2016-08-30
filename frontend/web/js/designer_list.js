@@ -1,7 +1,7 @@
 $(function(){
     var local_box=localStorage.getItem("zhuyi_local");
     console.log(local_box);
-	if(local_box!=""||local_box!=null){
+	if(local_box!=""&&local_box!=null){
 		$(".designer_box").html(local_box);
 	}
 	var get=0;
