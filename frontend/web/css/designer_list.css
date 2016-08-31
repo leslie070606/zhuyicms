@@ -48,7 +48,7 @@ body { position: absolute; left: 0; right: 0;}
 	position: absolute;
 	z-index: 1;
 	width: 100%;
-	padding-bottom: .88rem;
+	padding-bottom: 1.76rem;
 }
 .scroller ul {
 	list-style: none;

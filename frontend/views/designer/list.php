@@ -205,24 +205,28 @@ function Load() {
 
     })
     $("body").on("click", ".pro_here", function (ev) {
+        var here_top=$(ev.currentTarget).offset().top;
         var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
         $.ajax({
             type: "GET",
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id,
             data: "",
             success: function (data) {
+                localStorage.setItem("here_top",here_top);
                 window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id;
             }
         })
     });
 
     touch.on(".pro_here", "tap", function (ev) {
+    var here_top=$(ev.currentTarget).offset().top;
         var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
         $.ajax({
             type: "GET",
             url: "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id,
             data: "",
             success: function (data) {
+                 localStorage.setItem("here_top",here_top);
                 window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=designer/detail'; ?>" + "&&params=" + designer_id;
             }
         })
