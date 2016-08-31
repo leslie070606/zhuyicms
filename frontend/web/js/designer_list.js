@@ -10,11 +10,8 @@ $(function(){
 		pullUpAction:Load 																			
 		});
 	}
-        var u = document.referrer;
-        if(u.indexOf("detail") > 0 ){
-             var here_top=localStorage.getItem("here_top");
-            $(window).scrollTop(here_top);
-        }
+             
+        
 	var get=0;
 	var height=$(window).height();
 	var heighta=$(window).height()-$(".header_top").height()

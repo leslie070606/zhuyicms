@@ -205,7 +205,7 @@ function Load() {
 
     })
     $("body").on("click", ".pro_here", function (ev) {
-        var here_top=$(ev.currentTarget).offset().top;
+        var here_top=$(ev.currentTarget).parent("li").index();
         var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
         $.ajax({
             type: "GET",
@@ -219,7 +219,7 @@ function Load() {
     });
 
     touch.on(".pro_here", "tap", function (ev) {
-    var here_top=$(ev.currentTarget).offset().top;
+    var here_top=$(ev.currentTarget).parent("li").index();
         var designer_id = $(ev.currentTarget).find(">img").attr("designer_id");
         $.ajax({
             type: "GET",
