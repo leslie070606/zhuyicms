@@ -275,7 +275,6 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         touch.on(".bot_btn_box .next_btn", "tap", function () {
             if ($(".bot_btn_box").hasClass("true_btn")) {
                 var index = $(".demand_big>.active").index() + 1;
-                alert(index);
                 switch (index)
                 {
                     case 1:

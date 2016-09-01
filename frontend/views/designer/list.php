@@ -65,7 +65,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 					</div>
 				</div>
 			</div>
-            <div class="sousuo_box">
+<!--            <div class="sousuo_box">
                 <div class="sousuo_title">
                     设计师类别
                 </div>
@@ -89,7 +89,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
 
                 <div class="sifting">甄选</div>
-            </div>
+            </div>-->
             <div class="designer_box" id="wrapper">
                 <ul>
                 <?php
