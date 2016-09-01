@@ -150,6 +150,7 @@ class DesignerController extends Controller {
             $tag = "艺术家,设计小达人";
         }
         $experience = isset($rows->experience) ? $rows->experience : '';
+		$interests = isset($rows->interests)? $rows->interests : '';
         $tmp = $dbModel->getHeadPortrait($designerId);
         $headPortrait = isset($tmp) ? $tmp : "/img/home_page/banner_head.jpg";
 
@@ -207,7 +208,8 @@ class DesignerController extends Controller {
             ),
             'serve_city' => $serveCity,
             'style' => $style,
-            'experience' => $experience
+            'experience' => $experience,
+			'interests' => $interests
         );
         return $this->render("detail", ['data' => $data, 'jsarr' => $jsarr]);
     }
