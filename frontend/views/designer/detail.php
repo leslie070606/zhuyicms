@@ -194,6 +194,7 @@ HTML;
                     $serveCity = $data['serve_city'];
                     $style = $data['style'];
                     $experience = $data['experience'];
+					$interests = $data['interests'];
                     $yingType = $data['service_content']['ying_type'];
                     $gongType = $data['service_content']['gong_type'];
                     $ruanType = $data['service_content']['ruan_type'];
@@ -245,6 +246,15 @@ HTML;
                                 </div>
                                 <div class="info_here_right cccc">
                                     <?php echo $experience ?>
+                                </div>
+                            </div><!--info_here end-->
+
+                            <div class="info_here">
+                                <div class="info_here_left">
+                                    兴趣爱好
+                                </div>
+                                <div class="info_here_right cccc">
+                                    <?php echo $interests ?>
                                 </div>
                             </div><!--info_here end-->
 
