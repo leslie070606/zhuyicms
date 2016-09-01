@@ -67,6 +67,7 @@ body{ padding-top: 0;}
 .seven_spd {  position: absolute; width: 100%; left: 0; text-align: center; bottom: .3rem;}
 .boxa_box { width: 2.8rem; height: 1.3rem; margin: 0 auto ; border: 1px solid #777777; color: #C9C9CA;}
 .first_box>.boxa_box  { color: #777777;margin-bottom: .8rem;}
+.first_box>.boxa_box:hover { color: #ff4e38; border-color: #ff4e38;}
 .boxa_box>span { display: block; text-align: center;}
 .boxa_box .box_soa{ font-size: .28rem; margin: .25rem auto .2rem;}
 .boxa_box .box_sob{ font-size: .20rem;}

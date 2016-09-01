@@ -125,16 +125,32 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </div>
                 </div>
                 <textarea class="text_box"  name="description" id="answer-for-q-3" rows="10" placeholder="更多个性化需求，在这里告诉住艺吧！"></textarea>
-                <button class="chose_btn zhihui" type="submit" disabled="true"  style="border: none;">
+                <button class="chose_btn zhihui" type="button" disabled="true"  style="border: none;">
                     完成！立刻查看设计师！
                 </button>
                 <?php ActiveForm::end(); ?>
-                <span class="center_nameaa"><a style="color: #221814;" href="index.php?r=project/choose_designer&&project_id=<?= $project_id ?>">稍后再填</a></span>
+                <span class="center_nameaa"><a style="color: #221814;" onclick=shaohou("index.php?r=project/choose_designer&&project_id=<?= $project_id ?>")>稍后再填</a></span>
             </div>
         </div>	
     </body>
 </html>
 <script type="text/javascript">
+    $(function(){
+       tj_ajax(3,3001, user_id, "", "细节需求页面加载量"); 
+    })
+    
+    function shaohou(a){
+        tj_ajax(2,2002, user_id, "", "稍后再填");
+        window.location.href=a;
+    }
+    touch.on(".chose_btn","tap",function(ev){
+        if($(ev.currentTarget).attr("disabled")){
+            return false;
+        }else{
+             tj_ajax(2,2001, user_id, "", "提交");
+             $("form").submit();
+        }
+    });
     var _uploadUrl = "<?php echo Url::to(['index/upload-image']); ?>";
 
     function ajaxFileUpload(fileName) {

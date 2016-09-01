@@ -411,7 +411,7 @@ class DesignerController extends Controller {
                             //插入用户的搜索信息
                             $userModel = new \frontend\models\User();
                             $userinfo = $userModel->findOne($userId);
-                            
+
                             $userHistory = new \common\models\ZyHistory();
 
                             $userHistory->user_id = $userId;
@@ -432,7 +432,7 @@ class DesignerController extends Controller {
                         $userHistory->user_name = $userinfo['nickname'];
                         $userHistory->content = $searchKey;
                         $userHistory->phone = $userinfo['phone'];
-                        $userHistory->create_time = (string)time();
+                        $userHistory->create_time = (string) time();
                         $userHistory->save();
                     }
                     return $this->render('searchdesigner', ['data' => $designer]);
@@ -441,7 +441,28 @@ class DesignerController extends Controller {
                 }
             }
         } else {
-            return $this->render('hunt');
+            //读取搜索历史
+            //判断用户是否登录
+            $session = Yii::$app->session;
+            if (!$session->isActive) {
+                $session->open();
+            }
+            $userId = $session->get("user_id");
+            if (!isset($userId) || empty($userId)) {
+                $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+                if ($_cookieSts) {
+                    $userId = $session->get("user_id");
+                } else {
+                    $userId = '';
+                }
+            }
+            //根据用户ID查询历史搜索 按时间降序排列取3条
+            $historyModel = new \common\models\ZyHistory();
+            $historyArr = $historyModel->find()->where(['user_id' => $userId])->orderBy('create_time DESC')->limit(3)->all();
+            if (!$historyArr) {
+                $historyArr = array();
+            }
+            return $this->render('hunt', ['history' => $historyArr]);
         }
     }
 

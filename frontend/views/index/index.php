@@ -4,6 +4,24 @@ use common\models\ZyVideo;
 use yii\helpers\Url;
 
 $videoModel = new ZyVideo();
+
+
+//判断用户是否登录
+$session = Yii::$app->session;
+if (!$session->isActive) {
+    $session->open();
+}
+$userId = $session->get("user_id");
+if (!isset($userId) || empty($userId)) {
+    $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+    if ($_cookieSts) {
+        $userId = $session->get("user_id");
+    }else{
+        $userId = '';
+    }
+    
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -59,7 +77,7 @@ $videoModel = new ZyVideo();
 
             </ul>
 
-            <span class="mesg_spb"><a href="<?php echo Url::toRoute('project/match_designer'); ?>" style="top: 2.4rem;">找设计师</a></span>
+            <span class="mesg_spb zy_btn_uxa"><a onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">
@@ -151,7 +169,7 @@ $videoModel = new ZyVideo();
                 <span class="use_text use_two">与设计师签约</span>
                 <span class=" iconfont icon-jiantou use_three"></span>
             </div>
-            <span class="btn_bot"><a href="<?php echo Url::toRoute('project/match_designer'); ?>">找设计师</a></span>
+            <span class="btn_bot zy_btn_ux"><a onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012)>找设计师</a></span>
         </section><!--use_zy end-->
 
         <section class="nav_bot">
@@ -159,7 +177,7 @@ $videoModel = new ZyVideo();
             <span><a href="<?php echo Url::toRoute('zyzhinan/about'); ?>">关于住艺</a></span>
             <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
             <span><a href="https://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=2247485173&idx=4&sn=5c10b2364bc21a1527e9d133e8cbad30&scene=1&srcid=08112f6yasQXCY7tW0hFeEYf&key=305bc10ec50ec19b02071ea23533e123b67ab587901d9f0b2dc424aca2470b37385ff9d62bfa4b959f8f06479654fc79&ascene=0&uin=MjAwNDIyNzIwMg%3D%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.6+build(15G31)&version=11020201&pass_ticket=Jvenh%2BfdOHsIBk%2FxXUW3dUY5L4MH6qwgBegvTTPeQQ3Gb5nLIsI1ORiHB3Tj4Im2">住艺招聘</a></span>
-            <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>
+            <span><a onclick=gongzhuang("<?php echo Url::toRoute('index/toolsdesign'); ?>",2,2008)>公装项目</a></span>
         </section>
         <!--nav_bot end-->
 
@@ -171,10 +189,14 @@ $videoModel = new ZyVideo();
                 京ICP备16029306号
             </span>
         </footer>
-
+        <input type="hidden" id='user_id' value="<?=$userId ?>" />
     </body>
 </html>
 <script type="text/javascript">
+    function gongzhuang(a,b,c){
+         tj_ajax(b, c, user_id, "", "公装项目");
+         window.location.href=a;
+    }
     wx.config({
         debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
         appId: 'wx8f50ac309b04acf8', // 必填，公众号的唯一标识

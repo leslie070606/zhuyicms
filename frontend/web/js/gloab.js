@@ -1,4 +1,5 @@
 $(function () {
+    user_id = localStorage.getItem("user_id");
     var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
@@ -7,23 +8,24 @@ $(function () {
         s.parentNode.insertBefore(hm, s);
     })();
     // 百度统计代码
-    var url =window.location.href;
-    if(url.indexOf("detail") > 0){
-        localStorage.setItem("zhaosire_sb","b");
-    }else{
-        var zhao=localStorage.getItem("zhaosire_sb");
-        if(url.indexOf("list")>0&&zhao=="b"){
-            var here_top=localStorage.getItem("here_top");
-            var height=$(".pro_here").height();
-            setTimeout(function(){
-                 $(".scroller").css({"transform":"translate(0px, -"+here_top*height+"px) scale(1) translateZ(0px)","transition-duration": "0ms"})
-            },100);
-        }else{
-            localStorage.setItem("zhaosire_sb","a"); 
+    var url = window.location.href;
+    if (url.indexOf("detail") > 0) {
+        localStorage.setItem("zhaosire_sb", "b");
+    } else {
+        var zhao = localStorage.getItem("zhaosire_sb");
+        if (url.indexOf("list") > 0 && zhao == "b") {
+            var here_top = localStorage.getItem("here_top");
+            var height = $(".pro_here").height();
+            setTimeout(function () {
+                $(".scroller").css({"transform": "translate(0px, -" + here_top * height + "px) scale(1) translateZ(0px)", "transition-duration": "0ms"})
+            }, 100);
+        } else {
+            localStorage.setItem("zhaosire_sb", "a");
         }
-       
-    };
-            
+
+    }
+    ;
+
 
     touch.on(".down_right li:last-child", "tap", function (ev) {
         if ($(ev.currentTarget).find("a").html() == "暂时登出") {
@@ -86,5 +88,15 @@ $(function () {
         });
     }
 });
-
+function tj_ajax(a, b, c, d, e) {
+    $.ajax({
+        url: "http://zhuyihome.com/index.php?r=data-count-api/create&mtId=" + a + "&mdId=" + b + "&userId=" + c + "&designerId=" + d + "&mMark=" + e + "",
+        type: "GET",
+        dataType: 'jsonp',
+        jsonp: 'jsoncallback',
+        data: "",
+        async: true,
+        success: function (data) {}
+    });
+}
 

@@ -68,20 +68,20 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="box_soa">装修设计</span>
                     <span class="box_sob">新房，二手房重新装修</span>
                 </div>
-               <div class="boxa_box">
-                        <span class="box_soa">软装咨询</span>
-                        <span class="box_sob">家居配饰  布局摆放</span>
-                    </div>
-
-               <div class="boxa_box">
-                        <span class="box_soa">庭院景观</span>
-                        <span class="box_sob">庭院、花园、景观规划</span>
-                    </div>
+                <div class="boxa_box">
+                    <span class="box_soa">软装咨询</span>
+                    <span class="box_sob">家居配饰  布局摆放</span>
+                </div>
 
                 <div class="boxa_box">
-                        <span class="box_soa">公装设计</span>
-                        <span class="box_sob">办公室 商铺 会所 艺术馆</span>
-                    </div>
+                    <span class="box_soa">庭院景观</span>
+                    <span class="box_sob">庭院、花园、景观规划</span>
+                </div>
+
+                <div class="boxa_box">
+                    <span class="box_soa">公装设计</span>
+                    <span class="box_sob">办公室 商铺 会所 艺术馆</span>
+                </div>
             </div>
 
             <div class="demand_big">
@@ -196,7 +196,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
             </div>
             <div class="bot_btn_box first_btn">
-                <span class="prev_btn">上一步</span>
+                <span class="prev_btn zy_btn_ux">上一步</span>
                 <span class="next_btn">下一步</span>
                 <span class="tj_btn"><a href="javascript:">提交</a></span>
             </div>
@@ -213,18 +213,21 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         touch.on(".first_box .boxa_box", "tap", function (ev) {
             var index = $(ev.currentTarget).index();
             $(ev.currentTarget).addClass("activeaa");
-            setTimeout(function(){
+            setTimeout(function () {
                 if (index == 1) {
+                    tj_ajax(2,2009, user_id, "", "装修设计");
                     $(".first_box").hide();
-                }else if(index==2){
-                    window.location="https://jinshuju.net/f/uccnkD";
-                }else if(index==3){
-                    window.location="https://jinshuju.net/f/gGZI3n";
-                }else if(index==4){
-                    window.location="https://jinshuju.net/f/WxnP3w";
+                } else if (index == 2) {
+                    window.location = "https://jinshuju.net/f/uccnkD";
+                } else if (index == 3) {
+                    tj_ajax(2,2010, user_id, "", "庭院景观");
+                    window.location = "https://jinshuju.net/f/gGZI3n";
+                } else if (index == 4) {
+                    tj_ajax(2,2011, user_id, "", "工装设计");
+                    window.location = "https://jinshuju.net/f/WxnP3w";
                 }
-            },500);
-            
+            }, 500);
+
         });
 
         var nuber = 0;
@@ -241,6 +244,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         //提交按钮
         touch.on(".tj_btn", "tap", function (ev) {
             if ($(ev.currentTarget).parent().hasClass("true_btn")) {
+                 tj_ajax(1, 1007, user_id, "", "第7题下一步");
                 //var demand = {dem1: a, dem2: b, dem3: c, dem4: d, dem5: e, dem6: f, dem7: g}
                 var demand = a + "@" + b + "@" + c + "@" + d + "@" + e + "@" + f + "@" + g;
                 var gerr = JSON.stringify(demand);
@@ -267,54 +271,79 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
         });
 
-       //下一步点击事件
-	touch.on(".bot_btn_box .next_btn","tap",function(){
-		if($(".bot_btn_box").hasClass("true_btn")){
-			var index=$(".demand_big>.active").index()+1;
-			$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
-			if(index>nuber){
-				$(".bot_btn_box").removeClass("true_btn");
-			}else{
-				$(".bot_btn_box").addClass("true_btn");
-			}
+        //下一步点击事件
+        touch.on(".bot_btn_box .next_btn", "tap", function () {
+            if ($(".bot_btn_box").hasClass("true_btn")) {
+                var index = $(".demand_big>.active").index() + 1;
+                alert(index);
+                switch (index)
+                {
+                    case 1:
+                        tj_ajax(1, 1001, user_id, "", "第1题下一步")
+                        break;
+                    case 2:
+                        tj_ajax(1, 1002, user_id, "", "第2题下一步")
+                        break;
+                    case 3:
+                        tj_ajax(1, 1003, user_id, "", "第3题下一步")
+                        break;
+                    case 4:
+                        tj_ajax(1, 1004, user_id, "", "第4题下一步")
+                        break;
+                    case 5:
+                        tj_ajax(1, 1005, user_id, "", "第5题下一步")
+                        break;
+                    case 6:
+                        tj_ajax(1, 1006, user_id, "", "第6题下一步")
+                        break;
+
+                }
+                $(".demand_big>div:eq(" + index + ")").addClass("active").siblings().removeClass("active");
+                if (index > nuber) {
+                    $(".bot_btn_box").removeClass("true_btn");
+                } else {
+                    $(".bot_btn_box").addClass("true_btn");
+                }
 //			if(index==4){
 //				$(".bot_btn_box").addClass("true_btn");
 //			}
-			if(index>=1&&index<6){
-				
-				$(".bot_btn_box").addClass("center_btn").removeClass("first_btn");
-			}else{
-				$(".bot_btn_box").addClass("last_btn").removeClass("center_btn");
-			};
-		}
-	});
-	//上一步点击事件
-	var grttt=false;
-	touch.on(".bot_btn_box .prev_btn","tap",function(){
-		var index=$(".demand_big>.active").index()-1;
-		if(nuber<=index&&$(".bot_btn_box").hasClass("true_btn")){
-			nuber++;
-			grttt=true;
+                if (index >= 1 && index < 6) {
 
-		}
-		if(nuber<index){
-			nuber=index;
-		}
-		
-		console.log(index);
-		console.log(nuber);
-		$(".demand_big>div:eq("+index+")").addClass("active").siblings().removeClass("active");
-		$(".bot_btn_box").addClass("true_btn");
-		if(index==0){
-			$(".bot_btn_box").addClass("first_btn").removeClass("center_btn last_btn")
-		}
-		if(index>1&&index<6){
-				$(".bot_btn_box").addClass("center_btn").removeClass("first_btn last_btn");
-			}else if(index>=6){
-				$(".bot_btn_box").addClass("last_btn").removeClass("center_btn first_btn");
-			};
-	});
-	
+                    $(".bot_btn_box").addClass("center_btn").removeClass("first_btn");
+                } else {
+                    $(".bot_btn_box").addClass("last_btn").removeClass("center_btn");
+                }
+                ;
+            }
+        });
+        //上一步点击事件
+        var grttt = false;
+        touch.on(".bot_btn_box .prev_btn", "tap", function () {
+            var index = $(".demand_big>.active").index() - 1;
+            if (nuber <= index && $(".bot_btn_box").hasClass("true_btn")) {
+                nuber++;
+                grttt = true;
+
+            }
+            if (nuber < index) {
+                nuber = index;
+            }
+
+            console.log(index);
+            console.log(nuber);
+            $(".demand_big>div:eq(" + index + ")").addClass("active").siblings().removeClass("active");
+            $(".bot_btn_box").addClass("true_btn");
+            if (index == 0) {
+                $(".bot_btn_box").addClass("first_btn").removeClass("center_btn last_btn")
+            }
+            if (index > 1 && index < 6) {
+                $(".bot_btn_box").addClass("center_btn").removeClass("first_btn last_btn");
+            } else if (index >= 6) {
+                $(".bot_btn_box").addClass("last_btn").removeClass("center_btn first_btn");
+            }
+            ;
+        });
+
 
 
         //第一题逻辑	

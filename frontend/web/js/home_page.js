@@ -1,4 +1,5 @@
 $(function(){
+             tj_ajax(4,4002, user_id, "", "设计师被浏览");
 		function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);  //匹配目标参数
@@ -24,6 +25,7 @@ $(function(){
 	};
         touch.on(".botb","tap",function(ev){
 		if($("#bot_outline").css("display")=="none"){
+                        tj_ajax(2,2005, user_id, "", "立即约见");
 			$(".down_right_zd").show().animate({opacity:.5},300).css("z-index",100110);
 			$("#bot_outline").show();
 			

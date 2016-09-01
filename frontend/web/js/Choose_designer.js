@@ -1,4 +1,5 @@
 $(function () {
+    tj_ajax(3,3002, user_id, "", "匹配设计师列表页加载量");
     var nuber = 0;
 //	$(document).on("click",".bot_input",function(ev){
     touch.on(".bot_input", "tap", function (ev) {
@@ -59,14 +60,17 @@ $(function () {
 
    
     touch.on(".rg_pp", "tap", function (ev) {
+        
         if ($(ev.currentTarget).find(".iconfont").hasClass("icon-xuanzhong")) {
             $(ev.currentTarget).find(".iconfont").addClass("icon-weixuanzhong").removeClass("icon-xuanzhong");
             if ($(".bot_navv .rg_pp .iconfont").hasClass("icon-weixuanzhong") && $(".box_sjs li").length == 0) {
                 $(".navv_tj").addClass("zhihui");
             }
         } else {
+            tj_ajax(2,2003, user_id, "", "人工匹配按钮");
             $(ev.currentTarget).find(".iconfont").addClass("icon-xuanzhong").removeClass("icon-weixuanzhong");
             $(".navv_tj").removeClass("zhihui");
+            
         }
     });
     touch.on(".navv_tj", "tap", function (ev) {

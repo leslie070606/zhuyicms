@@ -70,7 +70,7 @@ $userId = $session->get("user_id");
                     <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; line-height: .35rem; height:1.8rem; border-bottom: none;">您将跳转到客服聊天界面，请输入您的姓名和手机号、以及想约见的设计师姓名，住艺客服会协商设计师的时间</div>
                     <div class="out_true_bott" style="border-top: 1px solid #eeefef;">
                         <span class="quxiao" style="color: #9F9FA0;" onclick="quxiao()">取消</span>
-                        <a href="https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc" style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">继续</a >
+                        <a onclick=bot_for("https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc") style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">继续</a >
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ $userId = $session->get("user_id");
             </section>
             <span class="banner_head"><img src="<?= $data['head_portrait'] ?>"/></span>
             <section class="production">
-				<input type="hidden" id="art_len" value=<?php echo $data['art_cnt']?>>
+                <input type="hidden" id="art_len" value=<?php echo $data['art_cnt'] ?>>
                 <div class="pro_title">
                     <span class="titl_span">作品集
                         <a></a>
@@ -392,7 +392,7 @@ HTML;
 
 
                     touch.on("#chose_des", "tap", function () {
-
+                         tj_ajax(4,4001, user_id, "", "选择该设计师");
                         var ckshejishi = $("#chose_val").val();
                         window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/choose_designer'; ?>" + '&ckshejishi=' + ckshejishi;
                     });
@@ -441,8 +441,7 @@ HTML;
                                     url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
                                     data: "",
                                     success: function (data) {
-                                        console.log("js output...........2222222222222");
-                                        console.log(data);
+                                       
                                     }
                                 })
 
@@ -483,4 +482,8 @@ HTML;
                         $(ev.currentTarget).html(htmllll);
                     });
                 });
+                function bot_for(a) {
+                    tj_ajax(2, 2006, user_id, "", "人工匹配按钮");
+                    window.location.href = a;
+                }
 </script>

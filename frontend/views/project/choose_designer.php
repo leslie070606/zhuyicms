@@ -313,6 +313,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             }
             ;
             var str = user_id + "$" + project_id + "$" + html + "$" + is_pipei;
+            tj_ajax(2,2004, user_id, "", "稍后再填");
             $.ajax({
                 type: "GET",
                 url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,

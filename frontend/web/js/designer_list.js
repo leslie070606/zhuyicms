@@ -1,5 +1,5 @@
 $(function(){
-        
+      
         var local_box=localStorage.getItem("zhuyi_local");
 	if(local_box!=""&&local_box!=null){
 		$(".designer_box").html("<ul></ul>");
