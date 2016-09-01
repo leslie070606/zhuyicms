@@ -389,10 +389,19 @@ HTML;
                 }
                 ;
                 $(function () {
+                    function getUrlParam(name) {
+                        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+                        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                        if (r != null)
+                            return unescape(r[2]);
+                        return null; //返回参数值
+                    }
 
+                    var collect_status = getUrlParam("collect_status");
+                    designer_id = getUrlParam("params");
 
                     touch.on("#chose_des", "tap", function () {
-                         tj_ajax(4,4001, user_id, "", "选择该设计师");
+                        tj_ajax(4, 4001, user_id, "designer_id", "选择该设计师");
                         var ckshejishi = $("#chose_val").val();
                         window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/choose_designer'; ?>" + '&ckshejishi=' + ckshejishi;
                     });
@@ -441,7 +450,7 @@ HTML;
                                     url: "<?php echo Yii::getAlias('@web') . '/index.php?r=my/collect'; ?>" + "&&params=" + params,
                                     data: "",
                                     success: function (data) {
-                                       
+
                                     }
                                 })
 
