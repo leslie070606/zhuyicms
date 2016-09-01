@@ -68,18 +68,29 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </form>
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
-
+                 <?php if($history){  ?>
                 <div class="hunt_here_box">
                     <!-- 设计师 -->
-
+                   
+                    <div class="history">
+                        <span class="his_title">
+                            历史搜索
+                        </span>
+                        <ul class="his_ul">
+                            <?php foreach ($history as $value){ ?>
+                            <li class=""><a><?php echo $value['content']; ?></a></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                   
                 </div>
-
+                 <?php } ?>
 
                 <div class="choose">
                     <span class="his_title">
                         热门推荐
                     </span>
-                    
+
                 </div>
             </div>
         </div>
@@ -93,26 +104,32 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
     var _hotDesignerUrl = '<?= Url::to(['zysearchhot/get-search-hot']); ?>';
     var _designerDetailUrl = '<?= Url::to(['designer/detail']); ?>';
     $.ajax({
-                type: "get",
-                url: _hotDesignerUrl,
-                async: true,
-                success: function (data) {
-                    data = eval('(' + decodeURI(data) + ')');
-                    if(data.code==1){
-                        var html='';
-                        var length=data.msg.length;
-                        for(var i=0;i<length;i++){
-                            var tag=data.msg[i].dTag.split(",")[0];
-                            var htmla='<a href="'+_designerDetailUrl+"&params="+data.msg[i].dId+'"><div class="here_bottom line_center">'
-                            +'<div class="here_head"><img src="'+data.msg[i].dImg+'" /></div>'
-                            +'<div class="bottom_name"><span class="here_name">'+data.msg[i].dName+'</span><span class="here_namea">'+data.msg[i].dCity+'</span></div>'
-                            +'<div class="bottom_label bottom_referral"><span>'+tag+'</span></div></div></a >'
-                            html+=htmla;
-                        }
-                        $(".choose").append(html);
-                    }
+        type: "get",
+        url: _hotDesignerUrl,
+        async: true,
+        success: function (data) {
+            data = eval('(' + decodeURI(data) + ')');
+            if (data.code == 1) {
+                var html = '';
+                var length = data.msg.length;
+                for (var i = 0; i < length; i++) {
+                    var tag = data.msg[i].dTag.split(",")[0];
+                    var htmla = '<a href="' + _designerDetailUrl + "&params=" + data.msg[i].dId + '"><div class="here_bottom line_center">'
+                            + '<div class="here_head"><img src="' + data.msg[i].dImg + '" /></div>'
+                            + '<div class="bottom_name"><span class="here_name">' + data.msg[i].dName + '</span><span class="here_namea">' + data.msg[i].dCity + '</span></div>'
+                            + '<div class="bottom_label bottom_referral"><span>' + tag + '</span></div></div></a >'
+                    html += htmla;
                 }
-            });
+                $(".choose").append(html);
+            }
+        }
+    });
+
+    touch.on(".his_ul li a","tap",function(ev){
+        var htm=$(ev.currentTarget).html();
+         $(".ipu").val(htm);
+         search();
+    });
     function search() {
         var search_key = $(".ipu").val();
         $.ajax({
