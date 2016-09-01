@@ -350,6 +350,11 @@ class ProjectController extends \common\util\BaseController {
                     //跳出本次循环
                     continue;
                 }
+                
+                if($designerArr[$i]['customer'] == '公装（企业用户）'){
+                    //跳出本次循环
+                    continue;
+                }
 
                 $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
                 // $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
