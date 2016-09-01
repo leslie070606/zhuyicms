@@ -82,15 +82,9 @@ use dosamigos\datepicker\DatePicker;
                 </div>
                 
                 <div class="form-group">
-                    <label for="experience">设计师经历</label>
-                    <?= Html::activeTextarea($model, 'experience', ['class' => 'form-control', 'rows' => '5', 'id' => 'experience']) ?>
-                    <?= Html::error($model, 'experience', ['class' => 'error']); ?>
-                </div>
-
-                <div class="form-group">
-                    <label for="winning">设计师经历</label>
-                    <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'id' => 'winning']) ?>
-                    <?= Html::error($model, 'winning', ['class' => 'error']); ?>
+                    <label for="interests">兴趣爱好</label>
+                    <?= Html::activeTextarea($model, 'interests', ['class' => 'form-control', 'rows' => '5', 'id' => 'interests']) ?>
+                    <?= Html::error($model, 'interests', ['class' => 'error']); ?>
                 </div>
             </div>
             <!-- /.box-body -->

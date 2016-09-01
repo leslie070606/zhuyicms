@@ -28,12 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 placeholder="订单编号" 
                                 value="<?= Yii::$app->request->get('order_id');?>">
                         </td>
-                        <td><input type="text" class="form-control" name="apt_time_min" 
+                        <td colspan="2"><input style="width:45%;float:left;" type="text" class="form-control" name="apt_time_min" 
                                    placeholder="见面时间"
-                                   value="<?= Yii::$app->request->get('apt_time_min');?>"></td>
-                        <td><input type="text" class="form-control" name="apt_time_max" 
-                                   placeholder="见面时间"
-                                   value="<?= Yii::$app->request->get('apt_time_min');?>"></td>
+						   value="<?= Yii::$app->request->get('apt_time_min');?>"><span style="float:left;width:10%;text-align:center;height:35px;line-height:35px;">~</span><input type="text" style="width:45%;float:left;" class="form-control" name="apt_time_max" 
+						   placeholder="见面时间"
+						   value="<?= Yii::$app->request->get('apt_time_min');?>"></td>
 					</tr>
 					<tr>
                         <td><input type="text" class="form-control" name="designer_name"
@@ -44,17 +43,21 @@ $this->params['breadcrumbs'][] = $this->title;
                                    value="<?= Yii::$app->request->get('designer_level');?>"></td>
                         <td><input type="text" class="form-control" name="apt_location" 
                                    placeholder="见面地点"
-                                   value="<?= Yii::$app->request->get('service_type');?>"></td>
-                        <td><input type="text" class="form-control" name="service_type"
-                                   placeholder="订单类型"
-                                   value="<?= Yii::$app->request->get('service_type');?>"></td>
+                                   value="<?= Yii::$app->request->get('apt_location');?>"></td>
                     </tr>
                     <tr>
-                        <td>
-                            <input type="text" class="form-control" name="status"
-                                   placeholder="订单状态"
-                                   value="<?= Yii::$app->request->get('status');?>">
-                        </td>
+						<td>
+							<select name="status" style="width: 100%;height: 34.8px;border: 1px solid rgb(210, 214, 222);color: rgb(85, 85, 85);">
+								<option value=0>待设计师确认</option>
+								<option value=1>待用户确认时间</option>
+								<option value=2>待见面</option>
+								<option value=3>预约已取消</option>
+								<option value=6>已见面</option>
+								<option value=7>已见面未深度合作</option>
+								<option value=9>已深度合作未上传合同</option>
+								<option value=10>已深度合作已上传合同</option>
+							</select>
+						</td>
                         <td><input type="text" class="form-control" name="remark" 
                                    placeholder="订单备注"
                                    value="<?= Yii::$app->request->get('remark');?>"></td>
@@ -62,6 +65,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                    placeholder="需求编号"
                                    value="<?= Yii::$app->request->get('project_id');?>">						</td>
                     </tr>
+					<tr>
+						<td>
+							<select name="service_type" style="width: 100%;height: 34.8px;border: 1px solid rgb(210, 214, 222);color: rgb(85, 85, 85);">
+								<option value=0>客服创建</option>
+								<option value=1>用户创建</option>
+							</select>
+						</td>
+					</tr>
                     <tr>
                         <td colspan="6" align="center">
                             <button type="submit"class="btn btn-primary">筛选</button> 
@@ -80,14 +91,16 @@ $this->params['breadcrumbs'][] = $this->title;
             </caption>
             <thead>
                 <tr>
+					<th>订单编号</th>
                     <th>用户</th>
                     <th>设计师</th>
-                    <th>编号</th>
+                    <th>项目编号</th>
                     <th>见面地点</th>
                     <th>见面时间</th>
                     <th>订单状态</th>
                     <th>订单备注</th>
                     <th>订单类型</th>
+					<th>操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,14 +108,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 foreach ($model as $m):
                     ?>
                     <tr>
+						<td><?= $m->order_id?></td>
                         <td><a href="<?= yii\helpers\Url::to(['zyuser/'.$m->user_id]); ?>"><?= isset($m->zy_user->nickname) ? $m->zy_user->nickname : ''; ?></a></td>
-                        <td><a href="<?= yii\helpers\Url::to(['designer/'.$m->designer_id]); ?>"><?= isset($m->zyj_designer_basic->name) ? $m->zyj_designer_basic->name : ''; ?></a></td>
+                        <td><a href="<?= yii\helpers\Url::to(['designer/detail','id' => $m->designer_id]); ?>"><?= isset($m->zyj_designer_basic->name) ? $m->zyj_designer_basic->name : ''; ?></a></td>
                         <td><a href="<?= yii\helpers\Url::to(['zyproject/'.$m->project_id]); ?>"><?= isset($m->project_id) ? $m->project_id : ''; ?></a></td>
                         <td><?= $m->appointment_location; ?></td>
                         <td><?= isset($m->appointment_time) && !empty($m->appointment_time)? date("Y/m/d H",$m->appointment_time) : ''; ?></td>
-                        <td><?= $m->status; ?></td>
-                        <td><?= $m->remark; ?></td>                        
-                        <td><?= $m->service_type; ?></td>
+                        <td><?= \common\models\ZyOrder::$ORDER_STATUS_DICT["$m->status"]; ?></td>
+                        <td><?= $m->remark; ?></td>
+                        <td><?= \common\models\ZyOrder::$SERVICE_TYPE_DICT["$m->service_type"]; ?></td>
                         <td>
                             <a href="<?= \yii\helpers\Url::to(['/zyorder/' . $m->order_id]); ?>">编辑</a> | 
                             <a href="javascript:del(<?= $m->order_id; ?>);">删除</a>

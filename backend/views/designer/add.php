@@ -77,6 +77,12 @@ use dosamigos\datepicker\DatePicker;
                     <?= Html::activeTextarea($model, 'winning', ['class' => 'form-control', 'rows' => '5', 'id' => 'winning']) ?>
                     <?= Html::error($model, 'winning', ['class' => 'error']); ?>
                 </div>
+
+                <div class="form-group">
+                    <label for="winning">兴趣爱好</label>
+                    <?= Html::activeTextarea($model, 'interests', ['class' => 'form-control', 'rows' => '5', 'id' => 'interests']) ?>
+                    <?= Html::error($model, 'interests', ['class' => 'error']); ?>
+                </div>
                 <div class="form-group">
                     <label for="tag">个性标签</label>
                     <?= Html::activeInput('text', $model, 'tag', ['class' => 'form-control', 'placeholder' => '多标签以(英文逗号)分隔', 'id' => 'tag']) ?>

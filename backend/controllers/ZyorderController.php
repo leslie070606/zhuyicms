@@ -93,31 +93,32 @@ class ZyorderController extends Controller
             $w .= ' and zy_order.appointment_time<="' . $_params['apt_time_max'] . '" ';
         }
 		if(isset($_params['designer_name']) && !empty($_params['designer_name'])){
-			$w .= 'and zyj_designer_basic.name like "%' . $_params['designer_name'] .'%" '; 
+			$w .= ' and zyj_designer_basic.name like "%' . $_params['designer_name'] .'%" '; 
 		}
 
 		if(isset($_params['user_name']) && !empty($_params['user_name'])){
-			$w .= 'and zy_user.nickname like "%' . $_params['user_name'] .'%" '; 
+			$w .= ' and zy_user.nickname like "%' . $_params['user_name'] .'%" '; 
 		}
 
 		if(isset($_params['apt_location']) && !empty($_params['apt_location'])){
-			$w .= 'and zy_order.apt_location like "%' . $_params['apt_location'] .'%" ';
+			$w .= ' and zy_order.appointment_location like "%' . $_params['apt_location'] .'%" ';
 		}
 
-		if(isset($_params['type']) && !empty($_params['type'])){
-			$w .= 'and zy_order.service_type=' . $_params['service_type'] .'" ';
+		if(isset($_params['service_type']) && !empty($_params['service_type'])){
+			$w .= '	and zy_order.service_type="' . $_params['service_type'] .'" ';
 		}
 
 		if(isset($_params['status']) && !empty($_params['status'])){
-			$w .= 'and zy_order.status=' . $_params['status'] .'" ';
+			$w .= '	and zy_order.status="' . $_params['status'] .'" ';
 		}
 		if(isset($_params['remark']) && !empty($_params['remark'])){
-			$w .= 'and zy_order.remark like "%' . $_params['remark'] .'%" ';
+			$w .= '	and zy_order.remark like "%' . $_params['remark'] .'%" ';
 		}
 		if(isset($_params['project_id']) && !empty($_params['project_id'])){
-			$w .= 'and zy_order.project_id="' . $_params['project_id'] .'" ';
+			$w .= '	and zy_order.project_id="' . $_params['project_id'] .'" ';
 		}
 
+		var_dump($w);
 		return $w;
 	}
 
@@ -201,8 +202,8 @@ class ZyorderController extends Controller
         $model = $this->findModel($id);
 
 		//原有的见面时间及见面地点。
-		$orgAppTime = $model->appointment_time;
-		$orgAppLocation = $model->appointment_location;
+		$orgAptTime = $model->appointment_time;
+		$orgAptLocation = $model->appointment_location;
 
         if($model->load(Yii::$app->request->post())){
             //见面时间
@@ -210,15 +211,74 @@ class ZyorderController extends Controller
             $appointmentTime = strtotime($appointmentTime);
             $model->appointment_time = $appointmentTime;
 
+			//新的见面时间及地点，用于下面订单更新做判断。
+			$newAptTime = $model->attributes['appointment_time'];
+			$newAptLocation = $model->attributes['appointment_location'];
+			
+
 			$status = $model->attributes['status'];
 			$model->status = $status;
 
 			//-------新的短信需求V1.0.1----------
-			if(isset($orgAppTime) &&!empty($orgAppTime)){
-				/*
-				$testData = array('1','2');
-				\common\atm\Event::send("localhost",1,$testData);
-				*/
+			//1.订单待见面状态
+            $sms = new \common\util\ebaysms\Sms();
+            $dName = '';
+            $dPhone = '';
+            $uPhone = '';
+			$uShowPhone = '';
+			$userId = $model->user_id;
+			$designerId = $model->designer_id;
+            $dRows = \backend\models\DesignerBasic::findOne($designerId);
+            if(!empty($dRows)){
+            	$dName = $dRows->name;
+            }
+            $dAdditionalModel = new \frontend\models\DesignerAdditiona();
+            $dPhone = $dAdditionalModel->getPhoneByDesignerId($designerId);
+            $uRows = \common\models\ZyUser::findOne($userId);
+            if(!empty($uRows)){
+                $uPhone = $uRows->phone;
+                $uShowPhone = substr_replace($uPhone,'****',3,4);
+            }
+
+			if($status == \common\models\ZyOrder::STATUS_WAITING_MEETING){
+				//约见时间和地点必须设置
+				if(isset($appointmentTime) && isset($appointmentLocation)){
+					$aptTime = date("m月d日 H",$appointmentTime);
+					$aptLocation = $model->appointment_location;
+
+                    if($status == \common\models\ZyOrder::STATUS_WAIT_MEETING){
+                        //给设计师发短信
+                        $ret = $sms->send(array($dPhone),"【住艺】【预约成功】>
+尊敬的$dName，您的客户（$uShowPhone）已确定见面时间和地点（$aptTime，地址$aptLo
+cation）届时请保持电话畅通，预祝合作愉快。如您计划有变，请提前联系住艺。客服电>
+话：4000-600-636");
+                        //给用户发短信
+                        $ret = $sms->send(array($uPhone),"【住艺】【预约成功】>
+尊敬的用户，您预约的设计师$dName已确定见面时间和地点（$aptTime，地址$aptLocatio
+n）届时请保持电话畅通，预祝合作愉快。如您计划有变，请提前联系住艺。客服电话：40
+00-600-636");
+                    }
+				}
+			}
+
+			$timeChanged = 0;
+			$locationChanged = 0;
+			if(isset($newAptTime) &&!empty($newAptTime)){
+				if($newAptTime != $orgAptTime){
+					$timeChanged = 1;
+				}
+			}
+			if(isset($newAptLocation) && !empty($newAptLocation)){
+				if(strcasecmp($newAptLocation,$orgAptLocation) != 0){
+					$locationChanged = 1;
+				}
+			}
+			//约见时间及地点发生变化发送短信。
+			if($timeChanged || $locationChanged){
+				//给用户发短信
+				$newAptTime = date("m月d日 H");
+				$ret = $sms->send(array($uPhone),"【住艺】【约见更新】尊敬的用户，您与设计师$dName的约见时间或地点发生变更，（改为$newAptTime，地址$newAptLocation）届时请保持电话畅通，预祝合作愉快。如您计划有变，请提前联系住艺。客服电话：4000-600-636");
+				$ret = $sms-send(array($dPhone),"：［住艺］［约见更新］尊敬的$dName，您与客户（$uShowPhone）的约见时间或地点发生变更，（改为$newAptTime，地址$newAptLocation）届时请保持电话畅通，预祝合作愉快。如您计划有变，请提前联系住艺。客服电话：4000-600-636");
 			}
 
 			$model->update_time = time();

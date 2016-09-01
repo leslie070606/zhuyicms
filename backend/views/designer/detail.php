@@ -62,6 +62,8 @@ arning'>NULL</span>" ?></td>
                             <td><?= $model->experience ? $model->experience : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>获奖经历</td>
                             <td><?= $model->winning ? $model->winning : "<span class='label label-warning'>NULL</span>" ?></td>
+                            <td>兴趣爱好</td>
+                            <td><?= $model->interests ? $model->interests : "<span class='label label-warning'>NULL</span>" ?></td>
                         </tr>
 
                     </tbody>
