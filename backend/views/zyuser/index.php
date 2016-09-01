@@ -18,26 +18,33 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('创建用户', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'user_id',
             //'project_id',
             //'style_id',
             //'favored_designer_ids',
             //'name',
-             'openid',
-             'phone',
-             'nickname',
-         
+            'openid',
+            'phone',
+            'nickname',
             // 'email:email',
             // 'status',
             // 'profession',
-             'sex',
-             'city',
+            //'sex',
+            [
+                'label' => '性别',
+                'filter' => Html::activeTextInput($searchModel, 'sex', ['class' => 'form-control']),
+                'format' => 'raw',
+                'value' => function ($data) {
+            return $data->sex == '1' ? '男' : '女';
+        }
+            ],
+            'city',
             // 'language',
             // 'country',
             // 'headimgurl:url',
@@ -46,8 +53,8 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'address',
             // 'create_time:datetime',
             // 'update_time:datetime',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 </div>

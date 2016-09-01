@@ -12,13 +12,12 @@ use yii\filters\VerbFilter;
 /**
  * ZyuserController implements the CRUD actions for ZyUser model.
  */
-class ZyuserController extends \common\controllers\BaseController
-{
+class ZyuserController extends \common\controllers\BaseController {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,14 +32,13 @@ class ZyuserController extends \common\controllers\BaseController
      * Lists all ZyUser models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ZyUserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -49,11 +47,22 @@ class ZyuserController extends \common\controllers\BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
+        $model = $this->findModel($id);
+        $uDemandModel = $this->_getUserDemand($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $model,
+                    'uDemand' => $uDemandModel,
+                    'order' => $this->_getUserOrder($id)
         ]);
+    }
+
+    private function _getUserDemand($_user_id) {
+        return \common\models\ZyProject::find()->where('user_id="' . $_user_id . '"')->all();
+    }
+
+    private function _getUserOrder($_usere_id) {
+        return \common\models\ZyOrder::find()->where(['user_id' => $_usere_id])->all();
     }
 
     /**
@@ -61,15 +70,14 @@ class ZyuserController extends \common\controllers\BaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new ZyUser();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->user_id]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -80,15 +88,14 @@ class ZyuserController extends \common\controllers\BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->user_id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -99,8 +106,7 @@ class ZyuserController extends \common\controllers\BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -113,12 +119,12 @@ class ZyuserController extends \common\controllers\BaseController
      * @return ZyUser the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = ZyUser::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
