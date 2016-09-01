@@ -68,23 +68,23 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </form>
                     <span class="iconfont icon-sousuo" onclick="search()"></span>
                 </div>
-                 <?php if($history){  ?>
                 <div class="hunt_here_box">
                     <!-- 设计师 -->
-                   
-                    <div class="history">
-                        <span class="his_title">
-                            历史搜索
-                        </span>
-                        <ul class="his_ul">
-                            <?php foreach ($history as $value){ ?>
-                            <li class=""><a><?php echo $value['content']; ?></a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                   
+                    <?php if ($history) { ?>
+
+                        <div class="history">
+                            <span class="his_title">
+                                历史搜索
+                            </span>
+                            <ul class="his_ul">
+                                <?php foreach ($history as $value) { ?>
+                                    <li class=""><a><?php echo $value['content']; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                    <?php } ?>
                 </div>
-                 <?php } ?>
+
 
                 <div class="choose">
                     <span class="his_title">
@@ -125,10 +125,10 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         }
     });
 
-    touch.on(".his_ul li a","tap",function(ev){
-        var htm=$(ev.currentTarget).html();
-         $(".ipu").val(htm);
-         search();
+    touch.on(".his_ul li a", "tap", function (ev) {
+        var htm = $(ev.currentTarget).html();
+        $(".ipu").val(htm);
+        search();
     });
     function search() {
         var search_key = $(".ipu").val();

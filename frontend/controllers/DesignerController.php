@@ -422,6 +422,8 @@ class DesignerController extends Controller {
                             $userHistory->phone = $userinfo['phone'];
                             $userHistory->create_time = strval(time());
                             $userHistory->save();
+                        }else{
+                            //没有登录正常返回
                         }
                     } else {
                         //插入用户的搜索信息
