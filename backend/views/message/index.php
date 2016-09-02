@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 						<?php
 							if(!empty($data1)){
 								foreach($data1 as $t){ ?>
-								<li> <?= date("m月d日 H:i",$t['time']); ?>&nbsp;&nbsp;&nbsp;<?= $t['content']?></li>
+								<li> <?= date("m月d日 H:i",$t['time']); ?>&nbsp;&nbsp;&nbsp;<?= $t['contents']?></li>
 								<?php
 								}
 							}
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
 								foreach($data2 as $t){ ?>
 									<tr>
 										<td><?= date("m月d日 H:i",$t['time'])?></td>
-										<td><?= $t['content']?></td>
+										<td><?= $t['contents']?></td>
 										<td><a href="<?= yii\helpers\Url::to(['/zyproject/'.$t['project_id']]); ?>"><?=$t['project_id'] ?></a></td>
 				                        <td><a href="javascript:del(<?= $t['project_id']; ?>,0);">删除</a></td>
 									</tr>
@@ -80,24 +80,11 @@ $this->params['breadcrumbs'][] = $this->title;
 							<th>操作</th>
 						</tr>
 						<?php
-							$test = array(
-								array(
-									'time' => 100,
-									'content' => '用户A发起了新的订单',
-									'order_id' => 6 
-								),
-								array(
-									'time' => 1000,
-									'content' => '用户B发起了新的订单',
-									'order_id' => 10
-								),
-
-							);
 							if(!empty($data3)){
 								foreach($data3 as $t){ ?>
 									<tr>
 										<td><?= date("m月d日 H:i",$t['time'])?></td>
-										<td><?= $t['content']?></td>
+										<td><?= $t['contents']?></td>
 										<td><a href="<?= yii\helpers\Url::to(['/zyorder/'.$t['order_id']]); ?>"><?=$t['order_id'] ?></a></td>
 				                        <td><a href="javascript:del(<?= $t['order_id']; ?>,1);">删除</a></td>
 									</tr>

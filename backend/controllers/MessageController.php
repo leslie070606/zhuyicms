@@ -7,15 +7,6 @@ use common\models\Message;
 use yii;
 
 class MessageController extends controller {
-/*
-    public function actions() {
-        //添加登录判断
-        if (!($username = Yii::$app->session->get('mrs_username')) && !($username = \backend\models\Login::loginByCookie())) {
-            return $this->redirect(['login/index']);
-        }
-    }
-*/
-
 	public function actionIndex(){
 		//最新通知取最近10条数据
 		$num = 10;
@@ -26,7 +17,7 @@ class MessageController extends controller {
 			foreach($ret as $r){
 				$dataTmp = array(
 					'time' => isset($r->update_time)? $r->update_time : time(),
-					'content' => isset($r->content)? $r->content : '',
+					'contents' => isset($r->contents)? $r->contents : '',
 				);
 				$data1[] = $dataTmp;
 			}
@@ -34,11 +25,11 @@ class MessageController extends controller {
 		$data1 = array(
         	array(
             	'time' => 100,
-                'content' => '用户A发起了新的需求'
+                'contents' => '用户A发起了新的需求'
            ),
            array(
                 'time' => 1000,
-              	'content' => '用户B发起了新的需求'
+              	'contents' => '用户B发起了新的需求'
            ),
 
        	);
@@ -51,7 +42,7 @@ class MessageController extends controller {
 			foreach($ret as $r){
 				$dataTmp = array(
 					'time' => isset($r->update_time)? $r->update_time : time(),
-					'content' => isset($r->content)? $r->content : '',
+					'contents' => isset($r->contents)? $r->contents : '',
 					'project_id' => isset($r->project_id)? $r->project_id : -1 
 				);
 				$data2[] = $dataTmp;
@@ -60,12 +51,12 @@ class MessageController extends controller {
 		$data2 = array(
 			array(
 				'time' => 100,
-				'content' => '用户A发起了新的需求',
+				'contents' => '用户A发起了新的需求',
 				'project_id' => 6
 			),
 			array(
 				'time' => 1000,
-				'content' => '用户B发起了新的需求',
+				'contents' => '用户B发起了新的需求',
 				'project_id' => 10
 			),
 
@@ -78,7 +69,7 @@ class MessageController extends controller {
 			foreach($ret as $r){
 				$dataTmp = array(
 					'time' => isset($r->update_time)? $r->update_time : time(),
-					'content' => isset($r->content)? $r->content : '',
+					'contents' => isset($r->contents)? $r->contents : '',
 					'order_id' => isset($r->order_id)? $r->order_id : -1
 				);
 				$data3[] = $dataTmp;
@@ -87,12 +78,12 @@ class MessageController extends controller {
 		$data3 = array(
 			array(
 				'time' => 100,
-				'content' => '用户A发起了新的订单',
+				'contents' => '用户A发起了新的订单',
 				'order_id' => 6
 			),
 			array(
 				'time' => 1000,
-				'content' => '用户B发起了新的订单',
+				'contents' => '用户B发起了新的订单',
 				'order_id' => 10
 			),
 		);
@@ -130,23 +121,6 @@ class MessageController extends controller {
 
 		if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save()){
 
-/*
-            //第二种方法
-            $connection = \Yii::$app->db;
-            // INSERT
-            $connection->createCommand()->insert('zyj_message', [
-                'contents' => $_POST['Message']['contents'],
-                'link' => $_POST['Message']['link'],
-                'type' => $_POST['Message']['type'],
-                'status' => $_POST['Message']['status'],
-                'to_uid' => 0,
-                'from_uid' => 0,
-                'create_time' => time(),
-                'update_time' => 0,
-
-            ])->execute();
-*/
-			//echo 'success';
 			return $this->redirect(['index']);
 		}
 		return $this->render('add' , ['model' => $model]);
@@ -158,23 +132,8 @@ class MessageController extends controller {
 		if($id > 0 && ($model = Message::findOne($id))){
 
 			if(Yii::$app->request->isPost && $model->load(Yii::$app->request->post()) && $model->save() ){
-/*              //第二种方法
-                $connection = \Yii::$app->db;
-                $connection->createCommand()->update('zyj_message', [
-                    'contents' => $_POST['Message']['contents'],
-                    'link' => $_POST['Message']['link'],
-                    'type' => $_POST['Message']['type'],
-                    'status' => $_POST['Message']['status'],
-                    'to_uid' => $_POST['Message']['to_uid'],
-                    'from_uid' => $_POST['Message']['from_uid'],
-                    'create_time' => $_POST['Message']['create_time'],
-                    'update_time' => $_POST['Message']['update_time']
-                ], 'id = '.$id)->execute();
-*/
 				return $this->redirect(['index']);
 			}
-
-
 			return $this->render('edit' , ['model' => $model]);
 		}
 
@@ -203,22 +162,6 @@ class MessageController extends controller {
 		return $this->redirect(['index']);
 	}
 
-    //根据id更改消息通知
-    public function actionTodoid($id)
-    {
-    	if (!$id) return;
-        $model = Message::findOne($id);
-        if (!$model) return;
-        $model->status =1;//更改成读取状态
-        $model->update_time =time();//更改成读取的时间
-        $model->save(false);
-    }
-
-    /*测试向message 消息列表 插入一条记录*/
-    public function actionSs() {
-        $this->_Intodo('yafei1111111111');
-        echo 'sssssssssssssssssssss';
-    }
     /**
 	 * 全局函数 ，添加一条代办消息
 	 * @param string $contents 代办内容
@@ -235,8 +178,6 @@ class MessageController extends controller {
             'link' => $link,
             'type' => $type,
             'status' => $status,
-            'to_uid' => 0,
-            'from_uid' => 0,
             'create_time' => time(),
             'update_time' => 0,
 

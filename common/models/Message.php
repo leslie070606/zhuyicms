@@ -20,7 +20,7 @@ class Message extends ActiveRecord{
             ['contents', 'required', 'message' => '内容不能为空'],
 			['type' , 'in' , 'range' => ['0' , '1' , '2'] ,'message' => '非法操作'],
 			['status' , 'in' , 'range' => ['0' , '1'] , 'message' => '非法操作'],
-            [['link','to_uid','from_uid','create_time','update_time'], 'safe'],
+            [['link','create_time','update_time'], 'safe'],
         ];
     }
 
@@ -68,8 +68,6 @@ class Message extends ActiveRecord{
             'link' 			=> '',
             'type' 			=> $type,
             'status' 		=> self::STATUS_UNREAD,
-            'from_uid' 		=> 0,
-            'to_uid' 		=> 0,
             'create_time' 	=> time(),
             'update_time' 	=> time(),
 
