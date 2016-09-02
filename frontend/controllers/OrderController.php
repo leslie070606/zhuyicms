@@ -342,5 +342,4 @@ class OrderController extends \common\controllers\BaseController {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return ['success' => true];
     }
-
 }
