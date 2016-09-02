@@ -39,7 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 			'designer_spare_time',
             'appointment_location',
-            'appointment_time:datetime',
+			[
+				'attribute' => 'appointment_time',
+				'label'		=> '约见时间',
+				'value'		=> isset($model->appointment_time) && !empty($model->appointment_time)? date("Y年m月d日 H",$model->appointment_time) : '未设置',
+			],
             'remark',
 			'reason',
 			[
