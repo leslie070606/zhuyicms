@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = '订单管理';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<script src="/My97DatePicker/WdatePicker.js"></script>
 <div class="zy-order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -28,11 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 placeholder="订单编号" 
                                 value="<?= Yii::$app->request->get('order_id');?>">
                         </td>
-                        <td colspan="2"><input style="width:45%;float:left;" type="text" class="form-control" name="apt_time_min" 
-                                   placeholder="见面时间"
-						   value="<?= Yii::$app->request->get('apt_time_min');?>"><span style="float:left;width:10%;text-align:center;height:35px;line-height:35px;">~</span><input type="text" style="width:45%;float:left;" class="form-control" name="apt_time_max" 
-						   placeholder="见面时间"
-						   value="<?= Yii::$app->request->get('apt_time_min');?>"></td>
+                        <td colspan="2"><input id="d4311" style="width:45%;float:left;" type="text" class="form-control" name="apt_time_min" onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm', maxDate: '#F{$dp.$D(\'d4312\')||\'2020-10-01 00:00:00\'}'})" placeholder="起始见面时间" value="<?= Yii::$app->request->get('apt_time_min');?>"><span style="float:left;width:10%;text-align:center;height:35px;line-height:35px;">~</span><input id="d4312" type="text" style="width:45%;float:left;" class="form-control" name="apt_time_max" onFocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm', minDate: '#F{$dp.$D(\'d4311\')}', maxDate: '2020-10-01 00:00:00'})" placeholder="终止见面时间" value="<?= Yii::$app->request->get('apt_time_max');?>"></td>
 					</tr>
 					<tr>
                         <td><input type="text" class="form-control" name="designer_name"
