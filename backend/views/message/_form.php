@@ -38,21 +38,6 @@
 </div>
 
 <div class="form-group">
-	<?=Html::label('被通知uid：' , 'to_uid' , ['class' => 'control-label col-sm-2'])?>
-	<div class="col-sm-10">
-		<?=Html::activeTextArea($model , 'to_uid' , ['class' => 'form-control'])?>
-		<?=Html::error($model , 'to_uid' , ['class' => 'error']);?>
-	</div>
-</div>
-<div class="form-group">
-	<?=Html::label('通知者uid：' , 'from_uid' , ['class' => 'control-label col-sm-2'])?>
-	<div class="col-sm-10">
-		<?=Html::activeTextArea($model , 'from_uid' , ['class' => 'form-control'])?>
-		<?=Html::error($model , 'from_uid' , ['class' => 'error']);?>
-	</div>
-</div>
-
-<div class="form-group">
 	<?=Html::label('通知时间：' , 'create_time' , ['class' => 'control-label col-sm-2'])?>
 	<div class="col-sm-10">
 		<?=Html::activeTextArea($model , 'create_time' , ['class' => 'form-control'])?>
