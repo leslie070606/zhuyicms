@@ -221,7 +221,7 @@ class ZyorderController extends Controller
 
 			//-------新的短信需求V1.0.1----------
 			//1.订单待见面状态
-            $sms = new \common\util\ebaysms\Sms();
+            $sms = new \common\util\emaysms\Sms();
             $dName = '';
             $dPhone = '';
             $uPhone = '';
