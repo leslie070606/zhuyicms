@@ -85,7 +85,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     </a>
                 </span>
                 <span class="help_btn">
-                    <a>
+                    <a class="zy_btn_ux">
                         <i class="iconfont icon-bangzhu"></i>
                     </a>
                 </span>

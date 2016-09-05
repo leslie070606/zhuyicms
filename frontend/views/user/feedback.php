@@ -69,7 +69,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
 
                 <textarea class="text_box" style="margin-top: 1.28rem; width: 92% !important;"  name="answer-for-q-3" id="answer-for-q-3" rows="10" placeholder="Hi,这里是建议和意见的收集地，住艺时刻准备好听您的所有关于家的故事和倾诉。"></textarea>
-                <div class="chose_btn">
+                <div class="chose_btn zy_btn_ux">
                     提交
                 </div>
 
