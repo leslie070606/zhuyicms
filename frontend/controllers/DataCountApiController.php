@@ -6,6 +6,11 @@ use yii;
 use yii\web\Controller;
 use frontend\models;
 
+/**
+ * 数据统计API接口
+ * @author Haoshuaiwei <shuaiwei.hao@condenast.com.cn>
+ * @date 2016-09-02 11:18:00
+ */
 class DataCountApiController extends Controller {
 
     /**
@@ -50,15 +55,29 @@ class DataCountApiController extends Controller {
         }
     }
 
+    /**
+     * 封装获取get参数 
+     * @param string $_key
+     * @return array/null
+     */
     private function __getParams($_key) {
         return Yii::$app->request->get($_key);
     }
 
+    /**
+     * 接口错误返回
+     * @param string $msg
+     * @return josn
+     */
     private function __error($msg = 'error') {
         echo json_encode(['code' => '0', 'msg' => $msg]);
         exit();
     }
 
+    /**
+     * 接口正确返回
+     * @return json
+     */
     private function __sucess() {
         echo json_encode(['code' => '1', 'msg' => '成功']);
         exit();
