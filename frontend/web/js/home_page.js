@@ -10,7 +10,7 @@ $(function () {
 
     var collect_status = getUrlParam("collect_status");
     designer_id = getUrlParam("params");
-    tj_ajax(4, 4002, user_id, "designer_id", "设计师被浏览");
+    tj_ajax(4, 4002, user_id, designer_id, "设计师被浏览");
     if (collect_status == 1) {
         $(".sc_bot a").addClass("active").html("已收藏");
     }
@@ -30,7 +30,7 @@ $(function () {
     ;
     touch.on(".botb", "tap", function (ev) {
         if ($("#bot_outline").css("display") == "none") {
-            tj_ajax(2, 2005, user_id, "designer_id", "立即约见");
+            tj_ajax(2, 2005, user_id, designer_id, "立即约见");
             $(".down_right_zd").show().animate({opacity: .5}, 300).css("z-index", 100110);
             $("#bot_outline").show();
 

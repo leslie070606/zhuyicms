@@ -1,5 +1,5 @@
 $(function(){
-         tj_ajax(3,3003, user_id, "", "首页加载量");
+//         tj_ajax(3,3003, user_id, "", "首页加载量");
          var user_id=$("#user_id").val();
          
         localStorage.setItem("user_id",user_id);

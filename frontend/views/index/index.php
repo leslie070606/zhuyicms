@@ -77,7 +77,7 @@ if (!isset($userId) || empty($userId)) {
 
             </ul>
 
-            <span class="mesg_spb zy_btn_uxa"><a onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
+            <span class="mesg_spb"><a class="zy_btn_uxa"  onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">
@@ -169,7 +169,7 @@ if (!isset($userId) || empty($userId)) {
                 <span class="use_text use_two">与设计师签约</span>
                 <span class=" iconfont icon-jiantou use_three"></span>
             </div>
-            <span class="btn_bot zy_btn_ux"><a onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012)>找设计师</a></span>
+            <span class="btn_bot"><a class="zy_btn_ux" onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012)>找设计师</a></span>
         </section><!--use_zy end-->
 
         <section class="nav_bot">

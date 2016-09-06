@@ -6,6 +6,7 @@ body{ padding-top: 0;}
 .bot_btn_box .next_btn,.bot_btn_box .tj_btn { background: #C9C9CA;}
  .tj_btn a { display: block; color: #FFFFFF !important;}
 .true_btn .next_btn,.true_btn .tj_btn {background: #FF4E38 !important;}
+.true_btn .next_btn:hover,.true_btn .tj_btn:hover {background: #ca4133 !important;}
 .first_btn>span { display: none; }
 .first_btn .next_btn { display: block; width: 100%; height: 100%; text-align: center; line-height: .88rem;}
 .center_btn .next_btn,.center_btn .prev_btn {float: left; width: 47.62%; text-align: center; height: .88rem; line-height: .88rem;}
