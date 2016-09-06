@@ -45,17 +45,43 @@ class StyleController extends Controller {
     }
 
     public function actionChoicestyle() {
-        
-        if(Yii::$app->request->get('g')){
-            
-            $styleModel = new Style();
-            $styleModel->user_id = 1;
-            $styleModel->choice_style = Yii::$app->request->get('g');
-            $res = $styleModel->save();
-            
-            return $res;
+
+        //判断用户是否登录
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $userId = $session->get("user_id");
+        if (!isset($userId) || empty($userId)) {
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if ($_cookieSts) {
+                $userId = $session->get("user_id");
+            } else {
+                $userId = '';
+            }
+        }
+
+        if (!$userId) {
+            return $this->redirect(['user/login']);
         }
         
+        //判断是否已经有风格测试
+        $styleModel = new Style();
+        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
+        if(count($userStyle)>0){
+            return $this->redirect(['project/match_designer']);
+        }
+
+        if (Yii::$app->request->get('g')) {
+
+            $styleModel = new Style();
+            $styleModel->user_id = $userId;
+            $styleModel->choice_style = Yii::$app->request->get('g');
+            $res = $styleModel->save();
+
+            return Yii::$app->request->get('g');
+        }
+
         return $this->render('choicestyle');
     }
 

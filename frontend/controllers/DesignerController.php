@@ -250,7 +250,7 @@ class DesignerController extends Controller {
             return false;
         }
         $params = $request->get('params');
-        var_dump($params);
+        //var_dump($params);
 
         $designerId = $params;
 

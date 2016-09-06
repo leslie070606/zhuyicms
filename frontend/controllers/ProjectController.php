@@ -351,6 +351,7 @@ class ProjectController extends \common\util\BaseController {
                     continue;
                 }
                 
+                //只匹配家装
                 if($designerArr[$i]['customer'] == '公装（企业用户）'){
                     //跳出本次循环
                     continue;

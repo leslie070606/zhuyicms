@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_name',
             'phone',
             'content',
-            'create_time',
-
+            'create_time:datetime',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

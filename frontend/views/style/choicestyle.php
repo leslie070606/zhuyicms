@@ -1,3 +1,7 @@
+<?php
+use yii\helpers\Url;
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,16 +48,16 @@
             <section class="style_boxa">
                 <div class="box_title">请选择3种您最喜欢的风格</div>
                 <div class="style_herea" id="chose_style">
-                    <div class="here_div"><img src="img/style_test/1.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">极简</div></div>
-                    <div class="here_div"><img src="img/style_test/2.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">工业</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">北欧</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">折中</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">日式</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">美式</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">Art Deco</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">欧式古典</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">地中海/乡村</div></div>
-                    <div class="here_div"><img src="img/style_test/3.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">中式</div></div>
+                    <div class="here_div"><img src="img/style_test/xiandai.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">现代</div></div>
+                    <div class="here_div"><img src="img/style_test/gongye.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">工业</div></div>
+                    <div class="here_div"><img src="img/style_test/beio.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">北欧</div></div>
+                    <div class="here_div"><img src="img/style_test/fugu.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">复古</div></div>
+                    <div class="here_div"><img src="img/style_test/rishi.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">日式</div></div>
+                    <div class="here_div"><img src="img/style_test/meishi.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">美式</div></div>
+                    <div class="here_div"><img src="img/style_test/art.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">Art Deco</div></div>
+                    <div class="here_div"><img src="img/style_test/fashi.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">法式</div></div>
+                    <div class="here_div"><img src="img/style_test/boximiya.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">波西米亚</div></div>
+                    <div class="here_div"><img src="img/style_test/xinzhongshi.jpg"/><div class="here_div_bota"></div><div class="here_div_botb">新中式</div></div>
                 </div>
                 <a><div class="chose_btn">
                         描述需求，立即匹配设计师
@@ -85,7 +89,7 @@
             //dataType: 'json',
             data: '',
             success: function (data) {
-
+                alert(data);
                 if(data){
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/match_designer'; ?>";
                 }

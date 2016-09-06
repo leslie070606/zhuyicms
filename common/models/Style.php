@@ -26,7 +26,7 @@ class Style extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type'], 'string', 'max' => 500],
+           
         ];
     }
 
@@ -37,7 +37,7 @@ class Style extends \yii\db\ActiveRecord
     {
         return [
             'style_id' => 'ID主键',
-            'type' => '测试后的风格',
+            
         ];
     }
 }
