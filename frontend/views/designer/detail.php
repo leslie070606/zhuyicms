@@ -286,7 +286,7 @@ HTML;
                     <?php if (Yii::$app->request->get('checkdesiger') == 1) { ?>
                         <span class="botbb" id="chose_des"><a>选择该设计师</a></span>
                     <?php } else { ?>
-                        <span class="botb zy_btn_ux"><a>立即约见</a></span>
+                        <span class="botb zy_btn_ux"><a>约见咨询</a></span>
                     <?php } ?>
 
                 </div>

@@ -14,8 +14,9 @@
 .bott_zc { font-size:.2rem; color: #c9c9ca; margin-bottom: .2rem;}	
 .guide_red { color: #FF4E38;}
 .about_title { margin: .8rem auto;}
-
-
+.foot_a { font-size: .24rem; display: block; text-align: center; padding-bottom: .3rem;}
+.foot_a a { color: #777777;}
+.foot_a_sp { margin: 0 .3rem;}
 
 
 

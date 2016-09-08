@@ -70,10 +70,12 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             <div class="submit_boxa">
                 <span class="submit_true">提交成功！住艺已经收到你的需求！</span>
                 <span class="submit_truea">需求可随时在【我的住艺】中继续填写</span>
+                <span class="center_nameaa"><a class="" onclick=shaohou("index.php?r=project/choose_designer&&project_id=<?= $project_id ?>")>稍后再填</a></span>
                 <?php
                 $form = ActiveForm::begin([
                             'method' => 'post',
-                            'options' => ['enctype' => 'multipart/form-data'],
+                            'options' => ['enctype' => 'multipart/form-data', 'class'=>'sub_form'],
+                           
                 ]);
                 ?>
                 <span class="here_a" style=" float: left; width: 100%; margin-bottom: .3rem;">请告诉我们更多信息,以便住艺为你匹配更适合的设计师</span>
@@ -129,7 +131,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     完成！立刻查看设计师！
                 </button>
                 <?php ActiveForm::end(); ?>
-                <span class="center_nameaa"><a style="color: #221814;" onclick=shaohou("index.php?r=project/choose_designer&&project_id=<?= $project_id ?>")>稍后再填</a></span>
+                
             </div>
         </div>	
     </body>
