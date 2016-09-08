@@ -84,8 +84,8 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="here_meng"><?= $model->home_type ?></span>
                 </div>
                 <div class="edit_here">
-                    <span class="here_title">使用面积</span>
-                    <span class="here_meng"><?= $model->use_area ?>平米</span>
+                    <span class="here_title">建筑面积</span>
+                    <span class="here_meng"><?= $model->covered_area ?>平米</span>
                 </div>
 
                 <div class="edit_here">
