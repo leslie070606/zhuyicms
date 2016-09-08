@@ -80,6 +80,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 </div>
             </div>
             <div class="bott_zc"><i class="guide_red" style="margin-right: .05rem;">*</i>在此阶段，住艺客服团队将为用户提供各种咨询服务，帮助大家轻松高效地梳理需求。</div>
+            <span class="foot_a">
+                <a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">在线客服</a><span class="foot_a_sp">|</span><a href="tel:4000600636">客服电话</a>
+            </span>
         </div>	
     </body>
 </html>

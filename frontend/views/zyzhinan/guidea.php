@@ -81,7 +81,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="box_spb">最后，住艺设计师将努力为您甄选高品质建材，让您摆脱逛建材城这件苦差事</span>
                 </div>
             </div>
-
+            <span class="foot_a">
+                <a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">在线客服</a><span class="foot_a_sp">|</span><a href="tel:4000600636">客服电话</a>
+            </span>
         </div>	
     </body>
 </html>

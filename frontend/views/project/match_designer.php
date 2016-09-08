@@ -104,7 +104,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <div class="fx_box four_box">
 
 
-                        <div class="fx_here">平层公寓</div>
+                        <div class="fx_here">住宅公寓</div>
                         <div class="fx_here">复式/Loft</div>
                         <div class="fx_here">独栋/联排别墅</div>
 
@@ -116,9 +116,12 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 <div class="demand_here  here_3">
                     <span class="dem_title">你的家多大？</span>
                     <span>第<a class="red">3</a>题/7题</span>
-
-                    <input class="dema_ipt three_ipt" type="tel" placeholder="建筑面积（㎡）" />
-                    <input class="dema_ipt three_ipta" type="tel" placeholder="使用面积 （㎡）" />
+                    <span class="after_input">
+                         <input class="dema_ipt three_ipt" type="tel" placeholder="输入建筑面积" />
+                         <i>平米</i>
+                    </span>
+                   
+                    
                 </div>
 
                 <div class="demand_here here_4">
@@ -157,7 +160,10 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     <span class="dem_title">你的大致预算是？(万元)</span>
                     <span>第<a class="red">6</a>题/7题</span>
                     <div class="six_box">
-                        <input class="dema_ipt" type="tel" placeholder="预算（万）" />
+                        <span class="after_input">
+                        <input class="dema_ipt" type="tel" placeholder="输入预算" />
+                        <i>万元</i>
+                        </span>
                         <div class="dema_explain">
                             <span class="explain_title">设计<i id="sgdj">+施工</i>：</span>
                             <div class="explain_mesg">

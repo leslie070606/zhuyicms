@@ -77,9 +77,7 @@ if (!isset($userId) || empty($userId)) {
 
             </ul>
 
-            <span class="mesg_spb"><a class="zy_btn_uxa"  onclick=gongzhuang("<?php 
-            //判断是否有风格
-            echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
+            <span class="mesg_spb"><a class="zy_btn_uxa"  onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">
@@ -185,7 +183,7 @@ if (!isset($userId) || empty($userId)) {
 
         <footer class="foot">
             <span class="foot_a">
-                VIP客服  <a href="tel:4000600636">4000-600-636</a>
+                <a href="http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc">在线客服</a><span class="foot_a_sp">|</span><a href="tel:4000600636">客服电话</a>
             </span>
             <span class="foot_b">
                 京ICP备16029306号

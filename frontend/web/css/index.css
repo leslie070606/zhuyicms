@@ -80,7 +80,8 @@
 .banner .bx-controls { display: none;}
 .bxsliderbb .bxs_title { position: absolute; left: 0; top: 2.4rem; z-index: 99991;}
 .tools_box .bx-wrapper .bx-pager { width:.8rem; margin-left:-.4rem;}
-
+.foot_a a { color: #777777;}
+.foot_a_sp { margin: 0 .3rem;}
 
 
 

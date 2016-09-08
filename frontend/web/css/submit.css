@@ -24,7 +24,17 @@
 .add_img { background: #eeefef; font-size: .44rem !important; color: #c9c9ca; position: relative;}
 .add_img::before { position: absolute; left: 50%; top: 50%; margin: -.22rem 0 0 -.22rem;}
 .chose_btn { width: 90%; height: .88rem; font-size: .28rem; color: #FFFFFF; text-align: center;  background: #FF4E38; line-height: .88rem; margin: .8rem 5% .3rem 5%; clear: both; float: left;}
-.center_nameaa a { display: block; float:left; width:100%; margin-bottom: .8rem; color: #777777; text-align: center;}
+.center_nameaa a { display: block;  margin-bottom: .8rem; color: #777777; text-align: center;width: 90%;
+    height: .88rem;
+    font-size: .28rem;
+    color: #ff4e38;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #ff4e38;
+    line-height: .88rem;
+    margin: 0 5% .8rem 5%;
+    clear: both;
+    float: left;}
 .control-label { display: none;}
 .upload_box input {     
 	    position: absolute;
@@ -35,8 +45,8 @@
     height: 100%;
     top: 0;
 }
-
-
+.sub_form { padding-top: .8rem; clear: both; position:relative;}
+.sub_form::before { content: ""; position: absolute; top: 0px; height: 1px; background: #efeeff; width: 120%; left: -10%;}
 
 
 
