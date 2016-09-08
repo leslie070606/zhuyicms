@@ -6,7 +6,7 @@ class Match {
 
     //$pro 用户需求
     //$des 设计师需求
-    public function assigns($ProArr, $DesArr) {
+    public function assigns($ProArr, $DesArr, $user_id) {
 
         //完全不符合标准的设计师
         //if ($ProModel->didian == $DesModel->didian && $ProModel->fuwu == $DesModel->fuwu) {
@@ -23,9 +23,6 @@ class Match {
             if ($ProArr['budget_design']) {
                 $pro_budget = $ProArr['budget_design'];
                 $des_budget = $DesArr['charge'] ? $DesArr['charge'] : 1;
-//            if(is_string($peihescore)){
-//                
-//            }
             } else {
                 $pro_budget = $ProArr['budget_design_work'];
                 $des_budget = $DesArr['charge_work'] ? $DesArr['charge_work'] : 1;
@@ -59,6 +56,24 @@ class Match {
                 if ($pro_budget && $des_budget) {
                     $yusuanscore = $pro_budget / $des_budget > 1 ? 1 - ($pro_budget - $des_budget) / $des_budget * 0.01 : 1 - (1 - $pro_budget / $des_budget) * 0.02;
                 }
+
+                // 计算设计师的风格得分
+                // 用户所选风格
+                // 
+//                $pstyle = '';
+//                
+//                //设计师风格
+//                $dstyle = '';
+//                //判断是否已经有风格测试
+//                $styleModel = new \common\models\Style();
+//                $userStyle = $styleModel->findOne(['user_id' => $userId]);
+//                if (count($userStyle) > 0) {
+//                    $pstyle = explode('$', $userStyle['choice_style']);
+//                }
+//                
+//                $dstyle = explode(',',$DesArr['style']);
+//                
+                // $pstyle = 
                 //风格计算
 //                $num = count(array_intersect($p, $d));
 //                switch ($num) {

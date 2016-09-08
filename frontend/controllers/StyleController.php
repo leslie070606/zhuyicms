@@ -60,7 +60,8 @@ class StyleController extends Controller {
                 $userId = '';
             }
         }
-
+        
+        //没有登录跳转到登录
         if (!$userId) {
             return $this->redirect(['user/login']);
         }
