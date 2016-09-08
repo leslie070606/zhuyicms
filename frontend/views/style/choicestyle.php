@@ -1,6 +1,12 @@
 <?php
+
 use yii\helpers\Url;
 
+$session = Yii::$app->session;
+if (!$session->isActive) {
+    $session->open();
+}
+$_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,11 +15,16 @@ use yii\helpers\Url;
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>选择风格</title>
         <link rel="stylesheet" href="css/gloab.css" />
-        <link rel="stylesheet" href="css/style_test.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <!--<link rel="stylesheet" href="css/video-js.min.css" />-->
         <link rel="stylesheet"  href="css/iconfont.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.bxslider.js" ></script>	
         <script type="text/javascript" src="js/touch-0.2.14.min.js" ></script>
-        <script type="text/javascript"  src="js/style_test.js"></script>
+        <!--<script type="text/javascript" src="js/video.min.js" ></script>-->
+        <script type="text/javascript" src="js/gloab.js" ></script>
+        <script type="text/javascript" src="js/index.js" ></script>
+        <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     </head>
     <body>
         <div class="style_text_boxs">
@@ -23,27 +34,46 @@ use yii\helpers\Url;
                 <span class="top_right iconfont icon-gongneng"></span>
             </header>
             <section class="down_right">
-                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="designer_list.html">住艺设计师</a></li>
-                    <li><a href="designer_list.html">使用指南</a></li>
+                <ul>
+                    <li><a href="<?php echo Url::toRoute('/index/index'); ?>">首页</a></li>
+                    <li><a href="<?php echo Url::toRoute('/designer/list'); ?>">住艺设计师</a></li>
+                    <li><a href="<?php echo Url::toRoute('/zyzhinan/guide'); ?>">设计指南</a></li>
                     <li><a href="<?php echo Url::toRoute('/order/list'); ?>">我的住艺</a></li>
                     <li><a href="<?php echo Url::toRoute('/user/feedback'); ?>">更多建议</a></li>
-                    <li><a href="designer_list.html">暂时登出</a></li>
-                </ul>
-            </section> 
-            <div class="down_right_zd"></div>
-			
-			<div class="out_true_box">
-				<div class="out_true">
-					<div class="out_true_top">确认退出登录？</div>
-					<div class="out_true_bott">
-						<span class="quxiao">取消</span>
-						<a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+                    <li>   <?php if ($session->get('user_id')) { ?>
+                            <a abc="<?php echo Url::toRoute('/user/loginout'); ?>">暂时登出</a>
 
-					</div>
-				</div>
-			</div> 
+                        <?php } else { ?>
+
+                            <a href = "<?php echo Url::toRoute('/user/login'); ?>">立即登录</a>
+
+                        <?php }; ?>
+
+                    </li>
+                </ul>
+            </section>
+            <div class="down_right_zd"></div>
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                    </div>
+                </div>
+            </div> 
+
+            <div class="out_true_box">
+                <div class="out_true">
+                    <div class="out_true_top">确认退出登录？</div>
+                    <div class="out_true_bott">
+                        <span class="quxiao">取消</span>
+                        <a href="<?php echo Url::toRoute('/user/loginout'); ?>"><span class="queding">确定</span></a>
+
+                    </div>
+                </div>
+            </div> 
 
             <section class="style_boxa">
                 <div class="box_title">请选择3种您最喜欢的风格</div>
@@ -81,16 +111,16 @@ use yii\helpers\Url;
 
 
         });
-        
+
         //提交
         $.ajax({
-            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=style/choicestyle'; ?>"+"&&g="+gerr,
+            url: "<?php echo Yii::getAlias('@web') . '/index.php?r=style/choicestyle'; ?>" + "&&g=" + gerr,
             type: 'get',
             //dataType: 'json',
             data: '',
             success: function (data) {
-                alert(data);
-                if(data){
+                // alert(data);
+                if (data) {
                     window.location.href = "<?php echo Yii::getAlias('@web') . '/index.php?r=project/match_designer'; ?>";
                 }
 

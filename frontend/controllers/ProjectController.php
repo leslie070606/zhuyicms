@@ -32,7 +32,7 @@ class ProjectController extends \common\util\BaseController {
 
             $model = new ZyProject();
             $project = $model->findOne(['user_id' => $user_id]);
-
+            
             //如果有需求就跳转到个人中心
             if ($project) {
                 return $this->redirect(['order/list']);
@@ -281,6 +281,7 @@ class ProjectController extends \common\util\BaseController {
         $tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
+        $user_id = '';
         //判断是否有用户
         if ($user_id = $session->get('user_id')) {
             $model = new ZyProject();
@@ -303,6 +304,9 @@ class ProjectController extends \common\util\BaseController {
             if (count($scoreArr) >= 9) {
                 $scoreArr = array_slice($scoreArr, 0, 9);
             }
+            
+//            echo "<pre>";
+//            print_r($scoreArr);exit;
         } else {
             //引入算法类
             $matchModel = new \app\components\Match();
@@ -359,8 +363,9 @@ class ProjectController extends \common\util\BaseController {
 
                 $scoreArr[$i]['did'] = $designerArr[$i]['designer_id'];
                 // $scoreArr[$i]['customer'] = $designerArr[$i]['customer'];
-
-                $score = $matchModel->assigns($project, $designerArr[$i]);
+                
+                // 计算分数
+                $score = $matchModel->assigns($project, $designerArr[$i], $user_id);
                 //匹配设计师计算分数
                 $scoreArr[$i]['score'] = $score;
 

@@ -77,7 +77,9 @@ if (!isset($userId) || empty($userId)) {
 
             </ul>
 
-            <span class="mesg_spb"><a class="zy_btn_uxa"  onclick=gongzhuang("<?php echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
+            <span class="mesg_spb"><a class="zy_btn_uxa"  onclick=gongzhuang("<?php 
+            //判断是否有风格
+            echo Url::toRoute('project/match_designer'); ?>",2,2012) style="top: 2.4rem;">找设计师</a></span>
         </div>
         <div class="fingerpost">
             <div class="post_title">

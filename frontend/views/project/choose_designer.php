@@ -78,7 +78,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                 $num = count($model);
                 $isredall = false; //是否全是红色
                 //红色数量
-                $counti = 1;
+                $counti = 0;
                 foreach ($model as $val) {
 
                     if (isset($val['red'])) {
@@ -90,15 +90,16 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
                     $isredall = true;
                     echo '<span class="choose_top_b">根据您预算未找到合适的设计师,请参考以下推荐的设计师!</span>';
                 } else {
+                    $nored = $num - $counti;
 
-                    if ($num > 0) {
-                        if ($num >= 3) {
+                    if ($nored > 0) {
+                        if ($nored >= 3) {
                             $numc = 3;
                         } else {
                             $numc = $num;
                         }
                         ?>
-                        <span class="choose_top_b">据您的初步信息，甄选出<?= $num ?>位设计师<br/>从中选择喜欢的优先约见（最多<?= $numc ?>位）</span>
+                        <span class="choose_top_b">据您的初步信息，甄选出<?= $nored ?>位设计师<br/>从中选择喜欢的优先约见（最多<?= $numc ?>位）</span>
                     <?php } else { ?>
 
                         <span class="choose_top_b">在您的地区和时间段未匹配到设计师,请联系客服!4000-600-636</span>
@@ -115,7 +116,9 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
 
                     //如果不都是红色 不显示红色设计师 跳出本次循环
                     if (!$isredall) {
-                        if (isset($val['red'])) {
+                        //echo "r";
+                        if (isset($value['red'])) {
+                            // echo  $value['did'];
                             continue;
                         }
                     }
@@ -217,19 +220,21 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
         var ckshejishi = "<?php echo Yii::$app->request->get('ckshejishi') ? Yii::$app->request->get('ckshejishi') : ''; ?>";
         var prohere = ckshejishi.split(",");
         var pro_length = prohere.length;
-        var last_pro=prohere[pro_length-1];
-       
-        if(last_pro>3||last_pro<=6){
-            
+        var last_pro = prohere[pro_length - 1];
+
+        if (last_pro > 3 || last_pro <= 6) {
+
             $(".designer_box>.pro_here:eq(3),.designer_box>.pro_here:eq(4),.designer_box>.pro_here:eq(5)").show();
-                var top = $(".designer_box .pro_here:eq("+last_pro+")").offset().top;
-                $(window).scrollTop(top)
-        };
-        if(last_pro>6){
-             $(".designer_box>.pro_here").show();
-             var top = $(".designer_box .pro_here:eq("+last_pro+")").offset().top;
-                $(window).scrollTop(top)
-        };
+            var top = $(".designer_box .pro_here:eq(" + last_pro + ")").offset().top;
+            $(window).scrollTop(top)
+        }
+        ;
+        if (last_pro > 6) {
+            $(".designer_box>.pro_here").show();
+            var top = $(".designer_box .pro_here:eq(" + last_pro + ")").offset().top;
+            $(window).scrollTop(top)
+        }
+        ;
         if (pro_length > 3) {
 
             pro_length = 3;
@@ -313,7 +318,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             }
             ;
             var str = user_id + "$" + project_id + "$" + html + "$" + is_pipei;
-            tj_ajax(2,2004, user_id, "", "稍后再填");
+            tj_ajax(2, 2004, user_id, "", "稍后再填");
             $.ajax({
                 type: "GET",
                 url: "<?php echo Yii::getAlias('@web') . '/index.php?r=order/index'; ?>" + "&&params=" + str,
