@@ -47,9 +47,9 @@ class ZyprojectController extends Controller {
 
         $w = $this->_getZyProjectIndexSearch();
 
-        $query->where($w);
+        $query->where($w)->orderBy(' zy_project.project_id desc ');
 
-        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => '15']);
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count('zy_project.project_id'), 'pageSize' => '15']);
 
         $model = $query->offset($pages->offset)->limit($pages->limit)->all();
 

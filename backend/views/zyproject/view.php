@@ -40,6 +40,14 @@ $this->params['breadcrumbs'][] = $this->title;
             </caption>
             <tbody>
                 <tr>
+                    <td class="bg-success" style="width: 10%;">创建时间：</td>
+                    <td colspan="5"><?= date('Y-m-d H:i:s',$model->create_time); ?></td>
+                </tr>
+                <tr>
+                    <td class="bg-success" style="width: 10%;">更新时间：</td>
+                    <td colspan="5"><?= !empty($model->update_time)?date('Y-m-d H:i:s',$model->update_time):'无'; ?></td>
+                </tr>
+                <tr>
                     <td class="bg-success" style="width: 10%;">用户ID：</td>
                     <td><?= $model->user_id; ?></td>
                     <td class="bg-success" style="width: 10%;">需要单号：</td>
@@ -143,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                         <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->order_id;?></a></td>
                         <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->zyj_designer_basic->name;?></a></td>
-                        <td><?= date('Y-m-d H:i:s',$m->appointment_time);?></td>
+                        <td><?= !empty($m->appointment_time)?date('Y-m-d H:i:s',$m->appointment_time):'无';?></td>
                         <td><?= common\models\ZyOrder::$ORDER_STATUS_DICT[$m->status];?></td>
                     </tr>
                     <?php
