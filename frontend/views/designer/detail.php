@@ -70,7 +70,7 @@ $userId = $session->get("user_id");
                     <div class="out_true_top" style="line-height: .3rem; padding-top: .3rem; margin-left: .3rem; margin-right: .3rem; line-height: .35rem; height:1.8rem; border-bottom: none;">您将跳转到客服聊天界面，请输入您的姓名和手机号、以及想约见的设计师姓名，住艺客服会协商设计师的时间</div>
                     <div class="out_true_bott" style="border-top: 1px solid #eeefef;">
                         <span class="quxiao" style="color: #9F9FA0;" onclick="quxiao()">取消</span>
-                        <a onclick=bot_for("https://www.sobot.com/chat/oldh5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc") style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">继续</a >
+                        <a onclick=bot_for("http://www.sobot.com/chat/h5/index.html?sysNum=d816da1bbc6b4814a0929661a3c7dfbc") style="font-size: .24rem; color: #ff4e38; display: block; text-align: center;">继续</a >
                     </div>
                 </div>
             </div>
@@ -248,7 +248,7 @@ HTML;
                                     <?php echo $experience ?>
                                 </div>
                             </div><!--info_here end-->
-
+                            <?php if(!empty($interests)): ?>
                             <div class="info_here">
                                 <div class="info_here_left">
                                     兴趣爱好
@@ -257,6 +257,7 @@ HTML;
                                     <?php echo $interests ?>
                                 </div>
                             </div><!--info_here end-->
+                            <?php endif;?>
 
                         </div>
 
