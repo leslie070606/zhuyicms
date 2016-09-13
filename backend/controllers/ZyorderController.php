@@ -55,7 +55,7 @@ class ZyorderController extends Controller {
         $query->select("zy_user.nickname,zyj_designer_basic.name,zy_order.*");
         $w = $this->_getZyOrderIndexSearch();
         $query->where($w)->orderBy(' order_id desc ');
-        $pages = new \yii\data\Pagination(['totalCount' => $query->count(), 'pageSize' => '15']);
+        $pages = new \yii\data\Pagination(['totalCount' => $query->count('order_id'), 'pageSize' => '15']);
         $model = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('index', [
