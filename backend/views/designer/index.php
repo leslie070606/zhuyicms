@@ -17,23 +17,52 @@ use kartik\file\FileInput;
             <!-- /.box-header -->
             <div class="box-body">
                 <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                    <div class="row">
-                        <div class="col-sm-6"></div>
-                        <!-- 搜索-->
-                        <div class="col-sm-6">
-                            <div class="box-tools pull-right">
-                                <?= Html::beginForm('', 'post', ['id' => 'form-search']); ?>
-                                <div style="width: 200px;" class="input-group input-group-sm">
-                                    <!--<input type="text" placeholder="Search" class="form-control pull-right" name="table_search">-->
-                                    <?= Html::input('text', 'table_search', $search_word ? $search_word : '', ['class' => 'form-control pull-right', 'placeholder' => 'Search', 'id' => 'table_search']) ?>
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                                <?= Html::endForm(); ?>
+                    <form action="" method="get">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <input type="text" value="<?= Yii::$app->request->get('ds_id');?>" name="ds_id" class="form-control" placeholder="请输入设计师编号">
                             </div>
+                            <div class="col-xs-2">
+                                <input type="text" value="<?= Yii::$app->request->get('ds_style');?>" name="ds_style" class="form-control" placeholder="请输入设计师风格">
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="text" value="<?= Yii::$app->request->get('ds_city');?>" name="ds_city" class="form-control" placeholder="请输入城市，例如：北京">
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="text" value="<?= Yii::$app->request->get('ds_name');?>" name="ds_name" class="form-control" placeholder="请输入设计师姓名">
+                            </div>
+                            <div class="col-xs-2">
+                                <select name="ds_sex" class="form-control">
+                                    <option value="">请选择性别</option>
+                                    <option value="1" <?php $_ds_sex=Yii::$app->request->get('ds_sex'); echo $_ds_sex=="1"?'selected':'';?>>男</option>
+                                    <option value="0" <?= $_ds_sex=="0"?'selected':'';?>>女</option>
+                                </select>
+                            </div>
+                            <span class="help-block"><br>&nbsp;</span>
+                        </div>                    
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <input value="<?= Yii::$app->request->get('ds_sjf_dx');?>" name="ds_sjf_dx" type="text" class="form-control" placeholder="请输入设计费底限">
+                                - 
+                                <input value="<?= Yii::$app->request->get('ds_sjf_sx');?>" name="ds_sjf_sx" type="text" class="form-control" placeholder="请输入设计费上限">
+                            </div>  
+                            <div class="col-xs-4">
+                                <input value="<?= Yii::$app->request->get('ds_zxf_dx');?>" name="ds_zxf_dx" type="text" class="form-control" placeholder="请输入装修费底限">
+                                - 
+                                <input value="<?= Yii::$app->request->get('ds_zxf_sx');?>" name="ds_zxf_sx" type="text" class="form-control" placeholder="请输入装修费上限">
+                            </div>
+                            <span class="help-block"><br>&nbsp;</span>
                         </div>
-                    </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button type="submit" class="btn btn-primary">搜索</button>
+                                &nbsp;
+                                <button type="reset" class="btn btn-default">清空</button>
+                            </div>
+                            <span class="help-block"><br>&nbsp;</span>
+                        </div>
+                    </form>
+
                     <div class="row">
                         <div class="col-sm-12">
                             <table class="table table-bordered table-hover dataTable" id="example2" role="grid" aria-describedby="example2_info">
