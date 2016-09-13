@@ -77,9 +77,18 @@ class ProjectController extends \common\util\BaseController {
                 //$sms = Yii::$app->Sms;
                 $sms = new Sms();
                 $ret = $sms->send(array('13521932827'), '【住艺】用户[ ' . $userInfo['phone'] . ' ]提交了新需求,需求单号[' . $model->attributes['project_num'] . '],所在地[' . $model->attributes['city'] . '],开工时间[' . $model->attributes['work_time'] . '],需要[' . $fuwu . '],预算[' . $yusuan . '万],请尽快登录后台处理.');
-
+                
+                //保存返回的ID
+                $pid = $model->attributes['project_id'];
+                //发送一条客服消息
+                $messageModel = new \common\models\Message();
+                $data = array('contents' => "用户 [".$user_id."] 提交了新需求", 'project_id'=>$pid);
+                
+                //$type 为0 代表需求
+                $type = 0;
+                $messageModel->createMessage($data, $type);
                 //插入成功返回保存ID
-                return $model->attributes['project_id'];
+                return $pid;
             }
         }
 
