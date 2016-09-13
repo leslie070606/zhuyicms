@@ -175,6 +175,9 @@ class ZyprojectController extends Controller {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->project_id]);
         } else {
+            if($model->use_area=='undefined'){
+                $model->use_area = '';
+            }
             return $this->render('update', [
                         'model' => $model,
             ]);

@@ -71,7 +71,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <td class="bg-success" style="width: 10%;">建筑面积：</td>
                     <td><?= $model->covered_area; ?></td>
                     <td class="bg-success" style="width: 10%;">使用面积：</td>
-                    <td  colspan="2"><?= $model->use_area; ?></td>
+                    <td  colspan="2"><?= $model->use_area!='undefined'?$model->use_area:''; ?></td>
                 </tr>
                 <tr>
                     <td class="bg-success" style="width: 10%;">设计+施工费用：</td>
