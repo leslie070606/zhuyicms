@@ -3,7 +3,28 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use dosamigos\datepicker\DatePicker;
+
+$imageId = $model->image_id;
+$backgroundId = $model->head_imgid;
+$imageModel = new \common\models\ZyImages();
+
+$ret = $imageModel->findOne($imageId);
+$url = '';
+if (empty($ret)) {
+    $url = '';
+} else {
+    $url = $ret->url;
+}
+
+$ret = $imageModel->findOne($backgroundId);
+$url_background = '';
+if (empty($ret)) {
+    $url_background = '';
+} else {
+    $url_background = $ret->url;
+}
 ?>
+<script type="text/javascript" src="/js/ajaxfileupload.js" ></script>
 <div class="row">
     <div class="col-md-6">
         <!-- general form elements -->
@@ -31,6 +52,20 @@ use dosamigos\datepicker\DatePicker;
                     <label for="sex">性别</label>
                     <?= Html::activeRadioList($model, 'sex', [1 => '男', 0 => '女'], ['class' => 'fav-list', 'id' => "sex"]) ?>
                     <?= Html::error($model, 'sex', ['class' => 'error']); ?>
+                </div>
+                
+                <div class="form-group">
+                    <label for="">头像</label>
+                    <div id="img_a"><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url; ?>" /></div>
+                    <input type="hidden" name="here_imga" id="here_imga"  value="" />                        
+                    <input type="file"  accept="image/*" name="upload" id="upload" onchange="ajaxFileUpload('upload')">
+                </div>
+
+                <div class="form-group">
+                    <label for="">背景图</label>
+                    <div id="img_b"><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url_background; ?>" /></div>
+                    <input type="hidden" name="here_imgb" id="here_imgb"  value="" />                        
+                    <input type="file"  accept="image/*" name="uploada" id="uploada" onchange="ajaxFileUpload('uploada')">
                 </div>
 
                 <div class="form-group">
@@ -74,13 +109,13 @@ use dosamigos\datepicker\DatePicker;
                     <?= Html::activeInput('text', $model, 'alma_mater', ['class' => 'form-control', 'id' => 'alma_mater']) ?>
                     <?= Html::error($model, 'alma_mater', ['class' => 'error']); ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="experience">设计师经历</label>
                     <?= Html::activeTextarea($model, 'experience', ['class' => 'form-control', 'rows' => '5', 'id' => 'experience']) ?>
                     <?= Html::error($model, 'experience', ['class' => 'error']); ?>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="interests">兴趣爱好</label>
                     <?= Html::activeTextarea($model, 'interests', ['class' => 'form-control', 'rows' => '5', 'id' => 'interests']) ?>
@@ -302,6 +337,36 @@ use dosamigos\datepicker\DatePicker;
     </div>
 </div>
 <script>
+    var _uploadUrl = "<?= yii\helpers\Url::to(['designer/upload-image']); ?>";
+
+    function ajaxFileUpload(fileName) {
+        $.ajaxFileUpload({
+            url: _uploadUrl, //用于文件上传的服务器端请求地址
+            secureuri: false, //是否需要安全协议，一般设置为false
+            fileElementId: fileName, //文件上传域的ID
+            dataType: 'json', //返回值类型 一般设置为json
+            success: function (data, status) //服务器成功响应处理函数
+            {
+                var src = data.msg;
+                if (data.code != 1) {
+                    alert(data.msg);
+                } else {
+                    if (fileName == "uploada") {
+                        $("#here_imgb").val(src);
+                        $('#img_b').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                    } else {
+                        $("#here_imga").val(src);
+                        $('#img_a').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                    }
+                }
+            },
+            error: function (data, status, e) //服务器响应失败处理函数
+            {
+                console.log(data);                
+            }
+        })
+        return false;
+    }
     function ajaxBasic() {
         var $form = $('#form-basic');
         $.ajax({
