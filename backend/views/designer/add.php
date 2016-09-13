@@ -336,10 +336,10 @@ older' => '', 'id' => 'charge_work']) ?>
                 } else {
                     if (fileName == "uploada") {
                         $("#here_imgb").val(src);
-                        $('#img_b').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                        $('#img_b').html('<img src="http://zhuyihome.com'+src+'" width="100" height="100">');
                     } else {
                         $("#here_imga").val(src);
-                        $('#img_a').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                        $('#img_a').html('<img src="http://zhuyihome.com'+src+'" width="100" height="100">');
                     }
                 }
             },

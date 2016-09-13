@@ -56,14 +56,14 @@ if (empty($ret)) {
                 
                 <div class="form-group">
                     <label for="">头像</label>
-                    <div id="img_a"><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url; ?>" /></div>
+                    <div id="img_a"><img width="100" height="100" src="<?php echo 'http://zhuyihome.com' . $url; ?>" /></div>
                     <input type="hidden" name="here_imga" id="here_imga"  value="" />                        
                     <input type="file"  accept="image/*" name="upload" id="upload" onchange="ajaxFileUpload('upload')">
                 </div>
 
                 <div class="form-group">
                     <label for="">背景图</label>
-                    <div id="img_b"><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url_background; ?>" /></div>
+                    <div id="img_b"><img width="100" height="100" src="<?php echo 'http://zhuyihome.com' . $url_background; ?>" /></div>
                     <input type="hidden" name="here_imgb" id="here_imgb"  value="" />                        
                     <input type="file"  accept="image/*" name="uploada" id="uploada" onchange="ajaxFileUpload('uploada')">
                 </div>
@@ -353,10 +353,10 @@ if (empty($ret)) {
                 } else {
                     if (fileName == "uploada") {
                         $("#here_imgb").val(src);
-                        $('#img_b').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                        $('#img_b').html('<img src="http://zhuyihome.com'+src+'" width="100" height="100">');
                     } else {
                         $("#here_imga").val(src);
-                        $('#img_a').html('<img src="http://v1.zhuyi.com'+src+'" width="100" height="100">');
+                        $('#img_a').html('<img src="http://zhuyihome.com'+src+'" width="100" height="100">');
                     }
                 }
             },
