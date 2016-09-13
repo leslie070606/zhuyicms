@@ -11,19 +11,76 @@ class DesignerController extends controller {
 
     public function actionIndex() {
 
-        $designerlistModel = new \backend\models\DesignerBasic();
-        $search_word = '';
-        if (Yii::$app->request->post('table_search')) {
-            $search_word = Yii::$app->request->post('table_search');
-            $designer = $designerlistModel::findBySql("select * from zyj_designer_basic where name like '%" . $search_word . "%'");
-        } else {
-            $designer = $designerlistModel::find();
+        $designerlistModel = \backend\models\DesignerBasic::find();
+        $designerlistModel->joinWith(['zyj_designer_additional', 'zyj_designer_work']);
+
+        $w = $this->_getDesignerCondition();
+
+        $designerlistModel->where($w)->orderBy(' zyj_designer_basic.id desc ');
+
+        $pagination = new \yii\data\Pagination(['totalCount' => $designerlistModel->count('zyj_designer_basic.id'), 'pageSize' => 10]);
+
+        $data = $designerlistModel->offset($pagination->offset)->limit($pagination->limit)->all();
+
+        return $this->render("index", [
+                    'data' => $data,
+                    'pagination' => $pagination,
+                    'model' => $designerlistModel,
+                    'getParams' => Yii::$app->request->get()
+        ]);
+    }
+
+    /**
+     * 私有条件搜索拼接方法
+     * @author 郝帅卫 <shuaiwei.hao@condenast.net>
+     * @date 2016-09-13
+     * @param null
+     * @return string
+     */
+    private function _getDesignerCondition() {
+        $_params = Yii::$app->request->get();
+        if (empty($_params)) {
+            return '1';
         }
-        $pagination = new \yii\data\Pagination(['totalCount' => $designer->count(), 'pageSize' => 10]);
+        foreach ($_params as $k => $v) {
+            $_params[$k] = addslashes($v);
+        }
+        unset($_params['page']);
+        unset($_params['per-page']);
+        if (empty($_params)) {
+            return '1';
+        }
+        $w = '1';
+        if ($_params['ds_id']) {
+            $w .= ' and zyj_designer_basic.id="' . $_params['ds_id'] . '" ';
+        }
+        if ($_params['ds_sjf_dx']) {
+            $w .= ' and zyj_designer_work.charge>="' . $_params['ds_sjf_dx'] . '" ';
+        }
+        if ($_params['ds_sjf_sx']) {
+            $w .= ' and zyj_designer_work.charge<="' . $_params['ds_sjf_sx'] . '" ';
+        }
+        if ($_params['ds_city']) {
+            $w .= ' and zyj_designer_work.service_city="' . $_params['ds_city'] . '" ';
+        }
+        if ($_params['ds_name']) {
+            $w .= ' and zyj_designer_basic.name like "%' . $_params['ds_name'] . '%" ';
+        }
+        if ($_params['ds_style']) {
+            $w .= ' and zyj_designer_work.style like "%' . $_params['ds_style'] . '%" ';
+        }
+        if ($_params['ds_zxf_dx']) {
+            $w .= ' and zyj_designer_work.charge_work>="' . $_params['ds_zxf_dx'] . '" ';
+        }
+        if ($_params['ds_zxf_sx']) {
+            $w .= ' and zyj_designer_work.charge_work<="' . $_params['ds_zxf_sx'] . '" ';
+        }
+        if ($_params['ds_sex']!='') {
+            $w .= ' and zyj_designer_basic.sex = "' . $_params['ds_sex'] . '" ';
+        }
 
-        $data = $designer->offset($pagination->offset)->limit($pagination->limit)->all();
 
-        return $this->render("index", ['data' => $data, 'pagination' => $pagination, 'model' => $designerlistModel, 'search_word' => $search_word]);
+        return $w;
     }
 
     public function actionDetail($id) {
@@ -39,7 +96,7 @@ class DesignerController extends controller {
 
         return $this->render('detail', ['model' => $designerbasicModel, 'modeladditional' => $designerAdditionalModel, 'modelwork' => $designerWorkModel, 'did' => $id]);
     }
-    
+
     //设计师编辑
     public function actionEdit($id) {
         error_reporting(E_ALL & ~E_NOTICE);
@@ -364,7 +421,7 @@ class DesignerController extends controller {
                         return false;
                     }
                     $ret->head_imgid = $imageId;
-                    if($ret->save()){
+                    if ($ret->save()) {
                         Yii::$app->getSession()->setFlash('success', '保存成功');
                         Yii::$app->getSession()->setFlash('imgurl', $uploadSuccessPath);
                     }
