@@ -150,7 +150,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ?>
                     <tr>
                         <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->order_id;?></a></td>
-                        <td><a href="<?= yii\helpers\Url::to(['zyorder/'.$m->order_id]);?>"><?= $m->zyj_designer_basic->name;?></a></td>
+                        <td><a href="<?= yii\helpers\Url::to(['designer/detail?id='.$m->zyj_designer_basic->id]);?>"><?= $m->zyj_designer_basic->name;?></a></td>
                         <td><?= !empty($m->appointment_time)?date('Y-m-d H:i:s',$m->appointment_time):'无';?></td>
                         <td><?= common\models\ZyOrder::$ORDER_STATUS_DICT[$m->status];?></td>
                     </tr>
@@ -160,50 +160,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </tbody>
         </table>
     </div>
-
-    <?php
-//    DetailView::widget([
-//        'model' => $model,
-//        'attributes' => [
-//            'project_id',
-//            'user_id',
-//            'project_num',
-//            'city',
-//            'address',
-//            'compound',
-//            'decoration_type',
-//            'covered_area',
-//            'use_area',
-//            'budget_design_work',
-//            'budget_design',
-//            'budget_ruan',
-//            'budget_ying',
-//            'budget_yuanlin',
-//            'work_time',
-//            'home_type',
-//            'project_status',
-//            'service_type',
-//            [
-//                'label' => '家的照片',
-//                'format' => 'raw',
-//                'value' => $model->getHomeImage(),
-//            ],
-//            [
-//                'label' => '喜欢的照片',
-//                'format' => 'raw',
-//                'value' => $model->getFavoriteImage(),
-//            ],
-//            'designer_level',
-//            'match_json',
-//            'description:ntext',
-//            'project_tags',
-//            [
-//                'label' => '是否人工匹配',
-//                'format' => 'raw',
-//                'value' => $model->getRengong($model->project_id),
-//            ],
-//        ],
-//    ])
-    ?>
 
 </div>

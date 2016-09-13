@@ -1,5 +1,6 @@
 <?php
 $imageId = $model->image_id;
+$backgroundId = $model->head_imgid;
 $imageModel = new \common\models\ZyImages();
 
 $ret = $imageModel->findOne($imageId);
@@ -8,6 +9,14 @@ if (empty($ret)) {
     $url = '';
 } else {
     $url = $ret->url;
+}
+
+$ret = $imageModel->findOne($backgroundId);
+$url_background = '';
+if (empty($ret)) {
+    $url_background = '';
+} else {
+    $url_background = $ret->url;
 }
 ?>
 <div class="row">
@@ -28,7 +37,9 @@ if (empty($ret)) {
 <!--                             <td><span class='label label-success'></span></td>-->
                             <td><?= $model->name ? $model->name : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>头像</td>
-                            <td><img src="<?php echo 'http://aaa.com' . $url ?>" /></td>
+                            <td><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url ?>" /></td>
+                            <td>背景</td>
+                            <td><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url_background ?>" /></td>
                             <td>性別</td>
                             <td><?= $model->sex ? "男" : "女" ?></td>
                         </tr>
