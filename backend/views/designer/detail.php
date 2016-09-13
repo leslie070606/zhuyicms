@@ -37,9 +37,9 @@ if (empty($ret)) {
 <!--                             <td><span class='label label-success'></span></td>-->
                             <td><?= $model->name ? $model->name : "<span class='label label-warning'>NULL</span>" ?></td>
                             <td>头像</td>
-                            <td><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url ?>" /></td>
+                            <td><img width="100" height="100" src="<?php echo 'http://zhuyihome.com' . $url ?>" /></td>
                             <td>背景</td>
-                            <td><img width="100" height="100" src="<?php echo 'http://v1.zhuyi.com' . $url_background ?>" /></td>
+                            <td><img width="100" height="100" src="<?php echo 'http://zhuyihome.com' . $url_background ?>" /></td>
                             <td>性別</td>
                             <td><?= $model->sex ? "男" : "女" ?></td>
                         </tr>
