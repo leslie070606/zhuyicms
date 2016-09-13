@@ -116,7 +116,7 @@ class ZyorderController extends Controller {
             $w .= '	and zy_order.project_id="' . $_params['project_id'] . '" ';
         }
 
-        var_dump($w);
+        //var_dump($w);
         return $w;
     }
 
