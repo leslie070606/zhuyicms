@@ -12,6 +12,17 @@ class OrderController extends \common\controllers\BaseController {
     public $layout = false;
 
     public function actionIndex() {
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $userId = $session->get("user_id");
+        if (!isset($userId) || empty($userId)) {
+            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+            if (!$_cookieSts) {
+                return 0;
+            }
+        }
 
         $request = Yii::$app->request->get('params');
 
@@ -56,10 +67,24 @@ class OrderController extends \common\controllers\BaseController {
             $orderModel = new \frontend\models\Order();
             $res = $orderModel->addOrder($data);
 
+            //发送一条客服消息
+            //保存返回的ID
+            $oid = $orderModel->attributes['order_id'];
+            //发送一条客服消息
+            $messageModel = new \common\models\Message();
+            $data = array('contents' => "用户 [" . $userId . "] 提交了新订单", 'order_id' => $oid);
+
+            //$type 为0 代表需求订单
+            $type = 1;
+            $messageModel->createMessage($data, $type);
+
             if (!$res) {
                 return 0; //为插入失败
             }
         }
+
+
+
         return 1; //插入成功
     }
 
@@ -83,8 +108,8 @@ class OrderController extends \common\controllers\BaseController {
         $userId = $session->get("user_id");
         if (!isset($userId) || empty($userId)) {
             $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
-            if(!$_cookieSts){
-                 return $this->redirect(['user/login']);
+            if (!$_cookieSts) {
+                return $this->redirect(['user/login']);
             }
         }
 
@@ -93,33 +118,33 @@ class OrderController extends \common\controllers\BaseController {
 
         $tokenModel = new \app\components\Token();
         // 获取JS签名
-       // $jsarr = $tokenModel->getSignature();
+        // $jsarr = $tokenModel->getSignature();
         $jsarr = '';
 
-		$projectModel = new \frontend\models\Project();
-		$projectRows = $projectModel->getProjectByUserId($userId);
-		$hasProject = 0; //0代表没有需求。
-		if(!empty($projectRows)){
-			$hasProject = 1;
-		}
+        $projectModel = new \frontend\models\Project();
+        $projectRows = $projectModel->getProjectByUserId($userId);
+        $hasProject = 0; //0代表没有需求。
+        if (!empty($projectRows)) {
+            $hasProject = 1;
+        }
 
-		//是否需要人工匹配
-		$isRengong = isset($projectRows->is_rengong)? $projectRows->is_rengong : 0;
+        //是否需要人工匹配
+        $isRengong = isset($projectRows->is_rengong) ? $projectRows->is_rengong : 0;
 
-		$toFrontend = -1;
+        $toFrontend = -1;
         //此用户下面没有订单
         if (empty($ret)) {
             //没有提交需求的，快提交需求
             //提交需求，还未选择设计师
             //提交需求，住艺君给推荐，未匹配上设计师
 
-			if($hasProject == 0){
-				$toFrontend = -1;
-			}elseif($hasProject == 1 && $isRengong == 0){
-				$toFrontend = -2;
-			}elseif($hasProject == 1 && $isRengong == 1){
-				$toFrontend = -3;
-			}
+            if ($hasProject == 0) {
+                $toFrontend = -1;
+            } elseif ($hasProject == 1 && $isRengong == 0) {
+                $toFrontend = -2;
+            } elseif ($hasProject == 1 && $isRengong == 1) {
+                $toFrontend = -3;
+            }
             return $this->render("list", ['data' => $toFrontend, 'jsarr' => $jsarr]);
         } else {
             $data = array();
@@ -143,18 +168,18 @@ class OrderController extends \common\controllers\BaseController {
                 } else {
                     $headPortrait = $imgRet->url;
                 }
-				$dbModel = new \frontend\models\DesignerBasic();
-				$headBackground = $dbModel->getHeadBackground($designerId);
+                $dbModel = new \frontend\models\DesignerBasic();
+                $headBackground = $dbModel->getHeadBackground($designerId);
                 $status = $r['status'];
                 $orderType = $r['service_type']; //区别用户自己创建还是客服辅助创建。
                 $dSpareTime = isset($r['designer_spare_time']) ? $r['designer_spare_time'] : '';
                 $appointmentTime = isset($r['appointment_time']) ? $r['appointment_time'] : '';
                 $appointmentLocation = isset($r['appointment_location']) ? $r['appointment_location'] : '';
-				//推荐理由
-				$reason = isset($r['reason'])? $r['reason'] : '客服推荐';
+                //推荐理由
+                $reason = isset($r['reason']) ? $r['reason'] : '客服推荐';
 
-				//订单创建时间
-				$createTime = isset($r['create_time'])? $r['create_time'] : time();
+                //订单创建时间
+                $createTime = isset($r['create_time']) ? $r['create_time'] : time();
                 /*
                  * 如果当前的订单状态是待见面状态，
                  * 那么appointment_time是不为空的，
@@ -178,13 +203,13 @@ class OrderController extends \common\controllers\BaseController {
                     'designer_spare_time' => $dSpareTime,
                     'appointment_time' => $appointmentTime,
                     'appointment_location' => $appointmentLocation,
-					'create_time' => $createTime,
-					'reason' => $reason,
+                    'create_time' => $createTime,
+                    'reason' => $reason,
                     'designer' => array(
                         'designer_id' => $designerId,
                         'name' => $name,
                         'head_portrait' => $headPortrait,
-						'head_background' => $headBackground,
+                        'head_background' => $headBackground,
                         'tag' => $tag
                     )
                 );
@@ -205,12 +230,12 @@ class OrderController extends \common\controllers\BaseController {
         $userId = $session->get("user_id");
         if (!isset($userId) || empty($userId)) {
             $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
-            if(!$_cookieSts){
-                 return $this->redirect(['user/login']);
+            if (!$_cookieSts) {
+                return $this->redirect(['user/login']);
             }
         }
         $userRows = \common\models\ZyUser::findOne($userId);
-		$phone = '';
+        $phone = '';
         if (!empty($userRows)) {
             $phone = $userRows->phone;
         }
@@ -326,20 +351,21 @@ class OrderController extends \common\controllers\BaseController {
         $orderRows->contract = $imgIds;
         $orderRows->save();
     }
-    
+
     //合同上传
-    public function actionUploadhetong(){
+    public function actionUploadhetong() {
         $this->layout = "editadditional"; //设置使用的布局文件
         //echo 1;exit;
         $imgurl = '';
         $initialPreview = '';
         $orderModel = new models\Order();
         //$this->redirect($url)
-        return $this->render('uploadhetong',['model'=>$orderModel,'imgurl' => $imgurl, 'initialPreview' => $initialPreview]);
+        return $this->render('uploadhetong', ['model' => $orderModel, 'imgurl' => $imgurl, 'initialPreview' => $initialPreview]);
     }
-    
-    public function actionUploadimage(){
+
+    public function actionUploadimage() {
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return ['success' => true];
     }
+
 }
