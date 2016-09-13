@@ -7,7 +7,7 @@ $(function(){
 	var ipta,btn,iptb=false;
 	var ico=true;
 	$("#phone").blur(function(){
-		var myreg = /^0?1[3|4|5|8][0-9]\d{8}$/;
+		var myreg = /^0?1[3|4|5|7|8][0-9]\d{8}$/;
 		if(!myreg.test($("#phone").val())) 
 		{ 
 		    $("#worry").show().html("您输入的手机号有误，请重新输入");
