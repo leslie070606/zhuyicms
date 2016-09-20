@@ -46,12 +46,12 @@ class Message extends ActiveRecord {
     }
 
     public function getUnHandledProject() {
-        $ret = $this->find()->where(['type' => self::MESSAGE_TYPE_PROJECT,'status'=>0])->all();
+        $ret = $this->find()->where(['type' => self::MESSAGE_TYPE_PROJECT,'status'=>0])->orderBy('create_time DESC')->all();
         return $ret;
     }
 
     public function getUnHandledOrder() {
-        $ret = $this->find()->where(['type' => self::MESSAGE_TYPE_ORDER,'status'=>0])->all();
+        $ret = $this->find()->where(['type' => self::MESSAGE_TYPE_ORDER,'status'=>0])->orderBy('create_time DESC')->all();
         return $ret;
     }
 

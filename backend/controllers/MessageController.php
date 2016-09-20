@@ -10,7 +10,7 @@ class MessageController extends controller {
 
     public function actionIndex() {
         //最新通知取最近10条数据
-        $num = 10;
+        $num = 20;
         $messageM = new \common\models\Message();
         $ret = $messageM->getLatestMessage($num);
         $data1 = array();
