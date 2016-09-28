@@ -1,11 +1,12 @@
 html,
 body {
-    height: 100%;
+    height: auto;
     overflow-x: auto !important;
 }
 .wrapper {
     overflow-y: hidden !important;
     overflow-x: auto !important;
+    background: #ecf0f5 !important;
 }
 table {
     background: #FFFFFF !important;
