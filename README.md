@@ -1,3 +1,15 @@
+
+# zhuyicms
+住艺v1.0项目H5网站和后台系统
+
+
+# 项目简介
+
+<br />官网 H5 页面地址：http:www.zhuyihome.com  
+<br />后台地址：http:www.96zy0ba.zhuyihome.com 
+
+
+
 一，使用YII2框架后台bckend/
 
 二，安装方法
