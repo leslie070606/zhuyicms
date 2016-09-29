@@ -1,4 +1,3 @@
-%m0%
 @charset "utf-8";
 
 a,body {
@@ -70,7 +69,7 @@ body {
 .language .chinaese::after { content: "|"; margin: 0 .1rem; color: #CCCCCC;}
 .banner_center { padding: 1.1rem 0; }
 #gloab .logo { font-size: 2rem; color: #FF4E38; position: relative;}
-#gloab .logo::after { content: ""; position: absolute; width: 1.8rem; height: 1.8rem; top: .1rem; left: .1rem; background: #FFFFFF; z-index: 1;}
+#gloab .logo::after { content: ""; position: absolute; width:90%; height: 90%; top: .1rem; left: .1rem; background: #FFFFFF; z-index: 1;}
 .icon-chusheng01:before { position: relative; z-index: 99;}
 #gloab .font_big { font-size: .88rem; color: #FFFFFF; font-weight: bold; margin: .8rem auto .4rem;}
 .font_center { font-size: .4rem; color: #FFFFFF;}
