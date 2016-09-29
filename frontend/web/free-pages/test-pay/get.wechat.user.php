@@ -20,6 +20,7 @@ class WechatCallback {
             $this->error();
         }
     }
+    //网页授权获取用户OPENID
     //https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http%3A%2F%2Fzhuyihome.com%2Ffree-pages%2Ftest-pay%2Fget.wechat.user.php&response_type=code&scope=snsapi_base&state=1#wechat_redirect
     public function run() {
         $this->check();
