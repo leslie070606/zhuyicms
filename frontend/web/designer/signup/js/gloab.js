@@ -1,11 +1,14 @@
 var gettt=true;
 $(function(){
 	document.body.addEventListener('touchstart', function () { }); 
-	
-		auto_height();
-		if($("#gloab").hasClass("pc")){
+		setTimeout(function(){
+			auto_height();
+			if($("#gloab").hasClass("pc")){
 			$("#banner_vedio").attr("autoplay","autoplay");
 		}
+		},10)
+		
+		
 	
 	var gett=0;
 	var myVideo = document.getElementsByTagName('video')[0];
@@ -68,17 +71,23 @@ $(function(){
 //	}
 //	
 	
-	var a=[0,1,2];
+	var a=[0,1,2,3,4,5];
 	var get_arr=getArrayItems(a,3);
 	var new_json=[
-	["img/head_1.jpg","陈喧","设计是服务业，设计师工作的核心是解决问题：解决功能的合理性，解决视觉的美感，解决心理的需求。最后可以加上一点自己对设计的具有个体性的独特的认知。"],
-	["img/head_2.jpg","程艳春","建筑首先是人与环境发生关系的媒介。人，建筑，环境，这三个要素都是不能够被忽视的，所以设计在解决问题的同时，也是在协调这三者之间的关系。"],
-	["img/head_3.jpg","于魁",'"住艺"的存在，推动了好的设计在社会上被接纳的效率和可能性，他的话语权和认知度关系着很多真正有水准的设计并能让更多的人享受到，应用到好的设计。']
+	["img/head_1.jpg","陈喧","设计是服务业，设计师工作的核心是解决问题：解决功能的合理性，解决视觉的美感，解决心理的需求。最后可以加上一点自己对设计的具有个体性的独特的认知。”"],
+	["img/head_2.jpg","程艳春","建筑首先是人与环境发生关系的媒介。人，建筑，环境，这三个要素都是不能够被忽视的，所以设计在解决问题的同时，也是在协调这三者之间的关系。”"],
+	["img/head_3.jpg","于魁",'"住艺"的存在，推动了好的设计在社会上被接纳的效率和可能性，他的话语权和认知度关系着很多真正有水准的设计并能让更多的人享受到，应用到好的设计。”'],
+	["img/head_4.jpg","程晖","作为一个独立设计师，我享受自由设计的快乐，享受作品一点点实现的成就感；在住艺平台上，有一群志趣相投的设计师同伴，让我们一起打造新时代中国人心目中的理想家。”"],
+	["img/head_7.jpg","刘小普",'"住艺"，居住的艺术，讨论的就是我们的家，“家”不是居住的机器，不是材料的堆砌，不是一味的个性彰显，更应该是个有连结，有温度的场域，是个可以栖息身心，可以交流情感，可以有家族传承的容器。”'],
+	["img/head_6.jpg","关天颀",'"住艺"是个朝气蓬勃，有态度，有腔调的新媒体，更注重当下与未来设计精神～我自认为我是这样的类型，那么物以类聚喽！”']
 	]
 	var new_json_english=[
-	["img/head_1.jpg","Xuan Chen","Design is a service, and the central role of the designer is to solve problems: problems with functionality, problems with aesthetics, and problems with psychological needs. Lastly, the designer can add to the design her own understanding and unique perspective."],
-	["img/head_2.jpg","Yanchun Cheng","Architecture is most prominently a form of media between people and their environment. People, architecture, and environment form a trio of factors that cannot be ignored. Thus, when solving design problems, you are also managing the relationship between these three factors."],
-	["img/head_3.jpg","Kui Yu",'Zhuyi’s existence has helped to hasten the promotion and the acceptance of truly great design in our society.  Zhuyi’s voice and stature in the design community has allowed more people to enjoy and apply truly great design.']
+	["img/head_1.jpg","Xuan Chen","Design is a service, and the central role of the designer is to solve problems: problems with functionality, problems with aesthetics, and problems with psychological needs. Lastly, the designer can add to the design her own understanding and unique perspective.”"],
+	["img/head_2.jpg","Yanchun Cheng","Architecture is most prominently a form of media between people and their environment. People, architecture, and environment form a trio of factors that cannot be ignored. Thus, when solving design problems, you are also managing the relationship between these three factors.”"],
+	["img/head_3.jpg","Kui Yu",'Zhuyi’s existence has helped to hasten the promotion and the acceptance of truly great design in our society.  Zhuyi’s voice and stature in the design community has allowed more people to enjoy and apply truly great design.”'],
+	["img/head_4.jpg","Hui Cheng","As an independent designer, I appreciate the joy of design freedom and the feeling of accomplishment as my works edge toward completion. At Zhuyi, there is a band of like-minded designers working together to build a new era of visionary homes for the Chinese people.”"],
+	["img/head_7.jpg","Xiaopu Liu","Zhuyi, which means “the art of living”, is a discussion on our homes. The home is not a machine, nor a pile of materials, nor an unapologetic expression of personality. The home should instead be a place with linkage and warmth, a place where you can rest you body and soul, communicate emotions, and be a vessel for family values.”"],
+	["img/head_6.jpg","Tianqi Guan",'Zhuyi is a vibrant and opinionated platform that is focused on developing the spirit of design for the coming generations. I think that I hopefully represent this spirit, and I believe that birds of a feather flock together.”']
 	]
 	var html_box='';
 	if($("#gloab").hasClass("english_for")){
