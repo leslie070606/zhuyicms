@@ -134,7 +134,7 @@ video { background: #FFFFFF; position: absolute; width: 100%; height: 100%; left
 .desi_name { display: block; position: relative; top: -1.2rem; font-size: .48rem; color: #333333; }
 .maohao { float: left; font-size: .72rem; color: #999999; margin-left: .8rem; position: relative; top: -.4rem;}
 .designer_here .head_img {width: 3.2rem; position: relative; top: -1.6rem;border-radius: 50%;}
-.designer_here >div { padding-bottom: .8rem; clear: both; padding-bottom: .8rem; text-align: left; margin-left: 2rem; margin-right: 2rem; margin-top: .4rem; color: #999999; line-height: 1.5;}
+.designer_here >div { padding-bottom: .8rem; clear: both; padding-bottom: .8rem; text-align: left; margin-left: 1.5rem; margin-right: 1.5rem; margin-top: .4rem; color: #999999; line-height: 1.5;}
 .foin_logo { font-size: .88rem !important; color: #FF4E38; margin-top: 1rem;}
 .foin_box span { display: block;}
 .foin_our { background: #FFFFFF; padding-bottom: 1.6rem;}
@@ -169,7 +169,7 @@ video { background: #FFFFFF; position: absolute; width: 100%; height: 100%; left
     -webkit-text-stroke-width: 0px !important;
     /*-moz-osx-font-smoothing: grayscale;*/
 }
-.english_for .designer_here>div { margin-left: 1.2rem; margin-right: .8rem;}
+.english_for .designer_here>div { margin-left: 1rem; margin-right: .6rem;}
 .deside_bc { position: absolute; width:100%; height: 100%; background: #FFFFFF; z-index: 1001;}
 /*适配*/
 @media screen and (max-width: 1441px) {
