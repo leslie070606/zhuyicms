@@ -1,9 +1,12 @@
 var gettt=true;
 $(function(){
 	document.body.addEventListener('touchstart', function () { }); 
-	setTimeout(function(){
+	
 		auto_height();
-	},10);
+		if($("#gloab").hasClass("pc")){
+			$("#banner_vedio").attr("autoplay","autoplay");
+		}
+	
 	var gett=0;
 	var myVideo = document.getElementsByTagName('video')[0];
 	$(".video_box").on("click",function(){
@@ -18,21 +21,21 @@ $(function(){
 		
 	})
 	
-	$(window).on("orientationchange",function(){ 
-		
-	    if(window.orientation == 0)// Portrait
-	
-	    { 
-	        //Portrait相关操作
-	$(".english_for .designer_here>div").css("padding-bottom",".4rem")
-	    }else// Landscape
-	
-	    { 
-	       $(".english_for .designer_here>div").css("padding-bottom","2rem")
-	
-	    }
-	
-	});
+//	$(window).on("orientationchange",function(){ 
+//		
+//	    if(window.orientation == 0)// Portrait
+//	
+//	    { 
+//	        //Portrait相关操作
+//	$(".english_for .designer_here>div").css("padding-bottom",".4rem")
+//	    }else// Landscape
+//	
+//	    { 
+//	       $(".english_for .designer_here>div").css("padding-bottom","2rem")
+//	
+//	    }
+//	
+//	});
 	
 	
 	window.onresize=function(){
@@ -64,23 +67,13 @@ $(function(){
 //		}
 //	}
 //	
-	var n=0;
-	$(".btn_bf").on("click",function(){
-		if(n==0){
-			$('video').trigger('play');
-			n=1;
-		}else{
-			$('video').trigger('pause');
-			n=0;
-		}
-	})
+	
 	var a=[0,1,2];
 	var get_arr=getArrayItems(a,3);
-	console.log(get_arr);
 	var new_json=[
 	["img/head_1.jpg","陈喧","设计是服务业，设计师工作的核心是解决问题：解决功能的合理性，解决视觉的美感，解决心理的需求。最后可以加上一点自己对设计的具有个体性的独特的认知。"],
-	["img/head_2.jpg","程艳春","建筑首先是人与环境发生关系的媒介。人，建筑，环境，这三个要素都是不能够被忽视的，所以设计在解决问题的同时，也是在协调这三者之间的关系。&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp"],
-	["img/head_3.jpg","于魁",'"住艺"的存在，推动了好的设计在社会上被接纳的效率和可能性，他的话语权和认知度关系着很多真正有水准的设计并能让更多的人享受到，应用到好的设计。 &nbsp &nbsp &nbsp &nbsp &nbsp']
+	["img/head_2.jpg","程艳春","建筑首先是人与环境发生关系的媒介。人，建筑，环境，这三个要素都是不能够被忽视的，所以设计在解决问题的同时，也是在协调这三者之间的关系。"],
+	["img/head_3.jpg","于魁",'"住艺"的存在，推动了好的设计在社会上被接纳的效率和可能性，他的话语权和认知度关系着很多真正有水准的设计并能让更多的人享受到，应用到好的设计。']
 	]
 	var new_json_english=[
 	["img/head_1.jpg","Xuan Chen","Design is a service, and the central role of the designer is to solve problems: problems with functionality, problems with aesthetics, and problems with psychological needs. Lastly, the designer can add to the design her own understanding and unique perspective."],
@@ -135,10 +128,12 @@ function getArrayItems(arr, num) {
 
 function auto_height(){
 	jiance();
+	$(".foin_box .foin_here").height("auto");
+	$(".designer_here>div").height("auto");
 	var hegitha=0;
 	var hegithb=0;
 	for(var i=0;i<3;i++){
-		var gety=$(".english_for .foin_here:eq("+i+")").height();
+		var gety=$(".foin_here:eq("+i+")").height();
 		var getya=$(".designer_here:eq("+i+")>div").height();
 		if(gety>hegitha){
 			hegitha=gety;
@@ -148,7 +143,7 @@ function auto_height(){
 		};
 		
 	}
-	$(".english_for .foin_here").height(hegitha);
+	$(".foin_box .foin_here").height(hegitha);
 	$(".designer_here>div").height(hegithb);
 	var window_height=$(window).height();
 	var window_heighta=document.body.offsetHeight;
