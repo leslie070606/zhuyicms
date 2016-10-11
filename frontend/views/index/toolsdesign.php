@@ -114,7 +114,7 @@ $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
             <section class="nav_bot">
 
                 <span><a href="<?php echo Url::toRoute('zyzhinan/about'); ?>">关于住艺</a></span>
-                <span><a href="http://form.mikecrm.com/Dlvnng">设计师入驻</a></span>
+                <span><a href="http://zhuyihome.com/designer/signup/">设计师入驻</a></span>
                 <span><a href="https://mp.weixin.qq.com/s?__biz=MzI1OTIxNjA2OA==&mid=2247485173&idx=4&sn=5c10b2364bc21a1527e9d133e8cbad30&scene=1&srcid=08112f6yasQXCY7tW0hFeEYf&key=305bc10ec50ec19b02071ea23533e123b67ab587901d9f0b2dc424aca2470b37385ff9d62bfa4b959f8f06479654fc79&ascene=0&uin=MjAwNDIyNzIwMg%3D%3D&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.6+build(15G31)&version=11020201&pass_ticket=Jvenh%2BfdOHsIBk%2FxXUW3dUY5L4MH6qwgBegvTTPeQQ3Gb5nLIsI1ORiHB3Tj4Im2">住艺招聘</a></span>
                 <span><a href="<?php echo Url::toRoute('index/toolsdesign'); ?>">公装项目</a></span>
             </section><!--nav_bot end-->
