@@ -87,8 +87,22 @@ class StyleController extends Controller {
 
     //风格测试报告
     public function actionReport() {
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+        
+        //打开首先判断带不带标示
+        //不带标示就是第一次,,,不是打开的分享的
+        $link_id = Yii::$app->request->get('link_id');
+        
+        //分享打开的
+        if(isset($link_id)&&!empty($link_id)){
+            
+        }else{//第一次打开的
+            
+        }
 
-        //echo $this->getRandomString();exit;
         $userinfo = Yii::$app->request->get('userInfo');
         //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
         //print_r($userinfo);
@@ -108,33 +122,7 @@ class StyleController extends Controller {
 
         echo $share_id . "###";
 
-        // print_r($shareModel);
-
-
-        $v = 1;
-
-        //Yii::$app->request->post();
-//        $newdata = Yii::$app->request->get('newdata');
-//        $style = explode(',', $newdata);
-//
-//        $jsonstyle = json_encode($style);
-//
-//        $model = new Style();
-//
-//        $model->user_id = 1;
-//        $model->type = $jsonstyle;
-//        $v = $model->save();
-//
-//        $num = $style[0] + $style[2] + $style[4];
-//
-//        $styleArr = array(
-//            $style[1] => $style[0] / $num * 100,
-//            $style[3] => $style[2] / $num * 100,
-//            $style[5] => $style[4] / $num * 100,
-//        );
-        //echo "<pre>";
-        //print_r($model);
-        return $this->render('report');
+        return $this->render('report',['jsarr' => $jsarr,'link_id'=>$shareModel->link_id]);
     }
 
     //风格报告分享
