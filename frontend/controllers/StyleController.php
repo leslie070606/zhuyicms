@@ -108,6 +108,8 @@ class StyleController extends Controller {
         
         echo $share_id."###";
         
+        print_r($shareModel);
+        
       
         $v = 1;
 
