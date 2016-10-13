@@ -98,16 +98,16 @@ class StyleController extends Controller {
 //        
 //        echo $share_id."###";exit;
         
-        $userinfo =  Yii::$app->request->get('userInfo');
-          echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        print_r($userinfo);
+//        $userinfo =  Yii::$app->request->get('userInfo');
+//          echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//        print_r($userinfo);
         
         $shareModel = new \common\models\ZyShare();
         
        // $shareModel->open_id = $userinfo['openid'];
         $shareModel->user_name = '123';
        // $shareModel->headimgurl = $userinfo['headimgurl'];
-        $shareModel->create_time = time();
+       // $shareModel->create_time = time();
        // $shareModel->unionid = $userinfo['unionid'];
         
         $shareModel->save();
