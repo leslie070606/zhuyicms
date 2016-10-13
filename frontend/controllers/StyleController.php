@@ -99,11 +99,11 @@ class StyleController extends Controller {
         
         $shareModel = new \common\models\ZyShare();
         
-        $shareModel->open_id = $userinfo['openid'];
-        $shareModel->user_name = $userinfo['nickname'];
-        $shareModel->headimgurl = $userinfo['headimgurl'];
-        $shareModel->create_time = time();
-        $shareModel->unionid = $userinfo['unionid'];
+        $shareModel->open_id = 1;
+//        $shareModel->user_name = $userinfo['nickname'];
+//        $shareModel->headimgurl = $userinfo['headimgurl'];
+//        $shareModel->create_time = time();
+//        $shareModel->unionid = $userinfo['unionid'];
         
         $shareModel->save();
         $share_id = $shareModel->attributes['share_id'];
