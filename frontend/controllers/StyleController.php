@@ -102,10 +102,10 @@ class StyleController extends Controller {
         //print_r($shareModel);
         
         $shareModel->open_id = $userinfo['openid'];
-//        $shareModel->user_name = $userinfo['nickname'];
-//        $shareModel->headimgurl = $userinfo['headimgurl'];
-//        $shareModel->create_time = time();
-//        $shareModel->unionid = $userinfo['unionid'];
+        $shareModel->user_name = $userinfo['nickname'];
+        $shareModel->headimgurl = $userinfo['headimgurl'];
+        $shareModel->create_time = time();
+        $shareModel->unionid = $userinfo['unionid'];
         
         $shareModel->save();
         $share_id = $shareModel->attributes['share_id'];
