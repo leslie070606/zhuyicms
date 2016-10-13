@@ -67,6 +67,15 @@ $ npm start
 
 $ npm run gulp 或 gulp 或 gulp deploy
 
+ 
+# 以及正在建设中的领域：
+
+<br />服务端开发
+<br />分布式数据库开发
+<br />DBA
+<br />PHP 语言
+<br />H5 JS 开发  
+
 
 一，使用YII2框架后台bckend/
 
