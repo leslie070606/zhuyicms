@@ -94,7 +94,19 @@ class StyleController extends Controller {
         $userinfo =  Yii::$app->request->get('userInfo');
           echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
         print_r($userinfo);
-        exit;
+        
+        $shareModel = new \common\models\ZyShare();
+        
+        $shareModel->open_id = $userinfo['openid'];
+        $shareModel->user_name = $userinfo['nickname'];
+        $shareModel->headimgurl = $userinfo['headimgurl'];
+        $shareModel->create_time = time();
+        $shareModel->unionid = $userinfo['unionid'];
+        
+        $shareModel->save();
+        
+        
+      
         $v = 1;
 
         //Yii::$app->request->post();
@@ -118,7 +130,7 @@ class StyleController extends Controller {
 //        );
         //echo "<pre>";
         //print_r($model);
-        return $this->render('report', ['v' => $v]);
+        return $this->render('report', ['userInfo' => $userinfo]);
     }
 
     //风格报告分享

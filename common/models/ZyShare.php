@@ -31,7 +31,7 @@ class ZyShare extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['source_openid', 'open_id', 'user_name'], 'string', 'max' => 70],
+            [['source_openid', 'open_id', 'user_name','unionid'], 'string', 'max' => 70],
             [['headimgurl', 'create_time', 'share_time'], 'string', 'max' => 100],
         ];
     }
@@ -49,6 +49,7 @@ class ZyShare extends \yii\db\ActiveRecord
             'headimgurl' => '用户的头像',
             'create_time' => '创建时间',
             'share_time' => '分享时间',
+            'unionid' => '联合ID'
         ];
     }
 }
