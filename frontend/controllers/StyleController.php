@@ -91,21 +91,16 @@ class StyleController extends Controller {
 
     //风格测试报告
     public function actionReport() {
-//         $shareModel = new \common\models\ZyShare();
-//         $shareModel->user_name = '123';
-//          $shareModel->save();
-//        $share_id = $shareModel->attributes['share_id'];
-//        
-//        echo $share_id."###";exit;
+
         
-//        $userinfo =  Yii::$app->request->get('userInfo');
-//          echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//        print_r($userinfo);
+        $userinfo =  Yii::$app->request->get('userInfo');
+          //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+        //print_r($userinfo);
         
         $shareModel = new \common\models\ZyShare();
         
        // $shareModel->open_id = $userinfo['openid'];
-        $shareModel->user_name = '123';
+        $shareModel->user_name = $userinfo['nickname'];
        // $shareModel->headimgurl = $userinfo['headimgurl'];
        // $shareModel->create_time = time();
        // $shareModel->unionid = $userinfo['unionid'];
