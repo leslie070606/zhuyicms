@@ -104,7 +104,7 @@ class StyleController extends Controller {
         $shareModel->open_id = $userinfo['openid'];
         $shareModel->user_name = $userinfo['nickname'];
         $shareModel->headimgurl = $userinfo['headimgurl'];
-        $shareModel->create_time = time();
+     //   $shareModel->create_time = time();
         $shareModel->unionid = $userinfo['unionid'];
         
         $shareModel->save();
