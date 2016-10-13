@@ -104,7 +104,9 @@ class StyleController extends Controller {
         $shareModel->unionid = $userinfo['unionid'];
         
         $shareModel->save();
+        $share_id = $user->attributes['share_id'];
         
+        echo $share_id."###";
         
       
         $v = 1;
