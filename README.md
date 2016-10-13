@@ -54,6 +54,20 @@ v 1.0    2016-8-16
 <br />数据统计
 
 
+# 本地测试与发布
+
+安装node依赖环境：
+
+$ cd skill-map
+$ npm i --save-dev
+本地预览：
+
+$ npm start
+发布到git pages作为预览（最终以 H5 官网为主）：
+
+$ npm run gulp 或 gulp 或 gulp deploy
+
+
 一，使用YII2框架后台bckend/
 
 二，安装方法
