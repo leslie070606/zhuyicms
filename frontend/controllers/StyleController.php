@@ -93,7 +93,7 @@ class StyleController extends Controller {
     public function actionReport() {
         $userinfo =  Yii::$app->request->get('userInfo');
           echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        print_r(json_decode($userinfo, TRUE));
+        print_r($userinfo);
         exit;
         $v = 1;
 
