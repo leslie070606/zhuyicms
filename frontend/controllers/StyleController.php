@@ -141,7 +141,7 @@ class StyleController extends Controller {
 //        );
         //echo "<pre>";
         //print_r($model);
-        return $this->render('report', ['userInfo' => $userinfo]);
+        return $this->render('report');
     }
 
     //风格报告分享
