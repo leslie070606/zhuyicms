@@ -91,26 +91,31 @@ class StyleController extends Controller {
 
     //风格测试报告
     public function actionReport() {
+        $userinfo =  Yii::$app->request->get('userInfo');
+          echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+        print_r(json_decode($userinfo, TRUE));
+        exit;
+        $v = 1;
 
         //Yii::$app->request->post();
-        $newdata = Yii::$app->request->get('newdata');
-        $style = explode(',', $newdata);
-
-        $jsonstyle = json_encode($style);
-
-        $model = new Style();
-
-        $model->user_id = 1;
-        $model->type = $jsonstyle;
-        $v = $model->save();
-
-        $num = $style[0] + $style[2] + $style[4];
-
-        $styleArr = array(
-            $style[1] => $style[0] / $num * 100,
-            $style[3] => $style[2] / $num * 100,
-            $style[5] => $style[4] / $num * 100,
-        );
+//        $newdata = Yii::$app->request->get('newdata');
+//        $style = explode(',', $newdata);
+//
+//        $jsonstyle = json_encode($style);
+//
+//        $model = new Style();
+//
+//        $model->user_id = 1;
+//        $model->type = $jsonstyle;
+//        $v = $model->save();
+//
+//        $num = $style[0] + $style[2] + $style[4];
+//
+//        $styleArr = array(
+//            $style[1] => $style[0] / $num * 100,
+//            $style[3] => $style[2] / $num * 100,
+//            $style[5] => $style[4] / $num * 100,
+//        );
         //echo "<pre>";
         //print_r($model);
         return $this->render('report', ['v' => $v]);
@@ -139,8 +144,13 @@ class StyleController extends Controller {
 
         $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
         $userinfo = $this->doCurlGetRequest($urlUser);
-        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        print_r(json_decode($userinfo, TRUE));
+        $userinfo = json_decode($userinfo, TRUE);
+        
+        if(count($userinfo)>0){
+            $this->redirect(array('style/report','userInfo'=>$userinfo));
+        }
+        
+      
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
