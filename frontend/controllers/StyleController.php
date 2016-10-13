@@ -15,6 +15,7 @@ use yii\filters\VerbFilter;
 class StyleController extends Controller {
 
     public $layout = false;
+    public $link_id = '';
 
     /**
      * @inheritdoc
@@ -87,23 +88,36 @@ class StyleController extends Controller {
 
     //风格测试报告
     public function actionReport() {
+        $userinfo = Yii::$app->request->get('userInfo');
+        if (isset($link_id) && !empty($link_id)) {
+            
+        } else {
+            $this->link_id = Yii::$app->request->get('link_id');
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }
+        }
+
+
+
+
         // 分享JS接口
         $tokenModel = new \app\components\Token();
         // 获取JS签名
         $jsarr = $tokenModel->getSignature();
-        
+
         //打开首先判断带不带标示
         //不带标示就是第一次,,,不是打开的分享的
         $link_id = Yii::$app->request->get('link_id');
-        
+
         //分享打开的
-        if(isset($link_id)&&!empty($link_id)){
+        if (isset($link_id) && !empty($link_id)) {
             
-        }else{//第一次打开的
-            
+        } else {//第一次打开的
         }
 
-        $userinfo = Yii::$app->request->get('userInfo');
         //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
         //print_r($userinfo);
 
@@ -122,7 +136,7 @@ class StyleController extends Controller {
 
         echo $share_id . "###";
 
-        return $this->render('report',['jsarr' => $jsarr,'link_id'=>$shareModel->link_id]);
+        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
     }
 
     //风格报告分享
@@ -151,7 +165,7 @@ class StyleController extends Controller {
         $userinfo = json_decode($userinfo, TRUE);
 
         if (count($userinfo) > 0) {
-            $this->redirect(array('style/report', 'userInfo' => $userinfo));
+            $this->redirect(array('style/report', 'userInfo' => $userinfo, 'link_id' => $this->link_id));
         }
     }
 
