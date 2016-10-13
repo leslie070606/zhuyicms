@@ -38,16 +38,13 @@ class StyleController extends Controller {
         //判断是否是微信内登录
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
             return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
-                       // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
-
+            // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
         }
     }
 
     public function actionChoicestyle() {
-        
-        //授权
-        
 
+        //授权
         //判断用户是否登录
 //        $session = Yii::$app->session;
 //        if (!$session->isActive) {
@@ -68,7 +65,6 @@ class StyleController extends Controller {
 //            // 
 //            return $this->redirect(['user/login']);
 //        }
-        
         //判断是否已经有风格测试
 //        $styleModel = new Style();
 //        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
@@ -92,29 +88,29 @@ class StyleController extends Controller {
     //风格测试报告
     public function actionReport() {
 
-        
-        $userinfo =  Yii::$app->request->get('userInfo');
-          //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+        //echo $this->getRandomString();exit;
+        $userinfo = Yii::$app->request->get('userInfo');
+        //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
         //print_r($userinfo);
-        
+
         $shareModel = new \common\models\ZyShare();
-        
+
         //print_r($shareModel);
-        
+
         $shareModel->open_id = $userinfo['openid'];
         $shareModel->user_name = $userinfo['nickname'];
         $shareModel->headimgurl = $userinfo['headimgurl'];
-        $shareModel->create_time = (string)time();
+        $shareModel->create_time = (string) time();
         $shareModel->unionid = $userinfo['unionid'];
-        
+        $shareModel->link_id = $this->getRandomString();
         $shareModel->save();
         $share_id = $shareModel->attributes['share_id'];
-        
-        echo $share_id."###";
-        
-       // print_r($shareModel);
-        
-      
+
+        echo $share_id . "###";
+
+        // print_r($shareModel);
+
+
         $v = 1;
 
         //Yii::$app->request->post();
@@ -165,12 +161,27 @@ class StyleController extends Controller {
         $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
         $userinfo = $this->doCurlGetRequest($urlUser);
         $userinfo = json_decode($userinfo, TRUE);
-        
-        if(count($userinfo)>0){
-            $this->redirect(array('style/report','userInfo'=>$userinfo));
+
+        if (count($userinfo) > 0) {
+            $this->redirect(array('style/report', 'userInfo' => $userinfo));
         }
-        
-      
+    }
+
+    public function getRandomString($len = 6, $type = '3') {
+        if ($type == '1') {
+            $str = '0123456789';
+        } elseif ($type == '2') {
+            $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
+        } elseif ($type == '3') {
+            $str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
+        }
+        $n = $len;
+        $len = strlen($str) - 1;
+        $s = '';
+        for ($i = 0; $i < $n; $i ++) {
+            $s .= $str [rand(0, $len)];
+        }
+        return $s;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
