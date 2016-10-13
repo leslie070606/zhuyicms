@@ -35,43 +35,46 @@ class StyleController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new StyleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        //判断是否是微信内登录
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                       // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
 
-        return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-        ]);
+        }
     }
 
     public function actionChoicestyle() {
+        
+        //授权
+        
 
         //判断用户是否登录
-        $session = Yii::$app->session;
-        if (!$session->isActive) {
-            $session->open();
-        }
-        $userId = $session->get("user_id");
-        if (!isset($userId) || empty($userId)) {
-            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
-            if ($_cookieSts) {
-                $userId = $session->get("user_id");
-            } else {
-                $userId = '';
-            }
-        }
-        
-        //没有登录跳转到登录
-        if (!$userId) {
-            return $this->redirect(['user/login']);
-        }
+//        $session = Yii::$app->session;
+//        if (!$session->isActive) {
+//            $session->open();
+//        }
+//        $userId = $session->get("user_id");
+//        if (!isset($userId) || empty($userId)) {
+//            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+//            if ($_cookieSts) {
+//                $userId = $session->get("user_id");
+//            } else {
+//                $userId = '';
+//            }
+//        }
+//        
+//        //没有登录跳转到登录
+//        if (!$userId) {
+//            // 
+//            return $this->redirect(['user/login']);
+//        }
         
         //判断是否已经有风格测试
-        $styleModel = new Style();
-        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
-        if(count($userStyle)>0){
-            return $this->redirect(['project/match_designer']);
-        }
+//        $styleModel = new Style();
+//        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
+//        if(count($userStyle)>0){
+//            return $this->redirect(['project/match_designer']);
+//        }
 
         if (Yii::$app->request->get('g')) {
 
@@ -84,17 +87,6 @@ class StyleController extends Controller {
         }
 
         return $this->render('choicestyle');
-    }
-
-    public function actionWechat() {
-
-        return $this->renderPartial('wechat');
-    }
-
-    //风格测试
-    public function actionTest() {
-        echo "ok";
-        return $this->render('style_test');
     }
 
     //风格测试报告
@@ -149,79 +141,6 @@ class StyleController extends Controller {
         $userinfo = $this->doCurlGetRequest($urlUser);
         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
         print_r(json_decode($userinfo, TRUE));
-    }
-
-    /**
-     * Displays a single Style model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id) {
-        return $this->render('view', [
-                    'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Style model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate() {
-        $model = new Style();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->style_id]);
-        } else {
-            return $this->render('create', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Style model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id) {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->style_id]);
-        } else {
-            return $this->render('update', [
-                        'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing Style model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id) {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Style model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Style the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id) {
-        if (($model = Style::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
