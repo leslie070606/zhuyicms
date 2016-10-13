@@ -30,7 +30,7 @@
         wx.onMenuShareAppMessage({
             title: '测测你的风格吧二货!', // 分享标题
             desc: '定制一个舒服的家／用钻研装修的600个小时陪伴家人／让家成为宝宝最棒的诞生礼／告别混乱的储物迷局／远离面对3000种优质建材的选择障碍 ／严守预算，只花该花的钱 ／从“坐办公室”到工作的艺术／让你的餐厅和店铺与众不同／为父母布置最美的家宴餐桌／住出真的自己', // 分享描述
-            link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' +<?= $link_id ?>, // 分享链接
+            link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
