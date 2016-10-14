@@ -98,7 +98,7 @@ class StyleController extends Controller {
         if ($userinfo = $session->get('userInfo')) {
             
             echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-            echo $link_id;
+            echo $link_id.'<br>';
             print_r($userinfo);
         } else {
             // 没有登录保存变量
