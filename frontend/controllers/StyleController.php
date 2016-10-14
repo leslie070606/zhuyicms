@@ -119,6 +119,7 @@ class StyleController extends Controller {
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "自己查看自己!<br>";
                         foreach ($farr as $val) {
+                            echo "<img src='".$val['headimgurl']."' style='width:200px;height:200px;'/>";
                             echo $val['user_name'] . "已完成测试!<br>";
                         }
                     } else {
@@ -130,13 +131,12 @@ class StyleController extends Controller {
                         $shareModel->open_id = $userinfo['openid'];
                         $shareModel->user_name = $userinfo['nickname'];
                         $shareModel->headimgurl = $userinfo['headimgurl'];
-                         $shareModel->source_openid = $link_id;
+                        $shareModel->source_openid = $link_id;
                         $shareModel->create_time = (string) time();
                         $shareModel->unionid = $userinfo['unionid'];
                         $shareModel->link_id = $this->getRandomString();
                         $shareModel->save();
                         return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
-
                     }
                 }
 
@@ -157,7 +157,7 @@ class StyleController extends Controller {
                 return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
             }
 
-            echo $link_id . '<br>';
+            echo '<br>'.$link_id . '<br>';
             print_r($userinfo);
         } else {
             // 没有登录保存变量
@@ -166,8 +166,6 @@ class StyleController extends Controller {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             }
         }
-
-        exit;
     }
 
     //风格报告分享
