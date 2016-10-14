@@ -111,17 +111,25 @@ class StyleController extends Controller {
             if ($link_id) {
                 // 判断是不是自己查看自己的分享
                 $shareModel = new \common\models\ZyShare();
-                $res = $shareModel->findOne(['link_id'=>$link_id]);
-                if(count($res)>0){
+                $res = $shareModel->findOne(['link_id' => $link_id]);
+                if (count($res) > 0) {
                     // 是自己查看自己的
-                    if($res['open_id'] == $userinfo['openid']){
+                    if ($res['open_id'] == $userinfo['openid']) {
+                        $farr = $shareModel->findAll(['source_openid' => $link_id]);
+                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "自己查看自己!";
-                    }else{
+                        foreach ($farr as $val){
+                            echo $val['user_name']."<br>";
+                        }
+                        
+                    } else {
                         //朋友查看分享
-                        echo "朋友查看你的你的风格是日式";
+                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+
+                        echo $res['user_name'] . "他的风格是日式!";
                     }
                 }
-                
+
                 exit;
             } else {
                 $shareModel = new \common\models\ZyShare();
