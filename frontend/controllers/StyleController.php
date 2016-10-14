@@ -89,27 +89,34 @@ class StyleController extends Controller {
     //风格测试报告
     public function actionReport() {
 
+        $link_id = Yii::$app->request->get('link_id');
         //判断是否登陆过
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
         }
         if ($userinfo = $session->get('userInfo')) {
-        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        print_r($userinfo);
+            
+            echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+            echo $link_id;
+            print_r($userinfo);
+        } else {
+            // 没有登录保存变量
+            $this->link_id = $link_id;
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }
         }
-        
+
         exit;
 
         //  $userinfo = Yii::$app->request->get('userInfo');
         //if (isset($link_id) && !empty($link_id)) {
         // } else {
-        $this->link_id = Yii::$app->request->get('link_id');
-        //判断是否是微信内登录
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
-            // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
-        }
+        
+
         // }
         // 分享JS接口
         $tokenModel = new \app\components\Token();
@@ -178,7 +185,7 @@ class StyleController extends Controller {
             if (!$session->isActive) {
                 $session->open();
             }
-            
+
             // 登录成功!
             $session->set('userInfo', $userinfo);
             $this->redirect(array('style/report', 'link_id' => $this->link_id));
