@@ -119,12 +119,13 @@ class StyleController extends Controller {
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "自己查看自己!<br>";
                         foreach ($farr as $val) {
-                            echo "<img src='".$val['headimgurl']."' style='width:200px;height:200px;'/>";
+                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
                             echo $val['user_name'] . "已完成测试!<br>";
                         }
                     } else {
                         //朋友查看分享
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+                        echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
                         echo $res['user_name'] . "他的风格是日式!<br>";
 
@@ -157,7 +158,7 @@ class StyleController extends Controller {
                 return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
             }
 
-            echo '<br>'.$link_id . '<br>';
+            echo '<br>' . $link_id . '<br>';
             print_r($userinfo);
         } else {
             // 没有登录保存变量

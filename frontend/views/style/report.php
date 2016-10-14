@@ -1,6 +1,6 @@
 <div>
     <?php echo $userInfo['nickname']; ?>
-    你的风格是:日式
+    <img src="<?php echo $userInfo['headimgurl']; ?>" style="width: 200px; height: 200px;" />你的风格是:日式
 </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
