@@ -1,5 +1,5 @@
 <div>
-    <?php $userInfo['nickname'] ?>
+    <?php echo $userInfo['nickname']; ?>
     你的风格是:日式
 </div>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

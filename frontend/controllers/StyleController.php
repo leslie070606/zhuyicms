@@ -106,10 +106,22 @@ class StyleController extends Controller {
 
         //已经登录过
         if ($userinfo = $session->get('userInfo')) {
-            
+
             // 如果有ID标示 说明是别人分享的
             if ($link_id) {
                 // 判断是不是自己查看自己的分享
+                $shareModel = new \common\models\ZyShare();
+                $res = $shareModel->findOne(['link_id'=>$link_id]);
+                if(count($res)>0){
+                    // 是自己查看自己的
+                    if($res['open_id'] == $userinfo['openid']){
+                        echo "自己查看自己!";
+                    }else{
+                        //朋友查看分享
+                        echo "朋友查看你的你的风格是日式";
+                    }
+                }
+                
                 exit;
             } else {
                 $shareModel = new \common\models\ZyShare();
@@ -122,11 +134,11 @@ class StyleController extends Controller {
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();
                 $share_id = $shareModel->attributes['share_id'];
+                echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                 echo $share_id . "###";
                 return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
-               
             }
-            echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+
             echo $link_id . '<br>';
             print_r($userinfo);
         } else {
@@ -138,8 +150,6 @@ class StyleController extends Controller {
         }
 
         exit;
-
-
     }
 
     //风格报告分享
