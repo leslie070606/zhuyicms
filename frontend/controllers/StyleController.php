@@ -15,6 +15,7 @@ use yii\filters\VerbFilter;
 class StyleController extends Controller {
 
     public $layout = false;
+    public $link_id = '';
 
     /**
      * @inheritdoc
@@ -35,43 +36,42 @@ class StyleController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        $searchModel = new StyleSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
-        ]);
+        //判断是否是微信内登录
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+        }
     }
 
     public function actionChoicestyle() {
 
+        //授权
         //判断用户是否登录
-        $session = Yii::$app->session;
-        if (!$session->isActive) {
-            $session->open();
-        }
-        $userId = $session->get("user_id");
-        if (!isset($userId) || empty($userId)) {
-            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
-            if ($_cookieSts) {
-                $userId = $session->get("user_id");
-            } else {
-                $userId = '';
-            }
-        }
-        
-        //没有登录跳转到登录
-        if (!$userId) {
-            return $this->redirect(['user/login']);
-        }
-        
+//        $session = Yii::$app->session;
+//        if (!$session->isActive) {
+//            $session->open();
+//        }
+//        $userId = $session->get("user_id");
+//        if (!isset($userId) || empty($userId)) {
+//            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
+//            if ($_cookieSts) {
+//                $userId = $session->get("user_id");
+//            } else {
+//                $userId = '';
+//            }
+//        }
+//        
+//        //没有登录跳转到登录
+//        if (!$userId) {
+//            // 
+//            return $this->redirect(['user/login']);
+//        }
         //判断是否已经有风格测试
-        $styleModel = new Style();
-        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
-        if(count($userStyle)>0){
-            return $this->redirect(['project/match_designer']);
-        }
+//        $styleModel = new Style();
+//        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
+//        if(count($userStyle)>0){
+//            return $this->redirect(['project/match_designer']);
+//        }
 
         if (Yii::$app->request->get('g')) {
 
@@ -86,42 +86,57 @@ class StyleController extends Controller {
         return $this->render('choicestyle');
     }
 
-    public function actionWechat() {
-
-        return $this->renderPartial('wechat');
-    }
-
-    //风格测试
-    public function actionTest() {
-        echo "ok";
-        return $this->render('style_test');
-    }
-
     //风格测试报告
     public function actionReport() {
+        $userinfo = Yii::$app->request->get('userInfo');
+        if (isset($link_id) && !empty($link_id)) {
+            
+        } else {
+            $this->link_id = Yii::$app->request->get('link_id');
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }
+        }
 
-        //Yii::$app->request->post();
-        $newdata = Yii::$app->request->get('newdata');
-        $style = explode(',', $newdata);
 
-        $jsonstyle = json_encode($style);
 
-        $model = new Style();
 
-        $model->user_id = 1;
-        $model->type = $jsonstyle;
-        $v = $model->save();
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
 
-        $num = $style[0] + $style[2] + $style[4];
+        //打开首先判断带不带标示
+        //不带标示就是第一次,,,不是打开的分享的
+        $link_id = Yii::$app->request->get('link_id');
 
-        $styleArr = array(
-            $style[1] => $style[0] / $num * 100,
-            $style[3] => $style[2] / $num * 100,
-            $style[5] => $style[4] / $num * 100,
-        );
-        //echo "<pre>";
-        //print_r($model);
-        return $this->render('report', ['v' => $v]);
+        //分享打开的
+        if (isset($link_id) && !empty($link_id)) {
+            
+        } else {//第一次打开的
+        }
+
+        //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+        //print_r($userinfo);
+
+        $shareModel = new \common\models\ZyShare();
+
+        //print_r($shareModel);
+
+        $shareModel->open_id = $userinfo['openid'];
+        $shareModel->user_name = $userinfo['nickname'];
+        $shareModel->headimgurl = $userinfo['headimgurl'];
+        $shareModel->create_time = (string) time();
+        $shareModel->unionid = $userinfo['unionid'];
+        $shareModel->link_id = $this->getRandomString();
+        $shareModel->save();
+        $share_id = $shareModel->attributes['share_id'];
+
+        echo $share_id . "###";
+
+        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
     }
 
     //风格报告分享
@@ -147,81 +162,28 @@ class StyleController extends Controller {
 
         $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
         $userinfo = $this->doCurlGetRequest($urlUser);
-        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        print_r(json_decode($userinfo, TRUE));
-    }
+        $userinfo = json_decode($userinfo, TRUE);
 
-    /**
-     * Displays a single Style model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id) {
-        return $this->render('view', [
-                    'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new Style model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate() {
-        $model = new Style();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->style_id]);
-        } else {
-            return $this->render('create', [
-                        'model' => $model,
-            ]);
+        if (count($userinfo) > 0) {
+            $this->redirect(array('style/report', 'userInfo' => $userinfo, 'link_id' => $this->link_id));
         }
     }
 
-    /**
-     * Updates an existing Style model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id) {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->style_id]);
-        } else {
-            return $this->render('update', [
-                        'model' => $model,
-            ]);
+    public function getRandomString($len = 6, $type = '3') {
+        if ($type == '1') {
+            $str = '0123456789';
+        } elseif ($type == '2') {
+            $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
+        } elseif ($type == '3') {
+            $str = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxzy';
         }
-    }
-
-    /**
-     * Deletes an existing Style model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id) {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Style model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Style the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id) {
-        if (($model = Style::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+        $n = $len;
+        $len = strlen($str) - 1;
+        $s = '';
+        for ($i = 0; $i < $n; $i ++) {
+            $s .= $str [rand(0, $len)];
         }
+        return $s;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
