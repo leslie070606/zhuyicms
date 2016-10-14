@@ -89,67 +89,59 @@ class StyleController extends Controller {
     public function actionReport() {
 
         $link_id = Yii::$app->request->get('link_id');
+        if (isset($link_id) && !empty($link_id)) {
+            
+        } else {
+            $link_id = 0;
+        }
         //判断是否登陆过
         $session = Yii::$app->session;
         if (!$session->isActive) {
             $session->open();
         }
+
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+
+        //已经登录过
         if ($userinfo = $session->get('userInfo')) {
             
+            // 如果有ID标示 说明是别人分享的
+            if ($link_id) {
+                // 判断是不是自己查看自己的分享
+                exit;
+            } else {
+                $shareModel = new \common\models\ZyShare();
+
+                $shareModel->open_id = $userinfo['openid'];
+                $shareModel->user_name = $userinfo['nickname'];
+                $shareModel->headimgurl = $userinfo['headimgurl'];
+                $shareModel->create_time = (string) time();
+                $shareModel->unionid = $userinfo['unionid'];
+                $shareModel->link_id = $this->getRandomString();
+                $shareModel->save();
+               // $share_id = $shareModel->attributes['share_id'];
+                echo $share_id . "###";
+                return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+               
+            }
             echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-            echo $link_id.'<br>';
+            echo $link_id . '<br>';
             print_r($userinfo);
         } else {
             // 没有登录保存变量
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state='.$link_id.'#wechat_redirect');
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
                 // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
             }
         }
 
         exit;
 
-        //  $userinfo = Yii::$app->request->get('userInfo');
-        //if (isset($link_id) && !empty($link_id)) {
-        // } else {
-        
 
-        // }
-        // 分享JS接口
-        $tokenModel = new \app\components\Token();
-        // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-
-        //打开首先判断带不带标示
-        //不带标示就是第一次,,,不是打开的分享的
-        $link_id = Yii::$app->request->get('link_id');
-
-        //分享打开的
-        if (isset($link_id) && !empty($link_id)) {
-            
-        } else {//第一次打开的
-        }
-
-        //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-        //print_r($userinfo);
-
-        $shareModel = new \common\models\ZyShare();
-
-        //print_r($shareModel);
-
-        $shareModel->open_id = $userinfo['openid'];
-        $shareModel->user_name = $userinfo['nickname'];
-        $shareModel->headimgurl = $userinfo['headimgurl'];
-        $shareModel->create_time = (string) time();
-        $shareModel->unionid = $userinfo['unionid'];
-        $shareModel->link_id = $this->getRandomString();
-        $shareModel->save();
-        $share_id = $shareModel->attributes['share_id'];
-
-        echo $share_id . "###";
-
-        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
     }
 
     //风格报告分享
@@ -166,7 +158,7 @@ class StyleController extends Controller {
     //微信授权
     public function actionShou() {
         $code = $_GET['code'];
-        
+
         $link_id = Yii::$app->request->get('state');
 
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
