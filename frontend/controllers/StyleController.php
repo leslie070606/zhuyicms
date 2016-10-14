@@ -15,7 +15,6 @@ use yii\filters\VerbFilter;
 class StyleController extends Controller {
 
     public $layout = false;
-    public $link_id = '';
 
     /**
      * @inheritdoc
@@ -102,10 +101,9 @@ class StyleController extends Controller {
             print_r($userinfo);
         } else {
             // 没有登录保存变量
-            $this->link_id = $link_id;
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state='.$link_id.'#wechat_redirect');
                 // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
             }
         }
@@ -168,6 +166,8 @@ class StyleController extends Controller {
     //微信授权
     public function actionShou() {
         $code = $_GET['code'];
+        
+        $link_id = Yii::$app->request->get('state');
 
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
 
@@ -188,7 +188,7 @@ class StyleController extends Controller {
 
             // 登录成功!
             $session->set('userInfo', $userinfo);
-            $this->redirect(array('style/report', 'link_id' => $this->link_id));
+            $this->redirect(array('style/report', 'link_id' => $link_id));
         }
     }
 
