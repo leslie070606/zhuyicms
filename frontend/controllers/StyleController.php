@@ -37,7 +37,7 @@ class StyleController extends Controller {
     public function actionIndex() {
         //判断是否是微信内登录
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect');
             // return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://192.168.104.81/zhuyicms/frontend/web/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
         }
     }
