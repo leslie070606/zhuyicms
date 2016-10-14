@@ -117,20 +117,30 @@ class StyleController extends Controller {
                     if ($res['open_id'] == $userinfo['openid']) {
                         $farr = $shareModel->findAll(['source_openid' => $link_id]);
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                        echo "自己查看自己!";
-                        foreach ($farr as $val){
-                            echo $val['user_name']."<br>";
+                        echo "自己查看自己!<br>";
+                        foreach ($farr as $val) {
+                            echo $val['user_name'] . "已完成测试!<br>";
                         }
-                        
                     } else {
                         //朋友查看分享
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
 
-                        echo $res['user_name'] . "他的风格是日式!";
+                        echo $res['user_name'] . "他的风格是日式!<br>";
+
+                        $shareModel->open_id = $userinfo['openid'];
+                        $shareModel->user_name = $userinfo['nickname'];
+                        $shareModel->headimgurl = $userinfo['headimgurl'];
+                         $shareModel->source_openid = $link_id;
+                        $shareModel->create_time = (string) time();
+                        $shareModel->unionid = $userinfo['unionid'];
+                        $shareModel->link_id = $this->getRandomString();
+                        $shareModel->save();
+                        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+
                     }
                 }
 
-                exit;
+                // 没有link_ID分享标示 是第一次做题
             } else {
                 $shareModel = new \common\models\ZyShare();
 
