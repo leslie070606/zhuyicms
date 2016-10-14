@@ -157,9 +157,6 @@ class StyleController extends Controller {
                 echo $share_id . "###";
                 return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
             }
-
-//            echo '<br>' . $link_id . '<br>';
-//            print_r($userinfo);
         } else {
             // 没有登录保存变量
             //判断是否是微信内登录

@@ -7,7 +7,7 @@ use bacend\models;
 use yii\web\UploadedFile;
 use yii;
 
-class DesignerController extends controller {
+class DesignerController extends Controller {
 
     public function actionIndex() {
 
