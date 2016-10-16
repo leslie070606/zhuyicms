@@ -130,11 +130,11 @@ class StyleController extends Controller {
                     } else {
                         //朋友查看分享
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                        echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
+                       // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
-                        echo $res['user_name'] . "他的风格是" . $res['user_name'] . "!<br>";
+                        echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
 
-                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'userInfo' => $userinfo]);
+                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id,'frindf'=>1, 'userInfo' => $userinfo]);
                     }
                 }
 
