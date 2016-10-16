@@ -46,7 +46,7 @@ use yii\helpers\Url;
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '二十世纪中现代'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -63,7 +63,7 @@ use yii\helpers\Url;
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '法式古典'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -88,7 +88,7 @@ use yii\helpers\Url;
                         <ul>
                            <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '美式'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -105,7 +105,7 @@ use yii\helpers\Url;
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '日式和风'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -122,7 +122,7 @@ use yii\helpers\Url;
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '现代简约'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -139,7 +139,7 @@ use yii\helpers\Url;
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '波西米亚'){
+                            if($ft['style'] == '中式'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
