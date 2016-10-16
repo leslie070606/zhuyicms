@@ -118,8 +118,8 @@ class StyleController extends Controller {
                     if ($res['open_id'] == $userinfo['openid']) {
                         $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
                         $mystyle = $shareModel->findOne(['link_id' => $link_id]);
-                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                        echo "自己查看自己!<br>";
+//                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                        echo "自己查看自己!<br>";
 //                        foreach ($farr as $val) {
 //                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
 //                            echo $val['user_name'] . "已完成测试!<br>";
