@@ -132,7 +132,7 @@ class StyleController extends Controller {
                             $shareModel = new \common\models\ZyShare();
                             switch ($flashid) {
                                 case 'a' :
-                                    $style = "工业风";
+                                    $style = "波西米亚";
                                     break;
                                 default :
                                     $style = '简欧';
@@ -169,7 +169,7 @@ class StyleController extends Controller {
                 $shareModel = new \common\models\ZyShare();
                 switch ($flashid) {
                     case 'a' :
-                        $style = "工业风";
+                        $style = "波西米亚";
                         break;
                     default :
                         $style = '简欧';

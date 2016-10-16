@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+use yii\helpers\Url;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,11 +25,15 @@
                     <span>波西米亚</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
+                        
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                        <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -38,8 +44,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                            <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -50,8 +61,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                            <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -70,8 +86,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                           <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -82,8 +103,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                            <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -94,8 +120,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                            <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -106,8 +137,13 @@
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
-                            <li><img src="img/fengge/chose_style.jpg" /></li>
+                            <?php 
+                        foreach ($frindstyle as $ft){
+                            if($ft['style'] == '波西米亚'){
+                                echo "<li><img src='".$ft['headimgurl']."' /></li>";
+                            }
+                        }
+                        ?>
                         </ul>
                     </div>
                 </div></a>
@@ -115,7 +151,7 @@
 
         </div>
         <div class="foin_more">
-            我要重玩一次
+            <a href="<?php echo Url::toRoute('/style/index'); ?>">我要重玩一次</a>
         </div>
     </body>
 </html>
