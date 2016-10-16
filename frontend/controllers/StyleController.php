@@ -70,6 +70,11 @@ class StyleController extends Controller {
             $session->open();
         }
         $link_id = Yii::$app->request->get('link_id');
+        if (isset($link_id) && !empty($link_id)) {
+            
+        } else {
+            $link_id = 0;
+        }
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
             return $this->render('problem', ['link_id' => $link_id]);
@@ -86,17 +91,13 @@ class StyleController extends Controller {
 
         // 查看返回的结果
         $flashid = Yii::$app->request->get('flash');
-
+        
+        //获取分享ID
         $link_id = Yii::$app->request->get('link_id');
 
         // 风格结果
         $style = '';
 
-//        if (isset($link_id) && !empty($link_id)) {
-//            
-//        } else {
-//            $link_id = 0;
-//        }
         //判断是否登陆过
         $session = Yii::$app->session;
         if (!$session->isActive) {
@@ -131,9 +132,9 @@ class StyleController extends Controller {
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
-                        echo $res['user_name'] . "他的风格是".$res['user_name']."!<br>";
+                        echo $res['user_name'] . "他的风格是" . $res['user_name'] . "!<br>";
 
-                        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $link_id, 'userInfo' => $userinfo]);
+                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'userInfo' => $userinfo]);
                     }
                 }
 
