@@ -72,7 +72,7 @@ class StyleController extends Controller {
         $link_id = Yii::$app->request->get('link_id');
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
-            return $this->render('problem',['link_id'=>$link_id]);
+            return $this->render('problem', ['link_id' => $link_id]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
@@ -88,10 +88,10 @@ class StyleController extends Controller {
         $flashid = Yii::$app->request->get('flash');
 
         $link_id = Yii::$app->request->get('link_id');
-        
+
         // 风格结果
         $style = '';
-        
+
 //        if (isset($link_id) && !empty($link_id)) {
 //            
 //        } else {
@@ -184,17 +184,25 @@ class StyleController extends Controller {
     }
 
     //风格报告分享
-    public function actionShare() {
+    public function actionChosestyle() {
 
-        $tokenModel = new \app\components\Token();
-
-        // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-
-        return $this->render('share', ['jsarr' => $jsarr]);
+        //判断是否登陆过
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        // 判断用户是否授权成功
+        if ($userinfo = $session->get('userInfo')) {
+            return $this->render('chosestyle');
+        } else {
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shouchosestyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }
+        }
     }
 
-    //微信授权
+    //首页微信授权
     public function actionShouindex() {
         $code = $_GET['code'];
 
@@ -224,7 +232,7 @@ class StyleController extends Controller {
         }
     }
 
-    //微信授权
+    //问题页微信授权
     public function actionShouproblem() {
         $code = $_GET['code'];
 
@@ -254,8 +262,42 @@ class StyleController extends Controller {
         }
     }
 
-    //微信授权
+    //结果页微信授权
     public function actionShoureport() {
+        $code = $_GET['code'];
+
+        $link_id = Yii::$app->request->get('state');
+
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
+
+        $res = $this->doCurlGetRequest($url);
+
+        $res = json_decode($res, TRUE);
+
+        $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
+        $userinfo = $this->doCurlGetRequest($urlUser);
+        $userinfo = json_decode($userinfo, TRUE);
+
+        if (count($userinfo) > 0) {
+            //初始化session
+            $session = Yii::$app->session;
+            if (!$session->isActive) {
+                $session->open();
+            }
+
+            // 授权登录成功!
+            $session->set('userInfo', $userinfo);
+
+            if ($link_id == 0) {
+                $this->redirect(array('style/index', 'link_id' => $link_id));
+            } else {
+                $this->redirect(array('style/report', 'link_id' => $link_id));
+            }
+        }
+    }
+    
+    //选择其它风格授权
+    public function actionShouchosestyle() {
         $code = $_GET['code'];
 
         $link_id = Yii::$app->request->get('state');
