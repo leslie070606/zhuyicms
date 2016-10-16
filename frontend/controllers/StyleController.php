@@ -35,64 +35,69 @@ class StyleController extends Controller {
      * @return mixed
      */
     public function actionIndex() {
-        //判断是否是微信内登录
-        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-            return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=0#wechat_redirect');
-        }
-    }
 
-    public function actionChoicestyle() {
-
-        //授权
-        //判断用户是否登录
-//        $session = Yii::$app->session;
-//        if (!$session->isActive) {
-//            $session->open();
-//        }
-//        $userId = $session->get("user_id");
-//        if (!isset($userId) || empty($userId)) {
-//            $_cookieSts = \common\controllers\BaseController::checkLoginCookie();
-//            if ($_cookieSts) {
-//                $userId = $session->get("user_id");
-//            } else {
-//                $userId = '';
-//            }
-//        }
-//        
-//        //没有登录跳转到登录
-//        if (!$userId) {
-//            // 
-//            return $this->redirect(['user/login']);
-//        }
-        //判断是否已经有风格测试
-//        $styleModel = new Style();
-//        $userStyle = $styleModel->findOne(['user_id'=>$userId]);
-//        if(count($userStyle)>0){
-//            return $this->redirect(['project/match_designer']);
-//        }
-
-        if (Yii::$app->request->get('g')) {
-
-            $styleModel = new Style();
-            $styleModel->user_id = $userId;
-            $styleModel->choice_style = Yii::$app->request->get('g');
-            $res = $styleModel->save();
-
-            return Yii::$app->request->get('g');
+        //判断是否登陆过
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
         }
 
-        return $this->render('choicestyle');
-    }
-
-    //风格测试报告
-    public function actionReport() {
-
+        // 判断是第一次还是别人的分享
         $link_id = Yii::$app->request->get('link_id');
         if (isset($link_id) && !empty($link_id)) {
             
         } else {
             $link_id = 0;
         }
+
+        // 判断用户是否授权成功
+        if ($userinfo = $session->get('userInfo')) {
+
+            return $this->render('index', ['link_id' => $link_id]);
+        } else {
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouindex&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
+            }
+        }
+    }
+
+    public function actionProblem() {
+
+        //判断是否登陆过
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        $link_id = Yii::$app->request->get('link_id');
+        // 判断用户是否授权成功
+        if ($userinfo = $session->get('userInfo')) {
+            return $this->render('problem',['link_id'=>$link_id]);
+        } else {
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouproblem&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
+            }
+        }
+    }
+
+    //风格测试报告
+    public function actionReport() {
+
+        // 查看返回的结果
+        $flashid = Yii::$app->request->get('flash');
+
+
+        $link_id = Yii::$app->request->get('link_id');
+        
+        // 风格结果
+        $style = '';
+        
+//        if (isset($link_id) && !empty($link_id)) {
+//            
+//        } else {
+//            $link_id = 0;
+//        }
         //判断是否登陆过
         $session = Yii::$app->session;
         if (!$session->isActive) {
@@ -144,24 +149,37 @@ class StyleController extends Controller {
                 // 没有link_ID分享标示 是第一次做题
             } else {
                 $shareModel = new \common\models\ZyShare();
-
+                switch ($flashid) {
+                    case 'a' :
+                        $style = "工业风";
+                        break;
+                    default :
+                        $style = '简欧';
+                }
                 $shareModel->open_id = $userinfo['openid'];
                 $shareModel->user_name = $userinfo['nickname'];
                 $shareModel->headimgurl = $userinfo['headimgurl'];
                 $shareModel->create_time = (string) time();
                 $shareModel->unionid = $userinfo['unionid'];
+                $shareModel->style = $style;
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();
                 $share_id = $shareModel->attributes['share_id'];
                 echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                 echo $share_id . "###";
-                return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                switch ($flashid) {
+                    case 'a' :
+                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                        break;
+                    case 'b' :
+                        return $this->render('flashb');
+                }
             }
         } else {
             // 没有登录保存变量
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shou&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shoureport&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             }
         }
     }
@@ -178,7 +196,7 @@ class StyleController extends Controller {
     }
 
     //微信授权
-    public function actionShou() {
+    public function actionShouindex() {
         $code = $_GET['code'];
 
         $link_id = Yii::$app->request->get('state');
@@ -200,9 +218,74 @@ class StyleController extends Controller {
                 $session->open();
             }
 
-            // 登录成功!
+            // 授权登录成功!
             $session->set('userInfo', $userinfo);
-            $this->redirect(array('style/report', 'link_id' => $link_id));
+
+            $this->redirect(array('style/index', 'link_id' => $link_id));
+        }
+    }
+
+    //微信授权
+    public function actionShouproblem() {
+        $code = $_GET['code'];
+
+        $link_id = Yii::$app->request->get('state');
+
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
+
+        $res = $this->doCurlGetRequest($url);
+
+        $res = json_decode($res, TRUE);
+
+        $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
+        $userinfo = $this->doCurlGetRequest($urlUser);
+        $userinfo = json_decode($userinfo, TRUE);
+
+        if (count($userinfo) > 0) {
+            //初始化session
+            $session = Yii::$app->session;
+            if (!$session->isActive) {
+                $session->open();
+            }
+
+            // 授权登录成功!
+            $session->set('userInfo', $userinfo);
+
+            $this->redirect(array('style/problem', 'link_id' => $link_id));
+        }
+    }
+
+    //微信授权
+    public function actionShoureport() {
+        $code = $_GET['code'];
+
+        $link_id = Yii::$app->request->get('state');
+
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
+
+        $res = $this->doCurlGetRequest($url);
+
+        $res = json_decode($res, TRUE);
+
+        $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
+        $userinfo = $this->doCurlGetRequest($urlUser);
+        $userinfo = json_decode($userinfo, TRUE);
+
+        if (count($userinfo) > 0) {
+            //初始化session
+            $session = Yii::$app->session;
+            if (!$session->isActive) {
+                $session->open();
+            }
+
+            // 授权登录成功!
+            $session->set('userInfo', $userinfo);
+
+            if ($link_id == 0) {
+                $this->redirect(array('style/index', 'link_id' => $link_id));
+            } else {
+                $this->redirect(array('style/report', 'link_id' => $link_id));
+            }
         }
     }
 

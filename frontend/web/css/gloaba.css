@@ -1,0 +1,129 @@
+
+@charset "utf-8";
+a,body {
+	color: #221814;
+	text-decoration: none;
+}
+img { max-width: 100%;}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+input { border-radius: 0; line-height:normal !important ;}
+
+fieldset,img {
+	border: 0
+}
+ol,ul {
+	list-style: none
+}
+
+caption,th {
+	text-align: left
+}
+
+a:focus {
+	outline-style: none;
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button { margin: 0; padding: 0;}
+i{ font-style:normal} 
+
+textarea {
+	resize: none
+}
+ul {-webkit-padding-start: 0px;    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;}
+html {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	 font-size: 50px;
+	height: 100%;
+	background-color: #FFFFFF;
+	max-width: 500px;
+}
+
+body {
+	font-family:fzlth,tahoma,arial,sans-serif;
+	background: #ffffff;
+	overflow-x: hidden;
+	-webkit-text-size-adjust: none;
+	max-width: 500px;
+	margin: 0 auto;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+/*适配*/
+
+@media screen and (min-width: 255px) {
+    html {
+        font-size: 32px;
+    }
+}
+
+@media screen and (min-width: 295px) {
+    html {
+        font-size: 38px;
+    }
+    .seven_box .seven_here{
+    	margin: 0.2rem auto 0 auto !important;
+    }
+}
+ 
+@media screen and (min-width: 335px) {
+    html {
+        font-size: 44px;
+    }
+}
+ @media screen and (min-width: 375px) {
+    html {
+        font-size: 50px;
+    }
+}
+ 
+@media screen and (min-width: 410px) {
+    html {
+        font-size: 56px;
+    }
+}
+ 
+@media screen and (min-width: 450px) {
+    html {
+        font-size: 56px;
+    }
+}
+ 
+@media screen and (min-width: 490px) {
+    html {
+        font-size: 56px;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    html {
+        font-size: 56px;
+    }
+}
+
+@media screen and (min-width: 570px) {
+    html {
+        font-size: 56px;
+    }
+}
+
+@media screen and (min-width: 610px) {
+    html {
+        font-size: 56px;
+    }
+}
+
+@media screen and (min-width: 650px) {
+    html {
+        font-size: 56px;
+    }
+}
