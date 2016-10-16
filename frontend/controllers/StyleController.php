@@ -159,7 +159,7 @@ class StyleController extends Controller {
                             //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                             // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
-                            echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
+                           // echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
 
                             return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                         }

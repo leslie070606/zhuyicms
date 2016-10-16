@@ -34,10 +34,8 @@ use yii\helpers\Url;
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
         </div>
         <?php
-        $frindf = Yii::$app->request->get('frindf');
         if (isset($frindf) && !empty($frindf)) {
             
-            echo "################";
             ?>
             <div class="share_box share_box_b share_box_active">
                 <a href="<?php echo Url::toRoute(['/style/index','link_id'=>$link_id]);?>"><span class="share_btn">开始自己的风格测试</span></a>
