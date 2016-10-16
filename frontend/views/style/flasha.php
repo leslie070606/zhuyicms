@@ -1,4 +1,3 @@
-<?php ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,16 +30,18 @@
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
         </div>
 
-        <div class="share_box">
+        <div class="share_box share_box_active">
             <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
             <div class="cs_more"><span class="more_a">再测一次</span><span class="more_b">查看其它风格</span></div>
         </div>
 
+        <div class="share_box share_box_b ">
+            <span class="share_btn">开始自己的风格测试</span>
+        </div>
+
         <div class="gloab_bottm">
-            <img class="erweima" src="img/fengge/chose_style.jpg"  /> 
-            <div>想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
+            <img class="erweima" src="img/fengge/erweima.png"  /> 
+            <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
         </div>
     </body>
 </html>
-
-

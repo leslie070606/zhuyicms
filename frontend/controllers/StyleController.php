@@ -87,7 +87,6 @@ class StyleController extends Controller {
         // 查看返回的结果
         $flashid = Yii::$app->request->get('flash');
 
-
         $link_id = Yii::$app->request->get('link_id');
         
         // 风格结果
@@ -164,9 +163,9 @@ class StyleController extends Controller {
                 $shareModel->style = $style;
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();
-                $share_id = $shareModel->attributes['share_id'];
-                echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                echo $share_id . "###";
+//                $share_id = $shareModel->attributes['share_id'];
+//                echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+//                echo $share_id . "###";
                 switch ($flashid) {
                     case 'a' :
                         return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
