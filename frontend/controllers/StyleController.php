@@ -30,10 +30,6 @@ class StyleController extends Controller {
         ];
     }
 
-    /**
-     * Lists all Style models.
-     * @return mixed
-     */
     public function actionIndex() {
 
         //判断是否登陆过
@@ -120,13 +116,16 @@ class StyleController extends Controller {
                 if (count($res) > 0) {
                     // 是自己查看自己的
                     if ($res['open_id'] == $userinfo['openid']) {
-                        $farr = $shareModel->findAll(['source_openid' => $link_id]);
+                        $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
+                        $mystyle = $shareModel->findOne(['link_id' => $link_id]);
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "自己查看自己!<br>";
-                        foreach ($farr as $val) {
-                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
-                            echo $val['user_name'] . "已完成测试!<br>";
-                        }
+//                        foreach ($farr as $val) {
+//                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
+//                            echo $val['user_name'] . "已完成测试!<br>";
+//                        }
+                        return $this->render('mytestdata',['mystyle'=>$mystyle,'frindstyle'=>$frindstyle]);
+                        
                     } else {
                         // 有ID说明朋友在测试
                         if (isset($flashid) && !empty($flashid)) {
@@ -158,8 +157,7 @@ class StyleController extends Controller {
                             //朋友查看分享
                             //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                             // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
-
-                           // echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
+                            // echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
 
                             return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                         }
