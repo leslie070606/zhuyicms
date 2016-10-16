@@ -91,7 +91,7 @@ class StyleController extends Controller {
 
         // 查看返回的结果
         $flashid = Yii::$app->request->get('flash');
-        
+
         //获取分享ID
         $link_id = Yii::$app->request->get('link_id');
 
@@ -128,13 +128,41 @@ class StyleController extends Controller {
                             echo $val['user_name'] . "已完成测试!<br>";
                         }
                     } else {
-                        //朋友查看分享
-                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                       // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
+                        // 有ID说明朋友在测试
+                        if (isset($flashid) && !empty($flashid)) {
+                            $shareModel = new \common\models\ZyShare();
+                            switch ($flashid) {
+                                case 'a' :
+                                    $style = "工业风";
+                                    break;
+                                default :
+                                    $style = '简欧';
+                            }
+                            $shareModel->open_id = $userinfo['openid'];
+                            $shareModel->user_name = $userinfo['nickname'];
+                            $shareModel->source_openid = $link_id;
+                            $shareModel->headimgurl = $userinfo['headimgurl'];
+                            $shareModel->create_time = (string) time();
+                            $shareModel->unionid = $userinfo['unionid'];
+                            $shareModel->style = $style;
+                            $shareModel->link_id = $this->getRandomString();
+                            $shareModel->save();
+                            switch ($flashid) {
+                                case 'a' :
+                                    return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                                    break;
+                                case 'b' :
+                                    return $this->render('flashb');
+                            }
+                        } else {
+                            //朋友查看分享
+                            //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
+                            // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
-                        echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
+                            echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
 
-                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id,'frindf'=>1, 'userInfo' => $userinfo]);
+                            return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
+                        }
                     }
                 }
 

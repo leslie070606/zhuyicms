@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 ?>
 <!DOCTYPE html>
@@ -32,18 +33,20 @@ use yii\helpers\Url;
             <img class="des_img des_imgp_c" src="img/flash_a/14.png" />
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
         </div>
-        <?php $frindf = Yii::$app->request->get('frindf'); 
-            if(!$frindf){
-        ?>
-        <div class="share_box share_box_active">
-            <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
-            <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index');?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle');?>"><span class="more_b">查看其它风格</span></a></div>
-        </div>
-            <?php }else{ ?>
-        <div class="share_box share_box_b share_box_active">
-            <span class="share_btn">开始自己的风格测试</span>
-        </div>
-            <?php } ?>
+        <?php
+        $frindf = Yii::$app->request->get('frindf');
+        if (isset($frindf) && !empty($frindf)) {
+            ?>
+            <div class="share_box share_box_b share_box_active">
+                <span class="share_btn">开始自己的风格测试</span>
+            </div>
+
+        <?php } else { ?>
+            <div class="share_box share_box_active">
+                <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
+                <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
+            </div>
+        <?php } ?>
         <div class="gloab_bottm">
             <img class="erweima" src="img/fengge/erweima.png"  /> 
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
