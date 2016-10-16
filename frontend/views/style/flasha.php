@@ -38,7 +38,7 @@ use yii\helpers\Url;
         if (isset($frindf) && !empty($frindf)) {
             ?>
             <div class="share_box share_box_b share_box_active">
-                <span class="share_btn">开始自己的风格测试</span>
+                <a href="<?php echo Url::toRoute(['/style/index','link_id'=>$link_id]);?>"><span class="share_btn">开始自己的风格测试</span></a>
             </div>
 
         <?php } else { ?>
