@@ -131,17 +131,9 @@ class StyleController extends Controller {
                         echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
                         echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
 
-                        echo $res['user_name'] . "他的风格是日式!<br>";
+                        echo $res['user_name'] . "他的风格是".$res['user_name']."!<br>";
 
-                        $shareModel->open_id = $userinfo['openid'];
-                        $shareModel->user_name = $userinfo['nickname'];
-                        $shareModel->headimgurl = $userinfo['headimgurl'];
-                        $shareModel->source_openid = $link_id;
-                        $shareModel->create_time = (string) time();
-                        $shareModel->unionid = $userinfo['unionid'];
-                        $shareModel->link_id = $this->getRandomString();
-                        $shareModel->save();
-                        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                        return $this->render('report', ['jsarr' => $jsarr, 'link_id' => $link_id, 'userInfo' => $userinfo]);
                     }
                 }
 
@@ -288,19 +280,16 @@ class StyleController extends Controller {
             // 授权登录成功!
             $session->set('userInfo', $userinfo);
 
-            if ($link_id == 0) {
-                $this->redirect(array('style/index', 'link_id' => $link_id));
-            } else {
-                $this->redirect(array('style/report', 'link_id' => $link_id));
-            }
+
+            $this->redirect(array('style/report', 'link_id' => $link_id));
         }
     }
-    
+
     //选择其它风格授权
     public function actionShouchosestyle() {
         $code = $_GET['code'];
 
-        $link_id = Yii::$app->request->get('state');
+        //$link_id = Yii::$app->request->get('state');
 
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
 
@@ -322,11 +311,7 @@ class StyleController extends Controller {
             // 授权登录成功!
             $session->set('userInfo', $userinfo);
 
-            if ($link_id == 0) {
-                $this->redirect(array('style/index', 'link_id' => $link_id));
-            } else {
-                $this->redirect(array('style/report', 'link_id' => $link_id));
-            }
+            $this->redirect(array('style/chosestyle'));
         }
     }
 
