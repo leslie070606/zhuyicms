@@ -31,7 +31,7 @@ use yii\helpers\Url;
                             $("body").scrollTop(0);
                             $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
                             $(window).scrollTop(0);
-                            if (nuberrr <= 14) {
+                            if (nuberrr <= 13) {
                                 nuberrr++;
                             } else {
                                 $(".foin").each(function () {
