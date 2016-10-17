@@ -23,17 +23,17 @@
                         echo "<img src='img/fenggejieguo/zhonggu01.png' />";
                         break;
                     case '法式古典' :
-                         echo '<div class="self_foin" style="background-color: #c6a885;">
+                         echo '<div class="self_foin" style="background-color: #fdefd6;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/fashigudian01.png' />";
                         break;
                     case '工业' :
-                         echo '<div class="self_foin" style="background-color: #838384;">
+                         echo '<div class="self_foin" style="background-color: #d7d7d8;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/gongye01.png' />";
                         break;
                     case '美式' :
-                         echo '<div class="self_foin" style="background-color: #cccccc;">
+                         echo '<div class="self_foin" style="background-color: #ededec;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/meishi01.png' />";
                         break;
@@ -48,7 +48,7 @@
                         echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
                         break;
                     case '新中式' :
-                         echo '<div class="self_foin" style="background-color: #884d4d;">
+                         echo '<div class="self_foin" style="background-color: #eacdc1;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
                         break;

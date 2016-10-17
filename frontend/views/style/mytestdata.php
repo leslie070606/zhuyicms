@@ -105,16 +105,16 @@ use yii\helpers\Url;
                             <ul>
                                 <?php
 
-                                function assoc_unique(&$arr, $key) {
-                                    $rAr = array();
-                                    for ($i = 0; $i < count($arr); $i++) {
-                                        if (!isset($rAr[$arr[$i][$key]])) {
-                                            $rAr[$arr[$i][$key]] = $arr[$i];
-                                        }
-                                    }
-                                    $arr = array_values($rAr);
-                                }
-                                assoc_unique($frindstyle, 'open_id');
+//                                function assoc_unique(&$arr, $key) {
+//                                    $rAr = array();
+//                                    for ($i = 0; $i < count($arr); $i++) {
+//                                        if (!isset($rAr[$arr[$i][$key]])) {
+//                                            $rAr[$arr[$i][$key]] = $arr[$i];
+//                                        }
+//                                    }
+//                                    $arr = array_values($rAr);
+//                                }
+//                                assoc_unique($frindstyle, 'open_id');
 
                                 //$frindstyle = array_unique($frindstyle);
                                 
