@@ -8,6 +8,7 @@ use yii\helpers\Url;
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格测试</title>
+        <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -19,6 +20,7 @@ use yii\helpers\Url;
                 $(".pro_here").on("click", function () {
                     var nuber = $(this).parents(".pro_box").find(".foin").length;
                     index++;
+                    $(this).addClass("foin_a");
                     var nubera = parseInt("600" + index) + 1;
                     if (nubera == 6002) {
                         tj_ajax(6, nubera - 1);
@@ -28,6 +30,7 @@ use yii\helpers\Url;
 
                     if (nuber <= 0) {
                         $(this).addClass("foin");
+                        setTimeOut(function(){
                             $("body").scrollTop(0);
                             $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
                             $(window).scrollTop(0);
@@ -42,7 +45,7 @@ use yii\helpers\Url;
                                 getMax(data);
                             }
                             ;
-
+                        },200)
                     } else {
                         return false;
                     }
@@ -99,7 +102,7 @@ use yii\helpers\Url;
         <div class="gloab active">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">1</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -110,14 +113,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a6a8">
+                        <div class="here_bg"></div>
                         <img src="img/problem/1-1.jpg" />
                         <div class="here_text">古典</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a4a9a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/1-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1a2a5">
+                        <div class="here_bg"></div>
                         <img src="img/problem/1-3.jpg" />
                         <div class="here_text">现代</div>
                     </div>
@@ -128,7 +134,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">2</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -139,14 +145,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a2a5">
+                        <div class="here_bg"></div>
                         <img src="img/problem/2-1.jpg" />
                         <div class="here_text">素颜</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a1a6a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/2-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a4a8a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/2-3.jpg" />
                         <div class="here_text">色彩缤纷</div>
                     </div>
@@ -158,7 +167,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">3</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -169,14 +178,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a4a8a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/3-1.jpg" />
                         <div class="here_text">饱和</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a2a6">
+                        <div class="here_bg"></div>
                         <img src="img/problem/3-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1a5a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/3-3.jpg" />
                         <div class="here_text">极简</div>
                     </div>
@@ -187,7 +199,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">4</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -198,14 +210,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a1a5a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/4-1.jpg" />
                         <div class="here_text">纯色块</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a2a4">
+                        <div class="here_bg"></div>
                         <img src="img/problem/4-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a6a8a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/4-3.jpg" />
                         <div class="here_text">图案</div>
                     </div>
@@ -216,7 +231,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">5</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -227,14 +242,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a1a2a5a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/5-1.jpg" />
                         <div class="here_text">直线</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a4a6a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/5-2.jpg" />
                         <div class="here_text">柔曲线</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a8">
+                        <div class="here_bg"></div>
                         <img src="img/problem/5-3.jpg" />
                         <div class="here_text">古典曲线</div>
                     </div>
@@ -245,7 +263,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">6</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -256,14 +274,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a4a8">
+                        <div class="here_bg"></div>
                         <img src="img/problem/6-1.jpg" />
                         <div class="here_text">淡雅</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a9a2">
+                        <div class="here_bg"></div>
                         <img src="img/problem/6-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1a5a6a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/6-3.jpg" />
                         <div class="here_text">对冲</div>
                     </div>
@@ -274,7 +295,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">7</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -285,14 +306,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a1a6">
+                        <div class="here_bg"></div>
                         <img src="img/problem/7-1.jpg" />
                         <div class="here_text">直接照明</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a4a8a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/7-2.jpg" />
-                        <div class="here_text">折中</div>
+                        <div class="here_text">适中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a2a5a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/7-3.jpg" />
                         <div class="here_text">间接照明</div>
                     </div>
@@ -303,7 +327,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">8</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -314,14 +338,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a5a9a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/8-1.jpg" />
                         <div class="here_text">自然（毛，木，石子）</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a2a6a4a8">
+                        <div class="here_bg"></div>
                         <img src="img/problem/8-2.jpg" />
-                        <div class="here_text">折中（皮，大理石，编织物）</div>
+                        <div class="here_text">适中（皮，大理石，编织物）</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1">
+                        <div class="here_bg"></div>
                         <img src="img/problem/8-3.jpg" />
                         <div class="here_text">人工（钢，玻璃，水泥）</div>
                     </div>
@@ -332,7 +359,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">9</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -343,14 +370,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a2a5a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/9-1.jpg" />
                         <div class="here_text">粗糙（稻草编织，粗毛）</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a1a4a6a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/9-2.jpg" />
-                        <div class="here_text">折中（棉等纺织物）</div>
+                        <div class="here_text">适中（棉等纺织物）</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a8">
+                        <div class="here_bg"></div>
                         <img src="img/problem/9-3.jpg" />
                         <div class="here_text">细腻（丝绸，绒毛）</div>
                     </div>
@@ -362,7 +392,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">10</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -373,14 +403,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a5a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/10-1.jpg" />
                         <div class="here_text">郊游</div>
                     </div>
                     <div class="pro_here here_div" tetel="1a2a2a4">
+                        <div class="here_bg"></div>
                         <img src="img/problem/10-2.jpg" />
                         <div class="here_text">探索都市</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a10a8a6">
+                        <div class="here_bg"></div>
                         <img src="img/problem/10-3.jpg" />
                         <div class="here_text">博物馆</div>
                     </div>
@@ -392,7 +425,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">11</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -403,14 +436,17 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a4a2">
+                        <div class="here_bg"></div>
                         <img src="img/problem/11-1.jpg" />
                         <div class="here_text">CBD高档公寓</div>
                     </div>
                     <div class="pro_here here_div" tetel="6a8a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/11-2.jpg" />
                         <div class="here_text">胡同里</div>
                     </div>
                     <div class="pro_here here_div" tetel="5a9">
+                        <div class="here_bg"></div>
                         <img src="img/problem/11-3.jpg" />
                         <div class="here_text">海边别墅</div>
                     </div>
@@ -422,7 +458,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">12</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -433,16 +469,19 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="8a6">
+                        <div class="here_bg"></div>
                         <img src="img/problem/12-1.jpg" />
-                        <div class="here_text">蒙德里安</div>
+                        <div class="here_text">布鲁哲尔</div>
                     </div>
                     <div class="pro_here here_div" tetel="9a2a10">
+                        <div class="here_bg"></div>
                         <img src="img/problem/12-2.jpg" />
-                        <div class="here_text">莫奈water lilies</div>
+                        <div class="here_text">莫奈</div>
                     </div>
                     <div class="pro_here here_div" tetel="5a1a4">
+                        <div class="here_bg"></div>
                         <img src="img/problem/12-3.jpg" />
-                        <div class="here_text">Edward Hopper nighthopper</div>
+                        <div class="here_text">赫斯特</div>
                     </div>
                 </div>
             </div>
@@ -451,7 +490,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">13</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -463,14 +502,17 @@ use yii\helpers\Url;
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-1.jpg" />
+                        <div class="here_bg"></div>
                         <div class="here_text">菊花</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-2.jpg" />
+                        <div class="here_bg"></div>
                         <div class="here_text">百合花</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-3.jpg" />
+                        <div class="here_bg"></div>
                         <div class="here_text">梅花</div>
                     </div>
                 </div>
@@ -480,7 +522,7 @@ use yii\helpers\Url;
         <div class="gloab">
             <div class="gloab_top">
                 <div class="top_title">
-                    <img class="top_log" src="img/fengge/logo.png" />
+                    <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">14</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
@@ -492,15 +534,18 @@ use yii\helpers\Url;
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/14-1.jpg" />
-                        <div class="here_text">金鱼</div>
-                    </div>
-                    <div class="pro_here here_div" tetel="">
-                        <img src="img/problem/14-2.jpg" />
+                        <div class="here_bg"></div>
                         <div class="here_text">猫</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
-                        <img src="img/problem/14-3.jpg" />
+                        <img src="img/problem/14-2.jpg" />
+                        <div class="here_bg"></div>
                         <div class="here_text">狗</div>
+                    </div>
+                    <div class="pro_here here_div" tetel="">
+                        <img src="img/problem/14-3.jpg" />
+                        <div class="here_bg"></div>
+                        <div class="here_text">金鱼</div>
                     </div>
                 </div>
             </div>

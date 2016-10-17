@@ -1,15 +1,16 @@
 .gloab { font-size: .28rem; display: none;}
 .active { display: block;}
 .gloab_top {width: 92%; margin: 0 4%;}
-.top_title { position: relative; margin-top: .3rem;}
-.top_right { position: absolute; right: 0; bottom: 0; font-size: .2rem; color: #999999;}
-.gloab_top>.top_bottom { line-height:1.3; margin-top: .3rem; border-top: 1px solid #f2f2f2; padding: .3rem 0;}
+.top_title { position: relative; }
+.top_right { position: absolute; right: 0; bottom: 0.3rem; font-size: .2rem; color: #999999;}
+.gloab_top>.top_bottom { line-height:1.3; margin-top: 0; border-top: 1px solid #f2f2f2; padding: .3rem 0;}
 .gloab_top>.top_bottom>span { display: block; color: #FF4E38;}
 .pro_number { color: #FF4E38; font-weight: bold; font-size: .32rem;}
 .pro_box_big { width: 100%; background: #F2F2F2; padding: .3rem 0; position: relative;}
 .pro_box { width: 92%; margin: 0 4%; background: #F2F2F2;}
 .pro_box .pro_here { width: 100%;background:#FFFFFF; margin-bottom: .3rem; position: relative; box-sizing: border-box; border: 3px solid #FFFFFF;}
 .pro_box .pro_here>img {width: 100%;}
+.pro_box .foin_a .here_bg { position: absolute; z-index: 2; width:100%; height: auto; left:0; top: 0; bottom: .66rem; background: #FFFFFF; opacity: .5;}
 .pro_box .pro_here:last-child { margin-bottom: 0;}
 .here_text { font-size: .24rem; height: .66rem; line-height: .66rem; text-align: center;}
 .triangle-down {
@@ -22,7 +23,7 @@
     border-right: .2rem solid transparent;
     border-top: .2rem solid #FFFFFF;
 }
-
+.by_ad { font-size: 1.6rem !important; color: #FF4E38;}
 
 
 /*选择设计师*/
@@ -35,7 +36,6 @@
 .open_self .chose_here:nth-child(odd) { border-left: .15rem solid #F2F2F2 !important;}
 .open_self .chose_here { border-color: #F2F2F2 !important;}
 .chose_box .chose_here>div>span { position: absolute; width: 100%; left: 0; bottom:.3rem; text-align: center;z-index: 10;}
-.chose_box .chose_here:hover>div>span { color: #FFFFFF;}
 .open_self .style_bottom { height: .88rem; overflow: hidden; float: left; line-height: .88rem; color: #CCCCCC; text-align: center; font-size: .2rem; width: 100%; background: #FFFFFF;}
 .open_self .style_bottom ul li,.open_self .bot_title { line-height: .88rem; float: left;}
 .open_self .bot_title { margin: 0 .2rem; color: #333333;}
