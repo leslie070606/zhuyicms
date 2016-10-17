@@ -30,7 +30,7 @@ use yii\helpers\Url;
 
                     if (nuber <= 0) {
                         $(this).addClass("foin");
-                        setTimeOut(function(){
+                        setTimeout(function(){
                             $("body").scrollTop(0);
                             $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
                             $(window).scrollTop(0);
