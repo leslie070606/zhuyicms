@@ -1,6 +1,6 @@
 $(function(){
-    
-        document.body.addEventListener('touchmove',grrrr, false);
+	$("body").scrollTop(0);
+	document.body.addEventListener('touchmove',grrrr, false);
 	function grrrr(){
     	event.preventDefault();
 	}
@@ -9,7 +9,6 @@ $(function(){
 		time=true;
 		document.body.removeEventListener('touchmove', grrrr,false);
 	},4500);
-	
 	if(IsPC()){
 		autoget();
 	}else{
@@ -25,7 +24,7 @@ $(function(){
 		}
 	};
 	$("body,html").bind("click",function(e){
-        if($(e.target).closest(".click_m").length == 0 && $(e.target).closest(".click_m").length == 0){
+        if($(e.target).closest(".click_m").length == 0 ){
            $(".sanjiao,.miaodian_text").fadeOut(200);
         }
     })
@@ -53,10 +52,13 @@ $(function(){
 	function autogeta(){
 	var width=$(window).width();
 	var height=$(window).height();
+	var heightaa=parseInt($(".share_box_active").height());
+	var heightbb=parseInt($(".gloab_bottm").css("margin-bottom"));
 	var get=(736/414)*width;
 	$(".desib_box").css({"height":get});
 	$(".desib_box").css({"margin-top":-(get-height)/2});
 	$(".miaoshu,.logo").css({"margin-top":(get-height)/2});
+	$(".gloab_bottm").height(height-2*heightaa);
 }
 });
 
@@ -110,7 +112,7 @@ function isImgLoad(callback){
         isLoad = true;
         t_img = setTimeout(function(){
             isImgLoad(callback); // 递归扫描
-        },500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+        },100); // 我这里设置的是500毫秒就扫描一次，可以自己调整
     }
 }
 

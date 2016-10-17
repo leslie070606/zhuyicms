@@ -49,7 +49,7 @@
 .open_self  { background: #F2F2F2 !important;}
 
 .foin_top,.foin_top>img { float: left; margin-bottom: .4rem;}
-.self_foin { background: #f5e9df; overflow: hidden;}
+.self_foin { background: #f5e9df; overflow: hidden; min-height: 100%;}
 .foin_bottom { font-size: .28rem;}
 .foin_bottom li  { display: block; width: 100%; float: left; margin-bottom: .4rem;}
 .foin_bottom li span { float: left; line-height: .88rem;}
