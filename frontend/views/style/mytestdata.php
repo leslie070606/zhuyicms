@@ -19,7 +19,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——工业风格</span>
                 </div>
                 <?php
-                switch ($mystyle){
+                switch ($mystyle['style']){
                     case '波西米亚' :
                         echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
                         break;
