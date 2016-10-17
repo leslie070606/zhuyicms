@@ -191,7 +191,7 @@ class StyleController extends Controller {
                                     return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                             }
                         } else {
-
+                            $userinfo = array('nickname'=>$res['user_name']);
                             switch ($res['style']) {
                                 case '波西米亚':
                                     //朋友在看你的风格
