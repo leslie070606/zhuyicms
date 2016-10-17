@@ -18,7 +18,7 @@
                         echo "<img src='img/fenggejieguo/boximiya01.png' />";
                         break;
                     case '中古' :
-                        echo '<div class="self_foin" style="background-color: #d2d0cf;">
+                        echo '<div class="self_foin" style="background-color: #ffc28a;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/zhonggu01.png' />";
                         break;
@@ -43,7 +43,7 @@
                         echo "<img src='img/fenggejieguo/heshi01.png' />";
                         break;
                     case '现代简约' :
-                         echo '<div class="self_foin" style="background-color: #dadada;">
+                         echo '<div class="self_foin" style="background-color: #9eb8dd;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
                         break;
