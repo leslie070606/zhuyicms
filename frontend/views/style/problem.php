@@ -15,9 +15,10 @@ use yii\helpers\Url;
             $(function () {
                 var nuberrr = 1;
                 var data = [];
+                var index=1;
                 $(".pro_here").on("click", function () {
                     var nuber = $(this).parents(".pro_box").find(".foin").length;
-                    var index = $(this).parents(".gloab").index() + 1;
+                    index++;
                     var nubera = parseInt("600" + index) + 1;
                     if (nubera == 6002) {
                         tj_ajax(6, nubera - 1);
@@ -27,12 +28,10 @@ use yii\helpers\Url;
 
                     if (nuber <= 0) {
                         $(this).addClass("foin");
-                        setTimeout(function () {
                             $("body").scrollTop(0);
                             $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
                             $(window).scrollTop(0);
-                            if (nuberrr <= 13) {
-                                console.log(nuberrr)
+                            if (nuberrr <= 14) {
                                 nuberrr++;
                             } else {
                                 $(".foin").each(function () {
@@ -43,7 +42,6 @@ use yii\helpers\Url;
                                 getMax(data);
                             }
                             ;
-                        }, 100);
 
                     } else {
                         return false;
