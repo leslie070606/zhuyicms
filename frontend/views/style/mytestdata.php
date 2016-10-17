@@ -103,11 +103,11 @@ use yii\helpers\Url;
                                     }
                                     $arr = array_values($rAr);
                                 }
-                               // assoc_unique($frindstyle, 'open_id');
+                                assoc_unique($frindstyle, 'open_id');
 
                                 //$frindstyle = array_unique($frindstyle);
                                 
-                                print_r($frindstyle);exit;
+                                //print_r($frindstyle);exit;
                                 foreach ($frindstyle as $ft) {
                                     if ($ft['style'] == '波西米亚') {
                                         echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";

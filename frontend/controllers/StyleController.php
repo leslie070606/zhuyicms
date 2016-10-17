@@ -122,7 +122,7 @@ class StyleController extends Controller {
                     if ($res['open_id'] == $userinfo['openid']) {
                         $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
                         
-                        print_r($frindstyle);exit;
+                      //  print_r($frindstyle);exit;
                         $mystyle = $shareModel->findOne(['link_id' => $link_id]);
                         return $this->render('mytestdata', ['mystyle' => $mystyle,'jsarr' => $jsarr, 'frindstyle' => $frindstyle, 'link_id' => $link_id]);
                     } else {
