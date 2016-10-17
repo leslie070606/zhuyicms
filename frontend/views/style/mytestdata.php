@@ -20,6 +20,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——工业风格</span>
                 </div>-->
                     <?php
+                    $sharelogo = '';
                     switch ($mystyle['style']) {
                         case '波西米亚' :
 
@@ -27,6 +28,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——波西米亚风</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/boximiya.png';
                             break;
                         case '中古' :
 
@@ -34,12 +36,15 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——中古风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/zhonggu_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/zhonggu.png';
                             break;
                         case '法式古典' :
-                            echo "<img src='img/fenggejieguo/fashigudian_bg.png' />";
+                            
                             echo "<span>你优雅浪漫,你是古典美学的追随者,你是精致生活的代言人</span>
                     <span>你最喜爱的风格是——法式古典风格</span>
                 </div>";
+                            echo "<img src='img/fenggejieguo/fashigudian_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/fashigudian.png';
                             break;
                         case '工业' :
 
@@ -47,6 +52,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——工业风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/gongye_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/gongye.png';
                             break;
                         case '美式' :
 
@@ -54,6 +60,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——美式风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/meishi_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/meishi.png';
                             break;
                         case '和式' :
 
@@ -61,6 +68,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——和式风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/heshi_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/heshi.png';
                             break;
                         case '现代简约' :
 
@@ -68,6 +76,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——现代简约风格</span>
                 </div>';
                             echo "<img src='img/fenggejieguo/xiandaijianyue_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/xiandaijianyue.png';
                             break;
                         case '新中式' :
 
@@ -75,6 +84,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——新中式风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/xinzhongshi_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/xinzhongshi.png';
                             break;
                         default :
 
@@ -82,6 +92,7 @@ use yii\helpers\Url;
                     <span>你最喜爱的风格是——波西米亚风</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
+                            $sharelogo = 'img/fenggejieguo/boximiya.png';
                     }
                     ?>
                 </div>
@@ -260,11 +271,11 @@ use yii\helpers\Url;
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '测测你的风格吧二货!', // 分享标题
-            desc: '测测你的风格吧二货!', // 分享描述
+            title: '这个测试说我很<?=$mystyle['style']?>', // 分享标题
+            desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?=$sharelogo ?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -281,7 +292,7 @@ use yii\helpers\Url;
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '测测你的风格吧二货', // 分享标题
+            title: '<?=$mystyle['user_name']?>说自己很<?=$mystyle['style']?>并向你扔了一枚水晶吊灯,还想看看你的品位是什么(每个风格 选出一个代表物)', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
