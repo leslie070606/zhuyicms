@@ -90,16 +90,16 @@ use yii\helpers\Url;
                 <div class="triangle-down"></div>
                 <div class="pro_box">
                     <div class="pro_here here_div" tetel="1a6a8">
-                        <img src="img/fengge/aaaa.jpg" />
+                        <img src="img/problem/1-1.jpg" />
                         <div class="here_text">古典</div>
                     </div>
                     <div class="pro_here here_div" tetel="2a4a9a10">
-                        <img src="img/fengge/aaaa.jpg" />
-                        <div class="here_text">古典</div>
+                        <img src="img/problem/1-2.jpg" />
+                        <div class="here_text">折中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1a2a5">
-                        <img src="img/fengge/aaaa.jpg" />
-                        <div class="here_text">古典</div>
+                        <img src="img/problem/1-3.jpg" />
+                        <div class="here_text">现代</div>
                     </div>
                 </div>
             </div>
