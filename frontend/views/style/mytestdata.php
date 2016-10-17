@@ -107,7 +107,7 @@ use yii\helpers\Url;
 
                                 //$frindstyle = array_unique($frindstyle);
                                 
-                                print_r($friendstyle);exit;
+                                print_r($frindstyle);exit;
                                 foreach ($frindstyle as $ft) {
                                     if ($ft['style'] == '波西米亚') {
                                         echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
