@@ -86,7 +86,7 @@ use yii\helpers\Url;
                 })();
 
                 var htmll = ["", "a", "b", "", "c", "d", "e", "", "f", "g", "h"];
-                alert(htmll[key[pos]]);
+                //alert(htmll[key[pos]]);
                 var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]];
 
                 window.location = _uploadUrl;
