@@ -216,7 +216,8 @@ class StyleController extends Controller {
                 $shareModel->save();
                 switch ($flashid) {
                     case 'a' :
-                        return $this->render('flasha', ['jsarr' => $jsarr,'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                        $stylearr = array('style'=>'波西米亚');
+                        return $this->render('flasha', ['jsarr' => $jsarr,'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'b' :
                         return $this->render('flashb');
