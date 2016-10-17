@@ -234,7 +234,6 @@ class StyleController extends Controller {
 
                 // 没有link_ID分享标示 是第一次做题
             } else {
-                echo $flashid;exit;
                 $shareModel = new \common\models\ZyShare();
                 switch ($flashid) {
                     case 'a' :
