@@ -273,7 +273,7 @@ class StyleController extends Controller {
             
             $friendstyle = $shareModel->find()->where(['style'=>$style,'source_openid' => $link_id])->all();
             
-            return $this->render('friendtest',['friendstyle'=>$friendstyle]);
+            return $this->render('friendtest',['friendstyle'=>$friendstyle,'style'=>$style]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {

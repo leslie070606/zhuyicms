@@ -12,7 +12,7 @@
         <div class="self_foin">
             <div class="foin_top">
                 <?php
-                switch ($mystyle) {
+                switch ($style) {
                     case '波西米亚' :
                         echo "<img src='img/fenggejieguo/boximiya01.png' />";
                         break;
