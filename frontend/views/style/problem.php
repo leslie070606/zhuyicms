@@ -241,7 +241,7 @@ use yii\helpers\Url;
                     </div>
                     <div class="pro_here here_div" tetel="2a9a2">
                         <img src="img/problem/6-2.jpg" />
-                        <div class="here_text"折中</div>
+                        <div class="here_text">折中</div>
                     </div>
                     <div class="pro_here here_div" tetel="3a1a5a6a10">
                         <img src="img/problem/6-3.jpg" />
