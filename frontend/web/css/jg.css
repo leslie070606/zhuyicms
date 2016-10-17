@@ -1,0 +1,176 @@
+
+@charset "utf-8";
+
+a,body {
+	color: #221814;
+	text-decoration: none;
+}
+img { max-width: 100%;}
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+input { border-radius: 0; line-height:normal !important ;}
+
+fieldset,img {
+	border: 0
+}
+ol,ul {
+	list-style: none
+}
+
+caption,th {
+	text-align: left
+}
+
+a:focus {
+	outline-style: none;
+}
+
+abbr,acronym {
+	border: 0;
+	font-variant: normal
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button { margin: 0; padding: 0;}
+i{ font-style:normal} 
+
+textarea {
+	resize: none
+}
+ul {-webkit-padding-start: 0px;    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;}
+html {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	 font-size: 50px;
+	height: 100%;
+	background-color: #FFFFFF;
+	max-width: 500px;
+}
+/*
+@font-face {
+	font-family:fzlth;
+	src: url(../font-face/FZLTHJW.TTF);
+}
+@font-face {
+	font-family:fzltxh;
+	src: url(../font-face/fzltxh.TTF);
+}*/
+body {
+	font-family:"PingFang SC","Noto sans CJK SC",helvetica,"microsoft yahei",arial,sans-serif;
+	background: #fff;
+	overflow-x: hidden;
+	
+	-webkit-text-size-adjust: none;
+	max-width: 500px;
+	margin: 0 auto;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+.desib_box { width: 100%; height: 100%; overflow: hidden; position: relative;}
+.share_box { font-size: .26rem; position: absolute; width: 100%; left: 0; bottom:.4rem; color: #333333; z-index: 19;}
+.share_box .share_btn { width: 92%; margin-left: 4%; height: .88rem; float: left; line-height: .88rem; background: #FF4E38; color: #FFFFFF; text-align: center;}
+.share_box .cs_more { width: 100%; clear: both; text-align: center;}
+.gloab_bottm { background: #794141; padding-top: .66rem; float: left; width: 100%; position: relative; top: -1px; font-size: .20rem; overflow: hidden; color: #57372e; text-align: center;}
+.gloab_bottm .erweima { width: 30%;}
+.bottm_mesg { line-height: 1.3; margin-bottom: 3.2rem; margin-top: .3rem;}
+.cs_more .more_a::after { content: "|"; margin: 0 .2rem; }
+.cs_more { padding-top: .2rem;}
+.share_box { display: none;}
+.share_box_b { bottom: .6rem;}
+.share_box_active { display: block;}
+.share_box { opacity: 0;animation-fill-mode: forwards !important;
+	-webkit-animation-fill-mode: forwards !important;}
+
+/*锚点*/
+.miaodian_mesng {  width: 100%; position: absolute;z-index: 30; font-size: .24rem; left: 0%;}
+.miaodian_mesng .miaodian_text {display:none; z-index:20;color: #666666; position: relative; line-height: 1.1; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 88%; padding: .2rem 2%;}
+.miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
+.sanjiao{
+	display: none;
+	width:0;
+	height:0;
+	position: relative;
+	z-index: 21;
+	top: 1px;
+	border-left:.1rem solid transparent;   
+	border-right:.1rem solid transparent;   
+	border-bottom:.1rem solid #fff;
+}
+.sanjiao_box>.maodian_icon { font-size: .2rem; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
+.miaodian_mesng .sanjiao_box { position: relative; left: 23.5%; top:0;}
+.miaodian_mesng .click_m { position: absolute; width: 1rem; height: 1rem; top: -.5rem; left: -.5rem;}
+
+
+.desib_box .miaoshu {
+	position: relative;
+	z-index: 24;
+	font-size: .28rem;
+	margin: .3rem;
+	padding-top: .3rem;
+	color: #333333;
+	opacity: 0;
+	animation-fill-mode: forwards !important;
+	-webkit-animation-fill-mode: forwards !important;
+}
+
+
+   
+.desib_box .miaoshu>span { display: block;}
+.miaoshu .miaoshu_name { font-size: .32rem;}
+.miaoshu .text_big { font-size: .66rem; font-weight: bold;}
+.logo { position: absolute; right: .3rem; top: .3rem; z-index: 22; font-size: .88rem; color: #FF4E38;}
+.logo::before { position: relative; z-index: 22;}
+.logo::after { content: ""; position: absolute; width:.78rem; height:.78rem; left: .05rem; top: .05rem; border-radius: .2rem; z-index: 21; background: #FFFFFF;}
+.by_ad { font-size: 1.2rem; color: #FF4E38;}
+
+/*适配*/
+
+@media screen and (min-width: 255px) {
+    html {
+        font-size: 44px;
+    }
+}
+
+@media screen and (min-width: 295px) {
+    html {
+        font-size:44px;
+    }
+}
+ 
+@media screen and (min-width: 335px) {
+    html {
+        font-size: 46px;
+    }
+}
+ @media screen and (min-width: 375px) {
+    html {
+        font-size: 47px;
+    }
+}
+ 
+@media screen and (min-width: 410px) {
+    html {
+        font-size: 48px;
+    }
+}
+ 
+@media screen and (min-width: 450px) {
+    html {
+        font-size: 48px;
+    }
+}
+ 
+@media screen and (min-width: 490px) {
+    html {
+        font-size: 48px;
+    }
+}
+
+@media screen and (min-width: 530px) {
+    html {
+        font-size: 50px;
+    }
+}
+
