@@ -234,6 +234,7 @@ class StyleController extends Controller {
 
                 // 没有link_ID分享标示 是第一次做题
             } else {
+                echo $flashid;exit;
                 $shareModel = new \common\models\ZyShare();
                 switch ($flashid) {
                     case 'a' :
@@ -317,31 +318,40 @@ class StyleController extends Controller {
                 $jsarr['timestamp'] = '234234234';
                 switch ($flashid) {
                     case 'a' :
-                        return $this->render('flasha', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '波西米亚');
+                        return $this->render('flasha', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'b' :
-                        return $this->render('flashb', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '中古');
+                        return $this->render('flashb', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'c' :
-                        return $this->render('flashc', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '法式古典');
+                        return $this->render('flashc', ['userInfo' => $userinfo, 'mystyle' => $stylearr,'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'd' :
-                        return $this->render('flashd', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '工业');
+                        return $this->render('flashd', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'e' :
-                        return $this->render('flashe', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '美式');
+                        return $this->render('flashe', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'f' :
-                        return $this->render('flashf', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '和式');
+                        return $this->render('flashf', ['userInfo' => $userinfo, 'mystyle' => $stylearr,'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'g' :
-                        return $this->render('flashg', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '现代简约');
+                        return $this->render('flashg', ['userInfo' => $userinfo, 'mystyle' => $stylearr,'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'h' :
-                        return $this->render('flashh', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '新中式');
+                        return $this->render('flashh', ['userInfo' => $userinfo, 'mystyle' => $stylearr,'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     default :
-                        return $this->render('flasha', ['userInfo' => $userinfo, 'jsarr' => $jsarr, 'link_id' => '1233']);
+                        $stylearr = array('style' => '波西米亚');
+                        return $this->render('flasha', ['userInfo' => $userinfo, 'mystyle' => $stylearr,'jsarr' => $jsarr, 'link_id' => '1233']);
                 }
             }
         }
