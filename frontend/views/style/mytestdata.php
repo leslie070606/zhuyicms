@@ -59,9 +59,9 @@ use yii\helpers\Url;
                         break;
                     case '现代简约' :
                         echo "<img src='img/fenggejieguo/xiandaijianyue_bg.png' />";
-                        echo "<span>你简单纯粹,你是/“Less is More/”的信徒,你是追寻本质的思想者</span>
+                        echo '<span>你简单纯粹,你是“Less is More”的信徒,你是追寻本质的思想者</span>
                     <span>你最喜爱的风格是——现代简约风格</span>
-                </div>";
+                </div>';
                         break;
                     case '新中式' :
                         echo "<img src='img/fenggejieguo/xinzhongshi_bg.png' />";
