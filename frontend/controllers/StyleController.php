@@ -121,6 +121,8 @@ class StyleController extends Controller {
                     // 是自己查看自己的
                     if ($res['open_id'] == $userinfo['openid']) {
                         $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
+                        
+                        print($frindstyle);exit;
                         $mystyle = $shareModel->findOne(['link_id' => $link_id]);
                         return $this->render('mytestdata', ['mystyle' => $mystyle,'jsarr' => $jsarr, 'frindstyle' => $frindstyle, 'link_id' => $link_id]);
                     } else {
