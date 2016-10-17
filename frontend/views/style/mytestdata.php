@@ -242,7 +242,7 @@ use yii\helpers\Url;
 
             </div>
             <div class="foin_more">
-                <a href="<?php echo Url::toRoute('/style/index'); ?>">我要重玩一次</a>
+                <a href="<?php echo Url::toRoute('/style/index'); ?>" style="color: #FF4E38">我要重玩一次</a>
             </div>
     </body>
 </html>
