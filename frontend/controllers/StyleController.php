@@ -54,7 +54,7 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouindex&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
-            }else{
+            } else {
                 return $this->render('index', ['link_id' => $link_id]);
             }
         }
@@ -80,7 +80,7 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouproblem&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
-            }else{
+            } else {
                 return $this->render('problem', ['link_id' => $link_id]);
             }
         }
@@ -122,13 +122,7 @@ class StyleController extends Controller {
                     if ($res['open_id'] == $userinfo['openid']) {
                         $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
                         $mystyle = $shareModel->findOne(['link_id' => $link_id]);
-//                        echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//                        echo "自己查看自己!<br>";
-//                        foreach ($farr as $val) {
-//                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
-//                            echo $val['user_name'] . "已完成测试!<br>";
-//                        }
-                        return $this->render('mytestdata', ['mystyle' => $mystyle, 'frindstyle' => $frindstyle,'link_id'=>$link_id]);
+                        return $this->render('mytestdata', ['mystyle' => $mystyle, 'frindstyle' => $frindstyle, 'link_id' => $link_id]);
                     } else {
                         // 有ID说明朋友在测试
                         if (isset($flashid) && !empty($flashid)) {
@@ -175,11 +169,7 @@ class StyleController extends Controller {
                                     return $this->render('flashb');
                             }
                         } else {
-                            //朋友查看分享
-                            //echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-                            // echo "<img src='" . $res['headimgurl'] . "' style='width:200px;height:200px;'/>";
-                            // echo $res['user_name'] . "他的风格是" . $res['style'] . "!<br>";
-
+                           
                             return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                         }
                     }
@@ -213,6 +203,7 @@ class StyleController extends Controller {
                     default :
                         $style = '新中式';
                 }
+
                 $shareModel->open_id = $userinfo['openid'];
                 $shareModel->user_name = $userinfo['nickname'];
                 $shareModel->headimgurl = $userinfo['headimgurl'];
@@ -221,9 +212,6 @@ class StyleController extends Controller {
                 $shareModel->style = $style;
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();
-//                $share_id = $shareModel->attributes['share_id'];
-//                echo "<spen style='font-size: 45px; font-weight: 15px;'><pre>";
-//                echo $share_id . "###";
                 switch ($flashid) {
                     case 'a' :
                         return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
@@ -237,6 +225,16 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shoureport&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
+            } else {
+                $userinfo['nickname']= '游客';
+                $jsarr['timestamp'] = '234234234';
+                switch ($flashid) {
+                    case 'a' :
+                        return $this->render('flasha',['userInfo' => $userinfo,'jsarr' => $jsarr,'link_id'=>'1233']);
+                        break;
+                    case 'b' :
+                        return $this->render('flashb');
+                }
             }
         }
     }
@@ -267,17 +265,17 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
-        
+
         $style = Yii::$app->request->get('style');
         $link_id = Yii::$app->request->get('link_id');
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
-            
+
             $shareModel = new \common\models\ZyShare();
-            
-            $friendstyle = $shareModel->find()->where(['style'=>$style,'source_openid' => $link_id])->all();
-            
-            return $this->render('friendtest',['friendstyle'=>$friendstyle,'style'=>$style]);
+
+            $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
+
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'style' => $style]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
@@ -433,7 +431,7 @@ class StyleController extends Controller {
             // 授权登录成功!
             $session->set('userInfo', $userinfo);
 
-            $this->redirect(array('style/report','link_id'=>$link_id));
+            $this->redirect(array('style/report', 'link_id' => $link_id));
         }
     }
 
