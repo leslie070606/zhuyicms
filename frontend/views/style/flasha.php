@@ -18,7 +18,7 @@ use yii\helpers\Url;
     <body>
         <div class="desib_box">
             <div class="miaoshu">
-                <span class="miaoshu_name">找死</span>
+                <span class="miaoshu_name"><?php echo $userInfo['nickname'] ?></span>
                 <span>你叛逆不羁，</span>
                 <span>是异域风情的制造者，</span>
                 <span>是自由不羁的Bobo族，</span>
