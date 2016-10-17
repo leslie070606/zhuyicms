@@ -124,7 +124,7 @@ class StyleController extends Controller {
 //                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
 //                            echo $val['user_name'] . "已完成测试!<br>";
 //                        }
-                        return $this->render('mytestdata', ['mystyle' => $mystyle, 'frindstyle' => $frindstyle]);
+                        return $this->render('mytestdata', ['mystyle' => $mystyle, 'frindstyle' => $frindstyle,'link_id'=>$link_id]);
                     } else {
                         // 有ID说明朋友在测试
                         if (isset($flashid) && !empty($flashid)) {
@@ -133,8 +133,26 @@ class StyleController extends Controller {
                                 case 'a' :
                                     $style = "波西米亚";
                                     break;
+                                case 'b' :
+                                    $style = "中古";
+                                    break;
+                                case 'c' :
+                                    $style = "法式古典";
+                                    break;
+                                case 'd' :
+                                    $style = "工业";
+                                    break;
+                                case 'e' :
+                                    $style = "美式";
+                                    break;
+                                case 'f' :
+                                    $style = "和式";
+                                    break;
+                                case 'g' :
+                                    $style = "现代简约";
+                                    break;
                                 default :
-                                    $style = '简欧';
+                                    $style = '新中式';
                             }
                             $shareModel->open_id = $userinfo['openid'];
                             $shareModel->user_name = $userinfo['nickname'];
@@ -170,8 +188,26 @@ class StyleController extends Controller {
                     case 'a' :
                         $style = "波西米亚";
                         break;
+                    case 'b' :
+                        $style = "中古";
+                        break;
+                    case 'c' :
+                        $style = "法式古典";
+                        break;
+                    case 'd' :
+                        $style = "工业";
+                        break;
+                    case 'e' :
+                        $style = "美式";
+                        break;
+                    case 'f' :
+                        $style = "和式";
+                        break;
+                    case 'g' :
+                        $style = "现代简约";
+                        break;
                     default :
-                        $style = '简欧';
+                        $style = '新中式';
                 }
                 $shareModel->open_id = $userinfo['openid'];
                 $shareModel->user_name = $userinfo['nickname'];
@@ -227,13 +263,21 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
+        
+        $style = Yii::$app->request->get('style');
+        $link_id = Yii::$app->request->get('link_id');
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
-            return $this->render('friendtest');
+            
+            $shareModel = new \common\models\ZyShare();
+            
+            $friendstyle = $shareModel->find()->where(['style'=>$style,'source_openid' => $link_id])->all();
+            
+            return $this->render('friendtest',['friendstyle'=>$friendstyle]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
-                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shoufstyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shoufstyle&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             }
         }
     }
@@ -363,7 +407,7 @@ class StyleController extends Controller {
     public function actionShoufstyle() {
         $code = $_GET['code'];
 
-        //$link_id = Yii::$app->request->get('state');
+        $link_id = Yii::$app->request->get('state');
 
         $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
 
@@ -385,7 +429,7 @@ class StyleController extends Controller {
             // 授权登录成功!
             $session->set('userInfo', $userinfo);
 
-            $this->redirect(array('style/friendstyle'));
+            $this->redirect(array('style/report','link_id'=>$link_id));
         }
     }
 

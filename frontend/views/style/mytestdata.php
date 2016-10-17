@@ -47,8 +47,8 @@ use yii\helpers\Url;
                 }
                 ?>
             </div>
-            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
-                    <img src="img/fenggejieguo/poximiya.png" />
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'波西米亚','link_id'=>$link_id]); ?>"><div>
+                    <img src="img/fenggejieguo/boximiya.png" />
                     <span>波西米亚</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
@@ -65,7 +65,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'中古','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/zhonggu.png" />
                     <span>中古</span>
                     <div class="style_bottom">
@@ -82,7 +82,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'法式古典','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/fashigudian.png" />
                     <span>法式古典</span>
                     <div class="style_bottom">
@@ -99,7 +99,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'工业','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/gongye.png" />
                     <span>工业</span>
                     <div class="style_bottom">
@@ -107,7 +107,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'美式','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/meishi.png" />
                     <span>美式</span>
                     <div class="style_bottom">
@@ -124,7 +124,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'和式','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/heshi.png" />
                     <span>和式</span>
                     <div class="style_bottom">
@@ -141,7 +141,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'现代简约','link_id'=>$link_id]); ?>"><div>
                     <img src="img/fenggejieguo/xiandaijianyue.png" />
                     <span>现代简约</span>
                     <div class="style_bottom">
@@ -158,8 +158,8 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fenggejieguo/xinzhongshi.jpg" />
+            <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle','style'=>'新中式','link_id'=>$link_id]); ?>"><div>
+                    <img src="img/fenggejieguo/xinzhongshi.png" />
                     <span>新中式</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>

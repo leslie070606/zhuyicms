@@ -485,9 +485,6 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div><!--gloab end-->
-
-    
-    
     </body>
 </html>
 
