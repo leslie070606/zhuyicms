@@ -122,9 +122,8 @@ class StyleController extends Controller {
                     if ($res['open_id'] == $userinfo['openid']) {
                         $frindstyle = $shareModel->findAll(['source_openid' => $link_id]);
                         
-                      //  print_r($frindstyle);exit;
-                        $mystyle = $shareModel->findOne(['link_id' => $link_id]);
-                        return $this->render('mytestdata', ['mystyle' => $mystyle,'jsarr' => $jsarr, 'frindstyle' => $frindstyle, 'link_id' => $link_id]);
+                        //$mystyle = $shareModel->findOne(['link_id' => $link_id]);
+                        return $this->render('mytestdata', ['mystyle' => $res,'jsarr' => $jsarr, 'frindstyle' => $frindstyle, 'link_id' => $link_id]);
                     } else {
                         // 有ID说明朋友在测试
                         if (isset($flashid) && !empty($flashid)) {
@@ -165,14 +164,15 @@ class StyleController extends Controller {
                             $shareModel->save();
                             switch ($flashid) {
                                 case 'a' :
-                                    return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                                    return $this->render('flasha', ['jsarr' => $jsarr,'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                                     break;
                                 case 'b' :
                                     return $this->render('flashb');
                             }
                         } else {
-                           
-                            return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
+                            
+                            //朋友在看你的风格
+                            return $this->render('flasha', ['jsarr' => $jsarr,'mystyle' => $res, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                         }
                     }
                 }
@@ -216,7 +216,7 @@ class StyleController extends Controller {
                 $shareModel->save();
                 switch ($flashid) {
                     case 'a' :
-                        return $this->render('flasha', ['jsarr' => $jsarr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
+                        return $this->render('flasha', ['jsarr' => $jsarr,'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'b' :
                         return $this->render('flashb');

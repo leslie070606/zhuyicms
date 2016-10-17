@@ -53,6 +53,39 @@ use yii\helpers\Url;
         </div>
     </body>
 </html>
+<?php
+
+$sharelogo = '';
+switch ($mystyle['style']){
+case '波西米亚':
+    $sharelogo = '/img/fenggejieguo/boximiya.png';
+    break;
+case '中古':
+    $sharelogo = '/img/fenggejieguo/zhonggu.png';
+    break;
+case '法式古典':
+    $sharelogo = '/img/fenggejieguo/fashigudian.png';
+    break;
+case '工业':
+    $sharelogo = '/img/fenggejieguo/gongye.png';
+    break;
+case '美式':
+    $sharelogo = '/img/fenggejieguo/meishi.png';
+    break;
+case '和式':
+    $sharelogo = '/img/fenggejieguo/heshi.png';
+    break;
+case '现代简约':
+    $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
+    break;
+case '新中式':
+    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
+    break;
+default :
+    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
+        
+}
+?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 
 <script type="text/javascript">
@@ -79,11 +112,11 @@ use yii\helpers\Url;
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '测测你的风格吧二货!', // 分享标题
-            desc: '测测你的风格吧二货!', // 分享描述
+            title: '这个测试说我很<?=$mystyle['style']?>', // 分享标题
+            desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -100,10 +133,10 @@ use yii\helpers\Url;
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '测测你的风格吧二货', // 分享标题
+            title: '这个测试说我的品位很<?=$mystyle['style']?>...1分钟14道题,看看你对「家」的态度', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数

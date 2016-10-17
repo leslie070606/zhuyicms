@@ -292,10 +292,10 @@ use yii\helpers\Url;
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '<?=$mystyle['user_name']?>说自己很<?=$mystyle['style']?>并向你扔了一枚水晶吊灯,还想看看你的品位是什么(每个风格 选出一个代表物)', // 分享标题
+            title: '这个测试说我的品位很<?=$mystyle['style']?>...1分钟14道题,看看你对「家」的态度', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/zhuyilogo.jpg', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?=$sharelogo ?>', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数
