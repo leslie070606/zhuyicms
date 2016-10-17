@@ -45,7 +45,7 @@ use yii\helpers\Url;
                                 getMax(data);
                             }
                             ;
-                        },200)
+                        },200);
                     } else {
                         return false;
                     }
