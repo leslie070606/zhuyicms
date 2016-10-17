@@ -1,8 +1,15 @@
 $(function(){
+    
+        document.body.addEventListener('touchmove',grrrr, false);
+	function grrrr(){
+    	event.preventDefault();
+	}
 	var time=false;
 	setTimeout(function(){
 		time=true;
-	},4500)
+		document.body.removeEventListener('touchmove', grrrr,false);
+	},4500);
+	
 	if(IsPC()){
 		autoget();
 	}else{
