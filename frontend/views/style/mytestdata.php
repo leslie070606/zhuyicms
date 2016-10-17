@@ -18,10 +18,37 @@ use yii\helpers\Url;
                     <span>你酷感十足，你是机械时代的迷恋者，你是拒绝平庸的摇滚先锋，</span>
                     <span>你最喜爱的风格是——工业风格</span>
                 </div>
-                <img src="img/fengge/fengge_a.jpg" />
+                <?php
+                switch ($mystyle){
+                    case '波西米亚' :
+                        echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
+                        break;
+                    case '中古' :
+                        echo "<img src='img/fenggejieguo/zhonggu_bg.png' />";
+                        break;
+                    case '法式古典' :
+                        echo "<img src='img/fenggejieguo/fashigudian_bg.png' />";
+                        break;
+                    case '工业' :
+                        echo "<img src='img/fenggejieguo/gongye_bg.png' />";
+                        break;
+                    case '美式' :
+                        echo "<img src='img/fenggejieguo/meishi_bg.png' />";
+                        break;
+                    case '和式' :
+                        echo "<img src='img/fenggejieguo/heshi_bg.png' />";
+                        break;
+                    case '现代简约' :
+                        echo "<img src='img/fenggejieguo/xiandaijianyue_bg.png' />";
+                        break;
+                    case '新中式' :
+                        echo "<img src='img/fenggejieguo/xinzhongshi_bg.png' />";
+                        break;
+                }
+                ?>
             </div>
             <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
-                    <img src="img/fengge/chose_style.jpg" />
+                    <img src="img/fenggejieguo/poximiya.png" />
                     <span>波西米亚</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
@@ -39,14 +66,14 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
-                    <img src="img/fengge/chose_style.jpg" />
-                    <span>二十世纪中现代</span>
+                    <img src="img/fenggejieguo/zhonggu.png" />
+                    <span>中古</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '二十世纪中现代'){
+                            if($ft['style'] == '中古'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -56,7 +83,7 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
-                    <img src="img/fengge/chose_style.jpg" />
+                    <img src="img/fenggejieguo/fashigudian.png" />
                     <span>法式古典</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
@@ -73,7 +100,7 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fengge/chose_style.jpg" />
+                    <img src="img/fenggejieguo/gongye.png" />
                     <span>工业</span>
                     <div class="style_bottom">
                         快去邀请小伙伴来测试吧！
@@ -81,7 +108,7 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fengge/chose_style.jpg" />
+                    <img src="img/fenggejieguo/meishi.png" />
                     <span>美式</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
@@ -98,14 +125,14 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fengge/chose_style.jpg" />
-                    <span>日式和风</span>
+                    <img src="img/fenggejieguo/heshi.png" />
+                    <span>和式</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '日式和风'){
+                            if($ft['style'] == '和式'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
@@ -115,7 +142,7 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fengge/chose_style.jpg" />
+                    <img src="img/fenggejieguo/xiandaijianyue.png" />
                     <span>现代简约</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
@@ -132,14 +159,14 @@ use yii\helpers\Url;
                 </div></a>
 
             <a class="chose_here" href="flash_a.html"><div>
-                    <img src="img/fengge/chose_style.jpg" />
-                    <span>中式</span>
+                    <img src="img/fenggejieguo/xinzhongshi.jpg" />
+                    <span>新中式</span>
                     <div class="style_bottom">
                         <span class="bot_title">Match</span>
                         <ul>
                             <?php 
                         foreach ($frindstyle as $ft){
-                            if($ft['style'] == '中式'){
+                            if($ft['style'] == '新中式'){
                                 echo "<li><img src='".$ft['headimgurl']."' /></li>";
                             }
                         }
