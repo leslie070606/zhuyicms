@@ -15,7 +15,7 @@ use yii\helpers\Url;
             $(function () {
                 var nuberrr = 1;
                 var data = [];
-                var index=1;
+                var index=0;
                 $(".pro_here").on("click", function () {
                     var nuber = $(this).parents(".pro_box").find(".foin").length;
                     index++;
