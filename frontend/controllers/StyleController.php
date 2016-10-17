@@ -124,8 +124,7 @@ class StyleController extends Controller {
 //                            echo "<img src='" . $val['headimgurl'] . "' style='width:200px;height:200px;'/>";
 //                            echo $val['user_name'] . "已完成测试!<br>";
 //                        }
-                        return $this->render('mytestdata',['mystyle'=>$mystyle,'frindstyle'=>$frindstyle]);
-                        
+                        return $this->render('mytestdata', ['mystyle' => $mystyle, 'frindstyle' => $frindstyle]);
                     } else {
                         // 有ID说明朋友在测试
                         if (isset($flashid) && !empty($flashid)) {
@@ -217,6 +216,24 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shouchosestyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }
+        }
+    }
+
+    // 查看朋友的具体测试
+    public function actionFriendstyle() {
+        //判断是否登陆过
+        $session = Yii::$app->session;
+        if (!$session->isActive) {
+            $session->open();
+        }
+        // 判断用户是否授权成功
+        if ($userinfo = $session->get('userInfo')) {
+            return $this->render('friendtest');
+        } else {
+            //判断是否是微信内登录
+            if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+                return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shoufstyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
             }
         }
     }
@@ -339,6 +356,36 @@ class StyleController extends Controller {
             $session->set('userInfo', $userinfo);
 
             $this->redirect(array('style/chosestyle'));
+        }
+    }
+
+    //朋友的风格结果授权
+    public function actionShoufstyle() {
+        $code = $_GET['code'];
+
+        //$link_id = Yii::$app->request->get('state');
+
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx36e36094bd446689&secret=1d8f874eda186deee2c8a81b577fe094&code=" . $code . "&grant_type=authorization_code";
+
+        $res = $this->doCurlGetRequest($url);
+
+        $res = json_decode($res, TRUE);
+
+        $urlUser = "https://api.weixin.qq.com/sns/userinfo?access_token=" . $res['access_token'] . "&openid=" . $res['openid'] . "";
+        $userinfo = $this->doCurlGetRequest($urlUser);
+        $userinfo = json_decode($userinfo, TRUE);
+
+        if (count($userinfo) > 0) {
+            //初始化session
+            $session = Yii::$app->session;
+            if (!$session->isActive) {
+                $session->open();
+            }
+
+            // 授权登录成功!
+            $session->set('userInfo', $userinfo);
+
+            $this->redirect(array('style/friendstyle'));
         }
     }
 

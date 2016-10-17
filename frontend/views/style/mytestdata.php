@@ -20,7 +20,7 @@ use yii\helpers\Url;
                 </div>
                 <img src="img/fengge/fengge_a.jpg" />
             </div>
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
                     <img src="img/fengge/chose_style.jpg" />
                     <span>波西米亚</span>
                     <div class="style_bottom">
@@ -38,7 +38,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
                     <img src="img/fengge/chose_style.jpg" />
                     <span>二十世纪中现代</span>
                     <div class="style_bottom">
@@ -55,7 +55,7 @@ use yii\helpers\Url;
                     </div>
                 </div></a>
 
-            <a class="chose_here" href="flash_a.html"><div>
+            <a class="chose_here" href="<?php echo Url::toRoute('/style/friendstyle'); ?>"><div>
                     <img src="img/fengge/chose_style.jpg" />
                     <span>法式古典</span>
                     <div class="style_bottom">
