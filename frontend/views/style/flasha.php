@@ -54,7 +54,7 @@ use yii\helpers\Url;
     </body>
 </html>
 <?php
-var_dump($mystyle['style']);exit;
+//var_dump($mystyle['style']);exit;
 $sharelogo = '';
 switch ($mystyle['style']){
 case '波西米亚':
