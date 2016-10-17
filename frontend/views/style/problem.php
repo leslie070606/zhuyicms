@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 ?>
 <!DOCTYPE html>
@@ -9,70 +10,91 @@ use yii\helpers\Url;
         <title>风格测试</title>
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
-<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            var nuberrr = 1;
-            var data = [];
-            var index=0;
-            $(".pro_here").on("click", function () {
-                var nuber = $(this).parents(".pro_box").find(".foin").length;
-                index++;
-                if (nuber <= 0) {
-                    $(this).addClass("foin");
-                    
-                        $("body").scrollTop(0);
-                        $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
-                        $(window).scrollTop(0);
-                        if (nuberrr <= 13) {
-                            //console.log(nuberrr)
-                            nuberrr++;
-                        } else {
-                            $(".foin").each(function () {
-                                var get = $(this).attr("tetel").split("a");
-
-                                data = $.merge(data, get);
-                            });
-                            getMax(data);
-                        }
-                        ;
-                    
-
-                } else {
-                    return false;
-                }
-            });
-        });
-
-        function getMax(arr) {
-            var obj = {},
-                    l = arr.length,
-                    key = [],
-                    val = [];
-            for (var i = 0; i < l; i++) {
-                !obj[arr[i]] ? obj[arr[i]] = 1 : obj[arr[i]] += 1;
-            }
-            for (i in obj) {
-                key.push(i);
-                val.push(obj[i]);
-            }
-            var max = Math.max.apply("", val);
-            var pos = (function () {
-                var j, len = val.length;
-                for (j = 0; j < len; j++) {
-                    if (max == val[j]) {
-                        return j;
+        <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                var nuberrr = 1;
+                var data = [];
+                $(".pro_here").on("click", function () {
+                    var nuber = $(this).parents(".pro_box").find(".foin").length;
+                    var index = $(this).parents(".gloab").index() + 1;
+                    var nubera = parseInt("600" + index) + 1;
+                    if (nubera == 6002) {
+                        tj_ajax(6, nubera - 1);
                     }
-                }
-            })();
+                    tj_ajax(6, nubera, "", "", "答题");
 
-            var htmll = ["", "a", "b", "", "c", "d", "e", "", "f", "g", "h"];
-           // "flash_" + htmll[key[pos]] + ".html";
-            var _uploadUrl = "<?php echo Url::to(['style/report','link_id'=>$link_id]); ?>"+'&flash='+htmll[key[pos]];
-            
-            window.location = _uploadUrl;
-        }
-    </script>
+
+                    if (nuber <= 0) {
+                        $(this).addClass("foin");
+                        setTimeout(function () {
+                            $("body").scrollTop(0);
+                            $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
+                            $(window).scrollTop(0);
+                            if (nuberrr <= 13) {
+                                console.log(nuberrr)
+                                nuberrr++;
+                            } else {
+                                $(".foin").each(function () {
+                                    var get = $(this).attr("tetel").split("a");
+
+                                    data = $.merge(data, get);
+                                });
+                                getMax(data);
+                            }
+                            ;
+                        }, 100);
+
+                    } else {
+                        return false;
+                    }
+                });
+
+
+
+            });
+
+
+            function getMax(arr) {
+                var obj = {},
+                        l = arr.length,
+                        key = [],
+                        val = [];
+                for (var i = 0; i < l; i++) {
+                    !obj[arr[i]] ? obj[arr[i]] = 1 : obj[arr[i]] += 1;
+                }
+                for (i in obj) {
+                    key.push(i);
+                    val.push(obj[i]);
+                }
+                var max = Math.max.apply("", val);
+                var pos = (function () {
+                    var j, len = val.length;
+                    for (j = 0; j < len; j++) {
+                        if (max == val[j]) {
+                            return j;
+                        }
+                    }
+                })();
+
+                var htmll = ["", "a", "b", "", "c", "d", "e", "", "f", "g", "h"];
+                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]];
+
+                window.location = _uploadUrl;
+    //  console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
+            }
+
+
+            function tj_ajax(a, b, c, d, e) {
+                $.ajax({
+                    type: "get",
+                    data: "",
+                    url: "http://zhuyihome.com/index.php?r=data-count-api/create/create&mtId=" + a + "&mdId=" + b + "&userId=" + c + "&designerId=" + d + "&mMark=" + e + "",
+                    async: true,
+                    success: function (data) {}
+                });
+            }
+        </script>
     </head>
     <body>
         <input type="hidden" id="hidden" />
@@ -287,7 +309,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">8</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
-                     你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>住艺的设计师于魁尤其喜欢“沙比利”材质的家具，那么，你呢？</span>
+                    你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>住艺的设计师于魁尤其喜欢“沙比利”材质的家具，那么，你呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
@@ -464,7 +486,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">14</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
-                     <span>倘若你需要同某一种动物分享家的空间，你会希望它是？</span>
+                    <span>倘若你需要同某一种动物分享家的空间，你会希望它是？</span>
                 </div>
             </div>
             <div class="pro_box_big">

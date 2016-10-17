@@ -1,4 +1,8 @@
 $(function(){
+	var time=false;
+	setTimeout(function(){
+		time=true;
+	},4500)
 	if(IsPC()){
 		autoget();
 	}else{
@@ -13,7 +17,23 @@ $(function(){
 			autogeta();
 		}
 	};
+	$("body,html").bind("click",function(e){
+        if($(e.target).closest(".click_m").length == 0 && $(e.target).closest(".click_m").length == 0){
+           $(".sanjiao,.miaodian_text").fadeOut(200);
+        }
+    })
 	
+	$(".click_m").on("click",function(){
+		if(time){
+			if($(this).siblings(".sanjiao").css("display")=="none"){
+				$(".sanjiao,.miaodian_text").fadeOut(200);
+				$(this).parents(".miaodian_mesng").find(".sanjiao,.miaodian_text").fadeIn(200);
+			}else{
+				$(this).parents(".miaodian_mesng").find(".sanjiao,.miaodian_text").fadeOut(200);
+				
+			}
+		}
+	})
 	
 	function autoget(){
 	var width=$(".desib_box").width();
@@ -29,6 +49,7 @@ $(function(){
 	var get=(736/414)*width;
 	$(".desib_box").css({"height":get});
 	$(".desib_box").css({"margin-top":-(get-height)/2});
+	$(".miaoshu,.logo").css({"margin-top":(get-height)/2});
 }
 });
 
@@ -84,4 +105,15 @@ function isImgLoad(callback){
             isImgLoad(callback); // 递归扫描
         },500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
     }
+}
+
+
+function tj_ajax(a,b,c,d,e){
+		$.ajax({
+		type: "get",
+		data: "",
+		url: "http://zhuyihome.com/index.php?r=data-count-api/create/create&mtId="+a+"&mdId="+b+"&userId="+c+"&designerId="+d+"&mMark="+e+"",
+		async: true,
+		success: function(data) {}
+	});
 }

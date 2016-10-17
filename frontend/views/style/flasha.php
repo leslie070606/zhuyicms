@@ -8,6 +8,8 @@ use yii\helpers\Url;
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
+                <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
+
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_a.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -15,6 +17,15 @@ use yii\helpers\Url;
     </head>
     <body>
         <div class="desib_box">
+            <div class="miaoshu">
+                <span class="miaoshu_name">找死</span>
+                <span>你叛逆不羁，</span>
+                <span>是异域风情的制造者，</span>
+                <span>是自由不羁的Bobo族，</span>
+                <span>你最喜爱的风格是——</span>
+                <span class="text_big">波西米亚风格</span>
+            </div>
+            <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img class="des_img des_imga" src="img/flash_a/1.png" />
@@ -32,6 +43,71 @@ use yii\helpers\Url;
             <img class="des_img des_imgp_b" src="img/flash_a/15.png" />
             <img class="des_img des_imgp_c" src="img/flash_a/14.png" />
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
+            <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">温暖色调</span>
+                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                </div>
+            </div>
+
+            <div class="miaodian_mesng miaodiana_aa">
+                <div class="sanjiao_box">
+                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">浓烈色彩</span>
+                    如何自由而聪明地运用各种缤纷浓郁的色彩，是打造波西米亚风格的关键，它们会让家中充满奔放不羁的气息。
+                </div>
+            </div>
+
+
+            <div class="miaodian_mesng miaodiana_b">
+                <div class="sanjiao_box">
+                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">异域情调的饰品</span>
+                    正有这些从世界各地收藏来的小物件才能为家中制造各种小惊喜，神秘的异域情调由此而生！
+                </div>
+            </div>
+
+
+            <div class="miaodian_mesng miaodiana_c">
+                <div class="sanjiao_box">
+                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">藤编或木质家具</span>
+                    带有手工质感的藤制或木质家具最是自在、优雅、随性，展现日常家居无拘无束的一面，再搭配上皮毛或是绣花织物就更赞了！
+                </div>
+            </div>
+
+
+            <div class="miaodian_mesng miaodiana_e">
+                <div class="sanjiao_box">
+                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">印花织物</span>
+                    作为波西米亚风格中的经典因素，印花可以出现在靠枕、盖毯或是地毯上，能带来温暖感触，并制造强烈的视觉冲击。
+                </div>
+            </div>
+
         </div>
         <?php
         if (isset($frindf) && !empty($frindf)) {
@@ -47,9 +123,11 @@ use yii\helpers\Url;
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
-        <div class="gloab_bottm">
-            <img class="erweima" src="img/fengge/erweima.png"  /> 
+         <div class="gloab_bottm">
+            <img class="erweima" src="img/ewm/1.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
+
+            <span class="by_ad iconfont icon-logo01"></span>
         </div>
     </body>
 </html>
