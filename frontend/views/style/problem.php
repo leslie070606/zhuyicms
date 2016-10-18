@@ -14,6 +14,8 @@ use yii\helpers\Url;
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript">
             $(function () {
+                
+                
                 var nuberrr = 1;
                 var data = [];
                 var truee = true;
