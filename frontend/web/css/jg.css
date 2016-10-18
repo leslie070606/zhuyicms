@@ -85,7 +85,7 @@ body {
 
 /*锚点*/
 .miaodian_mesng {  width: 100%; position: absolute;z-index: 30; font-size: .24rem; left: 0%;}
-.miaodian_mesng .miaodian_text {display:none; z-index:40;color: #666666; background: #FFFFFF; position: relative; line-height: 1.5; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 84%; padding: .3rem 4%;}
+.miaodian_mesng .miaodian_text {display:none; overflow: hidden; z-index:40;color: #666666; background: #FFFFFF; position: relative; line-height: 1.5; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 84%; padding: .3rem 4%;}
 .miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
 .sanjiao{
 	display: none;
@@ -98,10 +98,10 @@ body {
 	border-right:.1rem solid transparent;   
 	border-bottom:.1rem solid #fff;
 }
-.sanjiao_box>.maodian_icon { font-size: .2rem; position: relative; z-index: 19; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
+.sanjiao_box>.maodian_icon { width: .2rem; position: relative; z-index: 19; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
 .miaodian_mesng .sanjiao_box { position: relative; left: 23.5%; top:0;}
 .miaodian_mesng .click_m { position: absolute; width: 1rem; height: 1rem; top: -.5rem; left: -.5rem;}
-.btn_miaodian { top: -2.3rem;}
+.btn_miaodian { top: -4.8rem;}
 .btn_miaodian  .sanjiao_box  { left: 0;}
 .btn_miaodian .sanjiao {
 	margin: 0 auto;
@@ -111,6 +111,9 @@ body {
 	border-right:.2rem solid transparent; 
 	border-top:.2rem solid #fff;
 }
+.btn_miaodian .text_img { float: left; width: 100%; text-align: center; margin-top: .3rem;}
+.btn_miaodian .text_img img { width: 30%; margin-right: 4%; }
+.btn_miaodian .text_img img:last-child { margin-right: 0;}
 .desib_box .miaoshu {
 	position: relative;
 	z-index: 24;

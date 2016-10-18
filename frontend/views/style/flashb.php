@@ -127,6 +127,15 @@ if (isset($frindf) && !empty($frindf)) {
 
         <?php } else { ?>
             <div class="share_box share_box_active">
+                <div class="miaodian_text">
+						<span class="text_title">异域情调的饰品</span>
+						正有这些从世界各地收藏来的小物件才能为家中制造各种小惊喜，神秘的异域情调由此而生！
+						<div class="text_img">
+							<img src="img/fengge/chose_style.jpg"  />
+							<img src="img/fengge/chose_style.jpg"  />
+							<img src="img/fengge/chose_style.jpg"  />
+						</div>					
+					</div>
                 <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
