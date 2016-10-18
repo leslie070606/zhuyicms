@@ -84,7 +84,7 @@ body {
 	-webkit-animation-fill-mode: forwards !important;}
 
 /*锚点*/
-.miaodian_mesng {  width: 100%; position: absolute;z-index: 18; font-size: .24rem; left: 0%;}
+.miaodian_mesng {  width: 100%; position: absolute;z-index: 20; font-size: .24rem; left: 0%;}
 .miaodian_mesng .miaodian_text {display:none; overflow: hidden; z-index:40;color: #666666; background: #FFFFFF; position: relative; line-height: 1.5; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 84%; padding: .3rem 4%;}
 .miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
 .sanjiao{
@@ -100,7 +100,7 @@ body {
 }
 .sanjiao_box>.maodian_icon { width: .12rem; position: relative; z-index: 19; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
 .miaodian_mesng .sanjiao_box { position: relative; left: 23.5%; top:0;}
-.miaodian_mesng .click_m { position: absolute; width: 1rem; height: 1rem; top: -.5rem; left: -.5rem;}
+.miaodian_mesng .click_m { position: absolute; width: 1rem; z-index: 999; height: 1rem; top: -.5rem; left: -.5rem;}
 .btn_miaodian { top: -4.8rem;}
 .btn_miaodian  .sanjiao_box  { left: 0;}
 .btn_miaodian .sanjiao {

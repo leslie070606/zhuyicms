@@ -30,7 +30,7 @@ $(function(){
    });
    
    touch.on("body,html", "tap", function(ev) {
-        if($(ev.target).closest(".click_m").length == 0){
+		  if($(ev.target).closest(".click_m").length == 0){
            $(".sanjiao,.miaodian_text").fadeOut(200);
         }
 	});
@@ -132,7 +132,7 @@ function isImgLoad(callback){
         isLoad = true;
         t_img = setTimeout(function(){
             isImgLoad(callback); // 递归扫描
-        },100); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+        },500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
     }
 }
 

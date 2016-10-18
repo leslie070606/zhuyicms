@@ -138,7 +138,7 @@ if (isset($frindf) && !empty($frindf)) {
 						<div class="sanjiao"></div>
 					</div>
 			</div>
-                <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
+                <span class="share_btn click_m">分享给你的小伙伴，看看谁跟你有一样的品味</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
