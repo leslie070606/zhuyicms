@@ -1,6 +1,10 @@
 <?php
-
 use yii\helpers\Url;
+if (isset($frindf) && !empty($frindf)) {
+    $renchen = '他';
+}else{
+    $renchen = '你';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,10 +25,10 @@ use yii\helpers\Url;
         <div id="desib" class="desib_box">
             <div class="miaoshu">
                 <span class="miaoshu_name"><?php echo $userInfo['nickname'] ?></span>
-                <span>你兼容并蓄，</span>
+                <span><?=$renchen?>兼容并蓄，</span>
                 <span>是浪漫怀古的品位缔造者，</span>
                 <span>是追求自然舒适的生活家，</span>
-                <span>你最喜爱的风格是——</span>
+                <span><?=$renchen?>最喜爱的风格是——</span>
                 <span class="text_big">美式风格</span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
