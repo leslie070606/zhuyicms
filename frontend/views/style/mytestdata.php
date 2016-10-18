@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Url;
+$uc = new \common\util\Guolu();
+$mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 ?>
 <!DOCTYPE html>
 <html>

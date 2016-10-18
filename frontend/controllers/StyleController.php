@@ -88,7 +88,7 @@ class StyleController extends Controller {
 
     //风格测试报告
     public function actionReport() {
-
+        $uc = new \common\util\Guolu();
         // 查看返回的结果
         $flashid = Yii::$app->request->get('flash');
 
@@ -154,7 +154,7 @@ class StyleController extends Controller {
                                     $style = '新中式';
                             }
                             $shareModel->open_id = $userinfo['openid'];
-                            $shareModel->user_name = $userinfo['nickname'];
+                            $shareModel->user_name = $uc->userTextEncode($userinfo['nickname']);
                             $shareModel->source_openid = $link_id;
                             $shareModel->headimgurl = $userinfo['headimgurl'];
                             $shareModel->create_time = (string) time();
@@ -192,7 +192,8 @@ class StyleController extends Controller {
                                     return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                             }
                         } else {
-                            $userinfo = array('nickname'=>$res['user_name']);
+                            
+                            $userinfo = array('nickname'=>$uc->userTextDecode($res['user_name']));
                             switch ($res['style']) {
                                 case '波西米亚':
                                     //朋友在看你的风格
@@ -263,7 +264,7 @@ class StyleController extends Controller {
                 }
 
                 $shareModel->open_id = $userinfo['openid'];
-                $shareModel->user_name = $userinfo['nickname'];
+                $shareModel->user_name = $uc->userTextEncode($userinfo['nickname']);
                 $shareModel->headimgurl = $userinfo['headimgurl'];
                 $shareModel->create_time = (string) time();
                 $shareModel->unionid = $userinfo['unionid'];

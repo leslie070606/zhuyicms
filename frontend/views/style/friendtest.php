@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+$uc = new \common\util\Guolu();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -68,7 +70,7 @@
                         ?>
                         <li>
                             <img src="<?=$fs['headimgurl']?>" />
-                            <span class="user_name"><?=$fs['user_name']?></span>
+                            <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']);?></span>
                             <span class="match_number">匹配度<i>90%</i></span>
                         </li>
                     <?php } ?>
