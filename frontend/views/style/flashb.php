@@ -12,6 +12,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_b.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -56,8 +58,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">中古风格</span>
+                    历久弥新——在你的目光里，一款经典的扶手椅或者一部摩登时期的留声机，都是一段时光的凝萃。这种思维习惯也延续到了你对家的布置当中。极简形式对你来说太过冷漠，上世纪60年代受构成主义影响的家居风格似乎更对你的胃口。让空间沉稳下来的实木地板，凹凸肌理的天然石墙壁或是色调欢快、图纹抽象的织物也许会讨你喜欢。你敢于尝试夸张的色彩，善用讲究的线条穿插，热衷以幽默的装饰细节点缀空间……总之，对于家的装扮，你就是个大胆的先锋派。
                 </div>
             </div>
 

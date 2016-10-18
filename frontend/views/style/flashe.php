@@ -13,6 +13,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_e.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -48,8 +50,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">美式风格</span>
+                    心系古典风韵，又不想放弃舒适实用？还好，你可以在兼容并蓄的美式风格中获得满足，将怀古的浪漫情怀与当下的生活需求相结合，令典雅华贵与现代时尚共冶一炉。在你的定义中，美式风格更像是一种多元化的思考方式，有着开放和宽容的非凡气度。适度的花线装饰让家里的氛围层次丰富，造型饱满、雕饰细腻的家具撑起来家的气场，多种材质混搭的地毯彰显出你的不凡品味。当然，一张随意自然摆放的宽厚大沙发，更是你家客厅必不可少的构成元素，用来安放你时而疲惫的身心。
                 </div>
             </div>
 

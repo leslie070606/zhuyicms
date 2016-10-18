@@ -16,46 +16,48 @@ use yii\helpers\Url;
             $(function () {
                 var nuberrr = 1;
                 var data = [];
-                var truee=true;
-                var index=0;
+                var truee = true;
+                var index = 0;
+                var foin_data="";
                 $(".pro_here").on("click", function () {
-                    if(truee){
-                        truee=false;
-                    var nuber = $(this).parents(".pro_box").find(".foin").length;
-                    index++;
-                    $(this).addClass("foin_a");
-                    var nubera = parseInt("600" + index) + 1;
-                    if (nubera == 6002) {
-                        tj_ajax(6, nubera - 1);
+                    if (truee) {
+                        truee = false;
+                        var nuber = $(this).parents(".pro_box").find(".foin").length;
+                        index++;
+                        $(this).addClass("foin_a");
+                        var nubera = parseInt("600" + index) + 1;
+                        if (nubera == 6002) {
+                            tj_ajax(6, nubera - 1);
+                        }
+                        tj_ajax(6, nubera, "", "", "答题");
+
+
+                        if (nuber <= 0) {
+                            $(this).addClass("foin");
+                            setTimeout(function () {
+                                $("body").scrollTop(0);
+                                $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
+                                $(window).scrollTop(0);
+                                if (nuberrr <= 13) {
+                                    nuberrr++;
+                                } else {
+                                    $(".foin").each(function () {
+                                        var get = $(this).attr("tetel").split("a");
+                                        var foin_index = $(this).index();
+                                        data = $.merge(data, get);
+                                        foin_data+=foin_index+"a";
+                                    });
+                                   
+                                    
+                                    getMax(data,foin_data);
+                                };
+                                truee = true;
+                            }, 200);
+                        } else {
+                            return false;
+                        }
+
                     }
-                    tj_ajax(6, nubera, "", "", "答题");
-
-
-                    if (nuber <= 0) {
-                        $(this).addClass("foin");
-                        setTimeout(function(){
-                            $("body").scrollTop(0);
-                            $(".gloab:eq(" + index + ")").addClass("active").siblings().removeClass("active");
-                            $(window).scrollTop(0);
-                            if (nuberrr <= 13) {
-                                nuberrr++;
-                            } else {
-                                $(".foin").each(function () {
-                                    var get = $(this).attr("tetel").split("a");
-
-                                    data = $.merge(data, get);
-                                });
-                                console.log(data)
-                                getMax(data);
-                            }
-                            ;
-                            truee=true;
-                        },200);
-                    } else {
-                        return false;
-                    }
-                    
-    }
                 });
 
 
@@ -63,7 +65,7 @@ use yii\helpers\Url;
             });
 
 
-            function getMax(arr) {
+            function getMax(arr,foin_data) {
                 var obj = {},
                         l = arr.length,
                         key = [],
@@ -87,10 +89,10 @@ use yii\helpers\Url;
 
                 var htmll = ["", "a", "b", "", "c", "d", "e", "", "f", "g", "h"];
                 //alert(htmll[key[pos]]);
-                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]];
+                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]]+'&problem='+foin_data;
 
                 window.location = _uploadUrl;
-    //  console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
+                //  console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
             }
 
 

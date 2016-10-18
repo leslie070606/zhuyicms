@@ -13,6 +13,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_c.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -50,8 +52,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">法式古典风格</span>
+                    你了解哥特的摩尔式线形，通晓巴洛克的多边曲面、复杂形象和精细雕花，也熟知洛可可自然、纤细与轻快。从中世纪和文艺复兴流传至今的美学里，你看到了欧洲中古世纪的精致生活。那些丰盈而饱满似雕塑的曲线以及色彩斑斓的形式令人迷恋，让平淡如水的生活生出了更多浪漫与热情。而繁复交织的色彩，微微闪光的金箔、流苏璀璨的水晶灯还有重重叠叠的天鹅绒也为日常的空间制造出精巧的梦幻感。在这个弥散着古典情怀的家中，所有装饰并非为了炫耀奢华，而是为了提醒你日常的精巧。
                 </div>
             </div>
 

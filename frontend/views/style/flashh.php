@@ -13,6 +13,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_h.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -50,8 +52,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">新中式风格</span>
+                   偏好东方传统文化的你，在中式美学里溯本追源，找寻属于自身的文化印记。所以，不难理解，“清雅含蓄、端庄丰华”会成为你衡量一个理想之家的标准。符合当代语境的简约现代元素，已经为青睐考究的用料以及精工细作的榫卯结构注入了新的活力。与此同时，你选择了摈弃浮夸的装饰，因为只有原木、石头、丝绸、竹……这些返璞归真的材质，才让你触手如有灵泉应运而生。居于圆觉融通的东方式居所，感受一种含蓄而不失灵活、率性而不失稳重的气场，你细品这其中的神韵，每会意，自得乐。
                 </div>
             </div>
 

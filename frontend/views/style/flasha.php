@@ -8,11 +8,12 @@ use yii\helpers\Url;
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
-                <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
+        <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
 
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_a.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -51,8 +52,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">波西米亚风格</span>
+                    Bobo一族钟爱的家居，魅力在于暗藏的叛逆和小小的不羁，它和它的主人一样，心仪一种反传统的生活模式，带着游牧民族的奔放和艺术家的自由。就像散落在衣柜里的绣花、流苏和褶皱大摆裙，藤编的餐椅、艳丽的手工装饰、串珠满饰的靠垫、民族风印花的盖毯……也四处散落在空间里，在粗旷中显示柔美，于优雅中表现随性，而浓烈的色彩正好可以用来搭配神秘的异域情调——在这样的家中，你无需正襟危坐，无拘无束的日常才是家的重心。居住，于是，变得更像是一场风格的“流浪”。
                 </div>
             </div>
 
@@ -111,19 +112,28 @@ use yii\helpers\Url;
         </div>
         <?php
         if (isset($frindf) && !empty($frindf)) {
-            
             ?>
             <div class="share_box share_box_b share_box_active">
-                <a href="<?php echo Url::toRoute(['/style/index','link_id'=>$link_id]);?>"><span class="share_btn">开始自己的风格测试</span></a>
+                <a href="<?php echo Url::toRoute(['/style/index', 'link_id' => $link_id]); ?>"><span class="share_btn">开始自己的风格测试</span></a>
             </div>
 
         <?php } else { ?>
             <div class="share_box share_box_active">
+                <div class="miaodian_mesng meng_top btn_miaodian">
+
+                    <div class="miaodian_text">
+                        <span class="text_title">异域情调的饰品</span>
+                        正有这些从世界各地收藏来的小物件才能为家中制造各种小惊喜，神秘的异域情调由此而生！
+                    </div>
+                    <div class="sanjiao_box">
+                        <div class="sanjiao"></div>
+                    </div>
+                </div>
                 <span class="share_btn">分享给你的小伙伴，看看谁跟你有一样的品味</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
-         <div class="gloab_bottm">
+        <div class="gloab_bottm">
             <img class="erweima" src="img/ewm/1.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
 
@@ -134,34 +144,33 @@ use yii\helpers\Url;
 <?php
 //var_dump($mystyle['style']);exit;
 $sharelogo = '';
-switch ($mystyle['style']){
-case '波西米亚':
-    $sharelogo = '/img/fenggejieguo/boximiya.png';
-    break;
-case '中古':
-    $sharelogo = '/img/fenggejieguo/zhonggu.png';
-    break;
-case '法式古典':
-    $sharelogo = '/img/fenggejieguo/fashigudian.png';
-    break;
-case '工业':
-    $sharelogo = '/img/fenggejieguo/gongye.png';
-    break;
-case '美式':
-    $sharelogo = '/img/fenggejieguo/meishi.png';
-    break;
-case '和式':
-    $sharelogo = '/img/fenggejieguo/heshi.png';
-    break;
-case '现代简约':
-    $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
-    break;
-case '新中式':
-    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
-    break;
-default :
-    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
-        
+switch ($mystyle['style']) {
+    case '波西米亚':
+        $sharelogo = '/img/fenggejieguo/boximiya.png';
+        break;
+    case '中古':
+        $sharelogo = '/img/fenggejieguo/zhonggu.png';
+        break;
+    case '法式古典':
+        $sharelogo = '/img/fenggejieguo/fashigudian.png';
+        break;
+    case '工业':
+        $sharelogo = '/img/fenggejieguo/gongye.png';
+        break;
+    case '美式':
+        $sharelogo = '/img/fenggejieguo/meishi.png';
+        break;
+    case '和式':
+        $sharelogo = '/img/fenggejieguo/heshi.png';
+        break;
+    case '现代简约':
+        $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
+        break;
+    case '新中式':
+        $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
+        break;
+    default :
+        $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
 }
 ?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -190,11 +199,11 @@ default :
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '这个测试说我很<?=$mystyle['style']?>', // 分享标题
+            title: '这个测试说我很<?= $mystyle['style'] ?>', // 分享标题
             desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?= $sharelogo ?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -211,10 +220,10 @@ default :
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '这个测试说我的品位很<?=$mystyle['style']?>...1分钟14道题,看看你对「家」的态度', // 分享标题
+            title: '这个测试说我的品位很<?= $mystyle['style'] ?>...1分钟14道题,看看你对「家」的态度', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?= $sharelogo ?>', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数

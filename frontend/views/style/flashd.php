@@ -13,6 +13,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_d.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -54,8 +56,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">工业风格/工业重金属派</span>
+                   从柯布西埃的扶手椅上，你看到了“机器美学”；在包豪斯设计学院里，你发现了工业化的前卫。当原始质感的清水混凝土、冰冷闪光的金属钢管、大胆裸露的管线、颇具摇滚范儿的铆钉装饰连同古旧的防风灯在空间中塑造出了粗砺的Loft风格，特立独行的工业灵魂于是呼之欲出——这才符合拒绝平庸的你对家的想象。在这里，组线条的轮廓和浑厚的质地才会让你更放松，如此的“不精致”恰好成就了你的不落窠臼。
                 </div>
             </div>
 

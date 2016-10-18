@@ -13,6 +13,8 @@ use yii\helpers\Url;
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_g.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+                <script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+
         <script src="js/gloaba.js" async="async"></script>
     </head>
     <body>
@@ -49,8 +51,8 @@ use yii\helpers\Url;
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">温暖色调</span>
-                    欢快的色调会在空间中产生温暖的感觉，一些略带夸张的色彩彼此映衬，甚至还可以造成出乎意料的迷人效果。
+                    <span class="text_title">简约风格/极简现代派</span>
+                    简约，在你眼中，是最高境界的美，也是纯净的一种本质。这种本质的美，蕴藏在你身上那袭Yoji的黑衣上，也体现在你去除了所有冗赘装饰的家里——动线分明、井然有序的空间规划，功能化的组合沙发与内嵌储物柜，无处不在的抽象几何造型和利落直线，甚至是让人直面大片天空的通透玻璃窗……所有一切都在暗示，平淡素静比华丽繁缛更加崇高。是的，在你眼中，“Less is More”的主张不仅是一种设计风格，而且也是一种生活方式。
                 </div>
             </div>
 

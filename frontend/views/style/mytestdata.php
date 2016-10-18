@@ -143,13 +143,13 @@ use yii\helpers\Url;
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '中古') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '中古') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -160,13 +160,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '法式古典') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '法式古典') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -177,13 +177,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '工业') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '工业') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -194,13 +194,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '美式') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '美式') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -211,13 +211,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '和式') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '和式') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -228,13 +228,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '现代简约') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '现代简约') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>
@@ -245,13 +245,13 @@ foreach ($frindstyle as $ft) {
                         <div class="style_bottom">
                             <span class="bot_title">Match</span>
                             <ul>
-<?php
-foreach ($frindstyle as $ft) {
-    if ($ft['style'] == '新中式') {
-        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
-    }
-}
-?>
+                                <?php
+                                foreach ($frindstyle as $ft) {
+                                    if ($ft['style'] == '新中式') {
+                                        echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
+                                    }
+                                }
+                                ?>
                             </ul>
                         </div>
                     </div></a>

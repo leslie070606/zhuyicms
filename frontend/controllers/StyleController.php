@@ -161,6 +161,7 @@ class StyleController extends Controller {
                             $shareModel->unionid = $userinfo['unionid'];
                             $shareModel->style = $style;
                             $shareModel->link_id = $this->getRandomString();
+                            
                             $shareModel->save();
                             switch ($flashid) {
                                 case 'a' :
@@ -371,6 +372,8 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shouchosestyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+            }else{
+                return $this->render('chosestyle');
             }
         }
     }
