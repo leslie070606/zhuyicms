@@ -116,7 +116,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">1</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
-                    关于自己日日已对的家，<br> 应该没有人会比你更清楚自己想要什么吧。那么， <span>你希望你的家装在风格上更接近下面那张图片呢？</span>
+                    关于自己日日相伴的家，<br> 应该没有人会比你更清楚自己想要什么吧。那么， <span>你希望你的家装在风格上更接近下面那张图片呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
@@ -125,17 +125,17 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="6a8">
                         <div class="here_bg"></div>
                         <img src="img/problem/1-1.jpg" />
-                        <div class="here_text">古典</div>
+                        <div class="here_text">经典</div>
                     </div>
                     <div class="pro_here here_div" tetel="4a9a10">
                         <div class="here_bg"></div>
                         <img src="img/problem/1-2.jpg" />
-                        <div class="here_text">适中</div>
+                        <div class="here_text">融合</div>
                     </div>
                     <div class="pro_here here_div" tetel="1a2a5">
                         <div class="here_bg"></div>
                         <img src="img/problem/1-3.jpg" />
-                        <div class="here_text">现代</div>
+                        <div class="here_text">当代</div>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">2</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom">
-                    可否认，色彩帮助我们奠定了家的基调，<br>它既可以冷静地安抚我们的焦虑，<br>亦能够热情地激发我们的活力。 <span>关于空间的色彩，你更心仪的会是以下哪一种呢？</span>
+                    不可否认，色彩帮助我们奠定了家的基调，<br>它既可以冷静地安抚我们的焦虑，<br>亦能够热情地激发我们的活力。 <span>关于空间的色彩，你更心仪的会是以下哪一种呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
@@ -227,7 +227,7 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="2a4">
                         <div class="here_bg"></div>
                         <img src="img/problem/4-2.jpg" />
-                        <div class="here_text">两者兼并</div>
+                        <div class="here_text">两者兼具</div>
                     </div>
                     <div class="pro_here here_div" tetel="6a8a9">
                         <div class="here_bg"></div>
@@ -283,20 +283,20 @@ use yii\helpers\Url;
             <div class="pro_box_big">
                 <div class="triangle-down"></div>
                 <div class="pro_box">
-                    <div class="pro_here here_div" tetel="8a4">
+                    <div class="pro_here here_div" tetel="1a5a6a10">
                         <div class="here_bg"></div>
                         <img src="img/problem/6-1.jpg" />
-                        <div class="here_text">淡雅</div>
+                        <div class="here_text">同色系</div>
                     </div>
                     <div class="pro_here here_div" tetel="9a2">
                         <div class="here_bg"></div>
                         <img src="img/problem/6-2.jpg" />
                         <div class="here_text">适中</div>
                     </div>
-                    <div class="pro_here here_div" tetel="1a5a6a10">
+                    <div class="pro_here here_div" tetel="4a8">
                         <div class="here_bg"></div>
                         <img src="img/problem/6-3.jpg" />
-                        <div class="here_text">对冲</div>
+                        <div class="here_text">鲜明对比</div>
                     </div>
                 </div>
             </div>
@@ -355,12 +355,12 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="2a6a4a8">
                         <div class="here_bg"></div>
                         <img src="img/problem/8-2.jpg" />
-                        <div class="here_text">适中（皮，大理石，编织物）</div>
+                        <div class="here_text">适度加工（皮，大理石，编织物）</div>
                     </div>
                     <div class="pro_here here_div" tetel="1">
                         <div class="here_bg"></div>
                         <img src="img/problem/8-3.jpg" />
-                        <div class="here_text">人工（钢，玻璃，水泥）</div>
+                        <div class="here_text">人造合成（钢，玻璃，水泥）</div>
                     </div>
                 </div>
             </div>
@@ -382,7 +382,7 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="2a5a9">
                         <div class="here_bg"></div>
                         <img src="img/problem/9-1.jpg" />
-                        <div class="here_text">粗糙（稻草编织，粗毛）</div>
+                        <div class="here_text">粗质（稻草编织，粗毛）</div>
                     </div>
                     <div class="pro_here here_div" tetel="1a4a6a10">
                         <div class="here_bg"></div>
@@ -445,17 +445,17 @@ use yii\helpers\Url;
             <div class="pro_box_big">
                 <div class="triangle-down"></div>
                 <div class="pro_box">
-                    <div class="pro_here here_div" tetel="1a4a2">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/11-1.jpg" />
-                        <div class="here_text">CBD</div>
+                        <div class="here_text">大都市</div>
                     </div>
-                    <div class="pro_here here_div" tetel="6a8a10">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/11-2.jpg" />
                         <div class="here_text">小镇</div>
                     </div>
-                    <div class="pro_here here_div" tetel="5a9">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/11-3.jpg" />
                         <div class="here_text">乡村</div>
@@ -478,17 +478,17 @@ use yii\helpers\Url;
             <div class="pro_box_big">
                 <div class="triangle-down"></div>
                 <div class="pro_box">
-                    <div class="pro_here here_div" tetel="8a6">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-1.jpg" />
                         <div class="here_text">布鲁哲尔</div>
                     </div>
-                    <div class="pro_here here_div" tetel="9a2a10">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-2.jpg" />
                         <div class="here_text">莫奈</div>
                     </div>
-                    <div class="pro_here here_div" tetel="5a1a4">
+                    <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-3.jpg" />
                         <div class="here_text">赫斯特</div>
@@ -562,4 +562,3 @@ use yii\helpers\Url;
         </div><!--gloab end-->
     </body>
 </html>
-

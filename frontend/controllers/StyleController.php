@@ -91,6 +91,8 @@ class StyleController extends Controller {
         $uc = new \common\util\Guolu();
         // 查看返回的结果
         $flashid = Yii::$app->request->get('flash');
+        
+        $problemData = Yii::$app->request->get('problem');
 
         //获取分享ID
         $link_id = Yii::$app->request->get('link_id');
@@ -159,6 +161,7 @@ class StyleController extends Controller {
                             $shareModel->headimgurl = $userinfo['headimgurl'];
                             $shareModel->create_time = (string) time();
                             $shareModel->unionid = $userinfo['unionid'];
+                             $shareModel->problem_data = $problemData;
                             $shareModel->style = $style;
                             $shareModel->link_id = $this->getRandomString();
                             
@@ -268,6 +271,7 @@ class StyleController extends Controller {
                 $shareModel->headimgurl = $userinfo['headimgurl'];
                 $shareModel->create_time = (string) time();
                 $shareModel->unionid = $userinfo['unionid'];
+                $shareModel->problem_data = $problemData;
                 $shareModel->style = $style;
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();

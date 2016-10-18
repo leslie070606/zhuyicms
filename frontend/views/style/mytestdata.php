@@ -27,6 +27,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
     <body>
         <div class="chose_box open_self">
             <div class="chose_top">
+                
                 <div class="top_mesg">
                     <span class="top_mesg_name"><?= $mystyle['user_name'] ?></span>
 <!--                    <span>你酷感十足，你是机械时代的迷恋者，你是拒绝平庸的摇滚先锋，</span>
