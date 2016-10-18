@@ -314,7 +314,7 @@ class StyleController extends Controller {
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shoureport&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             } else {
-                $userinfo['nickname'] = '游客';
+                $userinfo['nickname'] = '';
                 $jsarr['timestamp'] = '234234234';
                 switch ($flashid) {
                     case 'a' :
