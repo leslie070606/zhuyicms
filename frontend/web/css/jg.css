@@ -84,7 +84,8 @@ body {
 	-webkit-animation-fill-mode: forwards !important;}
 
 /*锚点*/
-.miaodian_mesng {  width: 100%; position: absolute;z-index: 20; font-size: .24rem; left: 0%;}
+.miaodiana_a { top: .33rem !important;}
+.miaodian_mesng {  width: 100%; position: absolute;z-index: 24;  font-size: .24rem; left: 0%;}
 .miaodian_mesng .miaodian_text {display:none; overflow: hidden; z-index:40;color: #666666; background: #FFFFFF; position: relative; line-height: 1.5; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 84%; padding: .3rem 4%;}
 .miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
 .sanjiao{
@@ -130,7 +131,7 @@ body {
    
 .desib_box .miaoshu>span { display: block;}
 .miaoshu .miaoshu_name { font-size: .32rem;}
-.miaoshu .text_big { font-size: .66rem; font-weight: bold; float: left;}
+.miaoshu .text_big { font-size: .66rem; font-weight: bold; position: relative;}
 .logo { position: absolute; right: .3rem; top: .3rem; z-index: 22; font-size: .88rem; color: #FF4E38;}
 .logo::before { position: relative; z-index: 22;}
 .logo::after {

@@ -29,7 +29,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是机械时代的迷恋者，</span>
                 <span>是拒绝平庸的摇滚先锋，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">工业风格</span>
+                <span class="text_big">
+                    <span>工业风格</span>
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/2.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">工业风格/工业重金属派</span>
+                   从柯布西埃的扶手椅上，你看到了“机器美学”；在包豪斯设计学院里，你发现了工业化的前卫。当原始质感的清水混凝土、冰冷闪光的金属钢管、大胆裸露的管线、颇具摇滚范儿的铆钉装饰连同古旧的防风灯在空间中塑造出了粗砺的Loft风格，特立独行的工业灵魂于是呼之欲出——这才符合拒绝平庸的你对家的想象。在这里，组线条的轮廓和浑厚的质地才会让你更放松，如此的“不精致”恰好成就了你的不落窠臼。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -52,18 +66,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgx" src="img/flash_d/15.png" />
             <img class="des_img des_imgx des_imgxx" src="img/flash_d/15.png" />
             <img class="des_img des_imgw" src="img/flash_d/16.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/2.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">工业风格/工业重金属派</span>
-                   从柯布西埃的扶手椅上，你看到了“机器美学”；在包豪斯设计学院里，你发现了工业化的前卫。当原始质感的清水混凝土、冰冷闪光的金属钢管、大胆裸露的管线、颇具摇滚范儿的铆钉装饰连同古旧的防风灯在空间中塑造出了粗砺的Loft风格，特立独行的工业灵魂于是呼之欲出——这才符合拒绝平庸的你对家的想象。在这里，组线条的轮廓和浑厚的质地才会让你更放松，如此的“不精致”恰好成就了你的不落窠臼。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">

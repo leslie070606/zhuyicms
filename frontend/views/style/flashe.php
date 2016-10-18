@@ -29,7 +29,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是浪漫怀古的品位缔造者，</span>
                 <span>是追求自然舒适的生活家，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">美式风格</span>
+                <span class="text_big">
+                    <span>美式风格</span>
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">美式风格</span>
+                    心系古典风韵，又不想放弃舒适实用？还好，你可以在兼容并蓄的美式风格中获得满足，将怀古的浪漫情怀与当下的生活需求相结合，令典雅华贵与现代时尚共冶一炉。在你的定义中，美式风格更像是一种多元化的思考方式，有着开放和宽容的非凡气度。适度的花线装饰让家里的氛围层次丰富，造型饱满、雕饰细腻的家具撑起来家的气场，多种材质混搭的地毯彰显出你的不凡品味。当然，一张随意自然摆放的宽厚大沙发，更是你家客厅必不可少的构成元素，用来安放你时而疲惫的身心。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -46,18 +60,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgj" src="img/flash_e/10.png" />
             <img class="des_img des_imgk" src="img/flash_e/11.png" />
             <img class="des_img des_imgl" src="img/flash_e/12.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">美式风格</span>
-                    心系古典风韵，又不想放弃舒适实用？还好，你可以在兼容并蓄的美式风格中获得满足，将怀古的浪漫情怀与当下的生活需求相结合，令典雅华贵与现代时尚共冶一炉。在你的定义中，美式风格更像是一种多元化的思考方式，有着开放和宽容的非凡气度。适度的花线装饰让家里的氛围层次丰富，造型饱满、雕饰细腻的家具撑起来家的气场，多种材质混搭的地毯彰显出你的不凡品味。当然，一张随意自然摆放的宽厚大沙发，更是你家客厅必不可少的构成元素，用来安放你时而疲惫的身心。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">

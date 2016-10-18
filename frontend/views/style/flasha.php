@@ -1,8 +1,10 @@
 <?php
+
 use yii\helpers\Url;
+
 if (isset($frindf) && !empty($frindf)) {
     $renchen = '他';
-}else{
+} else {
     $renchen = '你';
 }
 ?>
@@ -24,11 +26,25 @@ if (isset($frindf) && !empty($frindf)) {
         <div class="desib_box">
             <div class="miaoshu">
                 <span class="miaoshu_name"><?php echo $userInfo['nickname'] ?></span>
-                <span><?=$renchen?>叛逆不羁，</span>
+                <span><?= $renchen ?>叛逆不羁，</span>
                 <span>是异域风情的制造者，</span>
                 <span>是自由不羁的Bobo族，</span>
-                <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">波西米亚风格</span>
+                <span><?= $renchen ?>最喜爱的风格是——</span>
+                <span class="text_big">
+                    <span>波西米亚风格</span>
+                    <div class="miaodian_mesng miaodiana_a">
+                        <div class="sanjiao_box">
+                            <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                            <div class="sanjiao"></div>
+                            <div class="click_m"></div>
+                        </div>
+                        <div class="miaodian_text">
+                            <span class="text_title">波西米亚风格</span>
+                            Bobo一族钟爱的家居，魅力在于暗藏的叛逆和小小的不羁，它和它的主人一样，心仪一种反传统的生活模式，带着游牧民族的奔放和艺术家的自由。就像散落在衣柜里的绣花、流苏和褶皱大摆裙，藤编的餐椅、艳丽的手工装饰、串珠满饰的靠垫、民族风印花的盖毯……也四处散落在空间里，在粗旷中显示柔美，于优雅中表现随性，而浓烈的色彩正好可以用来搭配神秘的异域情调——在这样的家中，你无需正襟危坐，无拘无束的日常才是家的重心。居住，于是，变得更像是一场风格的“流浪”。
+                        </div>
+                    </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -48,18 +64,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgp_b" src="img/flash_a/15.png" />
             <img class="des_img des_imgp_c" src="img/flash_a/14.png" />
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
 
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">波西米亚风格</span>
-                    Bobo一族钟爱的家居，魅力在于暗藏的叛逆和小小的不羁，它和它的主人一样，心仪一种反传统的生活模式，带着游牧民族的奔放和艺术家的自由。就像散落在衣柜里的绣花、流苏和褶皱大摆裙，藤编的餐椅、艳丽的手工装饰、串珠满饰的靠垫、民族风印花的盖毯……也四处散落在空间里，在粗旷中显示柔美，于优雅中表现随性，而浓烈的色彩正好可以用来搭配神秘的异域情调——在这样的家中，你无需正襟危坐，无拘无束的日常才是家的重心。居住，于是，变得更像是一场风格的“流浪”。
-                </div>
-            </div>
 
             <div class="miaodian_mesng miaodiana_aa">
                 <div class="sanjiao_box">
@@ -121,27 +126,27 @@ if (isset($frindf) && !empty($frindf)) {
                 <a href="<?php echo Url::toRoute(['/style/index', 'link_id' => $link_id]); ?>"><span class="share_btn">开始自己的风格测试</span></a>
             </div>
 
-        <?php } else { ?>
+<?php } else { ?>
             <div class="share_box share_box_active">
-               <div class="miaodian_mesng meng_top btn_miaodian">
-					
-					<div class="miaodian_text">
-						<span class="text_title">异域情调的饰品</span>
-						正有这些从世界各地收藏来的小物件才能为家中制造各种小惊喜，神秘的异域情调由此而生！
-						<div class="text_img">
-							<img src="img/fengge/chose_style.jpg"  />
-							<img src="img/fengge/chose_style.jpg"  />
-							<img src="img/fengge/chose_style.jpg"  />
-						</div>					
-					</div>
-					<div class="sanjiao_box">
-						<div class="sanjiao"></div>
-					</div>
-			</div>
+                <div class="miaodian_mesng meng_top btn_miaodian">
+
+                    <div class="miaodian_text">
+                        <span class="text_title">异域情调的饰品</span>
+                        正有这些从世界各地收藏来的小物件才能为家中制造各种小惊喜，神秘的异域情调由此而生！
+                        <div class="text_img">
+                            <img src="img/fengge/chose_style.jpg"  />
+                            <img src="img/fengge/chose_style.jpg"  />
+                            <img src="img/fengge/chose_style.jpg"  />
+                        </div>					
+                    </div>
+                    <div class="sanjiao_box">
+                        <div class="sanjiao"></div>
+                    </div>
+                </div>
                 <span class="share_btn click_m">分享给你的小伙伴，看看谁跟你有一样的品味</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
-        <?php } ?>
+<?php } ?>
         <div class="gloab_bottm">
             <img class="erweima" src="img/ewm/1.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>

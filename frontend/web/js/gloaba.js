@@ -68,8 +68,7 @@ $(function(){
 	function autogeta(){
 	var width=$(window).width();
 	var height=$(window).height();
-	var big_left=$(".text_big").width();
-	var big_top=$(".text_big").offset().top+30;
+	var big_left=$(".text_big>span").width();
 	var heightaa=parseInt($(".share_box_active").height());
 	var heightbb=parseInt($(".gloab_bottm").css("margin-bottom"));
 	var get=(736/414)*width;
@@ -77,8 +76,7 @@ $(function(){
 	$(".desib_box").css({"margin-top":-(get-height)/2});
 	$(".miaoshu,.logo").css({"margin-top":(get-height)/2});
 	$(".gloab_bottm").height(height-2*heightaa);
-	$(".miaodiana_a").css("top",big_top);
-	$(".miaodiana_a .sanjiao_box").css("left",big_left+30);
+	$(".miaodiana_a .sanjiao_box").css("left",big_left+15);
 }
 });
 

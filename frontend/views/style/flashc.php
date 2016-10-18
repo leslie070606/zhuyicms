@@ -29,7 +29,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是古典美学的追随者，</span>
                 <span>是精致生活的代言人，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">法式古典风格</span>
+                <span class="text_big">
+                    <span>法式古典风格</span>
+                 <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">法式古典风格</span>
+                    你了解哥特的摩尔式线形，通晓巴洛克的多边曲面、复杂形象和精细雕花，也熟知洛可可自然、纤细与轻快。从中世纪和文艺复兴流传至今的美学里，你看到了欧洲中古世纪的精致生活。那些丰盈而饱满似雕塑的曲线以及色彩斑斓的形式令人迷恋，让平淡如水的生活生出了更多浪漫与热情。而繁复交织的色彩，微微闪光的金箔、流苏璀璨的水晶灯还有重重叠叠的天鹅绒也为日常的空间制造出精巧的梦幻感。在这个弥散着古典情怀的家中，所有装饰并非为了炫耀奢华，而是为了提醒你日常的精巧。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -48,18 +62,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgj" src="img/flash_c/10.png" />
             <img class="des_img des_imgk" src="img/flash_c/11.png" />
             <img class="des_img des_imgl" src="img/flash_c/12.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">法式古典风格</span>
-                    你了解哥特的摩尔式线形，通晓巴洛克的多边曲面、复杂形象和精细雕花，也熟知洛可可自然、纤细与轻快。从中世纪和文艺复兴流传至今的美学里，你看到了欧洲中古世纪的精致生活。那些丰盈而饱满似雕塑的曲线以及色彩斑斓的形式令人迷恋，让平淡如水的生活生出了更多浪漫与热情。而繁复交织的色彩，微微闪光的金箔、流苏璀璨的水晶灯还有重重叠叠的天鹅绒也为日常的空间制造出精巧的梦幻感。在这个弥散着古典情怀的家中，所有装饰并非为了炫耀奢华，而是为了提醒你日常的精巧。
-                </div>
-            </div>
+           
 
 
             <div class="miaodian_mesng miaodiana_b">

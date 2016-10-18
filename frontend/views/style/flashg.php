@@ -30,7 +30,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是“Less is More”的信徒，</span>
                 <span>是追寻本质的思想者，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">现代简约风格</span>
+                <span class="text_big">
+                    <span>现代简约风格</span>
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">简约风格/极简现代派</span>
+                    简约，在你眼中，是最高境界的美，也是纯净的一种本质。这种本质的美，蕴藏在你身上那袭Yoji的黑衣上，也体现在你去除了所有冗赘装饰的家里——动线分明、井然有序的空间规划，功能化的组合沙发与内嵌储物柜，无处不在的抽象几何造型和利落直线，甚至是让人直面大片天空的通透玻璃窗……所有一切都在暗示，平淡素静比华丽繁缛更加崇高。是的，在你眼中，“Less is More”的主张不仅是一种设计风格，而且也是一种生活方式。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -48,18 +62,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgk imgtengtiao" src="img/flash_g/11.png" />
             <img class="des_img des_imgl imgtengtiao" src="img/flash_g/12.png" />
             <img class="des_img des_imgm" src="img/flash_g/13.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">简约风格/极简现代派</span>
-                    简约，在你眼中，是最高境界的美，也是纯净的一种本质。这种本质的美，蕴藏在你身上那袭Yoji的黑衣上，也体现在你去除了所有冗赘装饰的家里——动线分明、井然有序的空间规划，功能化的组合沙发与内嵌储物柜，无处不在的抽象几何造型和利落直线，甚至是让人直面大片天空的通透玻璃窗……所有一切都在暗示，平淡素静比华丽繁缛更加崇高。是的，在你眼中，“Less is More”的主张不仅是一种设计风格，而且也是一种生活方式。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">

@@ -29,7 +29,22 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是侘寂美学的敬仰者，</span>
                 <span>是禅意生活的实践家，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">和式风格</span>
+                <span class="text_big">
+                    <span>和式风格</span>
+                
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">和式风格</span>
+                    榻榻米并非和式风格的标配，茶席也未必是生活日常中的必须。最核心的是，你像柳宗理一样认为“美是有用的”，并且在意生活中的那一丝微妙禅意。一盏光线柔和的和纸灯，井井有条的收纳，留空落白的朴素墙面——生活在这样的空间中，让人无需“断舍离”也有Wabi-sabi的自在心情。对不加修饰地体现材料肌理和木材本色的热爱，对以牺牲区域分割为代价的敞开式空间与模数化家具系列的情有独钟……不经意间，纯粹而又朴素的的日式生活美学已经渗透到你生活的每一个细节。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -44,18 +59,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgg" src="img/flash_f/7.png" />
             <img class="des_img des_imgh" src="img/flash_f/8.png" />
             <img class="des_img des_imgi" src="img/flash_f/9.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">和式风格</span>
-                    榻榻米并非和式风格的标配，茶席也未必是生活日常中的必须。最核心的是，你像柳宗理一样认为“美是有用的”，并且在意生活中的那一丝微妙禅意。一盏光线柔和的和纸灯，井井有条的收纳，留空落白的朴素墙面——生活在这样的空间中，让人无需“断舍离”也有Wabi-sabi的自在心情。对不加修饰地体现材料肌理和木材本色的热爱，对以牺牲区域分割为代价的敞开式空间与模数化家具系列的情有独钟……不经意间，纯粹而又朴素的的日式生活美学已经渗透到你生活的每一个细节。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">

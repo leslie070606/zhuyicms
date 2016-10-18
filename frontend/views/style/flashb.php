@@ -29,7 +29,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是摩登时期的缅怀者，</span>
                 <span>是擅用经典的创想家，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">中古风格</span>
+                <span class="text_big">
+                    <span>中古风格</span>
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">中古风格</span>
+                    历久弥新——在你的目光里，一款经典的扶手椅或者一部摩登时期的留声机，都是一段时光的凝萃。这种思维习惯也延续到了你对家的布置当中。极简形式对你来说太过冷漠，上世纪60年代受构成主义影响的家居风格似乎更对你的胃口。让空间沉稳下来的实木地板，凹凸肌理的天然石墙壁或是色调欢快、图纹抽象的织物也许会讨你喜欢。你敢于尝试夸张的色彩，善用讲究的线条穿插，热衷以幽默的装饰细节点缀空间……总之，对于家的装扮，你就是个大胆的先锋派。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -55,18 +69,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgyfe" src="img/flash_b/2-2.png" />
             <img class="des_img des_imgyff" src="img/flash_b/2-1.png" />
 
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">中古风格</span>
-                    历久弥新——在你的目光里，一款经典的扶手椅或者一部摩登时期的留声机，都是一段时光的凝萃。这种思维习惯也延续到了你对家的布置当中。极简形式对你来说太过冷漠，上世纪60年代受构成主义影响的家居风格似乎更对你的胃口。让空间沉稳下来的实木地板，凹凸肌理的天然石墙壁或是色调欢快、图纹抽象的织物也许会讨你喜欢。你敢于尝试夸张的色彩，善用讲究的线条穿插，热衷以幽默的装饰细节点缀空间……总之，对于家的装扮，你就是个大胆的先锋派。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">

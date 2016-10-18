@@ -30,7 +30,21 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是中国传统文化的研习者，</span>
                 <span>是东方智慧的传承人，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
-                <span class="text_big">新中式风格</span>
+                <span class="text_big">
+                    <span>新中式风格</span>
+                <div class="miaodian_mesng miaodiana_a">
+                <div class="sanjiao_box">
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+
+                    <div class="sanjiao"></div>
+                    <div class="click_m"></div>
+                </div>
+                <div class="miaodian_text">
+                    <span class="text_title">新中式风格</span>
+                   偏好东方传统文化的你，在中式美学里溯本追源，找寻属于自身的文化印记。所以，不难理解，“清雅含蓄、端庄丰华”会成为你衡量一个理想之家的标准。符合当代语境的简约现代元素，已经为青睐考究的用料以及精工细作的榫卯结构注入了新的活力。与此同时，你选择了摈弃浮夸的装饰，因为只有原木、石头、丝绸、竹……这些返璞归真的材质，才让你触手如有灵泉应运而生。居于圆觉融通的东方式居所，感受一种含蓄而不失灵活、率性而不失稳重的气场，你细品这其中的神韵，每会意，自得乐。
+                </div>
+            </div>
+                </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
             <div class="desi_top"></div>
@@ -49,18 +63,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgl" src="img/flash_h/12.png" />
             <img class="des_img des_imgm" src="img/flash_h/13.png" />
             <img class="des_img des_imgn" src="img/flash_h/14.png" />
-            <div class="miaodian_mesng miaodiana_a">
-                <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
-
-                    <div class="sanjiao"></div>
-                    <div class="click_m"></div>
-                </div>
-                <div class="miaodian_text">
-                    <span class="text_title">新中式风格</span>
-                   偏好东方传统文化的你，在中式美学里溯本追源，找寻属于自身的文化印记。所以，不难理解，“清雅含蓄、端庄丰华”会成为你衡量一个理想之家的标准。符合当代语境的简约现代元素，已经为青睐考究的用料以及精工细作的榫卯结构注入了新的活力。与此同时，你选择了摈弃浮夸的装饰，因为只有原木、石头、丝绸、竹……这些返璞归真的材质，才让你触手如有灵泉应运而生。居于圆觉融通的东方式居所，感受一种含蓄而不失灵活、率性而不失稳重的气场，你细品这其中的神韵，每会意，自得乐。
-                </div>
-            </div>
+            
 
 
             <div class="miaodian_mesng miaodiana_b">
