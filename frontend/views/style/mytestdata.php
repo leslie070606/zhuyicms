@@ -111,7 +111,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/boximiya.png" />
                         <span>波西米亚</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
 
                             <ul>
                                 <?php
@@ -141,7 +141,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/zhonggu.png" />
                         <span>中古</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -158,7 +158,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/fashigudian.png" />
                         <span>法式古典</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -175,7 +175,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/gongye.png" />
                         <span>工业</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -192,7 +192,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/meishi.png" />
                         <span>美式</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -209,7 +209,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/heshi.png" />
                         <span>和式</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -226,7 +226,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/xiandaijianyue.png" />
                         <span>现代简约</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
@@ -243,7 +243,7 @@ use yii\helpers\Url;
                         <img src="img/fenggejieguo/xinzhongshi.png" />
                         <span>新中式</span>
                         <div class="style_bottom">
-                            <span class="bot_title">Match</span>
+                            <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {

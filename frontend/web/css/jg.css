@@ -84,7 +84,7 @@ body {
 	-webkit-animation-fill-mode: forwards !important;}
 
 /*锚点*/
-.miaodian_mesng {  width: 100%; position: absolute;z-index: 30; font-size: .24rem; left: 0%;}
+.miaodian_mesng {  width: 100%; position: absolute;z-index: 18; font-size: .24rem; left: 0%;}
 .miaodian_mesng .miaodian_text {display:none; overflow: hidden; z-index:40;color: #666666; background: #FFFFFF; position: relative; line-height: 1.5; box-shadow:-1px 1px 3px #999999 ; left: 4%; background: #FFFFFF;  width: 84%; padding: .3rem 4%;}
 .miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
 .sanjiao{

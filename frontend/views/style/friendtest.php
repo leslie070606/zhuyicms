@@ -69,7 +69,7 @@
                         <li>
                             <img src="<?=$fs['headimgurl']?>" />
                             <span class="user_name"><?=$fs['user_name']?></span>
-                            <span class="match_number">Match<i>90%</i></span>
+                            <span class="match_number">匹配度<i>90%</i></span>
                         </li>
                     <?php } ?>
                 </ul>

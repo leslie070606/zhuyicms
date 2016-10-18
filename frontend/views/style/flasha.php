@@ -50,7 +50,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="des_img des_imgp_d" src="img/flash_a/13.png" />
             <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
-                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
 
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
@@ -63,7 +63,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_aa">
                 <div class="sanjiao_box">
-                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
 
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
@@ -77,7 +77,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_b">
                 <div class="sanjiao_box">
-                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -90,7 +90,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_c">
                 <div class="sanjiao_box">
-                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -103,7 +103,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_e">
                 <div class="sanjiao_box">
-                    <span class="iconfont maodian_icon icon-sibianxing"></span>
+                    <img class="maodian_icon" src="img/fengge/1.gif"  />
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
