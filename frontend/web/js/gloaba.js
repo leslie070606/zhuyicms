@@ -30,7 +30,7 @@ $(function(){
    });
    
    touch.on("body,html", "tap", function(ev) {
-		  if($(ev.target).closest(".click_m").length == 0){
+        if($(ev.target).closest(".click_m").length == 0){
            $(".sanjiao,.miaodian_text").fadeOut(200);
         }
 	});
