@@ -8,8 +8,7 @@ use yii\helpers\Url;
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
-                <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
-
+        <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476711409_6625533.css" />
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_b.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -114,10 +113,9 @@ use yii\helpers\Url;
         </div>
         <?php
         if (isset($frindf) && !empty($frindf)) {
-            
             ?>
             <div class="share_box share_box_b share_box_active">
-                <a href="<?php echo Url::toRoute(['/style/index','link_id'=>$link_id]);?>"><span class="share_btn">开始自己的风格测试</span></a>
+                <a href="<?php echo Url::toRoute(['/style/index', 'link_id' => $link_id]); ?>"><span class="share_btn">开始自己的风格测试</span></a>
             </div>
 
         <?php } else { ?>
@@ -126,7 +124,7 @@ use yii\helpers\Url;
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
-         <div class="gloab_bottm">
+        <div class="gloab_bottm">
             <img class="erweima" src="img/ewm/2.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请扫描上方二维码进入我们的公众号</div>
 
@@ -137,34 +135,33 @@ use yii\helpers\Url;
 <?php
 //var_dump($mystyle['style']);exit;
 $sharelogo = '';
-switch ($mystyle['style']){
-case '波西米亚':
-    $sharelogo = '/img/fenggejieguo/boximiya.png';
-    break;
-case '中古':
-    $sharelogo = '/img/fenggejieguo/zhonggu.png';
-    break;
-case '法式古典':
-    $sharelogo = '/img/fenggejieguo/fashigudian.png';
-    break;
-case '工业':
-    $sharelogo = '/img/fenggejieguo/gongye.png';
-    break;
-case '美式':
-    $sharelogo = '/img/fenggejieguo/meishi.png';
-    break;
-case '和式':
-    $sharelogo = '/img/fenggejieguo/heshi.png';
-    break;
-case '现代简约':
-    $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
-    break;
-case '新中式':
-    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
-    break;
-default :
-    $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
-        
+switch ($mystyle['style']) {
+    case '波西米亚':
+        $sharelogo = '/img/fenggejieguo/boximiya.png';
+        break;
+    case '中古':
+        $sharelogo = '/img/fenggejieguo/zhonggu.png';
+        break;
+    case '法式古典':
+        $sharelogo = '/img/fenggejieguo/fashigudian.png';
+        break;
+    case '工业':
+        $sharelogo = '/img/fenggejieguo/gongye.png';
+        break;
+    case '美式':
+        $sharelogo = '/img/fenggejieguo/meishi.png';
+        break;
+    case '和式':
+        $sharelogo = '/img/fenggejieguo/heshi.png';
+        break;
+    case '现代简约':
+        $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
+        break;
+    case '新中式':
+        $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
+        break;
+    default :
+        $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
 }
 ?>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -193,11 +190,11 @@ default :
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '这个测试说我很<?=$mystyle['style']?>', // 分享标题
+            title: '这个测试说我很<?= $mystyle['style'] ?>', // 分享标题
             desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?= $sharelogo ?>', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -214,10 +211,10 @@ default :
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '这个测试说我的品位很<?=$mystyle['style']?>...1分钟14道题,看看你对「家」的态度', // 分享标题
+            title: '这个测试说我的品位很<?= $mystyle['style'] ?>...1分钟14道题,看看你对「家」的态度', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?= $sharelogo ?>', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数
