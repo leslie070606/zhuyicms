@@ -37,6 +37,10 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
 
         // 判断是第一次还是别人的分享
         $link_id = Yii::$app->request->get('link_id');
@@ -49,7 +53,7 @@ class StyleController extends Controller {
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
 
-            return $this->render('index', ['link_id' => $link_id]);
+            return $this->render('index', ['link_id' => $link_id,'jsarr' => $jsarr]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
@@ -425,7 +429,7 @@ class StyleController extends Controller {
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
-            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle]);
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle,'style'=>$style]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {

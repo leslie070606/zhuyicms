@@ -11,7 +11,7 @@ array_pop($myproblemArr);
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title><?=$mystyle['style']?>风格</title>
+        <title><?=$style?>风格</title>
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
     </head>
