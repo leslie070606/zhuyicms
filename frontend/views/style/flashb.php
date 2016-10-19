@@ -30,7 +30,7 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是擅用经典的创想家，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
                 <span class="text_big">
-                    <span>中古风格</span>
+                    <span>复古混搭风格</span>
                 <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
                     <img class="maodian_icon" src="img/fengge/1.gif"  />
@@ -39,7 +39,7 @@ if (isset($frindf) && !empty($frindf)) {
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">中古风格</span>
+                    <span class="text_title">复古混搭风格</span>
                     历久弥新——在你的目光里，一款经典的扶手椅或者一部摩登时期的留声机，都是一段时光的凝萃。这种思维习惯也延续到了你对家的布置当中。极简形式对你来说太过冷漠，上世纪60年代受构成主义影响的家居风格似乎更对你的胃口。让空间沉稳下来的实木地板，凹凸肌理的天然石墙壁或是色调欢快、图纹抽象的织物也许会讨你喜欢。你敢于尝试夸张的色彩，善用讲究的线条穿插，热衷以幽默的装饰细节点缀空间……总之，对于家的装扮，你就是个大胆的先锋派。
                 </div>
             </div>
@@ -93,7 +93,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">复古范儿的饰品</span>
-                    打造中古风格，来自摩登时代的各种物件可谓是“点睛之笔”。一经它们的点缀，家中立即就多了几分年代感。
+                    打造复古混搭风格，来自摩登时代的各种物件可谓是“点睛之笔”。一经它们的点缀，家中立即就多了几分年代感。
                 </div>
             </div>
 
@@ -105,7 +105,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">经典款家具</span>
-                    进入现代主义初期的经典款家具是用来创造中古风的最佳选择，体现在它们身上的美感完美诠释了“Timeless”。
+                    进入现代主义初期的经典款家具是用来创造复古混搭风的最佳选择，体现在它们身上的美感完美诠释了“Timeless”。
                 </div>
             </div>
 
@@ -164,7 +164,7 @@ switch ($mystyle['style']) {
     case '波西米亚':
         $sharelogo = '/img/fenggejieguo/boximiya.png';
         break;
-    case '中古':
+    case '复古混搭':
         $sharelogo = '/img/fenggejieguo/zhonggu.png';
         break;
     case '法式古典':

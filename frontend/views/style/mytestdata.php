@@ -44,10 +44,10 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                             echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/boximiya.png';
                             break;
-                        case '中古' :
+                        case '复古混搭' :
 
                             echo "<span>你复古时尚,你是摩登时期的缅怀者,你是擅用经典的创想家</span>
-                    <span>你最喜爱的风格是——中古风格</span>
+                    <span>你最喜爱的风格是——复古混搭风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/zhonggu_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/zhonggu.png';
@@ -140,15 +140,15 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                         </div>
                     </div></a>
 
-                <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle', 'style' => '中古', 'link_id' => $link_id]); ?>"><div>
+                <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle', 'style' => '复古混搭', 'link_id' => $link_id]); ?>"><div>
                         <img src="img/fenggejieguo/zhonggu.png" />
-                        <span>中古</span>
+                        <span>复古混搭</span>
                         <div class="style_bottom">
                             <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
-                                    if ($ft['style'] == '中古') {
+                                    if ($ft['style'] == '复古混搭') {
                                         echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
                                     }
                                 }

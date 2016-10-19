@@ -13,7 +13,7 @@ use yii\helpers\Url;
     <body>
         <div class="chose_box">
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'a']); ?>"><div><img src="img/fenggejieguo/boximiya.png" /><span>波西米亚</span></div></a>
-            <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'b']); ?>"><div><img src="img/fenggejieguo/zhonggu.png" /><span>中古</span></div></a>
+            <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'b']); ?>"><div><img src="img/fenggejieguo/zhonggu.png" /><span>复古混搭</span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'c']); ?>"><div><img src="img/fenggejieguo/fashigudian.png" /><span>法式古典</span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'d']); ?>"><div><img src="img/fenggejieguo/gongye.png" /><span>工业</span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'e']); ?>"><div><img src="img/fenggejieguo/meishi.png" /><span>美式</span></div></a>

@@ -135,7 +135,7 @@ class StyleController extends Controller {
                                     $style = "波西米亚";
                                     break;
                                 case 'b' :
-                                    $style = "中古";
+                                    $style = "复古混搭";
                                     break;
                                 case 'c' :
                                     $style = "法式古典";
@@ -202,7 +202,7 @@ class StyleController extends Controller {
                                     //朋友在看你的风格
                                     return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                                     break;
-                                case '中古':
+                                case '复古混搭':
                                     //朋友在看你的风格
                                     return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                                     break;
@@ -245,7 +245,7 @@ class StyleController extends Controller {
                         $style = "波西米亚";
                         break;
                     case 'b' :
-                        $style = "中古";
+                        $style = "复古混搭";
                         break;
                     case 'c' :
                         $style = "法式古典";
@@ -281,7 +281,7 @@ class StyleController extends Controller {
                         return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'b' :
-                        $stylearr = array('style' => '中古');
+                        $stylearr = array('style' => '复古混搭');
                         return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'c' :
@@ -327,7 +327,7 @@ class StyleController extends Controller {
                         return $this->render('flasha', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'b' :
-                        $stylearr = array('style' => '中古');
+                        $stylearr = array('style' => '复古混搭');
                         return $this->render('flashb', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'c' :

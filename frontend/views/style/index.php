@@ -24,7 +24,7 @@ use yii\helpers\Url;
 			<span class="iconfont logoa icon-logo01"></span>
 			<img class="index_img" src="img/fengge/shouye.png"/>
 			<div class="index_bottom_text">
-                            在某种程度上，家就等于你 然而，工业风、波西米亚、中古、美式... 或许你一直不太清楚这些风格有什么样的意义
+                            在某种程度上，家就等于你 然而，工业风、波西米亚、复古混搭、美式... 或许你一直不太清楚这些风格有什么样的意义
 1分钟，完成这14道测试题 通过住艺的洞察和判断 找到最适合你的家居风格
                         </div>
 			<span class="gloab_btn"><a href="<?php echo Url::toRoute(['/style/problem','link_id'=>$link_id]);?>">开始测试</a></span>

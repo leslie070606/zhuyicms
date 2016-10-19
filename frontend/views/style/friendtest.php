@@ -23,7 +23,7 @@ array_pop($myproblemArr);
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/boximiya01.png' />";
                 break;
-            case '中古' :
+            case '复古混搭' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/zhonggu01.png' />";
