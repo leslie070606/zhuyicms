@@ -71,6 +71,12 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
+        
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
+        
         $link_id = Yii::$app->request->get('link_id');
         if (isset($link_id) && !empty($link_id)) {
             
