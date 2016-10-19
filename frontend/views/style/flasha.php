@@ -47,6 +47,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
+            <span class="logoaa iconfont icon-jm01"></span>
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img class="des_img des_imga" src="img/flash_a/1.png" />

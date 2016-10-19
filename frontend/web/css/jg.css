@@ -175,11 +175,11 @@ body {
     position: absolute;
     width: 1rem;
     left: 50%;
-    height:1.3rem;
+    height:1.1rem;
     margin-left: -.5rem;
     top:.5rem;
     background: #ffffff;
-    z-index: 89
+    z-index: 89;
 }
 .by_ad::before { position: relative;z-index: 90;}
 /*.miaodiana_a .miaodian_text{
