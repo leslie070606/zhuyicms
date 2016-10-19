@@ -188,7 +188,6 @@ body {
     background: #ffffff;
     z-index: 89;
 }
-.foin_bot_title { font-size: .24rem; color: #999999; display: block; text-align: center; margin-top: -.1rem;}
 .by_ad::before { position: relative;z-index: 90;}
 /*.miaodiana_a .miaodian_text{
         overflow: auto;
