@@ -190,41 +190,41 @@ class StyleController extends Controller {
                             $shareModel->problem_data = $problemData;
                             $shareModel->style = $style;
                             $shareModel->link_id = $this->getRandomString();
-                            
+
                             $shareModel->save();
-                            
-                            if(isset($problemData)&&!empty($problemData)){
+
+                            if (isset($problemData) && !empty($problemData)) {
                                 $pipeidu = 1;
-                            }else{
+                            } else {
                                 $pipeidu = NULL;
                             }
                             switch ($flashid) {
                                 case 'a' :
-                                    return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'b' :
-                                    return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'c' :
-                                    return $this->render('flashc', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashc', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'd' :
-                                    return $this->render('flashd', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashd', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'e' :
-                                    return $this->render('flashe', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashe', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'f' :
-                                    return $this->render('flashf', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashf', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'g' :
-                                    return $this->render('flashg', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashg', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 case 'h' :
-                                    return $this->render('flashh', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flashh', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                                     break;
                                 default :
-                                    return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                                    return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                             }
                         } else {
 
@@ -307,43 +307,47 @@ class StyleController extends Controller {
                 $shareModel->style = $style;
                 $shareModel->link_id = $this->getRandomString();
                 $shareModel->save();
-                
+                if (isset($problemData) && !empty($problemData)) {
+                    $pipeidu = 1;
+                } else {
+                    $pipeidu = NULL;
+                }
                 switch ($flashid) {
                     case 'a' :
                         $stylearr = array('style' => '波西米亚');
-                        return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'b' :
                         $stylearr = array('style' => '复古混搭');
-                        return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'c' :
                         $stylearr = array('style' => '法式古典');
-                        return $this->render('flashc', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashc', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'd' :
                         $stylearr = array('style' => '工业');
-                        return $this->render('flashd', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashd', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'e' :
                         $stylearr = array('style' => '美式');
-                        return $this->render('flashe', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashe', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'f' :
                         $stylearr = array('style' => '和式');
-                        return $this->render('flashf', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashf', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'g' :
                         $stylearr = array('style' => '现代简约');
-                        return $this->render('flashg', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashg', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     case 'h' :
                         $stylearr = array('style' => '中式');
-                        return $this->render('flashh', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flashh', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                         break;
                     default :
                         $stylearr = array('style' => '波西米亚');
-                        return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData,'pipeidu'=>$pipeidu]);
+                        return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData, 'pipeidu' => $pipeidu]);
                 }
             }
         } else {
@@ -469,7 +473,7 @@ class StyleController extends Controller {
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
-            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle, 'style' => $style,'jsarr' => $jsarr]);
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle, 'style' => $style, 'jsarr' => $jsarr]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
