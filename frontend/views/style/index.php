@@ -82,7 +82,7 @@ use yii\helpers\Url;
             title: '法式?工业风?中古还是波西米亚? 测测你真的了解自己的家居风格吗？', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/index', // 分享链接
 
-            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?= $sharelogo ?>', // 分享图标
+            imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/img/morenfenxiang.png', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数
