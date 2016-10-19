@@ -36,6 +36,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>-->
                     <?php
                     $sharelogo = '';
+                    $_shareText = '';
                     switch ($mystyle['style']) {
                         case '波西米亚' :
 
@@ -44,6 +45,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/boximiya.png';
+                            $_shareText = '一枚牛头';
                             break;
                         case '复古混搭' :
 
@@ -52,6 +54,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/zhonggu_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/zhonggu.png';
+                            $_shareText = '一个抽象线条';
                             break;
                         case '法式古典' :
 
@@ -60,6 +63,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/fashigudian_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/fashigudian.png';
+                            $_shareText = '一枚水晶吊灯';
                             break;
                         case '工业' :
 
@@ -68,6 +72,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/gongye_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/gongye.png';
+                            $_shareText = '一块砖墙';
                             break;
                         case '美式' :
 
@@ -76,6 +81,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/meishi_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/meishi.png';
+                            $_shareText = '一个碎花沙发';
                             break;
                         case '和式' :
 
@@ -84,6 +90,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/heshi_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/heshi.png';
+                            $_shareText = '一席榻榻米';
                             break;
                         case '现代简约' :
 
@@ -92,6 +99,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>';
                             echo "<img src='img/fenggejieguo/xiandaijianyue_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/xiandaijianyue.png';
+                            $_shareText = '一个流畅线条';
                             break;
                         case '中式' :
 
@@ -100,6 +108,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/xinzhongshi_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/xinzhongshi.png';
+                            $_shareText = '一把明式椅子';
                             break;
                         default :
 
@@ -108,6 +117,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                 </div>";
                             echo "<img src='img/fenggejieguo/boximiya_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/boximiya.png';
+                            $_shareText = '一枚牛头';
                     }
                     ?>
                 </div>
@@ -292,8 +302,8 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 
                 //分享给朋友
                 wx.onMenuShareAppMessage({
-                    title: '这个测试说我很<?= $mystyle['style'] ?>', // 分享标题
-                    desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
+                    title: '<?= $mystyle['user_name'] ?>自己很<?= $mystyle['style'] ?>并向你扔了<?= $_shareText;?>', // 分享标题
+                    desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
                     link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
                     imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
@@ -301,7 +311,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                     dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        alert('已分享!');
+                        alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
@@ -313,14 +323,14 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 
                 //分享到朋友圈
                 wx.onMenuShareTimeline({
-                    title: '这个测试说我的品位很<?= $mystyle['style'] ?>...1分钟14道题,看看你对「家」的态度', // 分享标题
+                    title: '<?= $mystyle['user_name'] ?>说自己很<?= $mystyle['style'] ?>并向你扔了一枚<?= $_shareText;?>,还想看看你的家居风格是什么', // 分享标题
                     link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
                     imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
 
                     success: function () {
                         // 用户确认分享后执行的回调函数
-                        alert('分享成功!');
+                        alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
                     },
                     cancel: function () {
                         // 用户取消分享后执行的回调函数
