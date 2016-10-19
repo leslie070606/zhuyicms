@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 $xianshi = 1;
 $titile = '风格匹配度';
-if(conut($styleArr)>0){
+if(count($styleArr)>0){
     
 }  else {
     $xianshi = 0;
