@@ -388,6 +388,11 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
+        
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
 
         // 风格匹配数组
         $styleArr = array();
@@ -402,7 +407,7 @@ class StyleController extends Controller {
 
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
-            return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash]);
+            return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash,'jsarr' => $jsarr]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
