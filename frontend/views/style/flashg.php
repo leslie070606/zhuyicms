@@ -3,7 +3,7 @@
 
 use yii\helpers\Url;
 if (isset($frindf) && !empty($frindf)) {
-    $renchen = '他';
+    $renchen = 'TA';
 }else{
     $renchen = '你';
 }

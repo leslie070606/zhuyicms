@@ -29,6 +29,12 @@
 
 
 /*选择设计师*/
+.match_nuber { font-weight: 600;
+    font-size: .32rem;
+    margin-left: 0.3rem;}
+.match_nuber span { font-size: .24rem;font-weight: 100;}
+.chose_sylt_btn { border-top: 1px solid #f2f2f2; height: .88rem;line-height: .88rem; text-align: center;}
+.chose_sylt_btn a { display: block; color: #ff4e38; font-size: .24rem;}
 .chose_box { padding-bottom: .3rem; overflow: hidden; font-size: .24rem;}
 .chose_box .chose_here { float: left; width: 50%; position: relative;  border: .3rem solid #FFFFFF; border-bottom: none; box-sizing: border-box;}
 .chose_boxa .chose_here:nth-child(odd) { border-right: .15rem solid #FFFFFF;}
