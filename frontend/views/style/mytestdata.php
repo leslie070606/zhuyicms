@@ -2,6 +2,7 @@
 <?php
 
 use yii\helpers\Url;
+
 $uc = new \common\util\Guolu();
 $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 ?>
@@ -16,6 +17,14 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript">
             $(function () {
+                var _hmt = _hmt || [];
+                (function () {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?c2212e69b1418d8a1b6506185b5c8bc3";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+
                 $(".style_bottom").each(function () {
                     if ($(this).find("ul li").length == 0) {
                         $(this).html("快去邀请小伙伴来测试吧！");
@@ -28,7 +37,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
     <body>
         <div class="chose_box open_self">
             <div class="chose_top">
-                
+
                 <div class="top_mesg">
                     <span class="top_mesg_name"><?= $mystyle['user_name'] ?></span>
 <!--                    <span>你酷感十足，你是机械时代的迷恋者，你是拒绝平庸的摇滚先锋，</span>
@@ -302,43 +311,43 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 
                 //分享给朋友
                 wx.onMenuShareAppMessage({
-                    title: '<?= $mystyle['user_name'] ?>自己很「<?= $mystyle['style'] ?>」并向你扔了<?= $_shareText;?>', // 分享标题
-                    desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
-                    link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
+                    title: '<?= $mystyle['user_name'] ?>自己很「<?= $mystyle['style'] ?>」并向你扔了<?= $_shareText; ?>', // 分享标题
+                                desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
+                                link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-                    imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
-                    type: '', // 分享类型,music、video或link，不填默认为link
-                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                    success: function () {
-                        // 用户确认分享后执行的回调函数
-                        alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    },
-                    fail: function (res) {
-                        alert(JSON.stringify(res));
-                    }
-                });
+                                imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
+                                type: '', // 分享类型,music、video或link，不填默认为link
+                                dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+                                success: function () {
+                                    // 用户确认分享后执行的回调函数
+                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                                },
+                                cancel: function () {
+                                    // 用户取消分享后执行的回调函数
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
 
-                //分享到朋友圈
-                wx.onMenuShareTimeline({
-                    title: '<?= $mystyle['user_name'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一枚<?= $_shareText;?>,还想看看你的家居风格是什么', // 分享标题
-                    link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
+                            //分享到朋友圈
+                            wx.onMenuShareTimeline({
+                                title: '<?= $mystyle['user_name'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一枚<?= $_shareText; ?>,还想看看你的家居风格是什么', // 分享标题
+                                link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
-                    imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
+                                imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
 
-                    success: function () {
-                        // 用户确认分享后执行的回调函数
-                        alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
-                    },
-                    cancel: function () {
-                        // 用户取消分享后执行的回调函数
-                    },
-                    fail: function (res) {
-                        alert(JSON.stringify(res));
-                    }
-                });
+                                success: function () {
+                                    // 用户确认分享后执行的回调函数
+                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                                },
+                                cancel: function () {
+                                    // 用户取消分享后执行的回调函数
+                                },
+                                fail: function (res) {
+                                    alert(JSON.stringify(res));
+                                }
+                            });
 
-            });
+                        });
 </script>

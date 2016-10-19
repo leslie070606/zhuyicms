@@ -500,17 +500,14 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-1.jpg" />
-                        <div class="here_text">马蒂斯</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-2.jpg" />
-                        <div class="here_text">莫奈</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-3.jpg" />
-                        <div class="here_text">波洛克</div>
                     </div>
                 </div>
             </div>
