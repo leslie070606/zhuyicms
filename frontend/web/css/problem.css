@@ -31,6 +31,10 @@
 /*选择设计师*/
 .chose_box { padding-bottom: .3rem; overflow: hidden; font-size: .24rem;}
 .chose_box .chose_here { float: left; width: 50%; position: relative;  border: .3rem solid #FFFFFF; border-bottom: none; box-sizing: border-box;}
+.chose_boxa .chose_here:nth-child(odd) { border-right: .15rem solid #FFFFFF;}
+.chose_boxa .chose_here:nth-child(even) { border-left: .15rem solid #FFFFFF;}
+.open_self  .chose_here:nth-child(even) { border-right: .15rem solid #F2F2F2 !important;}
+.open_self .chose_here:nth-child(odd) { border-left: .15rem solid #F2F2F2 !important;}
 .chose_box .chose_here img { float: left; width: 100%;}
 .chose_boxa .chose_here:nth-child(odd) { border-right: .15rem solid #FFFFFF;}
 .chose_boxa .chose_here:nth-child(even) { border-left: .15rem solid #FFFFFF;}
