@@ -22,7 +22,7 @@ use yii\helpers\Url;
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'g']); ?>"><div><img src="img/fenggejieguo/xiandaijianyue.png" /><span>现代简约<i class="match_nuber"><?php if(isset($styleArr['g'])){echo $styleArr['g']; }else{echo '0';}  ?><span>%</span></i></span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'h']); ?>"><div><img src="img/fenggejieguo/xinzhongshi.png" /><span>中式<i class="match_nuber"><?php if(isset($styleArr['h'])){echo $styleArr['h']; }else{echo '0';}  ?><span>%</span></i></span></div></a>
         </div>
-        <div class="chose_sylt_btn"><a href="javascript:js_back();">我要重玩一次</a></div>
+        <div class="chose_sylt_btn"><a href="javascript:js_back();">返回我的风格结果</a></div>
     </body>
 </html>
 <script type="text/javascript">
