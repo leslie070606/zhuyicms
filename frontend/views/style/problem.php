@@ -166,7 +166,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">2</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom"><span class="top_bottom_title">色彩数量</span>
+                <div class="top_bottom"><span class="top_bottom_title">色彩多少</span>
                     不可否认，色彩帮助我们奠定了家的基调，<br>它既可以冷静地安抚我们的焦虑，<br>亦能够热情地激发我们的活力。 <span>关于空间的色彩，你更心仪的会是以下哪一种呢？</span>
                 </div>
             </div>

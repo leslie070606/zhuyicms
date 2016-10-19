@@ -38,7 +38,7 @@ array_pop($myproblemArr);
     <body>
 
         <?php
-        switch ($mystyle['style']) {
+        switch ($style) {
             case '波西米亚' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
