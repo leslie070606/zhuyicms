@@ -1,3 +1,4 @@
+
 <?php
 $uc = new \common\util\Guolu();
 $myproblemArr = explode('a', $mystyle['problem_data']);
@@ -26,41 +27,41 @@ array_pop($myproblemArr);
             case '复古混搭' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/zhonggu01.png' />";
-                break;
-            case '法式古典' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/zhonggu01.png' />";
+                        break;
+                    case '法式古典' :
+                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/fashigudian01.png' />";
-                break;
-            case '工业' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/fashigudian01.png' />";
+                        break;
+                    case '工业' :
+                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/gongye01.png' />";
-                break;
-            case '美式' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/gongye01.png' />";
+                        break;
+                    case '美式' :
+                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/meishi01.png' />";
-                break;
-            case '和式' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/meishi01.png' />";
+                        break;
+                    case '和式' :
+                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/heshi01.png' />";
-                break;
-            case '现代简约' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/heshi01.png' />";
+                        break;
+                    case '现代简约' :
+                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
                 break;
             case '中式' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
-                break;
-            default :
-            case '波西米亚' :
-                echo '<div class="self_foin" style="background-color: #fff;">
+                        echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
+                        break;
+                    default :
+                        case '波西米亚' :
+                        echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/boximiya01.png' />";
         }
@@ -92,5 +93,3 @@ array_pop($myproblemArr);
 </div>
 </body>
 </html>
-
-

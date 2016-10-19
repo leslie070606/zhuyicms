@@ -2,7 +2,7 @@
 @charset "utf-8";
 
 a,body {
-	color: #221814;
+	color: #333333;
 	text-decoration: none;
 }
 img { max-width: 100%;}
@@ -101,6 +101,17 @@ body {
 	border-bottom:.1rem solid #fff;
 }
 .sanjiao_box>.maodian_icon { width: .12rem; position: relative; z-index: 19; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
+.sanjiao_box>.maodian_flash  .md_flash_center { width: .1rem; height: .1rem; border-radius: .05rem; background: #ff4e38; position: absolute;z-index: 10; left:-.05rem; top:-.05rem; }
+.desib_box_play .sanjiao_box .maodian_flash .md_flash_big {animation:imgxxaa 2s linear infinite 0s;-webkit-animation:imgxxaa 2s linear infinite 0s;}
+@-webkit-keyframes imgxxaa {
+	0% {
+            opacity:.1;
+	}
+	50% { opacity: .4;}
+	100% { opacity: .1;}
+}
+.sanjiao_box>.maodian_flash .md_flash_big { width: .4rem; height:.4rem; position: absolute; z-index: 9; background:#ff4e38; border-radius: .5rem;  opacity: 0;animation-fill-mode: forwards !important;
+	-webkit-animation-fill-mode: forwards !important; left:-.2rem; top:-.2rem;}
 .miaodian_mesng .sanjiao_box { position: relative; left: 23.5%; top:0;}
 .miaodian_mesng .click_m { position: absolute; width: 1rem; z-index: 999; height: 1rem; top: -.5rem; left: -.5rem;}
 .btn_miaodian { top: -5.1rem;}
@@ -118,7 +129,7 @@ body {
 .btn_miaodian .text_img img:last-child { margin-right: 0;}
 .desib_box .miaoshu {
 	position: relative;
-	z-index: 24;
+	z-index: 99;
 	font-size: .28rem;
 	margin: .3rem;
 	padding-top: .3rem;
@@ -133,7 +144,12 @@ body {
 .desib_box .miaoshu>span { display: block;}
 .miaoshu .miaoshu_name { font-size: .32rem;}
 .miaoshu .text_big { font-size: .66rem; font-weight: bold; position: relative;}
-.logo { position: absolute; right: .3rem; top: .3rem; z-index: 22; font-size: .88rem; color: #FF4E38; -webkit-font-smoothing: none !important;    -webkit-text-stroke-width: 0px !important;}
+.logo,.logoaa { position: absolute; z-index: 999; right: .3rem; top: .3rem; font-size: .88rem; color: #FF4E38; -webkit-font-smoothing: none !important;    -webkit-text-stroke-width: 0px !important;}
+.logoaa {   
+    top: 1.6rem;
+    color:#333333;
+    font-size: .48rem;
+    right: 0.5rem;}
 .logo::before { position: relative; z-index: 22;}
 .logo::after {
     content: "";

@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Url;
@@ -64,13 +65,19 @@ use yii\helpers\Url;
                     }
                 });
 
+
+
             });
 
+
             function getMax(arr, foin_data) {
-                var obj = {},
-                        l = arr.length,
-                        key = [],
-                        val = [];
+                 var obj = {},
+                    l = arr.length,
+                    key = [],
+                    val = [],
+                    new_obj=0,
+                    new_html="";
+
                 for (var i = 0; i < l; i++) {
                     !obj[arr[i]] ? obj[arr[i]] = 1 : obj[arr[i]] += 1;
                 }
@@ -90,7 +97,17 @@ use yii\helpers\Url;
 
                 var htmll = ["", "g", "d", "", "b", "f", "e", "", "c", "a", "h"];
                 //alert(htmll[key[pos]]);
-                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]] + '&problem=' + foin_data;
+                
+                   for(var i=0;i<key.length-1;i++){
+                        key[i]=htmll[key[i]];
+                        new_obj+=val[i];
+                     }
+                   for(var i=0;i<key.length-1;i++){
+                        new_html+=key[i]+"#"+parseInt(val[i]/new_obj*100)+","
+                     }
+                     console.log(new_html)
+
+                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + key[pos] + '&problem=' + foin_data+ '&match=' + new_html;
 
                 window.location = _uploadUrl;
 

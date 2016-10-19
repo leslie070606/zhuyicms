@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Url;
@@ -34,7 +35,7 @@ if (isset($frindf) && !empty($frindf)) {
                     <span>中式风格</span>
                 <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
 
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
@@ -68,7 +69,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_b">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -81,7 +82,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_c">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -93,7 +94,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_d">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -105,13 +106,13 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_e">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">文人格调的装饰</span>
-                    中式意味着在装饰细节上也充分体现崇尚自然情趣的传统美学精神，所以空间里常常穿插着文人画中山水、花鸟的形象。
+                    新中式意味着在装饰细节上也充分体现崇尚自然情趣的传统美学精神，所以空间里常常穿插着文人画中山水、花鸟的形象。
                 </div>
             </div>
         </div>
@@ -251,4 +252,3 @@ default :
 
     });
 </script>
-
