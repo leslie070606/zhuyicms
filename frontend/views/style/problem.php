@@ -14,13 +14,13 @@ use yii\helpers\Url;
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript">
             $(function () {
-                
-                
+
+
                 var nuberrr = 1;
                 var data = [];
                 var truee = true;
                 var index = 0;
-                var foin_data="";
+                var foin_data = "";
                 $(".pro_here").on("click", function () {
                     if (truee) {
                         truee = false;
@@ -47,13 +47,14 @@ use yii\helpers\Url;
                                         var get = $(this).attr("tetel").split("a");
                                         var foin_index = $(this).index();
                                         data = $.merge(data, get);
-                                        foin_data+=foin_index+"a";
+                                        foin_data += foin_index + "a";
 //                                        console.log(get)
                                     });
-                                   
+
 //                                    console.log(data)
-                                    getMax(data,foin_data);
-                                };
+                                    getMax(data, foin_data);
+                                }
+                                ;
                                 truee = true;
                             }, 200);
                         } else {
@@ -68,7 +69,7 @@ use yii\helpers\Url;
             });
 
 
-            function getMax(arr,foin_data) {
+            function getMax(arr, foin_data) {
                 var obj = {},
                         l = arr.length,
                         key = [],
@@ -92,11 +93,11 @@ use yii\helpers\Url;
 
                 var htmll = ["", "g", "d", "", "b", "f", "e", "", "c", "a", "h"];
                 //alert(htmll[key[pos]]);
-                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]]+'&problem='+foin_data;
-                
+                var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]] + '&problem=' + foin_data;
+
                 window.location = _uploadUrl;
-                 
-              // console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
+
+                // console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
             }
 
 
@@ -119,7 +120,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">1</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">风格</span>
                     关于自己日日相伴的家，<br> 应该没有人会比你更清楚自己想要什么吧。那么， <span>你希望你的家装在风格上更接近下面那张图片呢？</span>
                 </div>
             </div>
@@ -151,7 +152,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">2</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">色彩数量</span>
                     不可否认，色彩帮助我们奠定了家的基调，<br>它既可以冷静地安抚我们的焦虑，<br>亦能够热情地激发我们的活力。 <span>关于空间的色彩，你更心仪的会是以下哪一种呢？</span>
                 </div>
             </div>
@@ -184,7 +185,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">3</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">空间</span>
                     爱收藏的恋物癖？<br> 还是“断舍离”的拥趸者？<br> 你对“物”的态度决定了你的空间状态。 <span>从“填满”到“留白”，你的选择会是什么？</span>
                 </div>
             </div>
@@ -216,7 +217,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">4</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">饰品图案</span>
                     图纹、花样还有肌理常常是软装为家赋予的“表情"， <span>而你喜欢的表情会是以下哪种？</span>
                 </div>
             </div>
@@ -248,7 +249,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">5</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">线条</span>
                     家具的线条是勾勒空间的重要“笔触”，<br> 可以表现出一个家的风骨。 <span>而你钟意的家具轮廓是以直线为主，还是以曲线为主？</span>
                 </div>
             </div>
@@ -280,7 +281,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">6</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">色彩搭配</span>
                     我们猜测，着装时偏好的色彩搭配，<br> 你大概也会沿用到你的家里吧。 <span>而以下哪一种色彩搭配的空间才会入你的"法眼"呢？</span>
                 </div>
             </div>
@@ -312,7 +313,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">7</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">照明</span>
                     在家装过程中常会被人忽略的照明设计，<br> 却是建筑师、室内设计师们最关注的问题之一。<br> 不夸张的说，照明是空间的“底妆”。<span>那么，以下哪一种照明方式最接近你期待中的空间“底妆”呢？</span>
                 </div>
             </div>
@@ -344,7 +345,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">8</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">主材</span>
                     你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>住艺的设计师于魁尤其喜欢“沙比利”材质的家具，那么，你呢？</span>
                 </div>
             </div>
@@ -376,7 +377,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">9</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">布料</span>
                     家装需要“看”，更需要“摸”。 <span>在软装材料上，你会喜欢哪种手感的材质？</span>
                 </div>
             </div>
@@ -409,7 +410,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">10</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">度假地点</span>
                     旅行改变了我们的视野。 <span>在你心目中最理想的假期目的地会是哪里呢？</span>
                 </div>
             </div>
@@ -442,7 +443,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">11</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">理想住所</span>
                     家，接受我们的肉身，安放我们的灵魂。<span>假若可以自由选择，你会希望这个令你得以栖居的住所坐落何处？</span>
                 </div>
             </div>
@@ -475,7 +476,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">12</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">墙壁画</span>
                     <span>如果你的家里有一面空白的墙壁，你会在上面挂以下哪一幅画呢？</span>
                 </div>
             </div>
@@ -507,7 +508,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">13</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">植物</span>
                     植物花卉为家带来清新，注入活力。 <span>哪种植物会是你用来装点家居环境的最爱？</span>
                 </div>
             </div>
@@ -539,7 +540,7 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">14</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom">
+                <div class="top_bottom"><span class="top_bottom_title">宠物</span>
                     <span>倘若你需要同某一种动物分享家的空间，你会希望它是？</span>
                 </div>
             </div>

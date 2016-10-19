@@ -58,12 +58,15 @@ $(function(){
 	})
 	
 	function autoget(){
-	var width=$(".desib_box").width();
-	var height=$("body").height();
+	var width=$(window).width();
+	var height=$(window).height();
 	var get=(736/414)*width;
 	var geta=(414/736)*height;
-	$("body").css({"width":geta})
+	var big_left=$(".text_big>span").width();
+	$("body").css({"width":geta});
+	$(".miaodiana_a .sanjiao_box").css("left",big_left+15);
 }
+	
 	
 	function autogeta(){
 	var width=$(window).width();
@@ -97,15 +100,34 @@ var isLoad = true; // 控制变量
 // 判断图片加载状况，加载完成后回调
 isImgLoad(function(){
    $(".desib_box").addClass("desib_box_play");
+   if($("body").attr("id")=="no_flash"){
    setTimeout(function(){ 
 		$("#getaa").animate({top:"-10%"},500);
+	},200);
+	}else{
+		setTimeout(function(){ 
+		$("#getaa").animate({top:"-10%"},500);
 	},3500);
-	setTimeout(function(){ 
+	}
+	 if($("body").attr("id")=="no_flash"){
+	 	setTimeout(function(){ 
+		$("#des_imga").animate({left:"10.9%"},100);
+	},100);
+	 }else{
+	 	setTimeout(function(){ 
 		$("#des_imga").animate({left:"10.9%"},400);
 	},2600);
-	setTimeout(function(){ 
+	 }
+	 if($("body").attr("id")=="no_flash"){
+	 	setTimeout(function(){ 
+		$(".imgtengtiao").animate({ opacity:1},100);
+	},100);
+	 }else{
+	 	setTimeout(function(){ 
 		$(".imgtengtiao").animate({ opacity:1},400);
 	},3200);
+	 }
+	
 	
 });
  
@@ -130,7 +152,7 @@ function isImgLoad(callback){
         isLoad = true;
         t_img = setTimeout(function(){
             isImgLoad(callback); // 递归扫描
-        },500); // 我这里设置的是500毫秒就扫描一次，可以自己调整
+        },100); // 我这里设置的是500毫秒就扫描一次，可以自己调整
     }
 }
 
