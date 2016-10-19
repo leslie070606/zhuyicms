@@ -192,7 +192,10 @@ class StyleController extends Controller {
                             $shareModel->link_id = $this->getRandomString();
 
                             $shareModel->save();
-
+                            
+                            // 重新查询自己的风格
+                            $res = $shareModel->findOne(['link_id' => $shareModel->link_id]);
+                            
                             if (isset($problemData) && !empty($problemData)) {
                                 $pipeidu = 1;
                             } else {
