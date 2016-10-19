@@ -42,9 +42,9 @@ class StyleController extends Controller {
             $tokenModel = new \app\components\Token();
             // 获取JS签名
             $jsarr = $tokenModel->getSignature();
-        }else{
+        } else {
             $jsarr['timestamp'] = '1';
-            
+
             $jsarr['signature'] = '2';
         }
 
@@ -66,7 +66,7 @@ class StyleController extends Controller {
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouindex&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             } else {
-                return $this->render('index', ['link_id' => $link_id,'jsarr' => $jsarr]);
+                return $this->render('index', ['link_id' => $link_id, 'jsarr' => $jsarr]);
             }
         }
     }
@@ -79,14 +79,14 @@ class StyleController extends Controller {
             $session->open();
         }
 
-         if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
             // 分享JS接口
             $tokenModel = new \app\components\Token();
             // 获取JS签名
             $jsarr = $tokenModel->getSignature();
-        }else{
+        } else {
             $jsarr['timestamp'] = '1';
-            
+
             $jsarr['signature'] = '2';
         }
 
@@ -104,7 +104,7 @@ class StyleController extends Controller {
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/shouproblem&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
             } else {
-                return $this->render('problem', ['link_id' => $link_id,'jsarr' => $jsarr]);
+                return $this->render('problem', ['link_id' => $link_id, 'jsarr' => $jsarr]);
             }
         }
     }
@@ -402,14 +402,14 @@ class StyleController extends Controller {
             $session->open();
         }
 
-  if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+        if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
             // 分享JS接口
             $tokenModel = new \app\components\Token();
             // 获取JS签名
             $jsarr = $tokenModel->getSignature();
-        }else{
+        } else {
             $jsarr['timestamp'] = '1';
-            
+
             $jsarr['signature'] = '2';
         }
 
@@ -432,7 +432,7 @@ class StyleController extends Controller {
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shouchosestyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
             } else {
-                return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash,'jsarr' => $jsarr]);
+                return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash, 'jsarr' => $jsarr]);
             }
         }
     }
@@ -444,7 +444,10 @@ class StyleController extends Controller {
         if (!$session->isActive) {
             $session->open();
         }
-
+        // 分享JS接口
+        $tokenModel = new \app\components\Token();
+        // 获取JS签名
+        $jsarr = $tokenModel->getSignature();
         $style = Yii::$app->request->get('style');
         $link_id = Yii::$app->request->get('link_id');
         // 判断用户是否授权成功
@@ -459,7 +462,7 @@ class StyleController extends Controller {
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
-            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle, 'style' => $style]);
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle, 'style' => $style,'jsarr' => $jsarr]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
