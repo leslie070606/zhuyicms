@@ -79,11 +79,12 @@ array_pop($myproblemArr);
                     }
                 }
                 $mach = $j/14;
+                $mach = number_format($mach, 2, '.', '')*100;
                 ?>
                 <li>
                     <img src="<?= $fs['headimgurl'] ?>" />
                     <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']); ?></span>
-                    <span class="match_number">匹配度<i><?=$mach ?></i></span>
+                    <span class="match_number">匹配度<i><?=$mach ?>%</i></span>
                 </li>
             <?php } ?>
         </ul>
