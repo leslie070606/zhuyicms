@@ -326,7 +326,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                             });
                             //分享到朋友圈
                             wx.onMenuShareTimeline({
-                                title: '<?= $mystyle['user_name'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一枚<?= $_shareText; ?>,还想看看你的家居风格是什么', // 分享标题
+                                title: '<?= $mystyle['user_name'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了<?= $_shareText; ?>,还想看看你的家居风格是什么', // 分享标题
                                 link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
                                 imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
                                 success: function () {

@@ -9,7 +9,8 @@ class DataCount {
         '2' => '按钮',
         '3' => '页面',
         '4' => '设计师',
-        '5' => '转化率'
+        '5' => '转化率',
+        '6' => '风格统计',
     ];
     public static $_dataCountDetailArr = [
         '1' => [
