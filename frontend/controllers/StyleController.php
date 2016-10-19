@@ -600,7 +600,21 @@ class StyleController extends Controller {
         for ($i = 0; $i < $n; $i ++) {
             $s .= $str [rand(0, $len)];
         }
-        return $s;
+        
+        $num = $s.$this->createProNum();
+        return $num;
+    }
+    public function createProNum() {
+        $arr = range(1, 10);
+
+        shuffle($arr);
+        $phonestr = '';
+        foreach ($arr as $values) {
+            $phonestr = $phonestr . $values;
+        }
+        $phonestr = substr($phonestr, 3, 4);
+        $phonestr = substr(time(), -2) . $phonestr;
+        return $phonestr;
     }
 
     private function doCurlGetRequest($url, $data = array(), $timeout = 10) {
