@@ -1,0 +1,374 @@
+.desi_top { position: absolute; left: 0; top: 0; width: 100%; height: 65%; background: #f9e8d9; z-index: 2;}
+.desi_bottom { position: absolute; left: 0; bottom: 0; width: 100%; height: 40%; background: #e0d5ce; z-index: 1;}
+.gloab_bottm { background: #e0d5ce !important;}
+.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg, .logoaa { color: #662F09 !important;}
+.desib_box_play .sanjiao_box .maodian_icon {animation:imgaa .4s ease-out 1 4.6s;-webkit-animation:imgaa .4s ease-out 1 4.6s;}
+.desib_box_play .miaoshu { -webkit-animation: imgaa .5s ease-out 1 4.5s; animation: imgaa .5s ease-out 1 4.5s;}
+ .share_box { animation:imgaa .5s ease-out 1 4.5s;-webkit-animation:imgaa .5s ease-out 1 4.5s;}
+
+.desib_box .des_img {
+	position: absolute;
+	z-index: 3;
+	animation-fill-mode: forwards !important;
+	-webkit-animation-fill-mode: forwards !important;
+}
+
+.desib_box .des_imga {
+	width: 20%;
+	bottom: 25%;
+	left: 4%;
+	z-index: 6;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imga {animation: imgaa 1s ease-out 1 2s;-webkit-animation: imgaa 1s ease-out 1 2s;}
+
+.desib_box .des_imgb {
+	width: 55.7%;
+	bottom: -15%;
+	left: 24.6%;
+	
+}
+.desib_box_play .des_imgb {animation: imgbb .5s ease-out 1 .3s;-webkit-animation: imgbb .5s ease-out 1 .3s;}
+.desib_box .des_imgc {
+	width: 34.4%;
+	left: -35%;
+	bottom: 32.3%;
+	
+}
+.desib_box_play .des_imgc {animation: imgcc .4s ease-out 1 .8s;-webkit-animation: imgcc .4s ease-out 1 .8s;}
+.desib_box .des_imgd {
+	width: 19.4%;
+	bottom: 29%;
+	right: -20%;
+	z-index: 6;
+	
+}
+.desib_box_play .des_imgd {animation: imgdd .4s ease-out 1 1.6s;-webkit-animation: imgdd .4s ease-out 1 1.6s;}
+.desib_box .des_imge {
+	width: 9.4%;
+	left: 42%;
+	top: -63%;
+	
+}
+.desib_box_play .des_imge {animation: imgjj .5s ease-out 1 3.2s;-webkit-animation: imgjj .5s ease-out 1 3.2s;}
+.desib_box .des_imgg {
+	width: 6.1%;
+	right: 23.4%;
+	bottom: 46.7%;
+	z-index: 7;
+	opacity: 0;
+
+}
+.desib_box_play .des_imgg {	animation: imgaa .5s ease-out 1 4.1s;-webkit-animation: imgaa .5s ease-out 1 4.1s;}
+.desib_box .des_imgh {
+	width: 21.4%;
+	top: 35%;
+	right: 22%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgh {animation: imgaa 1s ease-out 1 2.4s;-webkit-animation: imgaa 1s ease-out 1 2.4s;}
+.desib_box .des_imgf {
+	width: 13.4%;
+	left: 39.8%;
+	top: -60%;
+	
+}
+.desib_box_play .des_imgf {animation: imgff .5s ease-out 1 2.8s;-webkit-animation: imgff .5s ease-out 1 2.8s;}
+.desib_box .des_imgj {
+	width: 11.4%;
+	right: 10%;
+	top: -68%;
+	
+}
+.desib_box_play .des_imgj {animation: imgjj .5s ease-out 1 3.6s;-webkit-animation: imgjj .5s ease-out 1 3.6s;}
+.desib_box .des_imgk {
+	width: 47.2%;
+	left: -48%;
+	bottom: 29%;
+	z-index: 5;
+	
+}
+.desib_box_play .des_imgk {animation: imgkk .4s ease-out 1 1.2s;-webkit-animation: imgkk .4s ease-out 1 1.2s;}
+.desib_box .des_imgl {
+	width: 27%;
+	right: -28%;
+	bottom: 33.9%;
+	z-index: 4;
+	
+}
+.desib_box_play .des_imgl {animation: imgll .5s ease-out 1s;-webkit-animation: imgll .5s ease-out 1s;}
+.des_imgp_a {
+	top: 44.3%;
+	right: 30.3%;
+	opacity: 0;
+	width: 5%;
+	
+}
+.desib_box_play .des_imgp_a {animation: imgpq 4s ease-out infinite 3s;-webkit-animation: imgpq 4s ease-out infinite 4s;}
+.des_imgp_b {
+	top: 44.6%;
+	right: 29.7%;
+	width: 6%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgp_b {animation: imgpq 4s ease-out infinite 3.1s;-webkit-animation: imgpq 4s ease-out infinite 4.1s;}
+.des_imgp_c {
+	top: 44.9%;
+	right: 28.6%;
+	width: 8%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgp_c {animation: imgpq 4s ease-out infinite 3.2s;-webkit-animation: imgpq 4s ease-out infinite 4.2s;}
+.des_imgp_d {
+	top: 45.3%;
+	right: 27.7%;
+	width: 10%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgp_d {animation: imgpq 4s ease-out infinite 3.3s;-webkit-animation: imgpq 4s ease-out infinite 4.3s;}
+@keyframes imgaa {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes imgbb {
+	from {
+		bottom: -15%;
+	}
+	to {
+		bottom: 22.2%;
+	}
+}
+
+@keyframes imgcc {
+	from {
+		left: -35%;
+	}
+	to {
+		left: 3.3%;
+	}
+}
+
+@keyframes imgdd {
+	from {
+		right: -20%;
+	}
+	to {
+		right: 4.2%;
+	}
+}
+
+@keyframes imgff {
+	from {
+		top: -60%;
+	}
+	to {
+		top: 0%;
+	}
+}
+
+@keyframes imgjj {
+	from {
+		top: -58%;
+	}
+	to {
+		top: -13%;
+	}
+}
+
+@keyframes imgkk {
+	from {
+		left: -48%;
+	}
+	to {
+		left: 21.3%;
+	}
+}
+
+@keyframes imgll {
+	from {
+		right: -30%;
+	}
+	to {
+		right: 19.5%;
+	}
+}
+
+@keyframes imgpq {
+	0% {
+		opacity: 0;
+	}
+	5% {
+		opacity: .5;
+	}
+	10% {
+		opacity: 1;
+	}
+	15% {
+		opacity: .5;
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+
+
+
+@-webkit-keyframes imgaa {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes imgbb {
+	from {
+		bottom: -15%;
+	}
+	to {
+		bottom: 22.2%;
+	}
+}
+
+@-webkit-keyframes imgcc {
+	from {
+		left: -35%;
+	}
+	to {
+		left: 3.3%;
+	}
+}
+
+@-webkit-keyframes imgdd {
+	from {
+		right: -20%;
+	}
+	to {
+		right: 4.2%;
+	}
+}
+
+@-webkit-keyframes imgff {
+	from {
+		top: -60%;
+	}
+	to {
+		top: 0%;
+	}
+}
+
+@-webkit-keyframes imgjj {
+	from {
+		top: -58%;
+	}
+	to {
+		top: -13%;
+	}
+}
+
+@-webkit-keyframes imgkk {
+	from {
+		left: -48%;
+	}
+	to {
+		left: 21.3%;
+	}
+}
+
+@-webkit-keyframes imgll {
+	from {
+		right: -30%;
+	}
+	to {
+		right: 19.5%;
+	}
+}
+
+@-webkit-keyframes imgpq {
+	0% {
+		opacity: 0;
+	}
+	5% {
+		opacity: .5;
+	}
+	10% {
+		opacity: 1;
+	}
+	15% {
+		opacity: .5;
+	}
+	20% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+/*锚点*/
+
+.miaodiana_a{
+    top: 16.5%;
+}
+.miaodiana_a .sanjiao_box{
+    left: 50.3%;
+}
+
+.miaodiana_aa{
+    top: 46%;
+}
+.miaodiana_aa .sanjiao_box{
+    left: 48%;
+}
+
+.miaodiana_b{
+    top: 35%;
+}
+.miaodiana_b .sanjiao_box{
+    left: 58%;
+}
+
+
+.miaodiana_c{
+    top: 58.6%;
+}
+.miaodiana_c .sanjiao_box{
+    left: 23.8%;
+}
+
+
+.miaodiana_d{
+    top: 71.3%;
+}
+.miaodiana_d .sanjiao_box{
+    left: 6.8%;
+}
+
+.miaodiana_e{
+    top: 75%;
+}
+.miaodiana_e .sanjiao_box{
+    left: 74.8%;
+}
+
+.miaodiana_f{
+    top: 59%;
+}
+.miaodiana_f .sanjiao_box{
+    left: 74.8%;
+}

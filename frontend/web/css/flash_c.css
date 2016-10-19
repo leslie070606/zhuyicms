@@ -1,0 +1,500 @@
+.desi_top { position: absolute; left: 0; top: 0; width: 100%; height: 65%; background: #fdefd6; z-index: 2;}
+.desi_bottom { position: absolute; left: 0; bottom: 0; width: 100%; height: 40%; background: #c6a885; z-index: 1;}
+.gloab_bottm { background: #c6a885 !important;}
+.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg, .logoaa { color: #6D1F15 !important;}
+.desib_box_play .sanjiao_box .maodian_icon {animation:imgaa .4s ease-out 1 4.1s;-webkit-animation:imgaa .4s ease-out 1 4.1s;}
+.desib_box_play .miaoshu { -webkit-animation: imgaa .5s ease-out 1 4s; animation: imgaa .5s ease-out 1 4s;}
+ .share_box { animation:imgaa .5s ease-out 1 4s;-webkit-animation:imgaa .5s ease-out 1 4s;}
+
+.desib_box .des_img {
+	position: absolute;
+	z-index: 3;
+	animation-fill-mode: forwards !important;
+	-webkit-animation-fill-mode: forwards !important;
+}
+.desib_box .des_imga {
+	width: 1.1%;
+	top: -75%;
+	left: 34%;
+	z-index: 6;
+	
+}
+.desib_box_play .des_imga {animation:imgaal .5s ease-out 1 2.6s;-webkit-animation:imgaal .5s ease-out 1 2.6s;}
+.desib_box .des_imga_a {
+	width: 1.1%;
+	top: -75%;
+	right: 33.6%;
+	z-index: 6;
+	
+}
+.desib_box_play .des_imga_a {animation:imgaal .5s ease-out 1 2.6s;-webkit-animation:imgaal .5s ease-out 1 2.6s;}
+.desib_box .des_imgb {
+	width: 6.1%;
+	top: 40.9%;
+	left: 24.6%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgb {animation:imgaa .5s ease-out 1 2.2s;-webkit-animation:imgaa .5s ease-out 1 2.2s;}
+.desib_box .des_imgb_a {
+	width: 6.1%;
+	top: 40.9%;
+	right: 24.1%;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgb_a {animation:imgaa .5s ease-out 1 2.2s;-webkit-animation:imgaa .5s ease-out 1 2.2s;}
+.desib_box .des_imgc {
+	width: 14.6%;
+	top: -60%;
+	left: 43.1%;
+}
+
+.desib_box .des_imgcc {
+	-webkit-transform-origin: center top;
+	transform-origin: center top;
+}
+.desib_box_play .des_imgcc {animation:imgcca 2s linear infinite 2.9s;-webkit-animation:imgcca 2s linear infinite 2.9s;}
+.desib_box .des_imgd {
+	width: 7.5%;
+	bottom: 34.9%;
+	right: 41.1%;
+	z-index: 8;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imgd {animation:imgaa .5s ease-out 1 1.2s;-webkit-animation:imgaa .5s ease-out 1 1.2s;}
+.desib_box .des_imge {
+	width: 11.6%;
+	right: 6.1%;
+	bottom:45.6%;
+	z-index: 8;
+	opacity: 0;
+	
+}
+.desib_box_play .des_imge {animation:imgaa .5s ease-out 1 1.8s;-webkit-animation:imgaa .5s ease-out 1 1.8s;}
+.desib_box .des_imgg {
+	width: 33.4%;
+	left: 134%;
+	bottom: 25.5%;
+	z-index: 8;
+	
+}
+.desib_box_play .des_imgg {animation:imggg .4s ease-out 1 .8s;-webkit-animation:imggg .4s ease-out 1 .8s;}
+.desib_box .des_imgh {
+	width: 72%;
+	bottom: -30%;
+	left: 14.3%;
+	z-index: 4;
+	
+}
+.desib_box_play .des_imgh {animation:imghh .4s ease-out 1 .4s;-webkit-animation:imghh .4s ease-out 1 .4s;}
+.desib_box .des_imgi {
+	width: 61.7%;
+	top: -25.5%;
+	left: 19.4%;
+	z-index: 7;
+	
+}
+.desib_box_play .des_imgi {animation:imgii .5s ease-out 1 0s;-webkit-animation:imgii .5s ease-out 1 0s;}
+.desib_box .des_imgf {
+	width: 15.5%;
+	right: -16%;
+	bottom: 33.8%;
+	z-index: 8;
+	
+}
+.desib_box_play .des_imgf {animation:imgff .4s ease-out 1 1.6s;-webkit-animation:imgff .4s ease-out 1 1.6s;}
+.desib_box .des_imgj {
+	width: 18.9%;
+	left: -19%;
+	bottom: 32.4%;
+	z-index: 6;
+	
+}
+.desib_box_play .des_imgj {animation:imgjj .3s ease-out 1 .8s;-webkit-animation:imgjj .3s ease-out 1 .8s;}
+.desib_box .des_imgk {
+	width: 83.5%;
+	left: 8.4%;
+	top: -70%;
+	z-index: 5;
+	
+}
+.desib_box_play .des_imgk {animation:imgkk .5s ease-out 1 3s;-webkit-animation:imgkk .5s ease-out 1 3s;}
+.desib_box .des_imgl {
+	width: 100%;
+	height: 65%;
+	left: 0%;
+	top: 0;
+	z-index: 2;
+}
+.desib_box .des_imgp_d {
+	width: 8.6%;
+	right: -9%;
+	bottom: 31.2%;
+	z-index: 7;
+}
+.desib_box .des_imgp_c {
+	width: 6.5%;
+	right: 8.1%;
+	bottom: 54%;
+	z-index: 3;
+	opacity: 0;
+}
+
+
+@keyframes imgaa {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes imgaal {
+	from {
+		top: -75%;
+		
+	}
+	to {
+		top: -20%;
+	}
+}
+
+
+@keyframes imgbb {
+	from {
+		top: -43%;
+	}
+	to {
+		top: 0%;
+	}
+}
+@keyframes imgcc {
+	from {
+		top: -60%;
+	}
+	to {
+		top: -10%;
+	}
+}
+@keyframes imgcca {
+	0% {
+		transform:rotate(0deg);
+	}
+	
+	25% {
+		transform:rotate(3deg);
+	}
+	50% {
+		transform:rotate(0deg);
+	}
+	75% {
+		transform:rotate(-3deg);
+	}
+	100% {
+		transform:rotate(0deg);
+	}
+}
+
+@keyframes imgdd {
+	from {
+		right: -20%;
+	}
+	to {
+		right: 4.2%;
+	}
+}
+
+@keyframes imgff {
+	from {
+		right: -16%;
+	}
+	to {
+		right: 4.1%;
+	}
+}
+
+@keyframes imgjj {
+	from {
+		left: -19%;
+	}
+	to {
+		left: 3.1%;
+	}
+}
+@keyframes imghh {
+	from {
+		bottom: -30%;
+	}
+	to {
+		bottom: 23%;
+	}
+}
+@keyframes imgii {
+	from {
+		top: -25.5%;
+	}
+	to {
+		top: 50.5%;
+	}
+}
+@keyframes imggg {
+	from {
+		left: 134%;
+	}
+	to {
+		left: 33.6%;
+	}
+}
+@keyframes imgkk {
+	from {
+		top: -70%;
+	}
+	to {
+		top: 0%;
+	}
+}
+
+@keyframes imgll {
+	from {
+		right: -30%;
+	}
+	to {
+		right: 19.5%;
+	}
+}
+@keyframes imgpd {
+	from {
+		right: -9%;
+	}
+	to {
+		right: 6.7%;
+	}
+}
+
+@keyframes imgpq {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: .5;
+	}
+	20% {
+		opacity: 1;
+	}
+	30% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+
+
+@-webkit-keyframes imgaa {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes imgaal {
+	from {
+		top: -75%;
+		
+	}
+	to {
+		top: -20%;
+	}
+}
+
+
+@-webkit-keyframes imgbb {
+	from {
+		top: -43%;
+	}
+	to {
+		top: 0%;
+	}
+}
+@-webkit-keyframes imgcc {
+	from {
+		top: -60%;
+	}
+	to {
+		top: -10%;
+	}
+}
+@-webkit-keyframes imgcca {
+	0% {
+		-webkit-transform:rotate(0deg);
+	}
+	
+	25% {
+		-webkit-transform:rotate(3deg);
+	}
+	50% {
+		-webkit-transform:rotate(0deg);
+	}
+	75% {
+		-webkit-transform:rotate(-3deg);
+	}
+	100% {
+		-webkit-transform:rotate(0deg);
+	}
+}
+
+@-webkit-keyframes imgdd {
+	from {
+		right: -20%;
+	}
+	to {
+		right: 4.2%;
+	}
+}
+
+@-webkit-keyframes imgff {
+	from {
+		right: -16%;
+	}
+	to {
+		right: 4.1%;
+	}
+}
+
+@-webkit-keyframes imgjj {
+	from {
+		left: -19%;
+	}
+	to {
+		left: 3.1%;
+	}
+}
+@-webkit-keyframes imghh {
+	from {
+		bottom: -30%;
+	}
+	to {
+		bottom: 23%;
+	}
+}
+@-webkit-keyframes imgii {
+	from {
+		top: -25.5%;
+	}
+	to {
+		top: 50.5%;
+	}
+}
+@-webkit-keyframes imggg {
+	from {
+		left: 134%;
+	}
+	to {
+		left: 33.6%;
+	}
+}
+@-webkit-keyframes imgkk {
+	from {
+		top: -70%;
+	}
+	to {
+		top: 0%;
+	}
+}
+
+@-webkit-keyframes imgll {
+	from {
+		right: -30%;
+	}
+	to {
+		right: 19.5%;
+	}
+}
+@-webkit-keyframes imgpd {
+	from {
+		right: -9%;
+	}
+	to {
+		right: 6.7%;
+	}
+}
+
+@-webkit-keyframes imgpq {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: .5;
+	}
+	20% {
+		opacity: 1;
+	}
+	30% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/*锚点*/
+.miaodiana_a{
+    top: 16.5%;
+}
+.miaodiana_a .sanjiao_box{
+    left: 50.3%;
+}
+
+.miaodiana_b{
+    top: 54%;
+}
+.miaodiana_b .sanjiao_box{
+    left: 39%;
+}
+
+
+.miaodiana_c{
+    top: 29.7%;
+}
+.miaodiana_c .sanjiao_box{
+    left: 81.4%;
+}
+
+
+.miaodiana_d{
+    top: 49.3%;
+}
+.miaodiana_d .sanjiao_box{
+    left: 8%;
+}
+
+.miaodiana_e{
+    top: 39.3%;
+}
+.miaodiana_e .sanjiao_box{
+    left: 35.8%;
+}
+
+.miaodiana_f{
+    top: 59%;
+}
+.miaodiana_f .sanjiao_box{
+    left: 74.8%;
+}
