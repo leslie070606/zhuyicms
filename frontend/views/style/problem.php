@@ -48,9 +48,10 @@ use yii\helpers\Url;
                                         var foin_index = $(this).index();
                                         data = $.merge(data, get);
                                         foin_data+=foin_index+"a";
+//                                        console.log(get)
                                     });
                                    
-                                    
+//                                    console.log(data)
                                     getMax(data,foin_data);
                                 };
                                 truee = true;
@@ -89,12 +90,13 @@ use yii\helpers\Url;
                     }
                 })();
 
-                var htmll = ["", "a", "b", "", "c", "d", "e", "", "f", "g", "h"];
+                var htmll = ["", "g", "d", "", "b", "f", "e", "", "c", "a", "h"];
                 //alert(htmll[key[pos]]);
                 var _uploadUrl = "<?php echo Url::to(['style/report', 'link_id' => $link_id]); ?>" + '&flash=' + htmll[key[pos]]+'&problem='+foin_data;
-
+                
                 window.location = _uploadUrl;
-                //  console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
+                 
+              // console.log("出现最多的项是："+key[pos]+"，出现次数为："+val[pos])
             }
 
 

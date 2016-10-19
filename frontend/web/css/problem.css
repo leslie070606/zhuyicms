@@ -12,7 +12,7 @@
 .pro_box .pro_here>img {width: 100%;}
 .pro_box .foin_a .here_bg { position: absolute; z-index: 2; width:100%; height: auto; left:0; top: 0; bottom: .66rem; background: #FFFFFF; opacity: .5;}
 .pro_box .pro_here:last-child { margin-bottom: 0;}
-.here_text { font-size: .24rem; height: .66rem; line-height: .66rem; text-align: center;}
+.here_text { font-size: .24rem; font-weight: bold; height: .66rem; line-height: .66rem; text-align: center;}
 .triangle-down {
 	position: absolute;
 	top: 0;

@@ -11,7 +11,7 @@ use yii\helpers\Url;
 		<link rel="stylesheet" type="text/css" href="css/gloaba.css" />
 		<style>
 			.gloab { position: relative; text-align: center; width: 100%; height: 100%;  overflow: hidden;}
-			.gloab_btn { background: #ff4e38; font-size: .26rem; position: absolute; width:82% ; left: 9%; bottom:.6rem; height: .88rem;}
+			.gloab_btn { background: #ff4e38; font-size: .26rem; position: absolute; width:92% ; left: 4%; bottom:.3rem; height: .88rem;}
 			.gloab_btn a { display: block; text-align: center; color: #FFFFFF; line-height: .88rem;}
 			.index_bottom_text { text-align: left; position: absolute; left: 0; bottom:1.78rem; font-size: .24rem; color: #999999; width: 92%; margin: 0 4%;}
 			.logoa { font-size: 1.6rem; color: #FF4E38;  position: relative; top: .3rem; z-index: 99;}
