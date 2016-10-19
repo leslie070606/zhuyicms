@@ -39,9 +39,12 @@ $(function(){
 		if(time){
 			if($(this).siblings(".sanjiao").css("display")=="none"){
 				$(".sanjiao,.miaodian_text").fadeOut(200);
+                                 $(".miaodian_mesng").css("z-index",24);
 				$(this).parents(".miaodian_mesng").find(".sanjiao,.miaodian_text").fadeIn(200);
+                               $(this).parents(".miaodian_mesng").css("z-index",1000);
 			}else{
 				$(this).parents(".miaodian_mesng").find(".sanjiao,.miaodian_text").fadeOut(200);
+                                  $(".miaodian_mesng").css("z-index",24);
 				
 			}
 		}
@@ -50,9 +53,12 @@ $(function(){
 	$(".share_btn").on("click",function(){
 			if($(".btn_miaodian .sanjiao").css("display")=="none"){
 				$(".sanjiao,.miaodian_text").fadeOut(200);
+                                 $(".miaodian_mesng").css("z-index",24);
 				$(".btn_miaodian").find(".sanjiao,.miaodian_text").fadeIn(200);
+                                 $(this).parents(".miaodian_mesng").css("z-index",1000);
 			}else{
 				$(".btn_miaodian").find(".sanjiao,.miaodian_text").fadeOut(200);
+                                 $(".miaodian_mesng").css("z-index",24);
 				
 			}
 	})
@@ -77,7 +83,7 @@ $(function(){
 	var get=(736/414)*width;
 	$(".desib_box").css({"height":get});
 	$(".desib_box").css({"margin-top":-(get-height)/2});
-	$(".miaoshu,.logo").css({"margin-top":(get-height)/2});
+	$(".miaoshu,.logo,.logoaa").css({"margin-top":(get-height)/2});
 	$(".gloab_bottm").height(height-2*heightaa);
 	$(".miaodiana_a .sanjiao_box").css("left",big_left+15);
 }

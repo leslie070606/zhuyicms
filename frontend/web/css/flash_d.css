@@ -1,7 +1,7 @@
 .desi_top { position: absolute; left: 0; top: 0; width: 100%; height: 65%; background: #fdefd6; z-index: 2;}
 .desi_bottom { position: absolute; left: 0; bottom: 0; width: 100%; height: 40%; background: #838384; z-index: 1;}
 .gloab_bottm { background: #838384 !important;}
-.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg { color: #333333 !important;}
+.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg, .logoaa { color: #333333 !important;}
 .cs_more,.bottm_mesg { color: #eeeeee !important;}
 .desib_box_play .sanjiao_box .maodian_icon {animation:imgaa .4s ease-out 1 4.9s;-webkit-animation:imgaa .4s ease-out 1 4.9s;}
 .desib_box_play .miaoshu { -webkit-animation: imgaa .5s ease-out 1 4.8s; animation: imgaa .5s ease-out 1 4.8s;}

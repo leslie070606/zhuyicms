@@ -13,7 +13,7 @@ if (isset($frindf) && !empty($frindf)) {
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
-        <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476852969_6403563.css" />       
+         <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476857349_373356.css" />   
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_f.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -47,7 +47,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
-             <span class="logoaa iconfont icon-jm01"></span>
+            <a href="#erweima"><span class="logoaa iconfont icon-erweima01"></span></a>
             
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
@@ -127,7 +127,7 @@ if (isset($frindf) && !empty($frindf)) {
 
                     <div class="miaodian_text">
                         <span class="text_title">点击右上角菜单键分享给朋友</span>
-                        如果你与好友测试结果相同，你们两人都将有机会得到HAY的Kaleido拼盘，Plisse整理架，以及Quilt Sleeve电脑包。 关注「住艺」微信订阅号，10月26日将公布获奖名单。
+                        如果你与好友测试结果相同，你们两人都将有机会得到HAY的Kaleido拼盘，Plisse文件夹，以及Quilt Sleeve电脑包。 关注「住艺」微信订阅号，10月26日将公布获奖名单。
                         <div class="text_img">
                             <img src="img/fengge/chose_style_1.jpg"  />
                             <img src="img/fengge/chose_style_2.jpg"  />
@@ -138,12 +138,12 @@ if (isset($frindf) && !empty($frindf)) {
                         <div class="sanjiao"></div>
                     </div>
                 </div>
-                <span class="share_btn click_m">分享给你的小伙伴，看看谁跟你有一样的品味</span>
+                <span class="share_btn click_m">分享给你的小伙伴 与TA一起拿到HAY</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
          <div class="gloab_bottm">
-            <img class="erweima" src="img/ewm/6.png"  />
+             <img id="erweima" class="erweima" src="img/ewm/6.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请长按识别二维码进入我们的公众号</div>
 
             <span class="by_ad iconfont icon-logo01"></span>
