@@ -486,7 +486,7 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-1.jpg" />
-                        <div class="here_text">布鲁哲尔</div>
+                        <div class="here_text">马蒂斯</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
@@ -496,7 +496,7 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="">
                         <div class="here_bg"></div>
                         <img src="img/problem/12-3.jpg" />
-                        <div class="here_text">赫斯特</div>
+                        <div class="here_text">波洛克</div>
                     </div>
                 </div>
             </div>
@@ -518,17 +518,17 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-1.jpg" />
                         <div class="here_bg"></div>
-                        <div class="here_text">菊花</div>
+                        <div class="here_text">鲜花</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-2.jpg" />
                         <div class="here_bg"></div>
-                        <div class="here_text">百合花</div>
+                        <div class="here_text">装饰花</div>
                     </div>
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/13-3.jpg" />
                         <div class="here_bg"></div>
-                        <div class="here_text">梅花</div>
+                        <div class="here_text">盆景</div>
                     </div>
                 </div>
             </div>
