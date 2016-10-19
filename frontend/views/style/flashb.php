@@ -33,7 +33,7 @@ if (isset($frindf) && !empty($frindf)) {
                     <span>中古风格</span>
                 <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
 
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
@@ -74,7 +74,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_b">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -87,7 +87,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_c">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -99,7 +99,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_d">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -111,7 +111,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_e">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>

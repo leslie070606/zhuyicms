@@ -33,7 +33,7 @@ if (isset($frindf) && !empty($frindf)) {
                 
                 <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
 
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
@@ -46,6 +46,8 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
+             <span class="logoaa iconfont icon-jm01"></span>
+            
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img id="des_imga" class="des_img des_imga" src="img/flash_f/1.png" />
@@ -63,7 +65,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_b">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                    <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -76,7 +78,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_c">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -88,7 +90,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_d">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
@@ -100,7 +102,7 @@ if (isset($frindf) && !empty($frindf)) {
 
             <div class="miaodian_mesng miaodiana_e">
                 <div class="sanjiao_box">
-                    <img class="maodian_icon" src="img/fengge/1.gif"  />
+                   <div class="maodian_flash maodian_icon"><div class="md_flash_center"></div><div class="md_flash_big"></div></div>
                     <div class="sanjiao"></div>
                     <div class="click_m"></div>
                 </div>
