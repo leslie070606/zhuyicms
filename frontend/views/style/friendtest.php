@@ -11,9 +11,28 @@ array_pop($myproblemArr);
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title><?=$mystyle['style']?>风格</title>
+        <title><?= $mystyle['style'] ?>风格</title>
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
+        <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+        <script>
+            $(function () {
+
+                var _hmt = _hmt || [];
+                (function () {
+                    var hm = document.createElement("script");
+                    hm.src = "//hm.baidu.com/hm.js?c2212e69b1418d8a1b6506185b5c8bc3";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                })();
+                var li_legnth = $(".foin_bottom ul li").length;
+                if (li_legnth == 1) {
+                    $(".foin_bottom ul").hide();
+                    $(".kongbaiyemian").show();
+                }
+                ;
+            });
+        </script>
     </head>
     <body>
 
@@ -27,70 +46,74 @@ array_pop($myproblemArr);
             case '复古混搭' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/zhonggu01.png' />";
-                        break;
-                    case '法式古典' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/zhonggu01.png' />";
+                break;
+            case '法式古典' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/fashigudian01.png' />";
-                        break;
-                    case '工业' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/fashigudian01.png' />";
+                break;
+            case '工业' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/gongye01.png' />";
-                        break;
-                    case '美式' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/gongye01.png' />";
+                break;
+            case '美式' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/meishi01.png' />";
-                        break;
-                    case '和式' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/meishi01.png' />";
+                break;
+            case '和式' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/heshi01.png' />";
-                        break;
-                    case '现代简约' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/heshi01.png' />";
+                break;
+            case '现代简约' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
                 break;
             case '中式' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
-                        break;
-                    default :
-                        case '波西米亚' :
-                        echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
+                break;
+            default :
+            case '波西米亚' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/boximiya01.png' />";
         }
         ?>
     </div>
-    
+
     <div class="foin_bottom">
         <ul>
             <li>来看一看谁是你的空间伴侣</li>
             <?php
             foreach ($friendstyle as $fs) {
-                $j=0;
+                $j = 0;
                 $frproblemArr = explode('a', $fs['problem_data']);
                 array_pop($frproblemArr);
-                for($i=0;$i<count($frproblemArr);$i++){
-                    if($frproblemArr[$i] == $myproblemArr[$i]){
+                for ($i = 0; $i < count($frproblemArr); $i++) {
+                    if ($frproblemArr[$i] == $myproblemArr[$i]) {
                         $j++;
                     }
                 }
-                $mach = $j/14;
-                $mach = number_format($mach, 2, '.', '')*100;
+                $mach = $j / 14;
+                $mach = number_format($mach, 2, '.', '') * 100;
                 ?>
                 <li>
                     <img src="<?= $fs['headimgurl'] ?>" />
                     <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']); ?></span>
-                    <span class="match_number">心有灵犀度<i><?=$mach ?>%</i></span>
+                    <span class="match_number">心有灵犀度<i><?= $mach ?>%</i></span>
                 </li>
             <?php } ?>
         </ul>
+
+        <div class="kongbaiyemian" style="display: none;">
+            <span style="font-size: .24rem; color: #999999; display: block;text-align: center; margin-top: 2rem;">快去邀请小伙伴来测试吧!</span>
+        </div>
     </div>
 </div>
 </body>
