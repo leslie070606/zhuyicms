@@ -114,6 +114,7 @@ array_pop($myproblemArr);
 
         <div class="kongbaiyemian" style="display: none;">
             <span style="font-size: .24rem; color: #999999;float: left; width: 100%; display: block;text-align: center; margin-top: 2rem;">快去邀请小伙伴来测试吧!</span>
+             <span class="logobtn iconfont icon-chusheng01" ></span>
         </div>
     </div>
 </div>

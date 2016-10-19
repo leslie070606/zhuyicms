@@ -39,7 +39,7 @@ use yii\helpers\Url;
     
         $(".gloab_btn").on("click",function(){
              tj_ajax(6, 6018, "", "", "答题");
-           window.href= "<?php echo Url::toRoute(['/style/problem', 'link_id' => $link_id]); ?>";
+           window.location= "<?php echo Url::toRoute(['/style/problem', 'link_id' => $link_id]); ?>";
         });
         
         function tj_ajax(a, b, c, d, e) {
