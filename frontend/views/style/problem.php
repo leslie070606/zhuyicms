@@ -359,8 +359,8 @@ use yii\helpers\Url;
                     <span class="by_ad iconfont icon-logo01"></span>
                     <span class="top_right"><i class="pro_number">8</i><i>/14</i></span>
                 </div>
-                <div class="top_bottom"><span class="top_bottom_title">主材</span>
-                    你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>住艺的设计师于魁尤其喜欢“沙比利”材质的家具，那么，你呢？</span>
+                <div class="top_bottom"><span class="top_bottom_title">主要材质</span>
+                    你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>那么，你最喜欢的材料是那些呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
@@ -574,7 +574,7 @@ use yii\helpers\Url;
                     <div class="pro_here here_div" tetel="">
                         <img src="img/problem/14-3.jpg" />
                         <div class="here_bg"></div>
-                        <div class="here_text">金鱼</div>
+                        <div class="here_text">不喜欢养宠物，要不来只金鱼吧</div>
                     </div>
                 </div>
             </div>
