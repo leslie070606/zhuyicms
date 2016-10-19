@@ -1,5 +1,9 @@
 <?php
 $uc = new \common\util\Guolu();
+$myproblemArr = explode('a', $mystyle['problem_data']);
+array_pop($myproblemArr);
+//echo "<pre>";
+//print_r($myproblemArr);exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,16 +15,16 @@ $uc = new \common\util\Guolu();
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
     </head>
     <body>
-        
-                <?php
-                switch ($style) {
-                    case '波西米亚' :
-                        echo '<div class="self_foin" style="background-color: #fff;">
+
+        <?php
+        switch ($mystyle['style']) {
+            case '波西米亚' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/boximiya01.png' />";
-                        break;
-                    case '中古' :
-                        echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/boximiya01.png' />";
+                break;
+            case '复古混搭' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/zhonggu01.png' />";
                         break;
@@ -47,10 +51,10 @@ $uc = new \common\util\Guolu();
                     case '现代简约' :
                          echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
-                        break;
-                    case '新中式' :
-                         echo '<div class="self_foin" style="background-color: #fff;">
+                echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
+                break;
+            case '中式' :
+                echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                         echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";
                         break;
@@ -58,26 +62,35 @@ $uc = new \common\util\Guolu();
                         case '波西米亚' :
                         echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
-                        echo "<img src='img/fenggejieguo/boximiya01.png' />";
-                        
+                echo "<img src='img/fenggejieguo/boximiya01.png' />";
+        }
+        ?>
+    </div>
+    <div class="foin_bottom">
+        <ul>
+            <?php
+            foreach ($friendstyle as $fs) {
+                $j=0;
+                $frproblemArr = explode('a', $fs['problem_data']);
+                array_pop($frproblemArr);
+                for($i=0;$i<count($frproblemArr);$i++){
+                    if($frproblemArr[$i] == $myproblemArr[$i]){
+                        $j++;
+                    }
                 }
+                $mach = $j/14;
+                $mach = number_format($mach, 2, '.', '')*100;
                 ?>
-            </div>
-            <div class="foin_bottom">
-                <ul>
-                    <?php
-                    foreach ($friendstyle as $fs) {
-                        ?>
-                        <li>
-                            <img src="<?=$fs['headimgurl']?>" />
-                            <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']);?></span>
-                            <span class="match_number">匹配度<i>90%</i></span>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-    </body>
+                <li>
+                    <img src="<?= $fs['headimgurl'] ?>" />
+                    <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']); ?></span>
+                    <span class="match_number">匹配度<i><?=$mach ?>%</i></span>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+</body>
 </html>
 
 

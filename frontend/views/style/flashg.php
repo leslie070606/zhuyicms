@@ -158,7 +158,7 @@ switch ($mystyle['style']){
 case '波西米亚':
     $sharelogo = '/img/fenggejieguo/boximiya.png';
     break;
-case '中古':
+case '复古混搭':
     $sharelogo = '/img/fenggejieguo/zhonggu.png';
     break;
 case '法式古典':
@@ -176,7 +176,7 @@ case '和式':
 case '现代简约':
     $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
     break;
-case '新中式':
+case '中式':
     $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
     break;
 default :
