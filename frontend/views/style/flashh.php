@@ -31,7 +31,7 @@ if (isset($frindf) && !empty($frindf)) {
                 <span>是东方智慧的传承人，</span>
                 <span><?=$renchen?>最喜爱的风格是——</span>
                 <span class="text_big">
-                    <span>新中式风格</span>
+                    <span>中式风格</span>
                 <div class="miaodian_mesng miaodiana_a">
                 <div class="sanjiao_box">
                     <img class="maodian_icon" src="img/fengge/1.gif"  />
@@ -40,7 +40,7 @@ if (isset($frindf) && !empty($frindf)) {
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">新中式风格</span>
+                    <span class="text_title">中式风格</span>
                    偏好东方传统文化的你，在中式美学里溯本追源，找寻属于自身的文化印记。所以，不难理解，“清雅含蓄、端庄丰华”会成为你衡量一个理想之家的标准。符合当代语境的简约现代元素，已经为青睐考究的用料以及精工细作的榫卯结构注入了新的活力。与此同时，你选择了摈弃浮夸的装饰，因为只有原木、石头、丝绸、竹……这些返璞归真的材质，才让你触手如有灵泉应运而生。居于圆觉融通的东方式居所，感受一种含蓄而不失灵活、率性而不失稳重的气场，你细品这其中的神韵，每会意，自得乐。
                 </div>
             </div>
@@ -74,7 +74,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">明式家具</span>
-                    在新中式风格的家具配饰上多以造型凝炼、线条优雅的明式家具为主，而空间也因它们的存在而即刻生出端正清雅之感。
+                    在中式风格的家具配饰上多以造型凝炼、线条优雅的明式家具为主，而空间也因它们的存在而即刻生出端正清雅之感。
                 </div>
             </div>
 
@@ -87,7 +87,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">中式屏风</span>
-                    传承了传统居室里对于空间层次的讲究，中间用棂子、雕花做成古朴图案的屏风常常在新中式风格的家居环境里被用来分隔空间。
+                    传承了传统居室里对于空间层次的讲究，中间用棂子、雕花做成古朴图案的屏风常常在中式风格的家居环境里被用来分隔空间。
                 </div>
             </div>
 
@@ -98,8 +98,8 @@ if (isset($frindf) && !empty($frindf)) {
                     <div class="click_m"></div>
                 </div>
                 <div class="miaodian_text">
-                    <span class="text_title">新中式家具</span>
-                    兼具中式传统家具文化内涵的同时，又满足了你对舒适度的追求，简约化了的新中式家具融入了科学的人体工学，具有严谨的结构和线条。
+                    <span class="text_title">中式家具</span>
+                    兼具中式传统家具文化内涵的同时，又满足了你对舒适度的追求，简约化了的中式家具融入了科学的人体工学，具有严谨的结构和线条。
                 </div>
             </div>
 
@@ -111,7 +111,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </div>
                 <div class="miaodian_text">
                     <span class="text_title">文人格调的装饰</span>
-                    新中式意味着在装饰细节上也充分体现崇尚自然情趣的传统美学精神，所以空间里常常穿插着文人画中山水、花鸟的形象。
+                    中式意味着在装饰细节上也充分体现崇尚自然情趣的传统美学精神，所以空间里常常穿插着文人画中山水、花鸟的形象。
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@ case '和式':
 case '现代简约':
     $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
     break;
-case '新中式':
+case '中式':
     $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
     break;
 default :

@@ -182,7 +182,7 @@ switch ($mystyle['style']) {
     case '现代简约':
         $sharelogo = '/img/fenggejieguo/xiandaijianyue.png';
         break;
-    case '新中式':
+    case '中式':
         $sharelogo = '/img/fenggejieguo/xinzhongshi.png';
         break;
     default :

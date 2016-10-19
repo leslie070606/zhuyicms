@@ -92,10 +92,10 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                             echo "<img src='img/fenggejieguo/xiandaijianyue_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/xiandaijianyue.png';
                             break;
-                        case '新中式' :
+                        case '中式' :
 
                             echo "<span>你清雅含蓄,你是中国传统文化的研习者,你是东方智慧的传承人</span>
-                    <span>你最喜爱的风格是——新中式风格</span>
+                    <span>你最喜爱的风格是——中式风格</span>
                 </div>";
                             echo "<img src='img/fenggejieguo/xinzhongshi_bg.png' />";
                             $sharelogo = 'img/fenggejieguo/xinzhongshi.png';
@@ -242,15 +242,15 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                         </div>
                     </div></a>
 
-                <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle', 'style' => '新中式', 'link_id' => $link_id]); ?>"><div>
+                <a class="chose_here" href="<?php echo Url::toRoute(['/style/friendstyle', 'style' => '中式', 'link_id' => $link_id]); ?>"><div>
                         <img src="img/fenggejieguo/xinzhongshi.png" />
-                        <span>新中式</span>
+                        <span>中式</span>
                         <div class="style_bottom">
                             <span class="bot_title">匹配</span>
                             <ul>
                                 <?php
                                 foreach ($frindstyle as $ft) {
-                                    if ($ft['style'] == '新中式') {
+                                    if ($ft['style'] == '中式') {
                                         echo "<li><img src='" . $ft['headimgurl'] . "' /></li>";
                                     }
                                 }

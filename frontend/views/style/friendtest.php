@@ -53,7 +53,7 @@ array_pop($myproblemArr);
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/xiandaijianyue01.png' />";
                 break;
-            case '新中式' :
+            case '中式' :
                 echo '<div class="self_foin" style="background-color: #fff;">
             <div class="foin_top">';
                 echo "<img src='img/fenggejieguo/xinzhongshi01.png' />";

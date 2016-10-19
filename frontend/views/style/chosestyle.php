@@ -19,7 +19,7 @@ use yii\helpers\Url;
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'e']); ?>"><div><img src="img/fenggejieguo/meishi.png" /><span>美式</span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'f']); ?>"><div><img src="img/fenggejieguo/heshi.png" /><span>和式</span></div></a>
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'g']); ?>"><div><img src="img/fenggejieguo/xiandaijianyue.png" /><span>现代简约</span></div></a>
-            <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'h']); ?>"><div><img src="img/fenggejieguo/xinzhongshi.png" /><span>新中式</span></div></a>
+            <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'h']); ?>"><div><img src="img/fenggejieguo/xinzhongshi.png" /><span>中式</span></div></a>
         </div>
     </body>
 </html>
