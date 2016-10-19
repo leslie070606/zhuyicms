@@ -1,6 +1,7 @@
 <?php
 $uc = new \common\util\Guolu();
-$myproblemArr = array_pop(explode('a', $mystyle['problem_data']));
+$myproblemArr = explode('a', $mystyle['problem_data']);
+array_pop($myproblemArr);
 echo "<pre>";
 print_r($myproblemArr);exit;
 ?>
@@ -70,7 +71,8 @@ print_r($myproblemArr);exit;
             <?php
             foreach ($friendstyle as $fs) {
                 $j=0;
-                $frproblemArr = array_pop(explode('a', $fs['problem_data']));
+                $frproblemArr = explode('a', $fs['problem_data']);
+                array_pop($frproblemArr);
                 for($i=0;$i<count($frproblemArr);$i++){
                     if($frproblemArr[$i] == $myproblemArr[$i]){
                         $j++;
