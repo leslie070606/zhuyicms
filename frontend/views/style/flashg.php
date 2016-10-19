@@ -48,6 +48,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
+            <span class="logoaa iconfont icon-jm01"></span>
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img class="des_img des_imga" src="img/flash_g/1.png" />
@@ -141,7 +142,7 @@ if (isset($frindf) && !empty($frindf)) {
                     </div>
                 </div>
                 <span class="share_btn click_m">分享给你的小伙伴 与TA一起拿到HAY</span>
-                <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute('/style/chosestyle'); ?>"><span class="more_b">查看其它风格</span></a></div>
+                <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute(['/style/chosestyle','machData'=>$machData]); ?>"><span class="more_b">查看其它风格</span></a></div>
             </div>
         <?php } ?>
          <div class="gloab_bottm">
@@ -211,8 +212,8 @@ default :
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '这个测试说我很<?=$mystyle['style']?>', // 分享标题
-            desc: '在某种意义上,「家」就等于你,可是你真的懂自己?1分钟完成这14道测试题,找到最适合 你的家居风格。', // 分享描述
+            title: '<?php echo $userInfo['nickname'] ?>自己很<?= $mystyle['style'] ?>并向你扔了一个流畅线条', // 分享标题
+            desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
@@ -220,7 +221,7 @@ default :
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('已分享!');
+                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
@@ -232,14 +233,14 @@ default :
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '这个测试说我的品位很<?=$mystyle['style']?>...1分钟14道题,看看你对「家」的态度', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>说自己很<?= $mystyle['style'] ?>并向你扔了一个流畅线条,还想看看你的家居风格是什么', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
 
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('分享成功!');
+                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
