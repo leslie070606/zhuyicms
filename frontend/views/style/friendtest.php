@@ -92,7 +92,7 @@ array_pop($myproblemArr);
 
     <div class="foin_bottom">
         <ul>
-            <li>来看一看谁是你的空间伴侣</li>
+            <li class="foin_bot_title">来看一看谁是你的空间伴侣</li>
             <?php
             foreach ($friendstyle as $fs) {
                 $j = 0;
