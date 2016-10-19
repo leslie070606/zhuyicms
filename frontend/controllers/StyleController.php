@@ -397,10 +397,12 @@ class StyleController extends Controller {
         if ($userinfo = $session->get('userInfo')) {
 
             $shareModel = new \common\models\ZyShare();
+            
+            $mystyle = $shareModel->findOne(['link_id' => $link_id]);
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
-            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'style' => $style]);
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {

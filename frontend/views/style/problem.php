@@ -64,10 +64,7 @@ use yii\helpers\Url;
                     }
                 });
 
-
-
             });
-
 
             function getMax(arr, foin_data) {
                 var obj = {},
