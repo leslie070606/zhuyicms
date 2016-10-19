@@ -13,6 +13,8 @@ array_pop($myproblemArr);
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title><?= $style ?>风格</title>
+         <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476873842_9292777.css" />
+
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
