@@ -62,7 +62,9 @@ $(function () {
     })
 
     $(".share_btn").on("click", function () {
+        
         if ($(".btn_miaodian .sanjiao").css("display") == "none") {
+            tj_ajax(6,6016,"","","分享按钮点击次数");
             $(".sanjiao,.miaodian_text").fadeOut(200);
             $(".miaodian_mesng").css("z-index", 24);
             $(".btn_miaodian").find(".sanjiao,.miaodian_text").fadeIn(200);

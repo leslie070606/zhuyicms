@@ -113,7 +113,7 @@ array_pop($myproblemArr);
         </ul>
 
         <div class="kongbaiyemian" style="display: none;">
-            <span style="font-size: .24rem; color: #999999; display: block;text-align: center; margin-top: 2rem;">快去邀请小伙伴来测试吧!</span>
+            <span style="font-size: .24rem; color: #999999;float: left; width: 100%; display: block;text-align: center; margin-top: 2rem;">快去邀请小伙伴来测试吧!</span>
         </div>
     </div>
 </div>
@@ -155,7 +155,7 @@ array_pop($myproblemArr);
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('分享成功！');
+                alert('分享成功！');tj_ajax(6,6037,"","","分享次数");
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
@@ -174,7 +174,7 @@ array_pop($myproblemArr);
 
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('分享成功！');
+                alert('分享成功！');tj_ajax(6,6036,"","","分享次数");
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数

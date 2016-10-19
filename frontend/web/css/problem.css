@@ -12,6 +12,7 @@
 .pro_box .pro_here { width: 100%;background:#FFFFFF; margin-bottom: .3rem; position: relative; box-sizing: border-box; border: 3px solid #FFFFFF;}
 .pro_box .pro_here>img {width: 100%;}
 .pro_box .foin_a .here_bg { position: absolute; z-index: 2; width:100%; height: auto; left:0; top: 0; bottom: .66rem; background: #FFFFFF; opacity: .5;}
+.no_bottom .foin_a .here_bg { bottom: 0 !important;}
 .pro_box .foin_a .here_text { color: #ff4e38;}
 .pro_box .pro_here:last-child { margin-bottom: 0;}
 .here_text { font-size: .24rem; font-weight: bold; height: .66rem; line-height: .66rem; text-align: center;}
@@ -50,6 +51,7 @@
 .chose_box .chose_here>div>span { position: absolute; width: 100%; left: 0; bottom:.3rem; text-align: center;z-index: 10;}
 .open_self .style_bottom { height: .88rem;width: 100%; overflow: hidden; float: left; line-height: .88rem; color: #999999; text-align: center; font-size: .2rem; width: 100%; background: #FFFFFF;}
 .open_self .style_bottom ul li,.open_self .bot_title { line-height: .88rem; float: left;}
+.open_self .style_bottom ul li { margin-bottom: .4rem;}
 .open_self .bot_title { margin: 0 .2rem; color: #333333;}
 .open_self .style_bottom ul { position: absolute; left: 1rem; width: 3rem;overflow: hidden; height: .88rem;}
 .open_self .style_bottom ul li:nth-child(3){ position:relative; z-index: 4;}

@@ -315,7 +315,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                                 dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
                                 success: function () {
                                     // 用户确认分享后执行的回调函数
-                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');tj_ajax(6,6037,"","","分享次数");
                                 },
                                 cancel: function () {
                                     // 用户取消分享后执行的回调函数
@@ -331,7 +331,7 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
                                 imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '/<?= $sharelogo ?>', // 分享图标
                                 success: function () {
                                     // 用户确认分享后执行的回调函数
-                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                                    alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');tj_ajax(6,6036,"","","分享次数");
                                 },
                                 cancel: function () {
                                     // 用户取消分享后执行的回调函数

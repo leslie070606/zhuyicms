@@ -142,14 +142,14 @@ if (isset($frindf) && !empty($frindf)) {
                     </div>
                 </div>
                 <span class="share_btn click_m">分享给你的小伙伴 与TA一起拿到HAY</span>
-                <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute(['/style/chosestyle','machData'=>$machData]); ?>"><span class="more_b">查看其它风格匹配度</span></a></div>
+                <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute(['/style/chosestyle','machData'=>$machData]); ?>"><span class="more_b"><?php if(isset($pipeidu)&&!empty($pipeidu)){echo '查看其它风格匹配度';} else {echo '查看其它风格';} ?></span></a></div>
             </div>
         <?php } ?>
          <div class="gloab_bottm">
             <img class="erweima" src="img/ewm/7.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺改造家视频吗？<br>请长按识别二维码进入我们的公众号</div>
 
-            <span class="by_ad iconfont icon-iconlogo0101"></span>
+            <span class="by_ad iconfont icon-logo01"></span>
         </div>
     </body>
 </html>
@@ -221,7 +221,7 @@ default :
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');tj_ajax(6,6037,"","","分享次数");
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
@@ -240,7 +240,7 @@ default :
 
             success: function () {
                 // 用户确认分享后执行的回调函数
-                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');
+                alert('分享成功！再次点开你分享的链接可查看你朋友的结果。');tj_ajax(6,6036,"","","分享次数");
             },
             cancel: function () {
                 // 用户取消分享后执行的回调函数
