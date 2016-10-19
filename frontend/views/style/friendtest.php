@@ -1,6 +1,6 @@
 <?php
 $uc = new \common\util\Guolu();
-$myproblemArr = array_filter(explode('a', $mystyle['problem_data']));
+$myproblemArr = explode('a', $mystyle['problem_data']);
 echo "<pre>";
 print_r($myproblemArr);exit;
 ?>
