@@ -11,7 +11,7 @@ array_pop($myproblemArr);
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>风格测试</title>
+        <title><?=$mystyle['style']?>风格</title>
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
     </head>
@@ -67,8 +67,10 @@ array_pop($myproblemArr);
         }
         ?>
     </div>
+    
     <div class="foin_bottom">
         <ul>
+            <li>来看一看谁是你的空间伴侣</li>
             <?php
             foreach ($friendstyle as $fs) {
                 $j=0;
@@ -85,7 +87,7 @@ array_pop($myproblemArr);
                 <li>
                     <img src="<?= $fs['headimgurl'] ?>" />
                     <span class="user_name"><?php echo $uc->userTextDecode($fs['user_name']); ?></span>
-                    <span class="match_number">匹配度<i><?=$mach ?>%</i></span>
+                    <span class="match_number">心有灵犀度<i><?=$mach ?>%</i></span>
                 </li>
             <?php } ?>
         </ul>

@@ -1,16 +1,31 @@
 
 <?php
 use yii\helpers\Url;
+$xianshi = 1;
+$titile = '风格匹配度';
+if(conut($styleArr)>0){
+    
+}  else {
+    $xianshi = 0;
+    $titile = '风格选择';
+}
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>风格测试</title>
+        <title><?=$titile ?></title>
         <link rel="stylesheet" type="text/css" href="css/gloaba.css" />
         <link rel="stylesheet" type="text/css" href="css/problem.css"  />
     </head>
+    <script >
+    var xianshi = <?=$xianshi ?>;
+    var match=document.getElementsByClassName("match_nuber");
+    if(xianshi == 0){
+        match.remove();
+    }
+    </script>
     <body>
         <div class="chose_box chose_boxa">
             <a class="chose_here" href="<?php echo Url::to(['style/report','flash'=>'a']); ?>"><div><img src="img/fenggejieguo/boximiya.png" /><span>波西米亚<i class="match_nuber"><?php if(isset($styleArr['a'])){echo $styleArr['a']*3; }else{echo '0';}  ?><span>%</span></i></span></div></a>

@@ -211,7 +211,7 @@ default :
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '<?php echo $userInfo['nickname'] ?>自己很<?= $mystyle['style'] ?>并向你扔了一枚水晶吊灯', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>自己很「<?= $mystyle['style'] ?>」并向你扔了一枚水晶吊灯', // 分享标题
             desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
@@ -232,7 +232,7 @@ default :
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '<?php echo $userInfo['nickname'] ?>说自己很<?= $mystyle['style'] ?>并向你扔了一枚水晶吊灯,还想看看你的家居风格是什么', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一枚水晶吊灯,还想看看你的家居风格是什么', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标
