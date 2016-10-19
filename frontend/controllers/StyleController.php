@@ -365,74 +365,6 @@ class StyleController extends Controller {
         }
     }
 
-    //结果页查看
-    public function actionResult() {
-        // 查看返回的结果
-        $flashid = Yii::$app->request->get('flash');
-
-        //$problemData = Yii::$app->request->get('problem');
-
-        // 每个风格所占百分比
-        $machData = Yii::$app->request->get('match');
-
-        //获取分享ID
-        $link_id = Yii::$app->request->get('link_id');
-
-        // 风格结果
-        $style = '';
-
-        //判断是否登陆过
-        $session = Yii::$app->session;
-        if (!$session->isActive) {
-            $session->open();
-        }
-
-        // 分享JS接口
-        $tokenModel = new \app\components\Token();
-        // 获取JS签名
-        $jsarr = $tokenModel->getSignature();
-        
-        //已经登录过
-        if ($userinfo = $session->get('userInfo')) {}
-        
-        switch ($flashid) {
-            case 'a' :
-                $stylearr = array('style' => '波西米亚');
-                return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'b' :
-                $stylearr = array('style' => '复古混搭');
-                return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'c' :
-                $stylearr = array('style' => '法式古典');
-                return $this->render('flashc', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'd' :
-                $stylearr = array('style' => '工业');
-                return $this->render('flashd', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'e' :
-                $stylearr = array('style' => '美式');
-                return $this->render('flashe', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'f' :
-                $stylearr = array('style' => '和式');
-                return $this->render('flashf', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'g' :
-                $stylearr = array('style' => '现代简约');
-                return $this->render('flashg', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            case 'h' :
-                $stylearr = array('style' => '中式');
-                return $this->render('flashh', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-                break;
-            default :
-                $stylearr = array('style' => '波西米亚');
-                return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo, 'machData' => $machData]);
-        }
-    }
 
     //风格报告分享
     public function actionChosestyle() {
@@ -488,6 +420,9 @@ class StyleController extends Controller {
             $shareModel = new \common\models\ZyShare();
 
             $mystyle = $shareModel->findOne(['link_id' => $link_id]);
+            
+            echo "<pre>";
+            print_r($mystyle);exit;
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
