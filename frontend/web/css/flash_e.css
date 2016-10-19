@@ -21,6 +21,7 @@
 }
 
 .desib_box_play .des_imga {	animation:imgxx 2s linear infinite 3.6s;-webkit-animation:imgxx 2s linear infinite 3.6s;}
+#no_flash .desib_box_play .des_imga {	animation:imgxx 2s linear infinite 0s;-webkit-animation:imgxx 2s linear infinite 0s;}
 .desib_box .des_imgb {
 	width:14.7%;
 	bottom: 100%;
@@ -28,7 +29,7 @@
 	z-index: 11;
 }
 .desib_box_play .des_imgb {animation:imgbb .4s ease-out 1 3.3s;-webkit-animation:imgbb .4s ease-out 1 3.3s;	}
-
+#no_flash .desib_box_play .des_imgb {animation:imgbb .1s ease-out 1 0s;-webkit-animation:imgbb .1s ease-out 1 0s;	}
 .desib_box .des_imgc {
 	width: 28.2%;
 	right: 25%;
@@ -37,7 +38,7 @@
 	opacity: 0;
 }
 .desib_box_play .des_imgc {animation:imgaa .5s ease-out 1 2.9s;-webkit-animation:imgaa .5s ease-out 1 2.9s;	}
-
+#no_flash .desib_box_play .des_imgc {animation:imgaa .1s ease-out 1 0s;-webkit-animation:imgaa .1s ease-out 1 0s;	}
 
 .desib_box .des_imgd {
 	width: 9.3%;
@@ -46,6 +47,7 @@
 	z-index: 8;
 }
 .desib_box_play .des_imgd {animation:imgdd .3s ease-out 1 2.7s;-webkit-animation:imgdd .3s ease-out 1 2.7s;}
+#no_flash .desib_box_play .des_imgd {animation:imgdd .1s ease-out 1 0s;-webkit-animation:imgdd .1s ease-out 1 0s;}
 .desib_box .des_imge {
 	width: 11.2%;
 	right: 5.7%;
@@ -54,6 +56,7 @@
 	opacity: 0;
 	}
 .desib_box_play .des_imge {animation:imgaa .4s ease-out 1 2.4s;-webkit-animation:imgaa .4s ease-out 1 2.4s;}
+#no_flash .desib_box_play .des_imge {animation:imgaa .1s ease-out 1 0s;-webkit-animation:imgaa .1s ease-out 1 0s;}
 .desib_box .des_imgg {
 	width: 17.6%;
 	right: -18%;
@@ -61,6 +64,7 @@
 	z-index: 8;
 }
 .desib_box_play .des_imgg {	animation:imggg .3s ease-out 1 2s;-webkit-animation:imggg .3s ease-out 1 2s;}
+#no_flash .desib_box_play .des_imgg {	animation:imggg .1s ease-out 1 0s;-webkit-animation:imggg .1s ease-out 1 0s;}
 .desib_box .des_imgh {
 	width: 42%;
 	bottom: 25.8%;
@@ -70,7 +74,7 @@
 
 }
 .desib_box_play .des_imgh {	animation:imgaa .5s ease-out 1 1.7s;	-webkit-animation:imgaa .5s ease-out 1 1.7s;}
-
+#no_flash .desib_box_play .des_imgh {	animation:imgaa .1s ease-out 1 0s;	-webkit-animation:imgaa .1s ease-out 1 0s;}
 .desib_box .des_imgw { position: absolute; width: 100%; height: 65%; top: 0; left:0; z-index: 3;}
 .desib_box .des_imgi {
 	width: 60.4%;
@@ -79,6 +83,7 @@
 	z-index: 7;
 }
 .desib_box_play .des_imgi {	animation:imgii .5s ease-out 1 1.3s;-webkit-animation:imgii .5s ease-out 1 1.3s;}
+#no_flash .desib_box_play .des_imgi {	animation:imgii .1s ease-out 1 0s;-webkit-animation:imgii .1s ease-out 1 0s;}
 .desib_box .des_imgf {
 	width: 13.3%;
 	left: 8.1%;
@@ -87,6 +92,7 @@
 	opacity: 0;
 }
 .desib_box_play .des_imgf {	animation:imgaa .4s ease-out 1 2.2s;-webkit-animation:imgaa .4s ease-out 1 2.2s;}
+#no_flash .desib_box_play .des_imgf {	animation:imgaa .1s ease-out 1 0s;-webkit-animation:imgaa .1s ease-out 1 0s;}
 .desib_box .des_imgj {
 	width: 25.7%;
 	right: 23.6%;
@@ -94,6 +100,7 @@
 	z-index: 11;
 }
 .desib_box_play .des_imgj {animation:imgjj .5s ease-out 1 .8s;-webkit-animation:imgjj .5s ease-out 1 .8s;}
+#no_flash .desib_box_play .des_imgj {animation:imgjj .1s ease-out 1 0s;-webkit-animation:imgjj .1s ease-out 1 0s;}
 .desib_box .des_imgk {
 	width: 41.8%;
 	left: -42%;
@@ -101,6 +108,7 @@
 	z-index: 5;
 }
 .desib_box_play .des_imgk {animation:imgkk .5s ease-out 1 .5s;-webkit-animation:imgkk .5s ease-out 1 .5s;}
+#no_flash .desib_box_play .des_imgk {animation:imgkk .1s ease-out 1 0s;-webkit-animation:imgkk .1s ease-out 1 0s;}
 .desib_box .des_imgx{
 	z-index: 8;
     left: 36.4%;
@@ -120,7 +128,7 @@
 	z-index: 4;
 }
 .desib_box_play .des_imgm {	animation:imgmm .3s ease-out 1 3.2s;-webkit-animation:imgmm .3s ease-out 1 3.2s;}
-
+#no_flash .desib_box_play .des_imgm {	animation:imgmm .1s ease-out 1 0s;-webkit-animation:imgmm .1s ease-out 1 0s;}
 .desib_box .des_imgq {
 	width: 18.5%;
 	left: -19%;
@@ -128,6 +136,7 @@
 	z-index: 5;
 }
 .desib_box_play .des_imgq {	animation:imgqq .3s ease-out 1 3.4s;-webkit-animation:imgqq .3s ease-out 1 3.4s;}
+#no_flash .desib_box_play .des_imgq {	animation:imgqq .1s ease-out 1 0s;-webkit-animation:imgqq .1s ease-out 1 0s;}
 .desib_box .des_imgl {
 	width: 100%;
 	height: 65%;
