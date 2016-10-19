@@ -15,7 +15,7 @@ if (isset($frindf) && !empty($frindf)) {
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
-       <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476857349_373356.css" />
+       <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476873842_9292777.css" />
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_a.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -47,7 +47,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
-            <span class="logoaa iconfont icon-jm01"></span>
+            <span class="logoaa iconfont icon-erweima01"></span>
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img class="des_img des_imga" src="img/flash_a/1.png" />
@@ -152,7 +152,7 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="erweima" src="img/ewm/1.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请长按识别二维码进入我们的公众号</div>
 
-            <span class="by_ad iconfont icon-logo01"></span>
+            <span class="by_ad iconfont icon-iconlogo0101"></span>
         </div>
     </body>
 </html>

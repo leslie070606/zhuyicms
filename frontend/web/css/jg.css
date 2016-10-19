@@ -2,86 +2,89 @@
 @charset "utf-8";
 
 a,body {
-	color: #333333;
-	text-decoration: none;
+    color: #333333;
+    text-decoration: none;
 }
 img { max-width: 100%;}
 table {
-	border-collapse: collapse;
-	border-spacing: 0
+    border-collapse: collapse;
+    border-spacing: 0
 }
 input { border-radius: 0; line-height:normal !important ;}
 
 fieldset,img {
-	border: 0
+    border: 0
 }
 ol,ul {
-	list-style: none
+    list-style: none
 }
 
 caption,th {
-	text-align: left
+    text-align: left
 }
 
 a:focus {
-	outline-style: none;
+    outline-style: none;
 }
 
 abbr,acronym {
-	border: 0;
-	font-variant: normal
+    border: 0;
+    font-variant: normal
 }
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button { margin: 0; padding: 0;}
 i{ font-style:normal} 
 
 textarea {
-	resize: none
+    resize: none
 }
 ul {-webkit-padding-start: 0px;    -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;}
 html {
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	 font-size: 50px;
-	height: 100%;
-	background-color: #FFFFFF;
-	max-width: 500px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-size: 50px;
+    height: 100%;
+    background-color: #FFFFFF;
+    max-width: 500px;
 }
 /*
 @font-face {
-	font-family:fzlth;
-	src: url(../font-face/FZLTHJW.TTF);
+        font-family:fzlth;
+        src: url(../font-face/FZLTHJW.TTF);
 }
 @font-face {
-	font-family:fzltxh;
-	src: url(../font-face/fzltxh.TTF);
+        font-family:fzltxh;
+        src: url(../font-face/fzltxh.TTF);
 }*/
 body {
-	font-family:"PingFang SC","Noto sans CJK SC",helvetica,"microsoft yahei",arial,sans-serif;
-	background: #fff;
-	overflow-x: hidden;
-	
-	-webkit-text-size-adjust: none;
-	max-width: 500px;
-	margin: 0 auto;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	right: 0;
+    font-family:"PingFang SC","Noto sans CJK SC",helvetica,"microsoft yahei",arial,sans-serif;
+    background: #fff;
+    overflow-x: hidden;
+
+    -webkit-text-size-adjust: none;
+    max-width: 500px;
+    margin: 0 auto;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
 }
 .desib_box { width: 100%; height: 100%; overflow: hidden; position: relative;}
 .share_box { font-size: .26rem; position: absolute; width: 100%; left: 0; bottom:.4rem; color: #333333; z-index: 88;}
 .share_box .share_btn { width: 92%; margin-left: 4%; height: .88rem; float: left; line-height: .88rem; background: #FF4E38; color: #FFFFFF; text-align: center;}
 .share_box .cs_more { width: 100%; clear: both; text-align: center;}
 .gloab_bottm { background: #794141;   height: 100%; float: left; width: 100%; position: relative; top: -1px; font-size: .20rem; overflow: hidden; color: #57372e; text-align: center;}
-.gloab_bottm .erweima { width: 30%; margin-top: .66rem;}
-.bottm_mesg { line-height: 1.3; margin-bottom: 3.2rem; margin-top: .3rem;}
+.gloab_bottm .erweima { width: 30%;margin-top: 2.56rem;}
+.bottm_mesg { line-height: 1.3;
+              margin-bottom: 3.2rem;
+              margin-top: 0.3rem;
+              font-size: 0.32rem;}
 .cs_more .more_a::after { content: "|"; margin: 0 .2rem; }
 .cs_more { padding-top: .2rem;}
 .share_box { display: none;}
 .share_box_b { bottom: .6rem;}
 .share_box_active { display: block;}
 .share_box { opacity: 0;animation-fill-mode: forwards !important;
-	-webkit-animation-fill-mode: forwards !important;}
+             -webkit-animation-fill-mode: forwards !important;}
 
 /*锚点*/
 .miaodiana_a { top: .33rem !important;}
@@ -90,59 +93,59 @@ body {
 .miaodian_text .text_title {display: block;  color: #FF4E38; margin-bottom: .2rem;}
 .btn_miaodian .text_title  { text-align: center; font-weight: bold;}
 .sanjiao{
-	display: none;
-	width:0;
-	height:0;
-	position: relative;
-	z-index: 99;
-	top: 1px;
-	border-left:.1rem solid transparent;   
-	border-right:.1rem solid transparent;   
-	border-bottom:.1rem solid #fff;
+    display: none;
+    width:0;
+    height:0;
+    position: relative;
+    z-index: 99;
+    top: 1px;
+    border-left:.1rem solid transparent;   
+    border-right:.1rem solid transparent;   
+    border-bottom:.1rem solid #fff;
 }
 .sanjiao_box>.maodian_icon { width: .12rem; left:.1rem;  position: relative; z-index: 19; color: #FFFFFF; opacity: 0;animation-fill-mode: forwards !important;-webkit-animation-fill-mode: forwards !important;}
 .sanjiao_box>.maodian_flash  .md_flash_center { width: .1rem; height: .1rem; border-radius: .05rem; background: #ff4e38; position: absolute;z-index: 10; left:-.05rem; top:-.05rem; }
 .desib_box_play .sanjiao_box .maodian_flash .md_flash_big {animation:imgxxaa 2s linear infinite 0s;-webkit-animation:imgxxaa 2s linear infinite 0s;}
 @-webkit-keyframes imgxxaa {
-	0% {
-            opacity:.1;
-            padding: 0;
-             left:-.2rem; top:-.2rem;
-	}
-	50% { opacity: .4;padding: .1rem; left:-.3rem; top:-.3rem;}
-	100% { opacity: .1;padding: 0; left:-.2rem; top:-.2rem;}
+    0% {
+        opacity:.1;
+        padding: 0;
+        left:-.2rem; top:-.2rem;
+    }
+    50% { opacity: .4;padding: .1rem; left:-.3rem; top:-.3rem;}
+    100% { opacity: .1;padding: 0; left:-.2rem; top:-.2rem;}
 }
 .sanjiao_box>.maodian_flash .md_flash_big { width: .4rem; height:.4rem; position: absolute; z-index: 9; background:#ff4e38; border-radius: .5rem;  opacity: 0;animation-fill-mode: forwards !important;
-	-webkit-animation-fill-mode: forwards !important; left:-.2rem; top:-.2rem;}
+                                            -webkit-animation-fill-mode: forwards !important; left:-.2rem; top:-.2rem;}
 .miaodian_mesng .sanjiao_box { position: relative; left: 23.5%; top:0;}
 .miaodian_mesng .click_m { position: absolute; width: 1rem; z-index: 999; height: 1rem; top: -.5rem; left: -.5rem;}
 .btn_miaodian { top: -5.1rem;}
 .btn_miaodian  .sanjiao_box  { left: 0;}
 .btn_miaodian .sanjiao {
-	margin: 0 auto;
-	top: -1px;
-	border-bottom:.0 solid #fff;
-	border-left:.2rem solid transparent;   
-	border-right:.2rem solid transparent; 
-	border-top:.2rem solid #fff;
+    margin: 0 auto;
+    top: -1px;
+    border-bottom:.0 solid #fff;
+    border-left:.2rem solid transparent;   
+    border-right:.2rem solid transparent; 
+    border-top:.2rem solid #fff;
 }
 .btn_miaodian .text_img { float: left; width: 100%; text-align: center; margin-top: .3rem;}
 .btn_miaodian .text_img img { width: 29%; margin-right: 4%; }
 .btn_miaodian .text_img img:last-child { margin-right: 0;}
 .desib_box .miaoshu {
-	position: relative;
-	z-index: 99;
-	font-size: .28rem;
-	margin: .3rem;
-	padding-top: .3rem;
-	color: #333333;
-	opacity: 0;
-	animation-fill-mode: forwards !important;
-	-webkit-animation-fill-mode: forwards !important;
+    position: relative;
+    z-index: 99;
+    font-size: .28rem;
+    margin: .3rem;
+    padding-top: .3rem;
+    color: #333333;
+    opacity: 0;
+    animation-fill-mode: forwards !important;
+    -webkit-animation-fill-mode: forwards !important;
 }
 
 
-   
+
 .desib_box .miaoshu>span { display: block;}
 .miaoshu .miaoshu_name { font-size: .32rem;}
 .miaoshu .text_big { font-size: .66rem; font-weight: bold; position: relative; z-index: 1001;}
@@ -165,17 +168,17 @@ body {
     background: #FFFFFF;
 }
 .by_ad { font-size: 2.2rem;
-    color: #FF4E38;
-    position: absolute;
-    bottom: .3rem;
-    left: 50%;
-    margin-left: -1.1rem;}
+         color: #FF4E38;
+         position: absolute;
+         bottom: .3rem;
+         left: 50%;
+         margin-left: -1.1rem;}
 .by_ad::after {
     content: "";
     position: absolute;
     width: 1rem;
     left: 50%;
-    height:1.1rem;
+    height:1rem;
     margin-left: -.5rem;
     top:.5rem;
     background: #ffffff;
@@ -183,11 +186,11 @@ body {
 }
 .by_ad::before { position: relative;z-index: 90;}
 /*.miaodiana_a .miaodian_text{
-	overflow: auto;
-	background: white;
-	background: -moz-linear-gradient(top, #dedede, white 8%);
-	background: -webkit-gradient(linear, 0 0, 0 8%, from(#dedede), to(white));
-	box-sizing: border-box;
+        overflow: auto;
+        background: white;
+        background: -moz-linear-gradient(top, #dedede, white 8%);
+        background: -webkit-gradient(linear, 0 0, 0 8%, from(#dedede), to(white));
+        box-sizing: border-box;
 }*/
 /*适配*/
 
@@ -202,30 +205,30 @@ body {
         font-size:44px;
     }
 }
- 
+
 @media screen and (min-width: 335px) {
     html {
         font-size: 48px;
     }
 }
- @media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) {
     html {
         font-size: 48px;
     }
 }
- 
+
 @media screen and (min-width: 410px) {
     html {
         font-size: 48px;
     }
 }
- 
+
 @media screen and (min-width: 450px) {
     html {
         font-size: 48px;
     }
 }
- 
+
 @media screen and (min-width: 490px) {
     html {
         font-size: 48px;
