@@ -78,8 +78,11 @@
 .foin_bottom { font-size: .28rem;}
 .foin_bottom li  { display: block; width: 100%; float: left; margin-bottom: .4rem;}
 .foin_bottom li span { float: left; line-height: .88rem;}
-.foin_bottom li .user_name { font-weight: bold;}
-.foin_bottom li .match_number { float: right; margin-right: .3rem;}
+.foin_bottom li .user_name { font-weight: bold;white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 8em;}
+.foin_bottom li .match_number { float: right; width: 8em; text-align: left;}
 .foin_bottom li .match_number i { margin-left: .1rem;}
 .foin_bottom li>img { margin: 0 .4rem 0 .3rem; border: 1px solid #cccccc; box-sizing: border-box; float: left; width: .88rem; height: .88rem; border-radius: .44rem;}
 
@@ -87,4 +90,7 @@
 .foin_more { float:left; width: 100%; background: #FFFFFF; height: .95rem; line-height: .95rem; text-align: center; color: #FF4E38; font-size: .26rem;}
 .top_mesg { width: 96%; position: absolute; left: 4%; top:.3rem;}
 .top_mesg>span { display: block; line-height: 1.4; font-size: .24rem;}
-.top_mesg .top_mesg_name { font-weight: bold; font-size: .28rem;}
+.top_mesg .top_mesg_name { font-weight: bold; font-size: .28rem;white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 8em;}
