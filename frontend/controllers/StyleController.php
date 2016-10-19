@@ -135,7 +135,7 @@ class StyleController extends Controller {
                                     $style = "波西米亚";
                                     break;
                                 case 'b' :
-                                    $style = "中古";
+                                    $style = "复古混搭";
                                     break;
                                 case 'c' :
                                     $style = "法式古典";
@@ -202,7 +202,7 @@ class StyleController extends Controller {
                                     //朋友在看你的风格
                                     return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                                     break;
-                                case '中古':
+                                case '复古混搭':
                                     //朋友在看你的风格
                                     return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $res, 'link_id' => $link_id, 'frindf' => 1, 'userInfo' => $userinfo]);
                                     break;
@@ -245,7 +245,7 @@ class StyleController extends Controller {
                         $style = "波西米亚";
                         break;
                     case 'b' :
-                        $style = "中古";
+                        $style = "复古混搭";
                         break;
                     case 'c' :
                         $style = "法式古典";
@@ -281,7 +281,7 @@ class StyleController extends Controller {
                         return $this->render('flasha', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'b' :
-                        $stylearr = array('style' => '中古');
+                        $stylearr = array('style' => '复古混搭');
                         return $this->render('flashb', ['jsarr' => $jsarr, 'mystyle' => $stylearr, 'link_id' => $shareModel->link_id, 'userInfo' => $userinfo]);
                         break;
                     case 'c' :
@@ -327,7 +327,7 @@ class StyleController extends Controller {
                         return $this->render('flasha', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'b' :
-                        $stylearr = array('style' => '中古');
+                        $stylearr = array('style' => '复古混搭');
                         return $this->render('flashb', ['userInfo' => $userinfo,'mystyle' => $stylearr, 'jsarr' => $jsarr, 'link_id' => '1233']);
                         break;
                     case 'c' :
@@ -397,10 +397,12 @@ class StyleController extends Controller {
         if ($userinfo = $session->get('userInfo')) {
 
             $shareModel = new \common\models\ZyShare();
+            
+            $mystyle = $shareModel->findOne(['link_id' => $link_id]);
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
-            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'style' => $style]);
+            return $this->render('friendtest', ['friendstyle' => $friendstyle, 'mystyle' => $mystyle]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {

@@ -1,3 +1,4 @@
+
 <?php
 $uc = new \common\util\Guolu();
 $myproblemArr = explode('a', $mystyle['problem_data']);
@@ -92,5 +93,3 @@ array_pop($myproblemArr);
 </div>
 </body>
 </html>
-
-

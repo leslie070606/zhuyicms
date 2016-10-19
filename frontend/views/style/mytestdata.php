@@ -1,3 +1,4 @@
+
 <?php
 
 use yii\helpers\Url;
@@ -331,6 +332,3 @@ $mystyle['user_name'] = $uc->userTextDecode($mystyle['user_name']);
 
             });
 </script>
-
-
-
