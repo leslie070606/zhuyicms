@@ -421,8 +421,8 @@ class StyleController extends Controller {
 
             $mystyle = $shareModel->findOne(['link_id' => $link_id]);
             
-            echo "<pre>";
-            print_r($mystyle['problem_data']);exit;
+//            echo "<pre>";
+//            print_r($mystyle['problem_data']);exit;
 
             $friendstyle = $shareModel->find()->where(['style' => $style, 'source_openid' => $link_id])->all();
 
