@@ -1,11 +1,10 @@
 .desi_top { position: absolute; left: 0; top: 0; width: 100%; height: 65%; background: #fdefd6; z-index: 2;}
 .desi_bottom { position: absolute; left: 0; bottom: 0; width: 100%; height: 40%; background: #c6a885; z-index: 1;}
 .gloab_bottm { background: #c6a885 !important;}
-.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg { color: #6D1F15 !important;}
+.desib_box .miaoshu,.cs_more,.erweima,.bottm_mesg, .logoaa { color: #6D1F15 !important;}
 .desib_box_play .sanjiao_box .maodian_icon {animation:imgaa .4s ease-out 1 4.1s;-webkit-animation:imgaa .4s ease-out 1 4.1s;}
 .desib_box_play .miaoshu { -webkit-animation: imgaa .5s ease-out 1 4s; animation: imgaa .5s ease-out 1 4s;}
- .share_box { animation:imgaa .5s ease-out 1 4s;-webkit-animation:imgaa .5s ease-out 1 4s;}
-
+.share_box { animation:imgaa .5s ease-out 1 4s;-webkit-animation:imgaa .5s ease-out 1 4s;}
 .desib_box .des_img {
 	position: absolute;
 	z-index: 3;
@@ -20,6 +19,7 @@
 	
 }
 .desib_box_play .des_imga {animation:imgaal .5s ease-out 1 2.6s;-webkit-animation:imgaal .5s ease-out 1 2.6s;}
+#no_flash .desib_box_play .des_imga {animation:imgaal 0.1s ease-out 1 0s;-webkit-animation:imgaal 0.1s ease-out 1 0s;}
 .desib_box .des_imga_a {
 	width: 1.1%;
 	top: -75%;
@@ -28,6 +28,7 @@
 	
 }
 .desib_box_play .des_imga_a {animation:imgaal .5s ease-out 1 2.6s;-webkit-animation:imgaal .5s ease-out 1 2.6s;}
+#no_flash .desib_box_play .des_imga_a {animation:imgaal 0.1s ease-out 1 0s;-webkit-animation:imgaal 0.1s ease-out 1 0s;}
 .desib_box .des_imgb {
 	width: 6.1%;
 	top: 40.9%;
@@ -36,6 +37,7 @@
 	
 }
 .desib_box_play .des_imgb {animation:imgaa .5s ease-out 1 2.2s;-webkit-animation:imgaa .5s ease-out 1 2.2s;}
+#no_flash .desib_box_play .des_imgb {animation:imgaa 0.1s ease-out 1 0s;-webkit-animation:imgaa 0.1s ease-out 1 0s;}
 .desib_box .des_imgb_a {
 	width: 6.1%;
 	top: 40.9%;
@@ -44,6 +46,7 @@
 	
 }
 .desib_box_play .des_imgb_a {animation:imgaa .5s ease-out 1 2.2s;-webkit-animation:imgaa .5s ease-out 1 2.2s;}
+#no_flash .desib_box_play .des_imgb_a {animation:imgaa 0.1s ease-out 1 0s;-webkit-animation:imgaa 0.1s ease-out 1 0s;}
 .desib_box .des_imgc {
 	width: 14.6%;
 	top: -60%;
@@ -55,6 +58,7 @@
 	transform-origin: center top;
 }
 .desib_box_play .des_imgcc {animation:imgcca 2s linear infinite 2.9s;-webkit-animation:imgcca 2s linear infinite 2.9s;}
+#no_flash .desib_box_play .des_imgcc {animation:imgcca 2s linear infinite 0s;-webkit-animation:imgcca 2s linear infinite 0s;}
 .desib_box .des_imgd {
 	width: 7.5%;
 	bottom: 34.9%;
@@ -64,6 +68,7 @@
 	
 }
 .desib_box_play .des_imgd {animation:imgaa .5s ease-out 1 1.2s;-webkit-animation:imgaa .5s ease-out 1 1.2s;}
+#no_flash .desib_box_play .des_imgd {animation:imgaa 0.1s ease-out 1 0s;-webkit-animation:imgaa 0.1s ease-out 1 0s;}
 .desib_box .des_imge {
 	width: 11.6%;
 	right: 6.1%;
@@ -73,6 +78,7 @@
 	
 }
 .desib_box_play .des_imge {animation:imgaa .5s ease-out 1 1.8s;-webkit-animation:imgaa .5s ease-out 1 1.8s;}
+#no_flash .desib_box_play .des_imge {animation:imgaa 0.1s ease-out 1 0s;-webkit-animation:imgaa 0.1s ease-out 1 0s;}
 .desib_box .des_imgg {
 	width: 33.4%;
 	left: 134%;
@@ -81,6 +87,7 @@
 	
 }
 .desib_box_play .des_imgg {animation:imggg .4s ease-out 1 .8s;-webkit-animation:imggg .4s ease-out 1 .8s;}
+#no_flash .desib_box_play .des_imgg {animation:imggg .1s ease-out 1 0s;-webkit-animation:imggg .1s ease-out 1 0s;}
 .desib_box .des_imgh {
 	width: 72%;
 	bottom: -30%;
@@ -89,6 +96,7 @@
 	
 }
 .desib_box_play .des_imgh {animation:imghh .4s ease-out 1 .4s;-webkit-animation:imghh .4s ease-out 1 .4s;}
+#no_flash .desib_box_play .des_imgh {animation:imghh .1s ease-out 1 0s;-webkit-animation:imghh .1s ease-out 1 0s;}
 .desib_box .des_imgi {
 	width: 61.7%;
 	top: -25.5%;
@@ -97,6 +105,7 @@
 	
 }
 .desib_box_play .des_imgi {animation:imgii .5s ease-out 1 0s;-webkit-animation:imgii .5s ease-out 1 0s;}
+#no_flash .desib_box_play .des_imgi {animation:imgii .1s ease-out 1 0s;-webkit-animation:imgii .1s ease-out 1 0s;}
 .desib_box .des_imgf {
 	width: 15.5%;
 	right: -16%;
@@ -105,6 +114,7 @@
 	
 }
 .desib_box_play .des_imgf {animation:imgff .4s ease-out 1 1.6s;-webkit-animation:imgff .4s ease-out 1 1.6s;}
+#no_flash .desib_box_play .des_imgf {animation:imgff .1s ease-out 1 0s;-webkit-animation:imgff .1s ease-out 1 0s;}
 .desib_box .des_imgj {
 	width: 18.9%;
 	left: -19%;
@@ -113,6 +123,7 @@
 	
 }
 .desib_box_play .des_imgj {animation:imgjj .3s ease-out 1 .8s;-webkit-animation:imgjj .3s ease-out 1 .8s;}
+#no_flash .desib_box_play .des_imgj {animation:imgjj .1s ease-out 1 0s;-webkit-animation:imgjj .1s ease-out 1 0s;}
 .desib_box .des_imgk {
 	width: 83.5%;
 	left: 8.4%;
@@ -121,6 +132,7 @@
 	
 }
 .desib_box_play .des_imgk {animation:imgkk .5s ease-out 1 3s;-webkit-animation:imgkk .5s ease-out 1 3s;}
+#no_flash .desib_box_play .des_imgk {animation:imgkk .1s ease-out 1 0s;-webkit-animation:imgkk .1s ease-out 1 0s;}
 .desib_box .des_imgl {
 	width: 100%;
 	height: 65%;
