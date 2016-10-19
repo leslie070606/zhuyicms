@@ -13,7 +13,7 @@ if (isset($frindf) && !empty($frindf)) {
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>风格结果</title>
-         <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476857349_373356.css" />   
+         <link rel="stylesheet" href="http://at.alicdn.com/t/font_1476873842_9292777.css" />   
         <link rel="stylesheet" href="css/jg.css" />
         <link rel="stylesheet" href="css/flash_f.css" />
         <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
@@ -47,8 +47,7 @@ if (isset($frindf) && !empty($frindf)) {
                 </span>
             </div>
             <span class="logo iconfont icon-chusheng01"></span>
-            <a href="#erweima"><span class="logoaa iconfont icon-erweima01"></span></a>
-            
+            <span class="logoaa iconfont icon-erweima01"></span>
             <div class="desi_top"></div>
             <div class="desi_bottom"></div>
             <img id="des_imga" class="des_img des_imga" src="img/flash_f/1.png" />
@@ -146,7 +145,7 @@ if (isset($frindf) && !empty($frindf)) {
              <img id="erweima" class="erweima" src="img/ewm/6.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺家吗？<br>请长按识别二维码进入我们的公众号</div>
 
-            <span class="by_ad iconfont icon-logo01"></span>
+            <span class="by_ad iconfont icon-iconlogo0101"></span>
         </div>
     </body>
 </html>
@@ -209,7 +208,7 @@ default :
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '<?php echo $userInfo['nickname'] ?>自己很<?= $mystyle['style'] ?>并向你扔了一席榻榻米', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>自己很「<?= $mystyle['style'] ?>」并向你扔了一席榻榻米', // 分享标题
             desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
@@ -230,7 +229,7 @@ default :
 
         //分享到朋友圈
         wx.onMenuShareTimeline({
-            title: '<?php echo $userInfo['nickname'] ?>说自己很<?= $mystyle['style'] ?>并向你扔了一席榻榻米,还想看看你的家居风格是什么', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一席榻榻米,还想看看你的家居风格是什么', // 分享标题
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
             imgUrl: "<?php echo Yii::$app->params['frontDomain'] ?>" + '<?=$sharelogo ?>', // 分享图标

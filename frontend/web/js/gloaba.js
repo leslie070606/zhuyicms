@@ -14,7 +14,10 @@ $(function(){
 	}else{
 		autogeta();
 	}
-	
+	$(".logoaa").on("click",function(){
+		var height=$(window).height()
+		$("body").animate({scrollTop:height},500);
+	});
 	
 	window.onresize=function(){
 		if(IsPC()){

@@ -365,13 +365,12 @@ class StyleController extends Controller {
         }
     }
 
-
     //风格报告分享
     public function actionChosestyle() {
 
         // 每个风格所占百分比
         $machData = Yii::$app->request->get('machData');
-        
+
         //所属风格
         $flash = Yii::$app->request->get('flash');
         //判断是否登陆过
@@ -393,13 +392,13 @@ class StyleController extends Controller {
 
         // 判断用户是否授权成功
         if ($userinfo = $session->get('userInfo')) {
-            return $this->render('chosestyle', ['styleArr' => $styleArr,'flash'=>$flash]);
+            return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash]);
         } else {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shouchosestyle&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
             } else {
-                return $this->render('chosestyle', ['styleArr' => $styleArr,'flash'=>$flash]);
+                return $this->render('chosestyle', ['styleArr' => $styleArr, 'flash' => $flash]);
             }
         }
     }
@@ -420,7 +419,7 @@ class StyleController extends Controller {
             $shareModel = new \common\models\ZyShare();
 
             $mystyle = $shareModel->findOne(['link_id' => $link_id]);
-            
+
 //            echo "<pre>";
 //            print_r($mystyle['problem_data']);exit;
 
@@ -431,6 +430,8 @@ class StyleController extends Controller {
             //判断是否是微信内登录
             if (strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
                 return $this->redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx36e36094bd446689&redirect_uri=http://zhuyihome.com/index.php?r=style/Shoufstyle&response_type=code&scope=snsapi_userinfo&state=' . $link_id . '#wechat_redirect');
+            } else {
+                return $this->render('friendtest');
             }
         }
     }
@@ -600,10 +601,11 @@ class StyleController extends Controller {
         for ($i = 0; $i < $n; $i ++) {
             $s .= $str [rand(0, $len)];
         }
-        
-        $num = $s.$this->createProNum();
+
+        $num = $s . $this->createProNum();
         return $num;
     }
+
     public function createProNum() {
         $arr = range(1, 10);
 
