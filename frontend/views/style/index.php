@@ -46,7 +46,7 @@ use yii\helpers\Url;
                 $.ajax({
                     type: "get",
                     data: "",
-                    url: "http://zhuyihome.com/index.php?r=data-count-api/create/create&mtId=" + a + "&mdId=" + b + "&userId=" + c + "&designerId=" + d + "&mMark=" + e + "",
+                    url: "http://zhuyihome.com/index.php?r=data-count-api/create&mtId=" + a + "&mdId=" + b + "&userId=" + c + "&designerId=" + d + "&mMark=" + e + "",
                     async: true,
                     success: function (data) {}
                 });
