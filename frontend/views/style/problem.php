@@ -103,7 +103,7 @@ use yii\helpers\Url;
                         new_obj+=val[i];
                      }
                    for(var i=0;i<key.length-1;i++){
-                        new_html+=key[i]+"#"+parseInt(val[i]/new_obj*100)+","
+                        new_html+=key[i]+"*"+parseInt(val[i]/new_obj*100)+","
                      }
                      console.log(new_html)
 
