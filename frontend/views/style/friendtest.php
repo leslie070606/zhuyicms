@@ -6,6 +6,7 @@ $myproblemArr = explode('a', $mystyle['problem_data']);
 array_pop($myproblemArr);
 //echo "<pre>";
 //print_r($myproblemArr);exit;
+error_reporting(E_ALL^E_NOTICE^E_WARNING);
 ?>
 <!DOCTYPE html>
 <html>
