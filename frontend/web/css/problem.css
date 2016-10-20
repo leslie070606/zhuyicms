@@ -49,11 +49,11 @@
 .open_self .chose_here:nth-child(odd) { border-left: .15rem solid #F2F2F2 !important;}
 .open_self .chose_here { border-color: #F2F2F2 !important;}
 .chose_box .chose_here>div>span { position: absolute; width: 100%; left: 0; bottom:.3rem; text-align: center;z-index: 10;}
-.open_self .style_bottom { height: .88rem;width: 100%; overflow: hidden; float: left; line-height: .88rem; color: #999999; text-align: center; font-size: .2rem; width: 100%; background: #FFFFFF;}
+.open_self .style_bottom { height: .88rem;width: 100%;position: relative; overflow: hidden; float: left; line-height: .88rem; color: #999999; text-align: center; font-size: .2rem; width: 100%; background: #FFFFFF;}
 .open_self .style_bottom ul li,.open_self .bot_title { line-height: .88rem; float: left;}
 .open_self .style_bottom ul li { margin-bottom: .4rem;}
 .open_self .bot_title { margin: 0 .2rem; color: #333333;}
-.open_self .style_bottom ul { position: absolute; left: 1rem; width: 3rem;overflow: hidden; height: .88rem;}
+.open_self .style_bottom ul { position: absolute; left: 1rem; right:0; width: auto; top: 0;overflow: hidden; height: .88rem;}
 .open_self .style_bottom ul li:nth-child(3){ position:relative; z-index: 4;}
 .open_self .style_bottom ul li:nth-child(3) img { position: relative;z-index: 4;}
 .open_self .style_bottom ul li:nth-child(3)::after { position: absolute;
