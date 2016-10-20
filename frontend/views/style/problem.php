@@ -135,7 +135,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">1</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom"><span class="top_bottom_title">风格</span>
-                    关于自己日日相伴的家，<br> 应该没有人会比你更清楚自己想要什么吧。那么， <span>你希望你的家装在风格上更接近下面那张图片呢？</span>
+                    关于自己日日相伴的家，<br> 应该没有人会比你更清楚自己想要什么吧。那么， <span>你希望你的家装在风格上更接近下面哪张图片呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
@@ -360,7 +360,7 @@ use yii\helpers\Url;
                     <span class="top_right"><i class="pro_number">8</i><i>/14</i></span>
                 </div>
                 <div class="top_bottom"><span class="top_bottom_title">主要材质</span>
-                    你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>那么，你最喜欢的材料是那些呢？</span>
+                    你无法否认，从不同材料身上，你常常可以捕捉到许多不同的情绪。<br> 材料甚至是设计师表达创作的一种语言。<span>那么，你最喜欢的材料是哪些呢？</span>
                 </div>
             </div>
             <div class="pro_box_big">
