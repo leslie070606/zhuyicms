@@ -70,6 +70,48 @@ class StyleController extends Controller {
             }
         }
     }
+    
+    public function actionChannel(){
+        $_mId = 7;
+        $_mdId = Yii::$app->request->get('c_num');
+        
+        //检验主分类
+        $_mainTypeId = $_mId;
+        if (empty($_mainTypeId)) {
+            die('mtId不能为空');
+        }
+        $_mainTypeName = \common\util\DataCount::getMainType($_mainTypeId, 0);
+        if (!$_mainTypeName) {
+            die('主分类不存在');
+        }
+        //检验主分类详情
+        $_mainDetailId = $_mdId;
+        if (empty($_mainDetailId)) {
+            die('mdId不能为空');
+        }
+        $_mainDetailName = \common\util\DataCount::getMainTypeDetail($_mainTypeId, $_mainDetailId, 0);
+        if (!$_mainDetailName) {
+            die('列表项不存在或为空');
+        }
+
+        $model = new \common\models\ZyDataCount();
+        $model->main_type_id = intval($_mainTypeId);
+        $model->main_detail_id = intval($_mainDetailId);
+        $model->main_type_name = $_mainTypeName;
+        $model->main_detail_name = $_mainDetailName;
+        $model->user_id = 0;
+        $model->designer_id = 0;
+        $model->main_mark = '渠道';
+        $model->create_time = strval(time());
+        $model->main_num = 1;
+        $res = $model->save();
+        
+        if ($res) {
+            $this->redirect('http://zhuyihome.com/index.php?r=style');
+        } else {
+            $this->redirect('http://zhuyihome.com/index.php?r=style');
+        }
+    }
 
     public function actionProblem() {
 

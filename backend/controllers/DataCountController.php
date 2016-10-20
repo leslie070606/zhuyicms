@@ -97,6 +97,20 @@ class DataCountController extends controller {
         $_tmp = $this->_commonFunc($_mKey, $_md, $_sTime, $_eTime);
         return $this->render('demand_count', ['pageList' => $_pageList, 'data' => $_tmp, 'md' => $_md, 'st' => $_sTime, 'et' => $_eTime]);
     }
+    
+    /**
+     * 风格渠道统计
+     * @return object
+     */
+    public function actionStyleChannelCount() {
+        $_mKey = 7;
+        $_pageList = \common\util\DataCount::getMainTypeDetail($_mKey, '', 0);
+        $_md = Yii::$app->request->get('s');
+        $_sTime = Yii::$app->request->get('sTime');
+        $_eTime = Yii::$app->request->get('eTime');
+        $_tmp = $this->_commonFunc($_mKey, $_md, $_sTime, $_eTime);
+        return $this->render('demand_count', ['pageList' => $_pageList, 'data' => $_tmp, 'md' => $_md, 'st' => $_sTime, 'et' => $_eTime]);
+    }
 
     /**
      * 设计师统计
