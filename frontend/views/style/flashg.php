@@ -149,7 +149,8 @@ if (isset($frindf) && !empty($frindf)) {
             <img class="erweima" src="img/ewm/7.png"  />
             <div class="bottm_mesg">想观看和你风格类似的住艺改造家视频吗？<br>请长按识别二维码进入我们的公众号</div>
 
-            <span class="by_ad iconfont icon-iconlogo0101"></span>
+            <span class="by_ad iconfont icon-logo01"></span>
+            <div style="font-size: .2rem; font-weight:bold;color:#ff4e38;position: absolute;text-align:center;bottom: 0.3rem;height: .3rem;width: 100%;">找到最懂你的独立设计师</div>
         </div>
     </body>
 </html>
