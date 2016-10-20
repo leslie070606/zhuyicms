@@ -107,9 +107,9 @@ class StyleController extends Controller {
         $res = $model->save();
         
         if ($res) {
-            $this->redirect('http://zhuyihome.com/index.php?r=style');
+            $this->redirect(['index']);
         } else {
-            $this->redirect('http://zhuyihome.com/index.php?r=style');
+            $this->redirect(['index']);
         }
     }
 
