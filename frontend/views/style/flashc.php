@@ -140,7 +140,7 @@ if (isset($frindf) && !empty($frindf)) {
                         <div class="sanjiao"></div>
                     </div>
                 </div>
-                <span class="share_btn click_m">分享给你的小伙伴 与TA一起拿到HAY</span>
+                <span class="share_btn click_m">分享给好友 可以看到他们跟你的匹配度</span>
                 <div class="cs_more"><a href="<?php echo Url::toRoute('/style/index'); ?>"><span class="more_a">再测一次</span></a><a href="<?php echo Url::toRoute(['/style/chosestyle','machData'=>$machData]); ?>"><span class="more_b"><?php if(isset($pipeidu)&&!empty($pipeidu)){echo '查看其它风格匹配度';} else {echo '查看其它风格';} ?></span></a></div>
             </div>
         <?php } ?>
