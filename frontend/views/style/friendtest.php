@@ -99,7 +99,7 @@ array_pop($myproblemArr);
                 $frproblemArr = explode('a', $fs['problem_data']);
                 array_pop($frproblemArr);
                 for ($i = 0; $i < count($frproblemArr); $i++) {
-                    if ($frproblemArr[$i] == $myproblemArr[$i]) {
+                    if (@$frproblemArr[$i] == $myproblemArr[$i]) {
                         $j++;
                     }
                 }
