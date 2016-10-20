@@ -28,7 +28,8 @@ use yii\helpers\Url;
                         var nuber = $(this).parents(".pro_box").find(".foin").length;
                         index++;
                         $(this).addClass("foin_a");
-                        var nubera = parseInt("600" + index) + 1;
+                        //var nubera = parseInt("600" + index) + 1;
+                        var nubera = 6000 + index + 1;
                         if (nubera == 6002) {
                             tj_ajax(6, nubera - 1);
                         }
