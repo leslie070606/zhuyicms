@@ -214,7 +214,7 @@ switch ($mystyle['style']) {
 
         //分享给朋友
         wx.onMenuShareAppMessage({
-            title: '<?php echo $userInfo['nickname'] ?>自己很「<?= $mystyle['style'] ?>」并向你扔了一枚牛头', // 分享标题
+            title: '<?php echo $userInfo['nickname'] ?>说自己很「<?= $mystyle['style'] ?>」并向你扔了一枚牛头', // 分享标题
             desc: '看看你对「家」的态度,如果你和我的测试结果相同,两人都将有机会得到HAY的七巧板拼盘一套。', // 分享描述
             link: "<?php echo Yii::$app->params['frontDomain']; ?>" + '/index.php?r=style/report&link_id=' + "<?= $link_id ?>", // 分享链接
 
