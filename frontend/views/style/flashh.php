@@ -131,7 +131,7 @@ if (isset($frindf) && !empty($frindf)) {
 
                     <div class="miaodian_text">
                         <span class="text_title">点击右上角菜单键分享给朋友</span>
-                        如果你与好友测试结果相同，你们两人都将有机会得到HAY的Kaleido拼盘，Plisse文件夹，以及Quilt Sleeve电脑包。 关注「住艺」微信订阅号，10月27日将公布获奖名单。
+                        点击分享出去的链接，即可查看和好友的心有灵犀度。如果你与好友测试结果相同，你们两人都将有机会得到HAY的礼品套装。 关注「住艺」微信订阅号，10月27日将公布获奖名单。
                         <div class="text_img">
                             <img src="img/fengge/chose_style_1.jpg"  />
                             <img src="img/fengge/chose_style_2.jpg"  />
